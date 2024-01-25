@@ -8,17 +8,28 @@ import {
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-
-import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
-import LandingPage from '../LandingPage/LandingPage';
+import AdminPage from '../AdminPage/AdminPage';
+
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+
+import LandingPage from '../LandingPage/LandingPage';
+
+import OrderPage from '../OrderPage/OrderPage';
+import CheckoutPage from '../CheckoutPage/CheckoutPage';
+import SongRequestPage from '../SongRequestPage/SongRequestPage';
+
+import FAQ from '../FAQ/FAQ';
+import AboutPage from '../AboutPage/AboutPage'; // needed?
+import PrivacyPolicy from '../PrivacyPolicy/PrivacyPolicy';
+import QualityGuarantee from '../QualityGuarantee/QualityGuarantee';
+import TermsAndConditions from '../TermsAndConditions/TermsAndConditions';
 
 import './App.css';
 
@@ -36,17 +47,17 @@ function App() {
       <div>
         <Nav />
         <Switch>
+
           {/* Visiting localhost:5173 will redirect to localhost:5173/home */}
           <Redirect exact from="/" to="/home" />
 
-          {/* Visiting localhost:5173/about will show the about page. */}
           <Route
-            // shows AboutPage at all times (logged in or not)
             exact
-            path="/about"
+            path="/home"
           >
-            <AboutPage />
+            <LandingPage />
           </Route>
+
 
           {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:5173/user will show the UserPage if the user is logged in.
@@ -60,13 +71,77 @@ function App() {
             <UserPage />
           </ProtectedRoute>
 
+
           <ProtectedRoute
+            exact
+            path="/order"
+          >
+            <OrderPage />
+          </ProtectedRoute>
+
+
+          <ProtectedRoute
+            exact
+            path="/checkout"
+          >
+            <CheckoutPage />
+          </ProtectedRoute>
+
+
+          <Route
             // logged in shows InfoPage else shows LoginPage
             exact
-            path="/info"
+            path="/requestform"
           >
-            <InfoPage />
-          </ProtectedRoute>
+            <SongRequestPage />
+          </Route>
+
+
+          {/* Visiting localhost:5173/about will show the about page. */}
+          <Route
+            // shows AboutPage at all times (logged in or not)
+            exact
+            path="/about"
+          >
+            <AboutPage />
+          </Route>
+
+
+          <Route
+            // logged in shows InfoPage else shows LoginPage
+            exact
+            path="/terms"
+          >
+            <TermsAndConditions />
+          </Route>
+
+
+          <Route
+            // logged in shows InfoPage else shows LoginPage
+            exact
+            path="/faq"
+          >
+            <FAQ />
+          </Route>
+
+
+          <Route
+            // logged in shows InfoPage else shows LoginPage
+            exact
+            path="/guarantee"
+          >
+            <QualityGuarantee />
+          </Route>
+
+
+          <Route
+            // logged in shows InfoPage else shows LoginPage
+            exact
+            path="/privacy"
+          >
+            <PrivacyPolicy />
+          </Route>
+
 
           <Route
             exact
@@ -78,9 +153,10 @@ function App() {
               <Redirect to="/user" />
               :
               // Otherwise, show the login page
-              <LoginPage />
+              <LoginPage />  
             }
           </Route>
+
 
           <Route
             exact
@@ -92,23 +168,19 @@ function App() {
               <Redirect to="/user" />
               :
               // Otherwise, show the registration page
-              <RegisterPage />
+              <RegisterPage />    
             }
           </Route>
 
-          <Route
+
+          <ProtectedRoute
+            // shows AboutPage at all times (logged in or not)
             exact
-            path="/home"
+            path="/admin"
           >
-            {user.id ?
-              // If the user is already logged in, 
-              // redirect them to the /user page
-              <Redirect to="/user" />
-              :
-              // Otherwise, show the Landing page
-              <LandingPage />
-            }
-          </Route>
+            <AdminPage />
+          </ProtectedRoute>
+
 
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
