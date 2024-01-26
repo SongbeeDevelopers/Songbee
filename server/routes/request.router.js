@@ -1,11 +1,13 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-
+const {
+    rejectUnauthenticated,
+  } = require("../modules/authentication-middleware");
 /**
  * GET route template
  */
-router.get('/user', (req, res) => {
+router.get('/user', rejectUnauthenticated, (req, res) => {
   const userId = req.user.id;
   const requestQuery = `
   SELECT * FROM "song_request"
@@ -26,7 +28,7 @@ router.get('/user', (req, res) => {
   })
 });
 
-router.get('/all', (req, res) => {
+router.get('/all', rejectUnauthenticated, (req, res) => {
     const requestQuery = `
     SELECT * FROM "song_request"
     LEFT JOIN "genres"
@@ -48,7 +50,7 @@ router.get('/all', (req, res) => {
 /**
  * POST route template
  */
-router.post('/', async (req, res) => {
+router.post('/', rejectUnauthenticated, async (req, res) => {
 try {
   const userId = req.user.id;
   const requester = req.body.requester;
@@ -86,7 +88,7 @@ try {
 }
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", rejectUnauthenticated, (req, res) => {
     const requestId = req.params.id;
     const query = `
           DELETE FROM "song_request"

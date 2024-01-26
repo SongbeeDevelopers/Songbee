@@ -6,7 +6,7 @@ const pool = require("../modules/pool");
 const router = express.Router();
 const cloudinaryUpload = require("../modules/cloudinary.config");
 
-router.post("/:id", cloudinaryUpload.single("file"), async (req, res) => {
+router.post("/:id", rejectUnauthenticated, cloudinaryUpload.single("file"), async (req, res) => {
   try {
     const audioUrl = req.file.path;
     const lyrics = req.body.lyrics;
@@ -60,10 +60,10 @@ router.put("/:id", rejectUnauthenticated, cloudinaryUpload.single("file"), async
       WHERE "id" = $7;
       `;
       const detailsValues = [
-        audioUrl, lyrics, title, artist, streaming_link, songRequestId
+        audioUrl, lyrics, title, artist, streaming_link, songRequestId, detailsId
       ];
   
-      const eventResult = await pool.query(detailsQuery, detailsValues);
+      const detailsResult = await pool.query(detailsQuery, detailsValues);
       res.sendStatus(201);
     } catch (error) {
       console.log("Error in details router PUT:", error);
