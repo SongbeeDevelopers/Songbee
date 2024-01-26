@@ -69,6 +69,7 @@ function App() {
             path="/user"
           >
             <UserPage />
+           
           </ProtectedRoute>
 
 
