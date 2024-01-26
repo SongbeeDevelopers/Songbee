@@ -4,6 +4,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { Button } from '@mui/material';
 import { useState } from 'react';
 
 
@@ -44,8 +45,8 @@ function a11yProps(index) {
 // This will handle the inputs for first name, last name and email using state
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
 
 
@@ -68,24 +69,24 @@ export default function BasicTabs() {
         <h1>Personal info</h1>
         <div>
             <form onSubmit={handleChange}>
-                <label htmlFor="firstname">
-                    First Name
+                <label htmlFor="username">
+                    Username
                     <input
                     type="text"
-                    name="firstname"
-                    value={firstName}
+                    name="username"
+                    value={userName}
                     required
-                    onChange={(event) => setFirstName(event.target.value)}
+                    onChange={(event) => setUserName(event.target.value)}
                     />
                 </label>
-                <label htmlFor="lastname">
-                    Last Name
+                <label htmlFor="password">
+                    Password
                     <input
                     type="text"
-                    name="lastname"
-                    value={lastName}
+                    name="password"
+                    value={password}
                     required
-                    onChange={(event) => setLastName(event.target.value)}
+                    onChange={(event) => setPassword(event.target.value)}
                     />
                 </label>
                 <label htmlFor="email">
@@ -98,6 +99,7 @@ export default function BasicTabs() {
                     onChange={(event) => setEmail(event.target.value)}
                     />
                 </label>
+                <Button variant='contained' color='success'>Submit</Button>
             </form>
         </div>
       </CustomTabPanel>
