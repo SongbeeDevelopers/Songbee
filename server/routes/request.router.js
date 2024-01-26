@@ -5,9 +5,45 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
-  // GET route code here
+router.get('/user', (req, res) => {
+  const userId = req.user.id;
+  const requestQuery = `
+  SELECT * FROM "song_request"
+  LEFT JOIN "genres"
+  ON "song_request"."genre_id"="genres"."id"
+  LEFT JOIN "song_details"
+  ON "song_request"."id"="song_details"."song_request_id"
+  WHERE "song_request"."user_id"=$1;
+  `
+  pool.query(requestQuery, [userId])
+  .then((result) => {
+    res.send(result.rows);
+    console.log("Request router GET all user requests", result.rows)
+  })
+  .catch((error) => {
+    console.error("Error in request router GET all user requests", error);
+    res.sendStatus(500);
+  })
 });
+
+router.get('/all', (req, res) => {
+    const requestQuery = `
+    SELECT * FROM "song_request"
+    LEFT JOIN "genres"
+    ON "song_request"."genre_id"="genres"."id"
+    LEFT JOIN "song_details"
+    ON "song_request"."id"="song_details"."song_request_id";
+    `
+    pool.query(requestQuery)
+    .then((result) => {
+      res.send(result.rows);
+      console.log("Request router GET all requests", result.rows)
+    })
+    .catch((error) => {
+      console.error("Error in request router GET all requests", error);
+      res.sendStatus(500);
+    })
+  });
 
 /**
  * POST route template
@@ -49,5 +85,22 @@ try {
     console.error("Error in request router POST", error)
 }
 });
+
+router.delete("/:id", (req, res) => {
+    const requestId = req.params.id;
+    const query = `
+          DELETE FROM "song_request"
+            WHERE "id"=$1;
+      `;
+    pool
+      .query(query, [requestId])
+      .then((result) => {
+        res.sendStatus(200);
+      })
+      .catch((err) => {
+        console.log("Error in event router DELETE attendance", err);
+        res.sendStatus(500);
+      });
+  });
 
 module.exports = router;
