@@ -25,10 +25,10 @@ router.post("/:id", cloudinaryUpload.single("file"), async (req, res) => {
       songRequestId, audioUrl, lyrics, title, artist, streaming_link
     ];
 
-    const eventResult = await pool.query(detailsQuery, detailsValues);
+    const detailsResult = await pool.query(detailsQuery, detailsValues);
     res.sendStatus(201);
   } catch (error) {
-    console.log("Error in upload router POST:", error);
+    console.log("Error in details router POST:", error);
     res.sendStatus(500);
   }
 });
@@ -66,7 +66,7 @@ router.put("/:id", rejectUnauthenticated, cloudinaryUpload.single("file"), async
       const eventResult = await pool.query(detailsQuery, detailsValues);
       res.sendStatus(201);
     } catch (error) {
-      console.log("Error in upload router POST:", error);
+      console.log("Error in details router PUT:", error);
       res.sendStatus(500);
     }
   });
