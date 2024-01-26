@@ -3,10 +3,15 @@ body,
 #react-root {
   height: 100%;
 }
+*{
+ box-sizing: border-box;
+}
+
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
+  background-color: #fff4df;
 }
 
 img {
