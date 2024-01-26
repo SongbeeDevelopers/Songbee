@@ -3,27 +3,34 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   height: 4.6875rem;
-  width: 100%;
-
-  margin: 0 0 30px;
+  max-width: 100%;
+  padding-left: 1.3rem;
+  padding-right: 1.3rem;
   background-color: #fff4df;
   overflow: hidden;
 }
 
 .nav a {
-  width: 9rem;
   height: auto;
 }
 
+/* logo */
 .nav-title {
-  font-size: 24px;
-  font-weight: 700;
-  padding-left: 10px;
-  margin: 0;
+  width: 9rem;
 }
 
+/* spacer */
+/* .navSpacer {
+  display: inline-block;
+  text-align: center;
+  min-height: 2rem;
+  max-width: 2px;
+  border-radius: 20px;
+  background-color: #a5a5a5;
+} */
+
+/* admin/account/login/logout */
 .navLink {
   display: inline-block;
   color: #474546;
@@ -40,6 +47,30 @@
   border: none;
   cursor: pointer;
   outline: 0;
+}
+
+.navButton {
+  margin: 0 auto;
+  z-index: 100;
+  width: 14rem;
+  height: 3rem;
+  color: var(--black\<deleted\|variable-f6301105\>);
+  background-color: #FEAF17;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3px;
+  font-family: /*Poppins,*/ sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  /* transition: background-color .45s; */
+  display: flex;
+  position: static;
+  top: 99px;
+  left: 219px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+  border: 0;
+  outline:0;
 }
 
 /* .navLink:hover {

@@ -14,30 +14,31 @@ function Nav() {
         <img className="nav-title" src='header-icon.png'></img>
       </Link>
 
+
       <div>
-        {/* If no user is logged in, show these links */}
+        {/* if there is no user, show login link */}
         {!user.id && (
-          // If there's no user, show login/registration links
           <Link className="navLink" to="/login">
             Login
           </Link>
         )}
 
-        {user.admin && (
+        {user.id && user.admin && (
           <>
             <Link className="navLink" to="/admin">
               Admin
             </Link>
+            <div className='navSpacer'></div>
+            <LogOutButton className="navLink" />
           </>
-        )}
-
-        {/* If a user is logged in, show these links */}
-        {user.id && (
+          )}
+          
+          {user.id && !user.admin && (
           <>
             <Link className="navLink" to="/user">
               Account
             </Link>
-
+            <div className='navSpacer'></div>
             <LogOutButton className="navLink" />
           </>
         )}
