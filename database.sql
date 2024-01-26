@@ -38,7 +38,7 @@ CREATE TABLE "song_request" (
 
 CREATE TABLE "song_details" (
   "id" SERIAL PRIMARY KEY,
-  "song_request_id" integer REFERENCES "song_request",
+  "song_request_id" integer REFERENCES "public"."song_request"("id") ON DELETE CASCADE,
   "url" VARCHAR (500),
   "lyrics" VARCHAR,
   "title" VARCHAR (250),

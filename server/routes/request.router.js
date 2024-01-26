@@ -86,4 +86,21 @@ try {
 }
 });
 
+router.delete("/:id", (req, res) => {
+    const requestId = req.params.id;
+    const query = `
+          DELETE FROM "song_request"
+            WHERE "id"=$1;
+      `;
+    pool
+      .query(query, [requestId])
+      .then((result) => {
+        res.sendStatus(200);
+      })
+      .catch((err) => {
+        console.log("Error in event router DELETE attendance", err);
+        res.sendStatus(500);
+      });
+  });
+
 module.exports = router;
