@@ -4,15 +4,15 @@ const router = express.Router();
 
 /**
  * GET route template
- * JOIN "song_details"
-  ON "song_request"."id"="song_details"."song_request_id"
  */
 router.get('/all', (req, res) => {
   const userId = req.user.id;
   const requestQuery = `
   SELECT * FROM "song_request"
-  JOIN "genres"
+  LEFT JOIN "genres"
   ON "song_request"."genre_id"="genres"."id"
+  LEFT JOIN "song_details"
+  ON "song_request"."id"="song_details"."song_request_id"
   WHERE "song_request"."user_id"=$1;
   `
   pool.query(requestQuery, [userId])
