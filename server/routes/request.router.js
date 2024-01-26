@@ -5,7 +5,7 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/all', (req, res) => {
+router.get('/user', (req, res) => {
   const userId = req.user.id;
   const requestQuery = `
   SELECT * FROM "song_request"
@@ -25,6 +25,25 @@ router.get('/all', (req, res) => {
     res.sendStatus(500);
   })
 });
+
+router.get('/all', (req, res) => {
+    const requestQuery = `
+    SELECT * FROM "song_request"
+    LEFT JOIN "genres"
+    ON "song_request"."genre_id"="genres"."id"
+    LEFT JOIN "song_details"
+    ON "song_request"."id"="song_details"."song_request_id";
+    `
+    pool.query(requestQuery)
+    .then((result) => {
+      res.send(result.rows);
+      console.log("Request router GET all requests", result.rows)
+    })
+    .catch((error) => {
+      console.error("Error in request router GET all requests", error);
+      res.sendStatus(500);
+    })
+  });
 
 /**
  * POST route template
