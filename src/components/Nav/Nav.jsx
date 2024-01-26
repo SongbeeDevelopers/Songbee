@@ -9,33 +9,41 @@ function Nav() {
 
   return (
     <div className="nav">
+
       <Link to="/home">
-        <h2 className="nav-title">Prime Solo Project</h2>
+        <img className="nav-title" src='header-icon.png'></img>
       </Link>
+
+
       <div>
-        {/* If no user is logged in, show these links */}
+        {/* if there is no user, show login link */}
         {!user.id && (
-          // If there's no user, show login/registration links
           <Link className="navLink" to="/login">
-            Login / Register
+            Login
           </Link>
         )}
 
-        {/* If a user is logged in, show these links */}
-        {user.id && (
+        {user.id && user.admin && (
+          <>
+            <Link className="navLink" to="/admin">
+              Admin
+            </Link>
+            <div className='navSpacer'></div>
+            <LogOutButton className="navLink" />
+          </>
+          )}
+          
+          {user.id && !user.admin && (
           <>
             <Link className="navLink" to="/user">
-              Home
+              Account
             </Link>
-
+            <div className='navSpacer'></div>
             <LogOutButton className="navLink" />
           </>
         )}
-
-        <Link className="navLink" to="/about">
-          About
-        </Link>
       </div>
+
     </div>
   );
 }
