@@ -4,9 +4,26 @@ const router = express.Router();
 
 /**
  * GET route template
+ * JOIN "song_details"
+  ON "song_request"."id"="song_details"."song_request_id"
  */
-router.get('/', (req, res) => {
-  // GET route code here
+router.get('/all', (req, res) => {
+  const userId = req.user.id;
+  const requestQuery = `
+  SELECT * FROM "song_request"
+  JOIN "genres"
+  ON "song_request"."genre_id"="genres"."id"
+  WHERE "song_request"."user_id"=$1;
+  `
+  pool.query(requestQuery, [userId])
+  .then((result) => {
+    res.send(result.rows);
+    console.log("Request router GET all user requests", result.rows)
+  })
+  .catch((error) => {
+    console.error("Error in request router GET all user requests", error);
+    res.sendStatus(500);
+  })
 });
 
 /**
