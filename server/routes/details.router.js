@@ -6,8 +6,7 @@ const pool = require("../modules/pool");
 const router = express.Router();
 const cloudinaryUpload = require("../modules/cloudinary.config");
 
-router.post("/:id", rejectUnauthenticated, cloudinaryUpload.single("image"), async (req, res) => {
-  let connection;
+router.post("/:id", rejectUnauthenticated, cloudinaryUpload.single("file"), async (req, res) => {
   try {
     const audioUrl = req.file.path;
     const lyrics = req.body.lyrics;
@@ -16,12 +15,8 @@ router.post("/:id", rejectUnauthenticated, cloudinaryUpload.single("image"), asy
     const streaming_link = req.body.streaming_link;
     const songRequestId = req.params.id;
 
-    connection = await pool.connect();
-
-    connection.query("BEGIN;");
-
     const detailsQuery = `
-    INSERT INTO "events" 
+    INSERT INTO "song_details" 
       ("song_request_id", "url", "lyrics", "title", "artist", "streaming_link")
       VALUES
       ($1, $2, $3, $4, $5, $6);
@@ -30,16 +25,50 @@ router.post("/:id", rejectUnauthenticated, cloudinaryUpload.single("image"), asy
       audioUrl, lyrics, title, artist, streaming_link, songRequestId
     ];
 
-    const eventResult = await connection.query(detailsQuery, detailsValues);
-    connection.query("COMMIT;");
-    connection.release();
+    const eventResult = await pool.query(detailsQuery, detailsValues);
     res.sendStatus(201);
   } catch (error) {
     console.log("Error in upload router POST:", error);
-    connection.query("ROLLBACK;");
-    connection.release();
     res.sendStatus(500);
   }
 });
+
+router.put("/:id", rejectUnauthenticated, cloudinaryUpload.single("file"), async (req, res) => {
+    try {
+      let audioUrl
+      if(req.file){
+      audioUrl = req.file.path;
+      } else {
+        audioUrl = req.body.url
+      }
+      const lyrics = req.body.lyrics;
+      const title = req.body.title;
+      const artist = req.body.artist;
+      const streaming_link = req.body.streaming_link;
+      const songRequestId = req.params.id;
+      const detailsId = req.body.id;
+  
+      const detailsQuery = `
+      UPDATE "song_details"
+      SET 
+        "song_request_id" , 
+        "url", "lyrics", 
+        "title", 
+        "artist", 
+        "streaming_link")
+        VALUES
+        ($1, $2, $3, $4, $5, $6);
+      `;
+      const detailsValues = [
+        audioUrl, lyrics, title, artist, streaming_link, songRequestId
+      ];
+  
+      const eventResult = await pool.query(detailsQuery, detailsValues);
+      res.sendStatus(201);
+    } catch (error) {
+      console.log("Error in upload router POST:", error);
+      res.sendStatus(500);
+    }
+  });
 
 module.exports = router;
