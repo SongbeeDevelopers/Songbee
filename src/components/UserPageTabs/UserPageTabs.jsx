@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { Button } from '@mui/material';
 import { useState } from 'react';
+import UserHistory from '../UserHistory/UserHistory';
 
 
 // This is for the MUI Tabs
@@ -104,7 +105,7 @@ export default function BasicTabs() {
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        Item Two
+        <UserHistory />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         Item Three
