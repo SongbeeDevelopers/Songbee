@@ -62,6 +62,24 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     }
   });
 
+router.get('/current/:id', (req, res) => {
+    const query = `
+    SELECT * FROM "song_request"
+    LEFT JOIN "genres"
+    ON "song_request"."genre_id"="genres"."id"
+    LEFT JOIN "song_details"
+    ON "song_request"."id"="song_details"."song_request_id"
+    WHERE "song_request"."id"=$1;
+    `
+    pool.query(query, [req.params.id])
+    .then((result) => {
+        res.send(result.rows);
+    })
+    .catch((error) => {
+        console.error("Error in request router GET current request:", error)
+    })
+});
+
 /**
  * POST route template
  */

@@ -22,6 +22,16 @@ function* fetchUserRequests () {
     }
 }
 
+function* fetchCurrentRequest (action){
+    try {
+        const response = yield axios.get(`/api/request/current/${action.payload}`);
+        yield put({ type: "SET_CURRENT_REQUEST", payload: response.data[0]})
+    }
+    catch (error) {
+        console.error('SAGA fetchCurrentRequest() failed:', error)
+    }
+}
+
 function* createSongRequest (action){
     try {
         const response = yield axios({
@@ -48,6 +58,7 @@ function* requestSaga() {
     yield takeLatest('FETCH_USER_REQUESTS', fetchUserRequests);
     yield takeLatest('CREATE_SONG_REQUEST', createSongRequest);
     yield takeLatest('DELETE_SONG_REQUEST', deleteSongRequest);
+    yield takeLatest('FETCH_CURRENT_REQUEST', fetchCurrentRequest);
 }
 
 export default requestSaga;
