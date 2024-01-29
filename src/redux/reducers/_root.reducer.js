@@ -3,7 +3,7 @@ import errors from './errors.reducer';
 import user from './user.reducer';
 import userRequests from './userRequests.reducer';
 import genres from './genres.reducer';
-import allRequests from './allRequests.reducer';
+import allRequests from './completedRequests.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.

@@ -4,7 +4,8 @@ import { takeLatest, put } from "redux-saga/effects";
 function* fetchAllRequests () {
     try {
         const response = yield axios.get('/api/request/all')
-        yield put({ type: 'SET_ALL_REQUESTS', payload: response.data})
+        yield put({ type: 'SET_PENDING_REQUESTS', payload: response.data[0]})
+        yield put({ type: 'SET_COMPLETED_REQUESTS', payload: response.data[1]})
     }
     catch (error) {
         console.error('SAGA fetchAllRequests() failed:', error)
