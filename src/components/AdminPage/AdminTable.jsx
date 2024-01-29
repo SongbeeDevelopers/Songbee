@@ -28,6 +28,8 @@ function AdminTable({data}) {
       border: 0,
     },
   }));
+  const now = new Date ();
+  const msPerDay = 24 * 60 * 60 * 1000; 
 
   return (
     <div className="container">
@@ -36,24 +38,29 @@ function AdminTable({data}) {
         <TableHead>
           <TableRow>
             <StyledTableCell>Song Recipient</StyledTableCell>
-            <StyledTableCell align="right">Delivery Days</StyledTableCell>
-            <StyledTableCell align="right">Complete?</StyledTableCell>
-            <StyledTableCell align="right"></StyledTableCell>
-            <StyledTableCell align="right"></StyledTableCell>
+            <StyledTableCell align="center">Due Date</StyledTableCell>
+            <StyledTableCell align="center">Complete?</StyledTableCell>
+            <StyledTableCell align="center">Edit Request</StyledTableCell>
+            <StyledTableCell align="center">Complete Request</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((row) => (
+          {data.map((row) => {
+          const creationTime = new Date (row.created_at);
+          const daysLeft = Math.round((now.getTime() - creationTime.getTime()) / msPerDay);
+          console.log("daysLeft:", daysLeft);
+          return (
             <StyledTableRow key={row.id}>
               <StyledTableCell component="th" scope="row">
                 {row.recipient}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.delivery_days}</StyledTableCell>
-              <StyledTableCell align="right">{row.is_complete}</StyledTableCell>
-              <StyledTableCell align="right">Stuff</StyledTableCell>
-              <StyledTableCell align="right">Stuff</StyledTableCell>
+              <StyledTableCell align="center">Due in {row.delivery_days - daysLeft} days</StyledTableCell>
+              <StyledTableCell align="center">{row.is_complete}</StyledTableCell>
+              <StyledTableCell align="center"><button className='admin-button'>Edit</button></StyledTableCell>
+              <StyledTableCell align="center"><button className='admin-button'>Complete</button></StyledTableCell>
             </StyledTableRow>
-          ))}
+          )}
+          )}
         </TableBody>
       </Table>
     </TableContainer>
