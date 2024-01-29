@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import './RegisterForm.css'
+
 function RegisterForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -20,17 +22,20 @@ function RegisterForm() {
   }; // end registerUser
 
   return (
-    <form className="formPanel" onSubmit={registerUser}>
+    <form className="registerForm" onSubmit={registerUser}>
+
       <h2>Register User</h2>
       {errors.registrationMessage && (
         <h3 className="alert" role="alert">
           {errors.registrationMessage}
         </h3>
       )}
+
       <div>
-        <label htmlFor="username">
+        <label className='registerInputLabel' htmlFor="username">
           Username:
           <input
+            className='registerInput'
             type="text"
             name="username"
             value={username}
@@ -39,10 +44,12 @@ function RegisterForm() {
           />
         </label>
       </div>
+
       <div>
-        <label htmlFor="password">
+        <label className='registerInputLabel' htmlFor="password">
           Password:
           <input
+            className='registerInput'
             type="password"
             name="password"
             value={password}
@@ -51,9 +58,11 @@ function RegisterForm() {
           />
         </label>
       </div>
+
       <div>
-        <input className="btn" type="submit" name="submit" value="Register" />
+        <input className="registerButton" type="submit" name="submit" value="Register" />
       </div>
+
     </form>
   );
 }

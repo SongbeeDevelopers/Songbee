@@ -1,4 +1,4 @@
-.loginForm {
+.registerForm {
     width: 21.875rem;
     align-self: center;
     margin-top: 2rem;
@@ -6,7 +6,7 @@
     margin-right: auto;
 }
 
-.loginInput {
+.registerInput {
     width: 100%;
     height: 38px;
     color: #333;
@@ -21,7 +21,7 @@
     border-radius: 7px;
 }
 
-.loginInputLabel {
+.registerInputLabel {
     font-family: Poppins, sans-serif;
     margin-bottom: 5px;
     font-weight: bold;
@@ -31,7 +31,7 @@
     line-height: 20px;
 }
 
-.loginButton{
+.registerButton{
     display: inline-block;
     margin-top: 20px;
     margin-bottom: 20px;
