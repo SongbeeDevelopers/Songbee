@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import { Button } from '@mui/material';
 import { useState } from 'react';
 import UserHistory from '../UserHistory/UserHistory';
+import UserCreditPage from '../UserCreditPage/UserCreditPage';
 
 
 // This is for the MUI Tabs
@@ -100,7 +101,7 @@ export default function BasicTabs() {
                     onChange={(event) => setEmail(event.target.value)}
                     />
                 </label>
-                <Button variant='contained' color='success'>Submit</Button>
+                <Button variant='contained' size='small' color='success'>Submit</Button>
             </form>
         </div>
       </CustomTabPanel>
@@ -108,7 +109,7 @@ export default function BasicTabs() {
         <UserHistory />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        Item Three
+        <UserCreditPage />
       </CustomTabPanel>
     </Box>
   );
