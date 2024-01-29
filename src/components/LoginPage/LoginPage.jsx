@@ -8,7 +8,7 @@ function LoginPage() {
   const history = useHistory();
 
   return (
-    <div className='loginContainer'>
+    <div>
 
       <h1 className='loginHeader'>Songbee Account Login</h1>
 
@@ -16,7 +16,7 @@ function LoginPage() {
 
       <button
         type="button"
-        className="regButton"
+        className="loginRegButton"
         onClick={() => {history.push('/registration')}}
       >
         Register
