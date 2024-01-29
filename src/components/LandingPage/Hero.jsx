@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./LandingPage.css";
+import MainButton from "./Button";
 
 function HeroSection() {
   return (
@@ -10,9 +11,10 @@ function HeroSection() {
       </h1>
       <img src="/song.png" />
       <p>Studio-Quality Custom Songs For Any Occasion</p>
-      <button>Start Your Song</button>
+     <MainButton/>
     </div>
   );
 }
 
 export default HeroSection;
+
