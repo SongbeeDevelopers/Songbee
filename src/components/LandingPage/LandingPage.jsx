@@ -16,6 +16,8 @@ function LandingPage() {
   return (
     <div className="container">
      <HeroSection/>
+     <HowSongBeeWorks/>
+     
     </div>
   );
 }
