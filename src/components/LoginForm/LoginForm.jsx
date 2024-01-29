@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import {useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
+import './LoginForm.css'
 
 function LoginForm() {
   const [username, setUsername] = useState('');
@@ -25,17 +26,19 @@ function LoginForm() {
   }; // end login
 
   return (
-    <form className="formPanel" onSubmit={login}>
-      <h2>Login</h2>
+    <form className="loginForm" onSubmit={login}>
+
       {errors.loginMessage && (
         <h3 className="alert" role="alert">
           {errors.loginMessage}
         </h3>
       )}
+
       <div>
-        <label htmlFor="username">
-          Username:
+        <label className='loginInputLabel' htmlFor="username">
+          Username *
           <input
+            className='loginInput'
             type="text"
             name="username"
             required
@@ -44,10 +47,12 @@ function LoginForm() {
           />
         </label>
       </div>
+
       <div>
-        <label htmlFor="password">
-          Password:
+        <label className='loginInputLabel' htmlFor="password">
+          Password *
           <input
+            className='loginInput' 
             type="password"
             name="password"
             required
@@ -56,9 +61,11 @@ function LoginForm() {
           />
         </label>
       </div>
+
       <div>
-        <input className="btn" type="submit" name="submit" value="Log In" />
+        <input className="loginButton" type="submit" name="submit" value="Log In" />
       </div>
+
     </form>
   );
 }
