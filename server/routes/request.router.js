@@ -28,23 +28,38 @@ router.get('/user', rejectUnauthenticated, (req, res) => {
   })
 });
 
-router.get('/all', rejectUnauthenticated, (req, res) => {
-    const requestQuery = `
+router.get('/all', rejectUnauthenticated, async (req, res) => {
+    let connection
+    try {
+    connection = await pool.connect();
+    connection.query("BEGIN;");
+    const pendingRequestQuery = `
     SELECT * FROM "song_request"
     LEFT JOIN "genres"
     ON "song_request"."genre_id"="genres"."id"
     LEFT JOIN "song_details"
-    ON "song_request"."id"="song_details"."song_request_id";
+    ON "song_request"."id"="song_details"."song_request_id"
+    WHERE "song_request"."is_complete"=FALSE;
     `
-    pool.query(requestQuery)
-    .then((result) => {
-      res.send(result.rows);
-      console.log("Request router GET all requests", result.rows)
-    })
-    .catch((error) => {
-      console.error("Error in request router GET all requests", error);
-      res.sendStatus(500);
-    })
+    const pendingResult = await connection.query(pendingRequestQuery);
+    const completedRequestQuery = `
+    SELECT * FROM "song_request"
+    LEFT JOIN "genres"
+    ON "song_request"."genre_id"="genres"."id"
+    LEFT JOIN "song_details"
+    ON "song_request"."id"="song_details"."song_request_id"
+    WHERE "song_request"."is_complete"=TRUE;
+    `
+    const completedResult = await connection.query(completedRequestQuery);
+    connection.query("COMMIT;");
+    connection.release();
+    res.send([pendingResult.rows, completedResult.rows])
+    } catch (error) {
+        console.log("Error in request router GET all:", error);
+        connection.query("ROLLBACK;");
+        connection.release();
+        res.sendStatus(500);
+    }
   });
 
 /**
