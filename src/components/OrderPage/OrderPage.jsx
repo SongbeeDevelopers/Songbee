@@ -35,7 +35,7 @@ function OrderPage() {
         <select
           className='orderInput'
           name="delivery_days"
-          value={newOrder.deliver_days}
+          // value={newOrder.deliver_days}
           onChange={handleSelection} // <-- may need to pass event?
         >
           <option selected disabled>Select Delivery Option</option>
@@ -47,7 +47,7 @@ function OrderPage() {
         <select
           className='orderInput'
           name="streaming"
-          value={newOrder.streaming}
+          // value={newOrder.streaming}
           onChange={handleSelection}
         >
           <option selected disabled>Select Streaming Option</option>
@@ -58,7 +58,7 @@ function OrderPage() {
         <select
           className='orderInput'
           name="extra_verse"
-          value={newOrder.extra_verse}
+          // value={newOrder.extra_verse}
           onChange={handleSelection}
         >
           <option selected disabled>Select Number of Verses</option>
