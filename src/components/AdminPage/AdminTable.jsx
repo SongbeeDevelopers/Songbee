@@ -7,9 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
 import Slide from '@mui/material/Slide';
 import AdminRequestDialog from './AdminRequestDialog';
 import { useDispatch, useSelector } from "react-redux";
@@ -71,11 +69,7 @@ function AdminTable({data}) {
             ml: 10
             }}
         >
-          <AdminRequestDialog />
-          <DialogActions>
-            <Button onClick={handleClose}>Disagree</Button>
-            <Button onClick={handleClose}>Agree</Button>
-          </DialogActions>
+          <AdminRequestDialog handleClose={handleClose}/>
         </Dialog>
       </>
     );
