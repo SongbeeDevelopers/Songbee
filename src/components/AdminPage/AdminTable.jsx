@@ -10,11 +10,9 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import AdminRequestDialog from './AdminRequestDialog';
+import { useDispatch, useSelector } from "react-redux";
 
 function AdminTable({data}) {
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -36,10 +34,15 @@ function AdminTable({data}) {
       border: 0,
     },
   }));
+  const dispatch = useDispatch();
   const now = new Date ();
   const msPerDay = 24 * 60 * 60 * 1000;
   const [open, setOpen] = React.useState(false);
-  const handleClickOpen = () => {
+  const handleClickOpen = (id) => {
+    dispatch({
+        type: "FETCH_CURRENT_REQUEST",
+        payload: id
+    })
     setOpen(true);
   };
 
@@ -60,6 +63,13 @@ function AdminTable({data}) {
           keepMounted
           onClose={handleClose}
           aria-describedby="alert-dialog-slide-description"
+          sx={{ 
+            width: 800, 
+            display: 'flex', 
+            flexDirection: 'column', 
+            alignItems: 'center',
+            ml: 10
+            }}
         >
           <AdminRequestDialog />
           <DialogActions>
@@ -100,7 +110,7 @@ function AdminTable({data}) {
                 <button className='admin-button'>Edit</button>
               </StyledTableCell>
               <StyledTableCell align="center">
-                <button className='admin-button' onClick={handleClickOpen}>
+                <button className='admin-button' onClick={() => handleClickOpen(row.id)}>
                     Complete
                 </button>
               <AlertDialogSlide />

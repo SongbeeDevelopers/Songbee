@@ -10,7 +10,33 @@ const {
 router.get('/user', rejectUnauthenticated, (req, res) => {
   const userId = req.user.id;
   const requestQuery = `
-  SELECT * FROM "song_request"
+  SELECT 
+  "song_request"."id" AS "id",
+  "song_request"."user_id",
+  "song_request"."requester",
+  "song_request"."recipient",
+  "song_request"."pronunciation",
+  "song_request"."recipient_relationship",
+  "song_request"."occasion",
+  "song_request"."vocal_type",
+  "song_request"."vibe",
+  "song_request"."tempo",
+  "song_request"."inspiration",
+  "song_request"."story1",
+  "song_request"."story2",
+  "song_request"."important_what",
+  "song_request"."important_why",
+  "song_request"."additional_info",
+  "song_request"."created_at",
+  "song_request"."delivery_days",
+  "song_request"."is_complete",
+  "song_details"."url",
+  "song_details"."lyrics",
+  "song_details"."title",
+  "song_details"."artist",
+  "song_details"."streaming_link",
+  "genres"."name" AS "genre"
+  FROM "song_request"
   LEFT JOIN "genres"
   ON "song_request"."genre_id"="genres"."id"
   LEFT JOIN "song_details"
@@ -34,7 +60,33 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     connection = await pool.connect();
     connection.query("BEGIN;");
     const pendingRequestQuery = `
-    SELECT * FROM "song_request"
+    SELECT 
+    "song_request"."id" AS "id",
+    "song_request"."user_id",
+    "song_request"."requester",
+    "song_request"."recipient",
+    "song_request"."pronunciation",
+    "song_request"."recipient_relationship",
+    "song_request"."occasion",
+    "song_request"."vocal_type",
+    "song_request"."vibe",
+    "song_request"."tempo",
+    "song_request"."inspiration",
+    "song_request"."story1",
+    "song_request"."story2",
+    "song_request"."important_what",
+    "song_request"."important_why",
+    "song_request"."additional_info",
+    "song_request"."created_at",
+    "song_request"."delivery_days",
+    "song_request"."is_complete",
+    "song_details"."url",
+    "song_details"."lyrics",
+    "song_details"."title",
+    "song_details"."artist",
+    "song_details"."streaming_link",
+    "genres"."name" AS "genre"
+    FROM "song_request"
     LEFT JOIN "genres"
     ON "song_request"."genre_id"="genres"."id"
     LEFT JOIN "song_details"
@@ -43,7 +95,33 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     `
     const pendingResult = await connection.query(pendingRequestQuery);
     const completedRequestQuery = `
-    SELECT * FROM "song_request"
+    SELECT 
+    "song_request"."id" AS "id",
+    "song_request"."user_id",
+    "song_request"."requester",
+    "song_request"."recipient",
+    "song_request"."pronunciation",
+    "song_request"."recipient_relationship",
+    "song_request"."occasion",
+    "song_request"."vocal_type",
+    "song_request"."vibe",
+    "song_request"."tempo",
+    "song_request"."inspiration",
+    "song_request"."story1",
+    "song_request"."story2",
+    "song_request"."important_what",
+    "song_request"."important_why",
+    "song_request"."additional_info",
+    "song_request"."created_at",
+    "song_request"."delivery_days",
+    "song_request"."is_complete",
+    "song_details"."url",
+    "song_details"."lyrics",
+    "song_details"."title",
+    "song_details"."artist",
+    "song_details"."streaming_link",
+    "genres"."name" AS "genre"
+    FROM "song_request"
     LEFT JOIN "genres"
     ON "song_request"."genre_id"="genres"."id"
     LEFT JOIN "song_details"
@@ -64,7 +142,33 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
 
 router.get('/current/:id', (req, res) => {
     const query = `
-    SELECT * FROM "song_request"
+    SELECT 
+    "song_request"."id" AS "id",
+    "song_request"."user_id",
+    "song_request"."requester",
+    "song_request"."recipient",
+    "song_request"."pronunciation",
+    "song_request"."recipient_relationship",
+    "song_request"."occasion",
+    "song_request"."vocal_type",
+    "song_request"."vibe",
+    "song_request"."tempo",
+    "song_request"."inspiration",
+    "song_request"."story1",
+    "song_request"."story2",
+    "song_request"."important_what",
+    "song_request"."important_why",
+    "song_request"."additional_info",
+    "song_request"."created_at",
+    "song_request"."delivery_days",
+    "song_request"."is_complete",
+    "song_details"."url",
+    "song_details"."lyrics",
+    "song_details"."title",
+    "song_details"."artist",
+    "song_details"."streaming_link",
+    "genres"."name" AS "genre"
+    FROM "song_request"
     LEFT JOIN "genres"
     ON "song_request"."genre_id"="genres"."id"
     LEFT JOIN "song_details"
