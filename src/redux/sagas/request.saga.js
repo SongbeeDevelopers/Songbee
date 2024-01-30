@@ -37,9 +37,9 @@ function* createSongRequest (action){
         const response = yield axios({
             method: "POST",
             url: "/api/request/create",
-            data: action.payload.data
+            data: action.payload
         })
-        yield action.payload.history.push(`/requestform/${response.data.id}`)
+        yield action.history.push(`/requestform/${response.data.id}`)
     } catch (error) {
         console.error('SAGA createSongRequest() failed:', error)
     }
