@@ -24,6 +24,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import OrderPage from '../OrderPage/OrderPage';
 import CheckoutPage from '../CheckoutPage/CheckoutPage';
 import SongRequestPage from '../SongRequestPage/SongRequestPage';
+import UserDetails from '../UserDetails/UserDetailsPage';
 
 import FAQ from '../FAQ/FAQ';
 import AboutPage from '../AboutPage/AboutPage'; // needed?
@@ -87,6 +88,14 @@ function App() {
           >
             <CheckoutPage />
           </ProtectedRoute>
+          
+          <Route
+          exact
+          path="/details/:id"
+          >
+            <UserDetails />
+          </Route> 
+
 
 
           <Route
