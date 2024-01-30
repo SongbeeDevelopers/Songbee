@@ -27,18 +27,21 @@ const handleSongRequest = (id) => {
       <h2>Here is your status {user.username}</h2>
       
       {/* //Map over the request to display */}
+      {/* // The handle click will bring the user to the details page where they can listen to their song
+          // Also will have the ability purchase add ons
+          */}
       <div>
         {userRequests.map((request, i) => (
           <>
            <p key={i}> Your Song {new Date(request.created_at).toLocaleString('en-us')}</p> 
-           <button className='detailsBtn' onClick={ () => handleSongRequest(request.id)}>Details</button>
+
+           <button className='detailsBtn' onClick={() => handleSongRequest(request.id)}>Details</button>
            </>
               
         ))}
-        {/* // The handle click will bring the user to the details page  where they can listen to their song
-          // Also will have the ability purchase add ons
-          */}
-         
+        
+          
+
       </div>
      
       </> 
