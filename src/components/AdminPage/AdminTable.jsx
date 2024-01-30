@@ -71,11 +71,7 @@ function AdminTable({data}) {
             ml: 10
             }}
         >
-          <AdminRequestDialog />
-          <DialogActions>
-            <Button onClick={handleClose}>Disagree</Button>
-            <Button onClick={handleClose}>Agree</Button>
-          </DialogActions>
+          <AdminRequestDialog handleClose={handleClose}/>
         </Dialog>
       </>
     );

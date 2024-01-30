@@ -7,8 +7,10 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Typography from "@mui/material/Typography";
 import { useState } from "react";
+import Button from '@mui/material/Button';
+import DialogActions from '@mui/material/DialogActions';
 
-export default function AdminRequestDialog () {
+export default function AdminRequestDialog ({handleClose}) {
     const history = useHistory();
     const dispatch = useDispatch();
     const user = useSelector((store) => store.user);
@@ -22,10 +24,10 @@ export default function AdminRequestDialog () {
     console.log("Here's the song:", song)
     
     const cancelSubmission = () => {
-      
+      handleClose()
     };
     const submitDetails = () => {
-      if(profilePicture === ''){
+      if(songFile === ''){
           detailsForm.append("url", song.url)
       }
       else {
@@ -36,6 +38,7 @@ export default function AdminRequestDialog () {
       detailsForm.append("streaming_link", streamingLink)
       dispatch({
       });
+      handleClose()
     };
   return (
     <>
@@ -108,6 +111,14 @@ export default function AdminRequestDialog () {
       </p>
           </DialogContentText>
         </DialogContent>
+        <DialogActions>
+            <Button variant="contained" color="success" onClick={submitDetails}>
+                Submit
+            </Button>
+            <Button variant="outlined" color="error" onClick={cancelSubmission}>
+                Cancel
+            </Button>
+          </DialogActions>
     </>
   );
 }
