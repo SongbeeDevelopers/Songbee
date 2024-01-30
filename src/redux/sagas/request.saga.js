@@ -37,9 +37,9 @@ function* createSongRequest (action){
         const response = yield axios({
             method: "POST",
             url: "/api/request/create",
-            data: action.payload
+            data: action.payload.data
         })
-        yield action.history.push(`/requestform/${response.data.id}`)
+        yield action.payload.history.push(`/requestform/${response.data.id}`)
     } catch (error) {
         console.error('SAGA createSongRequest() failed:', error)
     }
@@ -52,6 +52,7 @@ function* updateSongRequest (action) {
             url: `/api/request/update/${action.payload.id}`,
             data: action.payload.data
         })
+        yield action.payload.hisotry.push('/user')
     } catch (error) {
         console.error('SAGA updateSongRequest() failed:', error)
     }

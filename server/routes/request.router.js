@@ -211,7 +211,6 @@ router.post('/create', (req, res) => {
 
 router.put('/update/:id', rejectUnauthenticated, async (req, res) => {
 try {
-  const userId = req.user.id;
   const requester = req.body.requester;
   const recipient = req.body.recipient;
   const pronunciation = req.body.pronunciation;
@@ -227,38 +226,31 @@ try {
   const importantWhat = req.body.important_what;
   const importantWhy = req.body.important_why;
   const additionalInfo = req.body.additional_info;
-  const deliveryDays = req.body.delivery_days;
-  const streaming = req.body.streaming;
-  const extraVerse = req.body.extra_verse;
   const requestId = req.params.id
 
   const requestQuery = `
   UPDATE "song_request"
   SET
-    "user_id"=$1, 
-    "requester"=$2, 
-    "recipient"=$3, 
-    "pronunciation"=$4, 
-    "recipient_relationship"=$5, 
-    "occasion"=$6, 
-    "genre_id"=$7, 
-    "vocal_type"=$8, 
-    "vibe"=$9, 
-    "tempo"=$10, 
-    "inspiration"=$11, 
-    "story1"=$12, 
-    "story2"=$13, 
-    "important_what"=$14, 
-    "important_why"=$15, 
-    "additional_info"=$16, 
-    "delivery_days"=$17, 
-    "streaming"=$18, 
-    "extra_verse"=$19
-  WHERE "id"=$20
+    "requester"=$1, 
+    "recipient"=$2, 
+    "pronunciation"=$3, 
+    "recipient_relationship"=$4, 
+    "occasion"=$5, 
+    "genre_id"=$6, 
+    "vocal_type"=$7, 
+    "vibe"=$8, 
+    "tempo"=$9, 
+    "inspiration"=$10, 
+    "story1"=$11, 
+    "story2"=$12, 
+    "important_what"=$13, 
+    "important_why"=$14, 
+    "additional_info"=$15
+  WHERE "id"=$16
     ;
   `
   const requestValues = [
-    userId, requester, recipient, pronunciation, recipientRelationship, occasion, genreId, vocalType, vibe, tempo, inspiration, story1, story2, importantWhat, importantWhy, additionalInfo, deliveryDays, streaming, extraVerse, requestId
+    requester, recipient, pronunciation, recipientRelationship, occasion, genreId, vocalType, vibe, tempo, inspiration, story1, story2, importantWhat, importantWhy, additionalInfo, requestId
   ]
   const requestResult = await pool.query(requestQuery, requestValues);
   res.sendStatus(201);

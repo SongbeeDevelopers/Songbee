@@ -27,8 +27,10 @@ function OrderPage() {
     if (newOrder.delivery_days && newOrder.streaming && newOrder.extra_verse) {
       dispatch({
         type: 'CREATE_SONG_REQUEST',
-        payload: newOrder,
-        history: history
+        payload: {
+          data: newOrder,
+          history: history
+        }
       })
     }
     else {
