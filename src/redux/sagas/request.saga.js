@@ -22,16 +22,38 @@ function* fetchUserRequests () {
     }
 }
 
+function* fetchCurrentRequest (action){
+    try {
+        const response = yield axios.get(`/api/request/current/${action.payload}`);
+        yield put({ type: "SET_CURRENT_REQUEST", payload: response.data[0]})
+    }
+    catch (error) {
+        console.error('SAGA fetchCurrentRequest() failed:', error)
+    }
+}
+
 function* createSongRequest (action){
     try {
         const response = yield axios({
             method: "POST",
-            url: "/api/request",
+            url: "/api/request/create",
             data: action.payload
         })
-        yield put({ })
+        yield action.history.push(`/requestform/${response.data.id}`)
     } catch (error) {
         console.error('SAGA createSongRequest() failed:', error)
+    }
+}
+
+function* updateSongRequest (action) {
+    try {
+        const response = yield axios({
+            method: "PUT",
+            url: `/api/request/update/${action.payload.id}`,
+            data: action.payload.data
+        })
+    } catch (error) {
+        console.error('SAGA updateSongRequest() failed:', error)
     }
 }
 
@@ -48,6 +70,8 @@ function* requestSaga() {
     yield takeLatest('FETCH_USER_REQUESTS', fetchUserRequests);
     yield takeLatest('CREATE_SONG_REQUEST', createSongRequest);
     yield takeLatest('DELETE_SONG_REQUEST', deleteSongRequest);
+    yield takeLatest('FETCH_CURRENT_REQUEST', fetchCurrentRequest);
+    yield takeLatest('UPDATE_SONG_REQUEST', updateSongRequest);
 }
 
 export default requestSaga;

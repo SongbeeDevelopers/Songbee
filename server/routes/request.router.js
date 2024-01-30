@@ -10,7 +10,33 @@ const {
 router.get('/user', rejectUnauthenticated, (req, res) => {
   const userId = req.user.id;
   const requestQuery = `
-  SELECT * FROM "song_request"
+  SELECT 
+  "song_request"."id" AS "id",
+  "song_request"."user_id",
+  "song_request"."requester",
+  "song_request"."recipient",
+  "song_request"."pronunciation",
+  "song_request"."recipient_relationship",
+  "song_request"."occasion",
+  "song_request"."vocal_type",
+  "song_request"."vibe",
+  "song_request"."tempo",
+  "song_request"."inspiration",
+  "song_request"."story1",
+  "song_request"."story2",
+  "song_request"."important_what",
+  "song_request"."important_why",
+  "song_request"."additional_info",
+  "song_request"."created_at",
+  "song_request"."delivery_days",
+  "song_request"."is_complete",
+  "song_details"."url",
+  "song_details"."lyrics",
+  "song_details"."title",
+  "song_details"."artist",
+  "song_details"."streaming_link",
+  "genres"."name" AS "genre"
+  FROM "song_request"
   LEFT JOIN "genres"
   ON "song_request"."genre_id"="genres"."id"
   LEFT JOIN "song_details"
@@ -34,7 +60,33 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     connection = await pool.connect();
     connection.query("BEGIN;");
     const pendingRequestQuery = `
-    SELECT * FROM "song_request"
+    SELECT 
+    "song_request"."id" AS "id",
+    "song_request"."user_id",
+    "song_request"."requester",
+    "song_request"."recipient",
+    "song_request"."pronunciation",
+    "song_request"."recipient_relationship",
+    "song_request"."occasion",
+    "song_request"."vocal_type",
+    "song_request"."vibe",
+    "song_request"."tempo",
+    "song_request"."inspiration",
+    "song_request"."story1",
+    "song_request"."story2",
+    "song_request"."important_what",
+    "song_request"."important_why",
+    "song_request"."additional_info",
+    "song_request"."created_at",
+    "song_request"."delivery_days",
+    "song_request"."is_complete",
+    "song_details"."url",
+    "song_details"."lyrics",
+    "song_details"."title",
+    "song_details"."artist",
+    "song_details"."streaming_link",
+    "genres"."name" AS "genre"
+    FROM "song_request"
     LEFT JOIN "genres"
     ON "song_request"."genre_id"="genres"."id"
     LEFT JOIN "song_details"
@@ -43,7 +95,33 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     `
     const pendingResult = await connection.query(pendingRequestQuery);
     const completedRequestQuery = `
-    SELECT * FROM "song_request"
+    SELECT 
+    "song_request"."id" AS "id",
+    "song_request"."user_id",
+    "song_request"."requester",
+    "song_request"."recipient",
+    "song_request"."pronunciation",
+    "song_request"."recipient_relationship",
+    "song_request"."occasion",
+    "song_request"."vocal_type",
+    "song_request"."vibe",
+    "song_request"."tempo",
+    "song_request"."inspiration",
+    "song_request"."story1",
+    "song_request"."story2",
+    "song_request"."important_what",
+    "song_request"."important_why",
+    "song_request"."additional_info",
+    "song_request"."created_at",
+    "song_request"."delivery_days",
+    "song_request"."is_complete",
+    "song_details"."url",
+    "song_details"."lyrics",
+    "song_details"."title",
+    "song_details"."artist",
+    "song_details"."streaming_link",
+    "genres"."name" AS "genre"
+    FROM "song_request"
     LEFT JOIN "genres"
     ON "song_request"."genre_id"="genres"."id"
     LEFT JOIN "song_details"
@@ -62,10 +140,76 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     }
   });
 
+router.get('/current/:id', (req, res) => {
+    const query = `
+    SELECT 
+    "song_request"."id" AS "id",
+    "song_request"."user_id",
+    "song_request"."requester",
+    "song_request"."recipient",
+    "song_request"."pronunciation",
+    "song_request"."recipient_relationship",
+    "song_request"."occasion",
+    "song_request"."vocal_type",
+    "song_request"."vibe",
+    "song_request"."tempo",
+    "song_request"."inspiration",
+    "song_request"."story1",
+    "song_request"."story2",
+    "song_request"."important_what",
+    "song_request"."important_why",
+    "song_request"."additional_info",
+    "song_request"."created_at",
+    "song_request"."delivery_days",
+    "song_request"."is_complete",
+    "song_details"."url",
+    "song_details"."lyrics",
+    "song_details"."title",
+    "song_details"."artist",
+    "song_details"."streaming_link",
+    "genres"."name" AS "genre"
+    FROM "song_request"
+    LEFT JOIN "genres"
+    ON "song_request"."genre_id"="genres"."id"
+    LEFT JOIN "song_details"
+    ON "song_request"."id"="song_details"."song_request_id"
+    WHERE "song_request"."id"=$1;
+    `
+    pool.query(query, [req.params.id])
+    .then((result) => {
+        res.send(result.rows);
+    })
+    .catch((error) => {
+        console.error("Error in request router GET current request:", error)
+    })
+});
+
 /**
  * POST route template
  */
-router.post('/', rejectUnauthenticated, async (req, res) => {
+
+router.post('/create', (req, res) => {
+    const userId = req.user.id;
+    const deliveryDays = req.body.delivery_days;
+    const streaming = req.body.streaming;
+    const extraVerse = req.body.extra_verse;
+    const requestQuery = `
+    INSERT INTO "song_request"
+      ("user_id", "delivery_days", "streaming", "extra_verse")
+      VALUES
+      ($1, $2, $3, $4)
+      RETURNING "id";
+    `
+    pool.query(requestQuery, [userId, deliveryDays, streaming, extraVerse])
+    .then((response) => {
+        res.send({id: response.rows[0].id})
+    })
+    .catch((error) => {
+        console.error("Error in request router POST create request", error)
+    })
+  });
+
+router.put('/update/:id', rejectUnauthenticated, async (req, res) => {
 try {
   const userId = req.user.id;
   const requester = req.body.requester;
@@ -86,15 +230,35 @@ try {
   const deliveryDays = req.body.delivery_days;
   const streaming = req.body.streaming;
   const extraVerse = req.body.extra_verse;
+  const requestId = req.params.id
 
   const requestQuery = `
-  INSERT INTO "song_request"
-    ("user_id", "requester", "recipient", "pronunciation", "recipient_relationship", "occasion", "genre_id", "vocal_type", "vibe", "tempo", "inspiration", "story1", "story2", "important_what", "important_why", "additional_info", "delivery_days", "streaming", "extra_verse")
-    VALUES
-    ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19);
+  UPDATE "song_request"
+  SET
+    "user_id"=$1, 
+    "requester"=$2, 
+    "recipient"=$3, 
+    "pronunciation"=$4, 
+    "recipient_relationship"=$5, 
+    "occasion"=$6, 
+    "genre_id"=$7, 
+    "vocal_type"=$8, 
+    "vibe"=$9, 
+    "tempo"=$10, 
+    "inspiration"=$11, 
+    "story1"=$12, 
+    "story2"=$13, 
+    "important_what"=$14, 
+    "important_why"=$15, 
+    "additional_info"=$16, 
+    "delivery_days"=$17, 
+    "streaming"=$18, 
+    "extra_verse"=$19
+  WHERE "id"=$20
+    ;
   `
   const requestValues = [
-    userId, requester, recipient, pronunciation, recipientRelationship, occasion, genreId, vocalType, vibe, tempo, inspiration, story1, story2, importantWhat, importantWhy, additionalInfo, deliveryDays, streaming, extraVerse
+    userId, requester, recipient, pronunciation, recipientRelationship, occasion, genreId, vocalType, vibe, tempo, inspiration, story1, story2, importantWhat, importantWhy, additionalInfo, deliveryDays, streaming, extraVerse, requestId
   ]
   const requestResult = await pool.query(requestQuery, requestValues);
   res.sendStatus(201);
