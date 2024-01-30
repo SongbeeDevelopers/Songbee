@@ -187,7 +187,29 @@ router.get('/current/:id', (req, res) => {
 /**
  * POST route template
  */
-router.post('/', rejectUnauthenticated, async (req, res) => {
+
+router.post('/create', (req, res) => {
+    const userId = req.user.id;
+    const deliveryDays = req.body.delivery_days;
+    const streaming = req.body.streaming;
+    const extraVerse = req.body.extra_verse;
+    const requestQuery = `
+    INSERT INTO "song_request"
+      ("user_id", "delivery_days", "streaming", "extra_verse")
+      VALUES
+      ($1, $2, $3, $4)
+      RETURNING "id";
+    `
+    pool.query(requestQuery, [userId, deliveryDays, streaming, extraVerse])
+    .then((response) => {
+        res.send({id: response.rows[0].id})
+    })
+    .catch((error) => {
+        console.error("Error in request router POST create request", error)
+    })
+  });
+
+router.put('/update/:id', rejectUnauthenticated, async (req, res) => {
 try {
   const userId = req.user.id;
   const requester = req.body.requester;
@@ -208,15 +230,35 @@ try {
   const deliveryDays = req.body.delivery_days;
   const streaming = req.body.streaming;
   const extraVerse = req.body.extra_verse;
+  const requestId = req.params.id
 
   const requestQuery = `
-  INSERT INTO "song_request"
-    ("user_id", "requester", "recipient", "pronunciation", "recipient_relationship", "occasion", "genre_id", "vocal_type", "vibe", "tempo", "inspiration", "story1", "story2", "important_what", "important_why", "additional_info", "delivery_days", "streaming", "extra_verse")
-    VALUES
-    ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19);
+  UPDATE "song_request"
+  SET
+    "user_id"=$1, 
+    "requester"=$2, 
+    "recipient"=$3, 
+    "pronunciation"=$4, 
+    "recipient_relationship"=$5, 
+    "occasion"=$6, 
+    "genre_id"=$7, 
+    "vocal_type"=$8, 
+    "vibe"=$9, 
+    "tempo"=$10, 
+    "inspiration"=$11, 
+    "story1"=$12, 
+    "story2"=$13, 
+    "important_what"=$14, 
+    "important_why"=$15, 
+    "additional_info"=$16, 
+    "delivery_days"=$17, 
+    "streaming"=$18, 
+    "extra_verse"=$19
+  WHERE "id"=$20
+    ;
   `
   const requestValues = [
-    userId, requester, recipient, pronunciation, recipientRelationship, occasion, genreId, vocalType, vibe, tempo, inspiration, story1, story2, importantWhat, importantWhy, additionalInfo, deliveryDays, streaming, extraVerse
+    userId, requester, recipient, pronunciation, recipientRelationship, occasion, genreId, vocalType, vibe, tempo, inspiration, story1, story2, importantWhat, importantWhy, additionalInfo, deliveryDays, streaming, extraVerse, requestId
   ]
   const requestResult = await pool.query(requestQuery, requestValues);
   res.sendStatus(201);

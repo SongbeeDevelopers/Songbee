@@ -36,12 +36,24 @@ function* createSongRequest (action){
     try {
         const response = yield axios({
             method: "POST",
-            url: "/api/request",
-            data: action.payload
+            url: "/api/request/create",
+            data: action.payload.data
         })
-        yield put({ })
+        yield action.payload.history.push(`/requestform/${response.data.id}`)
     } catch (error) {
         console.error('SAGA createSongRequest() failed:', error)
+    }
+}
+
+function* updateSongRequest (action) {
+    try {
+        const response = yield axios({
+            method: "PUT",
+            url: `/api/request/update/${action.payload.id}`,
+            data: action.payload.data
+        })
+    } catch (error) {
+        console.error('SAGA updateSongRequest() failed:', error)
     }
 }
 
@@ -59,6 +71,7 @@ function* requestSaga() {
     yield takeLatest('CREATE_SONG_REQUEST', createSongRequest);
     yield takeLatest('DELETE_SONG_REQUEST', deleteSongRequest);
     yield takeLatest('FETCH_CURRENT_REQUEST', fetchCurrentRequest);
+    yield takeLatest('UPDATE_SONG_REQUEST', updateSongRequest);
 }
 
 export default requestSaga;
