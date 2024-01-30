@@ -2,4 +2,36 @@ footer {
   margin-top: 80px;
   padding: 20px;
   text-align: center;
+  background-color: #f3f1eb;
+}
+
+.footerIcon{
+  width: 9rem;
+}
+
+.flexContainer{
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 46px;
+  display: flex;
+}
+
+.flexColumn {
+  width: 10rem;
+  text-align: left;
+}
+
+.columnHeader {
+  margin-bottom: 10px;
+  font-family: Poppins, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.flexColumn a {
+  display: block;
+  color: #feaf17;
+  font-size: 14px;
 }

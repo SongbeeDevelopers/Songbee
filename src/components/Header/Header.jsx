@@ -1,10 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import LogOutButton from '../LogOutButton/LogOutButton';
-import './Nav.css';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-function Nav() {
+import LogOutButton from '../LogOutButton/LogOutButton';
+
+import './Header.css';
+
+function Header() {
+
   const user = useSelector((store) => store.user);
 
   return (
@@ -13,7 +16,6 @@ function Nav() {
       <Link to="/home">
         <img className="nav-title" src='header-icon.png'></img>
       </Link>
-
 
       <div>
         {/* if there is no user, show login link */}
@@ -48,4 +50,4 @@ function Nav() {
   );
 }
 
-export default Nav;
+export default Header;
