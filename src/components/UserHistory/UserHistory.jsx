@@ -28,7 +28,6 @@ const handleSongRequest = (id) => {
       
       {/* //Map over the request to display */}
       {/* // The handle click will bring the user to the details page where they can listen to their song
-          // Also will have the ability purchase add ons
           */}
       <div>
         {userRequests.map((request, i) => (
