@@ -37,6 +37,11 @@ export default function AdminRequestDialog ({handleClose}) {
       detailsForm.append("artist", artist)
       detailsForm.append("streaming_link", streamingLink)
       dispatch({
+        type: "UPDATE_SONG_DETAILS",
+        payload: {
+            id: song.id,
+            data: detailsForm
+        }
       });
       handleClose()
     };

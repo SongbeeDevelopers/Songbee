@@ -188,7 +188,12 @@ router.get('/current/:id', (req, res) => {
  * POST route template
  */
 
-router.post('/create', (req, res) => {
+router.post('/create', async (req, res) => {
+    let connection
+    try {
+    connection = await pool.connect();
+
+    connection.query("BEGIN;");
     const userId = req.user.id;
     const deliveryDays = req.body.delivery_days;
     const streaming = req.body.streaming;
@@ -200,13 +205,23 @@ router.post('/create', (req, res) => {
       ($1, $2, $3, $4)
       RETURNING "id";
     `
-    pool.query(requestQuery, [userId, deliveryDays, streaming, extraVerse])
-    .then((response) => {
-        res.send({id: response.rows[0].id})
-    })
-    .catch((error) => {
-        console.error("Error in request router POST create request", error)
-    })
+    const response = await connection.query(requestQuery, [userId, deliveryDays, streaming, extraVerse])
+    const detailsQuery = `
+    INSERT INTO "song_details"
+        ("song_request_id")
+        VALUES
+        ($1)
+    `
+    const detailsResponse = await connection.query(detailsQuery, [response.rows[0].id])
+    connection.query("COMMIT;");
+    connection.release();
+    res.send({id: response.rows[0].id})
+    } catch (error) {
+        console.error("Error in request router POST create request", error);
+        connection.query("ROLLBACK;");
+        connection.release();
+        res.sendStatus(500);
+    }
   });
 
 router.put('/update/:id', rejectUnauthenticated, async (req, res) => {

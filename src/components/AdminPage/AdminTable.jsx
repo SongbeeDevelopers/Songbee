@@ -81,11 +81,11 @@ function AdminTable({data}) {
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Song Recipient</StyledTableCell>
-            <StyledTableCell align="center">Due Date</StyledTableCell>
-            <StyledTableCell align="center">Complete?</StyledTableCell>
-            <StyledTableCell align="center">Edit Request</StyledTableCell>
-            <StyledTableCell align="center">Complete Request</StyledTableCell>
+            <StyledTableCell>Creation Date</StyledTableCell>
+            <StyledTableCell align="center">Requester / Recipient</StyledTableCell>
+            <StyledTableCell align="center">Due</StyledTableCell>
+            <StyledTableCell align="center">View Details</StyledTableCell>
+            <StyledTableCell align="center">Completion Form</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -96,12 +96,18 @@ function AdminTable({data}) {
           return (
             <StyledTableRow key={row.id}>
               <StyledTableCell component="th" scope="row">
-                {row.recipient}
+              {new Date(row.created_at).toLocaleString('en-us')}
               </StyledTableCell>
-              <StyledTableCell align="center">Due in {row.delivery_days - daysLeft} days</StyledTableCell>
-              <StyledTableCell align="center">{row.is_complete}</StyledTableCell>
               <StyledTableCell align="center">
-                <button className='admin-button'>Edit</button>
+              {row.requester} / {row.recipient}
+              </StyledTableCell>
+              <StyledTableCell align="center">
+                { row.delivery_days - daysLeft >= 0 ? 
+                    `Due in ${row.delivery_days - daysLeft} days`
+                :
+                "Complete!"}</StyledTableCell>
+              <StyledTableCell align="center">
+                <button className='admin-button'>Details</button>
               </StyledTableCell>
               <StyledTableCell align="center">
                 <button className='admin-button' onClick={() => handleClickOpen(row.id)}>
