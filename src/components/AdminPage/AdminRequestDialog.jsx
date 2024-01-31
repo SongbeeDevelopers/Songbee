@@ -35,6 +35,7 @@ export default function AdminRequestDialog ({handleClose}) {
       }
       detailsForm.append("title", title)
       detailsForm.append("artist", artist)
+      detailsForm.append("lyrics", lyrics)
       detailsForm.append("streaming_link", streamingLink)
       dispatch({
         type: "UPDATE_SONG_DETAILS",
