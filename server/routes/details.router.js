@@ -60,7 +60,7 @@ router.put("/:id", rejectUnauthenticated, cloudinaryUpload.single("file"), async
       WHERE "id" = $7;
       `;
       const detailsValues = [
-        audioUrl, lyrics, title, artist, streaming_link, songRequestId, detailsId
+        songRequestId, audioUrl, lyrics, title, artist, streaming_link, detailsId
       ];
   
       const detailsResult = await pool.query(detailsQuery, detailsValues);

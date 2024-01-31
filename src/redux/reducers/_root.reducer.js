@@ -8,6 +8,7 @@ import pendingRequests from './pendingRequests.reducer';
 import currentRequest from './currentRequest.reducer';
 import newOrder from './newOrder.reducer';
 import requestData from './requestData.reducer';
+import allUsers from './allUsers.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -25,7 +26,7 @@ const rootReducer = combineReducers({
   currentRequest,
   newOrder,
   requestData,
-  
+  allUsers,
 
 });
 

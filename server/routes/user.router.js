@@ -47,4 +47,18 @@ router.post('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
+router.get('/all', (req, res) => {
+  const query = `
+  SELECT * FROM "user"
+  `
+  pool.query(query)
+  .then((response) => {
+    res.send(response.rows)
+  })
+  .catch((error) => {
+    console.error("Error in User router GET all:", error)
+    res.sendStatus(500);
+  })
+});
+
 module.exports = router;

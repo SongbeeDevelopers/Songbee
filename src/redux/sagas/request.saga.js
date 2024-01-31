@@ -52,7 +52,7 @@ function* updateSongRequest (action) {
             url: `/api/request/update/${action.payload.id}`,
             data: action.payload.data
         })
-        yield action.payload.hisotry.push('/user')
+        yield action.payload.history.push('/user')
     } catch (error) {
         console.error('SAGA updateSongRequest() failed:', error)
     }
