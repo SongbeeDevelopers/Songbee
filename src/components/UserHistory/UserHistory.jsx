@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import './UserHistory.css';
 
 
 
@@ -24,7 +25,7 @@ const handleSongRequest = (id) => {
 // will need to get the user's song request
     return (
         <>
-      <h2>Here is your status {user.username}</h2>
+      <h2>Here are your songs {user.username} 🐝</h2>
       
       {/* //Map over the request to display */}
       {/* // The handle click will bring the user to the details page where they can listen to their song
