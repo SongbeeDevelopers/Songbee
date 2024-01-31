@@ -7,6 +7,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import AdminUserTable from './AdminUserTable';
 
 function AdminPage() {
   const [value, setValue] = React.useState(0);
@@ -63,6 +64,7 @@ function AdminPage() {
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Pending Requests" {...a11yProps(0)} />
           <Tab label="Completed Requests" {...a11yProps(1)} />
+          <Tab label="Users" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
@@ -70,6 +72,9 @@ function AdminPage() {
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
       <AdminTable data={completedRequests}/>
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={2}>
+      <AdminUserTable />
       </CustomTabPanel>
     </Box>
     </div>

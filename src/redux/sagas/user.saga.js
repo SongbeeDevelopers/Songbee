@@ -29,7 +29,7 @@ function* fetchAllUsers (){
     const response = yield axios.get('/api/user/all');
     yield put({
       type: "SET_ALL_USERS",
-      paylaod: response.data
+      payload: response.data
     })
   } catch (error) {
     console.error("SAGA fetchAllUsers() failed:", error)
