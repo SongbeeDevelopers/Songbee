@@ -7,20 +7,15 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import Dialog from '@mui/material/Dialog';
-import Slide from '@mui/material/Slide';
-import AdminRequestDialog from './AdminRequestDialog';
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from 'react';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
+import UserClass from './UserClass';
 
 function AdminUserTable({data}) {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch({ type: "FETCH_ALL_USERS" })
       }, [])
-  const [userClass, setUserClass] = useState(1)
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.common.black,
@@ -41,65 +36,7 @@ function AdminUserTable({data}) {
     },
   }));
   const users = useSelector(store => store.allUsers)
-  const [open, setOpen] = React.useState(false);
-  const updateUserClass = (id) => {
-    dispatch({
-        type: "UPDATE_USER_CLASS",
-        payload: {
-            id: id,
-            data: userClass}
-    })
-  };
-  const handleChange = (event) => {
-    setUserClass(event.target.value);
-  };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-  const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
-  });
-
-  const displayClass = (userClass) => {
-    if (userClass === 1){
-        return (
-            <span>User</span>
-        )
-    } else if (userClass === 2){
-        return (
-            <span>Artist</span>
-        )
-    } else if (userClass === 3){
-        return (
-            <span>Admin</span>
-        )
-    }
-  }
-
-  const AlertDialogSlide = () => {
-  
-    return (
-      <>
-        <Dialog
-          open={open}
-          TransitionComponent={Transition}
-          keepMounted
-          onClose={handleClose}
-          aria-describedby="alert-dialog-slide-description"
-          sx={{ 
-            width: 800, 
-            display: 'flex', 
-            flexDirection: 'column', 
-            alignItems: 'center',
-            ml: 10
-            }}
-        >
-          <AdminRequestDialog handleClose={handleClose}/>
-        </Dialog>
-      </>
-    );
-  }
 
   return (
     <div className="container">
@@ -110,8 +47,8 @@ function AdminUserTable({data}) {
             <StyledTableCell>Username</StyledTableCell>
             <StyledTableCell align="center">Email</StyledTableCell>
             <StyledTableCell align="center">Credit</StyledTableCell>
+            <StyledTableCell align="center">Created At</StyledTableCell>
             <StyledTableCell align="center">User Class</StyledTableCell>
-            <StyledTableCell align="center">Adjust class</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -128,22 +65,10 @@ function AdminUserTable({data}) {
               {user.credit ? user.credit : "0"}
                </StyledTableCell>
               <StyledTableCell align="center">
-                {displayClass(user.class)}
+               
               </StyledTableCell>
               <StyledTableCell align="center">
-              <Select
-                value={userClass}
-                label="User Class"
-                onChange={handleChange}
-                >
-                <MenuItem value={1}>User</MenuItem>
-                <MenuItem value={2}>Artist</MenuItem>
-                <MenuItem value={3}>Admin</MenuItem>
-                </Select>
-                <button className='admin-button' onClick={() => updateUserClass(user.id)}>
-                    Set Class
-                </button>
-              <AlertDialogSlide />
+              <UserClass user={user} />
               </StyledTableCell>
             </StyledTableRow>
           )}
