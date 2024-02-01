@@ -12,6 +12,7 @@ import Slide from '@mui/material/Slide';
 import AdminRequestDialog from './AdminRequestDialog';
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from 'react';
+import UserClass from './UserClass';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 
@@ -20,7 +21,6 @@ function AdminUserTable({data}) {
     useEffect(() => {
         dispatch({ type: "FETCH_ALL_USERS" })
       }, [])
-  const [userClass, setUserClass] = useState(1)
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.common.black,
@@ -42,17 +42,6 @@ function AdminUserTable({data}) {
   }));
   const users = useSelector(store => store.allUsers)
   const [open, setOpen] = React.useState(false);
-  const updateUserClass = (id) => {
-    dispatch({
-        type: "UPDATE_USER_CLASS",
-        payload: {
-            id: id,
-            data: userClass}
-    })
-  };
-  const handleChange = (event) => {
-    setUserClass(event.target.value);
-  };
 
   const handleClose = () => {
     setOpen(false);
@@ -131,19 +120,7 @@ function AdminUserTable({data}) {
                 {displayClass(user.class)}
               </StyledTableCell>
               <StyledTableCell align="center">
-              <Select
-                value={userClass}
-                label="User Class"
-                onChange={handleChange}
-                >
-                <MenuItem value={1}>User</MenuItem>
-                <MenuItem value={2}>Artist</MenuItem>
-                <MenuItem value={3}>Admin</MenuItem>
-                </Select>
-                <button className='admin-button' onClick={() => updateUserClass(user.id)}>
-                    Set Class
-                </button>
-              <AlertDialogSlide />
+              <UserClass user={user} />
               </StyledTableCell>
             </StyledTableRow>
           )}
