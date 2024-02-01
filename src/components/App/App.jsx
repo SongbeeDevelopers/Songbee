@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
-import Nav from '../Nav/Nav';
+import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
 import UserPage from '../UserPage/UserPage';
@@ -46,7 +46,9 @@ function App() {
   return (
     <Router>
       <div>
-        <Nav />
+
+        <Header />
+        
         <Switch>
 
           {/* Visiting localhost:5173 will redirect to localhost:5173/home */}
@@ -197,7 +199,9 @@ function App() {
             <h1>404</h1>
           </Route>
         </Switch>
+
         <Footer />
+
       </div>
     </Router>
   );
