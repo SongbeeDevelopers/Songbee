@@ -351,14 +351,12 @@ svg {
   transform: translateY(-50%);
 }
 
-
-.background-testimonial{
+.background-testimonial {
   background-color: white;
   padding: 15px;
   margin: 50px 0;
   margin-top: 100px;
 }
-
 
 .testimonials {
   background-color: #fff4df;
@@ -387,6 +385,7 @@ svg {
   top: -35px;
 }
 
+.admin-button {
 .admin-button{
   margin: 0 auto;
   z-index: 100;
@@ -411,3 +410,104 @@ svg {
   outline: 0;
 }
 
+.all-audios {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  width: 100%;
+  height: max-content;
+  margin-top: 30px;
+}
+
+.active-audio {
+  display: flex;
+  width: 100%;
+  min-width: 100%;
+  justify-content: space-between;
+  padding: 0 100px;
+  scroll-snap-align: start;
+  height: 100%;
+  align-items: center;
+}
+.sample-songs h2 {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 600;
+  
+}
+
+.sample-songs {
+  position: relative;
+  padding: 0 105px;
+  margin: 50px 0;
+}
+.active-audio h3 {
+  text-align: center;
+}
+
+.active-audio p {
+  text-align: center;
+}
+
+/* remove scrollbar */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.bee-inner-background {
+background-color: white;
+margin: 0 50px;
+width: auto;
+padding: 25px 100px;
+border-radius: 25px;
+text-align: center;
+gap: 15px;
+display: flex;
+flex-direction: column;
+}
+
+.bee-guarantee {
+  background-color: rgba(184, 213, 224, 0.73);
+  background-image: url("/guarantee-background.png");
+  background-position: 50%;
+  background-size: 100rem;
+  background-attachment: fixed;
+  justify-content: center;
+  padding: 7.5rem 5.2rem 7.5rem 1.4rem;
+  display: flex;
+  position: relative;
+}
+.guarantee {
+}
+
+.guarantee-text{
+  max-width: 700px;
+}
+
+.guarantee-image{
+  background-size: cover;
+  position: absolute;
+  left: 100px;
+  top: 100px;
+}
+
+.guarantee-link{
+  color:#feaf17;
+  font-weight: bold;
+}
+
+.bee-guarantee p{
+color: #474546;
+font-weight: 500;
+}

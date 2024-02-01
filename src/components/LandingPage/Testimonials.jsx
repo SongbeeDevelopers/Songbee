@@ -58,7 +58,7 @@ function TestimonialSection() {
     <div className="background-testimonial">
       <div className="testimonials">
         <h2>Testimonials</h2>
-        <div className="slides" ref={galleryRef}>
+        <div className="slides no-scrollbar" ref={galleryRef}>
           <div className="arrows">
             <svg
               onClick={() => scrollToPrev()}
