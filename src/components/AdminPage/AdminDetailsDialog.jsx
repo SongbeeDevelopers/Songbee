@@ -25,55 +25,52 @@ export default function AdminDetailsDialog ({handleClose}) {
         <DialogContent>
           <DialogContentText>
             <Typography variant="h6">
-                {song.requester}
+                {song.requester ? `Requester: ${song.requester}` : ""}
             </Typography>
             <Typography variant="h6">
-                {song.recipient}
+                {song.recipient? `Recipient: ${song.recipient}` : ""}
             </Typography>
             <Typography variant="h6">
-                {song.pronunciation}
+                {song.pronunciation ? `Pronunciation: ${song.pronunciation}` : ""}
             </Typography>
             <Typography variant="h6">
-                {song.recipient_relationship}
+                {song.recipient_relationship ? `Relationship: ${song.recipient_relationship}` : ""}
             </Typography>
             <Typography variant="h6">
-                {song.occasion}
+                {song.occasion ? `Occasion: ${song.occasion}` : ""}
             </Typography>
             <Typography variant="h6">
-                {song.genre}
+                {song.genre ? `Genre: ${song.genre}` : ""}
             </Typography>
             <Typography variant="h6">
-                {song.vocal_type}
+                {song.vocal_type ? `Vocal Type: ${song.vocal_type}` : ""}
             </Typography>
             <Typography variant="h6">
-                {song.vibe}
+                {song.vibe ? `Vibe: ${song.vibe}` : ""}
             </Typography>
             <Typography variant="h6">
-                {song.tempo}
+                {song.tempo ? `Tempo: ${song.tempo}` : ""}
             </Typography>
             <Typography variant="h6">
-                {song.inspiration}
+                {song.inspiration ? `Inspiration: ${song.inspiration}` : ""}
             </Typography>
             <Typography variant="h6">
-                {song.story1}
+                {song.story1 ? `Song Story 1: ${song.story1}` : ""}
             </Typography>
             <Typography variant="h6">
-                {song.story2}
+                {song.story2 ? `Song Story 2: ${song.story2}` : ""}
             </Typography>
             <Typography variant="h6">
-                {song.important_what}
+                {song.important_what ? `What's Important: ${song.important_what}` : ""}
             </Typography>
             <Typography variant="h6">
-                {song.important_why}
+                {song.important_why ? `Why it's Important: ${song.important_why}` : ""}
             </Typography>
             <Typography variant="h6">
-                {song.additional_info}
+                {song.additional_info ? `Additional Info: ${song.additional_info}` : ""}
             </Typography>
             <Typography variant="h6">
-                {song.created_at}
-            </Typography>
-            <Typography variant="h6">
-                {song.delivery_days}
+                {song.delivery_days ? `Delivery Days: ${song.delivery_days}` : ""}
             </Typography>
           </DialogContentText>
         </DialogContent>
