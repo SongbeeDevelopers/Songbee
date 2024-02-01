@@ -52,7 +52,7 @@ function* updateSongRequest (action) {
             url: `/api/request/update/${action.payload.id}`,
             data: action.payload.data
         })
-        yield action.payload.hisotry.push('/user')
+        yield action.payload.history.push('/user')
     } catch (error) {
         console.error('SAGA updateSongRequest() failed:', error)
     }
@@ -61,6 +61,7 @@ function* updateSongRequest (action) {
 function* deleteSongRequest (action){
     try {
         const response = yield axios.delete(`/api/request/${action.payload}`)
+        yield put({type: "FETCH_ALL_REQUESTS"});
     } catch (error) {
         console.error('SAGA deleteSongRequest() failed:', error)
     }

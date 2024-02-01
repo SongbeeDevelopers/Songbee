@@ -38,31 +38,31 @@ router.put("/:id", rejectUnauthenticated, cloudinaryUpload.single("file"), async
       let audioUrl
       if(req.file){
       audioUrl = req.file.path;
+      console.log(audioUrl);
       } else {
         audioUrl = req.body.url
+        console.log(audioUrl);
       }
       const lyrics = req.body.lyrics;
       const title = req.body.title;
       const artist = req.body.artist;
       const streaming_link = req.body.streaming_link;
       const songRequestId = req.params.id;
-      const detailsId = req.body.id;
   
       const detailsQuery = `
       UPDATE "song_details"
-      SET 
-        "song_request_id" = $1, 
-        "url" = $2, 
-        "lyrics" = $3, 
-        "title" = $4, 
-        "artist" = $5, 
-        "streaming_link" = $6
-      WHERE "id" = $7;
+      SET  
+        "url" = $1, 
+        "lyrics" = $2, 
+        "title" = $3, 
+        "artist" = $4, 
+        "streaming_link" = $5
+      WHERE "song_request_id" = $6;
       `;
       const detailsValues = [
-        audioUrl, lyrics, title, artist, streaming_link, songRequestId, detailsId
+        audioUrl, lyrics, title, artist, streaming_link, songRequestId,
       ];
-  
+      console.log("detailsValues:", detailsValues)
       const detailsResult = await pool.query(detailsQuery, detailsValues);
       res.sendStatus(201);
     } catch (error) {

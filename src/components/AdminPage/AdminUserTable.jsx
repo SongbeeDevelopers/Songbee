@@ -10,11 +10,15 @@ import Paper from '@mui/material/Paper';
 import Dialog from '@mui/material/Dialog';
 import Slide from '@mui/material/Slide';
 import AdminRequestDialog from './AdminRequestDialog';
-import AdminDetailsDialog from './AdminDetailsDialog';
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from 'react';
+import { useEffect } from 'react';
 
-function AdminTable({data}) {
+function AdminUserTable({data}) {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch({ type: "FETCH_ALL_USERS" })
+      }, [])
+
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.common.black,
@@ -34,31 +38,17 @@ function AdminTable({data}) {
       border: 0,
     },
   }));
-  const dispatch = useDispatch();
-  const now = new Date ();
-  const msPerDay = 24 * 60 * 60 * 1000;
-  const [open, setOpen] = useState(false);
-  const [open1, setOpen1] = useState(false);
-  const handleClickOpen = (id, x) => {
+  const users = useSelector(store => store.allUsers)
+  const [open, setOpen] = React.useState(false);
+  const updateAdminUser = (id) => {
     dispatch({
-        type: "FETCH_CURRENT_REQUEST",
+        type: "UPDATE_ADMIN_USER",
         payload: id
     })
-    if (x===1){
-    setOpen1(true);
-    }
-    else {
-    setOpen(true);
-    }
   };
 
-  const handleClose = (x) => {
-    if (x===1){
-    setOpen1(false);
-    }
-    else {
+  const handleClose = () => {
     setOpen(false);
-    }
   };
   const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -87,29 +77,6 @@ function AdminTable({data}) {
       </>
     );
   }
-  const DetailsDialogSlide = () => {
-  
-    return (
-      <>
-        <Dialog
-          open={open1}
-          TransitionComponent={Transition}
-          keepMounted
-          onClose={() => handleClose(1)}
-          aria-describedby="alert-dialog-slide-description"
-          sx={{ 
-            width: 800, 
-            display: 'flex', 
-            flexDirection: 'column', 
-            alignItems: 'center',
-            ml: 10
-            }}
-        >
-          <AdminDetailsDialog handleClose={handleClose}/>
-        </Dialog>
-      </>
-    );
-  }
 
   return (
     <div className="container">
@@ -117,38 +84,32 @@ function AdminTable({data}) {
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Creation Date</StyledTableCell>
-            <StyledTableCell align="center">Requester / Recipient</StyledTableCell>
-            <StyledTableCell align="center">Due</StyledTableCell>
-            <StyledTableCell align="center">View Details</StyledTableCell>
-            <StyledTableCell align="center">Completion Form</StyledTableCell>
+            <StyledTableCell>Username</StyledTableCell>
+            <StyledTableCell align="center">Email</StyledTableCell>
+            <StyledTableCell align="center">Credit</StyledTableCell>
+            <StyledTableCell align="center">User Class</StyledTableCell>
+            <StyledTableCell align="center">Adjust class</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((row) => {
-          const creationTime = new Date (row.created_at);
-          const daysLeft = Math.round((now.getTime() - creationTime.getTime()) / msPerDay);
-          console.log("daysLeft:", daysLeft);
+          {users.map((user) => {
           return (
-            <StyledTableRow key={row.id}>
+            <StyledTableRow key={user.id}>
               <StyledTableCell component="th" scope="row">
-              {new Date(row.created_at).toLocaleString('en-us')}
+                {user.username}
               </StyledTableCell>
               <StyledTableCell align="center">
-              {row.requester} / {row.recipient}
+                {user.email}
               </StyledTableCell>
               <StyledTableCell align="center">
-                { row.delivery_days - daysLeft >= 0 ? 
-                    `Due in ${row.delivery_days - daysLeft} days`
-                :
-                "Complete!"}</StyledTableCell>
+              {user.credit ? user.credit : "0"}
+               </StyledTableCell>
               <StyledTableCell align="center">
-                <button className='admin-button' onClick={() => handleClickOpen(row.id, 1)}>Details</button>
-                <DetailsDialogSlide />
+                {user.admin ? "Admin" : "User"}
               </StyledTableCell>
               <StyledTableCell align="center">
-                <button className='admin-button' onClick={() => handleClickOpen(row.id)}>
-                    Complete
+                <button className='admin-button' onClick={() => updateAdminUser(user.id)}>
+                    {!user.admin ? "Set Admin" : "Remove Admin"}
                 </button>
               <AlertDialogSlide />
               </StyledTableCell>
@@ -162,4 +123,4 @@ function AdminTable({data}) {
   );
 }
 
-export default AdminTable;
+export default AdminUserTable;

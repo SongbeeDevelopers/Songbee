@@ -26,6 +26,13 @@ export default function AdminRequestDialog ({handleClose}) {
     const cancelSubmission = () => {
       handleClose()
     };
+    const deleteRequest = () => {
+        dispatch({
+            type: "DELETE_SONG_REQUEST",
+            payload: song.id
+        })
+        handleClose()
+      };
     const submitDetails = () => {
       if(songFile === ''){
           detailsForm.append("url", song.url)
@@ -35,6 +42,7 @@ export default function AdminRequestDialog ({handleClose}) {
       }
       detailsForm.append("title", title)
       detailsForm.append("artist", artist)
+      detailsForm.append("lyrics", lyrics)
       detailsForm.append("streaming_link", streamingLink)
       dispatch({
         type: "UPDATE_SONG_DETAILS",
@@ -119,6 +127,9 @@ export default function AdminRequestDialog ({handleClose}) {
         <DialogActions>
             <Button variant="contained" color="success" onClick={submitDetails}>
                 Submit
+            </Button>
+            <Button variant="contained" color="error" onClick={deleteRequest}>
+                Delete
             </Button>
             <Button variant="outlined" color="error" onClick={cancelSubmission}>
                 Cancel
