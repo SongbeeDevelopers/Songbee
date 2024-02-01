@@ -63,7 +63,7 @@ function Header() {
           onClick={handleDrawerOpen}
           sx={{ ...(open && { display: 'none' }),
             position: "absolute",
-            right: '1.75rem'
+            right: '2rem'
           }}
         >
           <MenuIcon />
@@ -82,15 +82,21 @@ function Header() {
         anchor="right"
         open={open}
       >
-        <DrawerHeader>
+        <DrawerHeader sx={{
+          bgcolor: '#feaf17'
+        }}
+        >
           <IconButton onClick={handleDrawerClose}>
             <ChevronRightIcon />
           </IconButton>
+            <img className='drawerHeaderBee' src='bee-button.png'></img>
         </DrawerHeader>
     
         <Divider />
 
-        <List>
+        <List sx={{
+          bgcolor: '#fff4df'
+        }}>
 
         {!user.id && (
           <ListItem disablePadding>
@@ -167,7 +173,12 @@ function Header() {
 
         {user.id && (
           <ListItemButton
-            sx={{position: 'fixed', bottom: 10, width: drawerWidth}}
+            sx={{
+              position: 'fixed',
+              bottom: 0,
+              width: drawerWidth,
+              bgcolor: '#feaf17'
+            }}
             onClick={() => {
               handleDrawerClose()
               dispatch({type: 'LOGOUT'})
