@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
+import Swal from 'sweetalert2';
+
 import './SongRequestPage.css'
 
 function SongRequestPage() {
@@ -27,6 +29,29 @@ function SongRequestPage() {
 
   const submitRequest = (event) => {
     event.preventDefault()
+    if (requestData.requester && requestData.recipient && requestData.recipient_relationship && requestData.occasion && requestData.vocal_type && requestData.vocal_type && requestData.vibe && requestData.vibe && requestData.tempo && requestData.inspiration && requestData.story1 && requestData.story2 && requestData.important_what && requestData.important_why) {
+      dispatchDetails()
+    } else {
+      Swal.fire({
+        title: "Submit?",
+        text: "You have left important details blank. Do you want to submit anyways?",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: "Submit"
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "Submitted!",
+            icon: "success"
+          })
+          dispatchDetails()
+        }
+      })
+    }
+  }
+
+  function dispatchDetails() {
     dispatch({
       type: 'UPDATE_SONG_REQUEST',
       payload: {
