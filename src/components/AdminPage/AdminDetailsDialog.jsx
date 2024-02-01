@@ -13,53 +13,73 @@ import DialogActions from '@mui/material/DialogActions';
 export default function AdminDetailsDialog ({handleClose}) {
     const history = useHistory();
     const dispatch = useDispatch();
-    const user = useSelector((store) => store.user);
     const song = useSelector(store => store.currentRequest);
-    const [artist, setArtist] = useState(song.artist);
-    const [title, setTitle] = useState(song.title);
-    const [lyrics, setLyrics] = useState(song.lyrics);
-    const [streamingLink, setStreamingLink] = useState(song.streaming_link);
-    const [songFile, setSongFile] = useState('')
-    const detailsForm = new FormData ();
     console.log("Here's the song:", song)
     
     const cancelSubmission = () => {
       handleClose(1)
     };
-    const submitDetails = () => {
-      if(songFile === ''){
-          detailsForm.append("url", song.url)
-      }
-      else {
-          detailsForm.append("file", songFile)
-      }
-      detailsForm.append("title", title)
-      detailsForm.append("artist", artist)
-      detailsForm.append("lyrics", lyrics)
-      detailsForm.append("streaming_link", streamingLink)
-      dispatch({
-        type: "UPDATE_SONG_DETAILS",
-        payload: {
-            id: song.id,
-            data: detailsForm
-        }
-      });
-      handleClose(1)
-    };
   return (
     <>
-        <DialogTitle>{"Upload File and Complete Song Details"}</DialogTitle>
+        <DialogTitle>{"Song Request Details"}</DialogTitle>
         <DialogContent>
           <DialogContentText>
-     
+            <Typography variant="h6">
+                {song.requester}
+            </Typography>
+            <Typography variant="h6">
+                {song.recipient}
+            </Typography>
+            <Typography variant="h6">
+                {song.pronunciation}
+            </Typography>
+            <Typography variant="h6">
+                {song.recipient_relationship}
+            </Typography>
+            <Typography variant="h6">
+                {song.occasion}
+            </Typography>
+            <Typography variant="h6">
+                {song.genre}
+            </Typography>
+            <Typography variant="h6">
+                {song.vocal_type}
+            </Typography>
+            <Typography variant="h6">
+                {song.vibe}
+            </Typography>
+            <Typography variant="h6">
+                {song.tempo}
+            </Typography>
+            <Typography variant="h6">
+                {song.inspiration}
+            </Typography>
+            <Typography variant="h6">
+                {song.story1}
+            </Typography>
+            <Typography variant="h6">
+                {song.story2}
+            </Typography>
+            <Typography variant="h6">
+                {song.important_what}
+            </Typography>
+            <Typography variant="h6">
+                {song.important_why}
+            </Typography>
+            <Typography variant="h6">
+                {song.additional_info}
+            </Typography>
+            <Typography variant="h6">
+                {song.created_at}
+            </Typography>
+            <Typography variant="h6">
+                {song.delivery_days}
+            </Typography>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-            <Button variant="contained" color="success" onClick={submitDetails}>
-                Submit
-            </Button>
             <Button variant="outlined" color="error" onClick={cancelSubmission}>
-                Cancel
+                Back
             </Button>
           </DialogActions>
     </>
