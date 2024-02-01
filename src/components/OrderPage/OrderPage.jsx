@@ -2,6 +2,8 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
+import Swal from 'sweetalert2';
+
 import './OrderPage.css'
 
 // problems with setting default value, react doesn't like it!!
@@ -34,7 +36,10 @@ function OrderPage() {
       })
     }
     else {
-      alert('Please select all three options.')
+      Swal.fire({
+        title: "Please Select All Three Options",
+        icon: "error"
+      })
     }
   }
 
