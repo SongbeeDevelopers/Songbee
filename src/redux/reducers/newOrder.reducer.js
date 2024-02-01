@@ -1,10 +1,10 @@
-const allRequests = (state = [], action) => {
+const newOrder = (state = {}, action) => {
     switch (action.type) {
-      case 'SET_ALL_REQUESTS':
+      case 'SET_NEW_ORDER':
         return action.payload;
       default:
         return state;
     }
   };
 
-  export default allRequests;
+  export default newOrder;

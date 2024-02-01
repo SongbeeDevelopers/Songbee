@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
-import Nav from '../Nav/Nav';
+import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
 import UserPage from '../UserPage/UserPage';
@@ -24,6 +24,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import OrderPage from '../OrderPage/OrderPage';
 import CheckoutPage from '../CheckoutPage/CheckoutPage';
 import SongRequestPage from '../SongRequestPage/SongRequestPage';
+import UserDetails from '../UserDetails/UserDetailsPage';
 
 import FAQ from '../FAQ/FAQ';
 import AboutPage from '../AboutPage/AboutPage'; // needed?
@@ -45,7 +46,9 @@ function App() {
   return (
     <Router>
       <div>
-        <Nav />
+
+        <Header />
+        
         <Switch>
 
           {/* Visiting localhost:5173 will redirect to localhost:5173/home */}
@@ -87,12 +90,20 @@ function App() {
           >
             <CheckoutPage />
           </ProtectedRoute>
+          
+          <Route
+          exact
+          path="/details/:id"
+          >
+            <UserDetails />
+          </Route> 
+
 
 
           <Route
             // logged in shows InfoPage else shows LoginPage
             exact
-            path="/requestform"
+            path="/requestform/:id"
           >
             <SongRequestPage />
           </Route>
@@ -188,7 +199,9 @@ function App() {
             <h1>404</h1>
           </Route>
         </Switch>
+
         <Footer />
+
       </div>
     </Router>
   );

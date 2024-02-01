@@ -3,7 +3,12 @@ import errors from './errors.reducer';
 import user from './user.reducer';
 import userRequests from './userRequests.reducer';
 import genres from './genres.reducer';
-import allRequests from './allRequests.reducer';
+import completedRequests from './completedRequests.reducer';
+import pendingRequests from './pendingRequests.reducer';
+import currentRequest from './currentRequest.reducer';
+import newOrder from './newOrder.reducer';
+import requestData from './requestData.reducer';
+import allUsers from './allUsers.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -16,7 +21,12 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   userRequests,
   genres,
-  allRequests,
+  completedRequests,
+  pendingRequests,
+  currentRequest,
+  newOrder,
+  requestData,
+  allUsers,
 
 });
 

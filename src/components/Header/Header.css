@@ -1,18 +1,13 @@
+/* header */
 .nav {
-  /* flex box layout */
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 4.6875rem;
-  max-width: 100%;
+  width: 100%;
   padding-left: 1.3rem;
   padding-right: 1.3rem;
   background-color: #fff4df;
-  overflow: hidden;
-}
-
-.nav a {
-  height: auto;
 }
 
 /* logo */
@@ -20,36 +15,7 @@
   width: 9rem;
 }
 
-/* spacer */
-.navSpacer {
-  display: inline-block;
-  text-align: center;
-  min-height: 2rem;
-  min-width: 2px;
-  border-radius: 20px;
-  background-color: #a5a5a5;
-}
 
-/* admin/account/login/logout */
-.navLink {
-  display: inline-block;
-  color: #474546;
-  background-color: #fff4df;
-  text-align: center;
-  padding: 24px 10px;
-  text-decoration: none;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  margin-left: 16px;
-  margin-right: 16px;
-
-  /* these last two make the logout button in
-  the nav bar look like another link */
-  border: none;
-  cursor: pointer;
-  outline: 0;
-}
 
 .navButton {
   margin: 0 auto;
@@ -75,6 +41,19 @@
   outline:0;
 }
 
-/* .navLink:hover {
+/* .navLink {
+  display: inline-block;
+  color: #474546;
+  background-color: #fff4df;
+  text-align: center;
+  padding: 24px 10px;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+.navLink:hover {
   background-color: #008183;
 } */

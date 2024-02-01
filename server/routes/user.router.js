@@ -47,4 +47,34 @@ router.post('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
+router.get('/all', (req, res) => {
+  const query = `
+  SELECT * FROM "user"
+  `
+  pool.query(query)
+  .then((response) => {
+    res.send(response.rows)
+  })
+  .catch((error) => {
+    console.error("Error in User router GET all:", error)
+    res.sendStatus(500);
+  })
+});
+
+router.put('/admin/:id', (req, res) => {
+  const query = `
+  UPDATE "user"
+    SET "admin" = NOT "admin"
+    WHERE "id"=$1;
+  `
+  pool.query(query, [req.params.id])
+  .then((response) => {
+    res.sendStatus(201);
+  })
+  .catch((error) => {
+    console.error("Error in User router update admin", error)
+    res.sendStatus(500);
+  })
+})
+
 module.exports = router;

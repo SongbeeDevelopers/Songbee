@@ -1,0 +1,26 @@
+.registerHeader {
+    width: auto;
+    color: #feaf17;
+    font-family: Poppins, sans-serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    letter-spacing: -.0055em;
+    margin-bottom: 10px;
+    line-height: 3.5938rem;
+    text-align: center;
+    margin-top: 6%
+}
+
+.regLoginButton {
+    display: block;
+    margin: auto;
+    width: 18rem;
+    color: #474546;
+    background-color: rgba(56, 152, 236, 0);
+    border: 2px solid #000;
+    border-radius: 20px;
+    margin-top: 12px;
+    font-family: Poppins, sans-serif;
+    font-weight: 600;
+    padding: 9px 15px;
+}

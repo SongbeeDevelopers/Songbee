@@ -1,13 +1,41 @@
 import React from 'react';
 import './Footer.css';
 
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
-
 function Footer() {
-  return <footer>&copy; Prime Digital Academy</footer>;
+
+  return (
+    <footer>
+      <img className='footerIcon' src='header-icon.png'></img>
+      
+      <div className='flexContainer'>
+
+        <div className='flexColumn'>
+          <p className='columnHeader'>Company</p>
+          <a href='/#/privacy'>Privacy Policy</a>
+          <a href='/#/terms'>Terms and Conditions</a>
+          <a>Contact: hello@songbee.com</a>
+        </div>
+
+        <div className='flexColumn'>
+          <p className='columnHeader'>Songs</p>
+          <a href='/#/order'>Start Your Song</a>
+          <a href='/#/guarantee'>Songbee Guarantee</a>
+          <a href='/#/artists'>Artists</a>
+        </div>
+
+        <div className='flexColumn'>
+          <p className='columnHeader'>For Artists</p>
+          <a href='/#/'>Artist Community</a>
+          <a href='/#/'>Artist Application</a>
+          <a href='/#/'>Artist Account</a>
+        </div>
+        
+      </div>
+
+      <p>&copy; Songbee</p>
+
+    </footer>
+  )
 }
 
 export default Footer;

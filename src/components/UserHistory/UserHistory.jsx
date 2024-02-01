@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import './UserHistory.css';
 
 
 
@@ -17,25 +18,30 @@ useEffect(() => {
     dispatch({type: 'FETCH_USER_REQUESTS' })
 },[]);
 
-const handleSongRequest = () => {
-  history.push('/details')
+const handleSongRequest = (id) => {
+  history.push(`/details/${id}`)
 }
 
 // will need to get the user's song request
     return (
         <>
-      <h2>Here is your status {user.username}</h2>
+      <h2>Here are your songs {user.username} 🐝</h2>
       
       {/* //Map over the request to display */}
+      {/* // The handle click will bring the user to the details page where they can listen to their song
+          */}
       <div>
         {userRequests.map((request, i) => (
+          <>
            <p key={i}> Your Song {new Date(request.created_at).toLocaleString('en-us')}</p> 
+
+           <button className='detailsBtn' onClick={() => handleSongRequest(request.id)}>Details</button>
+           </>
               
         ))}
-        {/* // The handle click will bring the user to the details page  where they can listen to their song
-          // Also will have the ability purchase add ons
-          */}
-          <button className='detailsBtn' onClick={ handleSongRequest}>Details</button>
+        
+          
+
       </div>
      
       </> 
