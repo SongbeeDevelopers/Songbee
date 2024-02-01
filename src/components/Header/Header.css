@@ -15,7 +15,10 @@
   width: 9rem;
 }
 
-
+.drawerHeaderBee {
+  width: 50px;
+  margin-left: 20%;
+}
 
 .navButton {
   margin: 0 auto;
