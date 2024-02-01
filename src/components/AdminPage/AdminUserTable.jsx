@@ -40,9 +40,11 @@ function AdminUserTable({data}) {
   }));
   const users = useSelector(store => store.allUsers)
   const [open, setOpen] = React.useState(false);
-  const handleClickOpen = (id) => {
-    dispatch({})
-    setOpen(true);
+  const updateAdminUser = (id) => {
+    dispatch({
+        type: "UPDATE_ADMIN_USER",
+        payload: id
+    })
   };
 
   const handleClose = () => {
@@ -85,7 +87,7 @@ function AdminUserTable({data}) {
             <StyledTableCell>Username</StyledTableCell>
             <StyledTableCell align="center">Email</StyledTableCell>
             <StyledTableCell align="center">Credit</StyledTableCell>
-            <StyledTableCell align="center">Admin</StyledTableCell>
+            <StyledTableCell align="center">User Class</StyledTableCell>
             <StyledTableCell align="center">Adjust class</StyledTableCell>
           </TableRow>
         </TableHead>
@@ -99,15 +101,15 @@ function AdminUserTable({data}) {
               <StyledTableCell align="center">
                 {user.email}
               </StyledTableCell>
-                {user.credit}
               <StyledTableCell align="center">
+              {user.credit ? user.credit : "0"}
                </StyledTableCell>
               <StyledTableCell align="center">
                 {user.admin ? "Admin" : "User"}
               </StyledTableCell>
               <StyledTableCell align="center">
-                <button className='admin-button' onClick={() => handleClickOpen(row.id)}>
-                    Complete
+                <button className='admin-button' onClick={() => updateAdminUser(user.id)}>
+                    {!user.admin ? "Set Admin" : "Remove Admin"}
                 </button>
               <AlertDialogSlide />
               </StyledTableCell>

@@ -11,6 +11,7 @@ import Dialog from '@mui/material/Dialog';
 import Slide from '@mui/material/Slide';
 import AdminRequestDialog from './AdminRequestDialog';
 import { useDispatch, useSelector } from "react-redux";
+import { useState } from 'react';
 
 function AdminTable({data}) {
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -35,17 +36,28 @@ function AdminTable({data}) {
   const dispatch = useDispatch();
   const now = new Date ();
   const msPerDay = 24 * 60 * 60 * 1000;
-  const [open, setOpen] = React.useState(false);
-  const handleClickOpen = (id) => {
+  const [open, setOpen] = useState(false);
+  const [open1, setOpen1] = useState(false);
+  const handleClickOpen = (id, x) => {
     dispatch({
         type: "FETCH_CURRENT_REQUEST",
         payload: id
     })
+    if (x===1){
+    setOpen1(true);
+    }
+    else {
     setOpen(true);
+    }
   };
 
-  const handleClose = () => {
+  const handleClose = (x) => {
+    if (x===1){
+    setOpen1(false);
+    }
+    else {
     setOpen(false);
+    }
   };
   const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -60,6 +72,29 @@ function AdminTable({data}) {
           TransitionComponent={Transition}
           keepMounted
           onClose={handleClose}
+          aria-describedby="alert-dialog-slide-description"
+          sx={{ 
+            width: 800, 
+            display: 'flex', 
+            flexDirection: 'column', 
+            alignItems: 'center',
+            ml: 10
+            }}
+        >
+          <AdminRequestDialog handleClose={handleClose}/>
+        </Dialog>
+      </>
+    );
+  }
+  const DetailsDialogSlide = () => {
+  
+    return (
+      <>
+        <Dialog
+          open={open1}
+          TransitionComponent={Transition}
+          keepMounted
+          onClose={() => handleClose(1)}
           aria-describedby="alert-dialog-slide-description"
           sx={{ 
             width: 800, 
@@ -107,7 +142,8 @@ function AdminTable({data}) {
                 :
                 "Complete!"}</StyledTableCell>
               <StyledTableCell align="center">
-                <button className='admin-button'>Details</button>
+                <button className='admin-button' onClick={() => handleClickOpen(row.id, 1)}>Details</button>
+                <DetailsDialogSlide />
               </StyledTableCell>
               <StyledTableCell align="center">
                 <button className='admin-button' onClick={() => handleClickOpen(row.id)}>

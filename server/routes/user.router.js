@@ -61,4 +61,20 @@ router.get('/all', (req, res) => {
   })
 });
 
+router.put('/admin/:id', (req, res) => {
+  const query = `
+  UPDATE "user"
+    SET "admin" = NOT "admin"
+    WHERE "id"=$1;
+  `
+  pool.query(query, [req.params.id])
+  .then((response) => {
+    res.sendStatus(201);
+  })
+  .catch((error) => {
+    console.error("Error in User router update admin", error)
+    res.sendStatus(500);
+  })
+})
+
 module.exports = router;
