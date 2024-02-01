@@ -10,6 +10,7 @@ import Paper from '@mui/material/Paper';
 import Dialog from '@mui/material/Dialog';
 import Slide from '@mui/material/Slide';
 import AdminRequestDialog from './AdminRequestDialog';
+import AdminDetailsDialog from './AdminDetailsDialog';
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from 'react';
 
@@ -104,7 +105,7 @@ function AdminTable({data}) {
             ml: 10
             }}
         >
-          <AdminRequestDialog handleClose={handleClose}/>
+          <AdminDetailsDialog handleClose={handleClose}/>
         </Dialog>
       </>
     );

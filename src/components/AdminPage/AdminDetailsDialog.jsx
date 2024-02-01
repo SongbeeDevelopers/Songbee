@@ -10,7 +10,7 @@ import { useState } from "react";
 import Button from '@mui/material/Button';
 import DialogActions from '@mui/material/DialogActions';
 
-export default function AdminRequestDialog ({handleClose}) {
+export default function AdminDetailsDialog ({handleClose}) {
     const history = useHistory();
     const dispatch = useDispatch();
     const user = useSelector((store) => store.user);
@@ -24,15 +24,8 @@ export default function AdminRequestDialog ({handleClose}) {
     console.log("Here's the song:", song)
     
     const cancelSubmission = () => {
-      handleClose()
+      handleClose(1)
     };
-    const deleteRequest = () => {
-        dispatch({
-            type: "DELETE_SONG_REQUEST",
-            payload: song.id
-        })
-        handleClose()
-      };
     const submitDetails = () => {
       if(songFile === ''){
           detailsForm.append("url", song.url)
@@ -51,85 +44,19 @@ export default function AdminRequestDialog ({handleClose}) {
             data: detailsForm
         }
       });
-      handleClose()
+      handleClose(1)
     };
   return (
     <>
         <DialogTitle>{"Upload File and Complete Song Details"}</DialogTitle>
         <DialogContent>
           <DialogContentText>
-          <p>
-      <Typography gutterBottom variant="overline" display="block">
-        Upload Song File:
-      </Typography>
-      <TextField
-            type="file" 
-            className="form-control-file" 
-            name="uploaded_file"
-            onChange={(evt) => setSongFile(evt.target.files[0])} />
-      </p>
-      <p>
-        <Typography gutterBottom variant="overline" display="block">
-          Song Title:
-        </Typography>
-        <TextField
-          label="Song Title"
-          placeholder="Song Title"
-          multiline
-          maxRows={4}
-          variant="filled"
-          value={title}
-          onChange={(event) => setTitle(event.target.value)}
-        />
-      </p>
-      <p>
-        <Typography gutterBottom variant="overline" display="block">
-          Artist Name:
-        </Typography>
-        <TextField
-          label="Artist Name"
-          placeholder="Artist Name"
-          multiline
-          maxRows={4}
-          variant="filled"
-          value={artist}
-          onChange={(event) => setArtist(event.target.value)}
-        />
-      </p>
-      <p>
-        <Typography gutterBottom variant="overline" display="block">
-          Lyrics:
-        </Typography>
-        <TextField
-          label="Lyrics"
-          multiline
-          rows={6}
-          variant="filled"
-          value={lyrics}
-          onChange={(event) => setLyrics(event.target.value)}
-        />
-      </p>
-      <p>
-        <Typography gutterBottom variant="overline" display="block">
-          Streaming Link:
-        </Typography>
-        <TextField
-          label="Streaming Link"
-          multiline
-          rows={2}
-          variant="filled"
-          value={streamingLink}
-          onChange={(event) => setStreamingLink(event.target.value)}
-        />
-      </p>
+     
           </DialogContentText>
         </DialogContent>
         <DialogActions>
             <Button variant="contained" color="success" onClick={submitDetails}>
                 Submit
-            </Button>
-            <Button variant="contained" color="error" onClick={deleteRequest}>
-                Delete
             </Button>
             <Button variant="outlined" color="error" onClick={cancelSubmission}>
                 Cancel

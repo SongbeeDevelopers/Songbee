@@ -61,6 +61,7 @@ function* updateSongRequest (action) {
 function* deleteSongRequest (action){
     try {
         const response = yield axios.delete(`/api/request/${action.payload}`)
+        yield put({type: "FETCH_ALL_REQUESTS"});
     } catch (error) {
         console.error('SAGA deleteSongRequest() failed:', error)
     }
