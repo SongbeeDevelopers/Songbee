@@ -14,8 +14,6 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import Toolbar from '@mui/material/Toolbar';
-import { Typography } from '@mui/material';
 
 import './Header.css';
 
@@ -94,49 +92,91 @@ function Header() {
 
         <List>
 
-          {!user.id && (
-            <ListItem disablePadding>
-              <ListItemButton onClick={() => history.push("/login")}>
-                  <ListItemText primary={'Login'} />
-              </ListItemButton>
-            </ListItem>
-          )}
-
-          {user.id && !user.admin && (
-            <ListItemButton onClick={() => history.push("/user")}>
-                <ListItemText primary={'Account'} />
-              <div className='navSpacer'></div>
+        {!user.id && (
+          <ListItem disablePadding>
+            <ListItemButton onClick={() => {
+              handleDrawerClose()
+              history.push("/login")
+            }}>
+                <ListItemText primary={'Login'} />
             </ListItemButton>
-          )}
+          </ListItem>
+        )}
 
-          {user.id && user.admin && (
-            <ListItemButton onClick={() => history.push("/admin")}>
-                <ListItemText primary={'Admin Page'} />
-              <div className='navSpacer'></div>
-            </ListItemButton>
-          )}
+        {user.id && user.class === 2 && (
+          <ListItemButton onClick={() => {
+            handleDrawerClose()
+            history.push("/artistpage")
+          }}>
+              <ListItemText primary={'Artist Page'} />
+            <div className='navSpacer'></div>
+          </ListItemButton>
+        )}
 
-          <ListItemButton onClick={() => history.push("/order")}>
+        {user.id && user.class === 3 && (
+          <ListItemButton onClick={() => {
+            handleDrawerClose()
+            history.push("/admin")
+          }}>
+              <ListItemText primary={'Admin Page'} />
+            <div className='navSpacer'></div>
+          </ListItemButton>
+        )}
+
+        {user.id && (
+          <ListItemButton onClick={() => {
+            handleDrawerClose()
+            history.push("/user")
+          }}>
+              <ListItemText primary={'User Page'} />
+            <div className='navSpacer'></div>
+          </ListItemButton>
+        )}
+
+          <ListItemButton onClick={() => {
+            handleDrawerClose()
+            history.push("/order")
+          }}>
               <ListItemText primary={'Start a Song'} />
             <div className='navSpacer'></div>
           </ListItemButton>
 
-          <ListItemButton onClick={() => history.push("/artists")}>
+          <ListItemButton onClick={() => {
+            handleDrawerClose()
+            history.push("/artists")
+          }}>
               <ListItemText primary={'Artists'} />
             <div className='navSpacer'></div>
           </ListItemButton>
 
-          <ListItemButton onClick={() => history.push("/about")}>
+          <ListItemButton onClick={() => {
+            handleDrawerClose()
+            history.push("/faq")
+          }}>
+              <ListItemText primary={'FAQ'} />
+            <div className='navSpacer'></div>
+          </ListItemButton>
+
+          <ListItemButton onClick={() => {
+            handleDrawerClose()
+            history.push("/about")
+          }}>
               <ListItemText primary={'About'} />
             <div className='navSpacer'></div>
           </ListItemButton>
 
-          {user.id && (
-            <ListItemButton onClick={() => dispatch({type: 'LOGOUT'})}>
-                <ListItemText primary={'Logout'} />
-              <div className='navSpacer'></div>
-            </ListItemButton>
-          )}
+        {user.id && (
+          <ListItemButton
+            sx={{position: 'fixed', bottom: 10, width: drawerWidth}}
+            onClick={() => {
+              handleDrawerClose()
+              dispatch({type: 'LOGOUT'})
+            }}
+          >
+              <ListItemText primary={'Logout'} />
+            <div className='navSpacer'></div>
+          </ListItemButton>
+        )}
         
         </List>
       </Drawer>
