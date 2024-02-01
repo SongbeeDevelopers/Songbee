@@ -36,11 +36,12 @@ function* fetchAllUsers (){
   }
 }
 
-function* updateAdminUser (action){
+function* updateUserClass (action){
   try {
     const response = yield axios({
       method: "PUT",
-      url: `/api/user/admin/${action.payload}`
+      url: `/api/user/admin/${action.payload.id}`,
+      data: {data: action.payload.data}
     })
     yield put ({type: "FETCH_ALL_USERS"})
   } catch (error) {
@@ -51,7 +52,7 @@ function* updateAdminUser (action){
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
   yield takeLatest('FETCH_ALL_USERS', fetchAllUsers);
-  yield takeLatest('UPDATE_ADMIN_USER', updateAdminUser);
+  yield takeLatest('UPDATE_USER_CLASS', updateUserClass);
 }
 
 export default userSaga;

@@ -386,6 +386,7 @@ svg {
 }
 
 .admin-button {
+.admin-button{
   margin: 0 auto;
   z-index: 100;
   width: 6rem;
