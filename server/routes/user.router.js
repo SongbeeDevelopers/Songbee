@@ -64,10 +64,11 @@ router.get('/all', (req, res) => {
 router.put('/admin/:id', (req, res) => {
   const query = `
   UPDATE "user"
-    SET "admin" = NOT "admin"
-    WHERE "id"=$1;
+    SET "class" = $1
+    WHERE "id"=$2;
   `
-  pool.query(query, [req.params.id])
+  console.log("req.body:", req.body)
+  pool.query(query, [req.body.data, req.params.id])
   .then((response) => {
     res.sendStatus(201);
   })
