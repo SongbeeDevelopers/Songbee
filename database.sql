@@ -51,6 +51,7 @@ INSERT INTO "user"
 ("email", "password", "class")
 VALUES
 ("hello@songbee.com", "$2a$10$beIgxp.l45eRiz5HYgUxBuTN6anPZwKY3TRE/nE2Ltg/5Fo1Jylw6", 3)
+--Password for this account is: password --
 
 INSERT INTO "genres"
 VALUES
