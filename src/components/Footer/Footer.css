@@ -20,6 +20,12 @@ footer {
 .flexColumn {
   width: 10rem;
   text-align: left;
+  width: 10rem;
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 .columnHeader {
