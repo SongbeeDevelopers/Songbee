@@ -76,20 +76,20 @@ function App() {
           </ProtectedRoute>
 
 
-          <ProtectedRoute
+          <Route
             exact
             path="/order"
           >
             <OrderPage />
-          </ProtectedRoute>
+          </Route>
 
 
-          <ProtectedRoute
+          <Route
             exact
             path="/checkout"
           >
             <CheckoutPage />
-          </ProtectedRoute>
+          </Route>
           
           <Route
           exact

@@ -1,0 +1,111 @@
+/* BLOCKING */
+
+.mockPayment {
+    border: 1px solid red;
+    width: fit-content;
+    margin: auto;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 25px;
+}
+.mockPaymentInputContainer {
+    /* display: flex; */
+    justify-content: space-between;
+}
+
+
+/* TEXT */
+
+.mockPaymentInputLabel {
+    display: block;
+    margin-bottom: 10px;
+}
+.mockPaymentHeader {
+    text-align: center;
+}
+.mockWarning {
+    text-align: center;
+    color: red;
+}
+
+
+/* INPUTS */
+
+.mockPaymentInput {
+    display: inline;
+    max-width: 190px;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 2px 2px 7px 0 rgb(0, 0, 0, 0.2);
+    outline: none;
+    color: dimgray;
+}
+.mockPaymentInput:invalid {
+    animation: justshake 0.3s forwards;
+    color: red;
+}
+@keyframes justshake {
+  25% {
+    transform: translateX(5px);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX-(5px);
+  }
+}
+
+
+/* BUTTON */
+
+.mockPaymentButton {
+    width: 130px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(15, 15, 15);
+    border: none;
+    color: white;
+    font-weight: 600;
+    gap: 8px;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.103);
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+}
+  .svgIcon {
+    width: 16px;
+}
+.svgIcon path {
+    fill: white;
+}
+.mockPaymentButton::before {
+    width: 130px;
+    height: 130px;
+    position: absolute;
+    content: "";
+    background-color: white;
+    border-radius: 50%;
+    left: -100%;
+    top: 0;
+    transition-duration: .3s;
+    mix-blend-mode: difference;
+}
+
+.mockPaymentButton:hover::before {
+    transition-duration: .3s;
+    transform: translate(100%,-50%);
+    border-radius: 0;
+}
+
+.mockPaymentButton:active {
+    transform: translate(5px,5px);
+    transition-duration: .3s;
+}
