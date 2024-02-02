@@ -8,6 +8,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import AdminUserTable from './AdminUserTable';
+import FilterBar from '../FilterBar/FilterBar';
 
 function AdminPage() {
   const [value, setValue] = React.useState(0);
@@ -68,12 +69,15 @@ function AdminPage() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
+      <FilterBar />
       <AdminTable data={pendingRequests}/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
+      <FilterBar />
       <AdminTable data={completedRequests}/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
+      <FilterBar />
       <AdminUserTable />
       </CustomTabPanel>
     </Box>

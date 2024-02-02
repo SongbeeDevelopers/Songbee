@@ -1,9 +1,9 @@
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
-    "username" VARCHAR (80) UNIQUE NOT NULL,
+    "email" VARCHAR (150) UNIQUE NOT NULL,
     "password" VARCHAR (1000) NOT NULL,
     "class" INT NOT NULL DEFAULT 1,
-    "email" VARCHAR (150),
+    "name" VARCHAR (150),
     "credit" INT
 );
 
@@ -46,6 +46,11 @@ CREATE TABLE "song_details" (
     "artist" VARCHAR (250),
     "streaming_link" VARCHAR
 );
+
+INSERT INTO "user"
+("email", "password", "class")
+VALUES
+("hello@songbee.com", "$2a$10$beIgxp.l45eRiz5HYgUxBuTN6anPZwKY3TRE/nE2Ltg/5Fo1Jylw6", 3)
 
 INSERT INTO "genres"
 VALUES
