@@ -98,8 +98,7 @@ function App() {
             <UserDetails />
           </Route> 
 
-
-
+          
           <Route
             // logged in shows InfoPage else shows LoginPage
             exact
