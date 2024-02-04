@@ -27,7 +27,6 @@ import SongRequestPage from '../SongRequestPage/SongRequestPage';
 import UserDetails from '../UserDetails/UserDetailsPage';
 
 import FAQ from '../FAQ/FAQ';
-import AboutPage from '../AboutPage/AboutPage'; // needed?
 import PrivacyPolicy from '../PrivacyPolicy/PrivacyPolicy';
 import QualityGuarantee from '../QualityGuarantee/QualityGuarantee';
 import TermsAndConditions from '../TermsAndConditions/TermsAndConditions';
@@ -54,13 +53,9 @@ function App() {
           {/* Visiting localhost:5173 will redirect to localhost:5173/home */}
           <Redirect exact from="/" to="/home" />
 
-          <Route
-            exact
-            path="/home"
-          >
+          <Route exact path="/home">
             <LandingPage />
           </Route>
-
 
           {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:5173/user will show the UserPage if the user is logged in.
@@ -72,93 +67,42 @@ function App() {
             path="/user"
           >
             <UserPage />
-           
           </ProtectedRoute>
 
-
-          <Route
-            exact
-            path="/order"
-          >
+          <Route exact path="/order">
             <OrderPage />
           </Route>
 
-
-          <Route
-            exact
-            path="/checkout"
-          >
+          <Route exact path="/checkout">
             <CheckoutPage />
           </Route>
           
-          <Route
-          exact
-          path="/details/:id"
-          >
+          <Route exact path="/details/:id">
             <UserDetails />
           </Route> 
 
-
-
-          <Route
-            // logged in shows InfoPage else shows LoginPage
-            exact
-            path="/requestform/:id"
-          >
+          <Route exact path="/requestform/:id">
             <SongRequestPage />
           </Route>
 
-
-          {/* Visiting localhost:5173/about will show the about page. */}
-          <Route
-            // shows AboutPage at all times (logged in or not)
-            exact
-            path="/about"
-          >
-            <AboutPage />
-          </Route>
-
-
-          <Route
-            // logged in shows InfoPage else shows LoginPage
-            exact
-            path="/terms"
-          >
+          <Route exact path="/terms">
             <TermsAndConditions />
           </Route>
 
-
-          <Route
-            // logged in shows InfoPage else shows LoginPage
-            exact
-            path="/faq"
-          >
+          <Route exact path="/faq">
             <FAQ />
           </Route>
 
 
-          <Route
-            // logged in shows InfoPage else shows LoginPage
-            exact
-            path="/guarantee"
-          >
+          <Route exact path="/guarantee">
             <QualityGuarantee />
           </Route>
 
-
-          <Route
-            // logged in shows InfoPage else shows LoginPage
-            exact
-            path="/privacy"
-          >
+          <Route exact path="/privacy">
             <PrivacyPolicy />
           </Route>
 
-
-          <Route
-            exact
-            path="/login"
-          >
+          <Route exact path="/login">
             {user.id ?
               // If the user is already logged in, 
               // redirect to the /user page
@@ -169,11 +113,7 @@ function App() {
             }
           </Route>
 
-
-          <Route
-            exact
-            path="/registration"
-          >
+          <Route exact path="/registration">
             {user.id ?
               // If the user is already logged in, 
               // redirect them to the /user page
@@ -184,15 +124,10 @@ function App() {
             }
           </Route>
 
-
-          <ProtectedRoute
-            // shows AboutPage at all times (logged in or not)
-            exact
-            path="/admin"
-          >
+          {/* this needs to be further protected */}
+          <ProtectedRoute exact path="/admin">
             <AdminPage />
           </ProtectedRoute>
-
 
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
