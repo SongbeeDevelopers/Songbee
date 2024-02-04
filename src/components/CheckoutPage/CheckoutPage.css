@@ -1,12 +1,14 @@
 /* BLOCKING */
 
 .mockPayment {
-    border: 1px solid red;
+    background-color:#f3f1eb;
+    border-radius: 20px;
     width: fit-content;
     margin: auto;
-    padding-left: 10%;
-    padding-right: 10%;
-    padding-bottom: 25px;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 10px;
+    padding-bottom: 15px;
 }
 .mockPaymentInputContainer {
     /* display: flex; */
@@ -108,4 +110,16 @@
 .mockPaymentButton:active {
     transform: translate(5px,5px);
     transition-duration: .3s;
+}
+.checkoutSubmitButton {
+    display: block;
+    margin: auto;
+    background-color: #feaf17;
+    border: 1px solid #000;
+    border-radius: 13px;
+    font-family: Poppins, sans-serif;
+    font-weight: 600;
+    margin-top: 27px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    padding: 9px 15px;
 }
