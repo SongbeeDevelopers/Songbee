@@ -79,9 +79,13 @@ function App() {
           
           <Route exact path="/details/:id">
             <UserDetails />
-          </Route> 
-
-          <Route exact path="/requestform/:id">
+          </Route>
+          
+          <Route
+            // logged in shows InfoPage else shows LoginPage
+            exact
+            path="/requestform/:id"
+          >
             <SongRequestPage />
           </Route>
 

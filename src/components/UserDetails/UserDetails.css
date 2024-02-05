@@ -1,8 +1,8 @@
 /* This will be for stying the audio player */
 
-audio::-webkit-media-controls-panel {
-    background-color: rgb(243, 148, 66);
-  }
+  audio::-webkit-media-controls-panel {
+      background-color: rgb(243, 148, 66);
+    }
 
   audio::-webkit-media-controls-play-button {
     background-color: #97d9ee;
@@ -27,7 +27,10 @@ audio::-webkit-media-controls-panel {
 
   /* This will be for styling the headers and titles */
   .cardContainer {
-    background-color: rgb(242, 240, 202);
+    background-color:  #fff4df;
+    min-height:calc(100vh - 1px);
+    height:auto;
+    box-sizing:border-box;
   }
 
   .artistHeader {
@@ -36,17 +39,17 @@ audio::-webkit-media-controls-panel {
     color: rgb(51, 51, 51);
   }
 
-.songTitle {
-  font-family: Poppins;
-  font-size: 2rem;
-  color: rgb(51, 51, 51);
-  
-}
+  .songTitle {
+    font-family: Poppins;
+    font-size: 2rem;
+    color: rgb(51, 51, 51);
+    
+  }
 
-.artistTitle {
-  font-size: 1rem;
-  color: rgb(51, 51, 51);
-}
+  .artistTitle {
+    font-size: 1rem;
+    color: rgb(51, 51, 51);
+  }
 
   .lyricsHeader {
     font-family: Poppins;
@@ -60,9 +63,9 @@ audio::-webkit-media-controls-panel {
     color: rgb(51, 51, 51);
   }
 
-  .addOnHeader {
-    font-family: Poppins;
-    font-size: 2rem;
-    color: rgb(51, 51, 51);
-    text-align: center;
+  .back-btn {
+    background-color:  rgb(243, 148, 66);
+    border-radius: 10px;
   }
+
+  
