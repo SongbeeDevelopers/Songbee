@@ -47,9 +47,37 @@ function* registerUserAtCheckout(action) {
   }
 }
 
+function* updateUser (action) {
+  try {
+  yield axios({
+    method: "PUT",
+    url: '/api/user/update',
+    data: action.payload
+  })
+  yield put({ type: 'FETCH_USER' });
+} catch (error) {
+  console.log('Error with user update:', error);
+  yield put({ type: 'REGISTRATION_FAILED' });
+}
+}
+
+function* deleteUser (action) {
+  try {
+    yield axios({
+      method: "DELETE",
+      url: '/api/user/delete',
+      data: action.payload
+    })
+  } catch (error) {
+    console.error('Saga deleteUser() failed:', error)
+  }
+}
+
 function* registrationSaga() {
   yield takeLatest('REGISTER', registerUser);
   yield takeLatest('REGISTER_AT_CHECKOUT', registerUserAtCheckout);
+  yield takeLatest('UPDATE_USER', updateUser);
+  yield takeLatest('DELETE_USER', deleteUser);
 }
 
 export default registrationSaga;
