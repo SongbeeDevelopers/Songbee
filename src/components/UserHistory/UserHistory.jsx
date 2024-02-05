@@ -11,7 +11,7 @@ function UserHistory() {
     const dispatch = useDispatch();
     const history = useHistory();
     const userRequests = useSelector((store) => store.userRequests);
-    const user = useSelector((store) => store.user);
+    // const user = useSelector((store) => store.user);
 
 // Will useEffect and dispatch t call to the store
 useEffect(() => {
