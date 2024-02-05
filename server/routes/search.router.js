@@ -9,8 +9,10 @@ const router = express.Router();
  * GET route search
  */
 router.get('/', async (req, res) => {
+  console.log("here's req.query", req.query)
   try {
     if (req.query.type === 'pending'){
+    console.log("inside pending query");
     const pendingQuery = `
     SELECT DISTINCT
     "song_request"."id" AS "id",
@@ -37,7 +39,7 @@ router.get('/', async (req, res) => {
     "song_details"."title",
     "song_details"."artist",
     "song_details"."streaming_link",
-    "genres"."name" AS "genre"
+    "genres"."name" AS "genre",
     "user"."email" AS "email"
     FROM "song_request"
     LEFT JOIN "genres"
@@ -51,8 +53,6 @@ router.get('/', async (req, res) => {
     ("requester" ILIKE $1
     OR
     "recipient" ILIKE $1
-    OR
-    "email" ILIKE $1
     OR
     "artist" ILIKE $1);
     `
@@ -86,7 +86,7 @@ router.get('/', async (req, res) => {
     "song_details"."title",
     "song_details"."artist",
     "song_details"."streaming_link",
-    "genres"."name" AS "genre"
+    "genres"."name" AS "genre",
     "user"."email" AS "email"
     FROM "song_request"
     LEFT JOIN "genres"
@@ -105,7 +105,7 @@ router.get('/', async (req, res) => {
     OR
     "artist" ILIKE $1);
     `
-    const completedResponse = await pool.query(pendingQuery, [`%${req.query.q}%`])
+    const completedResponse = await pool.query(completedQuery, [`%${req.query.q}%`])
     res.send(completedResponse.rows)
     }
     else if (req.query.type === 'user'){
@@ -122,6 +122,10 @@ router.get('/', async (req, res) => {
     res.sendStatus(500);
   }
 });
+
+router.get('/', (req, res) => {
+   
+  });
 
 
 module.exports = router;

@@ -89,15 +89,15 @@ function AdminPage() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-      <FilterBar />
+      <FilterBar type='pending'/>
       <AdminTable data={results}/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-      <FilterBar />
+      <FilterBar type='completed'/>
       <AdminTable data={results}/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-      <FilterBar />
+      <FilterBar type='user'/>
       <AdminUserTable data={results}/>
       </CustomTabPanel>
     </Box>
