@@ -110,7 +110,7 @@ router.get('/', async (req, res) => {
     }
     else if (req.query.type === 'user'){
     const userQuery = `
-    SELECT DISTINCT
+    SELECT *
     FROM "user"
     WHERE "email" ILIKE $1;
     `
