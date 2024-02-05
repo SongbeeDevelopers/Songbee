@@ -1,15 +1,15 @@
 import React from 'react';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import RegisterForm from '../RegisterForm/RegisterForm';
-import LoginForm from '../LoginForm/LoginForm';
+
+import LoginRegisterForm from './LoginRegisterForm';
 
 import './CheckoutPage.css'
 
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+
+import Swal from 'sweetalert2';
 
 function CheckoutPage() {
 
@@ -32,6 +32,17 @@ function CheckoutPage() {
     boxShadow: 24,
     p: 4,
   };
+
+  const submitPayment = () => {
+    if (user.id) {
+      // dispatch
+    } else {
+      Swal.fire({
+        text: 'Please log in or register to continue.',
+        icon: 'warning'
+      })
+    }
+  }
 
 
   return (
@@ -86,7 +97,12 @@ function CheckoutPage() {
           <p>Payment Amount: $###.##</p>
 
           {!user.id && // enter credentials button with conditional logic?
-            <Button onClick={handleOpen}>Register/Login</Button>
+            <button
+              className='checkoutLogRegBtn'
+              onClick={handleOpen}
+            >
+              Login / Register
+            </button>
           }
         </div>
       </div> 
@@ -98,10 +114,16 @@ function CheckoutPage() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
+          <LoginRegisterForm handleClose={handleClose} />
         </Box>
       </Modal>
 
-      <button className='checkoutSubmitButton'>Submit</button>
+      <button
+        className='checkoutSubmitButton'
+        onClick={submitPayment}
+      >
+        Submit
+      </button>
 
     </div>
 
