@@ -57,7 +57,7 @@ function AdminUserTable({data}) {
               {user.credit ? user.credit : "0"}
                </StyledTableCell>
               <StyledTableCell align="center">
-               
+              {new Date(user.created_at).toLocaleString('en-us')}
               </StyledTableCell>
               <StyledTableCell align="center">
               <UserClass user={user} />
