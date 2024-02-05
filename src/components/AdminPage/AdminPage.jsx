@@ -11,20 +11,40 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import AdminUserTable from './AdminUserTable';
+import FilterBar from '../FilterBar/FilterBar';
 
 function AdminPage({ routeVariants }) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch({ type: "FETCH_ALL_REQUESTS" });
+    dispatch({ type: "FETCH_ALL_USERS" });
+
+  }, [])
   const [value, setValue] = React.useState(0);
+  const pendingRequests = useSelector(store => store.pendingRequests)
+  const completedRequests = useSelector(store => store.completedRequests)
+  const users = useSelector(store => store.allUsers)
 
   const handleChange = (event, newValue) => {
     event.preventDefault();
     setValue(newValue);
+    if (newValue === 0){
+      dispatch({
+        type: "SET_FILTER_RESULTS",
+        payload: pendingRequests
+      })
+    } else if (newValue === 1){
+      dispatch({
+        type: "SET_FILTER_RESULTS",
+        payload: completedRequests
+      })
+    } else if (newValue === 2){
+      dispatch({
+        type: "SET_FILTER_RESULTS",
+        payload: users
+      })
+    }
   };
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch({ type: "FETCH_ALL_REQUESTS" })
-  }, [])
-  const pendingRequests = useSelector(store => store.pendingRequests)
-  const completedRequests = useSelector(store => store.completedRequests)
 
   const CustomTabPanel = (props) => {
     const { children, value, index, ...other } = props;
@@ -58,6 +78,7 @@ function AdminPage({ routeVariants }) {
       'aria-controls': `simple-tabpanel-${index}`,
     };
   }
+  const results = useSelector(store => store.filterResults);
   
 
   return (
@@ -75,13 +96,16 @@ function AdminPage({ routeVariants }) {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-      <AdminTable data={pendingRequests}/>
+      <FilterBar type='pending'/>
+      <AdminTable data={results}/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-      <AdminTable data={completedRequests}/>
+      <FilterBar type='completed'/>
+      <AdminTable data={results}/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-      <AdminUserTable />
+      <FilterBar type='user'/>
+      <AdminUserTable data={results}/>
       </CustomTabPanel>
     </Box>
     </motion.div>
