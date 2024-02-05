@@ -16,7 +16,8 @@ function* loginUser(action) {
     // the config includes credentials which
     // allow the server session to recognize the user
     yield axios.post('/api/user/login', action.payload, config);
-
+    // if in checkout process, will close login/register modal
+    if (action.payload.handleClose) { yield action.payload.handleClose() }
     // after the user has logged in
     // get the user information from the server
     yield put({ type: 'FETCH_USER' });

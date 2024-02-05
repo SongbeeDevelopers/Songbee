@@ -20,12 +20,10 @@ function OrderPage() {
       type: 'SET_NEW_ORDER',
       payload: {...newOrder, [key]: value}
     })
-    console.log(newOrder)
   }
   
   const submitOrder = (e) => {
     e.preventDefault()
-    console.log(newOrder)
     if (newOrder.delivery_days && newOrder.streaming && newOrder.extra_verse) {
       dispatch({
         type: 'CREATE_SONG_REQUEST',

@@ -9,9 +9,10 @@ function* registerUser(action) {
 
     // passes the username and password from the payload to the server
     yield axios.post('/api/user/register', action.payload);
-
+    // if in checkout process, will close login/register modal
+    if (action.payload.handleClose) { yield action.payload.handleClose() }
     // automatically log a user in after registration
-    yield put({ type: 'LOGIN', payload: action.payload });
+    yield put({ type: 'LOGIN', payload: action.payload })
 
     // set to 'login' mode so they see the login screen
     // after registration or after they log out
