@@ -13,9 +13,6 @@ import UserClass from './UserClass';
 
 function AdminUserTable({data}) {
     const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch({ type: "FETCH_ALL_USERS" })
-      }, [])
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.common.black,
@@ -35,7 +32,6 @@ function AdminUserTable({data}) {
       border: 0,
     },
   }));
-  const users = useSelector(store => store.allUsers)
 
 
   return (
@@ -52,7 +48,7 @@ function AdminUserTable({data}) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {users.map((user) => {
+          {data.map((user) => {
           return (
             <StyledTableRow key={user.id}>
               <StyledTableCell component="th" scope="row">
