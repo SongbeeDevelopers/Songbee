@@ -50,14 +50,19 @@ CREATE TABLE "song_details" (
 CREATE TABLE "artist" (
   "id" SERIAL PRIMARY KEY,
   "name" VARCHAR (250),
-  "genre_id" integer REFERENCES "genres",
   "user_id" integer REFERENCES "user",
   "vocal_type" VARCHAR (150),
   "website" VARCHAR DEFAULT NULL,
   "bio" VARCHAR,
   "photo" VARCHAR,
   "streaming_link" VARCHAR
-)
+);
+
+CREATE TABLE "artist_genres" (
+  "id" SERIAL PRIMARY KEY,
+  "artist_id" integer REFERENCES "artist",
+  "genre_id" integer REFERENCES "genres"
+);
 
 INSERT INTO "user"
 ("email", "password", "class")
@@ -83,6 +88,12 @@ VALUES
 (1, 3, 'https://res.cloudinary.com/dcram3k0q1/video/upload/v1705711050/syquoqbokasssbuem1sf.wav', 'I cant deface time / I cant deface time / I cant deface time', 'Jerry GarPsyOp', 'John DaRon', null);
 
 INSERT INTO "artist"
-("name", "genre_id", "user_id", "vocal_type")
+("name", "user_id", "vocal_type")
 VALUES
-('Walker Neudorff', 3, 2, 'male');
+('Walker Neudorff', 2, 'male');
+
+INSERT INTO "artist_genres"
+("artist_id", "genre_id")
+VALUES
+(1, 3),
+(1, 1);
