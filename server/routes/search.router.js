@@ -37,7 +37,6 @@ router.get('/', async (req, res) => {
     "song_details"."url",
     "song_details"."lyrics",
     "song_details"."title",
-    "song_details"."artist",
     "song_details"."streaming_link",
     "genres"."name" AS "genre",
     "user"."email" AS "email"
@@ -52,9 +51,7 @@ router.get('/', async (req, res) => {
     AND
     ("requester" ILIKE $1
     OR
-    "recipient" ILIKE $1
-    OR
-    "artist" ILIKE $1);
+    "recipient" ILIKE $1);
     `
     const pendingResponse = await pool.query(pendingQuery, [`%${req.query.q}%`])
     res.send(pendingResponse.rows)
@@ -84,7 +81,6 @@ router.get('/', async (req, res) => {
     "song_details"."url",
     "song_details"."lyrics",
     "song_details"."title",
-    "song_details"."artist",
     "song_details"."streaming_link",
     "genres"."name" AS "genre",
     "user"."email" AS "email"
@@ -101,16 +97,14 @@ router.get('/', async (req, res) => {
     OR
     "recipient" ILIKE $1
     OR
-    "email" ILIKE $1
-    OR
-    "artist" ILIKE $1);
+    "email" ILIKE $1);
     `
     const completedResponse = await pool.query(completedQuery, [`%${req.query.q}%`])
     res.send(completedResponse.rows)
     }
     else if (req.query.type === 'user'){
     const userQuery = `
-    SELECT DISTINCT
+    SELECT *
     FROM "user"
     WHERE "email" ILIKE $1;
     `

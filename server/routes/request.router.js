@@ -33,7 +33,6 @@ router.get('/user', rejectUnauthenticated, (req, res) => {
   "song_details"."url",
   "song_details"."lyrics",
   "song_details"."title",
-  "song_details"."artist",
   "song_details"."streaming_link",
   "genres"."name" AS "genre"
   FROM "song_request"
@@ -83,7 +82,6 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     "song_details"."url",
     "song_details"."lyrics",
     "song_details"."title",
-    "song_details"."artist",
     "song_details"."streaming_link",
     "genres"."name" AS "genre"
     FROM "song_request"
@@ -118,7 +116,6 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     "song_details"."url",
     "song_details"."lyrics",
     "song_details"."title",
-    "song_details"."artist",
     "song_details"."streaming_link",
     "genres"."name" AS "genre"
     FROM "song_request"
@@ -165,7 +162,6 @@ router.get('/current/:id', (req, res) => {
     "song_details"."url",
     "song_details"."lyrics",
     "song_details"."title",
-    "song_details"."artist",
     "song_details"."streaming_link",
     "genres"."name" AS "genre"
     FROM "song_request"
