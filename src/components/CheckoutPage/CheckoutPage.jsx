@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 import LoginRegisterForm from './LoginRegisterForm';
 
@@ -13,7 +14,9 @@ import Swal from 'sweetalert2';
 
 function CheckoutPage() {
 
+  const history = useHistory()
   const user = useSelector(store => store.user)
+  const newOrder = useSelector(store => store.newOrder)
 
   // modal logic
   const [open, setOpen] = useState(false);
@@ -35,7 +38,7 @@ function CheckoutPage() {
 
   const submitPayment = () => {
     if (user.id) {
-      // dispatch
+      history.push(`/requestform/${newOrder.id}`)
     } else {
       Swal.fire({
         text: 'Please log in or register to continue.',
