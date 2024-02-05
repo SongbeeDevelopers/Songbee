@@ -17,7 +17,7 @@ router.post("/:id", rejectUnauthenticated, cloudinaryUpload.single("file"), asyn
 
     const detailsQuery = `
     INSERT INTO "song_details" 
-      ("song_request_id", "url", "lyrics", "title", "artist", "streaming_link")
+      ("song_request_id", "url", "lyrics", "title", "artist_id", "streaming_link")
       VALUES
       ($1, $2, $3, $4, $5, $6);
     `;
@@ -59,7 +59,7 @@ router.put("/:id", rejectUnauthenticated, cloudinaryUpload.single("file"), async
         "url" = $1, 
         "lyrics" = $2, 
         "title" = $3, 
-        "artist" = $4, 
+        "artist_id" = $4, 
         "streaming_link" = $5
       WHERE "song_request_id" = $6;
       `;

@@ -40,8 +40,7 @@ function AdminUserTable({data}) {
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Username</StyledTableCell>
-            <StyledTableCell align="center">Email</StyledTableCell>
+            <StyledTableCell>Email</StyledTableCell>
             <StyledTableCell align="center">Credit</StyledTableCell>
             <StyledTableCell align="center">Created At</StyledTableCell>
             <StyledTableCell align="center">User Class</StyledTableCell>
@@ -52,9 +51,6 @@ function AdminUserTable({data}) {
           return (
             <StyledTableRow key={user.id}>
               <StyledTableCell component="th" scope="row">
-                {user.username}
-              </StyledTableCell>
-              <StyledTableCell align="center">
                 {user.email}
               </StyledTableCell>
               <StyledTableCell align="center">
