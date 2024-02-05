@@ -1,10 +1,17 @@
 import React from 'react';
 
-function FAQ() {
+import { motion } from 'framer-motion';
+
+function FAQ({ routeVariants }) {
   return (
-    <div className="container">
+    <motion.div
+      className="container"
+      variants={routeVariants}
+      initial="initial"
+      animate="final"
+    >
       <p>FAQ</p>
-    </div>
+    </motion.div>
   );
 }
 

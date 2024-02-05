@@ -1,10 +1,17 @@
 import React from 'react';
 
-function TermsAndConditions() {
+import { motion } from 'framer-motion';
+
+function TermsAndConditions({ routeVariants }) {
   return (
-    <div className="container">
+    <motion.div
+      className="container"
+      variants={routeVariants}
+      initial="initial"
+      animate="final"
+    >
       <p>Terms And Conditions</p>
-    </div>
+    </motion.div>
   );
 }
 

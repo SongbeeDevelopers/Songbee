@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
+
+import { motion } from 'framer-motion';
+
 import AdminTable from './AdminTable';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
@@ -9,7 +12,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import AdminUserTable from './AdminUserTable';
 
-function AdminPage() {
+function AdminPage({ routeVariants }) {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -58,7 +61,11 @@ function AdminPage() {
   
 
   return (
-    <div className="container">
+    <motion.div className="container"
+      variants={routeVariants}
+      initial="initial"
+      animate="final"
+    >
       <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
@@ -77,7 +84,7 @@ function AdminPage() {
       <AdminUserTable />
       </CustomTabPanel>
     </Box>
-    </div>
+    </motion.div>
   );
 }
 

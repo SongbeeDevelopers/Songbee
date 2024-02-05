@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
+import { motion } from 'framer-motion';
+
 import LoginRegisterForm from './LoginRegisterForm';
 
 import './CheckoutPage.css'
@@ -12,7 +14,7 @@ import Modal from '@mui/material/Modal';
 
 import Swal from 'sweetalert2';
 
-function CheckoutPage() {
+function CheckoutPage({ routeVariants }) {
 
   const history = useHistory()
   const user = useSelector(store => store.user)
@@ -50,7 +52,12 @@ function CheckoutPage() {
 
   return (
     
-    <div className='paymentContainer'>
+    <motion.div
+      className='paymentContainer'
+      variants={routeVariants}
+      initial="initial"
+      animate="final"
+    >
       <h1 className='mockPaymentHeader'>Payment details</h1>
 
       <div className='mockPayment'>
@@ -128,7 +135,7 @@ function CheckoutPage() {
         Submit
       </button>
 
-    </div>
+    </motion.div>
 
   );
 }
