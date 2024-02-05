@@ -123,8 +123,19 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/', (req, res) => {
-   
+router.get('/class/:id', async (req, res) => {
+   try {
+    const query = `
+    SELECT *
+    FROM "user"
+    WHERE "class"=$1;
+    `
+    const response = await pool.query(query, [req.params.id]);
+    res.send(response.rows);
+   } catch (error) {
+    console.error("Error in search router class query", error);
+    res.sendStatus(500);
+   }
   });
 
 
