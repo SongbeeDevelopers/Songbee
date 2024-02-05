@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 
 import './SongRequestPage.css'
 
-function SongRequestPage() {
+function SongRequestPage({ routeVariants }) {
 
   const dispatch = useDispatch()
   const history = useHistory()

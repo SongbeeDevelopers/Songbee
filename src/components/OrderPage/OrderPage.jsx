@@ -2,13 +2,15 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
+import { motion } from 'framer-motion';
+
 import Swal from 'sweetalert2';
 
 import './OrderPage.css'
 
 // problems with setting default value, react doesn't like it!!
 
-function OrderPage() {
+function OrderPage({ routeVariants }) {
 
   const history = useHistory()
   const dispatch = useDispatch()
@@ -42,7 +44,12 @@ function OrderPage() {
   }
 
   return (
-    <div className="orderPageContainer">
+    <motion.div
+      className="orderPageContainer"
+      variants={routeVariants}
+      initial="initial"
+      animate="final"
+    >
       <h1 className='orderHeader'>Let's Get Started.</h1>
 
       <img src='order-icon.png' className='orderIcon'></img>
@@ -89,7 +96,7 @@ function OrderPage() {
         <button className='orderCheckoutButton' onClick={submitOrder}>Checkout</button>
       </form>
 
-    </div>
+    </motion.div>
   );
 }
 

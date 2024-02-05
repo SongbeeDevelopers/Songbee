@@ -1,8 +1,14 @@
 import React from "react";
 
-function PrivacyPolicy() {
+import { motion } from "framer-motion";
+
+function PrivacyPolicy({ routeVariants }) {
   return (
-    <div className="container">
+    <motion.div className="container"
+      variants={routeVariants}
+      initial="initial"
+      animate="final"
+    >
       <h1>Privacy Policy</h1>
       <p>
         Protecting your private information is our priority. This Statement of
@@ -20,7 +26,7 @@ function PrivacyPolicy() {
       <h2>Collection of yourPersonal Information</h2>
       <p>In order to better provide you with products and services offered, Songbee may collect personally identifiable information, such as your:   
 </p>
-    </div>
+    </motion.div>
   );
 }
 
