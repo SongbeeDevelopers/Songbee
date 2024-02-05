@@ -43,14 +43,28 @@ CREATE TABLE "song_details" (
     "url" VARCHAR (500),
     "lyrics" VARCHAR,
     "title" VARCHAR (250),
-    "artist" VARCHAR (250),
+    "artist_id" integer REFERENCES "artist",
     "streaming_link" VARCHAR
 );
+
+CREATE TABLE "artist" (
+  "id" SERIAL PRIMARY KEY,
+  "name" VARCHAR (250),
+  "genre_id" integer REFERENCES "genres",
+  "user_id" integer REFERENCES "user",
+  "vocal_type" VARCHAR (150),
+  "website" VARCHAR DEFAULT NULL,
+  "bio" VARCHAR,
+  "photo" VARCHAR,
+  "streaming_link" VARCHAR
+)
 
 INSERT INTO "user"
 ("email", "password", "class")
 VALUES
-("hello@songbee.com", "$2a$10$beIgxp.l45eRiz5HYgUxBuTN6anPZwKY3TRE/nE2Ltg/5Fo1Jylw6", 3)
+("hello@songbee.com", "$2a$10$beIgxp.l45eRiz5HYgUxBuTN6anPZwKY3TRE/nE2Ltg/5Fo1Jylw6", 3),
+("walkerneudorff@gmail.com", "$2a$10$wRAZ7JrKo3WGbQaAvdzCwuiB3YK4RqumN1vx7F.6OCAybFMKpiJii", 2)
+
 --Password for this account is: password --
 
 INSERT INTO "genres"
@@ -66,4 +80,9 @@ VALUES
 
 INSERT INTO "song_details"
 VALUES
-(1, 3, 'https://res.cloudinary.com/dcram3k0q1/video/upload/v1705711050/syquoqbokasssbuem1sf.wav', 'I cant deface time / I cant deface time / I cant deface time', 'Jerry GarPsyOp', 'John DaRon', null)
+(1, 3, 'https://res.cloudinary.com/dcram3k0q1/video/upload/v1705711050/syquoqbokasssbuem1sf.wav', 'I cant deface time / I cant deface time / I cant deface time', 'Jerry GarPsyOp', 'John DaRon', null);
+
+INSERT INTO "artist"
+("name", "genre_id", "user_id", "vocal_type")
+VALUES
+('Walker Neudorff', 3, 2, 'male');
