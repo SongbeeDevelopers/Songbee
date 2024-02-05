@@ -12,6 +12,7 @@ const userRouter = require('./routes/user.router');
 const genreRouter = require('./routes/genre.router');
 const detailsRouter = require('./routes/details.router');
 const requestRouter = require('./routes/request.router');
+const searchRouter = require('./routes/search.router')
 
 // Express Middleware
 app.use(express.json());
@@ -30,6 +31,7 @@ app.use('/api/user', userRouter);
 app.use('/api/genres', genreRouter);
 app.use('/api/details', detailsRouter);
 app.use('/api/request', requestRouter);
+app.use('/api/search', searchRouter);
 
 // Listen Server & Port
 app.listen(PORT, () => {
