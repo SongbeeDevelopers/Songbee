@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import './UserCreditPage.css';
 
 
 
@@ -9,10 +10,10 @@ function UserCreditPage() {
 
 
  return (
-    <>
+    <div className='creditBody'>
      <h2>Hello, {user.username}</h2>
      <p>Your current credit balance is: {user.credit === null ? "$0" : user.credit }</p>
-    </>
+    </div>
  )
 }
 

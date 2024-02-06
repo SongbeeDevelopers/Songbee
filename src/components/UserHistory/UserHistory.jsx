@@ -24,7 +24,7 @@ const handleSongRequest = (id) => {
 
 // will need to get the user's song request
     return (
-        <>
+        <div className='historyBody'>
       
       {/* //Map over the request to display */}
       {/* // The handle click will bring the user to the details page where they can listen to their song
@@ -44,7 +44,7 @@ const handleSongRequest = (id) => {
 
       </div>
      
-      </> 
+      </div> 
     )
 }
 
