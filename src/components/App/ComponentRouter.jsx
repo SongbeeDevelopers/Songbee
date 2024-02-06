@@ -17,6 +17,8 @@ import FAQ from '../FAQ/FAQ';
 import PrivacyPolicy from '../PrivacyPolicy/PrivacyPolicy';
 import QualityGuarantee from '../QualityGuarantee/QualityGuarantee';
 import TermsAndConditions from '../TermsAndConditions/TermsAndConditions';
+import JoinArtist from '../JoinArtist/JoinArtist';
+import NotFound from '../NotFound';
 
 
 function ComponentRouter() {
@@ -55,6 +57,10 @@ function ComponentRouter() {
 
             <Route exact path="/order">
               <OrderPage routeVariants={routeVariants} />
+            </Route>
+
+            <Route exact path="/join-artist">
+              <JoinArtist routeVariants={routeVariants} />
             </Route>
 
             <Route exact path="/checkout">
@@ -114,7 +120,7 @@ function ComponentRouter() {
 
             {/* If none of the other routes matched, we will show a 404. */}
             <Route>
-              <h1>404</h1>
+              <NotFound />
             </Route>
           </Switch>
     )

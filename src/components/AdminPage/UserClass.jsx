@@ -6,12 +6,11 @@ import Select from '@mui/material/Select';
 export default function UserClass({user}){
     const dispatch = useDispatch()
     const [userClass, setUserClass] = useState(user.class)
-    console.log("user:", user)
-    const updateUserClass = (id, value) => {
+    const updateUserClass = (value) => {
         dispatch({
             type: "UPDATE_USER_CLASS",
             payload: {
-                id: id,
+                id: user.id,
                 data: value}
         })
       };
@@ -20,7 +19,7 @@ export default function UserClass({user}){
             <Select
             value={userClass}
             label="User Class"
-            onChange={(event) => updateUserClass(user.id, event.target.value)}
+            onChange={(event) => updateUserClass(event.target.value)}
             >
             <MenuItem value={1}>User</MenuItem>
             <MenuItem value={2}>Artist</MenuItem>

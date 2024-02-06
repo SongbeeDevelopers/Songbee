@@ -3,13 +3,12 @@ body,
 #react-root {
   height: 100%;
 }
-*{
- box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
 
-
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Poppins", sans-serif;
   margin: 0px;
   background-color: #fff4df;
 }
@@ -19,12 +18,13 @@ img {
   max-width: 100%;
 }
 
-
 /* --------------------------------------------------------------------------------
 Container
 -------------------------------------------------------------------------------- */
 
-.container {
+.container,
+.privacy-policy,
+.guaranteePage {
   padding: 20px;
 }
 
@@ -97,6 +97,6 @@ Alert
   font-size: 0.8rem;
 }
 
-a{
+a {
   text-decoration: none;
 }
