@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS "user", "genres", "song_request", "artist", "song_details", "artist_genres";
+
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
     "email" VARCHAR (150) UNIQUE NOT NULL,
@@ -81,9 +83,9 @@ VALUES
 (1, 'Rap/Hip-Hop'), (2, 'Folk'), (3, 'Rock'), (4, 'Christian'), (5, 'R&B'), (6, 'Country'), (7, 'Singer Songwriter'), (8, 'Acoustic Pop'), (9, 'Spanish');
 
 INSERT INTO "artist"
-("name", "user_id", "vocal_type")
+("artist_name", "first_name", "last_name", "user_id", "vocal_type")
 VALUES
-('Walker Neudorff', 2, 'male');
+('The Yellow Dart', 'Walker', 'Neudorff', 2, 'male');
 
 INSERT INTO "song_request"
 ("user_id", "genre_id", "requester", "recipient", "pronunciation", "recipient_relationship", "occasion", "vocal_type", "vibe", "tempo", "inspiration", "story1", "story2", "important_what", "important_why", "additional_info", "created_at", "delivery_days", "streaming", "extra_verse", "is_complete")
