@@ -4,62 +4,99 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Modal from '@mui/material/Modal';
 import { Button } from '@mui/material';
+import { useSelector } from 'react-redux';
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import UserHistory from '../UserHistory/UserHistory';
 import UserCreditPage from '../UserCreditPage/UserCreditPage';
+import './UserPage.css';
 
 
-// This is for the MUI Tabs
-function CustomTabPanel(props) {
-  const { children, value, index, ...other } = props;
 
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
 
-CustomTabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-  };
-}
-
-// This will handle the inputs for first name, last name and email using state
+// Inside here will have the user's email and password and have the option to edit those details
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
-  const [userName, setUserName] = useState('');
+  const user = useSelector((store) => store.user);
+  const [email, setEmail] = useState(user.email);
   const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
+  const history = useHistory();
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
+  
 
+  // This will be for the form inputs for editing
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  }
 
+  // Handle function for the cancel button
+  const handleCancel = (event) => {
+    event.preventDefault();
+    history.push('/user');
+  }
+
+  // Handle function for the edit button
+  const handleEdit = (event) => {
+    event.preventDefault();
+  }
+
+  // Handle function for the delete button
+  const handleDelete = (event) => {
+    event.preventDefault();
+    history.push('/user')
+  }
+  
+  // This is clicking on the tabs and getting the value for each corresponding tabs
   const handleChange = (event, newValue) => {
     event.preventDefault();
     setValue(newValue);
   };
 
+  const CustomTabPanel = (props) => {
+    const { children, value, index, ...other } = props;
+  
+    return (
+      <div
+        role="tabpanel"
+        hidden={value !== index}
+        id={`simple-tabpanel-${index}`}
+        aria-labelledby={`simple-tab-${index}`}
+        {...other}
+      >
+        {value === index && (
+          <Box sx={{ p: 3 }}>
+            <Typography>{children}</Typography>
+          </Box>
+        )}
+      </div>
+    );
+  }
+  CustomTabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.number.isRequired,
+    value: PropTypes.number.isRequired,
+  };
+  
+  const a11yProps = (index) => {
+    return {
+      id: `simple-tab-${index}`,
+      'aria-controls': `simple-tabpanel-${index}`,
+    };
+  }// End of tab structure
+  
+
+  
+
   return (
     <Box sx={{ width: '100%' }}>
+      <Card variant="outlined">
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Profile" {...a11yProps(0)} />
@@ -68,49 +105,72 @@ export default function BasicTabs() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <h1>Personal info</h1>
-        <div>
-            <form onSubmit={handleChange}>
-                <label htmlFor="username">
-                    Username
-                    <input
-                    type="text"
-                    name="username"
-                    value={userName}
-                    required
-                    onChange={(event) => setUserName(event.target.value)}
-                    />
-                </label>
-                <label htmlFor="password">
-                    Password
-                    <input
-                    type="text"
-                    name="password"
-                    value={password}
-                    required
-                    onChange={(event) => setPassword(event.target.value)}
-                    />
-                </label>
-                <label htmlFor="email">
-                    Email
-                    <input
-                    type="text"
-                    name="email"
-                    value={email}
-                    required
-                    onChange={(event) => setEmail(event.target.value)}
-                    />
-                </label>
-                <Button variant='contained' size='small' color='success'>Submit</Button>
-            </form>
+        <h1 className='profileHeader'>Personal info</h1> 
+        <h3>{user.email}</h3>
+        
+        <div>    
+            <CardContent>
+              <Typography sx={{ fontSize: 14, mt: 2 }} color="text.secondary" gutterBottom>
+              <Button onClick={handleOpen}>Edit Info</Button>
+              <Modal className='boxModal'
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description">
+                <Box sx={{position: 'absolute',
+                            top: '50%',
+                            left: '50%',
+                            transform: 'translate(-50%, -50%)',
+                            width: 400,
+                            bgcolor: 'background.paper',
+                            border: '2px solid #000',
+                            boxShadow: 24,
+                            p: 4,}}>
+                    <h3>Would you like to make an edit ?</h3>
+                <form className='container' onSubmit={handleSubmit}> 
+                  <div className='inputs'>
+                  <input onChange={(event) => setEmail(event.target.value)}
+                  name="email"
+                  placeholder="Email"
+                  value={email}
+                  />
+                  <br />
+                  <input onChange={(event) => setPassword(event.target.value)}
+                  name="password"
+                  placeholder="Password"
+                  type="password"
+                  value={password}
+                  />
+                  </div> 
+                </form>
+                <div className='modalBtns'>
+                <Button type="submit" onClick={handleEdit} variant="contained" color="success" size="small">Edit</Button>
+                <Button type="submit" onClick={handleCancel} variant="contained" color="secondary" size="small">Cancel</Button>
+                <Button  type="submit" onClick={handleDelete} variant="contained" color="error" size="small">Delete</Button>
+                </div>
+                </Box>
+
+              </Modal>
+              </Typography> 
+            </CardContent>   
+          
         </div>
       </CustomTabPanel>
+      
       <CustomTabPanel value={value} index={1}>
         <UserHistory />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         <UserCreditPage />
       </CustomTabPanel>
+      </Card>
     </Box>
+   
   );
+
+  
+  
+    
+    
+  
 }

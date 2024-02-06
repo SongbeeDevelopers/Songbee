@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -12,8 +13,10 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import './UserDetails.css';
 
-// This is will display the tabs for Your song and Your artist
+// This is will display the tabs for "Your Song" and "Your Artist"
 // In the "Your Song" tabs will display the lyrics and basic details
+// Inside the "Your Artist" tabs, doesn't display any info right now, but
+// in the future it will have the selected artist info
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -26,7 +29,7 @@ function CustomTabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box sx={{ p: 5 }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -45,10 +48,13 @@ function a11yProps(index) {
     id: `simple-tab-${index}`,
     'aria-controls': `simple-tabpanel-${index}`,
   };
-}
+}; // End of the tab structure
+
+
 // This function will display the user's song request with a player so they can review 
 // their song
-function UserDetails(props) {
+function UserDetails() {
+    const history = useHistory();
     const dispatch = useDispatch();
     const ID = useParams();
     // call to the store to the currentRequest reducer, request = useSelector store.currentRequest
@@ -73,7 +79,7 @@ function UserDetails(props) {
     // Using MUI card that has tabs for the lyrics, basic details and artist
     return (
        <>
-        <Box sx={{ minWidth: 400, minHeight: 700, maxHeight: 275}}>
+        <Box sx={{ minWidth: 400, minHeight: 700, maxHeight: 675}}>
           <Card variant="outlined">
 
           <CardContent className='cardContainer'>
@@ -91,17 +97,16 @@ function UserDetails(props) {
             <p>Tempo: {request.tempo}</p>
         </CustomTabPanel>
 
-        {/* <h2 className='artistHeader'>Song Info:</h2> */}
         <audio controls src={request.url} ></audio>
           <Typography sx={{ fontSize: 5 }} variant="h2" gutterBottom>
           <p className='songTitle'>{request.title}</p> 
           </Typography>
           <Typography variant="h5" component="div"> 
             <p className='artistTitle'> By {request.artist}</p>
+            <button className="back-btn" onClick={() => history.goBack()}>Go Back 🐝</button> 
           </Typography>
-          <h2 className='addOnHeader'>Add a custom keepsake</h2>
         </CardContent>
-        <CardActions>    
+        <CardActions>   
         </CardActions>
         </Card>     
       </Box>

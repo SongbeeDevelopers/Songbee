@@ -1,10 +1,15 @@
 import React from "react";
 
-function PrivacyPolicy() {
+import { motion } from "framer-motion";
+
+function PrivacyPolicy({ routeVariants }) {
   return (
-    <div className="privacy-policy">
+    <motion.div className="privacy-policy"    variants={routeVariants}
+      initial="initial"
+      animate="final">
       <h1 className="headerP">Privacy Policy</h1>
       <p className="policyP">
+
         Protecting your private information is our priority. This Statement of
         Privacy applies to www.songbee.com, and Songbee, LLC and governsdata
         collection and usage. For the purposes of this Privacy Policy, unless
@@ -175,7 +180,8 @@ function PrivacyPolicy() {
         <br /> Virginia ‍ <br /> <br /> Email Address: hello@songbee.com <br />
         Effective as of Aug 01, 2023{" "}
       </p>
-    </div>
+    </motion.div>
+
   );
 }
 

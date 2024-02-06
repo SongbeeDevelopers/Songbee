@@ -1,8 +1,12 @@
 import React from "react";
 
-function QualityGuarantee() {
+import { motion } from 'framer-motion';
+
+function QualityGuarantee({ routeVariants }) {
   return (
-    <div className="guaranteePage">
+    <motion.div className="guaranteePage" variants={routeVariants}
+      initial="initial"
+      animate="final">
       <h1 className="headerP">Quality Guarantee</h1>
       <h2>The Songbee Guarantee</h2>
       <p>
@@ -41,7 +45,8 @@ function QualityGuarantee() {
         Please contact our team at{" "}
         <a className="mail-guarantee" href="mailto:hello@songbee.com">hello@songbee.com</a> !
       </p>
-    </div>
+    </motion.div>
+
   );
 }
 

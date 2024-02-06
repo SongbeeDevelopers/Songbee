@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+
+import { motion } from "framer-motion";
+
 import "./LandingPage.css";
+
 import HeroSection from "./Hero";
-import RegisterForm from "../RegisterForm/RegisterForm";
 import HowSongBeeWorks from "./HowSongBeeWorks";
 import TestimonialSection from "./Testimonials";
 import SampleSongs from "./SampleSongs";
 import Guarantee from "./Guarantee";
 import FaqSection from "./Faq";
 
-function LandingPage() {
+
+function LandingPage({ routeVariants }) {
+
   const [heading, setHeading] = useState("Welcome");
   const history = useHistory();
 
@@ -17,15 +22,22 @@ function LandingPage() {
     history.push("/login");
   };
 
+
   return (
-    <div className="container">
+    <motion.div
+      className="container"
+      variants={routeVariants}
+      initial="initial"
+      animate="final"
+    >
       <HeroSection />
       <HowSongBeeWorks />
       <TestimonialSection />
       <SampleSongs />
       <Guarantee/>
-      <FaqSection/>
-    </div>
+    <FaqSection/>
+    </motion.div>
+
   );
 }
 

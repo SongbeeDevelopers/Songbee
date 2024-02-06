@@ -21,16 +21,66 @@ router.post('/register', (req, res, next) => {
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
 
-  const queryText = `INSERT INTO "user" (username, password)
+  const queryText = `INSERT INTO "user" (email, password)
     VALUES ($1, $2) RETURNING id`;
   pool
     .query(queryText, [username, password])
-    .then(() => res.sendStatus(201))
+    .then(() => {
+      res.sendStatus(201);
+    })
     .catch((err) => {
       console.log('User registration failed: ', err);
       res.sendStatus(500);
     });
 });
+
+router.put('/update', (req, res, next) => {
+  let email;
+  if (req.body.email !== ''){
+    email = req.body.email;
+  }
+  else {
+    email = req.user.email
+  }
+  let password;
+  if (req.body.password !== ''){
+    password = encryptLib.encryptPassword(req.body.password)
+  }
+  else {
+    password = req.user.password;
+  }
+
+  const queryText = `
+  UPDATE "user" 
+  SET
+    email = $1, 
+    password =$2
+  WHERE id=$3`;
+  pool
+    .query(queryText, [email, password, req.user.id])
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.log('User registration failed: ', err);
+      res.sendStatus(500);
+    });
+});
+
+router.delete('/delete', (req, res) => {
+  const query = `
+  DELETE FROM "user"
+  WHERE id=$1;
+  `
+  pool.query(query, [req.body.id])
+  .then(() => {
+    res.sendStatus(200);
+  })
+  .catch((err) => {
+    console.log('Delete user failed: ', err);
+    res.sendStatus(500);
+  })
+})
 
 // Handles login form authenticate/login POST
 // userStrategy.authenticate('local') is middleware that we run on this route

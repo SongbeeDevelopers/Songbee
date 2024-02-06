@@ -11,7 +11,7 @@ function UserHistory() {
     const dispatch = useDispatch();
     const history = useHistory();
     const userRequests = useSelector((store) => store.userRequests);
-    const user = useSelector((store) => store.user);
+    // const user = useSelector((store) => store.user);
 
 // Will useEffect and dispatch t call to the store
 useEffect(() => {
@@ -25,7 +25,6 @@ const handleSongRequest = (id) => {
 // will need to get the user's song request
     return (
         <>
-      <h2>Here are your songs {user.username} 🐝</h2>
       
       {/* //Map over the request to display */}
       {/* // The handle click will bring the user to the details page where they can listen to their song
@@ -33,7 +32,8 @@ const handleSongRequest = (id) => {
       <div>
         {userRequests.map((request, i) => (
           <>
-           <p key={i}> Your Song {new Date(request.created_at).toLocaleString('en-us')}</p> 
+           <h2 className='recipientTitle'>Here is your song for {request.recipient} 🐝</h2>
+           <p key={i}> Ordered On {new Date(request.created_at).toLocaleString('en-us')}</p> 
 
            <button className='detailsBtn' onClick={() => handleSongRequest(request.id)}>Details</button>
            </>
