@@ -39,7 +39,10 @@ function* createSongRequest (action){
             url: "/api/request/create",
             data: action.payload.data
         })
-        yield action.payload.history.push('/checkout')
+        const stripeResponse = yield axios.post('/api/stripe/create-checkout-session')
+        // console.log("stripeResponse:", stripeResponse)
+        yield window.location.href = stripeResponse.data
+        // yield action.payload.history.push('/checkout')
         yield put ({ type: 'ADD_ORDER_ID', payload: response.data.id })
     } catch (error) {
         console.error('SAGA createSongRequest() failed:', error)
