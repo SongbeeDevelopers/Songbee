@@ -6,6 +6,7 @@ import genreSaga from './genre.saga';
 import requestSaga from './request.saga';
 import detailsSaga from './details.saga';
 import searchSaga from './search.saga';
+import artistSaga from './artist.saga';
 import mailchimpSaga from './mailchimp.saga';
 
 // rootSaga is the primary saga.
@@ -25,5 +26,6 @@ export default function* rootSaga() {
     detailsSaga(),
     searchSaga(),
     mailchimpSaga(),
+    artistSaga(),
   ]);
 }

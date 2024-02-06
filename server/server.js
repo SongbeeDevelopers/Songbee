@@ -12,8 +12,9 @@ const userRouter = require('./routes/user.router');
 const genreRouter = require('./routes/genre.router');
 const detailsRouter = require('./routes/details.router');
 const requestRouter = require('./routes/request.router');
-const searchRouter = require('./routes/search.router')
-const artistRouter = require('./routes/artist.router')
+const searchRouter = require('./routes/search.router');
+const artistRouter = require('./routes/artist.router');
+const stripeRouter = require('./routes/stripe.router');
 const mailchimpRouter = require('./routes/mailchimp.router')
 
 // Express Middleware
@@ -35,6 +36,7 @@ app.use('/api/details', detailsRouter);
 app.use('/api/request', requestRouter);
 app.use('/api/search', searchRouter);
 app.use('/api/artist', artistRouter);
+app.use('/api/stripe', stripeRouter);
 app.use('/api/mailchimp', mailchimpRouter)
 
 // Listen Server & Port
