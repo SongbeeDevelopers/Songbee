@@ -11,8 +11,22 @@ function* fetchPendingArtist () {
     }
 }
 
-function* artistSaga() {
-    yield takeLatest('FETCH_PENDING_ARTISTS', fetchPendingArtist);
+function* createNewArtist(action) {
+  try {
+    const response = yield axios({
+      method: "POST",
+      url: "/api/artist",
+      data: action.payload,
+    });
+    console.log(response.data);
+  } catch (error) {
+    console.error("SAGA createSongRequest() failed:", error);
+  }
 }
 
-export default artistSaga
+function* artistSaga() {
+  yield takeLatest("CREATE_ARTIST", createNewArtist);
+  yield takeLatest('FETCH_PENDING_ARTISTS', fetchPendingArtist);
+}
+
+export default artistSaga;
