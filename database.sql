@@ -40,13 +40,16 @@ CREATE TABLE "song_request" (
 
 CREATE TABLE "artist" (
   "id" SERIAL PRIMARY KEY,
-  "name" VARCHAR (250),
+  "artist_name" VARCHAR (250),
+  "first_name" VARCHAR (250),
+  "last_name" VARCHAR (250),
   "user_id" integer REFERENCES "user",
   "vocal_type" VARCHAR (150),
-  "website" VARCHAR DEFAULT NULL,
+  "website" VARCHAR,
   "bio" VARCHAR,
   "photo" VARCHAR,
-  "streaming_link" VARCHAR
+  "streaming_link" VARCHAR,
+  "approved" BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE "song_details" (
