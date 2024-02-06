@@ -39,7 +39,11 @@ function* createSongRequest (action){
             url: "/api/request/create",
             data: action.payload.data
         })
-        const stripeResponse = yield axios.post('/api/stripe/create-checkout-session')
+        const stripeResponse = yield axios({
+            method: "POST",
+            url: '/api/stripe',
+            data: {id: response.data.id}
+        })
         // console.log("stripeResponse:", stripeResponse)
         yield window.location.href = stripeResponse.data
         // yield action.payload.history.push('/checkout')

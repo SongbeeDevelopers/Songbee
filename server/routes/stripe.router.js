@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 /**
  * POST route template
  */
-router.post('/create-checkout-session', async (req, res) => {
+router.post('/', async (req, res) => {
       const session = await stripe.checkout.sessions.create({
         line_items: [
           {
@@ -23,8 +23,8 @@ router.post('/create-checkout-session', async (req, res) => {
           },
         ],
         mode: 'payment',
-        success_url: `http://localhost:5173/#checkout`,
-        cancel_url: `http://localhost:5173/#checkout`,
+        success_url: `http://localhost:5173/#requestform/${req.body.id}`,
+        cancel_url: `http://localhost:5173/`,
         automatic_tax: {enabled: true},
       });
       console.log("sesion:", session)
