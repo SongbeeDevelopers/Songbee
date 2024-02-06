@@ -9,9 +9,37 @@ const {
 /**
  * GET route template
  */
-router.get("/", (req, res) => {
-  // GET route code here
+router.get("/:artistid", (req, res) => {
+  const query = `
+  SELECT 
+  "artist"."id" AS "artistId",
+  "artist"."artist_name" AS "artistName",
+  "artist"."first_name" AS "firstName",
+  "artist"."last_name" AS "lastName",
+  "artist"."vocal_type" AS "vocalType",
+  "artist"."website" AS "website",
+  "artist"."bio" AS "bio",
+  "artist"."photo" AS "photo",
+  "artist"."streaming_link" AS "streamingLink",
+  "artist"."approved" AS "approved",
+"genres"."name" AS "genre"
+  FROM "artist"
+  LEFT JOIN "artist_genres"
+  ON "artist"."id"="artist_genres"."artist_id"
+  LEFT JOIN "genres"
+  ON "artist_genres"."genre_id" ="genres"."id"
+  WHERE "artist"."id"=$1;
+  `;
+  pool.query(query, [req.params.artistid])
+    .then((result) => {
+        res.send(result.rows);
+    })
+    .catch((error) => {
+        console.error("Error in request router GET current request:", error)
+    })
 });
+
+
 
 /**
  * POST route template
