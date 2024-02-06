@@ -14,7 +14,6 @@ export default function AdminDetailsDialog ({handleClose}) {
     const history = useHistory();
     const dispatch = useDispatch();
     const song = useSelector(store => store.currentRequest);
-    console.log("Here's the song:", song)
     
     const cancelSubmission = () => {
       handleClose(1)

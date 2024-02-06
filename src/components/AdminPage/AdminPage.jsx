@@ -18,6 +18,13 @@ function AdminPage({ routeVariants }) {
   useEffect(() => {
     dispatch({ type: "FETCH_ALL_REQUESTS" });
     dispatch({ type: "FETCH_ALL_USERS" });
+    dispatch({
+      type: "FETCH_RESULTS",
+      payload: {
+        type: 'pending',
+        query: ''
+      }
+    });
 
   }, [])
   const [value, setValue] = React.useState(0);
