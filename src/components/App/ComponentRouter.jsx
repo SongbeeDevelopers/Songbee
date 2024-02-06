@@ -119,7 +119,7 @@ function ComponentRouter() {
 
             {/* If none of the other routes matched, we will show a 404. */}
             <Route>
-              <h1>404</h1>
+              <NotFound />
             </Route>
           </Switch>
     )

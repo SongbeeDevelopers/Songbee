@@ -13,6 +13,8 @@ import Guarantee from "./Guarantee";
 import FaqSection from "./Faq";
 
 
+
+
 function LandingPage({ routeVariants }) {
 
   const [heading, setHeading] = useState("Welcome");
@@ -30,11 +32,11 @@ function LandingPage({ routeVariants }) {
       initial="initial"
       animate="final"
     >
-      <HeroSection />
-      <HowSongBeeWorks />
-      <TestimonialSection />
-      <SampleSongs />
-      <Guarantee/>
+    <HeroSection />
+    <HowSongBeeWorks />
+    <TestimonialSection />
+    <SampleSongs />
+    <Guarantee/>
     <FaqSection/>
     </motion.div>
 
