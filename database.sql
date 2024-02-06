@@ -1,3 +1,6 @@
+DROP TABLE "user", "song_request", "song_details", "genres";
+
+
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
     "email" VARCHAR (150) UNIQUE NOT NULL,

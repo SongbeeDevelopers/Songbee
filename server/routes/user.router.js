@@ -53,8 +53,8 @@ router.put('/update', (req, res, next) => {
   const queryText = `
   UPDATE "user" 
   SET
-    email = $1, 
-    password =$2
+    email=$1, 
+    password=$2
   WHERE id=$3`;
   pool
     .query(queryText, [email, password, req.user.id])
