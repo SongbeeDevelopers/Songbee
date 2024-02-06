@@ -10,6 +10,7 @@ import newOrder from './newOrder.reducer';
 import requestData from './requestData.reducer';
 import allUsers from './allUsers.reducer';
 import filterResults from './filterResults.reducer';
+import pendingArtists from './pendingArtists.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -29,6 +30,8 @@ const rootReducer = combineReducers({
   requestData,
   allUsers,
   filterResults,
+  pendingArtists,
+  
 
 });
 
