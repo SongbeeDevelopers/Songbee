@@ -32,13 +32,14 @@ function RegisterForm() {
   // submission logic
   const registerUser = (event) => {
     event.preventDefault();
-
+    // adds email to mailchimp list
     if (newsletterOptIn === true) {
       dispatch({
         type: 'ADD_EMAIL',
         payload: { email_address: username}
       })
     }
+    // registers user to database
     dispatch({
       type: 'REGISTER',
       payload: {
