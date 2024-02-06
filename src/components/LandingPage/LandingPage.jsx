@@ -7,6 +7,7 @@ import HowSongBeeWorks from "./HowSongBeeWorks";
 import TestimonialSection from "./Testimonials";
 import SampleSongs from "./SampleSongs";
 import Guarantee from "./Guarantee";
+import FaqSection from "./Faq";
 
 function LandingPage() {
   const [heading, setHeading] = useState("Welcome");
@@ -23,6 +24,7 @@ function LandingPage() {
       <TestimonialSection />
       <SampleSongs />
       <Guarantee/>
+      <FaqSection/>
     </div>
   );
 }
