@@ -1,3 +1,4 @@
+
 /* --------------------------------------------------------------------------------
 Grid
 -------------------------------------------------------------------------------- */
@@ -385,8 +386,7 @@ svg {
   top: -35px;
 }
 
-
-.admin-button{
+.admin-button {
   margin: 0 auto;
   z-index: 100;
   width: 6rem;
@@ -509,4 +509,199 @@ svg {
 .bee-guarantee p {
   color: #474546;
   font-weight: 500;
+}
+
+.collapse-area {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+.panel {
+  margin-top: 0px !important;
+  border-radius: 0px !important;
+  box-shadow: 0 0px 0px 0 transparent !important;
+  -moz-box-shadow: 0 0px 0px 0 transparent !important;
+  -webkit-box-shadow: 0 0px 0px 0 transparent !important;
+  -o-box-shadow: 0 0px 0px 0 transparent !important;
+  border-bottom: 1px solid black;
+}
+.panel .panel-heading {
+  border-radius: 0px !important;
+  padding: 0px !important;
+  border-bottom: 0px solid #dddee2;
+}
+.panel .panel-heading .panel-title p {
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  padding: 23px 15px;
+  font-weight: 600;
+  color: #60626d;
+  background-color: #ffffff;
+  line-height: 29px;
+  position: relative;
+}
+.panel .panel-heading .panel-title p:hover,
+.panel .panel-heading .panel-title p:active {
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+}
+.panel .panel-heading .panel-title p span {
+  float: left;
+  margin-top: 15px;
+  margin-right: 30px;
+  transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+}
+.panel .panel-heading .panel-title p .bar,
+.panel .panel-heading .panel-title p .bar:after {
+  border-width: 1px;
+  border-style: solid;
+  width: 21px;
+  border-radius: 10px;
+  transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+}
+.panel .panel-heading .panel-title p .bar:after {
+  content: "";
+  height: 0;
+  position: absolute;
+  top: 38px;
+  left: 15px;
+}
+.panel .panel-heading .panel-title p.collapsed {
+  border-bottom: 1px solid #eeeef3;
+  position: relative;
+  transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+}
+.panel .panel-heading .panel-title p.collapsed .bar {
+}
+.panel .panel-heading .panel-title p.collapsed .bar:after {
+  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+}
+.panel-collapse {
+}
+.panel-collapse .panel-body {
+  border: 0px solid !important;
+  line-height: 26px;
+  font-weight: 300;
+  margin-left: 50px;
+  padding-bottom: 20px;
+  padding-top: 0px;
+  color: #60626d;
+}
+
+.question {
+  flex-direction: row-reverse;
+  display: flex;
+  position: relative;
+}
+.icon {
+  position: absolute;
+  left: 95%;
+  width: max-content;
+}
+
+.openFaq {
+  height: 200px;
+}
+
+.closeFaq {
+  height: 0;
+}
+
+.in {
+  overflow: hidden;
+  transition: all 0.4s;
+}
+
+.faq {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.faq-title {
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 130%;
+  text-align: center;
+}
+
+.faq-below-title {
+  font-size: 0.8rem;
+  line-height: 130%;
+  text-align: center;
+  margin-top: -20px;
+}
+
+.suii {
+  color: #feaf17;
+}
+.headerP {
+  color: var(--black-4);
+  text-align: center;
+  letter-spacing: -0.01em;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-family: Oswald, sans-serif;
+  font-size: 4.6875rem;
+  font-weight: 300;
+  line-height: 4.6875rem;
+  position: relative;
+  font: 75px;
+}
+
+li{
+  color: gray;
+  margin-bottom: 8px;
+}
+
+.privacy-policy h2, .guaranteePage h2{
+  color: #5b6b7b;
+  font-size: 15px;
+  margin-bottom: -12px;
+}
+
+.privacy-policy p, .guaranteePage p{
+  color: grey;
+  line-height: 1.5rem;
+  margin-bottom: 10px;
+  letter-spacing: .015em;
+    margin-bottom: 20px;
+    font-size: .9375rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+}
+
+.privacy-policy li:first-child {
+margin-top: -16px;
+}
+
+.mail-guarantee{
+  color: #feaf17;
+}
+
+.guaranteePage{
+  padding: 20px 60px !important;
+  
 }
