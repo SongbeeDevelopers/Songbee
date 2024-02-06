@@ -16,4 +16,18 @@ router.post('/', (req, res) => {
   // POST route code here
 });
 
+router.get('/pending', (req, res) => {
+    const query = `
+    SELECT * FROM "artist"
+    WHERE "approved"=FALSE;
+    `
+    pool.query(query)
+    .then((response) => {
+        res.send(response.rows)
+    })
+    .catch((error) => {
+        console.error('Error in artist router GET all pending:', error)
+    })
+  });
+
 module.exports = router;

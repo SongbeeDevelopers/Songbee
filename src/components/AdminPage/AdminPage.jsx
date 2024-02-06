@@ -11,6 +11,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import AdminUserTable from './AdminUserTable';
+import AdminArtistTable from './AdminArtistTable';
 import FilterBar from '../FilterBar/FilterBar';
 
 function AdminPage({ routeVariants }) {
@@ -18,6 +19,7 @@ function AdminPage({ routeVariants }) {
   useEffect(() => {
     dispatch({ type: "FETCH_ALL_REQUESTS" });
     dispatch({ type: "FETCH_ALL_USERS" });
+    dispatch({ type: "FETCH_PENDING_ARTISTS"});
     dispatch({
       type: "FETCH_RESULTS",
       payload: {
@@ -31,6 +33,7 @@ function AdminPage({ routeVariants }) {
   const pendingRequests = useSelector(store => store.pendingRequests)
   const completedRequests = useSelector(store => store.completedRequests)
   const users = useSelector(store => store.allUsers)
+  const artists = useSelector(store => store.pendingArtists);
 
   const handleChange = (event, newValue) => {
     event.preventDefault();
@@ -49,6 +52,11 @@ function AdminPage({ routeVariants }) {
       dispatch({
         type: "SET_FILTER_RESULTS",
         payload: users
+      })
+    } else if (newValue === 3){
+      dispatch({
+        type: "SET_FILTER_RESULTS",
+        payload: artists
       })
     }
   };
@@ -100,6 +108,7 @@ function AdminPage({ routeVariants }) {
           <Tab label="Pending Requests" {...a11yProps(0)} />
           <Tab label="Completed Requests" {...a11yProps(1)} />
           <Tab label="Users" {...a11yProps(2)} />
+          <Tab label="Pending Artists" {...a11yProps(3)} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
@@ -113,6 +122,10 @@ function AdminPage({ routeVariants }) {
       <CustomTabPanel value={value} index={2}>
       <FilterBar type='user'/>
       <AdminUserTable data={results}/>
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={3}>
+      <FilterBar type='artist'/>
+      <AdminArtistTable data={results}/>
       </CustomTabPanel>
     </Box>
     </motion.div>
