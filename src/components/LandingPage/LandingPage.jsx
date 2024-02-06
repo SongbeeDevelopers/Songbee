@@ -10,6 +10,7 @@ import HowSongBeeWorks from "./HowSongBeeWorks";
 import TestimonialSection from "./Testimonials";
 import SampleSongs from "./SampleSongs";
 import Guarantee from "./Guarantee";
+import FaqSection from "./Faq";
 
 
 function LandingPage({ routeVariants }) {
@@ -34,7 +35,9 @@ function LandingPage({ routeVariants }) {
       <TestimonialSection />
       <SampleSongs />
       <Guarantee/>
+    <FaqSection/>
     </motion.div>
+
   );
 }
 
