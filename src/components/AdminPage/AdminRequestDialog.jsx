@@ -21,7 +21,6 @@ export default function AdminRequestDialog ({handleClose}) {
     const [streamingLink, setStreamingLink] = useState(song.streaming_link);
     const [songFile, setSongFile] = useState('')
     const detailsForm = new FormData ();
-    console.log("Here's the song:", song)
     
     const cancelSubmission = () => {
       handleClose()

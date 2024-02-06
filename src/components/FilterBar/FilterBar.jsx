@@ -10,12 +10,9 @@ function FilterBar({type}){
   const history = useHistory();
   const [searchQuery, setSearchQuery] = useState('');
   const [classQuery, setClassQuery] = useState('');
-  useEffect(() => {
-  }, []);
+
 
   const submitSearch = () => {
-    console.log("type:", type)
-    console.log("searchQuery:", searchQuery)
     dispatch({
       type: "FETCH_RESULTS",
       payload: {

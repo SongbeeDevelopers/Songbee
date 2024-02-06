@@ -128,7 +128,6 @@ function AdminTable({data}) {
           {data.map((row) => {
           const creationTime = new Date (row.created_at);
           const daysLeft = Math.round((now.getTime() - creationTime.getTime()) / msPerDay);
-          console.log("daysLeft:", daysLeft);
           return (
             <StyledTableRow key={row.id}>
               <StyledTableCell component="th" scope="row">
