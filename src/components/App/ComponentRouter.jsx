@@ -17,6 +17,7 @@ import FAQ from '../FAQ/FAQ';
 import PrivacyPolicy from '../PrivacyPolicy/PrivacyPolicy';
 import QualityGuarantee from '../QualityGuarantee/QualityGuarantee';
 import TermsAndConditions from '../TermsAndConditions/TermsAndConditions';
+import NotFound from '../NotFound';
 
 
 function ComponentRouter() {
@@ -114,7 +115,7 @@ function ComponentRouter() {
 
             {/* If none of the other routes matched, we will show a 404. */}
             <Route>
-              <h1>404</h1>
+              <NotFound />
             </Route>
           </Switch>
     )
