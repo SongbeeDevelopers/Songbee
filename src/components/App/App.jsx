@@ -11,13 +11,12 @@ import './App.css';
 
 
 function App() {
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
   }, [dispatch]);
-
 
   return (
     <Router>
@@ -26,7 +25,6 @@ function App() {
           <ComponentRouter />
         </LocationProvider>
         <Footer />
-        
     </Router>
   );
 }

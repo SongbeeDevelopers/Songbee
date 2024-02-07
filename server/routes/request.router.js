@@ -45,7 +45,7 @@ router.get('/user', rejectUnauthenticated, (req, res) => {
   pool.query(requestQuery, [userId])
   .then((result) => {
     res.send(result.rows);
-    console.log("Request router GET all user requests", result.rows)
+    // console.log("Request router GET all user requests", result.rows)
   })
   .catch((error) => {
     console.error("Error in request router GET all user requests", error);

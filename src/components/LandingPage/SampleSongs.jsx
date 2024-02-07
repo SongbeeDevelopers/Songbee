@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React from "react";
 import "./LandingPage.css";
-import MainButton from "./Button";
 import { useRef } from "react";
+
 function SampleSongs() {
+
   const sampleSongs = [
     {
       title1: "Pop",
@@ -23,7 +23,9 @@ function SampleSongs() {
       audio2: "/Berch.mp3",
     },
   ];
+
   const galleryRef = useRef(null);
+
   const scrollToNext = () => {
     if (galleryRef.current) {
       galleryRef.current.scrollBy({
@@ -41,11 +43,15 @@ function SampleSongs() {
       });
     }
   };
+
+
   return (
     <div className="sample-songs">
+
       <div>
         <h2>Sample Songs</h2>
       </div>
+
       <div className="arrows">
         <svg
           onClick={() => scrollToPrev()}
@@ -83,9 +89,13 @@ function SampleSongs() {
           <path d="m12 16 4-4-4-4" />
         </svg>
       </div>
+
       <div ref={galleryRef} className="all-audios no-scrollbar">
+
         {sampleSongs.map((song) => (
-          <div className="active-audio">
+
+          <div key={sampleSongs.indexOf(song)} className="active-audio">
+
             <div className="left-audio">
               <h3>{song.title1}</h3>
               <p>{song.name1}</p>
@@ -97,8 +107,10 @@ function SampleSongs() {
               <p>{song.name2}</p>
               <audio controls src={song.audio2}></audio>
             </div>
+
           </div>
         ))}
+
       </div>
     </div>
   );

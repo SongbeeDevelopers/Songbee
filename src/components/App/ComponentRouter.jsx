@@ -13,18 +13,17 @@ import OrderPage from '../OrderPage/OrderPage';
 import CheckoutPage from '../CheckoutPage/CheckoutPage';
 import SongRequestPage from '../SongRequestPage/SongRequestPage';
 import UserDetails from '../UserDetails/UserDetailsPage';
-import FAQ from '../FAQ/FAQ';
+import FaqPage from '../FaqPage/FaqPage';
 import PrivacyPolicy from '../PrivacyPolicy/PrivacyPolicy';
 import QualityGuarantee from '../QualityGuarantee/QualityGuarantee';
 import TermsAndConditions from '../TermsAndConditions/TermsAndConditions';
 import JoinArtist from '../JoinArtist/JoinArtist';
-import NotFound from '../NotFound';
+import NotFound from '../NotFoundPage/NotFoundPage';
 
 
 function ComponentRouter() {
 
     const location = useLocation()
-    console.log(location)
 
     const user = useSelector(store => store.user);
 
@@ -36,7 +35,6 @@ function ComponentRouter() {
             opacity: 1
         }
     }
-
 
     return (
         <Switch location={location} key={location.key}>
@@ -80,7 +78,7 @@ function ComponentRouter() {
             </Route>
 
             <Route exact path="/faq">
-              <FAQ routeVariants={routeVariants} />
+              <FaqPage routeVariants={routeVariants} />
             </Route>
 
             <Route exact path="/guarantee">
