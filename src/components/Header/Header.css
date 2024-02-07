@@ -8,7 +8,10 @@
   padding-left: 1.3rem;
   padding-right: 1.3rem;
   background-color: #fff4df;
+
+
 }
+
 
 /* logo */
 .nav-title {
@@ -60,3 +63,26 @@
 .navLink:hover {
   background-color: #008183;
 } */
+
+.nav-bar{
+  height: 100%;
+  width: 1.5px;
+  background-color: black;
+  min-width: 1.5px;
+}
+
+.nav-right{
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 15px;
+position: absolute ;
+right: 15px;
+}
+
+.nav-links{
+  font-size: .82rem;
+  font-weight: 700;
+  color: #474546;
+  cursor: pointer;
+}
