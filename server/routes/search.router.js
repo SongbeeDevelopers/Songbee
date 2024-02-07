@@ -9,10 +9,10 @@ const router = express.Router();
  * GET route search
  */
 router.get('/', async (req, res) => {
-  console.log("here's req.query", req.query)
+  // console.log("here's req.query", req.query)
   try {
     if (req.query.type === 'pending'){
-    console.log("inside pending query");
+    // console.log("inside pending query");
     const pendingQuery = `
     SELECT DISTINCT
     "song_request"."id" AS "id",
