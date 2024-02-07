@@ -18,10 +18,10 @@ function AdminRequestDialog ({handleClose}) {
   const song = useSelector(store => store.currentRequest);
 
   const [songFile, setSongFile] = useState('')
-  const [title, setTitle] = useState(song.title);
-  const [artist, setArtist] = useState(song.artist);
-  const [lyrics, setLyrics] = useState(song.lyrics);
-  const [streamingLink, setStreamingLink] = useState(song.streaming_link);
+  const [title, setTitle] = useState(song.title ? song.title : '');
+  const [artist, setArtist] = useState(song.artist ? song.artist : '');
+  const [lyrics, setLyrics] = useState(song.lyrics ? song.lyrics : '');
+  const [streamingLink, setStreamingLink] = useState(song.streaming_link ? song.streaming_link : '');
 
   const detailsForm = new FormData ();
   
@@ -70,7 +70,6 @@ function AdminRequestDialog ({handleClose}) {
 
       <DialogContent>
         <DialogContentText>
-          <p>
           <Typography gutterBottom variant="overline" display="block">
             Upload Song File:
           </Typography>
@@ -81,9 +80,7 @@ function AdminRequestDialog ({handleClose}) {
             name="uploaded_file"
             onChange={(evt) => setSongFile(evt.target.files[0])}
           />
-          </p>
 
-          <p>
           <Typography gutterBottom variant="overline" display="block">
             Song Title:
           </Typography>
@@ -97,9 +94,7 @@ function AdminRequestDialog ({handleClose}) {
             value={title}
             onChange={(event) => setTitle(event.target.value)}
           />
-          </p>
 
-          <p>
           <Typography gutterBottom variant="overline" display="block">
             Artist Name:
           </Typography>
@@ -113,9 +108,7 @@ function AdminRequestDialog ({handleClose}) {
             value={artist}
             onChange={(event) => setArtist(event.target.value)}
           />
-          </p>
 
-          <p>
           <Typography gutterBottom variant="overline" display="block">
             Lyrics:
           </Typography>
@@ -128,9 +121,7 @@ function AdminRequestDialog ({handleClose}) {
             value={lyrics}
             onChange={(event) => setLyrics(event.target.value)}
           />
-          </p>
 
-          <p>
           <Typography gutterBottom variant="overline" display="block">
             Streaming Link:
           </Typography>
@@ -142,7 +133,6 @@ function AdminRequestDialog ({handleClose}) {
             value={streamingLink}
             onChange={(event) => setStreamingLink(event.target.value)}
           />
-          </p>
         </DialogContentText>
       </DialogContent>
 

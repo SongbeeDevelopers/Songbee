@@ -27,7 +27,7 @@ function AdminDetailsDialog ({handleClose}) {
             </Typography>
 
             <Typography variant="h6">
-                {song.recipient? `Recipient: ${song.recipient}` : ""}
+                {song.recipient ? `Recipient: ${song.recipient}` : ""}
             </Typography>
 
             <Typography variant="h6">
