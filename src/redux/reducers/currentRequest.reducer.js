@@ -1,4 +1,9 @@
-const currentRequest = (state = {}, action) => {
+const currentRequest = (state = {
+  artist: '',
+  title: '',
+  lyrics: '',
+  streaming_link: ''
+}, action) => {
     switch (action.type) {
       case 'SET_CURRENT_REQUEST':
         return action.payload;
