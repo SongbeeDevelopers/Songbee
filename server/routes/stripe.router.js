@@ -27,7 +27,7 @@ router.post('/', async (req, res) => {
         cancel_url: `http://localhost:5173/`,
         automatic_tax: {enabled: true},
       });
-      console.log("sesion:", session)
+      // console.log("sesion:", session)
     
       res.send(session.url);
 });
