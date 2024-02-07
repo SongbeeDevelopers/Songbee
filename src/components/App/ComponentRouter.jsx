@@ -24,7 +24,6 @@ import NotFound from '../NotFound';
 function ComponentRouter() {
 
     const location = useLocation()
-    console.log(location)
 
     const user = useSelector(store => store.user);
 
