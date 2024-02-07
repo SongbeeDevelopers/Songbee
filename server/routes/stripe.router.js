@@ -23,8 +23,8 @@ router.post('/', async (req, res) => {
           },
         ],
         mode: 'payment',
-        success_url: `http://localhost:5173/#requestform/${req.body.id}`,
-        cancel_url: `http://localhost:5173/`,
+        success_url: `https://songbee-cf8d644750db.herokuapp.com/#requestform/${req.body.id}`,
+        cancel_url: `https://songbee-cf8d644750db.herokuapp.com/`,
         automatic_tax: {enabled: true},
       });
       console.log("sesion:", session)
