@@ -71,7 +71,7 @@ function AdminPage({ routeVariants }) {
     }
   };
 
-  // 
+  // tabs layout
   const CustomTabPanel = (props) => {
     const { children, value, index, ...other } = props;
     return (
@@ -113,8 +113,6 @@ function AdminPage({ routeVariants }) {
       initial="initial"
       animate="final"
     >
-      <Box sx={{ width: '100%' }}>
-
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
             <Tab label="Pending Requests" {...a11yProps(0)} />
@@ -123,7 +121,7 @@ function AdminPage({ routeVariants }) {
             <Tab label="Pending Artists" {...a11yProps(3)} />
           </Tabs>
         </Box>
-
+        
         {/* AdminTable.jsx used for both pending and completed requests */}
         <CustomTabPanel value={value} index={0}>
           <FilterBar type='pending'/>
@@ -145,7 +143,6 @@ function AdminPage({ routeVariants }) {
           <AdminArtistTable data={results}/>
         </CustomTabPanel>
 
-      </Box>
     </motion.div>
   );
 }
