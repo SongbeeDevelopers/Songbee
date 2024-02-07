@@ -2,8 +2,6 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useDispatch } from "react-redux";
 
-import AdminRequestDialog from './AdminRequestDialog';
-import AdminDetailsDialog from './AdminDetailsDialog';
 import Dialog from '@mui/material/Dialog';
 import Paper from '@mui/material/Paper';
 import Slide from '@mui/material/Slide';
@@ -14,6 +12,9 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+
+import AdminRequestDialog from './AdminRequestDialog';
+import AdminDetailsDialog from './AdminDetailsDialog';
 
 
 function AdminTable({data}) {
@@ -76,7 +77,7 @@ function AdminTable({data}) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
 
-  // 
+  // complete form dialogue
   const AlertDialogSlide = () => {
     return (
       <>
@@ -92,7 +93,7 @@ function AdminTable({data}) {
             flexDirection: 'column', 
             alignItems: 'center',
             ml: 10
-            }}
+          }}
         >
           <AdminRequestDialog handleClose={handleClose}/>
         </Dialog>
@@ -100,7 +101,7 @@ function AdminTable({data}) {
     );
   }
 
-  // 
+  // details modal
   const DetailsDialogSlide = () => {
     return (
       <>
@@ -116,7 +117,7 @@ function AdminTable({data}) {
             flexDirection: 'column', 
             alignItems: 'center',
             ml: 10
-            }}
+          }}
         >
           <AdminDetailsDialog handleClose={handleClose}/>
         </Dialog>
