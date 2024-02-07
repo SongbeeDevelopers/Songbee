@@ -85,6 +85,22 @@ function* loadEditPage (action) {
     }
 }
 
+function* loadAdminPage (action) {
+    try {
+        yield put({type: "FETCH_ALL_REQUESTS"})
+        yield put({type: "FETCH_ALL_USERS"})
+        yield put({type: "FETCH_PENDING_ARTISTS"})
+        yield put({
+            type: "FETCH_RESULTS",
+            payload: {
+                type: 'pending',
+                query: ''
+        }})
+    } catch (error) {
+        console.error('SAGA loadAdminPage() failed:', error);
+    }
+}
+
 function* requestSaga() {
     yield takeLatest('FETCH_ALL_REQUESTS', fetchAllRequests);
     yield takeLatest('FETCH_USER_REQUESTS', fetchUserRequests);
@@ -93,6 +109,7 @@ function* requestSaga() {
     yield takeLatest('FETCH_CURRENT_REQUEST', fetchCurrentRequest);
     yield takeLatest('UPDATE_SONG_REQUEST', updateSongRequest);
     yield takeLatest('LOAD_EDIT_PAGE', loadEditPage);
+    yield takeLatest('LOAD_ADMIN_PAGE', loadAdminPage);
 }
 
 export default requestSaga;

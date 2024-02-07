@@ -17,17 +17,7 @@ import FilterBar from '../FilterBar/FilterBar';
 function AdminPage({ routeVariants }) {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch({ type: "FETCH_ALL_REQUESTS" });
-    dispatch({ type: "FETCH_ALL_USERS" });
-    dispatch({ type: "FETCH_PENDING_ARTISTS"});
-    dispatch({
-      type: "FETCH_RESULTS",
-      payload: {
-        type: 'pending',
-        query: ''
-      }
-    });
-
+    dispatch({ type: "LOAD_ADMIN_PAGE" });
   }, [])
   const [value, setValue] = React.useState(0);
   const pendingRequests = useSelector(store => store.pendingRequests)
