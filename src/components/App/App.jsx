@@ -26,7 +26,6 @@ function App() {
           <ComponentRouter />
         </LocationProvider>
         <Footer />
-        
     </Router>
   );
 }

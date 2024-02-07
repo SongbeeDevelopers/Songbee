@@ -13,7 +13,7 @@ import OrderPage from '../OrderPage/OrderPage';
 import CheckoutPage from '../CheckoutPage/CheckoutPage';
 import SongRequestPage from '../SongRequestPage/SongRequestPage';
 import UserDetails from '../UserDetails/UserDetailsPage';
-import FAQ from '../FAQ/FAQ';
+import FaqPage from '../FaqPage/FaqPage';
 import PrivacyPolicy from '../PrivacyPolicy/PrivacyPolicy';
 import QualityGuarantee from '../QualityGuarantee/QualityGuarantee';
 import TermsAndConditions from '../TermsAndConditions/TermsAndConditions';
@@ -36,7 +36,6 @@ function ComponentRouter() {
             opacity: 1
         }
     }
-
 
     return (
         <Switch location={location} key={location.key}>
@@ -80,7 +79,7 @@ function ComponentRouter() {
             </Route>
 
             <Route exact path="/faq">
-              <FAQ routeVariants={routeVariants} />
+              <FaqPage routeVariants={routeVariants} />
             </Route>
 
             <Route exact path="/guarantee">
