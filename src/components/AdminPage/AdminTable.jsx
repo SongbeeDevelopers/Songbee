@@ -13,6 +13,7 @@ import AdminRequestDialog from './AdminRequestDialog';
 import AdminDetailsDialog from './AdminDetailsDialog';
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 function AdminTable({data}) {
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -34,6 +35,7 @@ function AdminTable({data}) {
       border: 0,
     },
   }));
+  const history = useHistory();
   const dispatch = useDispatch();
   const now = new Date ();
   const msPerDay = 24 * 60 * 60 * 1000;
@@ -60,6 +62,9 @@ function AdminTable({data}) {
     setOpen(false);
     }
   };
+  const goToEdit = (id) => {
+    history.push(`/request/edit/${id}`)
+  }
   const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
@@ -142,7 +147,7 @@ function AdminTable({data}) {
                 :
                 "Complete!"}</StyledTableCell>
               <StyledTableCell align="center">
-                <button className='admin-button' onClick={() => handleClickOpen(row.id, 1)}>Details</button>
+                <button className='admin-button' onClick={() => goToEdit(row.id)}>Details</button>
                 <DetailsDialogSlide />
               </StyledTableCell>
               <StyledTableCell align="center">
