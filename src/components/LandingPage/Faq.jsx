@@ -19,7 +19,7 @@ All song deliveries will be locked in and unable to change after 7 days of your 
 NOTE: All requested edits must be submitted within 48 hours of song delivery or additional fees will be applied and delivery time will vary due to artist availability.`}
   ];
   return (
-    <div className="faq">
+    <div className="faq" id="faq">
       <h2 className="faq-title">Frequently Asked Questions</h2>
       <p className="faq-below-title">
         If you have additional questions, please reach out at <span className="suii">hello@songbee.com!</span> 
