@@ -1,7 +1,7 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-const stripe = require('stripe')('sk_test_51NzMUGJoOrJf4ICWZBCtfzoOIggQO0HLoh7UKaNKxrWYaWbz6F8LGDJXRl0GCar5niPdeqMi69wxjs7UUoWFOivO00oIfWvYol');
+const stripe = require('stripe')(process.env.STRIPE_API_SECRET);
 
 /**
  * GET route template
@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
         line_items: [
           {
             // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-            price: 'price_1OCT4RJoOrJf4ICWnv6bBFqq',
+            price: 'price_1OhDbKJoOrJf4ICWBsvVBVgC',
             quantity: 1,
           },
         ],
