@@ -17,6 +17,39 @@ import TableRow from '@mui/material/TableRow';
 
 
 function AdminTable({data}) {
+
+  const dispatch = useDispatch();
+
+  const now = new Date ();
+  const msPerDay = 24 * 60 * 60 * 1000;
+
+  // modal state
+  const [open, setOpen] = useState(false);
+  const [open1, setOpen1] = useState(false);
+
+  // modal logic
+  const handleClickOpen = (id, x) => {
+    dispatch({
+        type: "FETCH_CURRENT_REQUEST",
+        payload: id
+    })
+    if (x===1){
+      setOpen1(true);
+    }
+    else {
+      setOpen(true);
+    }
+  };
+  const handleClose = (x) => {
+    if (x===1){
+      setOpen1(false);
+    }
+    else {
+      setOpen(false);
+    }
+  };
+
+  // table header styling
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.common.black,
@@ -27,6 +60,7 @@ function AdminTable({data}) {
     },
   }));
   
+  // table row stlying
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
     '&:nth-of-type(odd)': {
       backgroundColor: theme.palette.action.hover,
@@ -36,38 +70,14 @@ function AdminTable({data}) {
       border: 0,
     },
   }));
-  const dispatch = useDispatch();
-  const now = new Date ();
-  const msPerDay = 24 * 60 * 60 * 1000;
-  const [open, setOpen] = useState(false);
-  const [open1, setOpen1] = useState(false);
-  const handleClickOpen = (id, x) => {
-    dispatch({
-        type: "FETCH_CURRENT_REQUEST",
-        payload: id
-    })
-    if (x===1){
-    setOpen1(true);
-    }
-    else {
-    setOpen(true);
-    }
-  };
 
-  const handleClose = (x) => {
-    if (x===1){
-    setOpen1(false);
-    }
-    else {
-    setOpen(false);
-    }
-  };
+  // dialogue transition (complete form)
   const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
 
+  // 
   const AlertDialogSlide = () => {
-  
     return (
       <>
         <Dialog
@@ -89,8 +99,9 @@ function AdminTable({data}) {
       </>
     );
   }
+
+  // 
   const DetailsDialogSlide = () => {
-  
     return (
       <>
         <Dialog
@@ -113,52 +124,64 @@ function AdminTable({data}) {
     );
   }
 
+
   return (
     <div className="container">
+
       <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 }} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell>Creation Date</StyledTableCell>
-            <StyledTableCell align="center">Requester / Recipient</StyledTableCell>
-            <StyledTableCell align="center">Due</StyledTableCell>
-            <StyledTableCell align="center">View Details</StyledTableCell>
-            <StyledTableCell align="center">Completion Form</StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {data.map((row) => {
-          const creationTime = new Date (row.created_at);
-          const daysLeft = Math.round((now.getTime() - creationTime.getTime()) / msPerDay);
-          return (
-            <StyledTableRow key={row.id}>
-              <StyledTableCell component="th" scope="row">
-              {new Date(row.created_at).toLocaleString('en-us')}
-              </StyledTableCell>
-              <StyledTableCell align="center">
-              {row.requester} / {row.recipient}
-              </StyledTableCell>
-              <StyledTableCell align="center">
-                { row.delivery_days - daysLeft >= 0 ? 
-                    `Due in ${row.delivery_days - daysLeft} days`
-                :
-                "Complete!"}</StyledTableCell>
-              <StyledTableCell align="center">
-                <button className='admin-button' onClick={() => handleClickOpen(row.id, 1)}>Details</button>
-                <DetailsDialogSlide />
-              </StyledTableCell>
-              <StyledTableCell align="center">
-                <button className='admin-button' onClick={() => handleClickOpen(row.id)}>
-                    Complete
-                </button>
-              <AlertDialogSlide />
-              </StyledTableCell>
-            </StyledTableRow>
-          )}
-          )}
-        </TableBody>
-      </Table>
-    </TableContainer>
+        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+
+          <TableHead>
+            <TableRow>
+              <StyledTableCell>Creation Date</StyledTableCell>
+              <StyledTableCell align="center">Requester / Recipient</StyledTableCell>
+              <StyledTableCell align="center">Due</StyledTableCell>
+              <StyledTableCell align="center">View Details</StyledTableCell>
+              <StyledTableCell align="center">Completion Form</StyledTableCell>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            {data.map((row) => {
+              const creationTime = new Date (row.created_at);
+              const daysLeft = Math.round((now.getTime() - creationTime.getTime()) / msPerDay);
+              return (
+                <StyledTableRow key={row.id}>
+
+                  <StyledTableCell component="th" scope="row">
+                    {new Date(row.created_at).toLocaleString('en-us')}
+                  </StyledTableCell>
+
+                  <StyledTableCell align="center">
+                    {row.requester} / {row.recipient}
+                  </StyledTableCell>
+
+                  <StyledTableCell align="center">
+                    { row.delivery_days - daysLeft >= 0 ? 
+                        `Due in ${row.delivery_days - daysLeft} days`
+                    :
+                    "Complete!"}
+                  </StyledTableCell>
+
+                  <StyledTableCell align="center">
+                    <button className='admin-button' onClick={() => handleClickOpen(row.id, 1)}>Details</button>
+                    <DetailsDialogSlide />
+                  </StyledTableCell>
+
+                  <StyledTableCell align="center">
+                    <button className='admin-button' onClick={() => handleClickOpen(row.id)}>
+                        Complete
+                    </button>
+                    <AlertDialogSlide />
+                  </StyledTableCell>
+
+                </StyledTableRow>
+            )}
+            )}
+          </TableBody>
+
+        </Table>
+      </TableContainer>
     </div>
   );
 }
