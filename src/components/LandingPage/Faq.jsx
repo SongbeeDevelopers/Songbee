@@ -24,11 +24,11 @@ NOTE: All requested edits must be submitted within 48 hours of song delivery or 
       <p className="faq-below-title">
         If you have additional questions, please reach out at <span className="suii">hello@songbee.com!</span> 
       </p>
-      <section class="collapse-area">
-        <div class="container">
-          <div class="row">
-            <div class="collapse-tab col-xs-12">
-              <div class="panel-group" id="accordion">
+      <section className="collapse-area">
+        <div className="container">
+          <div className="row">
+            <div className="collapse-tab col-xs-12">
+              <div className="panel-group" id="accordion">
                 {faqs.map((faq) => (
                   <OneFaq question={faq.question} answer={faq.answer} />
                 ))}
@@ -46,10 +46,10 @@ export default FaqSection;
 function OneFaq({ question, answer }) {
   const [open, setOpen] = useState(false);
   return (
-    <div class="panel panel-default" id="panel1">
-      <div onClick={() => setOpen(!open)} class="panel-heading">
-        <h4 class="panel-title">
-          <p class="question">
+    <div className="panel panel-default" id="panel1">
+      <div onClick={() => setOpen(!open)} className="panel-heading">
+        <h4 className="panel-title">
+          <p className="question">
             {question}
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -58,10 +58,10 @@ function OneFaq({ question, answer }) {
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-chevron-down icon"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lucide lucide-chevron-down icon"
             >
               <path d="m6 9 6 6 6-6" />
             </svg>
@@ -70,9 +70,9 @@ function OneFaq({ question, answer }) {
       </div>
       <div
         id="collapseOne"
-        class={`panel-collapse collapse in ${open ? "openFaq" : "closeFaq"}`}
+        className={`panel-collapse collapse in ${open ? "openFaq" : "closeFaq"}`}
       >
-        <div class="panel-body">{answer}</div>
+        <div className="panel-body">{answer}</div>
       </div>
     </div>
   );
