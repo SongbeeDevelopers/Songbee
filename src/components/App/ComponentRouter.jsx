@@ -18,7 +18,7 @@ import PrivacyPolicy from '../PrivacyPolicy/PrivacyPolicy';
 import QualityGuarantee from '../QualityGuarantee/QualityGuarantee';
 import TermsAndConditions from '../TermsAndConditions/TermsAndConditions';
 import JoinArtist from '../JoinArtist/JoinArtist';
-import NotFound from '../NotFound';
+import NotFound from '../NotFoundPage/NotFoundPage';
 
 
 function ComponentRouter() {
