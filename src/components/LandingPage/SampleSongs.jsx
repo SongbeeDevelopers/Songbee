@@ -46,6 +46,7 @@ function SampleSongs() {
 
 
   return (
+    <div className="outer-sample">
     <div className="sample-songs">
 
       <div>
@@ -112,6 +113,7 @@ function SampleSongs() {
         ))}
 
       </div>
+    </div>
     </div>
   );
 }

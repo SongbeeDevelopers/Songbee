@@ -10,7 +10,7 @@ function* fetchPendingArtist () {
         console.error('fetchGenres() failed:', error)
     }
 }
-
+// this generator is used to create a new artist 
 function* createNewArtist(action) {
   try {
     const response = yield axios({

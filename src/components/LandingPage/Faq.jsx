@@ -39,7 +39,10 @@ const faqs = [
 function FaqSection() {
 
   return (
-    <div className="faq">
+    <div className="faq" id="faq">
+
+
+
 
       <h2 className="faq-title">Frequently Asked Questions</h2>
 
