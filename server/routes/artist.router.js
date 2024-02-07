@@ -10,6 +10,8 @@ const {
  * GET route template
  */
 router.get("/:artistid", (req, res) => {
+  // this is getting artist info with the genre
+  // we use the sql join to link artist and genre tables
   const query = `
   SELECT 
   "artist"."id" AS "artistId",
@@ -45,16 +47,21 @@ router.get("/:artistid", (req, res) => {
  * POST route template
  */
 
+// This endpoint is used when an artist is applying to join 
+// We receive the artist information and the genre.
 router.post("/", rejectUnauthenticated, (req, res) => {
   const newArtist = req.body;
+  // this query is creating the artist 
   const queryText = `INSERT INTO "artist"
  ("artist_name","user_id", "vocal_type", "first_name", "last_name")
   VALUES
   ($1, $2, $3, $4, $5) returning "id"; `;
+  // this query is creating the artist genre 
   const queryGenre = `INSERT INTO "artist_genres"
   ("artist_id", "genre_id")
   VALUES
   ($1, $2);`;
+  // we first create the artist 
   pool
     .query(queryText, [
       newArtist.artist_name,
@@ -66,6 +73,7 @@ router.post("/", rejectUnauthenticated, (req, res) => {
     ])
     .then((result) => {
       console.log(result.rows);
+      // after creating artist we take artist id and create genre
       pool
         .query(queryGenre, [
           result.rows[0].id, // access the id of the created artist
