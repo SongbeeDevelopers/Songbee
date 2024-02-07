@@ -44,7 +44,7 @@ function AdminPage({ routeVariants }) {
     });
   }, [])
 
-  // 
+  // handles state
   const handleChange = (event, newValue) => {
     event.preventDefault();
     setValue(newValue);
@@ -91,14 +91,14 @@ function AdminPage({ routeVariants }) {
     );
   }
   
-  // 
+  // tab logic
   CustomTabPanel.propTypes = {
     children: PropTypes.node,
     index: PropTypes.number.isRequired,
     value: PropTypes.number.isRequired,
   };
   
-  // 
+  // controls tab switching
   const a11yProps = (index) => {
     return {
       id: `simple-tab-${index}`,

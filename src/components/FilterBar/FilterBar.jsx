@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 
 import { Button, Select, MenuItem } from "@mui/material";
 import TextField from "@mui/material/TextField";
@@ -33,7 +32,7 @@ function FilterBar({type}){
     })
   }
 
-  // if in users tab create separate filter by user class filter
+  // if in users tab create additional filter by user class filter
   const UserFilter = () => {
     if (type === 'user'){
       return (
