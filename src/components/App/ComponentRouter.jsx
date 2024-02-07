@@ -19,6 +19,7 @@ import QualityGuarantee from '../QualityGuarantee/QualityGuarantee';
 import TermsAndConditions from '../TermsAndConditions/TermsAndConditions';
 import JoinArtist from '../JoinArtist/JoinArtist';
 import NotFound from '../NotFoundPage/NotFoundPage';
+import EditRequestPage from '../EditRequestPage/EditRequestPage';
 
 
 function ComponentRouter() {
@@ -72,6 +73,10 @@ function ComponentRouter() {
             <Route exact path="/requestform/:id">
               <SongRequestPage routeVariants={routeVariants} />
             </Route>
+
+            <ProtectedRoute exact path="/request/edit/:id">
+              <EditRequestPage routeVariants={routeVariants} />
+            </ProtectedRoute>
 
             <Route exact path="/terms">
               <TermsAndConditions routeVariants={routeVariants} />
