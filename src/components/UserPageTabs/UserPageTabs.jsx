@@ -8,23 +8,25 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Modal from '@mui/material/Modal';
 import { Button } from '@mui/material';
-import { useSelector } from 'react-redux';
+// import TextField from '@mui/material/TextField';
+import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import UserHistory from '../UserHistory/UserHistory';
 import UserCreditPage from '../UserCreditPage/UserCreditPage';
-import './UserPage.css';
+import './UserPageTabs.css';
 
 
 
 
-// Inside here will have the user's email and password and have the option to edit those details
+// Inside here will have the user's email and password and have the option to edit details
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
   const user = useSelector((store) => store.user);
   const [email, setEmail] = useState(user.email);
   const [password, setPassword] = useState('');
   const history = useHistory();
+  const dispatch = useDispatch();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -32,8 +34,8 @@ export default function BasicTabs() {
   
 
   // This will be for the form inputs for editing
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value)
   }
 
   // Handle function for the cancel button
@@ -45,11 +47,23 @@ export default function BasicTabs() {
   // Handle function for the edit button
   const handleEdit = (event) => {
     event.preventDefault();
+    dispatch({
+      type: 'UPDATE_USER',
+      payload: {
+        email: email,
+        password: password
+      }
+    })
+    history.push('/user')
   }
 
   // Handle function for the delete button
   const handleDelete = (event) => {
     event.preventDefault();
+    dispatch({
+      type: 'DELETE_USER',
+      payload: {id:user.id}
+    })
     history.push('/user')
   }
   
@@ -58,7 +72,7 @@ export default function BasicTabs() {
     event.preventDefault();
     setValue(newValue);
   };
-
+  
   const CustomTabPanel = (props) => {
     const { children, value, index, ...other } = props;
   
@@ -95,24 +109,25 @@ export default function BasicTabs() {
   
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Card variant="outlined">
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Profile" {...a11yProps(0)} />
-          <Tab label="Order History" {...a11yProps(1)} />
-          <Tab label="Credit Balance" {...a11yProps(2)} />
+    // The card and tabs structure
+    <Box sx={{ width: '100%'}}>
+      <Card  variant="outlined">
+      <Box sx={{height: "80%", borderBottom: 1, borderColor: 'divider' }}>
+        <Tabs className='tabHeader' value={value} onChange={handleChange} aria-label="basic tabs example">
+          <Tab sx={{color: "orange"}} label="Profile" {...a11yProps(0)} />
+          <Tab sx={{color: "orange"}} label="Order History" {...a11yProps(1)} />
+          <Tab sx={{color: "orange"}} label="Credit Balance" {...a11yProps(2)} />
         </Tabs>
       </Box>
-      <CustomTabPanel value={value} index={0}>
+      <CustomTabPanel  className='cardBody' value={value} index={0}>
         <h1 className='profileHeader'>Personal info</h1> 
         <h3>{user.email}</h3>
         
         <div>    
             <CardContent>
               <Typography sx={{ fontSize: 14, mt: 2 }} color="text.secondary" gutterBottom>
-              <Button onClick={handleOpen}>Edit Info</Button>
-              <Modal className='boxModal'
+              <Button sx={{color: "black"}} onClick={handleOpen}>Edit Info</Button>
+              <Modal
               open={open}
               onClose={handleClose}
               aria-labelledby="modal-modal-title"
@@ -127,22 +142,21 @@ export default function BasicTabs() {
                             boxShadow: 24,
                             p: 4,}}>
                     <h3>Would you like to make an edit ?</h3>
-                <form className='container' onSubmit={handleSubmit}> 
-                  <div className='inputs'>
-                  <input onChange={(event) => setEmail(event.target.value)}
+                 
+                  <input  className='emailInput' onChange={(event) => setEmail(event.target.value)}
                   name="email"
+                  type="text"
                   placeholder="Email"
                   value={email}
                   />
                   <br />
-                  <input onChange={(event) => setPassword(event.target.value)}
+                  <input className='passwordInput' onChange={() => handlePasswordChange(event)}
                   name="password"
                   placeholder="Password"
                   type="password"
                   value={password}
                   />
-                  </div> 
-                </form>
+                
                 <div className='modalBtns'>
                 <Button type="submit" onClick={handleEdit} variant="contained" color="success" size="small">Edit</Button>
                 <Button type="submit" onClick={handleCancel} variant="contained" color="secondary" size="small">Cancel</Button>

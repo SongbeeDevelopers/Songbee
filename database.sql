@@ -1,4 +1,8 @@
+
+
+
 DROP TABLE IF EXISTS "user", "genres", "song_request", "artist", "song_details", "artist_genres";
+
 
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,

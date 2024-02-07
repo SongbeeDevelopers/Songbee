@@ -11,4 +11,8 @@
     border-radius: 10px;
 
 }
-
+.historyBody {
+    background-image: url("../../../public/honey_combs.jpeg");
+    width: 100%;
+    
+}
