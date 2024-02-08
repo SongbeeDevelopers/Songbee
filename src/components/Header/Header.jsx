@@ -16,7 +16,6 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 
 import "./Header.css";
-import { Logout } from "@mui/icons-material";
 
 
 function Header() {
