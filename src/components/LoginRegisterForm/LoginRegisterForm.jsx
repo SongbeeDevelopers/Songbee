@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import './LoginRegisterForm.css'
 
-
 function LoginRegisterForm( {handleClose} ) {
   
   const dispatch = useDispatch();
