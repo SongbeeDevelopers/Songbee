@@ -50,6 +50,7 @@ function ComponentRouter() {
         },
       },
     };
+    
 
     return (
         <Switch location={location} key={location.key}>
