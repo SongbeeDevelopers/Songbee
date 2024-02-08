@@ -42,7 +42,9 @@ function* createSongRequest (action){
         const stripeResponse = yield axios({
             method: "POST",
             url: '/api/stripe',
-            data: {id: response.data.id}
+            data: {
+                id: response.data.id,
+                orderDetails: action.payload.data}
         })
         // console.log("stripeResponse:", stripeResponse)
         yield window.location.href = stripeResponse.data
