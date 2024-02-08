@@ -112,10 +112,39 @@ function UserDetails() {
                 <button className="back-btn" onClick={() => history.goBack()}>Go Back 🐝</button> 
               </Typography>
 
+
+          <CardContent className='cardContainer'>
+          <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+          <Tab label="Your Song" {...a11yProps(0)} />
+          <Tab label="Your Artist" {...a11yProps(1)} />
+        </Tabs>
+        <CustomTabPanel value={value} index={0}>
+          {request.lyrics && <h2 className='lyricsHeader'>Lyrics:</h2>}
+          {request.lyrics && <p>{request.lyrics}</p>}
+          <h2 className='detailsHeader'>The Basic Details:</h2>
+            <p>Occasion: {request.occasion}</p>
+            <p>Genre: {request.genre_id}</p>
+            <p>Vibe: {request.vibe}</p>
+            <p>Tempo: {request.tempo}</p>
+        </CustomTabPanel>
+
+        {request.url && <audio controls src={request.url} ></audio>}
+          <Typography sx={{ fontSize: 5 }} variant="h2" gutterBottom>
+          <p className='songTitle'>{request.title}</p> 
+          </Typography>
+          <Typography variant="h5" component="div"> 
+            <p className='artistTitle'> By {request.artist}</p>
+            <button className="back-btn" onClick={() => history.goBack()}>Go Back 🐝</button> 
+          </Typography>
+        </CardContent>
+        <CardActions>   
+        </CardActions>
+
             </CardContent>
             
             <CardActions>   
             </CardActions>
+
         </Card>     
       </Box>
       </>
