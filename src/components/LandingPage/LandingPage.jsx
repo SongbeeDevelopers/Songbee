@@ -37,7 +37,7 @@ function LandingPage({ routeVariants }) {
     <TestimonialSection />
     <SampleSongs />
     <Guarantee/>
-    <FaqSection/>
+    {/* <FaqSection/> */}
     </motion.div>
 
   );
