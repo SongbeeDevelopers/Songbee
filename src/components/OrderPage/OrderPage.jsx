@@ -13,7 +13,7 @@ import Modal from '@mui/material/Modal';
 import Swal from 'sweetalert2';
 
 import './OrderPage.css'
-import '../LoginRegisterForm/LoginRegisterForm.css'
+
 
 // problems with setting default value, react doesn't like it!!
 
@@ -52,7 +52,7 @@ function OrderPage({ routeVariants }) {
   
   const submitOrder = (e) => {
     e.preventDefault()
-    if (newOrder.delivery_days && newOrder.streaming && newOrder.extra_verse) {
+    if (newOrder.delivery_days && newOrder.streaming && newOrder.extra_verse && user.id) {
       dispatch({
         type: 'CREATE_SONG_REQUEST',
         payload: {
@@ -63,7 +63,7 @@ function OrderPage({ routeVariants }) {
     }
     else {
       Swal.fire({
-        title: "Please Select All Three Options",
+        title: "Please Select All Three Options and log in.",
         icon: "error"
       })
     }
@@ -119,14 +119,14 @@ function OrderPage({ routeVariants }) {
           <option value={true}>Add Extra Verse</option>
         </select>
 
-        {!user.id && // enter credentials button with conditional logic?
-            <button
-              className='checkoutLogRegBtn'
-              onClick={handleOpen}
-            >
-              Login / Register
-            </button>
-          }
+        {!user.id &&
+          <button
+            className='checkoutLogRegBtn'
+            onClick={handleOpen}
+          >
+            Login / Register
+          </button>
+        }
 
         <button className='orderCheckoutButton' onClick={submitOrder}>Checkout</button>
       </form>
