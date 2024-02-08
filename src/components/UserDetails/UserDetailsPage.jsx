@@ -88,8 +88,8 @@ function UserDetails() {
           <Tab label="Your Artist" {...a11yProps(1)} />
         </Tabs>
         <CustomTabPanel value={value} index={0}>
-          <h2 className='lyricsHeader'>Lyrics:</h2>
-          <p>{request.lyrics}</p>
+          {request.lyrics && <h2 className='lyricsHeader'>Lyrics:</h2>}
+          {request.lyrics && <p>{request.lyrics}</p>}
           <h2 className='detailsHeader'>The Basic Details:</h2>
             <p>Occasion: {request.occasion}</p>
             <p>Genre: {request.genre_id}</p>
@@ -97,7 +97,7 @@ function UserDetails() {
             <p>Tempo: {request.tempo}</p>
         </CustomTabPanel>
 
-        <audio controls src={request.url} ></audio>
+        {request.url && <audio controls src={request.url} ></audio>}
           <Typography sx={{ fontSize: 5 }} variant="h2" gutterBottom>
           <p className='songTitle'>{request.title}</p> 
           </Typography>
