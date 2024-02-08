@@ -611,8 +611,7 @@ svg {
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
 }
-.panel .panel-heading .panel-title p.collapsed .bar {
-}
+
 .panel .panel-heading .panel-title p.collapsed .bar:after {
   transform: rotate(90deg);
   -webkit-transform: rotate(90deg);
@@ -623,8 +622,7 @@ svg {
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
 }
-.panel-collapse {
-}
+
 .panel-collapse .panel-body {
   border: 0px solid !important;
   line-height: 26px;
@@ -687,7 +685,6 @@ svg {
   text-align: center;
   letter-spacing: -0.01em;
   margin-top: 20px;
-  margin-bottom: 10px;
   font-family: Oswald, sans-serif;
   font-size: 4.6875rem;
   font-weight: 300;
