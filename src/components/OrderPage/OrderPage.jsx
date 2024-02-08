@@ -1,12 +1,19 @@
 import React from 'react';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
+import LoginRegisterForm from '../LoginRegisterForm/LoginRegisterForm'
+
 import { motion } from 'framer-motion';
+
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
 
 import Swal from 'sweetalert2';
 
 import './OrderPage.css'
+import '../LoginRegisterForm/LoginRegisterForm.css'
 
 // problems with setting default value, react doesn't like it!!
 
@@ -15,6 +22,7 @@ function OrderPage({ routeVariants }) {
   const history = useHistory()
   const dispatch = useDispatch()
 
+  const user = useSelector(store => store.user)
   const newOrder = useSelector(store => store.newOrder)
 
   const handleSelection = (key, value) => {
@@ -23,6 +31,24 @@ function OrderPage({ routeVariants }) {
       payload: {...newOrder, [key]: value}
     })
   }
+
+  // modal logic
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  // modal appearance
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
   
   const submitOrder = (e) => {
     e.preventDefault()
@@ -93,8 +119,28 @@ function OrderPage({ routeVariants }) {
           <option value={true}>Add Extra Verse</option>
         </select>
 
+        {!user.id && // enter credentials button with conditional logic?
+            <button
+              className='checkoutLogRegBtn'
+              onClick={handleOpen}
+            >
+              Login / Register
+            </button>
+          }
+
         <button className='orderCheckoutButton' onClick={submitOrder}>Checkout</button>
       </form>
+
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <LoginRegisterForm handleClose={handleClose} />
+        </Box>
+      </Modal>
 
     </motion.div>
   );

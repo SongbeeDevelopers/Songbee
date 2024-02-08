@@ -10,7 +10,6 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import LandingPage from '../LandingPage/LandingPage';
 import OrderPage from '../OrderPage/OrderPage';
-import CheckoutPage from '../CheckoutPage/CheckoutPage';
 import SongRequestPage from '../SongRequestPage/SongRequestPage';
 import UserDetails from '../UserDetails/UserDetailsPage';
 import FaqPage from '../FaqPage/FaqPage';
@@ -60,10 +59,6 @@ function ComponentRouter() {
 
             <Route exact path="/join-artist">
               <JoinArtist routeVariants={routeVariants} />
-            </Route>
-
-            <Route exact path="/checkout">
-              <CheckoutPage routeVariants={routeVariants} />
             </Route>
             
             <Route exact path="/details/:id">
