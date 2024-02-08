@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { useDispatch } from "react-redux";
+import { useHistory } from 'react-router-dom';
 
 import Dialog from '@mui/material/Dialog';
 import Paper from '@mui/material/Paper';
@@ -15,9 +16,6 @@ import TableRow from '@mui/material/TableRow';
 
 import AdminRequestDialog from './AdminRequestDialog';
 import AdminDetailsDialog from './AdminDetailsDialog';
-import { useDispatch, useSelector } from "react-redux";
-import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 
 function AdminTable({data}) {
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
