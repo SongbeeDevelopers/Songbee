@@ -16,6 +16,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 
 import "./Header.css";
+import { Logout } from "@mui/icons-material";
 
 function Header() {
   const history = useHistory();
@@ -43,14 +44,14 @@ function Header() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-const scrollToFaq = ()=>{
-  const faqSection = document.getElementById("faq")
-  if(faqSection){
-    faqSection.scrollIntoView({
-      behavior:"smooth"
-    })
-  }
-}
+  // const scrollToFaq = ()=>{
+  //   const faqSection = document.getElementById("faq")
+  //   if(faqSection){
+  //     faqSection.scrollIntoView({
+  //       behavior:"smooth"
+  //     })
+  //   }
+  // }
   return (
     <div className="nav">
       {/* <Toolbar> */}
@@ -59,10 +60,10 @@ const scrollToFaq = ()=>{
         <img className="nav-title" src="header-icon.png"></img>
       </Link>
       <div className="nav-right">
-        <span onClick={()=>scrollToFaq()} className="nav-links">
+        {/* <span onClick={()=>scrollToFaq()} className="nav-links">
           Faq
-        </span>
-        <svg
+        </span> */}
+        {/* <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
@@ -75,9 +76,18 @@ const scrollToFaq = ()=>{
           class="lucide lucide-tally-1"
         >
           <path d="M4 4v16" />
-        </svg>{" "}
-        <Link className="nav-links" to="/login">
-          Login
+        </svg>{" "} */}
+        <Link
+          onClick={(e) => {
+            if (user?.id) {
+              e.preventDefault();
+              dispatch({ type: "LOGOUT" });
+            }
+          }}
+          className="nav-links"
+          to="/login"
+        >
+          {user?.id? "Logout" : "Login"}
         </Link>
         <IconButton
           color="inherit"
