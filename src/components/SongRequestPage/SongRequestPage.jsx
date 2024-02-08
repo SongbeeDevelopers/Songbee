@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
+import { motion } from 'framer-motion';
+
 import Swal from 'sweetalert2';
 
 import './SongRequestPage.css'
@@ -63,109 +65,115 @@ function SongRequestPage({ routeVariants }) {
   }
 
   return (
-    <div className="container">
+    <motion.div
+      className="container"
+      variants={routeVariants}
+      initial='initial'
+      animate='final'
+    >
       <form className='reqForm'>
-        <h1 className='reqFormHeader'>Who is Creating the Song?</h1>
-        <h4 className='reqFormSubHeader'>Who gets the creds for getting the song?</h4>
-        <input 
-          value={requestData.requester}
-          className='reqFormInput' 
-          placeholder='You, the family, the team, etc.'
-          onChange={() => handleInput('requester', event.target.value)}
-        ></input>
 
-        <h1 className='reqFormHeader'>Who is this Song For?</h1>
-        <h4 className='reqFormSubHeader'>Our songs make amazing gifts, but they don't have to be only for gifting.</h4>
-        <input
-          value={requestData.recipient}
-          className='reqFormInput'
-          placeholder='Name or Nickname'
-          onChange={() => handleInput('recipient', event.target.value)}
-        ></input>
-        <input
-          value={requestData.pronunciation}
-          className='reqFormInput'
-          placeholder='Pronunciation'
-          onChange={() => handleInput('pronunciation', event.target.value)}
-        ></input>
-        <input
-          value={requestData.recipient_relationship}
-          className='reqFormInput'
-          placeholder='Relationship'
-          onChange={() => handleInput('recipient_relationship', event.target.value)}
+        <div>
+          <label className='reqFormHeader'>Who is Creating the Song?</label>
+          <input 
+            value={requestData.requester}
+            className='reqFormInput' 
+            placeholder='You, the family, the team, etc.'
+            onChange={() => handleInput('requester', event.target.value)}
+          ></input>
 
-        ></input>
+          <label className='reqFormHeader'>Who is this Song For?</label>
+          <input
+            value={requestData.recipient}
+            className='reqFormInput'
+            placeholder='Name or Nickname'
+            onChange={() => handleInput('recipient', event.target.value)}
+          ></input>
+          <input
+            value={requestData.pronunciation}
+            className='reqFormInput'
+            placeholder='Pronunciation'
+            onChange={() => handleInput('pronunciation', event.target.value)}
+          ></input>
+          <input
+            value={requestData.recipient_relationship}
+            className='reqFormInput'
+            placeholder='Relationship'
+            onChange={() => handleInput('recipient_relationship', event.target.value)}
+          ></input>
 
-        <h1 className='reqFormHeader'>Is this song for a Special Occasion?</h1>
-        <input
-          value={requestData.occasion}
-          className='reqFormInput'
-          placeholder='Type the Occasion Here'
-          onChange={() => handleInput('occasion', event.target.value)}
-        ></input>
+          <label className='reqFormHeader'>Is this song for a Special Occasion?</label>
+          <input
+            value={requestData.occasion}
+            className='reqFormInput'
+            placeholder='Type the Occasion Here'
+            onChange={() => handleInput('occasion', event.target.value)}
+          ></input>
 
-        <h1 className='reqFormHeader'>Choose a Genre</h1>
-        <select 
-          value={requestData.genre}
-          className='reqFormDropdown'
-          onChange={() => handleInput('genre_id', event.target.value)}
-        >
-          <option selected disabled>Select Genre</option>
-          {
-            genres.map((genre) => (
-              <option key={genre.id} value={genre.id}>{genre.name}</option>
-            ))
-          }
-        </select>
+          <label className='reqFormHeader'>What inspired your song? What emotions should be evoked?</label>
+          <input
+            value={requestData.inspiration}
+            className='reqFormInput'
+            placeholder='Inspiration'
+            onChange={() => handleInput('inspiration', event.target.value)}
+          ></input>
+        </div>
 
-        <h1 className='reqFormHeader'>What Vocal Style Suits Your Song?</h1>
-        <select
-          value={requestData.vocal_type}
-          className='reqFormDropdown'
-          onChange={() => handleInput('vocal_type', event.target.value)}
-        >
-          <option selected disabled>Select Style</option>
-          <option value="female">Female</option>
-          <option value="male">Male</option>
-        </select>
+        <div>
+          <label className='reqFormHeader'>Choose a Genre</label>
+          <select 
+            value={requestData.genre}
+            className='reqFormDropdown'
+            onChange={() => handleInput('genre_id', event.target.value)}
+          >
+            <option selected disabled>Select Genre</option>
+            {
+              genres.map((genre) => (
+                <option key={genre.id} value={genre.id}>{genre.name}</option>
+              ))
+            }
+          </select>
 
-        <h1 className='reqFormHeader'>Set the Vibe</h1>
-        <select
-          value={requestData.vibe}
-          className='reqFormDropdown'
-          onChange={() => handleInput('vibe', event.target.value)}
-        >
-          <option selected disabled>Select Vibe</option>
-          <option value="happy">Happy</option>
-          <option value="lighthearted">Lighthearted</option>
-          <option value="heartfelt">Heartfelt</option>
-          <option value="romantic">Romantic</option>
-          <option value="reflective">Reflective</option>
-          <option value="somber">Somber</option>
-        </select>
+          <label className='reqFormHeader'>What Vocal Style Suits Your Song?</label>
+          <select
+            value={requestData.vocal_type}
+            className='reqFormDropdown'
+            onChange={() => handleInput('vocal_type', event.target.value)}
+          >
+            <option selected disabled>Select Style</option>
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+          </select>
 
-        <h1 className='reqFormHeader'>Select a Tempo</h1>
-        <select
-          value={requestData.tempo}
-          className='reqFormDropdown'
-          onChange={() => handleInput('tempo', event.target.value)}
-        >
-          <option selected disabled>Select Tempo</option>
-          <option value="slow">Slow</option>
-          <option value="medium">Medium</option>
-          <option value="fast">Up-Tempo</option>
-        </select>
+          <label className='reqFormHeader'>Set the Vibe</label>
+          <select
+            value={requestData.vibe}
+            className='reqFormDropdown'
+            onChange={() => handleInput('vibe', event.target.value)}
+          >
+            <option selected disabled>Select Vibe</option>
+            <option value="happy">Happy</option>
+            <option value="lighthearted">Lighthearted</option>
+            <option value="heartfelt">Heartfelt</option>
+            <option value="romantic">Romantic</option>
+            <option value="reflective">Reflective</option>
+            <option value="somber">Somber</option>
+          </select>
 
-        <h1 className='reqFormHeader'>What inspired your song?</h1>
-        <h4 className='reqFormSubHeader'>Tell your artist why you wanted to write this song. What emotions do you want your listener to feel?</h4>
-        <input
-          value={requestData.inspiration}
-          className='reqFormInput'
-          placeholder='Inspiration'
-          onChange={() => handleInput('inspiration', event.target.value)}
-        ></input>
+          <label className='reqFormHeader'>Select a Tempo</label>
+          <select
+            value={requestData.tempo}
+            className='reqFormDropdown'
+            onChange={() => handleInput('tempo', event.target.value)}
+          >
+            <option selected disabled>Select Tempo</option>
+            <option value="slow">Slow</option>
+            <option value="medium">Medium</option>
+            <option value="fast">Up-Tempo</option>
+          </select>
+        </div>
 
-        <h1 className='reqFormHeader'>Share your story</h1>
+        <label className='reqFormHeader'>Share your story</label>
         <h4 className='reqFormSubHeader'>Select two of our story prompts or just tell us memories and stories that you feel tell your story. </h4>
         <p className='reqFormPrompts'>
           a. What they mean to you?<br/>
@@ -176,43 +184,48 @@ function SongRequestPage({ routeVariants }) {
           f. Describe or list things about them that makes them special to you.<br/>
           g. Other stories or memories<br/>
         </p>
-        <input
-          value={requestData.story1}
-          className='reqFormInput'
-          placeholder='Prompt 1'
-          onChange={() => handleInput('story1', event.target.value)}
-        ></input>
         <h5 className='reqFormSubHeader'>Tip: Include Descriptive language. Use your senses and really describe your feelings and emotions. Be sure it makes sense when someone outside of your relationship reads it. </h5>
-        <input
-          value={requestData.story2}
-          className='reqFormInput'
-          placeholder='Prompt 2'
-          onChange={() => handleInput('story2', event.target.value)}
-        ></input>
 
-        <h1 className='reqFormHeader'>Tell us what is most important to your song</h1>
-        <input
-          value={requestData.important_what}
-          className='reqFormInput'
-          placeholder='What?'
-          onChange={() => handleInput('important_what', event.target.value)}
-        ></input>
+        <div>
+          <input
+            value={requestData.story1}
+            className='reqFormInput'
+            placeholder='Prompt 1'
+            onChange={() => handleInput('story1', event.target.value)}
+          ></input>
+          <input
+            value={requestData.story2}
+            className='reqFormInput'
+            placeholder='Prompt 2'
+            onChange={() => handleInput('story2', event.target.value)}
+          ></input>
+        </div>
 
-        <h1 className='reqFormHeader'>Tell us why it is so important</h1>
-        <input
-          value={requestData.important_why}
-          className='reqFormInput'
-          placeholder='Why?'
-          onChange={() => handleInput('important_why', event.target.value)}
-        ></input>
+        <div>
+          <label className='reqFormHeader'>Tell us what is most important to your song</label>
+          <input
+            value={requestData.important_what}
+            className='reqFormInput'
+            placeholder='What?'
+            onChange={() => handleInput('important_what', event.target.value)}
+          ></input>
 
-        <h1 className='reqFormHeader'>Anything else we should know?</h1>
-        <input
-          value={requestData.additional_info}
-          className='reqFormInput'
-          placeholder='Additional Details'
-          onChange={() => handleInput('additional_info', event.target.value)}
-        ></input>
+          <label className='reqFormHeader'>Tell us why it is so important</label>
+          <input
+            value={requestData.important_why}
+            className='reqFormInput'
+            placeholder='Why?'
+            onChange={() => handleInput('important_why', event.target.value)}
+          ></input>
+        </div>
+
+          <label className='reqFormHeader'>Anything else we should know?</label>
+          <input
+            value={requestData.additional_info}
+            className='reqFormInput'
+            placeholder='Additional Details'
+            onChange={() => handleInput('additional_info', event.target.value)}
+          ></input>
 
         <button
           className='reqFormSubmit'
@@ -222,7 +235,7 @@ function SongRequestPage({ routeVariants }) {
         </button>
 
       </form>
-    </div>
+    </motion.div>
   );
 }
 
