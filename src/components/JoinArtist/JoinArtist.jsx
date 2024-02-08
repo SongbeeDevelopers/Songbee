@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import "./JoinArtist.css";
 
@@ -18,6 +18,7 @@ function JoinArtist() {
   const [aboutYourself, setAboutYourself] = useState("");
   const [aboutUs, setAboutUs] = useState("");
 
+  const history = useHistory();
   const dispatch = useDispatch();
 // submit function for dispatching to the generator 
 
@@ -25,9 +26,9 @@ function JoinArtist() {
     e.preventDefault();
     const artistObject = {
       artist_name: artistName,
-      first_name: firstName,
-      last_name: lastName,
+      name: `${firstName} ${lastName}`,
       genre_id: genreId,
+      bio: aboutYourself
     };
     // some of the artist fields are not on the form and also some of the database fields are not on this form
     dispatch({
@@ -43,6 +44,7 @@ function JoinArtist() {
     setGenreId("");
     setAboutYourself("");
     setAboutUs("");
+    history.push('/user');
   };
 
   

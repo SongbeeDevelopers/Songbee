@@ -27,7 +27,7 @@ router.post('/', async (req, res) => {
         cancel_url: `https://songbee-cf8d644750db.herokuapp.com/`,
         automatic_tax: {enabled: true},
       });
-      // console.log("sesion:", session)
+      console.log("sesion:", session)
     
       res.send(session.url);
 });

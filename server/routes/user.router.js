@@ -111,7 +111,7 @@ router.get('/all', (req, res) => {
   })
 });
 
-router.put('/admin/:id', (req, res) => {
+router.put('/admin/:id', rejectUnauthenticated, (req, res) => {
   const query = `
   UPDATE "user"
     SET "class" = $1
