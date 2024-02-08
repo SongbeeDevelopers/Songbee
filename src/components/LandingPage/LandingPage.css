@@ -257,6 +257,14 @@ flex: none;
   border: 0;
   outline: 0;
 }
+.main-button:hover{
+  background-color: #fff4df;
+  /* background-color: #feaf17; */
+}
+.main-button:active{
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
 
 .beesButton {
   max-width: 5rem;
@@ -265,6 +273,9 @@ flex: none;
   left: 50%;
   transform: translateX(-50%);
 }
+
+
+
 
 .bee-one {
   width: 288px;
@@ -720,3 +731,4 @@ li {
 .guaranteePage {
   padding: 20px 60px !important;
 }
+
