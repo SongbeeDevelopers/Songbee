@@ -1,7 +1,8 @@
 import React from "react";
-import "./LandingPage.css";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+
+import "./LandingPage.css";
 
 
 function MainButton() {

@@ -1,12 +1,17 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import "./LandingPage.css";
-import MainButton from "./Button";
+import React from "react";
 import { Link } from "react-router-dom";
+
+import "./LandingPage.css";
+
+import MainButton from "./Button";
+
+
 function Guarantee() {
+
   return (
     <div className="bee-guarantee">
       <div className="bee-inner-background">
+
         <h2>
           Song <span className="guarantee">Guarantee</span>
         </h2>
@@ -22,8 +27,11 @@ function Guarantee() {
           </p>
           <p>Contact us at hello@songbee.com</p>
         </div>
+
         <img className="guarantee-image" height={200} width={200} src="/guarantee-photo.jpeg" alt="" />
+
         <MainButton />
+        
       </div>
     </div>
   );

@@ -1,10 +1,14 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+
 import "./JoinArtist.css";
-import { useDispatch, useSelector } from "react-redux";
+
 
 function JoinArtist() {
+
     // create useStates to hold the artists info
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [artistName, setArtistName] = useState("");
@@ -13,8 +17,10 @@ function JoinArtist() {
   const [genreId, setGenreId] = useState("");
   const [aboutYourself, setAboutYourself] = useState("");
   const [aboutUs, setAboutUs] = useState("");
+
   const dispatch = useDispatch();
 // submit function for dispatching to the generator 
+
   const submit = (e) => {
     e.preventDefault();
     const artistObject = {
@@ -38,6 +44,8 @@ function JoinArtist() {
     setAboutYourself("");
     setAboutUs("");
   };
+
+  
   return (
     <div className="join-as-artist">
       <h1>Apply Now to Join</h1>

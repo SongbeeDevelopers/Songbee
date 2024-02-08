@@ -1,8 +1,11 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
+
 function LogOutButton(props) {
+  
   const dispatch = useDispatch();
+
   return (
     <button
       // This button shows up in multiple locations and is styled differently

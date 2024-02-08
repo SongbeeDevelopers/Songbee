@@ -1,8 +1,11 @@
-import React, { useRef, useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useRef } from "react";
 import "./LandingPage.css";
 
+
 function TestimonialSection() {
+
+  const galleryRef = useRef(null);
+
   const testimonials = [
     {
       image1: "/bee-one.png",
@@ -36,7 +39,7 @@ function TestimonialSection() {
     10/10"`,
     },
   ];
-  const galleryRef = useRef(null);
+
   const scrollToNext = () => {
     if (galleryRef.current) {
       galleryRef.current.scrollBy({
@@ -54,10 +57,14 @@ function TestimonialSection() {
       });
     }
   };
+
+
   return (
     <div className="background-testimonial">
       <div className="testimonials">
+
         <h2>Testimonials</h2>
+
         <div className="slides no-scrollbar" ref={galleryRef}>
           <div className="arrows">
             <svg
@@ -99,18 +106,21 @@ function TestimonialSection() {
 
           {testimonials.map((item) => (
             <div className="active-slide" key={item.name1}>
+
               <div className="active-slideOne">
                 <img className="bee-one" src={item.image1} alt="" />
                 <img className="star-one" src="/star-one.png" alt="" />
                 <h3>{item.name1}</h3>
                 <p>{item.description1}</p>
               </div>
+
               <div className="active-slideTwo">
                 <img className="bee-two" src={item.image2} alt="" />
                 <img className="star-two" src="/star-one.png" alt="" />
                 <h3>{item.name2}</h3>
                 <p>{item.description2}</p>
               </div>
+              
             </div>
           ))}
         </div>

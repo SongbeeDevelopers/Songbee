@@ -1,11 +1,16 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from 'react';
+import { useDispatch } from "react-redux";
+import { useState } from 'react';
+
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 
-export default function UserClass({user}){
+
+function UserClass({user}){
+
     const dispatch = useDispatch()
+
     const [userClass, setUserClass] = useState(user.class)
+
     const updateUserClass = (value) => {
         dispatch({
             type: "UPDATE_USER_CLASS",
@@ -13,7 +18,8 @@ export default function UserClass({user}){
                 id: user.id,
                 data: value}
         })
-      };
+    };
+
     return (
         <>
             <Select
@@ -21,10 +27,12 @@ export default function UserClass({user}){
             label="User Class"
             onChange={(event) => updateUserClass(event.target.value)}
             >
-            <MenuItem value={1}>User</MenuItem>
-            <MenuItem value={2}>Artist</MenuItem>
-            <MenuItem value={3}>Admin</MenuItem>
+                <MenuItem value={1}>User</MenuItem>
+                <MenuItem value={2}>Artist</MenuItem>
+                <MenuItem value={3}>Admin</MenuItem>
             </Select>
         </>
     )
 }
+
+export default UserClass

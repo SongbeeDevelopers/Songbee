@@ -3,7 +3,9 @@ import React from "react";
 import { motion } from "framer-motion";
 
 function PrivacyPolicy({ routeVariants }) {
+
   return (
+
     <motion.div className="privacy-policy"    variants={routeVariants}
       initial="initial"
       animate="final">
@@ -181,7 +183,6 @@ function PrivacyPolicy({ routeVariants }) {
         Effective as of Aug 01, 2023{" "}
       </p>
     </motion.div>
-
   );
 }
 

@@ -28,6 +28,7 @@ function ComponentRouter() {
 
     const user = useSelector(store => store.user);
 
+    // styling for route fade-ins 
     const routeVariants = {
         initial: {
             opacity: 0

@@ -7,21 +7,21 @@ import './UserPage.css';
 
 
 function UserPage({ routeVariants }) {
+
   const user = useSelector((store) => store.user);
   
   // In here will source in MUI tabs for profile info, order history and credit balance
   return (
-   <>
-   <h2 className='greeting'>Welcome! {user.email}</h2>
-    <motion.div
-      className="container"
-      variants={routeVariants}
-      initial="initial"
-      animate="final"
-    >
-      
-      <UserPageTabs />  
-    </motion.div>
+    <>
+      <h2 className='greeting'>Welcome! {user.email}</h2>
+        <motion.div
+          className="container"
+          variants={routeVariants}
+          initial="initial"
+          animate="final"
+        >
+          <UserPageTabs />  
+      </motion.div>
     </>
   );
 }

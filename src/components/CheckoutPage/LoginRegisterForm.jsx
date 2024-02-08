@@ -5,15 +5,18 @@ import './LoginRegisterForm.css'
 
 
 function LoginRegisterForm( {handleClose} ) {
+  
+  const dispatch = useDispatch();
 
+  // state
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const errors = useSelector(store => store.errors);
 
-  const dispatch = useDispatch();
-
   const login = (e) => {
     e.preventDefault()
+
+    // error messages
     if (errors.loginMessage) { dispatch( {type: 'CLEAR_LOGIN_ERROR'} ) }
     if (errors.registrationMessage) { dispatch( {type: 'CLEAR_REGISTRATION_ERROR'} ) }
 
@@ -33,6 +36,8 @@ function LoginRegisterForm( {handleClose} ) {
 
   const registerUser = (e) => {
     e.preventDefault()
+
+    // error messages
     if (errors.loginMessage) { dispatch( {type: 'CLEAR_LOGIN_ERROR'} ) }
     if (errors.registrationMessage) { dispatch( {type: 'CLEAR_REGISTRATION_ERROR'} ) }
 

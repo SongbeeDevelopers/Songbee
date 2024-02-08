@@ -1,22 +1,18 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
 
 import './RegisterForm.css'
 
 
 function RegisterForm() {
 
-  // hooks
   const dispatch = useDispatch();
 
-  // local state for inputs
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [agreeToTerms, setAgreeToTerms] = useState(false)
   const [newsletterOptIn, setNewsletterOptIn] = useState(false)
 
-  // global state
   const errors = useSelector((store) => store.errors);
 
   // checkbox logic
