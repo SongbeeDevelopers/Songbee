@@ -10,7 +10,6 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import LandingPage from '../LandingPage/LandingPage';
 import OrderPage from '../OrderPage/OrderPage';
-import CheckoutPage from '../CheckoutPage/CheckoutPage';
 import SongRequestPage from '../SongRequestPage/SongRequestPage';
 import UserDetails from '../UserDetails/UserDetailsPage';
 import FaqPage from '../FaqPage/FaqPage';
@@ -19,6 +18,7 @@ import QualityGuarantee from '../QualityGuarantee/QualityGuarantee';
 import TermsAndConditions from '../TermsAndConditions/TermsAndConditions';
 import JoinArtist from '../JoinArtist/JoinArtist';
 import NotFound from '../NotFoundPage/NotFoundPage';
+import EditRequestPage from '../EditRequestPage/EditRequestPage';
 
 
 function ComponentRouter() {
@@ -27,6 +27,7 @@ function ComponentRouter() {
 
     const user = useSelector(store => store.user);
 
+    // styling for route fade-ins 
     const routeVariants = {
         initial: {
             opacity: 0
@@ -35,6 +36,21 @@ function ComponentRouter() {
             opacity: 1
         }
     }
+    const landingVariants = {
+      initial: {
+        opacity: 0,
+        y: "50px",
+      },
+      final: {
+        opacity: 1,
+        y: "0px",
+        transition: {
+          duration: 0.5,
+          delay: 0.25,
+        },
+      },
+    };
+    
 
     return (
         <Switch location={location} key={location.key}>
@@ -42,7 +58,7 @@ function ComponentRouter() {
             <Redirect exact from="/" to="/home" />
 
             <Route exact path="/home">
-              <LandingPage routeVariants={routeVariants} />
+              <LandingPage routeVariants={landingVariants} />
             </Route>
 
             {/* For protected routes, the view could show one of several things on the same route.
@@ -60,10 +76,6 @@ function ComponentRouter() {
             <Route exact path="/join-artist">
               <JoinArtist routeVariants={routeVariants} />
             </Route>
-
-            <Route exact path="/checkout">
-              <CheckoutPage routeVariants={routeVariants} />
-            </Route>
             
             <Route exact path="/details/:id">
               <UserDetails routeVariants={routeVariants} />
@@ -72,6 +84,10 @@ function ComponentRouter() {
             <Route exact path="/requestform/:id">
               <SongRequestPage routeVariants={routeVariants} />
             </Route>
+
+            <ProtectedRoute exact path="/request/edit/:id">
+              <EditRequestPage routeVariants={routeVariants} />
+            </ProtectedRoute>
 
             <Route exact path="/terms">
               <TermsAndConditions routeVariants={routeVariants} />

@@ -1,15 +1,23 @@
 import React from 'react';
-import LoginForm from '../LoginForm/LoginForm';
 import { useHistory } from 'react-router-dom';
+
+import LoginForm from '../LoginForm/LoginForm';
+
+import { motion } from 'framer-motion';
 
 import './LoginPage.css'
 
-function LoginPage() {
+
+function LoginPage({ routeVariants }) {
+
   const history = useHistory();
 
   return (
-    <div>
-
+    <motion.div
+      variants={routeVariants}
+      initial='initial'
+      animate='final'
+    >
       <h1 className='loginHeader'>Songbee Account Login</h1>
 
       <LoginForm />
@@ -21,8 +29,7 @@ function LoginPage() {
       >
         Register
       </button>
-
-    </div>
+    </motion.div>
   );
 }
 

@@ -1,4 +1,11 @@
 import * as React from 'react';
+import { useState } from 'react';
+import { useDispatch } from "react-redux";
+import { useHistory } from 'react-router-dom';
+
+import Dialog from '@mui/material/Dialog';
+import Paper from '@mui/material/Paper';
+import Slide from '@mui/material/Slide';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -6,13 +13,9 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import Dialog from '@mui/material/Dialog';
-import Slide from '@mui/material/Slide';
+
 import AdminRequestDialog from './AdminRequestDialog';
 import AdminDetailsDialog from './AdminDetailsDialog';
-import { useDispatch, useSelector } from "react-redux";
-import { useState } from 'react';
 
 function AdminTable({data}) {
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -34,38 +37,46 @@ function AdminTable({data}) {
       border: 0,
     },
   }));
+  const history = useHistory();
   const dispatch = useDispatch();
+
   const now = new Date ();
   const msPerDay = 24 * 60 * 60 * 1000;
+
+  // modal state
   const [open, setOpen] = useState(false);
   const [open1, setOpen1] = useState(false);
+
+  // modal logic
   const handleClickOpen = (id, x) => {
     dispatch({
         type: "FETCH_CURRENT_REQUEST",
         payload: id
     })
     if (x===1){
-    setOpen1(true);
+      setOpen1(true);
     }
     else {
-    setOpen(true);
+      setOpen(true);
     }
   };
-
   const handleClose = (x) => {
     if (x===1){
-    setOpen1(false);
+      setOpen1(false);
     }
     else {
-    setOpen(false);
+      setOpen(false);
     }
   };
+  const goToEdit = (id) => {
+    history.push(`/request/edit/${id}`)
+  }
   const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
 
+  // complete form dialogue
   const AlertDialogSlide = () => {
-  
     return (
       <>
         <Dialog
@@ -80,15 +91,16 @@ function AdminTable({data}) {
             flexDirection: 'column', 
             alignItems: 'center',
             ml: 10
-            }}
+          }}
         >
           <AdminRequestDialog handleClose={handleClose}/>
         </Dialog>
       </>
     );
   }
+
+  // details modal
   const DetailsDialogSlide = () => {
-  
     return (
       <>
         <Dialog
@@ -103,7 +115,7 @@ function AdminTable({data}) {
             flexDirection: 'column', 
             alignItems: 'center',
             ml: 10
-            }}
+          }}
         >
           <AdminDetailsDialog handleClose={handleClose}/>
         </Dialog>
@@ -111,8 +123,10 @@ function AdminTable({data}) {
     );
   }
 
+
   return (
     <div className="container">
+
       <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
@@ -142,7 +156,7 @@ function AdminTable({data}) {
                 :
                 "Complete!"}</StyledTableCell>
               <StyledTableCell align="center">
-                <button className='admin-button' onClick={() => handleClickOpen(row.id, 1)}>Details</button>
+                <button className='admin-button' onClick={() => goToEdit(row.id)}>Details</button>
                 <DetailsDialogSlide />
               </StyledTableCell>
               <StyledTableCell align="center">

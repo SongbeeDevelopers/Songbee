@@ -3,11 +3,10 @@ import { useSelector } from 'react-redux';
 import './UserCreditPage.css';
 
 
-
 // This function will display the user's credit Balance
 function UserCreditPage() {
- const user = useSelector((store) => store.user);
 
+ const user = useSelector((store) => store.user);
 
  return (
     <div className='creditBody'>

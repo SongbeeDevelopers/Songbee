@@ -1,6 +1,7 @@
 import React from 'react';
-
 import { motion } from 'framer-motion';
+import FaqSection from '../LandingPage/Faq';
+
 
 function FAQ({ routeVariants }) {
   return (
@@ -10,7 +11,7 @@ function FAQ({ routeVariants }) {
       initial="initial"
       animate="final"
     >
-      <p>FAQ</p>
+<FaqSection/>
     </motion.div>
   );
 }

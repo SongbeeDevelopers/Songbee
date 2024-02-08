@@ -1,6 +1,8 @@
 import React from "react";
-import "./LandingPage.css";
 import { useRef } from "react";
+
+import "./LandingPage.css";
+
 
 function SampleSongs() {
 
@@ -46,6 +48,7 @@ function SampleSongs() {
 
 
   return (
+    <div className="outer-sample">
     <div className="sample-songs">
 
       <div>
@@ -91,9 +94,7 @@ function SampleSongs() {
       </div>
 
       <div ref={galleryRef} className="all-audios no-scrollbar">
-
         {sampleSongs.map((song) => (
-
           <div key={sampleSongs.indexOf(song)} className="active-audio">
 
             <div className="left-audio">
@@ -110,8 +111,8 @@ function SampleSongs() {
 
           </div>
         ))}
-
       </div>
+    </div>
     </div>
   );
 }

@@ -1,11 +1,15 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React from "react";
+
 import "./LandingPage.css";
+
 import MainButton from "./Button";
 
+
 function HowSongBeeWorks() {
+
   return (
     <div className="works">
+
       <h2>How Songbee works</h2>
 
       <div className="works-images">
@@ -17,9 +21,11 @@ function HowSongBeeWorks() {
             personalize your song.
           </p>
         </div>
+
         <div className="arrows-one">
           <img src="/arrows.png" alt="" />
         </div>
+
         <div className="img-two">
           <img src="/img2.gif" alt="" />
           <span>2</span>
@@ -28,19 +34,24 @@ function HowSongBeeWorks() {
             custom song.
           </p>
         </div>
+
         <div className="arrows-two">
           <img src="/arrows.png" alt="" />
         </div>
+        
         <div className="img-three">
           <img src="/img3.gif" alt="" />
           <span>3</span>
           <p>Enjoy your studio-quality song delivered in 7 days or less.</p>
         </div>
       </div>
+
       <MainButton/>
+
       <div className="beesButton">
           <img src="/bee-button.png" alt="" />
-        </div>
+      </div>
+
     </div>
 
   );

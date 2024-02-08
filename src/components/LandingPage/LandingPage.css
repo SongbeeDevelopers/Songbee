@@ -1,4 +1,3 @@
-
 /* --------------------------------------------------------------------------------
 Grid
 -------------------------------------------------------------------------------- */
@@ -258,6 +257,14 @@ flex: none;
   border: 0;
   outline: 0;
 }
+.main-button:hover{
+  background-color: #fff4df;
+  /* background-color: #feaf17; */
+}
+.main-button:active{
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
 
 .beesButton {
   max-width: 5rem;
@@ -266,6 +273,9 @@ flex: none;
   left: 50%;
   transform: translateX(-50%);
 }
+
+
+
 
 .bee-one {
   width: 288px;
@@ -355,7 +365,7 @@ svg {
 .background-testimonial {
   background-color: white;
   padding: 15px;
-  margin: 50px 0;
+  /* margin: 50px 0; */
   margin-top: 100px;
 }
 
@@ -435,10 +445,28 @@ svg {
   font-weight: 600;
 }
 
+.outer-sample {
+  width: 100%;
+  background-color: white;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  padding: 50px;
+  padding-bottom: 50px;
+  
+}
+
 .sample-songs {
   position: relative;
-  padding: 0 105px;
-  margin: 50px 0;
+  /* padding: 0 105px;
+  margin: 50px 0; */
+  background-color: #fff4df;
+  /* margin: 0 100px;
+  width: auto; */
+  padding-bottom: 20px;
+  padding-top: 20px;
+  border-radius: 25px;
+
 }
 .active-audio h3 {
   text-align: center;
@@ -535,7 +563,6 @@ svg {
   padding: 23px 15px;
   font-weight: 600;
   color: #60626d;
-  background-color: #ffffff;
   line-height: 29px;
   position: relative;
 }
@@ -583,8 +610,7 @@ svg {
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
 }
-.panel .panel-heading .panel-title p.collapsed .bar {
-}
+
 .panel .panel-heading .panel-title p.collapsed .bar:after {
   transform: rotate(90deg);
   -webkit-transform: rotate(90deg);
@@ -595,8 +621,7 @@ svg {
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
 }
-.panel-collapse {
-}
+
 .panel-collapse .panel-body {
   border: 0px solid !important;
   line-height: 26px;
@@ -632,17 +657,20 @@ svg {
 }
 
 .faq {
-  background-color: white;
   display: flex;
   flex-direction: column;
-
 }
 
 .faq-title {
-  font-size: 3rem;
-  font-weight: 600;
-  line-height: 130%;
-  text-align: center;
+  color: var(--black-4);
+    text-align: center;
+    letter-spacing: -0.01em;
+    margin-top: 20px;
+    font-family: Oswald, sans-serif;
+    font-size: 4.6875rem;
+    font-weight: 300;
+    line-height: 4.6875rem;
+    position: relative;
 }
 
 .faq-below-title {
@@ -660,7 +688,6 @@ svg {
   text-align: center;
   letter-spacing: -0.01em;
   margin-top: 20px;
-  margin-bottom: 10px;
   font-family: Oswald, sans-serif;
   font-size: 4.6875rem;
   font-weight: 300;
@@ -669,37 +696,39 @@ svg {
   font: 75px;
 }
 
-li{
+li {
   color: gray;
   margin-bottom: 8px;
 }
 
-.privacy-policy h2, .guaranteePage h2{
+.privacy-policy h2,
+.guaranteePage h2 {
   color: #5b6b7b;
   font-size: 15px;
   margin-bottom: -12px;
 }
 
-.privacy-policy p, .guaranteePage p{
+.privacy-policy p,
+.guaranteePage p {
   color: grey;
   line-height: 1.5rem;
   margin-bottom: 10px;
-  letter-spacing: .015em;
-    margin-bottom: 20px;
-    font-size: .9375rem;
-    font-weight: 400;
-    line-height: 1.5rem;
+  letter-spacing: 0.015em;
+  margin-bottom: 20px;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.5rem;
 }
 
 .privacy-policy li:first-child {
-margin-top: -16px;
+  margin-top: -16px;
 }
 
-.mail-guarantee{
+.mail-guarantee {
   color: #feaf17;
 }
 
-.guaranteePage{
+.guaranteePage {
   padding: 20px 60px !important;
-  
 }
+

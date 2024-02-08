@@ -1,109 +1,104 @@
-.explore-artist{
-    background-color: white;
-    height: 100px;
-    border-top: 1px solid black;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.explore-artist {
+  background-color: white;
+  height: 100px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.explore-artist a{
-    text-decoration: underline;
-    font-size: 2rem;
-    font-weight: 700;
-    color: #feaf17;
-}
-
-.join-as-artist{
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-
+.explore-artist a {
+  text-decoration: underline;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #feaf17;
 }
 
-.join-as-artist h1{
-    text-align: center;
-    font-weight: 600;
-    font-size: 2rem;
-    color: black;
+.join-as-artist {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.join-as-artist p{
-    text-align: center;
-    font-weight: 500;
-    font-size: 14px;
-    color: gray;
+.join-as-artist h1 {
+  text-align: center;
+  font-weight: 600;
+  font-size: 2rem;
+  color: black;
 }
 
-.artist-form{
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    margin-top: 30px;
-
+.join-as-artist p {
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+  color: gray;
 }
 
-.group{
-    display: flex;
-    gap: 30px;
+.artist-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 30px;
 }
 
-.group-input{
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    width: 50%;
+.group {
+  display: flex;
+  gap: 30px;
 }
 
-.group-input label{
-    font-weight: 500;
-    color: black;
-    font-size: 16px;
+.group-input {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 50%;
 }
 
-.group-input input{
-font-weight: 500;
-color: black;
-font-weight: 16px;
-height: 45px;
-background-color: white;
-border-radius: 8px;
-width: 100%;
-outline: 0;
-border: 0;
-}
-.group-input input:focus{
-    outline: 0;
-    border: 0;
+.group-input label {
+  font-weight: 500;
+  color: black;
+  font-size: 16px;
 }
 
-.group-input select{
-    font-weight: 500;
-color: black;
-font-weight: 16px;
-height: 45px;
-background-color: white;
-border-radius: 8px;
-width: 100%;
-outline: 0;
-border: 0;
+.group-input input {
+  font-weight: 500;
+  color: black;
+  font-weight: 16px;
+  height: 45px;
+  background-color: white;
+  border-radius: 8px;
+  width: 100%;
+  outline: 0;
+  border: 0;
+}
+.group-input input:focus {
+  outline: 0;
+  border: 0;
 }
 
-.group-input textarea{
-    height: 120px;
-    border: 0;
-    outline: 0;
-
+.group-input select {
+  font-weight: 500;
+  color: black;
+  font-weight: 16px;
+  height: 45px;
+  background-color: white;
+  border-radius: 8px;
+  width: 100%;
+  outline: 0;
+  border: 0;
 }
 
-.group-input textarea:focus{
-    border: 0;
-    outline: 0;
-
+.group-input textarea {
+  height: 120px;
+  border: 0;
+  outline: 0;
 }
 
-.join-button{
-    margin: 0 auto;
+.group-input textarea:focus {
+  border: 0;
+  outline: 0;
+}
+
+.join-button {
+  margin: 0 auto;
   z-index: 100;
   width: 16rem;
   height: 2.5rem;
@@ -125,9 +120,11 @@ border: 0;
   border: 1px solid black;
   outline: 0;
   margin-bottom: 30px;
+  cursor: pointer;
 }
 
 
-.width-full{
-    width: 100% !important;
+
+.width-full {
+  width: 100% !important;
 }

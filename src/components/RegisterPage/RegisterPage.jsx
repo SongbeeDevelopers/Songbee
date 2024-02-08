@@ -1,16 +1,23 @@
 import React from 'react';
-
 import { useHistory } from 'react-router-dom';
+
 import RegisterForm from '../RegisterForm/RegisterForm';
+
+import { motion } from 'framer-motion';
 
 import './RegisterPage.css';
 
-function RegisterPage() {
+
+function RegisterPage({ routeVariants }) {
+
   const history = useHistory();
 
   return (
-    <div>
-
+    <motion.div
+      variants={routeVariants}
+      initial='initial'
+      animate='final'
+    >
       <h1 className='registerHeader'>Register User</h1>
 
       <RegisterForm />
@@ -21,10 +28,8 @@ function RegisterPage() {
         onClick={() => {
           history.push('/login');
         }}
-      >
-        Login
-      </button>
-    </div>
+      >Login</button>
+    </motion.div>
   );
 }
 

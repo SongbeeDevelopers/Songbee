@@ -1,63 +1,110 @@
-.reqFormHeader {
-    text-align: center;
-    font-family: Poppins;
-    font-size: 3rem;
-    font-weight: 600;
-    line-height: 4.6875rem;
+.reqFormPage {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.reqFormSubHeader {
+.reqFormPage h1 {
     text-align: center;
-    font-family: Poppins;
+    font-weight: 600;
+    font-size: 2rem;
+    color: black;
+}
+
+.reqFormPage h2 {
+    margin-bottom: 0;
+}
+
+.reqFormPage h4 {
+    margin-bottom: 0;
+}
+
+.reqFormPage h5 {
+    margin-top: 0;
+}
+
+.reqFormPage p {
+    text-align: center;
+    font-weight: 500;
     font-size: 14px;
-    color: rgb(51, 51, 51);
+    color: gray;
+}
+
+.reqForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.reqFormAdditionalDetails {
+    margin: auto;
+}
+
+.reqFormGroup {
+    display: flex;
+    gap: 30px;
+}
+
+.reqFormGroup label {
+    font-weight: 500;
+}
+
+.reqFormGroup input {
+    height: 45px;
+    border-radius: 8px;
+    width: 100%;
+    border: 0;
+    padding-left: 15px;
+}
+
+.reqFormGroup select {
+    height: 45px;
+    width: 100%;
+    border: 0;
+    padding-left: 15px;
 }
 
 .reqFormInput {
-    display: block;
-    height: 38px;
-    width: 30rem;
-    font-size: 14px;
-    font-family: Poppins;
-    margin-bottom: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 15px;
-    line-height: 1.42857143;
-    border: 1px solid #cccccc;
-    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 50%;
 }
 
-.reqFormDropdown {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #f3f3f3;
-    width: 30rem;
-    height: 38px;
-    padding: 8px 12px;
-    margin-bottom: 10px;
-    font-size: 14px;
-    border: 1px solid #cccccc;
-}
-
-.reqFormPrompts {
-    max-width: 25%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+.reqFormSelect {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 5px;
+    width: 50%;
 }
 
 .reqFormSubmit {
-    display: block;
+    margin: 20px auto;
+    width: 16rem;
+    height: 2.5rem;
     background-color: #feaf17;
-    border: 1px solid #000;
-    border-radius: 13px;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
     font-family: Poppins, sans-serif;
+    font-size: 1.4rem;
     font-weight: 600;
-    margin-top: 27px;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
-    padding: 9px 15px;
+    display: flex;
+    position: static;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border: 1px solid black;
+}
+
+#reqFormNameInput {
+    gap: 5px
+}
+
+#additionalDetails {
+    display: flex;
+    justify-content: center;
+}
+
+#additionalDetailsHeader {
+    margin-bottom: 20px;
 }

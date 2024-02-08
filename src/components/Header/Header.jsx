@@ -16,15 +16,17 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 
 import "./Header.css";
+import { Logout } from "@mui/icons-material";
+
 
 function Header() {
+
   const history = useHistory();
   const dispatch = useDispatch();
 
   const user = useSelector((store) => store.user);
 
   // persistent drawer logic
-
   const [open, setOpen] = useState(false);
   const drawerWidth = 240;
 
@@ -37,34 +39,73 @@ function Header() {
     justifyContent: "flex-start",
   }));
 
+  // drawer open/close
   const handleDrawerOpen = () => {
     setOpen(true);
   };
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
+  // const scrollToFaq = ()=>{
+  //   const faqSection = document.getElementById("faq")
+  //   if(faqSection){
+  //     faqSection.scrollIntoView({
+  //       behavior:"smooth"
+  //     })
+  //   }
+  // }
   return (
     <div className="nav">
-      {/* <Toolbar> */}
 
       <Link to="/home">
         <img className="nav-title" src="header-icon.png"></img>
       </Link>
+      <div className="nav-right">
+        {/* <span onClick={()=>scrollToFaq()} className="nav-links">
+          Faq
+        </span> */}
+        {/* <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#a5a5a5"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-tally-1"
+        >
+          <path d="M4 4v16" />
+        </svg>{" "} */}
+        <Link
+          onClick={(e) => {
+            if (user?.id) {
+              e.preventDefault();
+              dispatch({ type: "LOGOUT" });
+            }
+          }}
+          className="nav-links"
+          to="/login"
+        >
+          {user?.id? "Logout" : "Login"}
+        </Link>
+        <IconButton
+          color="inherit"
+          aria-label="open drawer"
+          edge="end"
+          onClick={handleDrawerOpen}
+          sx={{
+            ...(open && { display: "none" }),
+            // position: "absolute",
+            // right: "2rem",
+            // top: "1rem",
+          }}
+        >
+          <MenuIcon />
+        </IconButton>
+      </div>
 
-      <IconButton
-        color="inherit"
-        aria-label="open drawer"
-        edge="end"
-        onClick={handleDrawerOpen}
-        sx={{
-          ...(open && { display: "none" }),
-          position: "absolute",
-          right: "2rem",
-        }}
-      >
-        <MenuIcon />
-      </IconButton>
       {/* </Toolbar> */}
 
       <Drawer

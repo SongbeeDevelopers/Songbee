@@ -14,6 +14,7 @@ function App() {
 
   const dispatch = useDispatch();
 
+  // fetch user on launch
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
   }, [dispatch]);
@@ -21,9 +22,11 @@ function App() {
   return (
     <Router>
         <Header />
-        <LocationProvider>
-          <ComponentRouter />
-        </LocationProvider>
+        <div className='container'>
+          <LocationProvider>
+            <ComponentRouter />
+          </LocationProvider>
+        </div>
         <Footer />
     </Router>
   );

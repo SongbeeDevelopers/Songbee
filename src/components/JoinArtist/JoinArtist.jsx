@@ -1,9 +1,16 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import "./JoinArtist.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
 
-function JoinArtist() {
+import { motion } from "framer-motion";
+
+import "./JoinArtist.css";
+
+
+function JoinArtist({ routeVariants }) {
+
+    // create useStates to hold the artists info
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [artistName, setArtistName] = useState("");
@@ -12,22 +19,25 @@ function JoinArtist() {
   const [genreId, setGenreId] = useState("");
   const [aboutYourself, setAboutYourself] = useState("");
   const [aboutUs, setAboutUs] = useState("");
+
+  const history = useHistory();
   const dispatch = useDispatch();
+// submit function for dispatching to the generator 
 
   const submit = (e) => {
     e.preventDefault();
     const artistObject = {
       artist_name: artistName,
-      first_name: firstName,
-      last_name: lastName,
+      name: `${firstName} ${lastName}`,
       genre_id: genreId,
+      bio: aboutYourself
     };
     // some of the artist fields are not on the form and also some of the database fields are not on this form
     dispatch({
       type: "CREATE_ARTIST",
       payload: artistObject,
     });
-
+    // clear the form fields
     setFirstName("");
     setLastName("");
     setArtistName("");
@@ -36,9 +46,17 @@ function JoinArtist() {
     setGenreId("");
     setAboutYourself("");
     setAboutUs("");
+    history.push('/user');
   };
+
+  
   return (
-    <div className="join-as-artist">
+    <motion.div
+      className="join-as-artist"
+      variants={routeVariants}
+      initial='initial'
+      animate='final'
+    >
       <h1>Apply Now to Join</h1>
       <p>
         Our Songbee artists are required to write, record, and produce a song
@@ -152,7 +170,7 @@ function JoinArtist() {
       <div className="explore-artist">
         <Link to="/artist">Explore Our Artist Community</Link>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

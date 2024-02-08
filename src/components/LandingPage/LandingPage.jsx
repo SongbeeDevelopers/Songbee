@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React from "react";
 
 import { motion } from "framer-motion";
 
@@ -13,17 +12,7 @@ import Guarantee from "./Guarantee";
 import FaqSection from "./Faq";
 
 
-
-
 function LandingPage({ routeVariants }) {
-
-  const [heading, setHeading] = useState("Welcome");
-  const history = useHistory();
-
-  const onLogin = (event) => {
-    history.push("/login");
-  };
-
 
   return (
     <motion.div
@@ -37,7 +26,7 @@ function LandingPage({ routeVariants }) {
     <TestimonialSection />
     <SampleSongs />
     <Guarantee/>
-    <FaqSection/>
+    {/* <FaqSection/> */}
     </motion.div>
 
   );

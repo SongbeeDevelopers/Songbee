@@ -3,10 +3,15 @@ import React from "react";
 import { motion } from "framer-motion";
 
 function PrivacyPolicy({ routeVariants }) {
+
   return (
-    <motion.div className="privacy-policy"    variants={routeVariants}
+
+    <motion.div
+      className="privacy-policy"
+      variants={routeVariants}
       initial="initial"
-      animate="final">
+      animate="final"
+    >
       <h1 className="headerP">Privacy Policy</h1>
       <p className="policyP">
 
@@ -21,7 +26,7 @@ function PrivacyPolicy({ routeVariants }) {
         the Songbee website, you consent to the data practices described in this
         statement.
       </p>
-      <h2 className="policyP-two">Collection of yourPersonal Information</h2>
+      <h2 className="policyP-two">Collection of Your Personal Information</h2>
       <p className="policyP">
         In order to better provide you with products and services offered,
       </p>
@@ -91,7 +96,7 @@ function PrivacyPolicy({ routeVariants }) {
         they are interested in aparticular subject area.
       </p>
 
-      <h2>‍AutomaticallyCollected Information</h2>
+      <h2>‍Automatically Collected Information</h2>
 
       <p>
         ‍Information about your computer hardware and software may
@@ -133,7 +138,7 @@ function PrivacyPolicy({ routeVariants }) {
         the information.
       </p>
 
-      <h2>‍Children UnderThirteen</h2>
+      <h2>‍Children Under Thirteen</h2>
 
       <p>
         Songbee collects personally identifiable information fromchildren under
@@ -181,7 +186,6 @@ function PrivacyPolicy({ routeVariants }) {
         Effective as of Aug 01, 2023{" "}
       </p>
     </motion.div>
-
   );
 }
 
