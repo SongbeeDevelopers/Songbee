@@ -4,14 +4,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import './LoginForm.css'
 
 function LoginForm() {
+
+  const dispatch = useDispatch();
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const errors = useSelector(store => store.errors);
-  const dispatch = useDispatch();
 
   const login = (event) => {
     event.preventDefault();
-
     if (username && password) {
       dispatch({
         type: 'LOGIN',
@@ -23,8 +24,9 @@ function LoginForm() {
     } else {
       dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }
-  }; // end login
+  };
 
+  
   return (
     <form className="loginForm" onSubmit={login}>
 

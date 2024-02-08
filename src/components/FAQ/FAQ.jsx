@@ -2,6 +2,7 @@ import React from 'react';
 
 import { motion } from 'framer-motion';
 
+
 function FAQ({ routeVariants }) {
   return (
     <motion.div

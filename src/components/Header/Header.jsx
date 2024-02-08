@@ -17,14 +17,15 @@ import ListItemText from "@mui/material/ListItemText";
 
 import "./Header.css";
 
+
 function Header() {
+
   const history = useHistory();
   const dispatch = useDispatch();
 
   const user = useSelector((store) => store.user);
 
   // persistent drawer logic
-
   const [open, setOpen] = useState(false);
   const drawerWidth = 240;
 
@@ -37,6 +38,7 @@ function Header() {
     justifyContent: "flex-start",
   }));
 
+  // drawer open/close
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -46,7 +48,6 @@ function Header() {
 
   return (
     <div className="nav">
-      {/* <Toolbar> */}
 
       <Link to="/home">
         <img className="nav-title" src="header-icon.png"></img>
@@ -65,7 +66,6 @@ function Header() {
       >
         <MenuIcon />
       </IconButton>
-      {/* </Toolbar> */}
 
       <Drawer
         sx={{

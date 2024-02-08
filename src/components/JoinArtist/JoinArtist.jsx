@@ -1,9 +1,14 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+
 import "./JoinArtist.css";
-import { useDispatch, useSelector } from "react-redux";
+
 
 function JoinArtist() {
+
+  const dispatch = useDispatch();
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [artistName, setArtistName] = useState("");
@@ -12,7 +17,6 @@ function JoinArtist() {
   const [genreId, setGenreId] = useState("");
   const [aboutYourself, setAboutYourself] = useState("");
   const [aboutUs, setAboutUs] = useState("");
-  const dispatch = useDispatch();
 
   const submit = (e) => {
     e.preventDefault();
@@ -37,6 +41,8 @@ function JoinArtist() {
     setAboutYourself("");
     setAboutUs("");
   };
+
+  
   return (
     <div className="join-as-artist">
       <h1>Apply Now to Join</h1>

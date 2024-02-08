@@ -2,13 +2,20 @@ import React from "react";
 
 import { motion } from 'framer-motion';
 
+
 function QualityGuarantee({ routeVariants }) {
+
   return (
-    <motion.div className="guaranteePage" variants={routeVariants}
+    <motion.div
+      className="guaranteePage"
+      variants={routeVariants}
       initial="initial"
-      animate="final">
+      animate="final"
+    >
       <h1 className="headerP">Quality Guarantee</h1>
+
       <h2>The Songbee Guarantee</h2>
+      
       <p>
         At Songbee we stand behind our Custom Songs! We understand that your
         song purchase is more than just a song, it is the embodiment of your

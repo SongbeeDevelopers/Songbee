@@ -3,8 +3,6 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
-import { motion } from 'framer-motion';
-
 import LoginRegisterForm from './LoginRegisterForm';
 
 import './CheckoutPage.css'
@@ -12,7 +10,10 @@ import './CheckoutPage.css'
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 
+import { motion } from 'framer-motion';
+
 import Swal from 'sweetalert2';
+
 
 function CheckoutPage({ routeVariants }) {
 

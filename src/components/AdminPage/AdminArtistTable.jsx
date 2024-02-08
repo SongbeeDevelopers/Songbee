@@ -39,6 +39,7 @@ function AdminArtistTable({data}) {
     <div className="container">
       <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
+        
         <TableHead>
           <TableRow>
             <StyledTableCell>Artist Name</StyledTableCell>

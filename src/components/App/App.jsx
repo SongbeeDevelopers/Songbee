@@ -14,6 +14,7 @@ function App() {
 
   const dispatch = useDispatch();
 
+  // fetch user on launch
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
   }, [dispatch]);
