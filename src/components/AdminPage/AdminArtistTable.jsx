@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useDispatch } from 'react-redux';
 
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
@@ -12,6 +13,7 @@ import TableRow from '@mui/material/TableRow';
 
 function AdminArtistTable({data}) {
 
+  const dispatch = useDispatch();
   // header styling
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -33,6 +35,20 @@ function AdminArtistTable({data}) {
       border: 0,
     },
   }));
+
+  const approveArtist = (id) => {
+    dispatch({
+        type: "APPROVE_ARTIST",
+        payload: id
+    })
+  }
+
+  const denyArtist = (id) => {
+    dispatch({
+        type: "DELETE_ARTIST",
+        payload: id
+    })
+  }
 
 
   return (
@@ -67,11 +83,11 @@ function AdminArtistTable({data}) {
               </StyledTableCell>
 
               <StyledTableCell align="center">
-              <button>Approve</button>
+              <button onClick={() => approveArtist(artist.id)}>Approve</button>
               </StyledTableCell>
               
               <StyledTableCell align="center">
-              <button>Deny</button>
+              <button onClick={() => denyArtist(artist.id)}>Deny</button>
               </StyledTableCell>
             </StyledTableRow>
           )}

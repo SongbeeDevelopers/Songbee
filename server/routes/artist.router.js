@@ -9,7 +9,7 @@ const {
 /**
  * GET route template
  */
-router.get("/:artistid", (req, res) => {
+router.get("/get/:artistid", (req, res) => {
   // this is getting artist info with the genre
   // we use the sql join to link artist and genre tables
   const query = `
@@ -99,6 +99,7 @@ router.get('/pending', (req, res) => {
     SELECT * FROM "artist"
     WHERE "approved"=FALSE;
     `
+    console.log("Inside pending artist GET route");
     pool.query(query)
     .then((response) => {
         res.send(response.rows)
@@ -107,5 +108,48 @@ router.get('/pending', (req, res) => {
         console.error('Error in artist router GET all pending:', error)
     })
   });
+
+router.delete('/:id', (req, res) => {
+    const query = `
+    DELETE FROM "artist"
+    WHERE id=$1;
+    `
+    pool.query(query, [req.params.id])
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log('Delete artist failed: ', err);
+      res.sendStatus(500);
+    })
+})
+
+router.put('/:id', async (req, res) => {
+    let connection
+    try {
+    connection = await pool.connect();
+
+    connection.query("BEGIN;");
+    const approvalQuery = `
+    UPDATE "artist"
+    SET "approved"=TRUE
+    WHERE id=$1;
+    `
+    await connection.query(approvalQuery, [req.params.id])
+    const classQuery = `
+    UPDATE "user"
+    SET "class"=2
+    WHERE "id"=$1;
+    `
+    await connection.query(classQuery, [req.user.id])
+    connection.query("COMMIT;");
+    connection.release();
+    } catch (error) {
+        console.error("Artist router Update failed:", error)
+        connection.query("ROLLBACK;");
+        connection.release();
+        res.sendStatus(500)
+    }
+})
 
 module.exports = router;
