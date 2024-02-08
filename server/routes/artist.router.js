@@ -16,8 +16,7 @@ router.get("/get/:artistid", (req, res) => {
   SELECT 
   "artist"."id" AS "artistId",
   "artist"."artist_name" AS "artistName",
-  "artist"."first_name" AS "firstName",
-  "artist"."last_name" AS "lastName",
+  "artist"."name",
   "artist"."vocal_type" AS "vocalType",
   "artist"."website" AS "website",
   "artist"."bio" AS "bio",
@@ -53,9 +52,9 @@ router.post("/", rejectUnauthenticated, (req, res) => {
   const newArtist = req.body;
   // this query is creating the artist 
   const queryText = `INSERT INTO "artist"
- ("artist_name","user_id", "vocal_type", "first_name", "last_name")
+ ("artist_name", "user_id", "name", "bio")
   VALUES
-  ($1, $2, $3, $4, $5) returning "id"; `;
+  ($1, $2, $3, $4) returning "id"; `;
   // this query is creating the artist genre 
   const queryGenre = `INSERT INTO "artist_genres"
   ("artist_id", "genre_id")
@@ -67,9 +66,8 @@ router.post("/", rejectUnauthenticated, (req, res) => {
       newArtist.artist_name,
       // newArtist.name,
       req.user.id, // access the id of the current logged in user
-      newArtist.vocal_type,
-      newArtist.first_name,
-      newArtist.last_name,
+      newArtist.name,
+      newArtist.bio
     ])
     .then((result) => {
       console.log(result.rows);

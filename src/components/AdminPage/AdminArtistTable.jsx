@@ -83,11 +83,11 @@ function AdminArtistTable({data}) {
               </StyledTableCell>
 
               <StyledTableCell align="center">
-              <button onClick={() => approveArtist(artist.id)}>Approve</button>
+              <button className='admin-button' onClick={() => approveArtist(artist.id)}>Approve</button>
               </StyledTableCell>
               
               <StyledTableCell align="center">
-              <button onClick={() => denyArtist(artist.id)}>Deny</button>
+              <button className='admin-button' onClick={() => denyArtist(artist.id)}>Deny</button>
               </StyledTableCell>
             </StyledTableRow>
           )}
