@@ -36,6 +36,20 @@ function ComponentRouter() {
             opacity: 1
         }
     }
+    const landingVariants = {
+      initial: {
+        opacity: 0,
+        y: "50px",
+      },
+      final: {
+        opacity: 1,
+        y: "0px",
+        transition: {
+          duration: 0.5,
+          delay: 0.25,
+        },
+      },
+    };
 
     return (
         <Switch location={location} key={location.key}>
@@ -43,7 +57,7 @@ function ComponentRouter() {
             <Redirect exact from="/" to="/home" />
 
             <Route exact path="/home">
-              <LandingPage routeVariants={routeVariants} />
+              <LandingPage routeVariants={landingVariants} />
             </Route>
 
             {/* For protected routes, the view could show one of several things on the same route.
