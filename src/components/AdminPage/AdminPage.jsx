@@ -32,6 +32,7 @@ function AdminPage({ routeVariants }) {
 
   // on mount
   useEffect(() => {
+<<<<<<< animations-p2
     dispatch({ type: "FETCH_ALL_REQUESTS" });
     dispatch({ type: "FETCH_ALL_USERS" });
     dispatch({ type: "FETCH_PENDING_ARTISTS"});
@@ -42,6 +43,9 @@ function AdminPage({ routeVariants }) {
         query: ''
       }
     });
+=======
+    dispatch({ type: "LOAD_ADMIN_PAGE" });
+>>>>>>> main
   }, [])
 
   // handles state

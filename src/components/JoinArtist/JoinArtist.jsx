@@ -7,7 +7,7 @@ import "./JoinArtist.css";
 
 function JoinArtist() {
 
-  const dispatch = useDispatch();
+    // create useStates to hold the artists info
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -17,6 +17,9 @@ function JoinArtist() {
   const [genreId, setGenreId] = useState("");
   const [aboutYourself, setAboutYourself] = useState("");
   const [aboutUs, setAboutUs] = useState("");
+
+  const dispatch = useDispatch();
+// submit function for dispatching to the generator 
 
   const submit = (e) => {
     e.preventDefault();
@@ -31,7 +34,7 @@ function JoinArtist() {
       type: "CREATE_ARTIST",
       payload: artistObject,
     });
-
+    // clear the form fields
     setFirstName("");
     setLastName("");
     setArtistName("");
