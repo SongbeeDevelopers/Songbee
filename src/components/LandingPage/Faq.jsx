@@ -11,20 +11,20 @@ const faqs = [
 
     Artist Gratuity: Our artists are working musicians and rely on tips to further their 
     careers and lives, so we strongly encourage you to tip your artist. All tips are 100% 
-    for the artist minus processing fees. You can tip your artist via the online portal.`
+    for the artist minus processing fees. You can tip your artist via the online portal.`,
   },
   {
-    question: "How long does song delivery take?", 
-    answer:`We have a 7 day standard delivery as well as expedited delivery options (4 or 5 day)
-     for an additional fee.`
+    question: "How long does song delivery take?",
+    answer: `We have a 7 day standard delivery as well as expedited delivery options (4 or 5 day)
+     for an additional fee.`,
   },
   {
-    question:"How are the songs delivered?",
-    answer:`Songs are delivered via email.`
+    question: "How are the songs delivered?",
+    answer: `Songs are delivered via email.`,
   },
   {
     question: "What if I am not happy with my song?",
-    answer:`
+    answer: `
     With the Songbee Quality Guarantee, you can be rest assured that if your 1st draft 
     was not what you were looking for, you can provide edits to make your song perfect for you.
     Send us an email hello@songbee.com: title your email with "order number, lyric revisions", 
@@ -32,22 +32,18 @@ const faqs = [
     All song deliveries will be locked in and unable to change after 7 days of 
     your 1st draft song delivery (regardless of additional requests or fees).
     NOTE: All requested edits must be submitted within 48 hours of song delivery or
-    additional fees will be applied and delivery time will vary due to artist availability.`
-  }
+    additional fees will be applied and delivery time will vary due to artist availability.`,
+  },
 ];
 
 function FaqSection() {
-
   return (
     <div className="faq" id="faq">
-
-
-
-
       <h2 className="faq-title">Frequently Asked Questions</h2>
 
       <p className="faq-below-title">
-        If you have additional questions, please reach out at <span className="suii">hello@songbee.com!</span> 
+        If you have additional questions, please reach out at{" "}
+        <span className="suii">hello@songbee.com!</span>
       </p>
 
       <section className="collapse-area">
@@ -56,32 +52,29 @@ function FaqSection() {
             <div className="collapse-tab col-xs-12">
               <div className="panel-group" id="accordion">
                 {faqs.map((faq) => (
-                  <OneFaq key={faqs.indexOf(faq)} question={faq.question} answer={faq.answer} />
+                  <OneFaq
+                    key={faqs.indexOf(faq)}
+                    question={faq.question}
+                    answer={faq.answer}
+                  />
                 ))}
               </div>
             </div>
           </div>
         </div>
       </section>
-
     </div>
   );
 }
 
 export default FaqSection;
 
-
 function OneFaq({ question, answer }) {
-
   const [open, setOpen] = useState(false);
 
   return (
     <div id="panel1" className="panel panel-default">
-
-      <div 
-        className="panel-heading"
-        onClick={() => setOpen(!open)} 
-      >
+      <div className="panel-heading" onClick={() => setOpen(!open)}>
         <h4 className="panel-title">
           <p className="question">
             {question}
@@ -105,13 +98,12 @@ function OneFaq({ question, answer }) {
 
       <div
         id="collapseOne"
-        className={`panel-collapse collapse in ${open ? "openFaq" : "closeFaq"}`}
+        className={`panel-collapse collapse in ${
+          open ? "openFaq" : "closeFaq"
+        }`}
       >
-        <div className="panel-body">
-          {answer}
-        </div>
+        <div className="panel-body">{answer}</div>
       </div>
-
     </div>
   );
 }
