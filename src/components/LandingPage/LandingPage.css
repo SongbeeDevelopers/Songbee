@@ -563,7 +563,6 @@ svg {
   padding: 23px 15px;
   font-weight: 600;
   color: #60626d;
-  background-color: #ffffff;
   line-height: 29px;
   position: relative;
 }
@@ -611,8 +610,7 @@ svg {
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
 }
-.panel .panel-heading .panel-title p.collapsed .bar {
-}
+
 .panel .panel-heading .panel-title p.collapsed .bar:after {
   transform: rotate(90deg);
   -webkit-transform: rotate(90deg);
@@ -623,8 +621,7 @@ svg {
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
 }
-.panel-collapse {
-}
+
 .panel-collapse .panel-body {
   border: 0px solid !important;
   line-height: 26px;
@@ -660,16 +657,20 @@ svg {
 }
 
 .faq {
-  background-color: white;
   display: flex;
   flex-direction: column;
 }
 
 .faq-title {
-  font-size: 3rem;
-  font-weight: 600;
-  line-height: 130%;
-  text-align: center;
+  color: var(--black-4);
+    text-align: center;
+    letter-spacing: -0.01em;
+    margin-top: 20px;
+    font-family: Oswald, sans-serif;
+    font-size: 4.6875rem;
+    font-weight: 300;
+    line-height: 4.6875rem;
+    position: relative;
 }
 
 .faq-below-title {
@@ -687,7 +688,6 @@ svg {
   text-align: center;
   letter-spacing: -0.01em;
   margin-top: 20px;
-  margin-bottom: 10px;
   font-family: Oswald, sans-serif;
   font-size: 4.6875rem;
   font-weight: 300;
