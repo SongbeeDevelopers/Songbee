@@ -22,9 +22,11 @@ function App() {
   return (
     <Router>
         <Header />
-        <LocationProvider>
-          <ComponentRouter />
-        </LocationProvider>
+        <div className='container'>
+          <LocationProvider>
+            <ComponentRouter />
+          </LocationProvider>
+        </div>
         <Footer />
     </Router>
   );

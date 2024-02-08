@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 
+import { motion } from "framer-motion";
+
 import "./JoinArtist.css";
 
 
-function JoinArtist() {
+function JoinArtist({ routeVariants }) {
 
     // create useStates to hold the artists info
 
@@ -49,7 +51,12 @@ function JoinArtist() {
 
   
   return (
-    <div className="join-as-artist">
+    <motion.div
+      className="join-as-artist"
+      variants={routeVariants}
+      initial='initial'
+      animate='final'
+    >
       <h1>Apply Now to Join</h1>
       <p>
         Our Songbee artists are required to write, record, and produce a song
@@ -163,7 +170,7 @@ function JoinArtist() {
       <div className="explore-artist">
         <Link to="/artist">Explore Our Artist Community</Link>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

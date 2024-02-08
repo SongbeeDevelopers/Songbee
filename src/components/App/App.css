@@ -25,7 +25,7 @@ Container
 .container,
 .privacy-policy,
 .guaranteePage {
-  padding: 0px;
+  padding: 0px 50px 0px 50px;
 }
 
 /* --------------------------------------------------------------------------------
