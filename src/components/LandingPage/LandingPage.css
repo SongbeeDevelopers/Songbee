@@ -563,7 +563,6 @@ svg {
   padding: 23px 15px;
   font-weight: 600;
   color: #60626d;
-  background-color: #ffffff;
   line-height: 29px;
   position: relative;
 }
@@ -658,16 +657,20 @@ svg {
 }
 
 .faq {
-  background-color: white;
   display: flex;
   flex-direction: column;
 }
 
 .faq-title {
-  font-size: 3rem;
-  font-weight: 600;
-  line-height: 130%;
-  text-align: center;
+  color: var(--black-4);
+    text-align: center;
+    letter-spacing: -0.01em;
+    margin-top: 20px;
+    font-family: Oswald, sans-serif;
+    font-size: 4.6875rem;
+    font-weight: 300;
+    line-height: 4.6875rem;
+    position: relative;
 }
 
 .faq-below-title {
