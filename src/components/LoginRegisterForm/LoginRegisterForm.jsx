@@ -72,7 +72,7 @@ function LoginRegisterForm( {handleClose} ) {
 
       <div>
         <label className='registerInputLabel' htmlFor="username">
-          Username:
+          Email:
           <input
             className='registerInput'
             type="text"
