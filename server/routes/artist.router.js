@@ -52,9 +52,9 @@ router.post("/", rejectUnauthenticated, (req, res) => {
   const newArtist = req.body;
   // this query is creating the artist 
   const queryText = `INSERT INTO "artist"
- ("artist_name", "user_id", "name", "bio")
+ ("artist_name", "user_id", "name", "bio", "website", "vocal_type")
   VALUES
-  ($1, $2, $3, $4) returning "id"; `;
+  ($1, $2, $3, $4, $5, $6) returning "id"; `;
   // this query is creating the artist genre 
   const queryGenre = `INSERT INTO "artist_genres"
   ("artist_id", "genre_id")
@@ -67,7 +67,9 @@ router.post("/", rejectUnauthenticated, (req, res) => {
       // newArtist.name,
       req.user.id, // access the id of the current logged in user
       newArtist.name,
-      newArtist.bio
+      newArtist.bio,
+      newArtist.website,
+      newArtist.vocal_type
     ])
     .then((result) => {
       console.log(result.rows);
