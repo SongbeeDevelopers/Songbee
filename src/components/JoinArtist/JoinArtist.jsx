@@ -134,7 +134,7 @@ function JoinArtist({ routeVariants }) {
           </div>
         </div>
         <div className="group group-input width-full">
-          <label htmlFor="aboutYourself">Tell Us About Yourself</label>
+          <label htmlFor="aboutYourself">Please Supply Your Bio</label>
           <textarea
             value={aboutYourself}
             onChange={(e) => setAboutYourself(e.target.value)}
@@ -143,19 +143,6 @@ function JoinArtist({ routeVariants }) {
             cols="30"
             rows="10"
           ></textarea>
-        </div>
-
-        <div className="group group-input  width-full">
-          <label htmlFor="aboutUs">How Did You Hear About Us</label>
-          <select
-            name="aboutUs"
-            id="aboutUs"
-            value={aboutUs}
-            onChange={(e) => setAboutUs(e.target.value)}
-          >
-            <option value="google">Google</option>
-            <option value="friend">Friend</option>
-          </select>
         </div>
         <div className="artist-disclaimer">
           <p>Please review your submission.</p>
@@ -167,9 +154,6 @@ function JoinArtist({ routeVariants }) {
           Apply Now
         </button>
       </form>
-      <div className="explore-artist">
-        <Link to="/artist">Explore Our Artist Community</Link>
-      </div>
     </motion.div>
   );
 }
