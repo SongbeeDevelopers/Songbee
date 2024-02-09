@@ -19,11 +19,15 @@ function LandingPage({ routeVariants }) {
       initial="initial"
       animate="final"
     >
-      <HeroSection />
-      <HowSongBeeWorks />
+      <div className="container">
+        <HeroSection />
+        <HowSongBeeWorks />
+      </div>
       <TestimonialSection />
       <SampleSongs />
-      <Guarantee/>
+      <div className="guarantee-container">
+        <Guarantee />
+      </div>
     </motion.div>
 
   );
