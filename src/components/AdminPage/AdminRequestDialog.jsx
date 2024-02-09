@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Button from '@mui/material/Button';
@@ -9,13 +9,20 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
 import Typography from "@mui/material/Typography";
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
 
 
 function AdminRequestDialog ({handleClose}) {
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({ type: "FETCH_ALL_ARTISTS" });
+  }, [])
   
   const song = useSelector(store => store.currentRequest);
+  const artists = useSelector(store => store.allArtists);
 
   const [songFile, setSongFile] = useState('')
   const [title, setTitle] = useState(song.title ? song.title : '');
@@ -51,7 +58,7 @@ function AdminRequestDialog ({handleClose}) {
     detailsForm.append("artist", artist)
     detailsForm.append("lyrics", lyrics)
     detailsForm.append("streaming_link", streamingLink)
-
+    console.log("artist:", artist)
     dispatch({
       type: "UPDATE_SONG_DETAILS",
       payload: {
@@ -96,18 +103,17 @@ function AdminRequestDialog ({handleClose}) {
           />
 
           <Typography gutterBottom variant="overline" display="block">
-            Artist Name:
+            Select Artist:
           </Typography>
-
-          <TextField
-            label="Artist Name"
-            placeholder="Artist Name"
-            multiline
-            maxRows={4}
-            variant="filled"
+          <Select
             value={artist}
+            label="User Class"
             onChange={(event) => setArtist(event.target.value)}
-          />
+            >
+                {artists.map((artist) => (
+                    <MenuItem value={artist.id} key={artist.id}>{artist.artist_name}</MenuItem>
+                ))}
+            </Select>
 
           <Typography gutterBottom variant="overline" display="block">
             Lyrics:
