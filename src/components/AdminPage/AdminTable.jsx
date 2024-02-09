@@ -132,6 +132,7 @@ function AdminTable({data}) {
         <TableHead>
           <TableRow>
             <StyledTableCell>Creation Date</StyledTableCell>
+            <StyledTableCell align="center">Requester E-Mail</StyledTableCell>
             <StyledTableCell align="center">Requester / Recipient</StyledTableCell>
             <StyledTableCell align="center">Due</StyledTableCell>
             <StyledTableCell align="center">View Details</StyledTableCell>
@@ -146,6 +147,9 @@ function AdminTable({data}) {
             <StyledTableRow key={row.id}>
               <StyledTableCell component="th" scope="row">
               {new Date(row.created_at).toLocaleString('en-us')}
+              </StyledTableCell>
+              <StyledTableCell align="center">
+              {row.email}
               </StyledTableCell>
               <StyledTableCell align="center">
               {row.requester} / {row.recipient}
