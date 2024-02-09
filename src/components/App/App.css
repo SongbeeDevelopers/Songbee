@@ -2,13 +2,19 @@ html,
 body,
 #react-root {
   height: 100%;
+  font-family: "Poppins";
+
 }
 * {
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "Poppins";
+  src: url("../../../public/Poppins.ttf");
+}
+
 body {
-  font-family: "Poppins", sans-serif;
   margin: 0px;
   background-color: #fff4df;
 }
@@ -17,6 +23,7 @@ img {
   display: inline-block;
   max-width: 100%;
 }
+
 
 /* --------------------------------------------------------------------------------
 Container

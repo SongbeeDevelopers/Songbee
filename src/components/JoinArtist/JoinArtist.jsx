@@ -138,7 +138,7 @@ function JoinArtist({ routeVariants }) {
           </div>
         </div>
         <div className="group group-input width-full">
-          <label htmlFor="aboutYourself">Tell Us About Yourself</label>
+          <label htmlFor="aboutYourself">Please Supply Your Bio</label>
           <textarea
             value={aboutYourself}
             onChange={(e) => setAboutYourself(e.target.value)}
@@ -158,9 +158,6 @@ function JoinArtist({ routeVariants }) {
           Apply Now
         </button>
       </form>
-      <div className="explore-artist">
-        <Link to="/artist">Explore Our Artist Community</Link>
-      </div>
     </motion.div>
   );
 }

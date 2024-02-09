@@ -85,6 +85,7 @@ Grid
   line-height: 3rem;
   line-height: 5.5rem;
   margin: 0;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, .2);
 }
 
 .every {
@@ -150,6 +151,7 @@ Grid
   width: auto;
   padding-top: 0px;
   position: relative;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
 }
 
 .works-images {
@@ -386,6 +388,7 @@ svg {
   padding-top: 0px;
   position: relative;
   margin-bottom: 60px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
 }
 
 .testimonials h2 {
@@ -463,7 +466,8 @@ svg {
   padding-top: 50px;
   border-radius: 25px;
   margin-top: -75px;
-  margin-bottom: 25px
+  margin-bottom: 25px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
 }
 .active-audio h3 {
   text-align: center;
@@ -499,6 +503,7 @@ svg {
   gap: 15px;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
 }
 
 .bee-guarantee {
@@ -507,11 +512,9 @@ svg {
   background-position: 50%;
   background-size: 100rem;
   background-attachment: fixed;
-  justify-content: center;
   padding: 7.5rem 1.4rem 7.5rem 1.4rem;
-  display: flex;
-  position: relative;
-  border-radius: 25px
+  border-radius: 25px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
 }
 
 .guarantee-container {
@@ -649,7 +652,7 @@ svg {
 }
 
 .openFaq {
-  height: 200px;
+  height: 275px;
 }
 
 .closeFaq {
