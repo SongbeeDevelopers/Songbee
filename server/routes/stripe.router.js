@@ -48,7 +48,7 @@ router.post('/', async (req, res) => {
       const session = await stripe.checkout.sessions.create({
         line_items: lineitemArray,
         mode: 'payment',
-        success_url: `https://songbee-cf8d644750db.herokuapp.com/#requestform/${req.body.id}`,
+        success_url: `https://songbee-cf8d644750db.herokuapp.com/#created`,
         cancel_url: `https://songbee-cf8d644750db.herokuapp.com/`,
         automatic_tax: {enabled: true},
       });
