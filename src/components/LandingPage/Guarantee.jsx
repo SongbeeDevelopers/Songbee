@@ -28,8 +28,6 @@ function Guarantee() {
           <p>Contact us at hello@songbee.com</p>
         </div>
 
-        <img className="guarantee-image" height={200} width={200} src="/guarantee-photo.jpeg" alt="" />
-
         <MainButton />
         
       </div>
