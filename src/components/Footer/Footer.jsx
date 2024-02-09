@@ -13,7 +13,7 @@ function Footer() {
         <div className='flexColumn'>
           <p className='columnHeader'>Company</p>
           <a href='/#/privacy'>Privacy Policy</a>
-          {/* <a href='/#/terms'>Terms and Conditions</a> */}
+          <a href='/#/terms'>Terms and Conditions</a>
           <a href="mailto:hello@songbee.com">Contact: hello@songbee.com</a>
         </div>
         <div className='flexColumn'>
