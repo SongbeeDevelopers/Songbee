@@ -319,6 +319,7 @@ flex: none;
   text-align: center;
   width: 50%;
   height: 100%;
+  margin-bottom: 5px;
 }
 
 .active-slide p {
@@ -332,7 +333,7 @@ flex: none;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
   width: 100%;
-  height: 800px;
+  /* height: 800px; */
   margin-top: 30px;
 }
 
@@ -384,7 +385,7 @@ svg {
   width: auto;
   padding-top: 0px;
   position: relative;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
 }
 
 .testimonials h2 {
@@ -396,7 +397,6 @@ svg {
   text-decoration: none;
   display: block;
   position: static;
-  top: -35px;
 }
 
 .admin-button {
@@ -452,7 +452,7 @@ svg {
 .outer-sample {
   width: 100%;
   background-color: white;
-  padding: 75px;
+  padding: 65px;
   padding-bottom: 50px;
 }
 
@@ -508,16 +508,17 @@ svg {
   background-size: 100rem;
   background-attachment: fixed;
   justify-content: center;
-  padding: 7.5rem 5.2rem 7.5rem 1.4rem;
+  padding: 7.5rem 1.4rem 7.5rem 1.4rem;
   display: flex;
   position: relative;
   border-radius: 25px
 }
 
 .guarantee-container {
-  background-color: white;
-  padding-left: 75px;
-  padding-right: 75px;
+  /* background-color: white; */
+  padding-left: 65px;
+  padding-right: 65px;
+  padding-top: 75px
 }
 
 .guarantee-text {
