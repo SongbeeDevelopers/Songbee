@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
@@ -25,24 +25,15 @@ import './UserPageTabs.css';
 // Inside here will have the user's email and password and have the option to edit details
 export default function BasicTabs() {
 
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
   const user = useSelector((store) => store.user);
-  const [email, setEmail] = useState(user.email);
-  const [password, setPassword] = useState('');
+  const emailRef = useRef(user.email)
+  const passwordRef = useRef('')
   const history = useHistory();
   const dispatch = useDispatch();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-
-  
-
-
-  // This will be for the form inputs for editing
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value)
-  }
 
 
   // Handle function for the cancel button
@@ -57,8 +48,8 @@ export default function BasicTabs() {
     dispatch({
       type: 'UPDATE_USER',
       payload: {
-        email: email,
-        password: password
+        email: emailRef.current,
+        password: passwordRef.current
       }
     })
     history.push('/user')
@@ -118,7 +109,7 @@ export default function BasicTabs() {
   });
 
   
-  
+ 
   return (
     // The card and tabs structure
     <Box sx={{ width: '100%'}}>
@@ -155,53 +146,56 @@ export default function BasicTabs() {
             display: 'flex', 
             flexDirection: 'column', 
             alignItems: 'center',
-            ml: 10
+            ml: 20
             }}
         >
-          <Box sx={{position: 'absolute',
-                            top: '50%',
-                            left: '50%',
-                            transform: 'translate(-50%, -50%)',
-                            width: 400,
-                            bgcolor: 'background.paper',
-                            border: '2px solid #000',
-                            boxShadow: 24,
-                            p: 4,}}>
+          <Box 
+            sx={{
+                  width: 400,
+                  bgcolor: 'background.paper',
+                  border: '2px solid #000',
+                  boxShadow: 24,
+                  p: 4,
+                  display: 'flex',
+                  flexFlow: 'column',
+                  justifyContent: 'center'
+                  }}
+            >
                     <h3>Would you like to make an edit ?</h3>
                  
                  
                   <TextField
-                  className='emailInput' 
+                  sx={{margin: '5px', border: '2px solid', borderColor: 'orange', borderRadius: '5px'}}
                   name="email"
                   type="text"
+                  size="small"
                   placeholder="Email"
-                  value={email}
-                  onChange={(event) => setEmail(event.target.value)}
+                  defaultValue={emailRef.current}
+                  onChange={(e) => {emailRef.current = e.target.value}}
                    />
-                  
+                 
                   <br /> 
+
                   <TextField 
-                  className='passwordInput' 
-                  onChange={handlePasswordChange}
+                  sx={{margin: '5px', border: '2px solid', borderColor: 'orange', borderRadius: '5px'}}
                   name="password"
-                  placeholder="Password"
                   type="password"
-                  value={password}
+                  size="small"
+                  placeholder="Password"
+                  onChange={(e) => {passwordRef.current = e.target.value}}
                   />
                   
-                 
+                
                 
                 <div className='modalBtns'>
-                <Button type="submit" onClick={handleEdit} variant="contained" color="success" size="small">Edit</Button>
+                <Button type="submit" onClick={handleEdit} variant="contained" color="success" size="small">Save</Button>
                 <Button type="submit" onClick={handleCancel} variant="contained" color="secondary" size="small">Cancel</Button>
                 </div>
                
             </Box>
         </Dialog>
+        
            
-
-              {/* </Modal> */}
-              {/* </Typography>  */}
             </CardContent>   
          </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
@@ -210,13 +204,8 @@ export default function BasicTabs() {
       </Card>
     </Box>
    
-  )
-
-  
-  
-    
-    
-  
+  )   
+          
 };
 
 
