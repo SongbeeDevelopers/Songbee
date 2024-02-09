@@ -86,7 +86,7 @@ function Header() {
               "aria-labelledby": "basic-button",
             }}
           >
-            <MenuItem onClick={() => handleClose()}><img className="drawerHeaderBee" src="bee-button.png"></img></MenuItem>
+            <MenuItem className="menu-nav" onClick={() => handleClose()}><img className="drawerHeaderBee" src="bee-button.png"></img></MenuItem>
             <MenuItem onClick={() => handleClose(1)}>Home</MenuItem>
             {user.id && (
               <div>
