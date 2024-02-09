@@ -19,6 +19,7 @@ import TermsAndConditions from '../TermsAndConditions/TermsAndConditions';
 import JoinArtist from '../JoinArtist/JoinArtist';
 import NotFound from '../NotFoundPage/NotFoundPage';
 import EditRequestPage from '../EditRequestPage/EditRequestPage';
+import ScrollToTop from '../ScrollToTop';
 
 
 function ComponentRouter() {

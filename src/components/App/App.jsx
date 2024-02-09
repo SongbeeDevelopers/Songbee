@@ -6,6 +6,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import ComponentRouter from './ComponentRouter.jsx';
 import LocationProvider from './LocationProvider.jsx';
+import ScrollToTop from '../ScrollToTop.js';
 
 import './App.css';
 
@@ -23,6 +24,7 @@ function App() {
     <Router>
         <Header />
         <div className='container'>
+          <ScrollToTop />
           <LocationProvider>
             <ComponentRouter />
           </LocationProvider>
