@@ -40,7 +40,7 @@ function Header() {
     } else if (num === 6) {
       history.push("/user");
     } else if (num === 7) {
-      history.push(`/admin`);
+      history.push("/admin");
     }
   };
  

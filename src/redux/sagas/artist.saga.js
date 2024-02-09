@@ -42,11 +42,24 @@ function* deleteArtist(action){
     }
 }
 
+function* fetchAllArtists(){
+    try {
+        const response = yield axios.get('/api/artist/all')
+        yield put({
+            type: "SET_ALL_ARTISTS",
+            payload: response.data
+        })
+    } catch (error) {
+        console.error('SAGA fetchAllArtists() failed:', error)
+    }
+}
+
 function* artistSaga() {
   yield takeLatest("CREATE_ARTIST", createNewArtist);
   yield takeLatest('FETCH_PENDING_ARTISTS', fetchPendingArtist);
   yield takeLatest('APPROVE_ARTIST', approveArtist);
   yield takeLatest('DELETE_ARTIST', deleteArtist);
+  yield takeLatest('FETCH_ALL_ARTISTS', fetchAllArtists);
 }
 
 export default artistSaga;
