@@ -19,6 +19,7 @@ import TermsAndConditions from '../TermsAndConditions/TermsAndConditions';
 import JoinArtist from '../JoinArtist/JoinArtist';
 import NotFound from '../NotFoundPage/NotFoundPage';
 import EditRequestPage from '../EditRequestPage/EditRequestPage';
+import CreationPage from '../CreationPage/CreationPage';
 
 
 function ComponentRouter() {
@@ -103,6 +104,10 @@ function ComponentRouter() {
 
             <Route exact path="/privacy">
               <PrivacyPolicy routeVariants={routeVariants} />
+            </Route>
+
+            <Route exact path="/created">
+              <CreationPage routeVariants={routeVariants} />
             </Route>
 
             <Route exact path="/login">
