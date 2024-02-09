@@ -20,13 +20,13 @@ function Footer() {
           <p className='columnHeader'>Songs</p>
           <a href='/#/order'>Start Your Song</a>
           <a href='/#/guarantee'>Songbee Guarantee</a>
-          <a href='/#/artists'>Artists</a>
+          <a href='/#/artists'>Songbee Artists</a>
         </div>
 
         <div className='flexColumn'>
           <p className='columnHeader'>For Artists</p>
           <a href='/#/artistcommunity'>Artist Community</a>
-          <a href='/#/artistapplication'>Artist Application</a>
+          <a href='/#/join-artist'>Artist Application</a>
           <a href='/#/artistaccount'>Artist Account</a>
         </div>
         
