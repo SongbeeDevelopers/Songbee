@@ -45,38 +45,16 @@ function Header() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  // const scrollToFaq = ()=>{
-  //   const faqSection = document.getElementById("faq")
-  //   if(faqSection){
-  //     faqSection.scrollIntoView({
-  //       behavior:"smooth"
-  //     })
-  //   }
-  // }
+
+
   return (
     <div className="nav">
 
       <Link to="/home">
         <img className="nav-title" src="header-icon.png"></img>
       </Link>
+
       <div className="nav-right">
-        {/* <span onClick={()=>scrollToFaq()} className="nav-links">
-          Faq
-        </span> */}
-        {/* <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#a5a5a5"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="lucide lucide-tally-1"
-        >
-          <path d="M4 4v16" />
-        </svg>{" "} */}
         <Link
           onClick={(e) => {
             if (user?.id) {
@@ -89,6 +67,7 @@ function Header() {
         >
           {user?.id? "Logout" : "Login"}
         </Link>
+
         <IconButton
           color="inherit"
           aria-label="open drawer"
@@ -104,8 +83,6 @@ function Header() {
           <MenuIcon />
         </IconButton>
       </div>
-
-      {/* </Toolbar> */}
 
       <Drawer
         sx={{
