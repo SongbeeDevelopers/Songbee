@@ -21,13 +21,13 @@ router.post('/', async (req, res) => {
         price: 'price_1OCT4RJoOrJf4ICWm5W7fop0',
         quantity: 1,
       }];
-      if (order.streaming){
+      if (order.streaming === 'true'){
         lineitemArray.push({
             price: 'price_1Ohf5YJoOrJf4ICWTcOS5hjJ',
             quantity: 1,
           })
       }
-      if (order.extra_verse){
+      if (order.extra_verse === 'true'){
         lineitemArray.push({
             price: 'price_1Ohf1WJoOrJf4ICWVuPjtbGj',
             quantity: 1,
@@ -53,6 +53,7 @@ router.post('/', async (req, res) => {
         automatic_tax: {enabled: true},
       });
       console.log("sesion:", session)
+      console.log("lineItemArray:", lineitemArray);
     
       res.send(session.url);
 });
