@@ -14,11 +14,10 @@ function JoinArtist({ routeVariants }) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [artistName, setArtistName] = useState("");
-  const [email, setEmail] = useState("");
+  const [vocalType, setVocalType] = useState("");
   const [musicLinks, setMusicLinks] = useState("");
   const [genreId, setGenreId] = useState("");
   const [aboutYourself, setAboutYourself] = useState("");
-  const [aboutUs, setAboutUs] = useState("");
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -30,7 +29,9 @@ function JoinArtist({ routeVariants }) {
       artist_name: artistName,
       name: `${firstName} ${lastName}`,
       genre_id: genreId,
-      bio: aboutYourself
+      bio: aboutYourself,
+      website: musicLinks,
+      vocal_type: vocalType
     };
     // some of the artist fields are not on the form and also some of the database fields are not on this form
     dispatch({
@@ -41,11 +42,10 @@ function JoinArtist({ routeVariants }) {
     setFirstName("");
     setLastName("");
     setArtistName("");
-    setEmail("");
+    setVocalType("");
     setMusicLinks("");
     setGenreId("");
     setAboutYourself("");
-    setAboutUs("");
     history.push('/user');
   };
 
@@ -94,14 +94,18 @@ function JoinArtist({ routeVariants }) {
             />
           </div>
 
-          <div className="group-input">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
+          <div className="group group-input">
+          <label htmlFor="aboutUs">Select a Vocal Type</label>
+          <select
+            name="Vocal Type"
+            id="vocalType"
+            value={vocalType}
+            onChange={(e) => setVocalType(e.target.value)}
+          >
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
         </div>
         <div className="group">
           <div className="group-input">
@@ -143,19 +147,6 @@ function JoinArtist({ routeVariants }) {
             cols="30"
             rows="10"
           ></textarea>
-        </div>
-
-        <div className="group group-input  width-full">
-          <label htmlFor="aboutUs">How Did You Hear About Us</label>
-          <select
-            name="aboutUs"
-            id="aboutUs"
-            value={aboutUs}
-            onChange={(e) => setAboutUs(e.target.value)}
-          >
-            <option value="google">Google</option>
-            <option value="friend">Friend</option>
-          </select>
         </div>
         <div className="artist-disclaimer">
           <p>Please review your submission.</p>
