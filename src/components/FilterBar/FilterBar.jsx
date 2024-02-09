@@ -5,6 +5,8 @@ import { Button, Select, MenuItem } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 
+import './FilterBar.css'
+
 
 function FilterBar({type}){
 
@@ -45,6 +47,7 @@ function FilterBar({type}){
           value={classQuery}
           label="User Class"
           onChange={(event) => setClassQuery(event.target.value)}
+          sx={{mr: 5}}
           >
             <MenuItem value={1}>User</MenuItem>
             <MenuItem value={2}>Artist</MenuItem>
@@ -54,7 +57,7 @@ function FilterBar({type}){
           <Button
             variant="contained"
             onClick={submitClassSearch}
-            sx={{mt: 1, backgroundColor: "#feaf17", color: "black"}}
+            sx={{mb: 1, backgroundColor: "#feaf17", color: "black"}}
           >
             FILTER
           </Button>
@@ -65,9 +68,9 @@ function FilterBar({type}){
 
 
   return (
-    <>
+    <div className="filters">
       <div className="filter-bar">
-        <Typography gutterBottom variant="overline" display="block" mt={3}>
+        <Typography gutterBottom variant="overline" display="block" mt={1}>
           Filter by keyword:
         </Typography>
 
@@ -88,8 +91,10 @@ function FilterBar({type}){
         </Button>
       </div>
       
-      <UserFilter />
-    </>
+      <div className="userFilter">
+        <UserFilter />
+      </div>
+    </div>
   )
 }
 

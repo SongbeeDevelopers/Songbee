@@ -52,7 +52,7 @@ function AdminArtistTable({data}) {
 
 
   return (
-    <div className="container">
+    <div>
       <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         

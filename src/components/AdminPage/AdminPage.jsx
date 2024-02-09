@@ -104,14 +104,12 @@ function AdminPage({ routeVariants }) {
       initial="initial"
       animate="final"
     >
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-            <Tab label="Pending Requests" {...a11yProps(0)} />
-            <Tab label="Completed Requests" {...a11yProps(1)} />
-            <Tab label="Users" {...a11yProps(2)} />
-            <Tab label="Pending Artists" {...a11yProps(3)} />
-          </Tabs>
-        </Box>
+        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+          <Tab label="Pending Requests" {...a11yProps(0)} />
+          <Tab label="Completed Requests" {...a11yProps(1)} />
+          <Tab label="Users" {...a11yProps(2)} />
+          <Tab label="Pending Artists" {...a11yProps(3)} />
+        </Tabs>
         
         {/* AdminTable.jsx used for both pending and completed requests */}
         <CustomTabPanel value={value} index={0}>
