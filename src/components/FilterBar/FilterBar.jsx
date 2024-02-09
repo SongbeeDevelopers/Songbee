@@ -39,7 +39,7 @@ function FilterBar({type}){
     if (type === 'user'){
       return (
         <>
-          <Typography gutterBottom variant="overline" display="block" mt={3}>
+          <Typography gutterBottom variant="overline" display="block" mt={1}>
             Filter by user class:
           </Typography>
 
