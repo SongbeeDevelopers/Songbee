@@ -84,16 +84,23 @@ function UserDetails() {
     // Using MUI card that has tabs for the lyrics, basic details and artist
     return (
        <>
-        <Box sx={{ minWidth: 400, minHeight: 700, maxHeight: 675}}>
-          <Card variant="outlined">
-
-
-          <CardContent className='cardContainer'>
           <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Your Song" {...a11yProps(0)} />
           <Tab label="Your Artist" {...a11yProps(1)} />
         </Tabs>
         <CustomTabPanel value={value} index={0}>
+        <Box sx={{ minWidth: 400, minHeight: 700, maxHeight: 675}}>
+          <Card variant="outlined">
+
+
+          <CardContent className='cardContainer'>
+          {request.url && <audio controls src={request.url} ></audio>}
+          <Typography sx={{ fontSize: 5 }} variant="h2" gutterBottom>
+          <p className='songTitle'>{request.title}</p> 
+          </Typography>
+          <Typography variant="h5" component="div"> 
+            <p className='artistTitle'> By {request.artist_name}</p>
+          </Typography>
           {request.lyrics && <h2 className='lyricsHeader'>Lyrics:</h2>}
           {request.lyrics && <p>{request.lyrics}</p>}
           <h2 className='detailsHeader'>The Basic Details:</h2>
@@ -101,21 +108,13 @@ function UserDetails() {
             <p>Genre: {request.genre_id}</p>
             <p>Vibe: {request.vibe}</p>
             <p>Tempo: {request.tempo}</p>
-        </CustomTabPanel>
-
-        {request.url && <audio controls src={request.url} ></audio>}
-          <Typography sx={{ fontSize: 5 }} variant="h2" gutterBottom>
-          <p className='songTitle'>{request.title}</p> 
-          </Typography>
-          <Typography variant="h5" component="div"> 
-            <p className='artistTitle'> By {request.artist}</p>
-            <button className="back-btn" onClick={() => history.goBack()}>Go Back 🐝</button> 
-          </Typography>
-        </CardContent>
-        <CardActions>   
+        <CardActions>
+        <button className="back-btn" onClick={() => history.goBack()}>Go Back 🐝</button> 
         </CardActions>
+        </CardContent>
         </Card>     
       </Box>
+      </CustomTabPanel>
       </>
     )
 

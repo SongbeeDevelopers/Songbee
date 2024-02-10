@@ -18,7 +18,7 @@ function RequestItem({ song }) {
           width: 1000,
           display: "flex",
           flexDirection: "row",
-          outline: "#e6855f solid 3px",
+          outline: "#feaf17 solid 4px",
           justifyContent: "space-between",
           gap: 2,
           mb: 3,
@@ -28,7 +28,7 @@ function RequestItem({ song }) {
       >
         <CardActionArea>
           <div className="event-item-header">
-            <h2>COMPLETE</h2>
+            <h2>COMPLETE! Click to view your song</h2>
           </div>
           <div className="event-item">
             <img width={80} src="bee-button.png" />
@@ -51,7 +51,7 @@ function RequestItem({ song }) {
           width: 1000,
           display: "flex",
           flexDirection: "row",
-          outline: "#e6855f solid 3px",
+          outline: "#feaf17 solid 4px",
           justifyContent: "space-between",
           gap: 2,
           mb: 3,
