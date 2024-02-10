@@ -13,13 +13,13 @@ function UserPage({ routeVariants }) {
   // In here will source in MUI tabs for profile info, order history and credit balance
   return (
     <>
-      <h2 className='greeting'>Welcome! {user.email}</h2>
         <motion.div
           className="container"
           variants={routeVariants}
           initial="initial"
           animate="final"
         >
+          <h2 className='greeting'>Welcome! {user.email}</h2>
           <UserPageTabs />  
       </motion.div>
     </>

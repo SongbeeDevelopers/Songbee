@@ -1,3 +1,18 @@
 .greeting {
     text-align: center;
 }
+
+.event-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 1.5rem;
+    height: 180px;
+    justify-content: space-between;
+    
+  }
+
+.event-item-header {
+    display: flex;
+    justify-content: center;
+}
