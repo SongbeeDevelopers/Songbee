@@ -32,6 +32,22 @@ function* fetchCurrentRequest (action){
     }
 }
 
+function* fetchCheckout (action) {
+    try {
+        const stripeResponse = yield axios({
+            method: "POST",
+            url: '/api/stripe',
+            data: {
+                id: response.data.id,
+                orderDetails: action.payload.data}
+        })
+        // console.log("stripeResponse:", stripeResponse)
+        yield window.location.href = stripeResponse.data
+    } catch (error) {
+        console.error('SAGA fetchCheckout() failed:', error)
+    }
+}
+
 function* createSongRequest (action){
     try {
         const response = yield axios({
@@ -39,13 +55,7 @@ function* createSongRequest (action){
             url: "/api/request/create",
             data: action.payload.data
         })
-        const stripeResponse = yield axios({
-            method: "POST",
-            url: '/api/stripe',
-            data: {id: response.data.id}
-        })
-        // console.log("stripeResponse:", stripeResponse)
-        yield window.location.href = stripeResponse.data
+        yield action.payload.history.push(`requestform/${response.data.id}`)
         // yield action.payload.history.push('/checkout')
         yield put ({ type: 'ADD_ORDER_ID', payload: response.data.id })
     } catch (error) {
@@ -110,6 +120,7 @@ function* requestSaga() {
     yield takeLatest('UPDATE_SONG_REQUEST', updateSongRequest);
     yield takeLatest('LOAD_EDIT_PAGE', loadEditPage);
     yield takeLatest('LOAD_ADMIN_PAGE', loadAdminPage);
+    yield takeLatest('FETCH_CHECKOUT', fetchCheckout);
 }
 
 export default requestSaga;

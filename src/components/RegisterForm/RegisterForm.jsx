@@ -57,7 +57,7 @@ function RegisterForm() {
 
       <div>
         <label className='registerInputLabel' htmlFor="username">
-          Username:
+          Email:
           <input
             className='registerInput'
             type="text"

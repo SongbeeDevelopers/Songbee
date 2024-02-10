@@ -9,7 +9,6 @@ function HeroSection() {
 
   return (
     <div className="hero">
-
       <h1>
         Custom Songs <br /> For <span className="every">Every</span> Moment
       </h1>
@@ -19,7 +18,6 @@ function HeroSection() {
       <p>Studio-Quality Custom Songs For Any Occasion</p>
 
      <MainButton/>
-
     </div>
   );
 }

@@ -13,27 +13,11 @@
 }
 
 .modalBtns {
-    margin: 5px;
+    margin: 10px;
     display:flex;
-    justify-content:space-around;
+    justify-content: space-around;
+    
       
-}
-
-.inputs {
-    margin: auto;
-    display: flex;
-   
-}
-
-.emailInput {
-    border: 2px solid black;
-    border-radius: 5px;
-   
-}
-
-.passwordInput {
-    border: 2px solid black;
-    border-radius: 5px;
 }
 
 /* styling for the card background */

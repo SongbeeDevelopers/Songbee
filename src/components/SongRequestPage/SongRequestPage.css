@@ -55,6 +55,7 @@
     width: 100%;
     border: 0;
     padding-left: 15px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, .2);
 }
 
 .reqFormGroup select {
@@ -62,6 +63,7 @@
     width: 100%;
     border: 0;
     padding-left: 15px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, .2);
 }
 
 .reqFormInput {

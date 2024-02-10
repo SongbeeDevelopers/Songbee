@@ -9,24 +9,25 @@ import HowSongBeeWorks from "./HowSongBeeWorks";
 import TestimonialSection from "./Testimonials";
 import SampleSongs from "./SampleSongs";
 import Guarantee from "./Guarantee";
-import FaqSection from "./Faq";
 
 
 function LandingPage({ routeVariants }) {
 
   return (
     <motion.div
-      className="container"
       variants={routeVariants}
       initial="initial"
       animate="final"
     >
-    <HeroSection />
-    <HowSongBeeWorks />
-    <TestimonialSection />
-    <SampleSongs />
-    <Guarantee/>
-    {/* <FaqSection/> */}
+      <div className="container">
+        <HeroSection />
+        <HowSongBeeWorks />
+      </div>
+      <TestimonialSection />
+      <SampleSongs />
+      <div className="guarantee-container">
+        <Guarantee />
+      </div>
     </motion.div>
 
   );

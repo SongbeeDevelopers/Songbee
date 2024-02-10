@@ -83,12 +83,15 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     "song_details"."lyrics",
     "song_details"."title",
     "song_details"."streaming_link",
-    "genres"."name" AS "genre"
+    "genres"."name" AS "genre",
+    "user"."email"
     FROM "song_request"
     LEFT JOIN "genres"
     ON "song_request"."genre_id"="genres"."id"
     LEFT JOIN "song_details"
     ON "song_request"."id"="song_details"."song_request_id"
+    LEFT JOIN "user"
+    ON "song_request"."user_id"="user"."id"
     WHERE "song_request"."is_complete"=FALSE;
     `
     const pendingResult = await connection.query(pendingRequestQuery);
@@ -117,12 +120,15 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     "song_details"."lyrics",
     "song_details"."title",
     "song_details"."streaming_link",
-    "genres"."name" AS "genre"
+    "genres"."name" AS "genre",
+    "user"."email"
     FROM "song_request"
     LEFT JOIN "genres"
     ON "song_request"."genre_id"="genres"."id"
     LEFT JOIN "song_details"
     ON "song_request"."id"="song_details"."song_request_id"
+    LEFT JOIN "user"
+    ON "song_request"."user_id"="user"."id"
     WHERE "song_request"."is_complete"=TRUE;
     `
     const completedResult = await connection.query(completedRequestQuery);

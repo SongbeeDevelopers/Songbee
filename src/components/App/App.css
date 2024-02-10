@@ -2,13 +2,19 @@ html,
 body,
 #react-root {
   height: 100%;
+  font-family: "Poppins";
+
 }
 * {
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "Poppins";
+  src: url("../../../public/Poppins.ttf");
+}
+
 body {
-  font-family: "Poppins", sans-serif;
   margin: 0px;
   background-color: #fff4df;
 }
@@ -18,13 +24,14 @@ img {
   max-width: 100%;
 }
 
+
 /* --------------------------------------------------------------------------------
 Container
 -------------------------------------------------------------------------------- */
 
 .privacy-policy,
 .guaranteePage {
-  padding: 0px 50px 0px 50px;
+  padding: 0px 75px 0px 75px;
 }
 
 /* --------------------------------------------------------------------------------

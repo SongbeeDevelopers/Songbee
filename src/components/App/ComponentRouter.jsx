@@ -21,6 +21,7 @@ import NotFound from '../NotFoundPage/NotFoundPage';
 import EditRequestPage from '../EditRequestPage/EditRequestPage';
 import ArtistCommunity from '../JoinArtist/ArtistCommunity';
 import ArtistProcess from '../JoinArtist/ArtistProcess';
+import CreationPage from '../CreationPage/CreationPage';
 
 
 function ComponentRouter() {
@@ -113,6 +114,10 @@ function ComponentRouter() {
 
             <Route exact path="/privacy">
               <PrivacyPolicy routeVariants={routeVariants} />
+            </Route>
+
+            <Route exact path="/created">
+              <CreationPage routeVariants={routeVariants} />
             </Route>
 
             <Route exact path="/login">

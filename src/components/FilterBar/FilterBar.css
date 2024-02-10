@@ -1,0 +1,12 @@
+.filters {
+    display: flex;
+    gap: 50px;
+}
+
+.filter-bar {
+    margin-bottom: 50px;
+}
+
+.userFilter {
+    
+}
