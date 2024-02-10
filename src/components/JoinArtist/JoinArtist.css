@@ -123,8 +123,199 @@
   cursor: pointer;
 }
 
-
-
 .width-full {
   width: 100% !important;
+}
+
+.artist-community {
+  display: flex;
+  height: 80vh;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+}
+.artist-left h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+}
+
+.artist-right {
+  width: 500px;
+}
+
+.artist-right img {
+  border-radius: 25px;
+}
+
+.artist-community a {
+  margin: 0 auto;
+  z-index: 100;
+  width: 16rem;
+  height: 3rem;
+  color: var(--black\<deleted\|variable-f6301105\>);
+  background-color: #feaf17;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3px;
+  font-family: Poppins, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  transition: background-color 0.45s;
+  display: flex;
+  position: static;
+  top: 99px;
+  left: 219px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border: 0;
+  outline: 0;
+  margin-bottom: 30px;
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.community-button {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  position: relative;
+}
+
+.bee-color {
+  color: #feaf17;
+}
+
+.artist-left h3 {
+  color: rgb(96, 93, 93);
+  font-size: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.artist-left p {
+  max-width: 350px;
+}
+
+.artist-left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.community-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.artist-process {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+
+}
+.process-top {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding-bottom: 25px;
+}
+
+.process-cards {
+  display: flex;
+  justify-content: space-around;
+
+}
+.process-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+
+
+}
+
+.process-card img{
+  width: auto;
+  height: 80px;
+}
+
+.artist-process h2{
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+.process-card p{
+  max-width: 300px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.process-card h3{
+  margin: 0;
+  padding: 0;
+}
+
+
+.process-card-image{
+  height: 100px;
+}
+
+.process-bottom{
+  display: flex;
+gap: 100px;
+padding: 25px 100px;
+align-items: center;
+}
+
+.process-bottom img{
+  height: 300px;
+  border-radius: 30px;
+}
+
+.process-bottom-content h3{
+  font-size: 2.5rem;
+
+}
+
+.process-bottom-content a{
+  margin: 0 auto;
+  z-index: 100;
+  width: 16rem;
+  height: 3rem;
+  color: var(--black\<deleted\|variable-f6301105\>);
+  background-color: #feaf17;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3px;
+  font-family: Poppins, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  transition: background-color 0.45s;
+  display: flex;
+  position: static;
+  top: 99px;
+  left: 219px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border: 0;
+  outline: 0;
+  margin-bottom: 30px;
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: 1px solid black;
+
+}
+
+.process-bottom-button{
+  position: relative;
+  width: 100%;
+  display: flex;
 }
