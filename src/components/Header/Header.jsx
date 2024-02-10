@@ -189,7 +189,7 @@ function Header() {
               <ListItemButton
                 onClick={() => {
                   handleDrawerClose();
-                  history.push("/join-artist");
+                  history.push("/artist-community");
                 }}
               >
                 <ListItemText primary={"Join as Artist"} />
