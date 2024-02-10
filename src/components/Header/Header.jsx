@@ -32,7 +32,7 @@ function Header() {
     } else if (num === 2) {
       history.push("/order");
     } else if (num === 3) {
-      history.push("/join-artist");
+      history.push("/artist-community");
     } else if (num === 4) {
       history.push("/faq");
     } else if (num === 5) {

@@ -19,6 +19,8 @@ import TermsAndConditions from '../TermsAndConditions/TermsAndConditions';
 import JoinArtist from '../JoinArtist/JoinArtist';
 import NotFound from '../NotFoundPage/NotFoundPage';
 import EditRequestPage from '../EditRequestPage/EditRequestPage';
+import ArtistCommunity from '../JoinArtist/ArtistCommunity';
+import ArtistProcess from '../JoinArtist/ArtistProcess';
 import CreationPage from '../CreationPage/CreationPage';
 
 
@@ -98,6 +100,14 @@ function ComponentRouter() {
               <FaqPage routeVariants={routeVariants} />
             </Route>
 
+
+            <Route exact path="/artist-community">
+              <ArtistCommunity routeVariants={routeVariants} />
+            </Route>
+
+            <Route exact path="/artist-process">
+              <ArtistProcess routeVariants={routeVariants} />
+            </Route>
             <Route exact path="/guarantee">
               <QualityGuarantee routeVariants={routeVariants} />
             </Route>
