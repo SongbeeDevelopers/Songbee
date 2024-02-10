@@ -169,12 +169,18 @@ router.get('/current/:id', (req, res) => {
     "song_details"."lyrics",
     "song_details"."title",
     "song_details"."streaming_link",
-    "genres"."name" AS "genre"
+    "genres"."name" AS "genre",
+    "artist"."artist_name",
+    "artist"."website",
+    "artist"."bio",
+    "artist"."photo"
     FROM "song_request"
     LEFT JOIN "genres"
     ON "song_request"."genre_id"="genres"."id"
     LEFT JOIN "song_details"
     ON "song_request"."id"="song_details"."song_request_id"
+    LEFT JOIN "artist"
+    ON "song_details"."artist_id"="artist"."id"
     WHERE "song_request"."id"=$1;
     `
     pool.query(query, [req.params.id])

@@ -152,4 +152,19 @@ router.put('/:id', async (req, res) => {
     }
 })
 
+router.get('/all', (req, res) => {
+    const query = `
+    SELECT * FROM "artist"
+    WHERE "approved"=TRUE;
+    `
+    pool.query(query)
+    .then((result) => {
+      res.send(result.rows);
+    })
+    .catch((err) => {
+      console.log('Get all artists failed:', err);
+      res.sendStatus(500);
+    })
+  });
+
 module.exports = router;
