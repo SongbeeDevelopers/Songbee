@@ -105,10 +105,8 @@ export default function BasicTabs() {
   });
 
   return (
-    // The card and tabs structure
-    <Box sx={{ width: "100%" }}>
-      <Card className="cardBackground" variant="outlined">
-        <Box sx={{ height: "80%", borderBottom: 1, borderColor: "divider" }}>
+    <>
+    <Box sx={{ height: "80%", borderBottom: 1, borderColor: "divider" }}>
           <Tabs
             className="tabHeader"
             value={value}
@@ -131,6 +129,8 @@ export default function BasicTabs() {
             />
           </Tabs>
         </Box>
+    <Box sx={{ width: "100%" }}>
+      <Card className="cardBackground" variant="outlined">
         <CustomTabPanel className="cardBody" value={value} index={0}>
           <UserHistory />
         </CustomTabPanel>
@@ -236,5 +236,6 @@ export default function BasicTabs() {
         </CustomTabPanel>
       </Card>
     </Box>
+    </>
   );
 }

@@ -89,11 +89,12 @@ function UserDetails() {
           <Tab label="Your Artist" {...a11yProps(1)} />
         </Tabs>
         <CustomTabPanel value={value} index={0}>
-        <Box sx={{ minWidth: 400, minHeight: 700, maxHeight: 675}}>
+        <Box sx={{ minWidth: 400, minHeight: 700}}>
           <Card variant="outlined">
 
 
           <CardContent className='cardContainer'>
+          <div>
           {request.url && <audio controls src={request.url} ></audio>}
           <Typography sx={{ fontSize: 5 }} variant="h2" gutterBottom>
           <p className='songTitle'>{request.title}</p> 
@@ -101,16 +102,33 @@ function UserDetails() {
           <Typography variant="h5" component="div"> 
             <p className='artistTitle'> By {request.artist_name}</p>
           </Typography>
-          {request.lyrics && <h2 className='lyricsHeader'>Lyrics:</h2>}
-          {request.lyrics && <p>{request.lyrics}</p>}
-          <h2 className='detailsHeader'>The Basic Details:</h2>
-            <p>Occasion: {request.occasion}</p>
-            <p>Genre: {request.genre_id}</p>
-            <p>Vibe: {request.vibe}</p>
-            <p>Tempo: {request.tempo}</p>
+          <div>
+        {request.lyrics && <h2 className='lyricsHeader'>Lyrics:</h2>}
+        {request.lyrics && <p>{request.lyrics}</p>}
+        </div>
+          <h2 className='detailsHeader'>Your Song Details:</h2>
+            <h2>This song is for {request.recipient}{request.pronunciation ? ` (Pronounced: ${request.pronunciation})` : ''}</h2>
+            {request.occasion ? 
+            <>
+            <h2>Occasion:</h2>
+            <p>{request.occasion}</p>
+            </>
+            : ''}
+            <h2>Inspiration:</h2>
+            <p>{request.inspiration}</p>
+            <h2>You story:</h2>
+            <p>{request.story1}</p>
+            <p>{request.story2}</p>
+            <h2>The Importance:</h2>
+            <p>{request.important_what}</p>
+            <p>{request.important_why}</p>
+            <h2>Song Details:</h2>
+            <p>You requested a {request.genre} song with a {request.vocal_type} vocal type, a {request.vibe} vibe, and a {request.tempo} tempo</p>
+            <p>You requested a {request.delivery_days} day delivery time, </p>
         <CardActions>
         <button className="back-btn" onClick={() => history.goBack()}>Go Back 🐝</button> 
         </CardActions>
+        </div>
         </CardContent>
         </Card>     
       </Box>
