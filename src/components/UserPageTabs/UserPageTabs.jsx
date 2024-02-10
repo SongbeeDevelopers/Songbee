@@ -120,7 +120,10 @@ export default function BasicTabs() {
               label="Order History"
               {...a11yProps(0)}
             />
-            <Tab sx={{ color: "orange" }} label="profile" {...a11yProps(1)} />
+            <Tab 
+              sx={{ color: "orange" }} 
+              label="profile" 
+              {...a11yProps(1)} />
             <Tab
               sx={{ color: "orange" }}
               label="Credit Balance"

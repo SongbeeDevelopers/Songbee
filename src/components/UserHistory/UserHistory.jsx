@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+import RequestItem from '../RequestItem/RequestItem';
+
 import './UserHistory.css';
 
 
@@ -31,11 +33,7 @@ function UserHistory() {
         {/* // The handle click will bring the user to the details page where they can listen to their song */}
         <div>
           {userRequests.map((request, i) => (
-            <div key={i}>
-              <h2 className='recipientTitle'>Here is your song for {request.recipient} 🐝</h2>
-              <p> Ordered On {new Date(request.created_at).toLocaleString('en-us')}</p> 
-              <button className='detailsBtn' onClick={() => handleSongRequest(request.id)}>Details</button>
-            </div>
+            <RequestItem song={request} key={i} />
           ))}
         </div>
       </div> 
