@@ -20,14 +20,18 @@ import Typography from "@mui/material/Typography";
 
 import "./UserPageTabs.css";
 
+
 // Inside here will have the user's email and password and have the option to edit details
-export default function BasicTabs() {
-  const [value, setValue] = useState(0);
+function BasicTabs() {
+
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const user = useSelector((store) => store.user);
   const emailRef = useRef(user.email);
+
   const passwordRef = useRef("");
-  const history = useHistory();
-  const dispatch = useDispatch();
+  const [value, setValue] = useState(0);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -69,7 +73,6 @@ export default function BasicTabs() {
 
   const CustomTabPanel = (props) => {
     const { children, value, index, ...other } = props;
-
     return (
       <div
         role="tabpanel"
@@ -86,6 +89,7 @@ export default function BasicTabs() {
       </div>
     );
   };
+
   CustomTabPanel.propTypes = {
     children: PropTypes.node,
     index: PropTypes.number.isRequired,
@@ -97,145 +101,151 @@ export default function BasicTabs() {
       id: `simple-tab-${index}`,
       "aria-controls": `simple-tabpanel-${index}`,
     };
-  }; // End of tab structure
+  };
 
   // This is for the dialog
   const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
 
+
   return (
     <>
-    <Box sx={{ height: "80%", borderBottom: 1, borderColor: "divider" }}>
-          <Tabs
-            className="tabHeader"
-            value={value}
-            onChange={handleChange}
-            aria-label="basic tabs example"
-          >
-            <Tab
-              sx={{ color: "orange" }}
-              label="Order History"
-              {...a11yProps(0)}
-            />
-            <Tab 
-              sx={{ color: "orange" }} 
-              label="profile" 
-              {...a11yProps(1)} />
-            <Tab
-              sx={{ color: "orange" }}
-              label="Credit Balance"
-              {...a11yProps(2)}
-            />
-          </Tabs>
-        </Box>
-    <Box sx={{ width: "100%" }}>
-      <Card className="cardBackground" variant="outlined">
-        <CustomTabPanel className="cardBody" value={value} index={0}>
-          <UserHistory />
-        </CustomTabPanel>
+      <Box sx={{ height: "80%", borderBottom: 1, borderColor: "divider" }}>
+        <Tabs
+          className="tabHeader"
+          value={value}
+          onChange={handleChange}
+          aria-label="basic tabs example"
+        >
+          <Tab
+            sx={{ color: "orange" }}
+            label="Order History"
+            {...a11yProps(0)}
+          />
+          <Tab 
+            sx={{ color: "orange" }} 
+            label="profile" 
+            {...a11yProps(1)} />
+          <Tab
+            sx={{ color: "orange" }}
+            label="Credit Balance"
+            {...a11yProps(2)}
+          />
+        </Tabs>
+      </Box>
 
-        <CustomTabPanel value={value} index={1}>
-          <h1 className="profileHeader">Personal info</h1>
-          <h3>{user.email}</h3>
+      <Box sx={{ width: "100%" }}>
+        <Card className="cardBackground" variant="outlined">
+          <CustomTabPanel className="cardBody" value={value} index={0}>
+            <UserHistory />
+          </CustomTabPanel>
 
-          <CardContent variant="outlined">
-            {/* <Typography sx={{ fontSize: 14, mt: 2 }} color="text.secondary" gutterBottom> */}
-            <Button sx={{ color: "black" }} onClick={handleOpen}>
-              Edit Info
-            </Button>
-            <Dialog
-              open={open}
-              keepMounted
-              TransitionComponent={Transition}
-              onClose={handleClose}
-              aria-describedby="alert-dialog-slide-description"
-              sx={{
-                width: 800,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                ml: 20,
-              }}
-            >
-              <Box
+          <CustomTabPanel value={value} index={1}>
+            <h1 className="profileHeader">Personal info</h1>
+            <h3>{user.email}</h3>
+
+            <CardContent variant="outlined">
+              <Button sx={{ color: "black" }} onClick={handleOpen}>
+                Edit Info
+              </Button>
+
+              <Dialog
+                open={open}
+                keepMounted
+                TransitionComponent={Transition}
+                onClose={handleClose}
+                aria-describedby="alert-dialog-slide-description"
                 sx={{
-                  width: 400,
-                  bgcolor: "background.paper",
-                  border: "2px solid #000",
-                  boxShadow: 24,
-                  p: 4,
+                  width: 800,
                   display: "flex",
-                  flexFlow: "column",
-                  justifyContent: "center",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  ml: 20,
                 }}
               >
-                <h3>Would you like to make an edit ?</h3>
-
-                <TextField
+                <Box
                   sx={{
-                    margin: "5px",
-                    border: "2px solid",
-                    borderColor: "orange",
-                    borderRadius: "5px",
+                    width: 400,
+                    bgcolor: "background.paper",
+                    border: "2px solid #000",
+                    boxShadow: 24,
+                    p: 4,
+                    display: "flex",
+                    flexFlow: "column",
+                    justifyContent: "center",
                   }}
-                  name="email"
-                  type="text"
-                  size="small"
-                  placeholder="Email"
-                  defaultValue={emailRef.current}
-                  onChange={(e) => {
-                    emailRef.current = e.target.value;
-                  }}
-                />
+                >
+                  <h3>Would you like to make an edit ?</h3>
 
-                <br />
-
-                <TextField
-                  sx={{
-                    margin: "5px",
-                    border: "2px solid",
-                    borderColor: "orange",
-                    borderRadius: "5px",
-                  }}
-                  name="password"
-                  type="password"
-                  size="small"
-                  placeholder="Password"
-                  onChange={(e) => {
-                    passwordRef.current = e.target.value;
-                  }}
-                />
-
-                <div className="modalBtns">
-                  <Button
-                    type="submit"
-                    onClick={handleEdit}
-                    variant="contained"
-                    color="success"
+                  <TextField
+                    sx={{
+                      margin: "5px",
+                      border: "2px solid",
+                      borderColor: "orange",
+                      borderRadius: "5px",
+                    }}
+                    name="email"
+                    type="text"
                     size="small"
-                  >
-                    Save
-                  </Button>
-                  <Button
-                    type="submit"
-                    onClick={handleCancel}
-                    variant="contained"
-                    color="secondary"
+                    placeholder="Email"
+                    defaultValue={emailRef.current}
+                    onChange={(e) => {
+                      emailRef.current = e.target.value;
+                    }}
+                  />
+
+                  <br />
+
+                  <TextField
+                    sx={{
+                      margin: "5px",
+                      border: "2px solid",
+                      borderColor: "orange",
+                      borderRadius: "5px",
+                    }}
+                    name="password"
+                    type="password"
                     size="small"
-                  >
-                    Cancel
-                  </Button>
-                </div>
-              </Box>
-            </Dialog>
-          </CardContent>
-        </CustomTabPanel>
-        <CustomTabPanel value={value} index={2}>
-          <UserCreditPage />
-        </CustomTabPanel>
-      </Card>
-    </Box>
+                    placeholder="Password"
+                    onChange={(e) => {
+                      passwordRef.current = e.target.value;
+                    }}
+                  />
+
+                  <div className="modalBtns">
+                    <Button
+                      type="submit"
+                      onClick={handleEdit}
+                      variant="contained"
+                      color="success"
+                      size="small"
+                    >
+                      Save
+                    </Button>
+                    <Button
+                      type="submit"
+                      onClick={handleCancel}
+                      variant="contained"
+                      color="secondary"
+                      size="small"
+                    >
+                      Cancel
+                    </Button>
+                  </div>
+                </Box>
+              </Dialog>
+            </CardContent>
+          </CustomTabPanel>
+
+          <CustomTabPanel value={value} index={2}>
+            <UserCreditPage />
+          </CustomTabPanel>
+
+        </Card>
+      </Box>
     </>
   );
 }
+
+export default BasicTabs
