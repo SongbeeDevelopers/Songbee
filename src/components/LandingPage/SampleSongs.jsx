@@ -9,22 +9,33 @@ function SampleSongs() {
   const sampleSongs = [
     {
       title1: "Pop",
-      title2: "Country",
-      name1: "Hannah",
+      title2: "Singer Songwriter",
+      name1: "Hannah Rutti ",
       name2: "Berch",
       audio1: "/01 Basics New Mix 3.mp3",
       audio2: "/Berch.mp3",
     },
 
     {
-      title1: "Rap",
+      title1: "Country",
       title2: "Folk",
-      name1: "Donah",
-      name2: "Lola",
+      name1: "Matt Mackey",
+      name2: "Adam Soto",
+      audio1: "/Country Matt Mackey.mp3",
+      audio2: "/Berch.mp3",
+    },
+
+    {
+      title1: "Rock",
+      title2: "Singer Songwriter",
+      name1: "Tommy Marra",
+      name2: "Michael LeFevre",
       audio1: "/01 Basics New Mix 3.mp3",
       audio2: "/Berch.mp3",
     },
   ];
+
+  
 
   const galleryRef = useRef(null);
 
