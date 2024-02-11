@@ -45,6 +45,12 @@ function RegisterForm() {
     });
   };
 
+  // just for presentation
+  const fillForm = () => {
+    setUsername('bertrumBrown@brownsimportedgoods.com')
+    setPassword('password')
+    setAgreeToTerms(true)
+  }
 
   return (
     <form className="registerForm" onSubmit={registerUser}>
@@ -56,7 +62,7 @@ function RegisterForm() {
       )}
 
       <div>
-        <label className='registerInputLabel' htmlFor="username">
+        <label onClick={fillForm} className='registerInputLabel' htmlFor="username">
           Email:
           <input
             className='registerInput'

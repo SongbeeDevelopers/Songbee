@@ -26,6 +26,13 @@ function LoginForm() {
     }
   };
 
+  // just for presentation
+  const fillForm = () => {
+    setUsername('bertrumBrown@brownsimportedgoods.com')
+    setPassword('password')
+    setAgreeToTerms(true)
+  }
+
   
   return (
     <form className="loginForm" onSubmit={login}>
@@ -37,7 +44,7 @@ function LoginForm() {
       )}
 
       <div>
-        <label className='loginInputLabel' htmlFor="username">
+        <label onClick={fillForm} className='loginInputLabel' htmlFor="username">
           Email *
           <input
             className='loginInput'
