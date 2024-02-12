@@ -22,7 +22,7 @@ function SampleSongs() {
       name1: "Matt Mackey",
       name2: "Adam Soto",
       audio1: "/Country Matt Mackey.mp3",
-      audio2: "/Berch.mp3",
+      audio2: "/FolkAdam Suto.mp3",
     },
 
     {
@@ -30,8 +30,8 @@ function SampleSongs() {
       title2: "Singer Songwriter",
       name1: "Tommy Marra",
       name2: "Michael LeFevre",
-      audio1: "/01 Basics New Mix 3.mp3",
-      audio2: "/Berch.mp3",
+      audio1: "/Rock-Tommy Marra.mp3",
+      audio2: "/Singer Songwriter Michael LeFevre (1).mp3",
     },
   ];
 
