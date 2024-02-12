@@ -11,19 +11,29 @@ function TeamPage() {
        
       <h1 className='aboutHeader'>Team Songbee</h1> 
       <div className='profileShots'>
-        <img className="profile-img1" src="abbu-profile-pic.png" />
-        <img className="profile-img1" src="lio-profile-pic.png" />
-        <img className="profile-img1" src="brian-profile-pic.png" />
-        <img className="profile-img1" src="walker-profile-pic.png" />
+        <div className='teamMember'>
+          <img className="profile-img1" src="abbu-profile-pic.png" />
+          <h2>Abubakar Aden</h2>
+          <img className="profile-img" src="abbuqr2.png" />
+        </div>
+        <div className='teamMember'>
+          <img className="profile-img1" src="lio-profile-pic.png" />
+          <h2>Aliona C. Johnson</h2>
+          <img className="profile-img" src="lioqr2.png" />
+        </div>  
+        <div className='teamMember'>
+          <img className="profile-img1" src="brian-profile2.png" />
+          <h2>Brian Werner</h2>
+          <img className="profile-img" src="brianqr2.png" />
+        </div>
+        <div className='teamMember'>
+          <img className="profile-img1" src="walker-profile2.png" />
+          <h2>Walker Neudorff</h2>
+          <img className="profile-img" src="walkerqr2.png" />
+        </div>
       </div>
 
-      {/* This 👇 code is for the QR codes */}
-      <div className='team-container'>
-        <img className="profile-img" src="abbuqr.png" />
-        <img className="profile-img" src="lioqr.png" />
-        <img className="profile-img" src="brian-w.png" />
-        <img className="profile-img" src="walkerqr.png" />
-      </div>
+     
       
      
     </>

@@ -11,8 +11,11 @@
 /* These are for the profile pics */
 .profileShots {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  
     
 }
 
@@ -26,33 +29,23 @@
    
 }
 
-/* This is for the direction of the QR codes */
-.team-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 /* This is for the qr codes */
 .profile-img {
     border-radius: 10px;
     height: 240px; 
-    margin: 5px;
+    margin: 10px;
     margin-left: auto;
     margin-right: auto;
-    
+    justify-content: space-evenly;
    
 }
 
-/* -------------------------------------
-color code for the QR codes
----------------------------------------- */
 
-/* 
-For the dots
-#e8d378 - pale yellow
-#e78413 - pale orange
+.teamMember {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+   
+}
 
-For the frame 
-#2d3432
- */
