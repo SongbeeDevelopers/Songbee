@@ -1,11 +1,11 @@
 /* This will be for stying the audio player */
 
   audio::-webkit-media-controls-panel {
-      background-color: rgb(243, 148, 66);
+      background-color: #b8d5e0ba;
     }
 
   audio::-webkit-media-controls-play-button {
-    background-color: #b8d5e0ba;
+    background-color: #b8d5e0;
     border-radius: 50%;
   }
 
@@ -14,7 +14,7 @@
   }
 
   audio::-webkit-media-controls-timeline {
-    background-color: #b8d5e0ba;
+    background-color: #b8d5e0;
     border-radius: 25px;
     margin-left: 10px;
     margin-right: 10px;

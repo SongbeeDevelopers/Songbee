@@ -108,7 +108,10 @@ function UserDetails() {
           <Card>
             <CardContent className='cardContainer' sx={{p: "5%"}}>
               <div className='songDetails'>
-                <h1>To {request.recipient}, from {request.requester}</h1>
+                {
+                  request.recipient && request.requester &&
+                  <h1>To {request.recipient}, from {request.requester}</h1>
+                }
 
                 {
                   request.title && request.artist_name && request.url && request.lyrics ?
