@@ -117,7 +117,7 @@ function OrderPage({ routeVariants }) {
         >
           <option selected disabled>Select Streaming Option</option>
           <option value={true}>Add Streaming</option>
-          <option value={false}>No Streaming</option>
+          <option value={false}>Standard No Streaming</option>
         </select>
 
         <select
@@ -142,6 +142,8 @@ function OrderPage({ routeVariants }) {
 
         <button className='orderCheckoutButton' onClick={submitOrder}>Checkout</button>
       </form>
+
+      <p className='feeText'>*Nonstandard selections will incur additional fees</p>
 
       <Modal
         open={open}
