@@ -85,12 +85,18 @@ function AdminTable({data}) {
           keepMounted
           onClose={handleClose}
           aria-describedby="alert-dialog-slide-description"
+          BackdropProps={{
+            style: {
+              backgroundColor: 'transparent',
+              boxShadow: 'none'
+            }
+          }}
           sx={{ 
             width: 800, 
             display: 'flex', 
             flexDirection: 'column', 
             alignItems: 'center',
-            ml: 10
+            ml: 10,
           }}
         >
           <AdminRequestDialog handleClose={handleClose}/>
