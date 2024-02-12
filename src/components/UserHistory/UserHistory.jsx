@@ -15,16 +15,11 @@ function UserHistory() {
     const history = useHistory();
 
     const userRequests = useSelector((store) => store.userRequests);
-    // const user = useSelector((store) => store.user);
 
-    // Will useEffect and dispatch t call to the store
+    // Will useEffect and dispatch call to the store
     useEffect(() => {
         dispatch({type: 'FETCH_USER_REQUESTS' })
     },[]);
-
-    const handleSongRequest = (id) => {
-      history.push(`/details/${id}`)
-    }
 
     // will need to get the user's song request
     return (
@@ -39,7 +34,10 @@ function UserHistory() {
             ))}
           </div>
           :
-          <h1 className='noRequests'>You have no song requests!</h1>
+          <>
+            <h1 className='noRequests'>You have no song requests!</h1>
+            <button onClick={() => {history.push('/order')}} className='userStartSong'>Start Your Song</button>
+          </>
         }
       </div> 
     )
