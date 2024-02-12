@@ -105,7 +105,7 @@ export default function BasicTabs() {
   });
 
   return (
-    <>
+    <div className="container">
     <Box sx={{ height: "80%", borderBottom: 1, borderColor: "divider" }}>
           <Tabs
             className="tabHeader"
@@ -236,6 +236,6 @@ export default function BasicTabs() {
         </CustomTabPanel>
       </Card>
     </Box>
-    </>
+    </div>
   );
 }
