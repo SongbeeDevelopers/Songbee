@@ -24,11 +24,13 @@ function UserHistory() {
     // will need to get the user's song request
     return (
       <div className='historyBody'>
-        {/* //Map over the request to display */}
-        {/* // The handle click will bring the user to the details page where they can listen to their song */}
+        {/* Map over the request to display */}
+        {/* The handle click will bring the user to the details page where they can listen to their song */}
+        {/* displays text if no requests exist */}
+
         {
           userRequests.length > 0 ?
-          <div>
+          <div className='requestContainer'>
             {userRequests.map((request, i) => (
               <RequestItem song={request} key={i} />
             ))}

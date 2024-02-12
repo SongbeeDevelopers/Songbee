@@ -11,11 +11,13 @@ function RequestItem({ song }) {
   const msPerDay = 24 * 60 * 60 * 1000;
   const creationTime = new Date (song.created_at);
   const daysLeft = Math.round((now.getTime() - creationTime.getTime()) / msPerDay);
+
+
   if (song.is_complete) {
     return (
       <Card
         sx={{
-          width: 1000,
+          minWidth: 1000,
           display: "flex",
           flexDirection: "row",
           outline: "#feaf17 solid 4px",
