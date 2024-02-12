@@ -77,7 +77,12 @@ INSERT INTO "user"
 ("email", "password", "class")
 VALUES
 ('hello@songbee.com', '$2a$10$beIgxp.l45eRiz5HYgUxBuTN6anPZwKY3TRE/nE2Ltg/5Fo1Jylw6', 3),
-('walkerneudorff@gmail.com', '$2a$10$wRAZ7JrKo3WGbQaAvdzCwuiB3YK4RqumN1vx7F.6OCAybFMKpiJii', 2);
+('walkerneudorff@gmail.com', '$2a$10$wRAZ7JrKo3WGbQaAvdzCwuiB3YK4RqumN1vx7F.6OCAybFMKpiJii', 2),
+('johngornay@gmail.com', '$2a$10$beIgxp.l45eRiz5HYgUxBuTN6anPZwKY3TRE/nE2Ltg/5Fo1Jylw6', 1),
+('brimlygorblox@gmail.com', '$2a$10$beIgxp.l45eRiz5HYgUxBuTN6anPZwKY3TRE/nE2Ltg/5Fo1Jylw6', 1),
+('hannahrutti@gmail.com', '$2a$10$beIgxp.l45eRiz5HYgUxBuTN6anPZwKY3TRE/nE2Ltg/5Fo1Jylw6', 2),
+('linton@gmail.com', '$2a$10$beIgxp.l45eRiz5HYgUxBuTN6anPZwKY3TRE/nE2Ltg/5Fo1Jylw6', 2),
+('sandylapras@gmail.com', '$2a$10$beIgxp.l45eRiz5HYgUxBuTN6anPZwKY3TRE/nE2Ltg/5Fo1Jylw6', 1);
 
 --Password for songbee account is: password
 
@@ -86,24 +91,34 @@ VALUES
 (1, 'Rap/Hip-Hop'), (2, 'Folk'), (3, 'Rock'), (4, 'Christian'), (5, 'R&B'), (6, 'Country'), (7, 'Singer Songwriter'), (8, 'Acoustic Pop'), (9, 'Spanish');
 
 INSERT INTO "artist"
-("artist_name", "name", "user_id", "vocal_type")
+("artist_name", "name", "user_id", "vocal_type", "approved")
 VALUES
-('The Yellow Dart', 'Walker Neudorff', 2, 'male');
+('Hannah Rutti', 'Hannah Rutti', 5, 'female', TRUE),
+('The Yellow Dart', 'Walker Neudorff', 2, 'male', FALSE),
+('Linton Robinson', 'Linton', 6, 'male', TRUE);
 
 INSERT INTO "song_request"
 ("user_id", "genre_id", "requester", "recipient", "pronunciation", "recipient_relationship", "occasion", "vocal_type", "vibe", "tempo", "inspiration", "story1", "story2", "important_what", "important_why", "additional_info", "created_at", "delivery_days", "streaming", "extra_verse", "is_complete")
 VALUES
-(1, 3, 'Charles', 'Charlito', 'Shar-Lee-Toe', 'Best Friend', null, 'Female', 'Light-hearted', 'Fast', 'God', 'We used to beat eachother up', 'We were married as a joke once', 'They smell bad', 'It''s how we met', 'Her favorite color is invisible', '2024-01-29T15:58:20.453Z', 7, false, false, false), 
-(1, 4, 'Charles', 'Jenny', 'Jeh-Knee', 'Daughter', null, 'Female', 'Mean-spirited', 'Slow', 'I need to prank my daughter', 'My daughter thinks Johnny Rotten is attractive', 'My daughter and I used to do the shaving cream and feather sleeping prank on eachother', 'My daughter lives in Tempe, AZ', 'Theres a lot of material to work with there', 'The final lyric should be Surprise!', '2024-01-28T15:58:20.453Z', 7, false, true, false),
-(1, 1, 'The Springfield Office', 'Our Boss Jeffery', 'Jeff-Rey', 'Boss', null, 'Male', 'Spooktacular', 'Fast', 'Boss cant stop talking about Frank Sinatra', 'Our boss is very old and grew up listening to vocal crooners', 'Our boss always forgets his coffee mug in the conference room', 'He hates Gene Pitney', 'If it sounds too much like Gene Pitney it will go over poorly', 'Gene Pitney was his ex-wife''s favorite artist', '2024-01-22T15:58:20.453Z', 7, false, false, true);
+(1, 3, 'Charles', 'Charlito', 'Shar-Lee-Toe', 'Best Friend', null, 'Female', 'Light-hearted', 'Fast', 'God', 'We used to beat eachother up', 'We were married as a joke once', 'They smell bad', 'It''s how we met', 'Her favorite color is invisible', '2024-01-29T15:58:20.453Z', 7, false, false, true), 
+(1, 4, 'Charles', 'Jenny', 'Jeh-Knee', 'Daughter', null, 'Female', 'Mean-spirited', 'Slow', 'I need to prank my daughter', 'My daughter thinks Johnny Rotten is attractive', 'My daughter and I used to do the shaving cream and feather sleeping prank on eachother', 'My daughter lives in Tempe, AZ', 'Theres a lot of material to work with there', 'The final lyric should be Surprise!', '2024-01-28T15:58:20.453Z', 7, false, true, true),
+(3, 1, 'The Springfield Office', 'Our Boss Jeffery', 'Jeff-Rey', 'Boss', null, 'Male', 'Spooktacular', 'Fast', 'Boss cant stop talking about Frank Sinatra', 'Our boss is very old and grew up listening to vocal crooners', 'Our boss always forgets his coffee mug in the conference room', 'He hates Gene Pitney', 'If it sounds too much like Gene Pitney it will go over poorly', 'Gene Pitney was his ex-wife''s favorite artist', '2024-01-22T15:58:20.453Z', 7, false, false, true),
+(4, 3, 'Brimly', 'Gregor', 'Greh-ger', 'Crush', 'Valentines Day', 'Female', 'Light-hearted', 'Fast', 'Want to tell her how I feel', 'We had math class together', 'We love sin/cos/tan', 'She only wears orange', 'Its my favorite color', 'We eat Blimpie sandwiches at lunch together', '2024-02-12T15:58:20.453Z', 7, false, false, false), 
+(7, 6, 'Sandy', 'Shimnar', 'Shim-Nahr', 'Husband', 'Anniversary', 'Female', 'Light-hearted', 'up-tempo', 'Want to tell her how I feel', 'We had math class together', 'We love sin/cos/tan', 'She only wears orange', 'Its my favorite color', 'We eat Blimpie sandwiches at lunch together', '2024-02-10T15:58:20.453Z', 7, false, false, false);
 
 INSERT INTO "song_details"
 ("song_request_id", "url", "lyrics", "title", "artist_id", "streaming_link")
 VALUES
-(3, 'https://res.cloudinary.com/dcram3k0q1/video/upload/v1705711050/syquoqbokasssbuem1sf.wav', 'I cant deface time / I cant deface time / I cant deface time', 'Jerry GarPsyOp', 1, null);
+(3, 'https://res.cloudinary.com/dcram3k0q1/video/upload/v1705711050/syquoqbokasssbuem1sf.wav', 'I cant deface time / I cant deface time / I cant deface time', 'Jerry GarPsyOp', 2, null),
+(1, 'https://res.cloudinary.com/dcram3k0q1/video/upload/v1705711050/syquoqbokasssbuem1sf.wav', 'I love you baby', 'I love you baby', 1, null),
+(2, 'https://res.cloudinary.com/dcram3k0q1/video/upload/v1705711050/syquoqbokasssbuem1sf.wav', 'Just wanna rock / I am on top / Living the best / Better than the rest', 'Rock Town', 3, null);
 
 INSERT INTO "artist_genres"
 ("artist_id", "genre_id")
 VALUES
-(1, 3),
-(1, 1);
+(1, 5),
+(1, 7),
+(2, 1),
+(2, 2),
+(3, 7),
+(3, 8);

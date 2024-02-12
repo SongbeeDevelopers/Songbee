@@ -220,6 +220,7 @@ router.post('/create', async (req, res) => {
         VALUES
         ($1)
     `
+    console.log('created id:', response.rows[0].id)
     const detailsResponse = await connection.query(detailsQuery, [response.rows[0].id])
     connection.query("COMMIT;");
     connection.release();

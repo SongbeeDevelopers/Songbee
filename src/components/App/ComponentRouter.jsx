@@ -121,7 +121,7 @@ function ComponentRouter() {
               <PrivacyPolicy routeVariants={routeVariants} />
             </Route>
 
-            <Route exact path="/created">
+            <Route exact path="/created/:delivery_days/:extra_verse/:streaming">
               <CreationPage routeVariants={routeVariants} />
             </Route>
 
