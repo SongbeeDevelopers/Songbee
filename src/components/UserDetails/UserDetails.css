@@ -75,6 +75,7 @@
     background-color: #fff4df;
     border-radius: 4px;
     margin-top: 50px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
     /* gap: 25px */
   }
 
@@ -113,6 +114,7 @@
     outline: #feaf17 solid 4px;
     padding: 16px;
     background-color: #fff4df;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
   }
 
   .songDetails h1 {
