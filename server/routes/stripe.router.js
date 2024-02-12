@@ -48,7 +48,7 @@ router.post('/', async (req, res) => {
       const session = await stripe.checkout.sessions.create({
         line_items: lineitemArray,
         mode: 'payment',
-        success_url: `http://localhost:5173/#created`,
+        success_url: `http://localhost:5173/#/created/${order.delivery_days}/${order.extra_verse}/${order.streaming}`,
         cancel_url: `https://localhost:5173/#/order`,
         automatic_tax: {enabled: true},
       });

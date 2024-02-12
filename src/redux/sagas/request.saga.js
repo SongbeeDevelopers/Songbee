@@ -54,8 +54,8 @@ function* createSongRequest (action){
             url: "/api/request/create",
             data: action.payload.data
         })
-        yield action.payload.history.push(`requestform/${response.data.id}`)
-        // yield action.payload.history.push('/checkout')
+        yield action.payload.history.push(`/requestform/${response.data.id}`)
+        
         yield put ({ type: 'ADD_ORDER_ID', payload: response.data.id })
     } catch (error) {
         console.error('SAGA createSongRequest() failed:', error)
