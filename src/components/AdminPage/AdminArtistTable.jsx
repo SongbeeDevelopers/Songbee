@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
@@ -11,7 +12,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
 
-function AdminArtistTable({data}) {
+function AdminArtistTable() {
 
   const dispatch = useDispatch();
   // header styling
@@ -35,6 +36,16 @@ function AdminArtistTable({data}) {
       border: 0,
     },
   }));
+
+  const artists = useSelector(store => store.pendingArtists);
+  const data = useSelector(store => store.filterResults);
+
+  useEffect(() => {
+    dispatch({
+        type: "SET_FILTER_RESULTS",
+        payload: artists
+      })
+  }, [])
 
   const approveArtist = (id) => {
     dispatch({

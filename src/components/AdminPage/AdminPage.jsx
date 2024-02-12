@@ -56,12 +56,12 @@ function AdminPage({ routeVariants }) {
     //     payload: users
     //   })
     // } else 
-    if (newValue === 3){
-      dispatch({
-        type: "SET_FILTER_RESULTS",
-        payload: artists
-      })
-    }
+    // if (newValue === 3){
+    //   dispatch({
+    //     type: "SET_FILTER_RESULTS",
+    //     payload: artists
+    //   })
+    // }
   };
 
   // tabs layout
@@ -131,7 +131,7 @@ function AdminPage({ routeVariants }) {
 
         <CustomTabPanel value={value} index={3}>
           <FilterBar type='artist'/>
-          <AdminArtistTable data={results}/>
+          <AdminArtistTable />
         </CustomTabPanel>
 
     </motion.div>
