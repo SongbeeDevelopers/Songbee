@@ -53,10 +53,17 @@ function OrderPage({ routeVariants }) {
   const submitOrder = (e) => {
     e.preventDefault()
     if (newOrder.delivery_days && newOrder.streaming && newOrder.extra_verse && user.id) {
-      dispatch({
-        type: 'FETCH_CHECKOUT',
-        payload: {
-          data: newOrder
+      Swal.fire({
+        title: "Continue with selections?",
+        showCancelButton: true,
+        confirmButtonText: "Checkout",
+        icon: "question"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          dispatch({
+            type: 'FETCH_CHECKOUT',
+            payload: { data: newOrder }
+          })
         }
       })
     }
