@@ -20,14 +20,18 @@ import Typography from "@mui/material/Typography";
 
 import "./UserPageTabs.css";
 
+
 // Inside here will have the user's email and password and have the option to edit details
-export default function BasicTabs() {
-  const [value, setValue] = useState(0);
+function BasicTabs() {
+
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const user = useSelector((store) => store.user);
   const emailRef = useRef(user.email);
+
   const passwordRef = useRef("");
-  const history = useHistory();
-  const dispatch = useDispatch();
+  const [value, setValue] = useState(0);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -69,7 +73,6 @@ export default function BasicTabs() {
 
   const CustomTabPanel = (props) => {
     const { children, value, index, ...other } = props;
-
     return (
       <div
         role="tabpanel"
@@ -86,6 +89,7 @@ export default function BasicTabs() {
       </div>
     );
   };
+
   CustomTabPanel.propTypes = {
     children: PropTypes.node,
     index: PropTypes.number.isRequired,
@@ -97,12 +101,13 @@ export default function BasicTabs() {
       id: `simple-tab-${index}`,
       "aria-controls": `simple-tabpanel-${index}`,
     };
-  }; // End of tab structure
+  };
 
   // This is for the dialog
   const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
+
 
   return (
     <div className="container">
@@ -160,68 +165,55 @@ export default function BasicTabs() {
             >
               <Box
                 sx={{
-                  width: 400,
-                  bgcolor: "background.paper",
-                  border: "2px solid #000",
-                  boxShadow: 24,
-                  p: 4,
+                  width: 800,
                   display: "flex",
-                  flexFlow: "column",
-                  justifyContent: "center",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  ml: 20,
                 }}
               >
-                <h3>Would you like to make an edit ?</h3>
-
-                <TextField
+                <Box
                   sx={{
-                    margin: "5px",
-                    border: "2px solid",
-                    borderColor: "orange",
-                    borderRadius: "5px",
+                    width: 400,
+                    bgcolor: "background.paper",
+                    border: "2px solid #000",
+                    boxShadow: 24,
+                    p: 4,
+                    display: "flex",
+                    flexFlow: "column",
+                    justifyContent: "center",
                   }}
-                  name="email"
-                  type="text"
-                  size="small"
-                  placeholder="Email"
-                  defaultValue={emailRef.current}
-                  onChange={(e) => {
-                    emailRef.current = e.target.value;
-                  }}
-                />
+                >
+                  <h3>Would you like to make an edit ?</h3>
 
-                <br />
-
-                <TextField
-                  sx={{
-                    margin: "5px",
-                    border: "2px solid",
-                    borderColor: "orange",
-                    borderRadius: "5px",
-                  }}
-                  name="password"
-                  type="password"
-                  size="small"
-                  placeholder="Password"
-                  onChange={(e) => {
-                    passwordRef.current = e.target.value;
-                  }}
-                />
-
-                <div className="modalBtns">
-                  <Button
-                    type="submit"
-                    onClick={handleEdit}
-                    variant="contained"
-                    color="success"
+                  <TextField
+                    sx={{
+                      margin: "5px",
+                      border: "2px solid",
+                      borderColor: "orange",
+                      borderRadius: "5px",
+                    }}
+                    name="email"
+                    type="text"
                     size="small"
-                  >
-                    Save
-                  </Button>
-                  <Button
-                    type="submit"
-                    onClick={handleCancel}
-                    variant="contained"
-                    color="secondary"
+                    placeholder="Email"
+                    defaultValue={emailRef.current}
+                    onChange={(e) => {
+                      emailRef.current = e.target.value;
+                    }}
+                  />
+
+                  <br />
+
+                  <TextField
+                    sx={{
+                      margin: "5px",
+                      border: "2px solid",
+                      borderColor: "orange",
+                      borderRadius: "5px",
+                    }}
+                    name="password"
+                    type="password"
                     size="small"
                   >
                     Cancel
@@ -239,3 +231,5 @@ export default function BasicTabs() {
     </div>
   );
 }
+
+export default BasicTabs

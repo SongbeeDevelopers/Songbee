@@ -64,12 +64,36 @@ function SongRequestPage({ routeVariants }) {
     })
   }
 
+  const fillForm = () => {
+    dispatch({
+      type: 'SET_REQUEST_DATA',
+      payload: {
+        additional_info: "Please include ukulele",
+        genre: "Country",
+        important_what: "It is important that she feels loved and inspired.",
+        important_why: "My daughter means everything to me. She is an aspiring singer, I want her to take inspiration from this song.",
+        inspiration: "It's my daughter's golden birthday!",
+        occasion: "My daughter's birthday",
+        pronunciation: "gray-sun",
+        recipient: "Grayson",
+        recipient_relationship: "Daughter",
+        requester: "Bertrum Brown",
+        story1: "d. Go for your dreams, follow them relentlessly.",
+        story2: "e. The way she sings around the house brings everyone so much joy.",
+        tempo: "fast",
+        vibe: "lighthearted",
+        vocal_type: "female",
+      }
+    })
+  }
+
   return (
     <motion.div
       className="reqFormPage"
       variants={routeVariants}
       initial='initial'
       animate='final'
+      onClick={fillForm}
     >
       <h1>Song Request Details</h1>
 
@@ -151,12 +175,12 @@ function SongRequestPage({ routeVariants }) {
             <label>Choose a Genre</label>
             <select 
               value={requestData.genre}
-              onChange={() => handleInput('genre_id', event.target.value)}
+              onChange={() => handleInput('genre', event.target.value)}
             >
               <option selected disabled>Select Genre</option>
               {
                 genres.map((genre) => (
-                  <option key={genre.id} value={genre.id}>{genre.name}</option>
+                  <option key={genre.id} value={genre.name}>{genre.name}</option>
                 ))
               }
             </select>
