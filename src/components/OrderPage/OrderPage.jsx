@@ -54,10 +54,9 @@ function OrderPage({ routeVariants }) {
     e.preventDefault()
     if (newOrder.delivery_days && newOrder.streaming && newOrder.extra_verse && user.id) {
       dispatch({
-        type: 'CREATE_SONG_REQUEST',
+        type: 'FETCH_CHECKOUT',
         payload: {
-          data: newOrder,
-          history: history
+          data: newOrder
         }
       })
     }
