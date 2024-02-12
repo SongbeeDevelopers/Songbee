@@ -240,7 +240,7 @@ try {
   const pronunciation = req.body.pronunciation;
   const recipientRelationship = req.body.recipient_relationship;
   const occasion = req.body.occasion;
-  const genreId = req.body.genre_id;
+  const genreId = req.body.genre;
   const vocalType = req.body.vocal_type;
   const vibe = req.body.vibe;
   const tempo = req.body.tempo;

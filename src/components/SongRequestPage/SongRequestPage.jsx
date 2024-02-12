@@ -180,7 +180,7 @@ function SongRequestPage({ routeVariants }) {
               <option selected disabled>Select Genre</option>
               {
                 genres.map((genre) => (
-                  <option key={genre.id} value={genre.name}>{genre.name}</option>
+                  <option key={genre.id} value={genre.id}>{genre.name}</option>
                 ))
               }
             </select>
