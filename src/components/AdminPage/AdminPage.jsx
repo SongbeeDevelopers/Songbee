@@ -39,17 +39,18 @@ function AdminPage({ routeVariants }) {
   const handleChange = (event, newValue) => {
     event.preventDefault();
     setValue(newValue);
-    if (newValue === 0){
-      dispatch({
-        type: "SET_FILTER_RESULTS",
-        payload: pendingRequests
-      })
-    } else if (newValue === 1){
-      dispatch({
-        type: "SET_FILTER_RESULTS",
-        payload: completedRequests
-      })
-    } else if (newValue === 2){
+    // if (newValue === 0){
+    //   dispatch({
+    //     type: "SET_FILTER_RESULTS",
+    //     payload: pendingRequests
+    //   })
+    // } else if (newValue === 1){
+    //   dispatch({
+    //     type: "SET_FILTER_RESULTS",
+    //     payload: completedRequests
+    //   })
+    // } 
+    if (newValue === 2){
       dispatch({
         type: "SET_FILTER_RESULTS",
         payload: users
@@ -114,12 +115,12 @@ function AdminPage({ routeVariants }) {
         {/* AdminTable.jsx used for both pending and completed requests */}
         <CustomTabPanel value={value} index={0}>
           <FilterBar type='pending'/>
-          <AdminTable data={results}/>
+          <AdminTable num={0}/>
         </CustomTabPanel>
 
         <CustomTabPanel value={value} index={1}>
           <FilterBar type='completed'/>
-          <AdminTable data={results}/>
+          <AdminTable num={1}/>
         </CustomTabPanel>
 
         <CustomTabPanel value={value} index={2}>

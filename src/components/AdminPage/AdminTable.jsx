@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useState } from 'react';
-import { useDispatch } from "react-redux";
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
 
 import Dialog from '@mui/material/Dialog';
@@ -17,7 +17,7 @@ import TableRow from '@mui/material/TableRow';
 import AdminRequestDialog from './AdminRequestDialog';
 import AdminDetailsDialog from './AdminDetailsDialog';
 
-function AdminTable({data}) {
+function AdminTable({num}) {
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.common.black,
@@ -39,6 +39,24 @@ function AdminTable({data}) {
   }));
   const history = useHistory();
   const dispatch = useDispatch();
+  
+  const pendingRequests = useSelector(store => store.pendingRequests)
+  const completedRequests = useSelector(store => store.completedRequests)
+  const data = useSelector(store => store.filterResults);
+
+  useEffect(() => {
+    if (num === 0){
+        dispatch({
+          type: "SET_FILTER_RESULTS",
+          payload: pendingRequests
+        })
+      } else if (num === 1){
+        dispatch({
+          type: "SET_FILTER_RESULTS",
+          payload: completedRequests
+        })
+      }
+  }, [])
 
   const now = new Date ();
   const msPerDay = 24 * 60 * 60 * 1000;
