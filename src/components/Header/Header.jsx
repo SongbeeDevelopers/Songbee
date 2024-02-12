@@ -9,9 +9,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
+import Swal from "sweetalert2";
 
 import "./Header.css";
-import { Logout } from "@mui/icons-material";
 
 
 function Header() {
@@ -58,7 +58,16 @@ function Header() {
           onClick={(e) => {
             if (user?.id) {
               e.preventDefault();
-              dispatch({ type: "LOGOUT" });
+              Swal.fire({
+                title: "Do you want to log out?",
+                showCancelButton: true,
+                confirmButtonText: "Yes",
+                icon: 'warning'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  dispatch({ type: "LOGOUT" });
+                }
+              });
             }
           }}
           className="nav-links"

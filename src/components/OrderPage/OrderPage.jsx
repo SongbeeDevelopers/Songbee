@@ -53,10 +53,17 @@ function OrderPage({ routeVariants }) {
   const submitOrder = (e) => {
     e.preventDefault()
     if (newOrder.delivery_days && newOrder.streaming && newOrder.extra_verse && user.id) {
-      dispatch({
-        type: 'FETCH_CHECKOUT',
-        payload: {
-          data: newOrder
+      Swal.fire({
+        title: "Continue with selections?",
+        showCancelButton: true,
+        confirmButtonText: "Checkout",
+        icon: "question"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          dispatch({
+            type: 'FETCH_CHECKOUT',
+            payload: { data: newOrder }
+          })
         }
       })
     }
@@ -117,7 +124,7 @@ function OrderPage({ routeVariants }) {
         >
           <option selected disabled>Select Streaming Option</option>
           <option value={true}>Add Streaming</option>
-          <option value={false}>No Streaming</option>
+          <option value={false}>Standard No Streaming</option>
         </select>
 
         <select
@@ -142,6 +149,8 @@ function OrderPage({ routeVariants }) {
 
         <button className='orderCheckoutButton' onClick={submitOrder}>Checkout</button>
       </form>
+
+      <p className='feeText'>*Nonstandard selections will incur additional fees</p>
 
       <Modal
         open={open}

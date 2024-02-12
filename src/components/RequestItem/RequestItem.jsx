@@ -11,11 +11,13 @@ function RequestItem({ song }) {
   const msPerDay = 24 * 60 * 60 * 1000;
   const creationTime = new Date (song.created_at);
   const daysLeft = Math.round((now.getTime() - creationTime.getTime()) / msPerDay);
+
+
   if (song.is_complete) {
     return (
       <Card
         sx={{
-          width: 1000,
+          minWidth: 900,
           display: "flex",
           flexDirection: "row",
           outline: "#feaf17 solid 4px",
@@ -23,6 +25,7 @@ function RequestItem({ song }) {
           gap: 2,
           mb: 3,
           backgroundColor: "#fff4df",
+          p: 2
         }}
         onClick={requestClick}
       >
@@ -33,13 +36,13 @@ function RequestItem({ song }) {
           <div className="event-item">
             <img width={80} src="bee-button.png" />
             <div>
-              Your song for {song.recipient}
+              <p>Your song for {song.recipient}</p>
               <p>
                 Ordered on{" "}
                 {new Date(song.created_at).toLocaleDateString("en-us")}
               </p>
             </div>
-            <button className="detailsBtn">View Details</button>
+            <button className="detailsBtn">Details</button>
           </div>
         </CardActionArea>
       </Card>
@@ -48,14 +51,15 @@ function RequestItem({ song }) {
     return (
       <Card
         sx={{
-          width: 1000,
+          width: 900,
           display: "flex",
           flexDirection: "row",
           outline: "#feaf17 solid 4px",
-          justifyContent: "space-between",
+          justifyContent: "space-around",
           gap: 2,
           mb: 3,
           backgroundColor: "#fff4df",
+          p: 2
         }}
         onClick={requestClick}
       >
@@ -66,13 +70,13 @@ function RequestItem({ song }) {
           <div className="event-item">
             <img width={80} src="bee-button.png" />
             <div>
-              Your song for {song.recipient}
+              <p>Your song for {song.recipient}</p>
               <p>
                 Ordered on{" "}
                 {new Date(song.created_at).toLocaleDateString("en-us")}
               </p>
             </div>
-            <button className="detailsBtn">View Details</button>
+            <button className="detailsBtn">Details</button>
           </div>
         </CardActionArea>
       </Card>

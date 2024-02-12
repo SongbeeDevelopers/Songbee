@@ -15,9 +15,7 @@
 .modalBtns {
     margin: 10px;
     display:flex;
-    justify-content: space-around;
-    
-      
+    justify-content: space-around;     
 }
 
 /* styling for the card background */
