@@ -215,10 +215,11 @@ function BasicTabs() {
                     name="password"
                     type="password"
                     size="small"
-                  >
+                  />
+                  <Button>
                     Cancel
                   </Button>
-                </div>
+                </Box>
               </Box>
             </Dialog>
           </CardContent>
