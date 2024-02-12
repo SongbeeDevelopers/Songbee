@@ -50,12 +50,13 @@ function AdminPage({ routeVariants }) {
     //     payload: completedRequests
     //   })
     // } 
-    if (newValue === 2){
-      dispatch({
-        type: "SET_FILTER_RESULTS",
-        payload: users
-      })
-    } else if (newValue === 3){
+    // if (newValue === 2){
+    //   dispatch({
+    //     type: "SET_FILTER_RESULTS",
+    //     payload: users
+    //   })
+    // } else 
+    if (newValue === 3){
       dispatch({
         type: "SET_FILTER_RESULTS",
         payload: artists
@@ -125,7 +126,7 @@ function AdminPage({ routeVariants }) {
 
         <CustomTabPanel value={value} index={2}>
           <FilterBar type='user'/>
-          <AdminUserTable data={results}/>
+          <AdminUserTable />
         </CustomTabPanel>
 
         <CustomTabPanel value={value} index={3}>
