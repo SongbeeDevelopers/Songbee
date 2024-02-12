@@ -130,8 +130,7 @@ Grid
   display: flex;
   flex-direction: column;
   gap: 15px;
-  padding: 0px 100px;
-
+  padding: 0px ;
 }
 
 .works h2 {
