@@ -110,52 +110,60 @@ function BasicTabs() {
 
 
   return (
-    <>
-      <Box sx={{ height: "80%", borderBottom: 1, borderColor: "divider" }}>
-        <Tabs
-          className="tabHeader"
-          value={value}
-          onChange={handleChange}
-          aria-label="basic tabs example"
-        >
-          <Tab
-            sx={{ color: "orange" }}
-            label="Order History"
-            {...a11yProps(0)}
-          />
-          <Tab 
-            sx={{ color: "orange" }} 
-            label="profile" 
-            {...a11yProps(1)} />
-          <Tab
-            sx={{ color: "orange" }}
-            label="Credit Balance"
-            {...a11yProps(2)}
-          />
-        </Tabs>
-      </Box>
+    <div className="container">
+    <Box sx={{ height: "80%", borderBottom: 1, borderColor: "divider" }}>
+          <Tabs
+            className="tabHeader"
+            value={value}
+            onChange={handleChange}
+            aria-label="basic tabs example"
+          >
+            <Tab
+              sx={{ color: "orange" }}
+              label="Order History"
+              {...a11yProps(0)}
+            />
+            <Tab 
+              sx={{ color: "orange" }} 
+              label="profile" 
+              {...a11yProps(1)} />
+            <Tab
+              sx={{ color: "orange" }}
+              label="Credit Balance"
+              {...a11yProps(2)}
+            />
+          </Tabs>
+        </Box>
+    <Box sx={{ width: "100%" }}>
+      <Card className="cardBackground" variant="outlined">
+        <CustomTabPanel className="cardBody" value={value} index={0}>
+          <UserHistory />
+        </CustomTabPanel>
 
-      <Box sx={{ width: "100%" }}>
-        <Card className="cardBackground" variant="outlined">
-          <CustomTabPanel className="cardBody" value={value} index={0}>
-            <UserHistory />
-          </CustomTabPanel>
+        <CustomTabPanel value={value} index={1}>
+          <h1 className="profileHeader">Personal info</h1>
+          <h3>{user.email}</h3>
 
-          <CustomTabPanel value={value} index={1}>
-            <h1 className="profileHeader">Personal info</h1>
-            <h3>{user.email}</h3>
-
-            <CardContent variant="outlined">
-              <Button sx={{ color: "black" }} onClick={handleOpen}>
-                Edit Info
-              </Button>
-
-              <Dialog
-                open={open}
-                keepMounted
-                TransitionComponent={Transition}
-                onClose={handleClose}
-                aria-describedby="alert-dialog-slide-description"
+          <CardContent variant="outlined">
+            {/* <Typography sx={{ fontSize: 14, mt: 2 }} color="text.secondary" gutterBottom> */}
+            <Button sx={{ color: "black" }} onClick={handleOpen}>
+              Edit Info
+            </Button>
+            <Dialog
+              open={open}
+              keepMounted
+              TransitionComponent={Transition}
+              onClose={handleClose}
+              aria-describedby="alert-dialog-slide-description"
+              sx={{
+                width: 800,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                ml: 20,
+              }}
+            >
+              <Box
                 sx={{
                   width: 800,
                   display: "flex",
@@ -207,44 +215,20 @@ function BasicTabs() {
                     name="password"
                     type="password"
                     size="small"
-                    placeholder="Password"
-                    onChange={(e) => {
-                      passwordRef.current = e.target.value;
-                    }}
-                  />
-
-                  <div className="modalBtns">
-                    <Button
-                      type="submit"
-                      onClick={handleEdit}
-                      variant="contained"
-                      color="success"
-                      size="small"
-                    >
-                      Save
-                    </Button>
-                    <Button
-                      type="submit"
-                      onClick={handleCancel}
-                      variant="contained"
-                      color="secondary"
-                      size="small"
-                    >
-                      Cancel
-                    </Button>
-                  </div>
-                </Box>
-              </Dialog>
-            </CardContent>
-          </CustomTabPanel>
-
-          <CustomTabPanel value={value} index={2}>
-            <UserCreditPage />
-          </CustomTabPanel>
-
-        </Card>
-      </Box>
-    </>
+                  >
+                    Cancel
+                  </Button>
+                </div>
+              </Box>
+            </Dialog>
+          </CardContent>
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={2}>
+          <UserCreditPage />
+        </CustomTabPanel>
+      </Card>
+    </Box>
+    </div>
   );
 }
 

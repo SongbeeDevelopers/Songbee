@@ -19,9 +19,6 @@ function UserPage({ routeVariants }) {
           initial="initial"
           animate="final"
         >
-        {
-
-        }
           <UserPageTabs />  
       </motion.div>
     </>
