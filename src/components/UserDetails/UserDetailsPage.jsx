@@ -105,10 +105,10 @@ function UserDetails() {
       <CustomTabPanel value={value} index={0}>
 
         <Box sx={{ minWidth: 400, minHeight: 700}}>
-          <Card variant="outlined">
-            <CardContent className='cardContainer'>
-              <div>
-                {request.url && <audio controls src={request.url} ></audio>}
+          <Card>
+            <CardContent className='cardContainer' sx={{p: "5%"}}>
+              <div className='songDetails'>
+                <h1>To {request.recipient}, from {request.requester}</h1>
 
                 <Typography sx={{ fontSize: 5 }} variant="h2" gutterBottom>
                   <p className='songTitle'>{request.title}</p> 
@@ -117,39 +117,68 @@ function UserDetails() {
                 <Typography variant="h5" component="div"> 
                   <p className='artistTitle'> By {request.artist_name}</p>
                 </Typography>
+                {request.url && <audio controls src={request.url} ></audio>}
 
                 <div>
                   {request.lyrics && <h2 className='lyricsHeader'>Lyrics:</h2>}
                   {request.lyrics && <p>{request.lyrics}</p>}
                 </div>
+              </div>
 
-                <h2 className='detailsHeader'>Your Song Details:</h2>
-                <h2>This song is for {request.recipient}{request.pronunciation ? ` (Pronounced: ${request.pronunciation})` : ''}</h2>
-                  {request.occasion ? 
-                    <>
+              <div className='detailsContainer'>
+              <h2 className='detailsHeader'>Your Song Details:</h2>
+                <div className='detailsRow'>
+                  <div className='detailsItem'>
                     <h2>Occasion:</h2>
-                    <p>{request.occasion}</p>
-                    </>
-                    : ''}
-                <h2>Inspiration:</h2>
-                <p>{request.inspiration}</p>
+                    {
+                    request.occasion ? 
+                      <p>{request.occasion}</p>
+                      :
+                      <p>No Occasion!</p>
+                    }
+                  </div>
+                  <div className='detailsItem2'>
+                    <h2>Inspiration:</h2>
+                    <p>{request.inspiration}</p>
+                  </div>
+                </div>
 
-                <h2>You story:</h2>
-                <p>{request.story1}</p>
-                <p>{request.story2}</p>
+                <div className='detailsRow'>
+                  <div className='detailsItem'>
+                    <h2>Your story:</h2>
+                    <p>{request.story1}</p>
+                    <p>{request.story2}</p>
+                  </div>
 
-                <h2>The Importance:</h2>
-                <p>{request.important_what}</p>
-                <p>{request.important_why}</p>
+                  <div className='detailsItem2'>
+                    <h2>The Importance:</h2>
+                    <p>{request.important_what}<br/>
+                    {request.important_why}</p>
+                  </div>
+                </div>
 
-                <h2>Song Details:</h2>
-                <p>You requested a {request.genre} song with a {request.vocal_type} vocal type, a {request.vibe} vibe, and a {request.tempo} tempo</p>
-                <p>You requested a {request.delivery_days} day delivery time, </p>
+                <div className='detailsRow'>
+                  <div className='detailsItem'>
+                    <h2>Song Details:</h2>
+                    <p>You requested a {request.genre} song with a {request.vocal_type} vocal type, a {request.vibe} vibe, and a {request.tempo} tempo</p>
+                  </div>
+                  <div className='detailsItem2'>
+                    <h2>Additional Details:</h2>
+                    {
+                      request.additional_info ?
+                      <p>{request.additional_info}</p>
+                      :
+                      <p>Nope!</p>
+                    }
+                  </div>
+                </div>
+              </div>
 
                 <CardActions>
-                  <button className="back-btn" onClick={() => history.goBack()}>Go Back 🐝</button> 
+                  <button className="back-btn" onClick={() => history.goBack()}>Back</button> 
                 </CardActions>
-              </div>
+                      <div>
+                      </div>
             </CardContent>
           </Card>     
         </Box>
