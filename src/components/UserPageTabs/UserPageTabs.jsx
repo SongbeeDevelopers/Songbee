@@ -144,9 +144,7 @@ export default function BasicTabs() {
           <CustomTabPanel value={value} index={1}>
           <h1 className="profileHeader">Personal info</h1>
             <h3>{user.email}</h3>
-
             <CardContent variant="outlined">
-              {/* <Typography sx={{ fontSize: 14, mt: 2 }} color="text.secondary" gutterBottom> */}
               <Button sx={{ color: "black" }} onClick={handleOpen}>
                 Edit Info
               </Button>

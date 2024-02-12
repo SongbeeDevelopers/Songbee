@@ -7,12 +7,15 @@
     flex-direction: row;
     align-items: center;
     font-size: 1.5rem;
-    height: 180px;
-    justify-content: space-between;
-    
+    height: 160px;
+    justify-content: space-around;
   }
 
 .event-item-header {
     display: flex;
     justify-content: center;
+}
+
+.event-item p {
+    text-align: center;
 }
