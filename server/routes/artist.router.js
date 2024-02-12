@@ -135,15 +135,18 @@ router.put('/:id', async (req, res) => {
     SET "approved"=TRUE
     WHERE id=$1;
     `
+    console.log('req.params.id:', req.params.id)
     await connection.query(approvalQuery, [req.params.id])
     const classQuery = `
     UPDATE "user"
-    SET "class"=2
-    WHERE "id"=$1;
+    SET "class"=$1
+    WHERE "id"=$2;
     `
-    await connection.query(classQuery, [req.user.id])
+    console.log('req.user.id', req.user.id);
+    await connection.query(classQuery, [2, req.user.id])
     connection.query("COMMIT;");
     connection.release();
+    res.sendStatus(200);
     } catch (error) {
         console.error("Artist router Update failed:", error)
         connection.query("ROLLBACK;");
