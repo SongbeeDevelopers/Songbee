@@ -32,12 +32,22 @@ function SongRequestPage({ routeVariants }) {
   const submitRequest = (event) => {
     event.preventDefault()
     if (requestData.requester && requestData.recipient && requestData.recipient_relationship && requestData.occasion && requestData.vocal_type && requestData.vocal_type && requestData.vibe && requestData.vibe && requestData.tempo && requestData.inspiration && requestData.story1 && requestData.story2 && requestData.important_what && requestData.important_why) {
-      dispatchDetails()
+      Swal.fire({
+        title: "Submit?",
+        text: "Are you happy with your answers?",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: "Submit"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          dispatchDetails()
+        }
+      })
     } else {
       Swal.fire({
         title: "Submit?",
         text: "You have left important details blank. Do you want to submit anyways?",
-        icon: "question",
+        icon: "warning",
         showCancelButton: true,
         confirmButtonText: "Submit"
       })
