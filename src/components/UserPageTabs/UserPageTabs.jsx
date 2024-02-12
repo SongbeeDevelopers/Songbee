@@ -20,18 +20,14 @@ import Typography from "@mui/material/Typography";
 
 import "./UserPageTabs.css";
 
-
 // Inside here will have the user's email and password and have the option to edit details
-function BasicTabs() {
-
-  const dispatch = useDispatch();
-  const history = useHistory();
-
+export default function BasicTabs() {
+  const [value, setValue] = useState(0);
   const user = useSelector((store) => store.user);
   const emailRef = useRef(user.email);
-
   const passwordRef = useRef("");
-  const [value, setValue] = useState(0);
+  const history = useHistory();
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -73,6 +69,7 @@ function BasicTabs() {
 
   const CustomTabPanel = (props) => {
     const { children, value, index, ...other } = props;
+
     return (
       <div
         role="tabpanel"
@@ -89,7 +86,6 @@ function BasicTabs() {
       </div>
     );
   };
-
   CustomTabPanel.propTypes = {
     children: PropTypes.node,
     index: PropTypes.number.isRequired,
@@ -101,16 +97,15 @@ function BasicTabs() {
       id: `simple-tab-${index}`,
       "aria-controls": `simple-tabpanel-${index}`,
     };
-  };
+  }; // End of tab structure
 
   // This is for the dialog
   const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
 
-
   return (
-    <div className="container">
+    <>
     <Box sx={{ height: "80%", borderBottom: 1, borderColor: "divider" }}>
           <Tabs
             className="tabHeader"
@@ -165,61 +160,73 @@ function BasicTabs() {
             >
               <Box
                 sx={{
-                  width: 800,
+                  width: 400,
+                  bgcolor: "background.paper",
+                  border: "2px solid #000",
+                  boxShadow: 24,
+                  p: 4,
                   display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  ml: 20,
+                  flexFlow: "column",
+                  justifyContent: "center",
                 }}
               >
-                <Box
+                <h3>Would you like to make an edit ?</h3>
+
+                <TextField
                   sx={{
-                    width: 400,
-                    bgcolor: "background.paper",
-                    border: "2px solid #000",
-                    boxShadow: 24,
-                    p: 4,
-                    display: "flex",
-                    flexFlow: "column",
-                    justifyContent: "center",
+                    margin: "5px",
+                    border: "2px solid",
+                    borderColor: "orange",
+                    borderRadius: "5px",
                   }}
-                >
-                  <h3>Would you like to make an edit ?</h3>
+                  name="email"
+                  type="text"
+                  size="small"
+                  placeholder="Email"
+                  defaultValue={emailRef.current}
+                  onChange={(e) => {
+                    emailRef.current = e.target.value;
+                  }}
+                />
 
-                  <TextField
-                    sx={{
-                      margin: "5px",
-                      border: "2px solid",
-                      borderColor: "orange",
-                      borderRadius: "5px",
-                    }}
-                    name="email"
-                    type="text"
+                <br />
+
+                <TextField
+                  sx={{
+                    margin: "5px",
+                    border: "2px solid",
+                    borderColor: "orange",
+                    borderRadius: "5px",
+                  }}
+                  name="password"
+                  type="password"
+                  size="small"
+                  placeholder="Password"
+                  onChange={(e) => {
+                    passwordRef.current = e.target.value;
+                  }}
+                />
+
+                <div className="modalBtns">
+                  <Button
+                    type="submit"
+                    onClick={handleEdit}
+                    variant="contained"
+                    color="success"
                     size="small"
-                    placeholder="Email"
-                    defaultValue={emailRef.current}
-                    onChange={(e) => {
-                      emailRef.current = e.target.value;
-                    }}
-                  />
-
-                  <br />
-
-                  <TextField
-                    sx={{
-                      margin: "5px",
-                      border: "2px solid",
-                      borderColor: "orange",
-                      borderRadius: "5px",
-                    }}
-                    name="password"
-                    type="password"
+                  >
+                    Save
+                  </Button>
+                  <Button
+                    type="submit"
+                    onClick={handleCancel}
+                    variant="contained"
+                    color="secondary"
                     size="small"
-                  />
-                  <Button>
+                  >
                     Cancel
                   </Button>
-                </Box>
+                </div>
               </Box>
             </Dialog>
           </CardContent>
@@ -229,8 +236,6 @@ function BasicTabs() {
         </CustomTabPanel>
       </Card>
     </Box>
-    </div>
+    </>
   );
 }
-
-export default BasicTabs
