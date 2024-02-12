@@ -75,9 +75,13 @@ router.put("/:id", rejectUnauthenticated, cloudinaryUpload.single("file"), async
       WHERE "id"=$1;
       `
       const completeResult = await connection.query(completeQuery, [songRequestId])
+      connection.query("COMMIT;");
+      connection.release();
       res.sendStatus(201);
     } catch (error) {
       console.log("Error in details router PUT:", error);
+      connection.query("ROLLBACK;");
+      connection.release();
       res.sendStatus(500);
     }
   });

@@ -155,10 +155,10 @@ function AdminTable({data}) {
               {row.requester} / {row.recipient}
               </StyledTableCell>
               <StyledTableCell align="center">
-                { row.delivery_days - daysLeft >= 0 ? 
+                { row.is_complete ? 
+                    "Complete!" :
                     `Due in ${row.delivery_days - daysLeft} days`
-                :
-                "Complete!"}</StyledTableCell>
+                }</StyledTableCell>
               <StyledTableCell align="center">
                 <button className='admin-button' onClick={() => goToEdit(row.id)}>Details</button>
                 <DetailsDialogSlide />
