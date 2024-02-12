@@ -11,6 +11,8 @@ import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import Typography from '@mui/material/Typography';
 
+import { motion } from 'framer-motion';
+
 import PropTypes from 'prop-types';
 
 import './UserDetails.css';
@@ -23,6 +25,15 @@ import './UserDetails.css';
 
 // This function will display the user's song request with a player so they can review their song
 function UserDetails() {
+
+  const routeVariants = {
+    initial: {
+        opacity: 0
+    },
+    final: {
+        opacity: 1
+    }
+}
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -80,7 +91,12 @@ function UserDetails() {
 
   // Using MUI card that has tabs for the lyrics, basic details and artist
   return (
-    <>
+    <motion.div
+      className='container'
+      variants={routeVariants}
+      initial="initial"
+      animate="final"
+    >
       <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
         <Tab label="Your Song" {...a11yProps(0)} />
         <Tab label="Your Artist" {...a11yProps(1)} />
@@ -138,7 +154,7 @@ function UserDetails() {
           </Card>     
         </Box>
       </CustomTabPanel>
-    </>
+    </motion.div>
   )
 }
 
