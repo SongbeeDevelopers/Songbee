@@ -10,6 +10,7 @@ function CreationPage() {
   const newOrder = useSelector((store) => store.newOrder);
   console.log("order", order);
   console.log("order.delivery_days", order.delivery_days);
+  useEffect(() => {
     dispatch({
       type: "CREATE_SONG_REQUEST",
       payload: {
@@ -17,6 +18,8 @@ function CreationPage() {
         history: history,
       },
     });
+  }, [])
+
   return <h1>Loading...</h1>;
 }
 
