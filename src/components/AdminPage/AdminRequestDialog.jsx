@@ -70,6 +70,35 @@ function AdminRequestDialog ({handleClose}) {
     handleClose()
   };
 
+  const fillForm = () => {
+    setTitle('The Golden Girl')
+    setArtist('Hannah Rutti')
+    setLyrics(`[Verse 1]
+    If you leap awake in the mirror of a bad dream
+    And for a fraction of a second you can't remember where you are
+    Just open your window and follow your memory upstream
+    To the meadow in the mountain where we counted every falling star
+    
+    [Chorus]
+    I'm gonna watch you shine, gonna watch you grow
+    Gonna paint a sign so you'll always know
+    As long as one and one is two
+    There could never be a father who loved his daughter more than I love you
+    
+    [Verse 2]
+    I believe a light that shines on you will shine on you forever
+    And though I can't guarantee there's nothing scary hiding under your bed
+    I'm gonna stand guard like a postcard of a golden retriever
+    And never leave 'til I leave you with a sweet dream in your head
+    
+    [Chorus]
+    I'm gonna watch you shine, gonna watch you grow
+    Gonna paint a sign so you'll always know
+    As long as one and one is two
+    There could never be a father who loved his daughter more than I love you`)
+    setStreamingLink('https://open.spotify.com/track/7erg1DBQmpYvNI4tEaRwSU?si=0e7441eb1e514fb1')
+  }
+
 
   return (
     <>
@@ -77,7 +106,7 @@ function AdminRequestDialog ({handleClose}) {
 
       <DialogContent>
         <DialogContentText>
-          <div className='completeDialogueContent'>
+          <div className='completeDialogueContent' onClick={fillForm}>
             <Typography gutterBottom variant="overline" display="block" align='center'>
               Upload Song File:
             </Typography>
