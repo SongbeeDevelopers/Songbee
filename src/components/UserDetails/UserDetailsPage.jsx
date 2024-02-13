@@ -244,6 +244,9 @@ function UserDetails() {
         <Card>
         <CardContent className='cardContainer' sx={{p: "5%"}}>
           <div className='songDetails'>
+          <Typography sx={{ fontSize: 4 }} variant="h2" gutterBottom>
+              <p className='songTitle'>Your Artist:</p> 
+            </Typography>
             <img src={request.photo} />
             <Typography sx={{ fontSize: 5 }} variant="h2" gutterBottom>
               <p className='songTitle'>{request.artist_name}</p> 
