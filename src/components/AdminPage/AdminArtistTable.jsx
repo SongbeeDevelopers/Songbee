@@ -39,6 +39,7 @@ function AdminArtistTable() {
 
   const artists = useSelector(store => store.pendingArtists);
   const data = useSelector(store => store.filterResults);
+  console.log(artists)
 
   useEffect(() => {
     dispatch({
@@ -47,10 +48,10 @@ function AdminArtistTable() {
       })
   }, [])
 
-  const approveArtist = (id) => {
+  const approveArtist = (id, user_id) => {
     dispatch({
         type: "APPROVE_ARTIST",
-        payload: id
+        payload: {id, user_id }
     })
   }
 
@@ -94,7 +95,7 @@ function AdminArtistTable() {
               </StyledTableCell>
 
               <StyledTableCell align="center">
-              <button className='admin-button' onClick={() => approveArtist(artist.id)}>Approve</button>
+              <button className='admin-button' onClick={() => approveArtist(artist.id, artist.user_id)}>Approve</button>
               </StyledTableCell>
               
               <StyledTableCell align="center">

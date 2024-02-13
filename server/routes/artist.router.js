@@ -142,8 +142,8 @@ router.put('/:id', async (req, res) => {
     SET "class"=$1
     WHERE "id"=$2;
     `
-    console.log('req.user.id', req.user.id);
-    await connection.query(classQuery, [2, req.user.id])
+    console.log('req.body.user_id', req.body.user_id);
+    await connection.query(classQuery, [2, req.body.user_id])
     connection.query("COMMIT;");
     connection.release();
     res.sendStatus(200);
