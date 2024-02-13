@@ -70,75 +70,111 @@ function AdminRequestDialog ({handleClose}) {
     handleClose()
   };
 
+  const fillForm = () => {
+    setTitle('The Golden Girl')
+    setArtist('1')
+    setLyrics(`[Verse 1]
+    If you leap awake in the mirror of a bad dream
+    And for a fraction of a second you can't remember where you are
+    Just open your window and follow your memory upstream
+    To the meadow in the mountain where we counted every falling star
+    
+    [Chorus]
+    I'm gonna watch you shine, gonna watch you grow
+    Gonna paint a sign so you'll always know
+    As long as one and one is two
+    There could never be a father who loved his daughter more than I love you
+    
+    [Verse 2]
+    I believe a light that shines on you will shine on you forever
+    And though I can't guarantee there's nothing scary hiding under your bed
+    I'm gonna stand guard like a postcard of a golden retriever
+    And never leave 'til I leave you with a sweet dream in your head
+    
+    [Chorus]
+    I'm gonna watch you shine, gonna watch you grow
+    Gonna paint a sign so you'll always know
+    As long as one and one is two
+    There could never be a father who loved his daughter more than I love you`)
+    setStreamingLink('https://open.spotify.com/track/7erg1DBQmpYvNI4tEaRwSU?si=0e7441eb1e514fb1')
+  }
+
 
   return (
     <>
-      <DialogTitle>{"Upload File and Complete Song Details"}</DialogTitle>
+      <DialogTitle align='center'>{"Upload File and Complete Song Details"}</DialogTitle>
 
       <DialogContent>
         <DialogContentText>
-          <Typography gutterBottom variant="overline" display="block">
-            Upload Song File:
-          </Typography>
+          <div className='completeDialogueContent' onClick={fillForm}>
+            <Typography gutterBottom variant="overline" display="block" align='center'>
+              Upload Song File:
+            </Typography>
 
-          <TextField
-            type="file" 
-            className="form-control-file" 
-            name="uploaded_file"
-            onChange={(evt) => setSongFile(evt.target.files[0])}
-          />
+            <TextField
+              type="file" 
+              className="form-control-file" 
+              name="uploaded_file"
+              onChange={(evt) => setSongFile(evt.target.files[0])}
+              fullWidth={true}
+            />
 
-          <Typography gutterBottom variant="overline" display="block">
-            Song Title:
-          </Typography>
+            <Typography gutterBottom variant="overline" display="block" align='center'>
+              Song Title:
+            </Typography>
 
-          <TextField
-            label="Song Title"
-            placeholder="Song Title"
-            multiline
-            maxRows={4}
-            variant="filled"
-            value={title}
-            onChange={(event) => setTitle(event.target.value)}
-          />
+            <TextField
+              label="Song Title"
+              placeholder="Song Title"
+              multiline
+              maxRows={4}
+              variant="filled"
+              value={title}
+              onChange={(event) => setTitle(event.target.value)}
+              fullWidth={true}
+            />
 
-          <Typography gutterBottom variant="overline" display="block">
-            Select Artist:
-          </Typography>
-          <Select
-            value={artist}
-            label="User Class"
-            onChange={(event) => setArtist(event.target.value)}
-            >
-                {artists.map((artist) => (
-                    <MenuItem value={artist.id} key={artist.id}>{artist.artist_name}</MenuItem>
-                ))}
-            </Select>
+            <Typography gutterBottom variant="overline" display="block" align='center'>
+              Select Artist:
+            </Typography>
+            <Select
+              value={artist}
+              label="User Class"
+              onChange={(event) => setArtist(event.target.value)}
+              fullWidth={true}
+              >
+                  {artists.map((artist) => (
+                      <MenuItem value={artist.id} key={artist.id}>{artist.artist_name}</MenuItem>
+                  ))}
+              </Select>
 
-          <Typography gutterBottom variant="overline" display="block">
-            Lyrics:
-          </Typography>
+            <Typography gutterBottom variant="overline" display="block" align='center'>
+              Lyrics:
+            </Typography>
 
-          <TextField
-            label="Lyrics"
-            multiline
-            rows={6}
-            variant="filled"
-            value={lyrics}
-            onChange={(event) => setLyrics(event.target.value)}
-          />
+            <TextField
+              label="Lyrics"
+              multiline
+              rows={6}
+              variant="filled"
+              value={lyrics}
+              onChange={(event) => setLyrics(event.target.value)}
+              fullWidth={true}
+            />
 
-          <Typography gutterBottom variant="overline" display="block">
-            Streaming Link:
-          </Typography>
-          <TextField
-            label="Streaming Link"
-            multiline
-            rows={2}
-            variant="filled"
-            value={streamingLink}
-            onChange={(event) => setStreamingLink(event.target.value)}
-          />
+            <Typography gutterBottom variant="overline" display="block" align='center'>
+              Streaming Link:
+            </Typography>
+            <TextField
+              label="Streaming Link"
+              multiline
+              rows={2}
+              variant="filled"
+              value={streamingLink}
+              onChange={(event) => setStreamingLink(event.target.value)}
+              fullWidth={true}
+            />
+          </div>
         </DialogContentText>
       </DialogContent>
 

@@ -239,6 +239,30 @@ function UserDetails() {
           </Card>     
         </Box>
       </CustomTabPanel>
+      <CustomTabPanel value={value} index={1}>
+        <Box sx={{ minWidth: 400, minHeight: 700}}>
+        <Card>
+        <CardContent className='cardContainer' sx={{p: "5%"}}>
+          <div className='songDetails'>
+          <Typography sx={{ fontSize: 4 }} variant="h2" gutterBottom>
+              <p className='songTitle'>Your Artist:</p> 
+            </Typography>
+            <img src={request.photo} />
+            <Typography sx={{ fontSize: 5 }} variant="h2" gutterBottom>
+              <p className='songTitle'>{request.artist_name}</p> 
+            </Typography>
+            <Typography variant="h5" component="div"> 
+              <p className='artistTitle'>{request.bio}</p>
+            </Typography>
+            <Typography variant="h5"> 
+            <a href={request.website}>{request.artist_name}'s website</a>
+            </Typography>
+            <button className="back-btn" onClick={() => history.goBack()}>Back</button> 
+          </div>
+        </CardContent>
+        </Card>
+        </Box>
+      </CustomTabPanel>
     </motion.div>
   )
 }

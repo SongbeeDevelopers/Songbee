@@ -26,7 +26,7 @@ function* createNewArtist(action) {
 
 function* approveArtist(action){
     try {
-        yield axios.put(`/api/artist/${action.payload}`)
+        yield axios.put(`/api/artist/${action.payload.id}`, {user_id: action.payload.user_id})
         yield put({ type: 'FETCH_PENDING_ARTISTS'})
     } catch (error) {
         console.error('SAGA approveArtist() failed:', error)
