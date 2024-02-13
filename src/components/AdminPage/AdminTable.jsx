@@ -110,7 +110,7 @@ function AdminTable({num}) {
             }
           }}
         fullWidth={true}
-        maxWidth='xs'
+        maxWidth='sm'
         >
           <AdminRequestDialog handleClose={handleClose}/>
         </Dialog>
