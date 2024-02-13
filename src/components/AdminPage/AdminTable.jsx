@@ -109,13 +109,8 @@ function AdminTable({num}) {
               boxShadow: 'none'
             }
           }}
-          sx={{ 
-            width: 800, 
-            display: 'flex', 
-            flexDirection: 'column', 
-            alignItems: 'center',
-            ml: 10,
-          }}
+        fullWidth={true}
+        maxWidth='xs'
         >
           <AdminRequestDialog handleClose={handleClose}/>
         </Dialog>

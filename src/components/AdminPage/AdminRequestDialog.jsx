@@ -73,72 +73,79 @@ function AdminRequestDialog ({handleClose}) {
 
   return (
     <>
-      <DialogTitle>{"Upload File and Complete Song Details"}</DialogTitle>
+      <DialogTitle align='center'>{"Upload File and Complete Song Details"}</DialogTitle>
 
       <DialogContent>
         <DialogContentText>
-          <Typography gutterBottom variant="overline" display="block">
-            Upload Song File:
-          </Typography>
+          <div className='completeDialogueContent'>
+            <Typography gutterBottom variant="overline" display="block" align='center'>
+              Upload Song File:
+            </Typography>
 
-          <TextField
-            type="file" 
-            className="form-control-file" 
-            name="uploaded_file"
-            onChange={(evt) => setSongFile(evt.target.files[0])}
-          />
+            <TextField
+              type="file" 
+              className="form-control-file" 
+              name="uploaded_file"
+              onChange={(evt) => setSongFile(evt.target.files[0])}
+              fullWidth={true}
+            />
 
-          <Typography gutterBottom variant="overline" display="block">
-            Song Title:
-          </Typography>
+            <Typography gutterBottom variant="overline" display="block" align='center'>
+              Song Title:
+            </Typography>
 
-          <TextField
-            label="Song Title"
-            placeholder="Song Title"
-            multiline
-            maxRows={4}
-            variant="filled"
-            value={title}
-            onChange={(event) => setTitle(event.target.value)}
-          />
+            <TextField
+              label="Song Title"
+              placeholder="Song Title"
+              multiline
+              maxRows={4}
+              variant="filled"
+              value={title}
+              onChange={(event) => setTitle(event.target.value)}
+              fullWidth={true}
+            />
 
-          <Typography gutterBottom variant="overline" display="block">
-            Select Artist:
-          </Typography>
-          <Select
-            value={artist}
-            label="User Class"
-            onChange={(event) => setArtist(event.target.value)}
-            >
-                {artists.map((artist) => (
-                    <MenuItem value={artist.id} key={artist.id}>{artist.artist_name}</MenuItem>
-                ))}
-            </Select>
+            <Typography gutterBottom variant="overline" display="block" align='center'>
+              Select Artist:
+            </Typography>
+            <Select
+              value={artist}
+              label="User Class"
+              onChange={(event) => setArtist(event.target.value)}
+              fullWidth={true}
+              >
+                  {artists.map((artist) => (
+                      <MenuItem value={artist.id} key={artist.id}>{artist.artist_name}</MenuItem>
+                  ))}
+              </Select>
 
-          <Typography gutterBottom variant="overline" display="block">
-            Lyrics:
-          </Typography>
+            <Typography gutterBottom variant="overline" display="block" align='center'>
+              Lyrics:
+            </Typography>
 
-          <TextField
-            label="Lyrics"
-            multiline
-            rows={6}
-            variant="filled"
-            value={lyrics}
-            onChange={(event) => setLyrics(event.target.value)}
-          />
+            <TextField
+              label="Lyrics"
+              multiline
+              rows={6}
+              variant="filled"
+              value={lyrics}
+              onChange={(event) => setLyrics(event.target.value)}
+              fullWidth={true}
+            />
 
-          <Typography gutterBottom variant="overline" display="block">
-            Streaming Link:
-          </Typography>
-          <TextField
-            label="Streaming Link"
-            multiline
-            rows={2}
-            variant="filled"
-            value={streamingLink}
-            onChange={(event) => setStreamingLink(event.target.value)}
-          />
+            <Typography gutterBottom variant="overline" display="block" align='center'>
+              Streaming Link:
+            </Typography>
+            <TextField
+              label="Streaming Link"
+              multiline
+              rows={2}
+              variant="filled"
+              value={streamingLink}
+              onChange={(event) => setStreamingLink(event.target.value)}
+              fullWidth={true}
+            />
+          </div>
         </DialogContentText>
       </DialogContent>
 
