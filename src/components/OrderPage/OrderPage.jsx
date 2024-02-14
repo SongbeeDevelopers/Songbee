@@ -75,25 +75,12 @@ function OrderPage({ routeVariants }) {
     }
   }
 
-  // for presenting only
-  const fillForm = () => {
-    dispatch({
-      type: 'SET_NEW_ORDER',
-      payload: {
-        delivery_days: "6",
-        extra_verse: "false",
-        streaming: "false"
-      }
-    })
-  }
-
   return (
     <motion.div
       className="orderPageContainer"
       variants={routeVariants}
       initial="initial"
       animate="final"
-      onClick={fillForm}
     >
       <h1 className='orderHeader'>Let's Get Started.</h1>
 

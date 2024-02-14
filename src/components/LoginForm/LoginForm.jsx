@@ -25,14 +25,6 @@ function LoginForm() {
       dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }
   };
-
-  // just for presentation
-  const fillForm = () => {
-    setUsername('bertrumBrown@brownsimportedgoods.com')
-    setPassword('password')
-    setAgreeToTerms(true)
-  }
-
   
   return (
     <form className="loginForm" onSubmit={login}>
@@ -44,7 +36,7 @@ function LoginForm() {
       )}
 
       <div>
-        <label onClick={fillForm} className='loginInputLabel' htmlFor="username">
+        <label className='loginInputLabel' htmlFor="username">
           Email *
           <input
             className='loginInput'
