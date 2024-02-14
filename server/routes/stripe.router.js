@@ -21,35 +21,35 @@ router.post('/', async (req, res) => {
         price: 'price_1OiqZ0JoOrJf4ICWhDoRzwZI',
         quantity: 1,
       }];
-    //   if (order.streaming === 'true'){
-    //     lineitemArray.push({
-    //         price: 'price_1Ohf5YJoOrJf4ICWTcOS5hjJ',
-    //         quantity: 1,
-    //       })
-    //   }
-    //   if (order.extra_verse === 'true'){
-    //     lineitemArray.push({
-    //         price: 'price_1Ohf1WJoOrJf4ICWVuPjtbGj',
-    //         quantity: 1,
-    //       })
-    //   }
-    //   if (order.delivery_days === '4') {
-    //     lineitemArray.push({
-    //         price: 'price_1Ohf4WJoOrJf4ICWVvSZkHVH',
-    //         quantity: 1,
-    //       })
-    //   }
-    //   else if (order.delivery_days === '3') {
-    //     lineitemArray.push({
-    //         price: 'price_1Ohf2lJoOrJf4ICW6WQBD9iE',
-    //         quantity: 1,
-    //       })
-    //   }
+      if (order.streaming === 'true'){
+        lineitemArray.push({
+            price: 'price_1Ohf5YJoOrJf4ICWTcOS5hjJ',
+            quantity: 1,
+          })
+      }
+      if (order.extra_verse === 'true'){
+        lineitemArray.push({
+            price: 'price_1Ohf1WJoOrJf4ICWVuPjtbGj',
+            quantity: 1,
+          })
+      }
+      if (order.delivery_days === '4') {
+        lineitemArray.push({
+            price: 'price_1Ohf4WJoOrJf4ICWVvSZkHVH',
+            quantity: 1,
+          })
+      }
+      else if (order.delivery_days === '3') {
+        lineitemArray.push({
+            price: 'price_1Ohf2lJoOrJf4ICW6WQBD9iE',
+            quantity: 1,
+          })
+      }
       const session = await stripe.checkout.sessions.create({
         line_items: lineitemArray,
         mode: 'payment',
-        success_url: `http://localhost:5173/#/created/${order.delivery_days}/${order.extra_verse}/${order.streaming}`,
-        cancel_url: `https://localhost:5173/#/order`,
+        success_url: `https://songbee-cf8d644750db.herokuapp.com/#/created/${order.delivery_days}/${order.extra_verse}/${order.streaming}`,
+        cancel_url: `https://songbee-cf8d644750db.herokuapp.com/#/order`,
         automatic_tax: {enabled: true},
       });
       console.log("sesion:", session)

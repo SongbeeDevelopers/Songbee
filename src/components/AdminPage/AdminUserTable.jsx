@@ -10,7 +10,9 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+
 import UserClass from './UserClass';
+import FilterBar from '../FilterBar/FilterBar';
 
 function AdminUserTable({num}) {
 
@@ -41,15 +43,16 @@ function AdminUserTable({num}) {
   const data = useSelector(store => store.filterResults);
 
   useEffect(() => {
-        dispatch({
-            type: "SET_FILTER_RESULTS",
-            payload: users
-        })
+    dispatch({
+        type: "SET_FILTER_RESULTS",
+        payload: users
+    })
   }, [])
 
 
   return (
     <div>
+    <FilterBar type='user'/>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
 

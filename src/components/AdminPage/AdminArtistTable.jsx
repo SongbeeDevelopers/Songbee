@@ -11,6 +11,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
+import FilterBar from '../FilterBar/FilterBar';
+
 
 function AdminArtistTable() {
 
@@ -65,6 +67,7 @@ function AdminArtistTable() {
 
   return (
     <div>
+    <FilterBar type='artist'/>
       <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         

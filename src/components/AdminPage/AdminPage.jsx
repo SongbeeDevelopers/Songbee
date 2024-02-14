@@ -93,6 +93,9 @@ function AdminPage({ routeVariants }) {
   
   // controls tab switching
   const a11yProps = (index) => {
+    if (index === 0) {
+
+    }
     return {
       id: `simple-tab-${index}`,
       'aria-controls': `simple-tabpanel-${index}`,
@@ -115,22 +118,21 @@ function AdminPage({ routeVariants }) {
         
         {/* AdminTable.jsx used for both pending and completed requests */}
         <CustomTabPanel value={value} index={0}>
-          <FilterBar type='pending'/>
+          
           <AdminTable num={0}/>
         </CustomTabPanel>
 
         <CustomTabPanel value={value} index={1}>
-          <FilterBar type='completed'/>
+          
           <AdminTable num={1}/>
         </CustomTabPanel>
 
         <CustomTabPanel value={value} index={2}>
-          <FilterBar type='user'/>
           <AdminUserTable />
         </CustomTabPanel>
 
         <CustomTabPanel value={value} index={3}>
-          <FilterBar type='artist'/>
+
           <AdminArtistTable />
         </CustomTabPanel>
 
