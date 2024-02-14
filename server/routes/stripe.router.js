@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
       const order = req.body.orderDetails
       let lineitemArray = [{
         // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-        price: 'price_1OiqZ0JoOrJf4ICWhDoRzwZI',
+        price: 'price_1OCT4RJoOrJf4ICWm5W7fop0',
         quantity: 1,
       }];
       if (order.streaming === 'true'){
