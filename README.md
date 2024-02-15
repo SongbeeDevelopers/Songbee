@@ -79,8 +79,11 @@ While you're in your new `.env` file, take the time to replace `superDuperSecret
 
 
 ## Usage
+A user can register and heve the option of recieving a marketing emails via Mailchimp. Once they are registered they can begin using Songbee to start the process of creating a song request that fits their specifications.
 
 ### Login/Registration
+Here are screenshots of the registration and login pages
+![Alt text](file:///Users/brianwerner/Desktop/Screenshot%202024-02-15%20at%203.43.29%E2%80%AFPM.png)
 
 ### Song Order Process
 
