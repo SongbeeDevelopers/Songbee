@@ -2,8 +2,17 @@
 
 
 ## Table of Contents
+- [Description](#description)
+- [Prerequisites](#prerequisites)
+- [Built With](#built-with)
+- [Create Database](#create-database-and-tables)
+- [Installation](#installation)
+- [Development Setup](#development-setup-instructions)
+- 
+
 
 ## Description
+// problem space
 Songbee is a streamlined and intuitive service that allows users to commission custom songs written by real artists. Songs can be dedicated to anyone, for any occasion, and in a multitude of genres and vocal styles. The songs will be fully customizable by the user with opportunities for edits and expansions throughout the process. 
 
 
@@ -13,6 +22,7 @@ Before you get started, make sure you have the following software installed on y
 
 - [Node.js](https://nodejs.org/en)
 - [PostgreSQL](https://www.postgresql.org)
+
 
 ## Built With
 <a href="https://github.com/"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" height="40px" width="40px" /></a>
@@ -26,25 +36,34 @@ Before you get started, make sure you have the following software installed on y
 <a href="https://cloudinary.com/"><img src="https://cdn.worldvectorlogo.com/logos/cloudinary-2.svg" height="40px" width="40px" /> </a>
 <a href="https://reactjs.org/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" height="40px" width="40px" /></a>
 <a href="https://redux.js.org/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/redux/redux-original.svg" height="40px" width="40px" /></a>
+<a href="https://mailchimp.com/developer/"><img src="https://cdn2.iconfinder.com/data/icons/picons-social/57/78-mailchimp-2-1024.png" height="40px" width="40px" /></a>
+<a href="https://docs.stripe.com/development"><img src="https://www.vectorlogo.zone/logos/stripe/stripe-icon.svg" height="40px" width="40px" /></a>
 <a href="https://material-ui.com/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/materialui/materialui-original.svg" height="40px" width="40px" /></a>
 <a href="https://www.postgresql.org/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg" height="40px" width="40px" /></a>
 
+## Getting Started
 
-## Create Database and Table
+### Create Database and Tables
+Create a new database called `songbee` and run the whole `database.sql` file as a query.
+This will create all the necessary tables, and the INSERT statements will provide some dummy data for testing.
 
-Create a new database called `prime_app` and create a `user` table:
+If you would like to name your database something else, you will need to change `songbee` to the name of your new database name in `server/modules/pool.js`.
 
-```SQL
-CREATE TABLE "user" (
-    "id" SERIAL PRIMARY KEY,
-    "username" VARCHAR (80) UNIQUE NOT NULL,
-    "password" VARCHAR (1000) NOT NULL
-);
-```
 
-If you would like to name your database something else, you will need to change `prime_app` to the name of your new database name in `server/modules/pool.js`.
+### Installation
+1. Fork the repository
+2. Copy the SSH key in your new repository
+3. In your terminal type... git clone {paste SSH link}
+4. Navigate into the repository's folder in your terminal
+5. Open VS Code (or editor of your choice) and open the folder
+6. In the terminal of VS Code run npm install to install all dependencies
+7. Create a .env file at the root of the project and provide the following API keys:
+   MAILCHIMP_API_KEY, STRIPE_API_SECRET, CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET
+9. Run npm run server in your VS Code terminal
+10. Open a second terminal and run npm run client
 
-## Development Setup Instructions
+
+### Development Setup Instructions
 
 - Run `npm install`.
     - Be sure to take stock of `package.json` to see which dependencies you'll need to add.
@@ -61,6 +80,7 @@ While you're in your new `.env` file, take the time to replace `superDuperSecret
 - Run `npm run client` to start the client.
 - Navigate to `localhost:5173`.
 
+
 ## Debugging
 
 To debug, you will need to run the client-side separately from the server. Start the client by running the command `npm run client`. Start the debugging server by selecting the Debug button.
@@ -70,6 +90,7 @@ To debug, you will need to run the client-side separately from the server. Start
 Then make sure `Launch Program` is selected from the dropdown, then click the green play arrow.
 
 ![VSCode Debug Bar](documentation/images/vscode-debug-bar.png)
+
 
 ## Testing Routes with Postman
 
@@ -86,6 +107,7 @@ Keep in mind that once you using the login route, Postman will manage your sessi
 
 After running the login route above, you can try any other route you've created that requires a logged in user!
 
+
 ## Production Build
 
 Before pushing to Heroku, run `npm run build` in terminal. This will create a build folder that contains the code Heroku will be pointed at. You can test this build by typing `npm start`. Keep in mind that `npm start` will let you preview the production build but will **not** auto update.
@@ -93,6 +115,7 @@ Before pushing to Heroku, run `npm run build` in terminal. This will create a bu
 - Start postgres if not running already by using opening up the [Postgres.app](https://postgresapp.com), or if using [Homebrew](https://brew.sh) you can use the command `brew services start postgresql`.
 - Run `npm start`.
 - Navigate to `localhost:5173`.
+
 
 ## Lay of the Land
 
@@ -123,6 +146,7 @@ This code is also heavily commented. We recommend reading through the comments, 
   - LogOutButton/LogOutButton
   - ProtectedRoute/ProtectedRoute
 
+
 ## Deployment
 
 1. Create a new Heroku project.
@@ -132,6 +156,7 @@ This code is also heavily commented. We recommend reading through the comments, 
 1. Create the necessary tables.
 1. Add an environment variable for `SERVER_SESSION_SECRET` with a nice random string for security.
 1. In the deploy section, select manual deploy.
+
 
 ## Update Documentation
 
