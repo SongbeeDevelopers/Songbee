@@ -72,7 +72,7 @@ function AdminRequestDialog ({handleClose}) {
 
   const fillForm = () => {
     setTitle('The Golden Girl')
-    setArtist('1')
+    setArtist('4')
     setLyrics(`[Verse 1]
     If you leap awake in the mirror of a bad dream
     And for a fraction of a second you can't remember where you are
