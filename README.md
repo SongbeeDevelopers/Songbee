@@ -1,7 +1,5 @@
 # Songbee
 
-#Duration: 3 Week Sprint
-
 ## Table of Contents
 - [Description](#description)
 - [Prerequisites](#prerequisites)
@@ -12,9 +10,11 @@
 
 ## Description
 
+Duration: Three week sprint
+
 Songbee is a streamlined and intuitive service that allows users to commission custom songs written by real artists. Songs can be dedicated to anyone, for any occasion, and in a multitude of genres and vocal styles. The songs will be fully customizable by the user with opportunities for edits and expansions throughout the process. 
-The previous version of Songbee was not functioal
-In the face of this challenge they were using Gmail and Dropbox for client communication instead of fully utilizing the potential of a web app. Recognizing the opportunity to bring this incredible concept to life, our team of developers came in to make it work and functioning. We turned the vision into a reality, addressing the functionality issues and breathing new life into this platform.
+
+The initial version of Songbee was only partially functional. As a result, Songbee LLC was using Gmail and Dropbox for client communication instead of fully utilizing the potential of a web app. Recognizing the opportunity to bring this incredible concept to life, our team of developers rebuilt the site from the ground up. We turned the vision into a reality, addressing the functionality issues and breathing new life into this platform.
 
 ## Prerequisites
 
@@ -81,10 +81,21 @@ While you're in your new `.env` file, take the time to replace `superDuperSecret
 ## Usage
 
 ### Login/Registration
+
 ### Song Order Process
+
 ### User Functionality
+
 ### Admin Functionality
 
+
 ## Dev Notes
+If you wish to see more from the developers of this project, please view our respective github portfolios:
+- Abubakar Aden: https://github.com/Abuaden
+- Aliona CJ: https://github.com/alionacj
+- Brian Werner: https://github.com/BrianWerner-43
+- Walker Neudorff: https://github.com/walkerneu
 
 ## Acknowledgements
+Thank you to Prime Digital Academy for facilitating this expansive learning journey, culminating in this project.
+Thank you Songbee LLC - Hannah Rutti and Linton Robinson, for their cooperation with Prime and being a pleasure to work with throughout this process.
