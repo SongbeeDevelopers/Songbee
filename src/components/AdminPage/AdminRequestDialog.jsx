@@ -70,6 +70,7 @@ function AdminRequestDialog ({handleClose}) {
     handleClose()
   };
 
+
   const fillForm = () => {
     setTitle('The Golden Girl')
     setArtist('4')
@@ -106,7 +107,7 @@ function AdminRequestDialog ({handleClose}) {
 
       <DialogContent>
         <DialogContentText>
-          <div className='completeDialogueContent' onClick={fillForm}>
+          <div className='completeDialogueContent'>
             <Typography gutterBottom variant="overline" display="block" align='center'>
               Upload Song File:
             </Typography>

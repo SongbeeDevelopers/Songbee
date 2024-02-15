@@ -55,6 +55,7 @@ function UserDetails() {
     event.preventDefault();
     setValue(newValue);
   };
+  console.log("lyrics", request.lyrics)
 
   const CustomTabPanel = (props) => {
     const { children, value, index, ...other } = props;
@@ -127,7 +128,7 @@ function UserDetails() {
 
                     <div>
                       {request.lyrics && <h2 className='lyricsHeader'>Lyrics:</h2>}
-                      {request.lyrics && <p>{request.lyrics}</p>}
+                      {request.lyrics && <p>{`${request.lyrics}`}</p>}
                     </div>
                   </>
                   :

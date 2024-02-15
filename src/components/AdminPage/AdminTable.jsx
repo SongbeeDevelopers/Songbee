@@ -16,6 +16,7 @@ import TableRow from '@mui/material/TableRow';
 
 import AdminRequestDialog from './AdminRequestDialog';
 import AdminDetailsDialog from './AdminDetailsDialog';
+import FilterBar from '../FilterBar/FilterBar';
 
 function AdminTable({num}) {
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -145,7 +146,7 @@ function AdminTable({num}) {
 
   return (
     <div>
-
+      <FilterBar type={num === 0 ? 'pending' : 'completed'}/>
       <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
