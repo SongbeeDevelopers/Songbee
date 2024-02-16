@@ -22,7 +22,7 @@ import EditRequestPage from '../EditRequestPage/EditRequestPage';
 import ArtistCommunity from '../JoinArtist/ArtistCommunity';
 import ArtistProcess from '../JoinArtist/ArtistProcess';
 import CreationPage from '../CreationPage/CreationPage';
-import TeamPage from '../TeamPage/TeamPage';
+
 
 
 function ComponentRouter() {
@@ -73,9 +73,6 @@ function ComponentRouter() {
               <UserPage routeVariants={routeVariants} />
             </ProtectedRoute>
 
-            <Route exact path="/team">
-              <TeamPage routeVariants={routeVariants} />
-            </Route>
 
             <Route exact path="/order">
               <OrderPage routeVariants={routeVariants} />
