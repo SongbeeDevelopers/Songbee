@@ -123,8 +123,6 @@ On the completed request page, they can view the deatils of completed songs and 
 <img width="1360" alt="Screenshot 2024-02-15 at 11 57 57 PM" src="https://github.com/SongbeeDevelopers/Songbee/assets/122954115/f9524c16-74d9-4494-b6aa-6eec693d2231" height="450px" width="350px">
 
 
-
-
 ## Dev Notes
 If you wish to see more from the developers of this project, please view our respective github portfolios:
 - Abubakar Aden: https://github.com/Abuaden
