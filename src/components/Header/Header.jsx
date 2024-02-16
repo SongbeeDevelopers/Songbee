@@ -42,9 +42,7 @@ function Header() {
     } else if (num === 7) {
       history.push("/admin");
     }
-    else if (num === 8) {
-      history.push("/team")
-    }
+   
   };
  
   return (
@@ -114,7 +112,6 @@ function Header() {
             <MenuItem onClick={() => handleClose(3)}>Artist Application</MenuItem>
             <MenuItem onClick={() => handleClose(4)}>FAQ</MenuItem>
             <MenuItem onClick={() => handleClose(5)}><a href="mailto:hello@songbee.com">Contact Us</a></MenuItem>
-            <MenuItem onClick={() => handleClose(8)}>Team Page</MenuItem>
             {/* If a user is logged in, show these links */}
            
           </Menu>
