@@ -79,17 +79,50 @@ While you're in your new `.env` file, take the time to replace `superDuperSecret
 
 
 ## Usage
-A user can register and heve the option of recieving a marketing emails via Mailchimp. Once they are registered they can begin using Songbee to start the process of creating a song request that fits their specifications.
+Welcome to Songbee!!
+With this app a user can create custom made songs for special occasions following the step by step process. 
+Once everything is installed and running it should open in your default browser - if not, navigate to http://localhost:5173/#/. 
+
+<img width="1283" alt="Screenshot 2024-02-15 at 10 56 30 PM" src="https://github.com/SongbeeDevelopers/Songbee/assets/122954115/2fa4f0ea-620c-4ff5-80b2-a90964a29422" height="450px" width="350px">
+
 
 ### Login/Registration
+A user can register and have the option of recieving a marketing emails via Mailchimp, but must agree to the website's privacy policy and terms of service. Once they are registered they can begin using Songbee to start the process of creating a song request that fits their specifications.
 Here are screenshots of the registration and login pages
-![Alt text](file:///Users/brianwerner/Desktop/Screenshot%202024-02-15%20at%203.43.29%E2%80%AFPM.png)
+
+<img width="1112" alt="Screenshot 2024-02-15 at 3 43 29 PM" src="https://github.com/SongbeeDevelopers/Songbee/assets/122954115/c151af96-6f2c-4125-81ae-0c96c2d65951" height="450px" width="350px">
+<img width="1112" alt="Screenshot 2024-02-15 at 6 43 35 PM" src="https://github.com/SongbeeDevelopers/Songbee/assets/122954115/b8e6760d-55f7-4791-a4e6-4980c58f9d19" height="450px" width="350px">
 
 ### Song Order Process
+After clicking start your song button, you are brought to this page where the process starts by letting you choose the delivery, streaming and verse options that best suits the user preferences before checking out.
+After the user has selected the options that they prefer, they can click on the checkout button and be directed to a payment provider (stripe) and enter their credit card information. then after payment is complete, the user can create their customized their song for what type of occasion, genre, tempo and vocal type and sharing their own personal story about the song by filling out the form.
+
+<img width="997" alt="Screenshot 2024-02-15 at 7 12 46 PM" src="https://github.com/SongbeeDevelopers/Songbee/assets/122954115/0e9fcbe4-1e2e-4b89-ba62-0d1a0cbe9026"  height="450px" width="350px">
+<img width="1162" alt="Screenshot 2024-02-15 at 11 44 49 PM" src="https://github.com/SongbeeDevelopers/Songbee/assets/122954115/0e81a750-cb9a-4401-b12a-771762219f80" height="450px" width="350px">
+
+
 
 ### User Functionality
+On this page the user can view their order history to see their completed and pending songs. Also they can click the details tab to view the song details and can play the audio file to hear thier requested song.
+
+<img width="1283" alt="Screenshot 2024-02-15 at 10 58 15 PM" src="https://github.com/SongbeeDevelopers/Songbee/assets/122954115/a68cfe58-6c8f-419d-b172-2429a6b1fd8c" height="450px" width="350px">
+
+<img width="1267" alt="Screenshot 2024-02-15 at 11 05 56 PM" src="https://github.com/SongbeeDevelopers/Songbee/assets/122954115/c0d4ed00-2715-4c31-82f4-384d976e0aee" height="450px" width="350px">
+
+<img width="1096" alt="Screenshot 2024-02-16 at 12 05 46 AM" src="https://github.com/SongbeeDevelopers/Songbee/assets/122954115/36f24116-1194-4279-87ef-d96b8cec4e65" height="450px" width="350px">
+
+
 
 ### Admin Functionality
+On the admin page the owners can view the completed and pending requests as well as what users are requesting songs, also there is a tab for pending artist to see what artists that are wanting to sign up to Songbee and will have the ability to approve or deny an artist. On the pending requset page Hannah or Linton will be able to view the deatials of the requested songs and be able to make any adjutments if needed and mark them complete once the song is finished. The admin can also filter through songs and artist in the text field.
+
+<img width="1271" alt="Screenshot 2024-02-15 at 11 09 55 PM" src="https://github.com/SongbeeDevelopers/Songbee/assets/122954115/b2ec4e4b-7b38-448b-b1f1-1885609e8a73" height="450px" width="350px">
+
+On the completed request page, they can view the deatils of completed songs and mark as complete.
+
+<img width="1360" alt="Screenshot 2024-02-15 at 11 57 57 PM" src="https://github.com/SongbeeDevelopers/Songbee/assets/122954115/f9524c16-74d9-4494-b6aa-6eec693d2231" height="450px" width="350px">
+
+
 
 
 ## Dev Notes
