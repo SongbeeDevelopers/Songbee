@@ -1,8 +1,4 @@
-
-
-
 DROP TABLE IF EXISTS "user", "genres", "song_request", "artist", "song_details", "artist_genres";
-
 
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
@@ -76,7 +72,7 @@ CREATE TABLE "artist_genres" (
 INSERT INTO "user"
 ("email", "password", "class")
 VALUES
-('hello@songbee.com', '$2a$10$beIgxp.l45eRiz5HYgUxBuTN6anPZwKY3TRE/nE2Ltg/5Fo1Jylw6', 3),
+('hello@songbee.com', '$2a$10$2dKeNpwM1zuoBqQvWzPRiuhNVELMhP/lzJWe5H9dLzwXqu5qnj9ia', 3),
 ('walkerneudorff@gmail.com', '$2a$10$wRAZ7JrKo3WGbQaAvdzCwuiB3YK4RqumN1vx7F.6OCAybFMKpiJii', 2),
 ('johngornay@gmail.com', '$2a$10$beIgxp.l45eRiz5HYgUxBuTN6anPZwKY3TRE/nE2Ltg/5Fo1Jylw6', 1),
 ('brimlygorblox@gmail.com', '$2a$10$beIgxp.l45eRiz5HYgUxBuTN6anPZwKY3TRE/nE2Ltg/5Fo1Jylw6', 1),
