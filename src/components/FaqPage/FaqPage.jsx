@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import OneFaq from './OneFaq';
 
+import './FaqPage.css'
+
 const faqs = [
   {
     question: "Song Cost & Length",
@@ -40,7 +42,7 @@ const faqs = [
 function FaqPage({ routeVariants }) {
   return (
     <motion.div
-      className="container"
+      className="container, faq"
       variants={routeVariants}
       initial="initial"
       animate="final"
