@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { motion } from 'framer-motion';
 
-import AdminTable from './AdminTable';
+import AdminRequestTable from './AdminRequestTable';
 import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
 import Tab from '@mui/material/Tab';
@@ -87,13 +87,12 @@ function AdminPage({ routeVariants }) {
         <Tab label="Pending Artists" {...a11yProps(3)} />
       </Tabs>
       
-      {/* AdminTable.jsx used for both pending and completed requests */}
       <CustomTabPanel value={value} index={0}>
-        <AdminTable num={0}/>
+        <AdminRequestTable num={0}/>
       </CustomTabPanel>
 
       <CustomTabPanel value={value} index={1}>
-        <AdminTable num={1}/>
+        <AdminRequestTable num={1}/>
       </CustomTabPanel>
 
       <CustomTabPanel value={value} index={2}>

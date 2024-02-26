@@ -18,7 +18,77 @@ import AdminCompleteDialog from './AdminCompleteDialog';
 import AdminDetailsDialog from './AdminDetailsDialog';
 import FilterBar from '../FilterBar/FilterBar';
 
-function AdminTable({num}) {
+
+function AdminRequestTable({ num }) {
+
+  // hooks
+  const history = useHistory();
+  const dispatch = useDispatch();
+  
+  // reducers
+  const pendingRequests = useSelector(store => store.pendingRequests)
+  const completedRequests = useSelector(store => store.completedRequests)
+  const data = useSelector(store => store.filterResults);
+  
+  // modal state
+  const [open, setOpen] = useState(false);
+  const [open1, setOpen1] = useState(false);
+  
+  // date/time
+  const now = new Date ();
+  const msPerDay = 24 * 60 * 60 * 1000;
+
+  
+  // filters for completed and uncompleted reqs depending on tab
+  useEffect(() => {
+    if (num === 0){
+      dispatch({
+        type: "SET_FILTER_RESULTS",
+        payload: pendingRequests
+      })
+    } else if (num === 1){
+      dispatch({
+        type: "SET_FILTER_RESULTS",
+        payload: completedRequests
+      })
+    }
+  }, [])
+  
+
+  // --- modal logic ---
+  const handleClickOpen = (id, x) => {
+    dispatch({
+      type: "FETCH_CURRENT_REQUEST",
+      payload: id
+    })
+    if (x===1){
+      setOpen1(true);
+    }
+    else {
+      setOpen(true);
+    }
+  };
+
+  const handleClose = (x) => {
+    if (x===1){
+      setOpen1(false);
+    }
+    else {
+      setOpen(false);
+    }
+  };
+
+  const goToEdit = (id) => {
+    history.push(`/request/edit/${id}`)
+  }
+
+  const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+  });
+  // --- /modal logic ---
+  
+
+  // header styling
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.common.black,
@@ -29,70 +99,15 @@ function AdminTable({num}) {
     },
   }));
   
+  // row styling
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
     '&:nth-of-type(odd)': {
       backgroundColor: theme.palette.action.hover,
     },
-    // hide last border
     '&:last-child td, &:last-child th': {
-      border: 0,
+      border: 0, // hide last border
     },
   }));
-  const history = useHistory();
-  const dispatch = useDispatch();
-  
-  const pendingRequests = useSelector(store => store.pendingRequests)
-  const completedRequests = useSelector(store => store.completedRequests)
-  const data = useSelector(store => store.filterResults);
-
-  useEffect(() => {
-    if (num === 0){
-        dispatch({
-          type: "SET_FILTER_RESULTS",
-          payload: pendingRequests
-        })
-      } else if (num === 1){
-        dispatch({
-          type: "SET_FILTER_RESULTS",
-          payload: completedRequests
-        })
-      }
-  }, [])
-
-  const now = new Date ();
-  const msPerDay = 24 * 60 * 60 * 1000;
-
-  // modal state
-  const [open, setOpen] = useState(false);
-  const [open1, setOpen1] = useState(false);
-
-  // modal logic
-  const handleClickOpen = (id, x) => {
-    dispatch({
-        type: "FETCH_CURRENT_REQUEST",
-        payload: id
-    })
-    if (x===1){
-      setOpen1(true);
-    }
-    else {
-      setOpen(true);
-    }
-  };
-  const handleClose = (x) => {
-    if (x===1){
-      setOpen1(false);
-    }
-    else {
-      setOpen(false);
-    }
-  };
-  const goToEdit = (id) => {
-    history.push(`/request/edit/${id}`)
-  }
-  const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
-  });
 
   // complete form dialogue
   const AlertDialogSlide = () => {
@@ -199,4 +214,4 @@ function AdminTable({num}) {
   );
 }
 
-export default AdminTable;
+export default AdminRequestTable;

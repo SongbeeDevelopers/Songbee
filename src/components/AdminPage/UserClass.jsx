@@ -5,34 +5,35 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 
 
-function UserClass({user}){
+function UserClass({ user }) {
 
-    const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
-    const [userClass, setUserClass] = useState(user.class)
+  const [userClass, setUserClass] = useState(user.class)
 
-    const updateUserClass = (value) => {
-        dispatch({
-            type: "UPDATE_USER_CLASS",
-            payload: {
-                id: user.id,
-                data: value}
-        })
-    };
+  const updateUserClass = (value) => {
+    dispatch({
+      type: "UPDATE_USER_CLASS",
+      payload: {
+        id: user.id,
+        data: value
+      }
+    })
+  };
 
-    return (
-        <>
-            <Select
-            value={userClass}
-            label="User Class"
-            onChange={(event) => updateUserClass(event.target.value)}
-            >
-                <MenuItem value={1}>User</MenuItem>
-                <MenuItem value={2}>Artist</MenuItem>
-                <MenuItem value={3}>Admin</MenuItem>
-            </Select>
-        </>
-    )
+  return (
+    <>
+      <Select
+        value={userClass}
+        label="User Class"
+        onChange={(event) => updateUserClass(event.target.value)}
+      >
+        <MenuItem value={1}>User</MenuItem>
+        <MenuItem value={2}>Artist</MenuItem>
+        <MenuItem value={3}>Admin</MenuItem>
+      </Select>
+    </>
+  )
 }
 
 export default UserClass
