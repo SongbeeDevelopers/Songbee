@@ -14,7 +14,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
-import AdminRequestDialog from './AdminRequestDialog';
+import AdminCompleteDialog from './AdminCompleteDialog';
 import AdminDetailsDialog from './AdminDetailsDialog';
 import FilterBar from '../FilterBar/FilterBar';
 
@@ -113,7 +113,7 @@ function AdminTable({num}) {
         fullWidth={true}
         maxWidth='sm'
         >
-          <AdminRequestDialog handleClose={handleClose}/>
+          <AdminCompleteDialog handleClose={handleClose}/>
         </Dialog>
       </>
     );
