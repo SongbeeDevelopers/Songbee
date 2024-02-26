@@ -4,10 +4,10 @@ import { Link, useHistory } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
-import "./JoinArtist.css";
+import "./JoinArtistPage.css";
 
 
-function JoinArtist({ routeVariants }) {
+function JoinArtistPage({ routeVariants }) {
 
     // create useStates to hold the artists info
 
@@ -162,4 +162,4 @@ function JoinArtist({ routeVariants }) {
   );
 }
 
-export default JoinArtist;
+export default JoinArtistPage;

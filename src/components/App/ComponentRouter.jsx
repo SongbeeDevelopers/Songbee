@@ -15,11 +15,11 @@ import FaqPage from '../FaqPage/FaqPage';
 import PrivacyPolicy from '../PrivacyPolicy/PrivacyPolicy';
 import QualityGuarantee from '../QualityGuarantee/QualityGuarantee';
 import TermsAndConditionsPage from '../TermsAndConditionsPage/TermsAndConditionsPage';
-import JoinArtist from '../JoinArtist/JoinArtist';
+import JoinArtistPage from '../JoinArtistPage/JoinArtistPage';
 import NotFound from '../NotFoundPage/NotFoundPage';
 import EditRequestPage from '../EditRequestPage/EditRequestPage';
-import ArtistCommunity from '../JoinArtist/ArtistCommunity';
-import ArtistProcess from '../JoinArtist/ArtistProcess';
+import ArtistCommunity from '../JoinArtistPage/ArtistCommunity';
+import ArtistProcess from '../JoinArtistPage/ArtistProcess';
 import CreationPage from '../CreationPage/CreationPage';
 
 
@@ -77,7 +77,7 @@ function ComponentRouter() {
             </Route>
 
             <Route exact path="/join-artist">
-              <JoinArtist routeVariants={routeVariants} />
+              <JoinArtistPage routeVariants={routeVariants} />
             </Route>
             
             <Route exact path="/requestform/:id">
