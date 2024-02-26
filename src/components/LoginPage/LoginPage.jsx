@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-import LoginForm from '../LoginForm/LoginForm';
+import LoginForm from './LoginForm/LoginForm';
 
 import { motion } from 'framer-motion';
 

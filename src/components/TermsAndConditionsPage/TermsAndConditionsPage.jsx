@@ -2,7 +2,7 @@ import React from 'react';
 
 import { motion } from 'framer-motion';
 
-import './TermsAndConditions.css'
+import './TermsAndConditionsPage.css'
 
 function TermsAndConditions({ routeVariants }) {
   return (

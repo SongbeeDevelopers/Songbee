@@ -14,7 +14,7 @@ import SongRequestPage from '../SongRequestPage/SongRequestPage';
 import FaqPage from '../FaqPage/FaqPage';
 import PrivacyPolicy from '../PrivacyPolicy/PrivacyPolicy';
 import QualityGuarantee from '../QualityGuarantee/QualityGuarantee';
-import TermsAndConditions from '../TermsAndConditions/TermsAndConditions';
+import TermsAndConditionsPage from '../TermsAndConditionsPage/TermsAndConditionsPage';
 import JoinArtist from '../JoinArtist/JoinArtist';
 import NotFound from '../NotFoundPage/NotFoundPage';
 import EditRequestPage from '../EditRequestPage/EditRequestPage';
@@ -89,7 +89,7 @@ function ComponentRouter() {
             </ProtectedRoute>
 
             <Route exact path="/terms">
-              <TermsAndConditions routeVariants={routeVariants} />
+              <TermsAndConditionsPage routeVariants={routeVariants} />
             </Route>
 
             <Route exact path="/faq">
