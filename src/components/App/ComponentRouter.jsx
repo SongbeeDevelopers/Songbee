@@ -4,24 +4,29 @@ import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
-import UserPage from '../UserPage/UserPage';
-import AdminPage from '../AdminPage/AdminPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+
 import LandingPage from '../LandingPage/LandingPage';
+
 import OrderPage from '../OrderPage/OrderPage';
 import SongRequestPage from '../SongRequestPage/SongRequestPage';
+import CreationPage from '../CreationPage/CreationPage';
+
+import UserPage from '../UserPage/UserPage';
+import AdminPage from '../AdminPage/AdminPage';
+import EditRequestPage from '../EditRequestPage/EditRequestPage';
+
 import FaqPage from '../FaqPage/FaqPage';
 import PrivacyPolicyPage from '../PrivacyPolicyPage/PrivacyPolicyPage';
 import QualityGuaranteePage from '../QualityGuaranteePage/QualityGuaranteePage';
 import TermsAndConditionsPage from '../TermsAndConditionsPage/TermsAndConditionsPage';
+
 import JoinArtistPage from '../JoinArtistPage/JoinArtistPage';
-import NotFound from '../NotFoundPage/NotFoundPage';
-import EditRequestPage from '../EditRequestPage/EditRequestPage';
 import ArtistCommunity from '../JoinArtistPage/ArtistCommunity';
 import ArtistProcess from '../JoinArtistPage/ArtistProcess';
-import CreationPage from '../CreationPage/CreationPage';
 
+import NotFound from '../NotFoundPage/NotFoundPage';
 
 
 function ComponentRouter() {
