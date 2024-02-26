@@ -112,104 +112,106 @@ function AdminRequestTable({ num }) {
   // complete form dialogue
   const AlertDialogSlide = () => {
     return (
-      <>
-        <Dialog
-          open={open}
-          TransitionComponent={Transition}
-          keepMounted
-          onClose={handleClose}
-          aria-describedby="alert-dialog-slide-description"
-          BackdropProps={{
-            style: {
-              backgroundColor: 'transparent',
-              boxShadow: 'none'
-            }
-          }}
-        fullWidth={true}
-        maxWidth='sm'
-        >
-          <AdminCompleteDialog handleClose={handleClose}/>
-        </Dialog>
-      </>
+      <Dialog
+        open={open}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={handleClose}
+        aria-describedby="alert-dialog-slide-description"
+        BackdropProps={{
+          style: {
+            backgroundColor: 'transparent',
+            boxShadow: 'none'
+          }
+        }}
+      fullWidth={true}
+      maxWidth='sm'
+      >
+        <AdminCompleteDialog handleClose={handleClose}/>
+      </Dialog>
     );
   }
 
   // details modal
   const DetailsDialogSlide = () => {
     return (
-      <>
-        <Dialog
-          open={open1}
-          TransitionComponent={Transition}
-          keepMounted
-          onClose={() => handleClose(1)}
-          aria-describedby="alert-dialog-slide-description"
-          sx={{ 
-            width: 800, 
-            display: 'flex', 
-            flexDirection: 'column', 
-            alignItems: 'center',
-            ml: 10
-          }}
-        >
-          <AdminDetailsDialog handleClose={handleClose}/>
-        </Dialog>
-      </>
+      <Dialog
+        open={open1}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={() => handleClose(1)}
+        aria-describedby="alert-dialog-slide-description"
+        sx={{ 
+          width: 800, 
+          display: 'flex', 
+          flexDirection: 'column', 
+          alignItems: 'center',
+          ml: 10
+        }}
+      >
+        <AdminDetailsDialog handleClose={handleClose}/>
+      </Dialog>
     );
   }
 
 
   return (
     <div>
+
       <FilterBar type={num === 0 ? 'pending' : 'completed'}/>
+
       <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 }} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell>Creation Date</StyledTableCell>
-            <StyledTableCell align="center">Requester E-Mail</StyledTableCell>
-            <StyledTableCell align="center">Requester / Recipient</StyledTableCell>
-            <StyledTableCell align="center">Due</StyledTableCell>
-            <StyledTableCell align="center">View Details</StyledTableCell>
-            <StyledTableCell align="center">Completion Form</StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {data.map((row) => {
-          const creationTime = new Date (row.created_at);
-          const daysLeft = Math.round((now.getTime() - creationTime.getTime()) / msPerDay);
-          return (
-            <StyledTableRow key={row.id}>
-              <StyledTableCell component="th" scope="row">
-              {new Date(row.created_at).toLocaleString('en-us')}
-              </StyledTableCell>
-              <StyledTableCell align="center">
-              {row.email}
-              </StyledTableCell>
-              <StyledTableCell align="center">
-              {row.requester} / {row.recipient}
-              </StyledTableCell>
-              <StyledTableCell align="center">
-                { row.is_complete ? 
-                    "Complete!" :
-                    `Due in ${row.delivery_days - daysLeft} days`
-                }</StyledTableCell>
-              <StyledTableCell align="center">
-                <button className='admin-button' onClick={() => goToEdit(row.id)}>Details</button>
-                <DetailsDialogSlide />
-              </StyledTableCell>
-              <StyledTableCell align="center">
-                <button className='admin-button' onClick={() => handleClickOpen(row.id)}>
-                    Complete
-                </button>
-              <AlertDialogSlide />
-              </StyledTableCell>
-            </StyledTableRow>
-          )}
-          )}
-        </TableBody>
-      </Table>
-    </TableContainer>
+        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+
+          <TableHead>
+            <TableRow>
+              <StyledTableCell>Creation Date</StyledTableCell>
+              <StyledTableCell align="center">Requester E-Mail</StyledTableCell>
+              <StyledTableCell align="center">Requester / Recipient</StyledTableCell>
+              <StyledTableCell align="center">Due</StyledTableCell>
+              <StyledTableCell align="center">View Details</StyledTableCell>
+              <StyledTableCell align="center">Completion Form</StyledTableCell>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            {data.map((row) => {
+            const creationTime = new Date (row.created_at);
+            const daysLeft = Math.round((now.getTime() - creationTime.getTime()) / msPerDay);
+            return (
+              <StyledTableRow key={row.id}>
+                <StyledTableCell component="th" scope="row">
+                {new Date(row.created_at).toLocaleString('en-us')}
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                {row.email}
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                {row.requester} / {row.recipient}
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                  { row.is_complete ? 
+                      "Complete!" :
+                      `Due in ${row.delivery_days - daysLeft} days`
+                  }</StyledTableCell>
+                <StyledTableCell align="center">
+                  <button className='admin-button' onClick={() => goToEdit(row.id)}>Details</button>
+                  <DetailsDialogSlide />
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                  <button className='admin-button' onClick={() => handleClickOpen(row.id)}>
+                      Complete
+                  </button>
+                <AlertDialogSlide />
+                </StyledTableCell>
+              </StyledTableRow>
+            )}
+            )}
+          </TableBody>
+
+        </Table>
+      </TableContainer>
+      
     </div>
   );
 }

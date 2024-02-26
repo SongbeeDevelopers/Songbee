@@ -5,7 +5,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 
 
-function UserClass({ user }) {
+function UserClassSelector({ user }) {
 
   const dispatch = useDispatch()
 
@@ -22,18 +22,16 @@ function UserClass({ user }) {
   };
 
   return (
-    <>
-      <Select
-        value={userClass}
-        label="User Class"
-        onChange={(event) => updateUserClass(event.target.value)}
-      >
-        <MenuItem value={1}>User</MenuItem>
-        <MenuItem value={2}>Artist</MenuItem>
-        <MenuItem value={3}>Admin</MenuItem>
-      </Select>
-    </>
+    <Select
+      value={userClass}
+      label="User Class"
+      onChange={(event) => updateUserClass(event.target.value)}
+    >
+      <MenuItem value={1}>User</MenuItem>
+      <MenuItem value={2}>Artist</MenuItem>
+      <MenuItem value={3}>Admin</MenuItem>
+    </Select>
   )
 }
 
-export default UserClass
+export default UserClassSelector
