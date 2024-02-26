@@ -1,12 +1,12 @@
 import React from "react";
-import "./JoinArtist.css";
 import { Link } from "react-router-dom";  
 
+import "./JoinArtistPage.css";
+
 function ArtistProcess() {
+
   return (
 
-
-  
     <div className="artist-process">
       <div className="process-top">
         <h2>What is the process?</h2>

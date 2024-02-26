@@ -2,7 +2,7 @@ import React from "react";
 
 import "./LandingPage.css";
 
-import MainButton from "./Button";
+import StartSongButton from "./StartSongButton/StartSongButton";
 
 
 function HeroSection() {
@@ -17,7 +17,7 @@ function HeroSection() {
 
       <p>Studio-Quality Custom Songs For Any Occasion</p>
 
-     <MainButton/>
+     <StartSongButton/>
     </div>
   );
 }

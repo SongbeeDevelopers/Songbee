@@ -8,7 +8,7 @@ import HeroSection from "./Hero";
 import HowSongBeeWorks from "./HowSongBeeWorks";
 import TestimonialSection from "./Testimonials";
 import SampleSongs from "./SampleSongs";
-import Guarantee from "./Guarantee";
+import Guarantee from "./GuaranteeSection/GuaranteeSection";
 
 
 function LandingPage({ routeVariants }) {

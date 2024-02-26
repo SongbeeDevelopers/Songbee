@@ -2,7 +2,7 @@ import React from "react";
 
 import "./LandingPage.css";
 
-import MainButton from "./Button";
+import StartSongButton from "./StartSongButton/StartSongButton";
 
 
 function HowSongBeeWorks() {
@@ -46,7 +46,7 @@ function HowSongBeeWorks() {
         </div>
       </div>
 
-      <MainButton/>
+      <StartSongButton />
 
       <div className="beesButton">
           <img src="/bee-button.png" alt="" />

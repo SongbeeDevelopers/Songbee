@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./JoinArtist.css";
+
+import "./JoinArtistPage.css";
 
 function ArtistCommunity() {
   return (

@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import "./LandingPage.css";
+import StartSongButton from "../StartSongButton/StartSongButton";
 
-import MainButton from "./Button";
+import "./GuaranteeSection.css";
 
 
 function Guarantee() {
@@ -28,7 +28,7 @@ function Guarantee() {
           <p>Contact us at hello@songbee.com</p>
         </div>
 
-        <MainButton />
+        <StartSongButton />
         
       </div>
     </div>
