@@ -1,5 +1,5 @@
 import React from 'react';
-import UserPageTabs from '../UserPageTabs/UserPageTabs';
+import UserPageTabs from './UserPageTabs/UserPageTabs';
 
 import { motion } from 'framer-motion';
 import './UserPage.css';

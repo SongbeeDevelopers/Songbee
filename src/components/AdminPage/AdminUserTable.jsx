@@ -11,7 +11,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
-import UserClass from './UserClass';
+import UserClassSelector from './UserClassSelector';
 import FilterBar from '../FilterBar/FilterBar';
 
 function AdminUserTable({num}) {
@@ -82,7 +82,7 @@ function AdminUserTable({num}) {
                 </StyledTableCell>
 
                 <StyledTableCell align="center">
-                <UserClass user={user} />
+                <UserClassSelector user={user} />
                 </StyledTableCell>
               </StyledTableRow>
             )}

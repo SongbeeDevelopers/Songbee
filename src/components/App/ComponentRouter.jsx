@@ -4,25 +4,29 @@ import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
-import UserPage from '../UserPage/UserPage';
-import AdminPage from '../AdminPage/AdminPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+
 import LandingPage from '../LandingPage/LandingPage';
+
 import OrderPage from '../OrderPage/OrderPage';
 import SongRequestPage from '../SongRequestPage/SongRequestPage';
-import UserDetails from '../UserDetails/UserDetailsPage';
-import FaqPage from '../FaqPage/FaqPage';
-import PrivacyPolicy from '../PrivacyPolicy/PrivacyPolicy';
-import QualityGuarantee from '../QualityGuarantee/QualityGuarantee';
-import TermsAndConditions from '../TermsAndConditions/TermsAndConditions';
-import JoinArtist from '../JoinArtist/JoinArtist';
-import NotFound from '../NotFoundPage/NotFoundPage';
-import EditRequestPage from '../EditRequestPage/EditRequestPage';
-import ArtistCommunity from '../JoinArtist/ArtistCommunity';
-import ArtistProcess from '../JoinArtist/ArtistProcess';
 import CreationPage from '../CreationPage/CreationPage';
 
+import UserPage from '../UserPage/UserPage';
+import AdminPage from '../AdminPage/AdminPage';
+import EditRequestPage from '../EditRequestPage/EditRequestPage';
+
+import FaqPage from '../FaqPage/FaqPage';
+import PrivacyPolicyPage from '../PrivacyPolicyPage/PrivacyPolicyPage';
+import QualityGuaranteePage from '../QualityGuaranteePage/QualityGuaranteePage';
+import TermsAndConditionsPage from '../TermsAndConditionsPage/TermsAndConditionsPage';
+
+import JoinArtistPage from '../JoinArtistPage/JoinArtistPage';
+import ArtistCommunity from '../JoinArtistPage/ArtistCommunity';
+import ArtistProcess from '../JoinArtistPage/ArtistProcess';
+
+import NotFound from '../NotFoundPage/NotFoundPage';
 
 
 function ComponentRouter() {
@@ -73,17 +77,12 @@ function ComponentRouter() {
               <UserPage routeVariants={routeVariants} />
             </ProtectedRoute>
 
-
             <Route exact path="/order">
               <OrderPage routeVariants={routeVariants} />
             </Route>
 
             <Route exact path="/join-artist">
-              <JoinArtist routeVariants={routeVariants} />
-            </Route>
-            
-            <Route exact path="/details/:id">
-              <UserDetails routeVariants={routeVariants} />
+              <JoinArtistPage routeVariants={routeVariants} />
             </Route>
             
             <Route exact path="/requestform/:id">
@@ -95,13 +94,12 @@ function ComponentRouter() {
             </ProtectedRoute>
 
             <Route exact path="/terms">
-              <TermsAndConditions routeVariants={routeVariants} />
+              <TermsAndConditionsPage routeVariants={routeVariants} />
             </Route>
 
             <Route exact path="/faq">
               <FaqPage routeVariants={routeVariants} />
             </Route>
-
 
             <Route exact path="/artist-community">
               <ArtistCommunity routeVariants={routeVariants} />
@@ -111,11 +109,11 @@ function ComponentRouter() {
               <ArtistProcess routeVariants={routeVariants} />
             </Route>
             <Route exact path="/guarantee">
-              <QualityGuarantee routeVariants={routeVariants} />
+              <QualityGuaranteePage routeVariants={routeVariants} />
             </Route>
 
             <Route exact path="/privacy">
-              <PrivacyPolicy routeVariants={routeVariants} />
+              <PrivacyPolicyPage routeVariants={routeVariants} />
             </Route>
 
             <Route exact path="/created/:delivery_days/:extra_verse/:streaming">

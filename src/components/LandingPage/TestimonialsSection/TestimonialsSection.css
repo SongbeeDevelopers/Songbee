@@ -1,0 +1,93 @@
+.background-testimonial {
+    background-color: white;
+    padding: 15px;
+    /* margin: 50px 0; */
+    margin-top: 100px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding: 25px;
+    margin-top: 75px;
+  }
+
+  .testimonials {
+    background-color: #fff4df;
+    border-radius: 25px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin: 0 42px;
+    margin-top: 50px;
+    width: auto;
+    padding-top: 0px;
+    position: relative;
+    margin-bottom: 60px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+  }
+
+  .testimonials h2 {
+    text-align: center;
+    margin-top: 1.9rem;
+    margin-bottom: -2.1rem;
+    font-size: 3rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: block;
+    position: static;
+  }
+
+  .slides {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    width: 100%;
+    /* height: 800px; */
+    margin-top: 30px;
+  }
+
+  .active-slide {
+    display: flex;
+    width: 100%;
+    min-width: 100%;
+    justify-content: space-between;
+    padding: 0 100px;
+    scroll-snap-align: start;
+    height: 100%;
+  }
+
+  .active-slide p {
+    width: 250px;
+    word-wrap: break-word;
+    max-width: 250px;
+  }
+
+  .active-slideOne,
+.active-slideTwo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 50%;
+  height: 100%;
+  margin-bottom: 5px;
+}
+
+.bee-one {
+    width: 288px;
+    height: 288px;
+  }
+  
+  .bee-two {
+    width: 288px;
+    height: 288px;
+  }
+
+.star-one {
+    width: 127.98px;
+    height: 28.12;
+  }
+
+  .star-two {
+    width: 127.98px;
+    height: 28.12;
+  }
