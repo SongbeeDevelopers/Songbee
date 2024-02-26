@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import UserHistory from "../UserHistory/UserHistory";
-import UserCreditPage from "../UserCreditPage/UserCreditPage";
+import UserCreditPage from "../UserCreditTab/UserCreditTab";
 
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";

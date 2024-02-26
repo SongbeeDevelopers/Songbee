@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import './UserCreditPage.css';
+import './UserCreditTab.css';
 
 
 // This function will display the user's credit Balance
-function UserCreditPage() {
+function UserCreditTab() {
 
  const user = useSelector((store) => store.user);
 
@@ -16,4 +16,4 @@ function UserCreditPage() {
  )
 }
 
-export default UserCreditPage;
+export default UserCreditTab;

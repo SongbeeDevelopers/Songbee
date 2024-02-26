@@ -11,7 +11,6 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import LandingPage from '../LandingPage/LandingPage';
 import OrderPage from '../OrderPage/OrderPage';
 import SongRequestPage from '../SongRequestPage/SongRequestPage';
-import UserDetails from '../UserDetails/UserDetailsPage';
 import FaqPage from '../FaqPage/FaqPage';
 import PrivacyPolicy from '../PrivacyPolicy/PrivacyPolicy';
 import QualityGuarantee from '../QualityGuarantee/QualityGuarantee';
@@ -73,17 +72,12 @@ function ComponentRouter() {
               <UserPage routeVariants={routeVariants} />
             </ProtectedRoute>
 
-
             <Route exact path="/order">
               <OrderPage routeVariants={routeVariants} />
             </Route>
 
             <Route exact path="/join-artist">
               <JoinArtist routeVariants={routeVariants} />
-            </Route>
-            
-            <Route exact path="/details/:id">
-              <UserDetails routeVariants={routeVariants} />
             </Route>
             
             <Route exact path="/requestform/:id">
@@ -101,7 +95,6 @@ function ComponentRouter() {
             <Route exact path="/faq">
               <FaqPage routeVariants={routeVariants} />
             </Route>
-
 
             <Route exact path="/artist-community">
               <ArtistCommunity routeVariants={routeVariants} />

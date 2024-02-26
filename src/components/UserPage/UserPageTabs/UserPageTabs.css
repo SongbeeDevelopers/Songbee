@@ -2,14 +2,12 @@
 
 .cardBackground {
     background-image: url("../../../public/honey_combs.jpeg");
-
 }
 
 .profileHeader {
     font-family: Poppins;
     font-size: 2rem;
     color: rgb(51, 51, 51);
-    
 }
 
 .modalBtns {
@@ -21,7 +19,6 @@
 /* styling for the card background */
 .cardBody {
     background-image: url("../../../public/honey_combs.jpeg");
-       
 }
 
 .tabHeader {

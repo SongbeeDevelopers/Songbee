@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import RequestItem from '../RequestItem/RequestItem';
+import RequestItem from '../../RequestItem/RequestItem';
 
 import './UserHistory.css';
 
