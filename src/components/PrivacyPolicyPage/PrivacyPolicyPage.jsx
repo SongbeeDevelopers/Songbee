@@ -2,7 +2,7 @@ import React from "react";
 
 import { motion } from "framer-motion";
 
-function PrivacyPolicy({ routeVariants }) {
+function PrivacyPolicyPage({ routeVariants }) {
 
   return (
 
@@ -189,4 +189,4 @@ function PrivacyPolicy({ routeVariants }) {
   );
 }
 
-export default PrivacyPolicy;
+export default PrivacyPolicyPage;

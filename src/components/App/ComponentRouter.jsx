@@ -12,8 +12,8 @@ import LandingPage from '../LandingPage/LandingPage';
 import OrderPage from '../OrderPage/OrderPage';
 import SongRequestPage from '../SongRequestPage/SongRequestPage';
 import FaqPage from '../FaqPage/FaqPage';
-import PrivacyPolicy from '../PrivacyPolicy/PrivacyPolicy';
-import QualityGuarantee from '../QualityGuarantee/QualityGuarantee';
+import PrivacyPolicyPage from '../PrivacyPolicyPage/PrivacyPolicyPage';
+import QualityGuaranteePage from '../QualityGuaranteePage/QualityGuaranteePage';
 import TermsAndConditionsPage from '../TermsAndConditionsPage/TermsAndConditionsPage';
 import JoinArtistPage from '../JoinArtistPage/JoinArtistPage';
 import NotFound from '../NotFoundPage/NotFoundPage';
@@ -104,11 +104,11 @@ function ComponentRouter() {
               <ArtistProcess routeVariants={routeVariants} />
             </Route>
             <Route exact path="/guarantee">
-              <QualityGuarantee routeVariants={routeVariants} />
+              <QualityGuaranteePage routeVariants={routeVariants} />
             </Route>
 
             <Route exact path="/privacy">
-              <PrivacyPolicy routeVariants={routeVariants} />
+              <PrivacyPolicyPage routeVariants={routeVariants} />
             </Route>
 
             <Route exact path="/created/:delivery_days/:extra_verse/:streaming">
