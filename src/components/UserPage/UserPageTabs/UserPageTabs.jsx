@@ -3,8 +3,8 @@ import { useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import UserHistory from "../UserHistory/UserHistory";
-import UserCreditPage from "../UserCreditTab/UserCreditTab";
+import UserRequestsTab from "./UserRequestsTab/UserRequestsTab";
+import UserCreditTab from "./UserCreditTab/UserCreditTab";
 
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
@@ -119,9 +119,9 @@ export default function BasicTabs() {
             label="Order History"
             {...a11yProps(0)}
           />
-          <Tab 
-            sx={{ color: "orange" }} 
-            label="profile" 
+          <Tab
+            sx={{ color: "orange" }}
+            label="profile"
             {...a11yProps(1)} />
           <Tab
             sx={{ color: "orange" }}
@@ -137,12 +137,12 @@ export default function BasicTabs() {
 
           {/* order history tab */}
           <CustomTabPanel className="cardBody" value={value} index={0}>
-            <UserHistory />
+            <UserRequestsTab />
           </CustomTabPanel>
 
           {/* personal info tab */}
           <CustomTabPanel value={value} index={1}>
-          <h1 className="profileHeader">Personal info</h1>
+            <h1 className="profileHeader">Personal info</h1>
             <h3>{user.email}</h3>
             <CardContent variant="outlined">
               <Button sx={{ color: "black" }} onClick={handleOpen}>
@@ -235,15 +235,16 @@ export default function BasicTabs() {
                   </div>
                 </Box>
               </Dialog>
-        </CardContent>
+            </CardContent>
           </CustomTabPanel>
 
           {/* user credit tab */}
           <CustomTabPanel value={value} index={2}>
-            <UserCreditPage />
+            <UserCreditTab />
           </CustomTabPanel>
+          
         </Card>
       </Box>
     </>
   );
-                }
+}

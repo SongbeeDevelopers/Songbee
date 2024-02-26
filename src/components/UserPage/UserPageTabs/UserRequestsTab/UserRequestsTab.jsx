@@ -3,9 +3,9 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import RequestItem from '../../RequestItem/RequestItem';
+import RequestItem from './RequestItem/RequestItem';
 
-import './UserHistory.css';
+import './UserRequestsTab.css';
 
 
 // This function will display the user's order history
@@ -36,10 +36,10 @@ function UserHistory() {
             ))}
           </div>
           :
-          <>
+          <div>
             <h1 className='noRequests'>You have no song requests!</h1>
             <button onClick={() => {history.push('/order')}} className='userStartSong'>Start Your Song</button>
-          </>
+          </div>
         }
       </div> 
     )
