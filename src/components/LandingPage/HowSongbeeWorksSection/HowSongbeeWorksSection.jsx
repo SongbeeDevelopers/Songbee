@@ -1,8 +1,8 @@
 import React from "react";
 
-import "./LandingPage.css";
+import StartSongButton from "../StartSongButton/StartSongButton";
 
-import StartSongButton from "./StartSongButton/StartSongButton";
+import './HowSongBeeWorksSection.css'
 
 
 function HowSongBeeWorks() {

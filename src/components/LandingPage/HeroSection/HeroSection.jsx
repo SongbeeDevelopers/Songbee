@@ -1,8 +1,8 @@
 import React from "react";
 
-import "./LandingPage.css";
+import StartSongButton from "../StartSongButton/StartSongButton";
 
-import StartSongButton from "./StartSongButton/StartSongButton";
+import './HeroSection.css'
 
 
 function HeroSection() {
@@ -23,4 +23,3 @@ function HeroSection() {
 }
 
 export default HeroSection;
-

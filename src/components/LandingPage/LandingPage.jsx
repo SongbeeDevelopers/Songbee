@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 
 import "./LandingPage.css";
 
-import HeroSection from "./Hero";
-import HowSongBeeWorks from "./HowSongBeeWorks";
-import TestimonialSection from "./Testimonials";
-import SampleSongs from "./SampleSongs";
-import Guarantee from "./GuaranteeSection/GuaranteeSection";
+import HeroSection from "./HeroSection/HeroSection";
+import HowSongBeeWorksSection from "./HowSongbeeWorksSection/HowSongbeeWorksSection";
+import TestimonialsSection from "./TestimonialsSection/TestimonialsSection";
+import SampleSongsSection from "./SampleSongsSection/SampleSongsSection";
+import GuaranteeSection from "./GuaranteeSection/GuaranteeSection";
 
 
 function LandingPage({ routeVariants }) {
@@ -19,17 +19,20 @@ function LandingPage({ routeVariants }) {
       initial="initial"
       animate="final"
     >
+      
       <div className="container">
         <HeroSection />
-        <HowSongBeeWorks />
+        <HowSongBeeWorksSection />
       </div>
-      <TestimonialSection />
-      <SampleSongs />
-      <div className="guarantee-container">
-        <Guarantee />
-      </div>
-    </motion.div>
 
+      <TestimonialsSection />
+      <SampleSongsSection />
+
+      <div className="guarantee-container">
+        <GuaranteeSection />
+      </div>
+
+    </motion.div>
   );
 }
 

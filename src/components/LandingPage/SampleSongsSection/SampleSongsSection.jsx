@@ -1,7 +1,7 @@
 import React from "react";
 import { useRef } from "react";
 
-import "./LandingPage.css";
+import './SampleSongsSection.css'
 
 
 function SampleSongs() {
@@ -34,8 +34,6 @@ function SampleSongs() {
       audio2: "/Singer Songwriter Michael LeFevre (1).mp3",
     },
   ];
-
-  
 
   const galleryRef = useRef(null);
 
