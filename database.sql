@@ -84,14 +84,16 @@ CREATE TABLE "jr_request" (
   "tempo" VARCHAR,
   "vocal_type" VARCHAR,
   "description" VARCHAR,
-  "goals" VARCHAR
+  "goals" VARCHAR,
+  "created_at" TIMESTAMPTZ DEFAULT NOW()
 );
 
 CREATE TABLE "subscription" (
   "id" SERIAL PRIMARY KEY,
   "artist_id" integer REFERENCES "artist",
   "request_id" integer REFERENCES "jr_request",
-  "song_count" INT
+  "song_count" INT,
+  "is_complete" BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE "subscription_song_details" (
@@ -102,6 +104,11 @@ CREATE TABLE "subscription_song_details" (
   "url" VARCHAR,
   "title" VARCHAR,
   "lyrics" VARCHAR
+);
+
+CREATE TABLE "documents" (
+  "id" SERIAL PRIMARY KEY,
+  "url" VARCHAR
 );
 
 INSERT INTO "user"

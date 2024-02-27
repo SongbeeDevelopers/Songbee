@@ -16,6 +16,7 @@ import CreationPage from '../CreationPage/CreationPage';
 import UserPage from '../UserPage/UserPage';
 import AdminPage from '../AdminPage/AdminPage';
 import EditRequestPage from '../EditRequestPage/EditRequestPage';
+import UserDetails from '../UserPage/UserPageTabs/UserDetailsTab/UserDetailsPage';
 
 import FaqPage from '../FaqPage/FaqPage';
 import PrivacyPolicyPage from '../PrivacyPolicyPage/PrivacyPolicyPage';
@@ -97,6 +98,10 @@ function ComponentRouter() {
 
             <ProtectedRoute exact path="/request/edit/:id">
               <EditRequestPage routeVariants={routeVariants} />
+            </ProtectedRoute>
+
+            <ProtectedRoute exact path="/details/:id">
+              <UserDetails routeVariants={routeVariants} />
             </ProtectedRoute>
 
             <Route exact path="/terms">
