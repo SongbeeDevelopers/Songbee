@@ -28,6 +28,8 @@ import ArtistProcess from '../JoinArtistPage/ArtistProcess';
 
 import NotFound from '../NotFoundPage/NotFoundPage';
 
+import NewOrderPage from '../OrderPage/NewOrderPage';
+
 
 function ComponentRouter() {
 
@@ -79,6 +81,10 @@ function ComponentRouter() {
 
             <Route exact path="/order">
               <OrderPage routeVariants={routeVariants} />
+            </Route>
+
+            <Route exact path="/neworder">
+              <NewOrderPage routeVariants={routeVariants} />
             </Route>
 
             <Route exact path="/join-artist">

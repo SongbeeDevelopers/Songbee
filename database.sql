@@ -50,7 +50,10 @@ CREATE TABLE "artist" (
   "bio" VARCHAR,
   "photo" VARCHAR,
   "streaming_link" VARCHAR,
-  "approved" BOOLEAN DEFAULT FALSE
+  "approved" BOOLEAN DEFAULT FALSE,
+  "jr_approved" BOOLEAN DEFAULT FALSE,
+  "w9" VARCHAR,
+  "paypal" VARCHAR
 );
 
 CREATE TABLE "song_details" (
@@ -67,6 +70,29 @@ CREATE TABLE "artist_genres" (
   "id" SERIAL PRIMARY KEY,
   "artist_id" integer REFERENCES "artist",
   "genre_id" integer REFERENCES "genres"
+);
+
+CREATE TABLE "jr_request" (
+  "id" SERIAL PRIMARY KEY,
+  "user_id" integer REFERENCES "user",
+  "requester" VARCHAR,
+  "child" VARCHAR
+);
+
+CREATE TABLE "subscription" (
+  "id" SERIAL PRIMARY KEY,
+  "artist_id" integer REFERENCES "artist",
+  "request_id" integer REFERENCES "jr_request",
+  "song_count" INT
+);
+
+CREATE TABLE "subscription_song_details" (
+  "id" SERIAL PRIMARY KEY,
+  "subscription_id" integer REFERENCES "subscription",
+  "number" INT,
+  "url" VARCHAR,
+  "title" VARCHAR,
+  "lyrics" VARCHAR
 );
 
 INSERT INTO "user"
