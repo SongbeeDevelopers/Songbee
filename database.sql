@@ -76,7 +76,15 @@ CREATE TABLE "jr_request" (
   "id" SERIAL PRIMARY KEY,
   "user_id" integer REFERENCES "user",
   "requester" VARCHAR,
-  "child" VARCHAR
+  "child" VARCHAR,
+  "pronunciation" VARCHAR,
+  "age" INT,
+  "skill" VARCHAR,
+  "emotion" VARCHAR,
+  "tempo" VARCHAR,
+  "vocal_type" VARCHAR,
+  "description" VARCHAR,
+  "goals" VARCHAR
 );
 
 CREATE TABLE "subscription" (
@@ -90,6 +98,7 @@ CREATE TABLE "subscription_song_details" (
   "id" SERIAL PRIMARY KEY,
   "subscription_id" integer REFERENCES "subscription",
   "number" INT,
+  "song_goals" VARCHAR,
   "url" VARCHAR,
   "title" VARCHAR,
   "lyrics" VARCHAR
