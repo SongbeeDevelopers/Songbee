@@ -16,6 +16,7 @@ import CreationPage from '../CreationPage/CreationPage';
 import UserPage from '../UserPage/UserPage';
 import AdminPage from '../AdminPage/AdminPage';
 import EditRequestPage from '../EditRequestPage/EditRequestPage';
+import UserDetails from '../UserPage/UserPageTabs/UserDetailsTab/UserDetailsPage';
 
 import FaqPage from '../FaqPage/FaqPage';
 import PrivacyPolicyPage from '../PrivacyPolicyPage/PrivacyPolicyPage';
@@ -27,6 +28,8 @@ import ArtistCommunity from '../JoinArtistPage/ArtistCommunity';
 import ArtistProcess from '../JoinArtistPage/ArtistProcess';
 
 import NotFound from '../NotFoundPage/NotFoundPage';
+
+import NewOrderPage from '../OrderPage/NewOrderPage';
 
 
 function ComponentRouter() {
@@ -81,6 +84,10 @@ function ComponentRouter() {
               <OrderPage routeVariants={routeVariants} />
             </Route>
 
+            <Route exact path="/neworder">
+              <NewOrderPage routeVariants={routeVariants} />
+            </Route>
+
             <Route exact path="/join-artist">
               <JoinArtistPage routeVariants={routeVariants} />
             </Route>
@@ -91,6 +98,10 @@ function ComponentRouter() {
 
             <ProtectedRoute exact path="/request/edit/:id">
               <EditRequestPage routeVariants={routeVariants} />
+            </ProtectedRoute>
+
+            <ProtectedRoute exact path="/details/:id">
+              <UserDetails routeVariants={routeVariants} />
             </ProtectedRoute>
 
             <Route exact path="/terms">
