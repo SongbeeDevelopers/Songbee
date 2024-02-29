@@ -1,48 +1,27 @@
-.works {
-    border-radius: 25px;
-    padding: 30px;
+.works-arrows {
     display: flex;
-    flex-direction: column;
-    gap: 30px;
-    background-color: white;
-    margin-top: 50px;
-    width: auto;
-    padding-top: 0px;
-    position: relative;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    justify-content: space-evenly;
 }
 
-.works h2 {
-    text-align: center;
-    font-size: 3rem;
-    font-weight: 600;
-    color: #070e15;
-    margin-top: 20px;
-    margin-bottom: 20px;
+.works-arrows img {
+    max-width: 10rem;
 }
 
 .works-images {
     display: flex;
-    width: 100%;
     justify-content: center;
-    gap: 200px;
-    margin-top: 50px;
-    position: relative;
+    gap: 10%;
 }
 
-.works-images>div {
-    width: 282px;
-    height: 314px;
+.works-images div {
+    width: 260px;
     display: flex;
     flex-direction: column;
-    border-radius: 15px;
     transition: transform 0.275s;
-    padding: 5px;
 }
 
-.works-images>div:hover {
+.works-images div:hover {
     transform: scale(1.2);
-    box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
 }
 
 .works-images img {
@@ -70,20 +49,3 @@
     font-size: 1rem;
 }
 
-.arrows-one {
-    max-width: 10rem;
-    position: absolute;
-    top: auto;
-    bottom: 25%;
-    left: 25%;
-    right: 0%;
-}
-
-.arrows-two {
-    max-width: 10rem;
-    position: absolute;
-    top: auto;
-    bottom: 25%;
-    left: 61%;
-    right: 0%;
-}
