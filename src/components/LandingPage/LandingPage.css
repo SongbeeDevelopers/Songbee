@@ -1,83 +1,65 @@
+.landing-section {
+  border-radius: 25px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  background-color: white;
+  margin-top: 50px;
+  width: auto;
+  padding-top: 0px;
+  position: relative;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+}
+
+
 /* --------------------------------------------------------------------------------
-Grid
+Hero Section
+-------------------------------------------------------------------------------- */
+.hero {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0px ;
+}
+  
+.hero span {
+  color: #feaf17;
+}
+  
+.hero p {
+  text-align: center;
+  color: #474546;
+  font-size: 1.2rem;
+}
+
+/* --------------------------------------------------------------------------------
+How It Works Section
 -------------------------------------------------------------------------------- */
 
-.grid {
-  display: flex;
-  flex: 0 1 auto;
-  /* defaults to 'row' */
-  flex-direction: row;
-  flex-wrap: wrap;
-  /* defaults to 'flex-start' */
-  justify-content: flex-start;
-  align-items: flex-start;
-}
 
-.grid-col {
-  flex: 0 0 auto;
-  padding: 0 0.5rem 0.5rem;
-  box-sizing: border-box;
-}
 
-.grid-col_1 {
-  flex-basis: 8.33333333%;
-  max-width: 8.33333333%;
-}
+/* --------------------------------------------------------------------------------
+Testimonials Section
+-------------------------------------------------------------------------------- */
 
-.grid-col_2 {
-  flex-basis: 16.66666667%;
-  max-width: 16.66666667%;
-}
 
-.grid-col_3 {
-  flex-basis: 25%;
-  max-width: 25%;
-}
 
-.grid-col_4 {
-  flex-basis: 33.33333333%;
-  max-width: 33.33333333%;
-}
+/* --------------------------------------------------------------------------------
+Sample Songs Section
+-------------------------------------------------------------------------------- */
 
-.grid-col_5 {
-  flex-basis: 41.66666667%;
-  max-width: 41.66666667%;
-}
 
-.grid-col_6 {
-  flex-basis: 50%;
-  max-width: 50%;
-}
 
-.grid-col_7 {
-  flex-basis: 58.33333333%;
-  max-width: 58.33333333%;
-}
+/* --------------------------------------------------------------------------------
+Guarantee Section
+-------------------------------------------------------------------------------- */
 
-.grid-col_8 {
-  flex-basis: 66.66666667%;
-  max-width: 66.66666667%;
-}
 
-.grid-col_9 {
-  flex-basis: 75%;
-  max-width: 75%;
-}
 
-.grid-col_10 {
-  flex-basis: 83.33333333%;
-  max-width: 83.33333333%;
-}
 
-.grid-col_11 {
-  flex-basis: 91.66666667%;
-  max-width: 91.66666667%;
-}
 
-.grid-col_12 {
-  flex-basis: 100%;
-  max-width: 100%;
-}
 
 .arrows-one:hover {
   transform: none !important;
@@ -194,7 +176,6 @@ li {
 }
 
 .guarantee-container {
-  /* background-color: white; */
   padding-left: 65px;
   padding-right: 65px;
   padding-top: 75px
