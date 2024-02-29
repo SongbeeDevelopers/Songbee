@@ -10,7 +10,7 @@ function HeroSection() {
   return (
     <div className="hero">
       <h1>
-        Custom Songs <br /> For <span className="every">Every</span> Moment
+        Custom Songs <br/> For <span>Every</span> Moment
       </h1>
 
       <img src="/song.png" />
