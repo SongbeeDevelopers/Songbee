@@ -175,9 +175,54 @@ Sample Songs Section
 -------------------------------------------------------------------------------- */
 
 
+
 /* --------------------------------------------------------------------------------
 Guarantee Section
 -------------------------------------------------------------------------------- */
+
+.guarantee-container {
+  padding-left: 65px;
+  padding-right: 65px;
+  padding-top: 75px
+}
+
+.guarantee-container h2 {
+  margin-bottom: 0;
+}
+
+.guarantee-sky-bg {
+  background-color: rgba(184, 213, 224, 0.73);
+  background-image: url("/guarantee-background.png");
+  background-position: 50%;
+  background-size: 100rem;
+  background-attachment: fixed;
+  padding: 7.5rem 1.4rem;
+  border-radius: 25px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+}
+
+.guarantee-inner-bg {
+  background-color: white;
+  margin: 0 50px;
+  padding: 25px 100px;
+  border-radius: 25px;
+  text-align: center;
+  gap: 15px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+}
+
+.guarantee-text-container {
+  margin: auto;
+  max-width: 700px;
+}
+
+.guarantee-link {
+  color: #feaf17;
+  font-weight: bold;
+}
+
 
 
 
@@ -298,8 +343,4 @@ li {
   color: #feaf17;
 }
 
-.guarantee-container {
-  padding-left: 65px;
-  padding-right: 65px;
-  padding-top: 75px
-}
+
