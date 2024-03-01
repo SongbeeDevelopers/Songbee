@@ -1,3 +1,7 @@
+/* --------------------------------------------------------------------------------
+General
+-------------------------------------------------------------------------------- */
+
 .landing-section {
   border-radius: 25px;
   padding: 30px;
@@ -12,10 +16,18 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
 }
 
+h2 {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 600;
+  color: #070e15;
+}
+
 
 /* --------------------------------------------------------------------------------
 Hero Section
 -------------------------------------------------------------------------------- */
+
 .hero {
   width: 100%;
   display: flex;
@@ -34,22 +46,83 @@ Hero Section
   font-size: 1.2rem;
 }
 
+
 /* --------------------------------------------------------------------------------
 How It Works Section
 -------------------------------------------------------------------------------- */
-
 
 
 /* --------------------------------------------------------------------------------
 Testimonials Section
 -------------------------------------------------------------------------------- */
 
+.testimonials-background {
+  background-color: white;
+  padding: 25px;
+  margin-top: 75px;
+}
 
+.testimonials {
+  display: flex;
+  flex-direction: column;
+  margin: 50px 42px;
+  padding: 0px 30px 30px 30px;
+  position: relative;
+  background-color: #fff4df;
+  border-radius: 25px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+}
+
+.testimonials h2 {
+  margin-bottom: -2.1rem;
+}
+
+.slides {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  width: 100%;
+  margin-top: 60px;
+}
+
+.active-slide {
+  display: flex;
+  min-width: 100%;
+  justify-content: space-between;
+  padding: 0 100px;
+  scroll-snap-align: start;
+}
+
+.active-slide p {
+  margin-top: 0;
+  width: 250px;
+  max-width: 250px;
+  text-align: center;
+}
+
+.active-slideOne,
+.active-slideTwo {
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 50%;
+height: 100%;
+}
+
+.bee-one,
+.bee-two {
+  min-width: 288px;
+  height: 288px;
+}
+
+.star-one,
+.star-two {
+  width: 127.98px;
+}
 
 /* --------------------------------------------------------------------------------
 Sample Songs Section
 -------------------------------------------------------------------------------- */
-
 
 
 /* --------------------------------------------------------------------------------

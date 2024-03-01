@@ -1,8 +1,10 @@
 import React, { useRef } from "react";
 
-import './TestimonialsSection.css'
+import '../LandingPage.css'
+
 
 function TestimonialSection() {
+
   const testimonials = [
     {
       image1: "/bee-one.png",
@@ -23,6 +25,7 @@ function TestimonialSection() {
       description2: `"Made a song for my loving husband and we both cried as we heard it, thank you so much! Definitely recommend!"`,
     },
   ];
+
   const galleryRef = useRef(null);
 
   const scrollToNext = () => {
@@ -51,10 +54,13 @@ function TestimonialSection() {
     }
   };
 
+  
   return (
-    <div className="background-testimonial">
+    <div className="testimonials-background">
       <div className="testimonials">
+
         <h2>Testimonials</h2>
+
         <div className="slides no-scrollbar" ref={galleryRef}>
           <div className="arrows">
             <svg
@@ -111,6 +117,7 @@ function TestimonialSection() {
             </div>
           ))}
         </div>
+
       </div>
     </div>
   );

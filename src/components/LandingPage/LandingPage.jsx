@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 
 import "./LandingPage.css";
 
-import HeroSection from "./HeroSection";
+import HeroSection from "./LandingPageSections/HeroSection";
 import HowSongBeeWorksSection from "./HowSongbeeWorksSection/HowSongbeeWorksSection";
-import TestimonialsSection from "./TestimonialsSection/TestimonialsSection";
+import TestimonialsSection from "./LandingPageSections/TestimonialsSection";
 import SampleSongsSection from "./SampleSongsSection/SampleSongsSection";
 import GuaranteeSection from "./GuaranteeSection/GuaranteeSection";
 
@@ -24,7 +24,7 @@ function LandingPage({ routeVariants }) {
         <HeroSection />
         <HowSongBeeWorksSection />
       </div>
-
+      
       <TestimonialsSection />
       <SampleSongsSection />
 
