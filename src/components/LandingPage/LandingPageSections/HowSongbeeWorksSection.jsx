@@ -2,13 +2,13 @@ import React from "react";
 
 import StartSongButton from "../StartSongButton/StartSongButton";
 
-import './HowSongBeeWorksSection.css'
+import '../LandingPage.css'
 
 
 function HowSongBeeWorks() {
 
   return (
-    <div className="landing-section">
+    <div className="works-section">
 
       <h2>How Songbee Works</h2>
 
