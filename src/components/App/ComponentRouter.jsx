@@ -18,10 +18,10 @@ import AdminPage from '../AdminPage/AdminPage';
 import EditRequestPage from '../EditRequestPage/EditRequestPage';
 import UserDetails from '../UserPage/UserPageTabs/UserDetailsTab/UserDetailsPage';
 
-import FaqPage from '../FaqPage/FaqPage';
-import PrivacyPolicyPage from '../PrivacyPolicyPage/PrivacyPolicyPage';
-import QualityGuaranteePage from '../QualityGuaranteePage/QualityGuaranteePage';
-import TermsAndConditionsPage from '../TermsAndConditionsPage/TermsAndConditionsPage';
+import FaqPage from '../InfoPages/FaqPage/FaqPage';
+import PrivacyPolicyPage from '../InfoPages/PrivacyPolicyPage/PrivacyPolicyPage';
+import QualityGuaranteePage from '../InfoPages/QualityGuaranteePage/QualityGuaranteePage';
+import TermsAndConditionsPage from '../Infopages/TermsAndConditionsPage/TermsAndConditionsPage';
 
 import JoinArtistPage from '../JoinArtistPage/JoinArtistPage';
 import ArtistCommunity from '../JoinArtistPage/ArtistCommunity';
