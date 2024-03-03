@@ -141,7 +141,7 @@ Testimonials Section
   display: flex;
   flex-direction: column;
   margin: 50px 42px;
-  padding: 0px 30px 30px 30px;
+  padding: 0px 30px 45px 30px;
   position: relative;
   background-color: #fff4df;
   border-radius: 25px;
@@ -200,20 +200,16 @@ Sample Songs Section
 -------------------------------------------------------------------------------- */
 
 .sample-outer-bg {
-  width: 100%;
   background-color: white;
-  padding: 65px;
-  padding-bottom: 50px;
+  padding: 65px 65px 50px;
 }
 
 .sample-inner-bg {
   position: relative;
-  background-color: #fff4df;
-  padding-bottom: 75px;
-  padding-top: 50px;
+  padding: 1px 0 35px;
+  margin: -75px 0 25px;
   border-radius: 25px;
-  margin-top: -75px;
-  margin-bottom: 25px;
+  background-color: #fff4df;
   box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
 }
 
@@ -223,15 +219,14 @@ Sample Songs Section
   scroll-snap-type: x mandatory;
   width: 100%;
   height: max-content;
-  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .active-audio {
   display: flex;
   width: 100%;
   min-width: 100%;
-  justify-content: space-around;
-  padding: 0 100px;
+  justify-content: space-evenly;
   scroll-snap-align: start;
   height: 100%;
   align-items: center;
