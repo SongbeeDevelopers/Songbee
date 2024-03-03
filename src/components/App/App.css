@@ -71,10 +71,47 @@ Responsivity
 -------------------------------------------------------------------------------- */
 
 @media (max-width: 815px) {
-  /* landing page */
+  /* LANDING PAGE */
+
+  /* sizing */
   .hero h1 {
     font-size: 48px;
     line-height: 3.5rem;
   }
+  .hero p {
+    font-size: medium;
+  }
+  .main-button {
+    width: 12rem;
+    height: 2.3rem;
+    font-size: 1.2rem;
+  }
+  /* scrollables */
+ 
   
+  /* margins */
+  .works-section {
+    margin-top: 25px;
+  }
+  .testimonials-background {
+    margin-top: 50px;
+  }
+  .testimonials {
+    margin-top: 25px;
+    margin-bottom: 35px;
+  }
+  .sample-outer-bg {
+    padding-bottom: 25px;
+  }
+  .guarantee-container {
+    padding-top: 50px;
+    padding-bottom: 0;
+  }
+  .guarantee-sky-bg {
+    padding-top: 75px;
+    padding-bottom: 75px
+  }
+  footer {
+    margin-top: 50px;
+  }
 }

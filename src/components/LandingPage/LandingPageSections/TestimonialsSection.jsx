@@ -108,12 +108,14 @@ function TestimonialSection() {
                 <h3>{item.name1}</h3>
                 <p>{item.description1}</p>
               </div>
+              {/* {document.documentElement.clientWidth > 815 && */}
               <div className="active-slideTwo">
                 <img className="bee-two" src={item.image2} alt="" />
                 <img className="star-two" src="/star-one.png" alt="" />
                 <h3>{item.name2}</h3>
                 <p>{item.description2}</p>
               </div>
+            {/* } */}
             </div>
           ))}
         </div>
