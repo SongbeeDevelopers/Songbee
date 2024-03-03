@@ -2,34 +2,40 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
 
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import ProtectedRoute from './ProtectedRoute';
 
+// login/reg
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
+// home
 import LandingPage from '../LandingPage/LandingPage';
 
+// order process
 import OrderPage from '../OrderPage/OrderPage';
 import SongRequestPage from '../SongRequestPage/SongRequestPage';
+import NewOrderPage from '../OrderPage/NewOrderPage';
 import CreationPage from '../CreationPage/CreationPage';
 
+// user functionality
 import UserPage from '../UserPage/UserPage';
 import AdminPage from '../AdminPage/AdminPage';
 import EditRequestPage from '../EditRequestPage/EditRequestPage';
 import UserDetails from '../UserPage/UserPageTabs/UserDetailsTab/UserDetailsPage';
 
+// information pages
 import FaqPage from '../InfoPages/FaqPage/FaqPage';
 import PrivacyPolicyPage from '../InfoPages/PrivacyPolicyPage/PrivacyPolicyPage';
 import QualityGuaranteePage from '../InfoPages/QualityGuaranteePage/QualityGuaranteePage';
 import TermsAndConditionsPage from '../Infopages/TermsAndConditionsPage/TermsAndConditionsPage';
 
+// artist pages
 import JoinArtistPage from '../JoinArtistPage/JoinArtistPage';
 import ArtistCommunity from '../JoinArtistPage/ArtistCommunity';
 import ArtistProcess from '../JoinArtistPage/ArtistProcess';
 
+// 404
 import NotFound from '../NotFoundPage/NotFoundPage';
-
-import NewOrderPage from '../OrderPage/NewOrderPage';
 
 
 function ComponentRouter() {
