@@ -24,7 +24,7 @@ import EditRequestPage from '../EditRequestPage/EditRequestPage';
 import UserDetails from '../UserPage/UserPageTabs/UserDetailsTab/UserDetailsPage';
 
 // information pages
-import FaqPage from '../InfoPages/FaqPage/FaqPage';
+import FaqPage from '../InfoPages/FaqPage';
 import PrivacyPolicyPage from '../InfoPages/PrivacyPolicyPage';
 import QualityGuaranteePage from '../InfoPages/QualityGuaranteePage';
 import TermsAndConditionsPage from '../InfoPages/TermsAndConditionsPage';
