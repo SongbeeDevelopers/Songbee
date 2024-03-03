@@ -2,8 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import OneFaq from './OneFaq';
 
-import './FaqPage.css'
-
 const faqs = [
   {
     question: "Song Cost & Length",

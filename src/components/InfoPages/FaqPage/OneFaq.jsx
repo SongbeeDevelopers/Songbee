@@ -1,8 +1,6 @@
 import React from "react";
 import { useState } from "react";
 
-import './FaqPage.css'
-
 function OneFaq({ question, answer }) {
 
 const [open, setOpen] = useState(false);

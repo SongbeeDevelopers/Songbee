@@ -25,9 +25,9 @@ import UserDetails from '../UserPage/UserPageTabs/UserDetailsTab/UserDetailsPage
 
 // information pages
 import FaqPage from '../InfoPages/FaqPage/FaqPage';
-import PrivacyPolicyPage from '../InfoPages/PrivacyPolicyPage/PrivacyPolicyPage';
-import QualityGuaranteePage from '../InfoPages/QualityGuaranteePage/QualityGuaranteePage';
-import TermsAndConditionsPage from '../Infopages/TermsAndConditionsPage/TermsAndConditionsPage';
+import PrivacyPolicyPage from '../InfoPages/PrivacyPolicyPage';
+import QualityGuaranteePage from '../InfoPages/QualityGuaranteePage';
+import TermsAndConditionsPage from '../InfoPages/TermsAndConditionsPage';
 
 // artist pages
 import JoinArtistPage from '../JoinArtistPage/JoinArtistPage';
