@@ -56,7 +56,7 @@ function SampleSongs() {
 
   return (
     <div className="sample-outer-bg">
-    <div className="sample-inner-bg">
+    <div className="sample-songs">
 
       <div>
         <h2>Sample Songs</h2>

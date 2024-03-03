@@ -1,6 +1,6 @@
 import React from "react";
 
-import StartSongButton from "../../FilterBar/StartSongButton/StartSongButton";
+import StartSongButton from "../../StartSongButton/StartSongButton";
 
 import '../LandingPage.css'
 

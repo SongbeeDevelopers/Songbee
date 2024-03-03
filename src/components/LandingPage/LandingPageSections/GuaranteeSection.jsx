@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import StartSongButton from "../../FilterBar/StartSongButton/StartSongButton";
+import StartSongButton from "../../StartSongButton/StartSongButton";
 
 import '../LandingPage.css'
 
