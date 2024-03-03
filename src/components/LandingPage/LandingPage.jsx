@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import HeroSection from "./LandingPageSections/HeroSection";
 import HowSongBeeWorksSection from "./LandingPageSections/HowSongbeeWorksSection";
 import TestimonialsSection from "./LandingPageSections/TestimonialsSection";
-import SampleSongsSection from "./SampleSongsSection/SampleSongsSection";
+import SampleSongsSection from "./LandingPageSections/SampleSongsSection";
 import GuaranteeSection from "./LandingPageSections/GuaranteeSection";
 
 import "./LandingPage.css";

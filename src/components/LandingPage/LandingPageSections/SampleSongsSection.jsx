@@ -1,7 +1,7 @@
 import React from "react";
 import { useRef } from "react";
 
-import './SampleSongsSection.css'
+import '../LandingPage.css'
 
 
 function SampleSongs() {
@@ -15,7 +15,6 @@ function SampleSongs() {
       audio1: "/01 Basics New Mix 3.mp3",
       audio2: "/Berch.mp3",
     },
-
     {
       title1: "Country",
       title2: "Folk",
@@ -24,7 +23,6 @@ function SampleSongs() {
       audio1: "/Country Matt Mackey.mp3",
       audio2: "/FolkAdam Suto.mp3",
     },
-
     {
       title1: "Rock",
       title2: "Singer Songwriter",
@@ -57,8 +55,8 @@ function SampleSongs() {
 
 
   return (
-    <div className="outer-sample">
-    <div className="sample-songs">
+    <div className="sample-outer-bg">
+    <div className="sample-inner-bg">
 
       <div>
         <h2>Sample Songs</h2>

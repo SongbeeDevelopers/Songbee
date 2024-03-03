@@ -9,6 +9,31 @@ h2 {
   color: #070e15;
 }
 
+.arrows {
+  display: flex;
+  justify-content: center;
+  width: 25%;
+  margin-top: 10px;
+  margin-left: 17px;
+  gap: 30px;
+  color: rgb(0, 0, 0);
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+
+
 
 /* --------------------------------------------------------------------------------
 Hero Section
@@ -174,7 +199,51 @@ height: 100%;
 Sample Songs Section
 -------------------------------------------------------------------------------- */
 
+.sample-outer-bg {
+  width: 100%;
+  background-color: white;
+  padding: 65px;
+  padding-bottom: 50px;
+}
 
+.sample-inner-bg {
+  position: relative;
+  background-color: #fff4df;
+  padding-bottom: 75px;
+  padding-top: 50px;
+  border-radius: 25px;
+  margin-top: -75px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+}
+
+.all-audios {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  width: 100%;
+  height: max-content;
+  margin-top: 30px;
+}
+
+.active-audio {
+  display: flex;
+  width: 100%;
+  min-width: 100%;
+  justify-content: space-around;
+  padding: 0 100px;
+  scroll-snap-align: start;
+  height: 100%;
+  align-items: center;
+}
+
+.active-audio h3 {
+  text-align: center;
+}
+
+.active-audio p {
+  text-align: center;
+}
 
 /* --------------------------------------------------------------------------------
 Guarantee Section
