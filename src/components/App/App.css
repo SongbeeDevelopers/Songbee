@@ -67,11 +67,23 @@ a {
 }
 
 /* --------------------------------------------------------------------------------
-Responsivity
+Device Responsivity
 -------------------------------------------------------------------------------- */
 
 @media (max-width: 815px) {
   /* LANDING PAGE */
+
+  /* layout */
+  .works-arrows {
+    display: none;
+  }
+  .works-images {
+    flex-direction: column;
+    align-items: center;
+  }
+  .beesButton {
+    margin-top: 30px;
+  }
 
   /* sizing */
   .hero h1 {
@@ -81,14 +93,20 @@ Responsivity
   .hero p {
     font-size: medium;
   }
+  .works-section h2 {
+    margin-bottom: 0px;
+  }
   .main-button {
     width: 12rem;
     height: 2.3rem;
     font-size: 1.2rem;
   }
   /* scrollables */
- 
-  
+  .active-slide {
+    flex-direction: column;
+    align-items: center;
+  }
+
   /* margins */
   .works-section {
     margin-top: 25px;
