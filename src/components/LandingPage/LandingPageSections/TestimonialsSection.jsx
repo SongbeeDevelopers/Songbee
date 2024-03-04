@@ -53,7 +53,12 @@ function TestimonialSection() {
 
   const scrollToNext = () => {
     if (galleryRef.current) {
-      const totalSlides = testimonials.length;
+      let totalSlides
+      if (document.documentElement.clientWidth > 815) {
+        totalSlides = testimonials.length;
+      } else {
+        totalSlides = testimonialsSingle.length
+      }
       const currentSlide = galleryRef.current.scrollLeft / galleryRef.current.clientWidth;
       const nextIndex = (currentSlide + 1) % totalSlides;
 
@@ -66,7 +71,12 @@ function TestimonialSection() {
 
   const scrollToPrev = () => {
     if (galleryRef.current) {
-      const totalSlides = testimonials.length;
+      let totalSlides
+      if (document.documentElement.clientWidth > 815) {
+        totalSlides = testimonials.length;
+      } else {
+        totalSlides = testimonialsSingle.length
+      }
       const currentSlide = galleryRef.current.scrollLeft / galleryRef.current.clientWidth;
       const prevIndex = (currentSlide - 1 + totalSlides) % totalSlides;
 
@@ -125,7 +135,7 @@ function TestimonialSection() {
 
           {/* depending on window size, displays one or two testimonials per page */}
 
-          {/* {document.documentElement.clientWidth > 815 ? 
+          {document.documentElement.clientWidth > 815 ? 
             testimonials.map((item) => (
               <div className="active-slide" key={item.name1}>
                 <div className="active-slideOne">
@@ -143,17 +153,6 @@ function TestimonialSection() {
               </div>
             ))
           :
-            singleTestimonials.map((item) => (
-              <div className="active-slide" key={item.name1}>
-                <img className="bee-one" src={item.image1} alt="" />
-                <img className="star-one" src="/star-one.png" alt="" />
-                <h3>{item.name1}</h3>
-                <p>{item.description1}</p>
-              </div>
-            ))
-          } */}
-
-          {
             testimonialsSingle.map((item) => (
               <div className="active-slide" key={item.name1}>
                 <img className="bee-one" src={item.image1} alt="" />
