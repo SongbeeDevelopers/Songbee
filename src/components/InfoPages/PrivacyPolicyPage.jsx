@@ -2,6 +2,8 @@ import React from "react";
 
 import { motion } from "framer-motion";
 
+import './InfoPages.css'
+
 function PrivacyPolicyPage({ routeVariants }) {
 
   return (
