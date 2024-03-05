@@ -77,8 +77,7 @@ Device Responsivity
 }
 
 @media (max-width: 815px) {
-  /* LANDING PAGE */
-
+  /* --- LANDING PAGE --- */
   /* layout */
   .works-arrows {
     display: none;
@@ -94,7 +93,6 @@ Device Responsivity
   .beesButton {
     margin-top: 30px;
   }
-
   /* sizing */
   audio {
     width: 275px
@@ -122,8 +120,7 @@ Device Responsivity
     flex-direction: column;
     align-items: center;
   }
-
-  /* margin/padding */
+  /* margin & padding */
   .works-section {
     margin-top: 25px;
   }
@@ -147,18 +144,11 @@ Device Responsivity
   .guarantee-inner-bg {
     padding: 25px 50px
   }
-  footer {
-    margin-top: 50px;
-  }
-  .flexContainer {
-    flex-direction: column;
-    align-items: center;
-  }
 }
 
 @media (max-width: 575px) {
   .hero h1 {
-    font-size: 40px;
+    font-size: 44px;
     line-height: 3rem;
   }
   .container {
@@ -181,4 +171,15 @@ Device Responsivity
   .guarantee-inner-bg p {
     font-size: small;
   }
+  footer {
+    margin-top: 50px;
+  }
+  .flexContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* --- login & register --- */
+
+  
 }

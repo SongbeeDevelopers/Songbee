@@ -14,6 +14,7 @@ function LoginPage({ routeVariants }) {
 
   return (
     <motion.div
+      className='container'
       variants={routeVariants}
       initial='initial'
       animate='final'

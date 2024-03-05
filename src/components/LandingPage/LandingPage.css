@@ -2,7 +2,10 @@
 General
 -------------------------------------------------------------------------------- */
 
-h2 {
+.guarantee-inner-bg h2,
+.works-section h2,
+.sample-songs h2,
+.testimonials h2 {
   color: #070e15;
   font-size: 3rem;
   font-weight: 600;
