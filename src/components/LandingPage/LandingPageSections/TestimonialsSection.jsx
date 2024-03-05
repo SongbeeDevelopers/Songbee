@@ -1,9 +1,12 @@
 import React, { useRef } from "react";
+import { useMediaQuery } from "react-responsive";
 
 import '../LandingPage.css'
 
 
 function TestimonialSection() {
+
+  const isMobile = useMediaQuery({ query: `(max-width: 815px)`} )
 
   const testimonials = [
     {
@@ -54,7 +57,7 @@ function TestimonialSection() {
   const scrollToNext = () => {
     if (galleryRef.current) {
       let totalSlides
-      if (document.documentElement.clientWidth > 815) {
+      if (isMobile === false) {
         totalSlides = testimonials.length;
       } else {
         totalSlides = testimonialsSingle.length
@@ -72,7 +75,7 @@ function TestimonialSection() {
   const scrollToPrev = () => {
     if (galleryRef.current) {
       let totalSlides
-      if (document.documentElement.clientWidth > 815) {
+      if (isMobile === false) {
         totalSlides = testimonials.length;
       } else {
         totalSlides = testimonialsSingle.length
@@ -135,7 +138,16 @@ function TestimonialSection() {
 
           {/* depending on window size, displays one or two testimonials per page */}
 
-          {document.documentElement.clientWidth > 815 ? 
+          {isMobile ? 
+            testimonialsSingle.map((item) => (
+              <div className="active-slide" key={item.name1}>
+                <img className="bee-one" src={item.image1} alt="" />
+                <img className="star-one" src="/star-one.png" alt="" />
+                <h3>{item.name1}</h3>
+                <p>{item.description1}</p>
+              </div>
+            ))
+          :
             testimonials.map((item) => (
               <div className="active-slide" key={item.name1}>
                 <div className="active-slideOne">
@@ -150,15 +162,6 @@ function TestimonialSection() {
                   <h3>{item.name2}</h3>
                   <p>{item.description2}</p>
                 </div>
-              </div>
-            ))
-          :
-            testimonialsSingle.map((item) => (
-              <div className="active-slide" key={item.name1}>
-                <img className="bee-one" src={item.image1} alt="" />
-                <img className="star-one" src="/star-one.png" alt="" />
-                <h3>{item.name1}</h3>
-                <p>{item.description1}</p>
               </div>
             ))
           }

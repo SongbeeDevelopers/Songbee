@@ -70,6 +70,12 @@ a {
 Device Responsivity
 -------------------------------------------------------------------------------- */
 
+@media (max-width: 1000px) {
+  .active-slide {
+    padding: 0 50px;
+  }
+}
+
 @media (max-width: 815px) {
   /* LANDING PAGE */
 
