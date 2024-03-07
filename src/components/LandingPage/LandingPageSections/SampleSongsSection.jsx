@@ -1,10 +1,13 @@
 import React from "react";
 import { useRef } from "react";
+import { useMediaQuery } from "react-responsive";
 
-import './SampleSongsSection.css'
+import '../LandingPage.css'
 
 
 function SampleSongs() {
+
+  const isMobile = useMediaQuery( { query: `(max-width: 815px)`} )
 
   const sampleSongs = [
     {
@@ -15,7 +18,6 @@ function SampleSongs() {
       audio1: "/01 Basics New Mix 3.mp3",
       audio2: "/Berch.mp3",
     },
-
     {
       title1: "Country",
       title2: "Folk",
@@ -24,7 +26,6 @@ function SampleSongs() {
       audio1: "/Country Matt Mackey.mp3",
       audio2: "/FolkAdam Suto.mp3",
     },
-
     {
       title1: "Rock",
       title2: "Singer Songwriter",
@@ -34,6 +35,38 @@ function SampleSongs() {
       audio2: "/Singer Songwriter Michael LeFevre (1).mp3",
     },
   ];
+  const sampleSongsSingle = [
+    {
+      title1: "Pop",
+      name1: "Hannah Rutti ",
+      audio1: "/01 Basics New Mix 3.mp3",
+    },
+    {
+      title1: "Singer Songwriter",
+      name1: "Berch",
+      audio1: "/Berch.mp3",
+    },
+    {
+      title1: "Country",
+      name1: "Matt Mackey",
+      audio1: "/Country Matt Mackey.mp3",
+    },
+    {
+      title1: "Folk",
+      name1: "Adam Soto",
+      audio1: "/FolkAdam Suto.mp3",
+    },
+    {
+      title1: "Rock",
+      name1: "Tommy Marra",
+      audio1: "/Rock-Tommy Marra.mp3",
+    },
+    {
+      title1: "Singer Songwriter",
+      name1: "Michael LeFevre",
+      audio1: "/Singer Songwriter Michael LeFevre (1).mp3",
+    },
+  ]
 
   const galleryRef = useRef(null);
 
@@ -57,7 +90,7 @@ function SampleSongs() {
 
 
   return (
-    <div className="outer-sample">
+    <div className="sample-outer-bg">
     <div className="sample-songs">
 
       <div>
@@ -103,23 +136,35 @@ function SampleSongs() {
       </div>
 
       <div ref={galleryRef} className="all-audios no-scrollbar">
-        {sampleSongs.map((song) => (
-          <div key={sampleSongs.indexOf(song)} className="active-audio">
-
-            <div className="left-audio">
-              <h3>{song.title1}</h3>
-              <p>{song.name1}</p>
-              <audio controls src={song.audio1}></audio>
+        {isMobile ?
+          sampleSongsSingle.map((song) => (
+            <div key={sampleSongs.indexOf(song)} className="active-audio">
+              <div className="left-audio">
+                <h3>{song.title1}</h3>
+                <p>{song.name1}</p>
+                <audio controls src={song.audio1}></audio>
+              </div>
             </div>
+          ))
+        :
+          sampleSongs.map((song) => (
+            <div key={sampleSongs.indexOf(song)} className="active-audio">
 
-            <div className="right-audio">
-              <h3>{song.title2}</h3>
-              <p>{song.name2}</p>
-              <audio controls src={song.audio2}></audio>
+              <div className="left-audio">
+                <h3>{song.title1}</h3>
+                <p>{song.name1}</p>
+                <audio controls src={song.audio1}></audio>
+              </div>
+
+              <div className="right-audio">
+                <h3>{song.title2}</h3>
+                <p>{song.name2}</p>
+                <audio controls src={song.audio2}></audio>
+              </div>
+
             </div>
-
-          </div>
-        ))}
+          ))
+        }
       </div>
     </div>
     </div>

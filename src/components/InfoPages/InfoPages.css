@@ -1,3 +1,57 @@
+/* --------------------------------------------------------------------------------
+General
+-------------------------------------------------------------------------------- */
+
+.headerP {
+    color: var(--black-4);
+    text-align: center;
+    letter-spacing: -0.01em;
+    margin-top: 20px;
+    font-family: Oswald, sans-serif;
+    font-size: 4.6875rem;
+    font-weight: 300;
+    line-height: 4.6875rem;
+    position: relative;
+    font: 75px;
+}
+
+li {
+    color: gray;
+    margin-bottom: 8px;
+}
+
+.privacy-policy h2,
+.guaranteePage h2 {
+    color: #5b6b7b;
+    font-size: 15px;
+    margin-bottom: -12px;
+}
+
+.privacy-policy p,
+.guaranteePage p {
+    color: grey;
+    line-height: 1.5rem;
+    margin-bottom: 10px;
+    letter-spacing: 0.015em;
+    margin-bottom: 20px;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+}
+
+.privacy-policy li:first-child {
+    margin-top: -16px;
+}
+
+.mail-guarantee {
+    color: #feaf17;
+}
+
+
+/* --------------------------------------------------------------------------------
+FAQ Page
+-------------------------------------------------------------------------------- */
+
 .collapse-area {
     max-width: 800px;
     width: 100%;
@@ -151,4 +205,45 @@
 
 .suii {
     color: #feaf17;
+}
+
+/* --------------------------------------------------------------------------------
+Quality Guarantee Page
+-------------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------------
+Privacy Policy Page
+-------------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------------
+Terms and Conditions Page
+-------------------------------------------------------------------------------- */
+
+.termsHeader {
+    color: var(--black-4);
+    text-align: center;
+    letter-spacing: -0.01em;
+    margin-top: 20px;
+    font-family: Oswald, sans-serif;
+    font-size: 4.6875rem;
+    font-weight: 300;
+    line-height: 4.6875rem;
+    position: relative;
+}
+
+.termsSubHeader {
+    color: #5b6b7b;
+    font-size: 15px;
+    margin-bottom: -12px;
+}
+
+.termsText {
+    color: grey;
+    line-height: 1.5rem;
+    margin-bottom: 10px;
+    letter-spacing: 0.015em;
+    margin-bottom: 20px;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: 1.5rem;
 }

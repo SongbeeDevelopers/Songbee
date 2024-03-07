@@ -1,92 +1,146 @@
 /* --------------------------------------------------------------------------------
-Grid
+General
 -------------------------------------------------------------------------------- */
 
-.grid {
+.guarantee-inner-bg h2,
+.works-section h2,
+.sample-songs h2,
+.testimonials h2 {
+  color: #070e15;
+  font-size: 3rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.arrows {
+  color: rgb(0, 0, 0);
   display: flex;
-  flex: 0 1 auto;
-  /* defaults to 'row' */
-  flex-direction: row;
-  flex-wrap: wrap;
-  /* defaults to 'flex-start' */
-  justify-content: flex-start;
-  align-items: flex-start;
+  gap: 30px;
+  justify-content: center;
+  width: 25%;
+  margin-top: 10px;
+  margin-left: 17px;
+}
+.arrow-next {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.arrow-prev {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-.grid-col {
-  flex: 0 0 auto;
-  padding: 0 0.5rem 0.5rem;
-  box-sizing: border-box;
+svg {
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
 }
 
-.grid-col_1 {
-  flex-basis: 8.33333333%;
-  max-width: 8.33333333%;
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
-.grid-col_2 {
-  flex-basis: 16.66666667%;
-  max-width: 16.66666667%;
+/* --------------------------------------------------------------------------------
+Hero Section
+-------------------------------------------------------------------------------- */
+
+.hero {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0px;
+}
+  
+.hero span {
+  color: #feaf17;
+}
+  
+.hero p {
+  color: #474546;
+  font-size: 1.2rem;
+  text-align: center;
 }
 
-.grid-col_3 {
-  flex-basis: 25%;
-  max-width: 25%;
+
+/* --------------------------------------------------------------------------------
+How Songbee Works Section
+-------------------------------------------------------------------------------- */
+
+.works-section {
+  background-color: white;
+  position: relative;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 50px;
+  padding: 0 30px 30px;
+  border-radius: 25px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
 }
 
-.grid-col_4 {
-  flex-basis: 33.33333333%;
-  max-width: 33.33333333%;
+.works-arrows {
+  display: flex;
+  justify-content: space-evenly;
 }
 
-.grid-col_5 {
-  flex-basis: 41.66666667%;
-  max-width: 41.66666667%;
+.works-arrows img {
+  max-width: 9rem;
 }
 
-.grid-col_6 {
-  flex-basis: 50%;
-  max-width: 50%;
+.works-images {
+  display: flex;
+  justify-content: center;
+  gap: 10%;
 }
 
-.grid-col_7 {
-  flex-basis: 58.33333333%;
-  max-width: 58.33333333%;
+.works-images div {
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.275s;
 }
 
-.grid-col_8 {
-  flex-basis: 66.66666667%;
-  max-width: 66.66666667%;
+.works-images div:hover {
+  transform: scale(1.2);
 }
 
-.grid-col_9 {
-  flex-basis: 75%;
-  max-width: 75%;
+.works-images img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
 }
 
-.grid-col_10 {
-  flex-basis: 83.33333333%;
-  max-width: 83.33333333%;
+.works-images span {
+  color: #474546;
+  width: 100%;
+  text-align: center;
+  font-size: 1.7rem;
+  line-height: 1.9rem;
+  font-weight: 700;
+  margin-top: 15px;
 }
 
-.grid-col_11 {
-  flex-basis: 91.66666667%;
-  max-width: 91.66666667%;
-}
-
-.grid-col_12 {
-  flex-basis: 100%;
-  max-width: 100%;
-}
-
-.arrows-one:hover {
-  transform: none !important;
-  box-shadow: none !important;
-}
-
-.arrows-two:hover {
-  transform: none !important;
-  box-shadow: none !important;
+.works-images p {
+  color: #474546;
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 8px;
+  padding: 0 9px;
 }
 
 .beesButton {
@@ -97,105 +151,166 @@ Grid
   transform: translateX(-50%);
 }
 
-svg {
-  width: 36px;
-  height: 36px;
-  cursor: pointer;
+/* --------------------------------------------------------------------------------
+Testimonials Section
+-------------------------------------------------------------------------------- */
+
+.testimonials-background {
+  background-color: white;
+  padding: 25px;
+  margin-top: 75px;
 }
 
-.arrow-next {
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.arrow-prev {
-  position: absolute;
-  left: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.admin-button {
-  margin: 0 auto;
-  z-index: 100;
-  width: 6rem;
-  height: 3rem;
-  color: var(--black\<deleted\|variable-f6301105\>);
-  background-color: #feaf17;
-  border-radius: 20px;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 3px;
-  font-family: Poppins, sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  transition: background-color 0.45s;
+.testimonials {
+  background-color: #fff4df;
   display: flex;
-  position: static;
-  top: 99px;
-  left: 219px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  border: 0;
-  outline: 0;
+  flex-direction: column;
+  position: relative;
+  margin: 50px 42px;
+  padding: 0px 30px 45px 30px;
+  border-radius: 25px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+}
+
+.testimonials h2 {
+  margin-bottom: -2.1rem;
+}
+
+.slides {
+  width: 100%;
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  margin-top: 60px;
+}
+
+.active-slide {
+  min-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 100px;
+  scroll-snap-align: start;
+}
+
+.active-slide p {
+  width: 250px;
+  max-width: 250px;
+  text-align: center;
+  margin-top: 0;
+}
+
+.active-slideOne,
+.active-slideTwo {
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 50%;
+height: 100%;
+}
+
+.bee-one,
+.bee-two {
+  min-width: 288px;
+  height: 288px;
+}
+
+.star-one,
+.star-two {
+  width: 127.98px;
+}
+
+/* --------------------------------------------------------------------------------
+Sample Songs Section
+-------------------------------------------------------------------------------- */
+
+.sample-outer-bg {
+  background-color: white;
+  padding: 65px 65px 50px;
+}
+
+.sample-songs {
+  background-color: #fff4df;
+  position: relative;
+  padding: 1px 0 35px;
+  margin: -75px 0 25px;
+  border-radius: 25px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
 }
 
 .sample-songs h2 {
   text-align: center;
   font-size: 3rem;
   font-weight: 600;
-  margin: 0;
 }
 
-.headerP {
-  color: var(--black-4);
+.all-audios {
+  height: max-content;
+  width: 100%;
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  margin-bottom: 30px;
+}
+
+.active-audio {
+  width: 100%;
+  min-width: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  height: 100%;
+  scroll-snap-align: start;
+}
+
+.active-audio h3 {
   text-align: center;
-  letter-spacing: -0.01em;
-  margin-top: 20px;
-  font-family: Oswald, sans-serif;
-  font-size: 4.6875rem;
-  font-weight: 300;
-  line-height: 4.6875rem;
-  position: relative;
-  font: 75px;
 }
 
-li {
-  color: gray;
-  margin-bottom: 8px;
+.active-audio p {
+  text-align: center;
 }
 
-.privacy-policy h2,
-.guaranteePage h2 {
-  color: #5b6b7b;
-  font-size: 15px;
-  margin-bottom: -12px;
-}
-
-.privacy-policy p,
-.guaranteePage p {
-  color: grey;
-  line-height: 1.5rem;
-  margin-bottom: 10px;
-  letter-spacing: 0.015em;
-  margin-bottom: 20px;
-  font-size: 0.9375rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-}
-
-.privacy-policy li:first-child {
-  margin-top: -16px;
-}
-
-.mail-guarantee {
-  color: #feaf17;
-}
+/* --------------------------------------------------------------------------------
+Guarantee Section
+-------------------------------------------------------------------------------- */
 
 .guarantee-container {
-  /* background-color: white; */
-  padding-left: 65px;
-  padding-right: 65px;
-  padding-top: 75px
+  padding: 75px 65px 0;
+}
+
+.guarantee-container h2 {
+  margin-bottom: 0;
+}
+
+.guarantee-sky-bg {
+  background-color: rgba(184, 213, 224, 0.73);
+  background-image: url("/guarantee-background.png");
+  background-position: 50%;
+  background-size: 100rem;
+  background-attachment: fixed;
+  padding: 7.5rem 1.4rem;
+  border-radius: 25px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+}
+
+.guarantee-inner-bg {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: center;
+  margin: 0 50px;
+  padding: 25px 100px;
+  border-radius: 25px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+}
+
+.guarantee-text-container {
+  margin: auto;
+  max-width: 700px;
+}
+
+.guarantee-link {
+  color: #feaf17;
+  font-weight: bold;
 }

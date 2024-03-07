@@ -1,22 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import StartSongButton from "../StartSongButton/StartSongButton";
+import StartSongButton from "../../StartSongButton/StartSongButton";
 
-import "./GuaranteeSection.css";
+import '../LandingPage.css'
 
 
 function Guarantee() {
 
   return (
-    <div className="bee-guarantee">
-      <div className="bee-inner-background">
+    <div className="guarantee-sky-bg">
+      <div className="guarantee-inner-bg">
 
         <h2>
-          Song <span className="guarantee">Guarantee</span>
+          Song Guarantee
         </h2>
 
-        <div className="guarantee-text">
+        <div className="guarantee-text-container">
           <p>
             With our <Link className="guarantee-link" to="/guarantee" > Songbee Quality Guarantee </Link>, you can be reassured that your
             song will be a hit! Feel empowered to rework, rewrite, and team up

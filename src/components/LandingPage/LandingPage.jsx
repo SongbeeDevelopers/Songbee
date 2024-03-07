@@ -2,13 +2,13 @@ import React from "react";
 
 import { motion } from "framer-motion";
 
-import "./LandingPage.css";
+import HeroSection from "./LandingPageSections/HeroSection";
+import HowSongBeeWorksSection from "./LandingPageSections/HowSongbeeWorksSection";
+import TestimonialsSection from "./LandingPageSections/TestimonialsSection";
+import SampleSongsSection from "./LandingPageSections/SampleSongsSection";
+import GuaranteeSection from "./LandingPageSections/GuaranteeSection";
 
-import HeroSection from "./HeroSection/HeroSection";
-import HowSongBeeWorksSection from "./HowSongbeeWorksSection/HowSongbeeWorksSection";
-import TestimonialsSection from "./TestimonialsSection/TestimonialsSection";
-import SampleSongsSection from "./SampleSongsSection/SampleSongsSection";
-import GuaranteeSection from "./GuaranteeSection/GuaranteeSection";
+import "./LandingPage.css";
 
 
 function LandingPage({ routeVariants }) {
@@ -24,7 +24,7 @@ function LandingPage({ routeVariants }) {
         <HeroSection />
         <HowSongBeeWorksSection />
       </div>
-
+      
       <TestimonialsSection />
       <SampleSongsSection />
 
