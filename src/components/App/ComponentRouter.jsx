@@ -41,6 +41,9 @@ import ArtistProcess from '../JoinArtistPage/ArtistProcess';
 
 import NotFound from '../NotFoundPage/NotFoundPage';
 
+//jr pages
+import JrCheckoutPage from '../JrRequestPage/JrRequestPage';
+
 
 function ComponentRouter() {
 
@@ -96,6 +99,10 @@ function ComponentRouter() {
 
             <Route exact path="/neworder">
               <NewOrderPage routeVariants={routeVariants} />
+            </Route>
+
+            <Route exact path="/jrcheckout">
+              <JrCheckoutPage routeVariants={routeVariants} />
             </Route>
 
             <Route exact path="/join-artist">
