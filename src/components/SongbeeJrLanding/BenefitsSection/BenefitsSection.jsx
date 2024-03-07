@@ -10,9 +10,9 @@ function BenefitsSection() {
         <>
        <div className="bg-howItWorks">
         <div className="header"> 
-          <div className="imageWrapper">
+          {/* <div className="imageWrapper"> */}
             <img src="benefits.png" className="benefitsImg" />
-          </div> 
+          {/* </div>  */}
         </div>
       </div>
        
