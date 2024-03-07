@@ -23,10 +23,9 @@ function SBjrLandingPage({ routeVariants }) {
     <div className="container">
         <HeroSectionJR />
         <HowSongbeeJrWorks />
+        {/* <BenefitsSection /> */}
+         {/* <ShopByAge /> */}
     </div>
-
-    <BenefitsSection />
-    <ShopByAge />
 
 
     </motion.div>
