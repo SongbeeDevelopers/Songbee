@@ -6,6 +6,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import SBjrLandingPage from '../SongbeeJrLanding/SBjrLandingPage';
 
 import LandingPage from '../LandingPage/LandingPage';
 
@@ -25,6 +26,7 @@ import TermsAndConditionsPage from '../TermsAndConditionsPage/TermsAndConditions
 import JoinArtistPage from '../JoinArtistPage/JoinArtistPage';
 import ArtistCommunity from '../JoinArtistPage/ArtistCommunity';
 import ArtistProcess from '../JoinArtistPage/ArtistProcess';
+
 
 import NotFound from '../NotFoundPage/NotFoundPage';
 
@@ -99,6 +101,10 @@ function ComponentRouter() {
 
             <Route exact path="/faq">
               <FaqPage routeVariants={routeVariants} />
+            </Route>
+
+            <Route exact path="/songbeejr">
+              <SBjrLandingPage routeVariants={routeVariants} />
             </Route>
 
             <Route exact path="/artist-community">

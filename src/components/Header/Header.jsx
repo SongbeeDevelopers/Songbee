@@ -41,6 +41,8 @@ function Header() {
       history.push("/user");
     } else if (num === 7) {
       history.push("/admin");
+    } else if (num === 8) {
+      history.push("/songbeejr");
     }
    
   };
@@ -111,6 +113,7 @@ function Header() {
             <MenuItem onClick={() => handleClose(2)}>Start Your Song</MenuItem>
             <MenuItem onClick={() => handleClose(3)}>Artist Application</MenuItem>
             <MenuItem onClick={() => handleClose(4)}>FAQ</MenuItem>
+            <MenuItem onClick={() => handleClose(8)}>Songbee Jr</MenuItem>
             <MenuItem onClick={() => handleClose(5)}><a href="mailto:hello@songbee.com">Contact Us</a></MenuItem>
             {/* If a user is logged in, show these links */}
            
