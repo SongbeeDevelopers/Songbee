@@ -101,21 +101,25 @@ export default function JrCheckoutPage({ routeVariants }) {
               onChange={() => handleInput('recipient_relationship', event.target.value)}
             ></input>
           </div>
+          <div className='reqFormGroup'>
+          <div className='reqFormInput'>
+            <label>Describe Your Child for the Song</label>
+            <p className='reqFormPrompts'>
+            It could be anything from their favorite animal or color to their name<br/>
+            Give us a little information so we are able to customize your song to fit your child.<br/>
+          </p>
+            <div className='reqFormGroup'>
+              <input
+                value={requestData.recipient}
+                className='reqFormInput'
+                id='reqFormNameInput'
+                placeholder='Description'
+                onChange={() => handleInput('recipient', event.target.value)}
+              ></input>
+              </div>
+              </div>
+            </div>
 
-          <div className='reqFormSelect'>
-            <label>What skills do you want your child to focus on?</label>
-            <select
-              value={requestData.vibe}
-              onChange={() => handleInput('vibe', event.target.value)}
-            >
-              <option selected disabled>Select Skill</option>
-              <option value="physical">Physical</option>
-              <option value="cognitive">Cognitive</option>
-              <option value="social and emotional">Social and Emotional</option>
-              <option value="sensory and motor">Sensory and Motor</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
         </div>
             </>
         )
@@ -123,35 +127,19 @@ export default function JrCheckoutPage({ routeVariants }) {
     else if (activeStep === 1){
         return (
             <>
-                        <div className='reqFormGroup'>
+        <div className='reqFormGroup'>
           <div className='reqFormSelect'>
-            <label>Choose a Genre</label>
-            <select 
-              value={requestData.genre}
-              onChange={() => handleInput('genre', event.target.value)}
-            >
-              <option selected disabled>Select Genre</option>
-              {
-                genres.map((genre) => (
-                  <option key={genre.id} value={genre.id}>{genre.name}</option>
-                ))
-              }
-            </select>
-          </div>
-
-          <div className='reqFormSelect'>
-            <label>Set the Vibe</label>
+            <label>What emotions do you want the songs to have?</label>
             <select
               value={requestData.vibe}
               onChange={() => handleInput('vibe', event.target.value)}
             >
-              <option selected disabled>Select Vibe</option>
+              <option selected disabled>Select Emotion</option>
               <option value="happy">Happy</option>
-              <option value="lighthearted">Lighthearted</option>
-              <option value="heartfelt">Heartfelt</option>
-              <option value="romantic">Romantic</option>
-              <option value="reflective">Reflective</option>
-              <option value="somber">Somber</option>
+              <option value="sad">Sad</option>
+              <option value="excited">Excited</option>
+              <option value="angry/upset">Angry/Upset</option>
+              <option value="contemplative">Contemplative</option>
             </select>
           </div>
         </div>
@@ -176,9 +164,9 @@ export default function JrCheckoutPage({ routeVariants }) {
               onChange={() => handleInput('tempo', event.target.value)}
             >
               <option selected disabled>Select Tempo</option>
-              <option value="slow">Slow</option>
-              <option value="medium">Medium</option>
-              <option value="fast">Up-Tempo</option>
+              <option value="slow">Slow - Less instrumentals, calming vocals, great for lullabies and soothing songs</option>
+              <option value="medium">Medium - Drum beat, fun instrumental and vocal, gets your child thinking and learning</option>
+              <option value="fast">Up-Tempo - Fun drum beat, more involved instruments and vocals, get them wiggling their fingers and toes, ready to play and learn!</option>
             </select>
           </div>
         </div>
@@ -188,65 +176,55 @@ export default function JrCheckoutPage({ routeVariants }) {
     else if (activeStep === 2){
         return (
             <>
-                        <div className='reqFormGroup'>
-          <div className='reqFormInput'>
-            <label>Tell us what is most important to your song</label>
-            <input
-              value={requestData.important_what}
-              className='reqFormInput'
-              placeholder='What?'
-              onChange={() => handleInput('important_what', event.target.value)}
-            ></input>
-          </div>
-
-          <div className='reqFormInput'>
-            <label>Tell us why it is so important</label>
-            <input
-              value={requestData.important_why}
-              className='reqFormInput'
-              placeholder='Why?'
-              onChange={() => handleInput('important_why', event.target.value)}
-            ></input>
-          </div>
-        </div>
-
-        <div>
-          <h4 className='reqFormSubHeader'>Select two of our story prompts or just tell us memories and stories that you feel tell your story. </h4>
-
-          <p className='reqFormPrompts'>
-            a. What they mean to you?<br/>
-            b. How did you meet?<br/>
-            c. Inside Jokes<br/>
-            d. Advice you have for them<br/>
-            e. Describe a memory about your loved one that makes you laugh<br/>
-            f. Describe or list things about them that makes them special to you.<br/>
-            g. Other stories or memories<br/>
-          </p>
-
-          <h5 className='reqFormPrompts'>Tip: Include Descriptive language. Use your senses and really describe your feelings and emotions. Be sure it makes sense when someone outside of your relationship reads it. </h5>
-
-          <div className='reqFormGroup'>
-            <input
-              value={requestData.story1}
-              className='reqFormInput'
-              placeholder='Prompt 1'
-              onChange={() => handleInput('story1', event.target.value)}
-            ></input>
-            <input
-              value={requestData.story2}
-              className='reqFormInput'
-              placeholder='Prompt 2'
-              onChange={() => handleInput('story2', event.target.value)}
-            ></input>
+        <div className='reqFormGroup'>
+        <div className='reqFormAdditionalDetails'>
+        <h2 id='additionalDetailsHeader'>What skills do you want your child to focus on?</h2>
+            <select
+              value={requestData.vibe}
+              onChange={() => handleInput('vibe', event.target.value)}
+            >
+              <option selected disabled>Select Skill</option>
+              <option value="physical">Physical</option>
+              <option value="cognitive">Cognitive</option>
+              <option value="social and emotional">Social and Emotional</option>
+              <option value="sensory and motor">Sensory and Motor</option>
+              <option value="other">Other</option>
+            </select>
           </div>
         </div>
 
       <div className='reqFormGroup'>
         <div className='reqFormAdditionalDetails'>
-          <h2 id='additionalDetailsHeader'>Is there anything else we should know?</h2>
+          <h2 id='additionalDetailsHeader'>Describe your goal for the song, or any other details</h2>
           <input
             value={requestData.additional_info}
             placeholder='Additional Details'
+            onChange={() => handleInput('additional_info', event.target.value)}
+          ></input>
+        </div>
+      </div>
+      <div className='reqFormGroup'>
+        <div className='reqFormAdditionalDetails'>
+          <h2 id='additionalDetailsHeader'>Goal's for Your Child's Learning Song Subscription</h2>
+          <p className='reqFormPrompts'>
+            Please tell us what milestones or content you would like each song in the subscription to address.
+          </p>
+          <h3 id='additionalDetailsHeader'>Song 1</h3>
+          <input
+            value={requestData.additional_info}
+            placeholder='Milestones'
+            onChange={() => handleInput('additional_info', event.target.value)}
+          ></input>
+        <h3 id='additionalDetailsHeader'>Song 2</h3>
+          <input
+            value={requestData.additional_info}
+            placeholder='Milestones'
+            onChange={() => handleInput('additional_info', event.target.value)}
+          ></input>
+        <h3 id='additionalDetailsHeader'>Song 3</h3>
+          <input
+            value={requestData.additional_info}
+            placeholder='Milestones'
             onChange={() => handleInput('additional_info', event.target.value)}
           ></input>
         </div>
@@ -340,10 +318,10 @@ export default function JrCheckoutPage({ routeVariants }) {
     initial='initial'
     animate='final'
   >
-          <h1>Song Request Details</h1>
+          <h1>Details for Your Child's Song</h1>
 
 <p>
-  Once you provide details we can begin creating your song!
+  Once you provide details we can begin your child's journey!
 </p>
     <Box sx={{ width: '100%' }}>
       <Stepper nonLinear activeStep={activeStep}>
