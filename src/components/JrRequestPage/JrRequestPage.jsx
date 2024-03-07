@@ -52,23 +52,22 @@ export default function JrCheckoutPage({ routeVariants }) {
     if (activeStep === 0){
         return (
             <>
-                        <div className='reqFormGroup'>
+        <div className='reqFormGroup'>
           <div className='reqFormInput'>
-            <label>Who is Creating the Song?</label>
+            <label>How old is your child?</label>
+            <div className='reqFormGroup'>
             <input 
               value={requestData.requester}
               className='reqFormInput'
-              placeholder='You, the family, the team, etc.'
+              placeholder='Age Dropdown'
               onChange={() => handleInput('requester', event.target.value)}
             ></input>
           </div>
 
-          <div className='reqFormInput'>
-            <label>Is this song for a Special Occasion?</label>
             <input
               value={requestData.occasion}
               className='reqFormInput'
-              placeholder='Type the Occasion Here'
+              placeholder='Date of Birth'
               onChange={() => handleInput('occasion', event.target.value)}
             ></input>
           </div>
@@ -82,7 +81,7 @@ export default function JrCheckoutPage({ routeVariants }) {
                 value={requestData.recipient}
                 className='reqFormInput'
                 id='reqFormNameInput'
-                placeholder='Name or Nickname'
+                placeholder='Name of child or Nickname'
                 onChange={() => handleInput('recipient', event.target.value)}
               ></input>
 
@@ -98,19 +97,24 @@ export default function JrCheckoutPage({ routeVariants }) {
             <input
               value={requestData.recipient_relationship}
               className='reqFormInput'
-              placeholder='Relationship'
+              placeholder='My child, my niece, my grandson, etc.'
               onChange={() => handleInput('recipient_relationship', event.target.value)}
             ></input>
           </div>
 
-          <div className='reqFormInput'>
-              <label>What inspired your song?</label>
-              <input
-                value={requestData.inspiration}
-                className='reqFormInput'
-                placeholder='Inspiration'
-                onChange={() => handleInput('inspiration', event.target.value)}
-              ></input>
+          <div className='reqFormSelect'>
+            <label>What skills do you want your child to focus on?</label>
+            <select
+              value={requestData.vibe}
+              onChange={() => handleInput('vibe', event.target.value)}
+            >
+              <option selected disabled>Select Skill</option>
+              <option value="physical">Physical</option>
+              <option value="cognitive">Cognitive</option>
+              <option value="social and emotional">Social and Emotional</option>
+              <option value="sensory and motor">Sensory and Motor</option>
+              <option value="other">Other</option>
+            </select>
           </div>
         </div>
             </>
