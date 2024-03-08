@@ -94,6 +94,16 @@ function* loadEditPage (action) {
     }
 }
 
+
+function* jrLoadEditPage (action) {
+    try {
+        const response = yield axios.get(`/api/jr-request/current/${action.payload}`);
+        yield put({ type: "SET_JR_REQUEST_DATA", payload: response.data[0]})
+    } catch (error) {
+        console.error('SAGA loadEditPage() failed:', error);
+    }
+}
+
 function* loadAdminPage (action) {
     try {
         yield put({type: "FETCH_ALL_REQUESTS"})
@@ -118,6 +128,7 @@ function* requestSaga() {
     yield takeLatest('FETCH_CURRENT_REQUEST', fetchCurrentRequest);
     yield takeLatest('UPDATE_SONG_REQUEST', updateSongRequest);
     yield takeLatest('LOAD_EDIT_PAGE', loadEditPage);
+    yield takeLatest('JR_LOAD_EDIT_PAGE', jrLoadEditPage);
     yield takeLatest('LOAD_ADMIN_PAGE', loadAdminPage);
     yield takeLatest('FETCH_CHECKOUT', fetchCheckout);
 }
