@@ -12,7 +12,8 @@ import allUsers from './allUsers.reducer';
 import filterResults from './filterResults.reducer';
 import pendingArtists from './pendingArtists.reducer';
 import allArtists from './allArtists.reducer';
-
+import juniorRequests from './juniorRequest.reducer';
+import jrRequestData from './jrRequestData.reducer';
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
 // This is imported in index.js as rootSaga
@@ -33,6 +34,8 @@ const rootReducer = combineReducers({
   filterResults,
   pendingArtists,
   allArtists,
+  juniorRequests,
+  jrRequestData,
 
 });
 

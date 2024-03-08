@@ -66,6 +66,17 @@ CREATE TABLE "song_details" (
     "streaming_link" VARCHAR
 );
 
+
+CREATE TABLE "songbeejr_details" (
+    "id" SERIAL PRIMARY KEY,
+    "jr_request_id" integer REFERENCES "public"."jr_request"("id") ON DELETE CASCADE,
+    "url" VARCHAR (500),
+    "lyrics" VARCHAR,
+    "title" VARCHAR (250),
+    "artist_id" integer REFERENCES "artist",
+    "streaming_link" VARCHAR
+);
+
 CREATE TABLE "artist_genres" (
   "id" SERIAL PRIMARY KEY,
   "artist_id" integer REFERENCES "artist",
@@ -85,7 +96,9 @@ CREATE TABLE "jr_request" (
   "vocal_type" VARCHAR,
   "description" VARCHAR,
   "goals" VARCHAR,
-  "created_at" TIMESTAMPTZ DEFAULT NOW()
+  "created_at" TIMESTAMPTZ DEFAULT NOW(),
+   "is_complete" BOOLEAN DEFAULT FALSE,
+   "accepted"  BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE "subscription" (

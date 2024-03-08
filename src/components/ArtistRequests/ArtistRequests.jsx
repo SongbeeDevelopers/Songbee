@@ -4,20 +4,18 @@ import { useDispatch } from 'react-redux';
 
 import { motion } from 'framer-motion';
 
-import AdminRequestTable from './AdminRequestTable';
 import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import Typography from '@mui/material/Typography';
 
-import AdminArtistTable from './AdminArtistTable';
-import AdminUserTable from './AdminUserTable';
+import OngoingRequestTable from './OngoingRequestTable';
+import IncomingRequestTable from './IncomingRequestTable';
+import CompletedRequestTable from './CompletedRequestTable';
 
-import './AdminPage.css'
 
-
-function AdminPage({ routeVariants }) {
+function ArtistRequests({ routeVariants }) {
 
   const dispatch = useDispatch();
 
@@ -26,7 +24,7 @@ function AdminPage({ routeVariants }) {
 
   // on mount
   useEffect(() => {
-    dispatch({ type: "3" });
+    dispatch({ type: "FETCH_USER_REQUESTS" });
   }, [])
 
   // handles tabs state
@@ -83,30 +81,25 @@ function AdminPage({ routeVariants }) {
     >
 
       <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-        <Tab label="Pending Requests" {...a11yProps(0)} />
-        <Tab label="Completed Requests" {...a11yProps(1)} />
-        <Tab label="Users" {...a11yProps(2)} />
-        <Tab label="Pending Artists" {...a11yProps(3)} />
+        <Tab label="Ongoing Requests" {...a11yProps(1)} />
+        <Tab label="Incoming Requests" {...a11yProps(0)} />
+        <Tab label="Completed Requests" {...a11yProps(2)} />
       </Tabs>
       
       <CustomTabPanel value={value} index={0}>
-        <AdminRequestTable num={0}/>
+        <OngoingRequestTable num={0}/>
       </CustomTabPanel>
 
       <CustomTabPanel value={value} index={1}>
-        <AdminRequestTable num={1}/>
+        <IncomingRequestTable num={1}/>
       </CustomTabPanel>
 
       <CustomTabPanel value={value} index={2}>
-        <AdminUserTable />
-      </CustomTabPanel>
-
-      <CustomTabPanel value={value} index={3}>
-        <AdminArtistTable />
+        <CompletedRequestTable />
       </CustomTabPanel>
 
     </motion.div>
   );
 }
 
-export default AdminPage;
+export default ArtistRequests;

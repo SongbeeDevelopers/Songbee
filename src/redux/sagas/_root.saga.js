@@ -8,7 +8,7 @@ import detailsSaga from './details.saga';
 import searchSaga from './search.saga';
 import artistSaga from './artist.saga';
 import mailchimpSaga from './mailchimp.saga';
-
+import juniorRequestSaga from './jrRequest.saga';
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
 // This is imported in index.js as rootSaga
@@ -27,5 +27,6 @@ export default function* rootSaga() {
     searchSaga(),
     mailchimpSaga(),
     artistSaga(),
+    juniorRequestSaga(),
   ]);
 }
