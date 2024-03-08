@@ -24,7 +24,7 @@ function AdminPage({ routeVariants }) {
 
   // on mount
   useEffect(() => {
-    dispatch({ type: "LOAD_ADMIN_PAGE" });
+    dispatch({ type: "3" });
   }, [])
 
   // handles tabs state

@@ -30,7 +30,8 @@ import ArtistProcess from '../JoinArtistPage/ArtistProcess';
 import NotFound from '../NotFoundPage/NotFoundPage';
 
 import NewOrderPage from '../OrderPage/NewOrderPage';
-
+import ArtistRequests from '../ArtistRequests/ArtistRequests';
+import JrEditRequestPage from '../EditRequestPage/JrEditRequest';
 
 function ComponentRouter() {
 
@@ -91,6 +92,12 @@ function ComponentRouter() {
             <Route exact path="/join-artist">
               <JoinArtistPage routeVariants={routeVariants} />
             </Route>
+
+
+            <Route exact path="/artist-requests">
+              <ArtistRequests routeVariants={routeVariants} />
+            </Route>
+            
             
             <Route exact path="/requestform/:id">
               <SongRequestPage routeVariants={routeVariants} />
@@ -98,6 +105,10 @@ function ComponentRouter() {
 
             <ProtectedRoute exact path="/request/edit/:id">
               <EditRequestPage routeVariants={routeVariants} />
+            </ProtectedRoute>
+
+            <ProtectedRoute exact path="/jr-request/edit/:id">
+              <JrEditRequestPage routeVariants={routeVariants} />
             </ProtectedRoute>
 
             <ProtectedRoute exact path="/details/:id">
