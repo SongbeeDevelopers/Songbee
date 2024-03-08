@@ -42,7 +42,6 @@ import ArtistProcess from '../JoinArtistPage/ArtistProcess';
 import NotFound from '../NotFoundPage/NotFoundPage';
 
 
-import NewOrderPage from '../OrderPage/NewOrderPage';
 import ArtistRequests from '../ArtistRequests/ArtistRequests';
 import JrEditRequestPage from '../EditRequestPage/JrEditRequest';
 
