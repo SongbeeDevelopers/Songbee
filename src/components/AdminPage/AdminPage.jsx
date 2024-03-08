@@ -14,6 +14,8 @@ import Typography from '@mui/material/Typography';
 import AdminArtistTable from './AdminArtistTable';
 import AdminUserTable from './AdminUserTable';
 
+import './AdminPage.css'
+
 
 function AdminPage({ routeVariants }) {
 
