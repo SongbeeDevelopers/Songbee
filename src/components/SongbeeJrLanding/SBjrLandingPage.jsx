@@ -20,12 +20,12 @@ function SBjrLandingPage({ routeVariants }) {
       animate="final"
     >
     
-    <div className="container">
+    {/* <div className="container"> */}
         <HeroSectionJR />
-        <HowSongbeeJrWorks />
+        {/* <HowSongbeeJrWorks /> */}
          {/* <ShopByAge /> */}
-    </div>
-    <BenefitsSection />
+    {/* </div> */}
+    {/* <BenefitsSection /> */}
 
 
     </motion.div>
