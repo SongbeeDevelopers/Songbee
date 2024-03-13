@@ -1,24 +1,42 @@
 .hero-section {
     position: relative;
-   
-    
 }
+
+/* styling for the header section */
+.hero-header-section {
+    background-image: url('../../../public/junior/songbeejr.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.hero-header {
+    padding-top: 12%;
+    padding-bottom: 13%;
+    padding-left: 125px;
+    width: fit-content;
+    margin: auto;
+}
+
+.header-flex {
+    display: flex;
+    align-items: flex-end;
+}
+
 /* Styling for the the title(music, milestone) */
 .music {
-    text-align: center;
-    font-size: 72px;
+    font-size: 3.5rem;
     line-height: 3rem;
     line-height: 5.5rem;
-    margin: 0;
     color: #feaf17;
     font-family: Poppins, sans-serif; 
     text-shadow: 3px 3px 1px #474546;
+    text-align: start;
 }
 
 /* Styling for the title(For Every) */
 .forEvery {
     text-align: center;
-    font-size: 72px;
+    font-size: 3.5rem;
     line-height: 3rem;
     line-height: 5.5rem;
     margin: 0;
@@ -29,64 +47,43 @@
 
 /* styling for the underline underneath Every */
 .underlineImg {
-  position: absolute;  
-  left: 36%;
-  top: 12.7%;
+  width: 210px;
   display: block;
-  margin:  0 auto;
-  transform: translate(-50%, 0); 
 }
 
 .pTag {
-    text-align: center;
+    width: fit-content;
     font-family: Poppins, sans-serif;
     color: #474546;   
 }
 
 /* Positon for the bee image after the title */
 .beeImg {
-    position: absolute;  
-    left: 66.7%;
-    top: 9%;
-    display: block;
-    margin:  0 auto;
-    transform: translate(-50%, 0); 
-    width: 159px;
-    height: auto;
-    
+    width: 160px;
+    height: 80px;
 }
 
-
-/* Styling for the Every age, every stage container  */
-.image-container {
-    position: absolute; 
-    left: 50%; 
-    top: 50%;
-    display: block;
-    margin:  0 auto;
-    transform: translate(-50%, 0); 
-    width: 570px;
-    height: auto; 
-    font-family: Poppins, sans-serif; 
-  
-}
+/* Styling for the Every age, every stage box  */
 
 /* styling for the Get started box */
-.startSong {
+.every-age-every-stage {
+    display: flex;
+    background-image: url('../../../../public/junior/every-age-every-stage.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     display: block;
-    margin: 0 auto;
-    width: 100%; 
-    height: auto;
-   
+    margin: -100px auto 100px;
+    width: 450px;
+    height: 225px;
+    padding-top: 150px;
 }
 
 /* Styling for the button */
 .button {
-    margin: 0 auto;
-    z-index: 100;
+    margin: auto;
+    display: flex;
     width: 14rem;
     height: 2rem;
-    color: var(--black\<deleted\|variable-f6301105\>);
     background-color: #feaf17;
     border-radius: 20px;
     justify-content: center;
@@ -96,24 +93,7 @@
     font-size: 1.4rem;
     font-weight: 600;
     transition: background-color 0.45s;
-    transform: translateX(-45%);
-    display: flex;
-    position: absolute;
-    left: 40%;
-    bottom: 30%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     border: 0;
     outline: 0;
 }
-
-
-    
-/* Positioning for the songbeejr.png */
-.overlay-gif {
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-}
-
