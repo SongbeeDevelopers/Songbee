@@ -1,9 +1,18 @@
 import React from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 import './HeroSectionJR.css';
 
 
+
 function HeroSectionJR() {
+
+  const history = useHistory()
+
+  const getStarted = () => {
+    history.push('/songbeejr') // needs to change to the actual destination
+  }
+
   return (
     <>
       <div className="hero-section">
@@ -12,8 +21,8 @@ function HeroSectionJR() {
         <div className="hero-header-section">
           <div className="hero-header">
             <div className="header-flex">
-              <h1 className="music">
-                Music <span className="forEvery">For<br />Every</span> Milestone
+              <h1 className="header-text-music">
+                Music <span className="header-text-forEvery">For<br />Every</span> Milestone
               </h1>
               <img src="/junior/Bee.png" className="beeImg" />
             </div>
@@ -23,26 +32,25 @@ function HeroSectionJR() {
           </div>
         </div>
 
+        {/* get started box */}
         <div className="every-age-every-stage">
-          <button className="button">Get Started</button>
+          <button className="hero-button" onClick={getStarted}>Get Started</button>
         </div> 
-        {/* <img src="/junior/every-age-every-stage.png" className="startSong" /> */}
 
-        {/* <div className="hero-try-section">
-
-        </div> */}
-
-          {/* <img src="/junior/polygon-bg.png" /> */}
-
-
-
-          {/* <img src="/junior/bee.gif" /> */}
+        {/* section with try button */}
+        <div className="hero-try-section">
+          <div className="hero-try-contents">
+            <div className="hero-try-text">
+              <h2>Custom Learning Songs</h2>
+              <p>Join the world of!</p>
+              <button className="hero-button" id="hero-try-it" >Try It</button>
+            </div>
+            <img className="baby-maracas" src="/junior/baby-maracas.png"/>
+          </div>
+        </div>
 
       </div>
     </>
-
-
-
   )
 
 }
