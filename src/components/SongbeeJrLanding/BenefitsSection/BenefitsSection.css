@@ -1,57 +1,17 @@
-.header {
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    background-color: #fff4df;
-    width: auto;
-    margin: 0 42px;
-    margin-top: 50px;
-    margin-bottom: 60px;
-    height: 800px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
-    
+.jr-benefits-bg {
+  background-color: white;
+  padding-top: 350px;
+  margin-top: -300px;
+  padding-bottom: 100px;
 }
 
-.bg-howItWorks {
-    background-color: white;
-    margin-top: 100px;
-    padding-left: 50px;
-    padding-right: 50px;
-    padding: 15px;
-    margin-top: 75px;
-    
-
+.jr-benefits h2 {
+  text-align: center;
+  font-size: 36px;
 }
-
-
-.imageWrapper {
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    margin-top: 5px;
-    width: 70%;
-    flex-direction: column;
-    
+.jr-benefits img {
+  width: 75%;
+  margin: auto;
+  padding-left: 15px;
+  display: block;
 }
-
-h1  {
-    margin: 1; 
-    padding: 0; 
-}
-
-.benefitsImg {
-    width: 90%;
-    margin: 60px 0;
-
-}
-
-/* .shopBg {
-    display: block;
-    margin-top: -700px;
-    width: 100%;
-   
-} */
-

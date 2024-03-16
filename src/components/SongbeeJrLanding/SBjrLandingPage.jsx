@@ -21,7 +21,7 @@ function SBjrLandingPage({ routeVariants }) {
     >
       <HeroSectionJR />
       <HowSongbeeJrWorks />
-      {/* <BenefitsSection /> */}
+      <BenefitsSection />
       {/* <ShopByAge /> */}
     </motion.div>
    )
