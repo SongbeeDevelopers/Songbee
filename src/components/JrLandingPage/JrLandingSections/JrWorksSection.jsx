@@ -1,8 +1,9 @@
-
 import React from "react"
 
-import "./HowSongbeeJrWorksSection.css";
 import GetStartedButton from "../GetStartedButton/GetStartedButton";
+
+import "../JrLandingPage.css";
+
 
 function HowSongbeeJrWorks() {
   return (

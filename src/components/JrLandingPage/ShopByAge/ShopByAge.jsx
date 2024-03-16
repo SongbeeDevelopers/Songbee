@@ -140,7 +140,7 @@ function ShopByAge() {
         </OuterContainer>
         <div className="bg-test">
         <div className="sbjTest">
-            <img src="sbjTest.png" />
+            <img src="/junior/sbjTest.png" />
         </div>
         </div>
          </div>

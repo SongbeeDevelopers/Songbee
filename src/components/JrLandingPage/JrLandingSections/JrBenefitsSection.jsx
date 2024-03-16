@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./BenefitsSection.css"; 
+import "../JrLandingPage.css"; 
 
 
 function BenefitsSection() {

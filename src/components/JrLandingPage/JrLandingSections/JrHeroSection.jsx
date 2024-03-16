@@ -2,7 +2,7 @@ import React from "react";
 
 import GetStartedButton from "../GetStartedButton/GetStartedButton";
 
-import './HeroSectionJR.css';
+import '../JrLandingPage.css';
 
 
 function HeroSectionJR() {
