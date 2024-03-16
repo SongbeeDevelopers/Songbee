@@ -1,17 +1,11 @@
 import React from "react";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+
+import GetStartedButton from "../GetStartedButton/GetStartedButton";
 
 import './HeroSectionJR.css';
 
 
-
 function HeroSectionJR() {
-
-  const history = useHistory()
-
-  const getStarted = () => {
-    history.push('/songbeejr') // needs to change to the actual destination
-  }
 
   return (
     <>
@@ -34,7 +28,7 @@ function HeroSectionJR() {
 
         {/* get started box */}
         <div className="every-age-every-stage">
-          <button className="hero-button" onClick={getStarted}>Get Started</button>
+          <GetStartedButton />
         </div> 
 
         {/* section with try button */}
@@ -43,7 +37,7 @@ function HeroSectionJR() {
             <div className="hero-try-text">
               <h2>Custom Learning Songs</h2>
               <p>Join the world of!</p>
-              <button className="hero-button" id="hero-try-it" >Try It</button>
+              <GetStartedButton id='jr-hero-try-it' />
             </div>
             <img className="baby-maracas" src="/junior/baby-maracas.png"/>
           </div>

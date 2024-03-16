@@ -67,26 +67,6 @@
     z-index: 1;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-.hero-button {
-    margin: auto;
-    position: relative;
-    display: flex;
-    width: 14rem;
-    height: 3rem;
-    background-color: #feaf17;
-    border-radius: 20px;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 3px;
-    font-family: Poppins, sans-serif;
-    font-size: 1.4rem;
-    font-weight: 600;
-    transition: background-color 0.45s;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    border: 0;
-    outline: 0;
-    z-index: 2;
-}
 
 /* custom learning songs section */
 .hero-try-section {
@@ -123,7 +103,4 @@
     display: block;
     margin: auto;
     width: 30%
-}
-#hero-try-it {
-    margin: 0
 }

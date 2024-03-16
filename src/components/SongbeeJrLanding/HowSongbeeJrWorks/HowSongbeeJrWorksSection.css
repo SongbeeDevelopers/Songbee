@@ -1,77 +1,83 @@
-
-.parentDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
-    padding-left: 20px;
-    
+/* container */
+.how-jr-works-box {
+  position: relative;
+  background-color: #e1ebef;
+  width: 75%;
+  margin: -100px auto 0;
+  padding: 25px 50px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+/* arrows and bees */
+.jr-works-arrows-and-bees {
+  padding-left: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.jr-works-arrows-and-bees img {
+  width: 75px;
+  margin-left: -40px; 
+}
 
+/* text at top of box */
+.jr-works-header {
+  text-align: center;
+}
+.jr-works-header h2 {
+  margin-bottom: 0;
+}
+.jr-works-header h5 {
+  margin-top: 0;
+}
 
+/* 1 2 3 section */
+.jr-works {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 5%;
+}
+.jr-works p {
+  font-size: small;
+  width: 30%;
+}
 
-.sbJrwork {
+/* container for each numbered item */
+.jr-works-item {
+  width: 30%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+
+/* includes number and text for item */
+.jr-works-item-header {
+  display: flex;
+  flex-direction: row;
+  align-items: top;
+  gap: 10px;
+}
+.jr-works-item-header h3 {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+/* just the number of each item */
+.jr-works-number {
+  width: 50px;
+  height: 50px;
   border-radius: 25px;
-  background-image: url("../../../../public/honey_combs.jpeg");
-  width: 90%;
-  padding: 30px;
-  margin-top: 160px;
-  position: relative;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
- 
+  background-color: #FFDEB0;
 }
-  
-
-
-
-
-.worksImages {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 700px;
-    width: 900px;
-    position: relative;
-    gap: 20px;
-   
+.jr-works-number h2 {
+  text-align: center;
+  padding-top: 7px;
+  margin-top: 0;
 }
 
-.worksImages img{ 
-    width: 100%;
-    height: 270%;
-    object-fit: contain;
-    padding-top: 150px;
-    margin-top: 150px;
-   
-    
- }
-
- .worksBtn {
-    margin: 0 auto;
-    width: 9rem;
-    height: 2rem;
-    background-color: #feaf17;
-    border-radius: 20px;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 25px;
-    font-family: Poppins, sans-serif;
-    font-size: 1.2rem;
-    font-weight: 600;
-    transition: background-color 0.45s;
-    position: relative;
-    top: -255px;
-    left: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    border: 0;
-    outline: 0;
- }
-
-
-
-
+.jr-works-beehive {
+  position: absolute;
+  bottom: -30px;
+  right: -30px;
+  width: 100px;
+}
