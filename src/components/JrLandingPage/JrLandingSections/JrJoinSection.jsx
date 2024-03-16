@@ -7,8 +7,8 @@ function JrJoinSection() {
 
   return (
     <div className="hero-try-section">
-      <div className="hero-try-contents">
 
+      <div className="hero-try-contents">
         <div className="hero-try-text">
           <h2>Custom Learning Songs</h2>
           <p>Join the world of!</p>
@@ -16,8 +16,9 @@ function JrJoinSection() {
         </div>
 
         <img className="baby-maracas" src="/junior/baby-maracas.png" />
-
       </div>
+
+      <img className="try-bee" src="/junior/Bee.png"/>
     </div >
   )
 }
