@@ -10,7 +10,6 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 
 // home
 import LandingPage from '../LandingPage/LandingPage';
-import SBjrLandingPage from '../SongbeeJrLanding/SBjrLandingPage';
 
 // order process
 import OrderPage from '../OrderPage/OrderPage';
