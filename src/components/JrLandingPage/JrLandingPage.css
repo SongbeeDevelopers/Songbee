@@ -252,9 +252,85 @@ Benefits
 Shop By Age
 -------------------------------------------------------------------------------- */
 
+.jr-shop-by-age-bg {
+  background-image: url('/public/junior/shop-by-age-bg.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.jr-shop-by-age-title {
+  text-align: center;
+}
+
+.age-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0 100px
+}
+
+.age-item-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.age-item-contents img {
+  width: 150px
+}
+.age-item-contents p {
+  text-align: center;
+}
+
+.age-item {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  border: 1px solid #474546;
+  padding: 0 20px 20px 20px;
+  width: 20%;
+}
+
 /* --------------------------------------------------------------------------------
-General
+What Do We Offer
 -------------------------------------------------------------------------------- */
+
+.jr-offer-bg {
+  background-image: url('../../../public/junior/offerbg.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-top: 75px;
+}
+
+.jr-offer {
+  background-color: #474546;
+  display: block;
+  margin: auto;
+  border: 2px solid #474546;
+  margin: 0 100px;
+  padding-bottom: 25px;
+}
+.jr-offer h2 {
+  text-align: center;
+}
+
+.jr-offer-items {
+  opacity: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-left: 30px;
+  z-index: 1;
+}
+
+.jr-offer-item {
+  display: flex;
+  flex-direction: row;
+  width: 25%;
+}
+.jr-offer-item img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
 
 /* --------------------------------------------------------------------------------
 General
