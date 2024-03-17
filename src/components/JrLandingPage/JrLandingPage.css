@@ -1,0 +1,345 @@
+/* --------------------------------------------------------------------------------
+Hero
+-------------------------------------------------------------------------------- */
+
+.hero-section {
+  position: relative;
+}
+
+/* header section */
+.hero-header-section {
+  background-image: url('../../../public/junior/songbeejr.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.hero-header {
+  padding-top: 12%;
+  padding-bottom: 13%;
+  padding-left: 125px;
+  width: fit-content;
+  margin: auto;
+}
+
+.header-flex {
+  display: flex;
+  align-items: flex-end;
+}
+
+.header-text-music {
+  font-size: 3.5rem;
+  line-height: 3rem;
+  line-height: 5.5rem;
+  color: #feaf17;
+  font-family: Poppins, sans-serif;
+  text-shadow: 3px 3px 1px #474546;
+  text-align: start;
+}
+
+.header-text-forEvery {
+  text-align: center;
+  font-size: 3.5rem;
+  line-height: 3rem;
+  line-height: 5.5rem;
+  margin: 0;
+  color: #474546;
+  font-family: Poppins, sans-serif;
+  text-shadow: 3px 3px 1px #feaf17;
+}
+
+.underlineImg {
+  width: 210px;
+  display: block;
+}
+
+.pTag {
+  width: fit-content;
+  font-family: Poppins, sans-serif;
+  color: #474546;
+}
+
+.beeImg {
+  width: 160px;
+  height: 80px;
+}
+
+/* Styling for the every age, every stage box  */
+.every-age-every-stage {
+  display: flex;
+  background-image: url('../../../../public/junior/every-age-every-stage.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: block;
+  margin: -100px auto 100px;
+  width: 450px;
+  height: 225px;
+  padding-top: 105px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* --------------------------------------------------------------------------------
+Join Section
+-------------------------------------------------------------------------------- */
+
+/* custom learning songs section */
+.hero-try-section {
+  margin-top: -235px;
+  background-image: url('../../../../public/junior/polygon-bg.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 100%;
+  padding-top: 49.37%;
+  position: relative;
+  z-index: auto;
+}
+
+.hero-try-contents {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 130px;
+}
+
+.hero-try-text {
+  margin-left: 55px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 45%;
+}
+
+.baby-maracas {
+  display: block;
+  margin: auto;
+  width: 30%
+}
+
+.try-bee {
+  width: 150px;
+  position: absolute;
+  left: -10px;
+  bottom: -32px;
+  transform: rotate(60deg)
+}
+
+/* --------------------------------------------------------------------------------
+How Jr Works
+-------------------------------------------------------------------------------- */
+
+/* container */
+.how-jr-works-box {
+  position: relative;
+  background-color: #e1ebef;
+  width: 75%;
+  margin: -150px auto 0;
+  padding: 25px 50px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* arrows and bees */
+.jr-works-arrows-and-bees {
+  padding-left: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.jr-works-arrows-and-bees img {
+  width: 75px;
+  margin-left: -40px;
+}
+
+/* text at top of box */
+.jr-works-header {
+  text-align: center;
+}
+
+.jr-works-header h2 {
+  margin-bottom: 0;
+}
+
+.jr-works-header h5 {
+  margin-top: 0;
+}
+
+/* 1 2 3 section */
+.jr-works {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 5%;
+}
+
+.jr-works p {
+  font-size: small;
+  width: 30%;
+}
+
+/* container for each numbered item */
+.jr-works-item {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* includes number and text for item */
+.jr-works-item-header {
+  display: flex;
+  flex-direction: row;
+  align-items: top;
+  gap: 10px;
+}
+
+.jr-works-item-header h3 {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+/* just the number of each item */
+.jr-works-number {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #FFDEB0;
+}
+
+.jr-works-number h2 {
+  text-align: center;
+  padding-top: 7px;
+  margin-top: 0;
+}
+
+.jr-works-beehive {
+  position: absolute;
+  bottom: -30px;
+  right: -30px;
+  width: 100px;
+}
+
+/* --------------------------------------------------------------------------------
+Benefits
+-------------------------------------------------------------------------------- */
+
+.jr-benefits-bg {
+  background-color: white;
+  padding-top: 350px;
+  margin-top: -300px;
+  padding-bottom: 100px;
+}
+
+.jr-benefits h2 {
+  text-align: center;
+  font-size: 36px;
+}
+
+.jr-benefits img {
+  width: 75%;
+  margin: auto;
+  padding-left: 15px;
+  display: block;
+}
+
+/* --------------------------------------------------------------------------------
+Shop By Age
+-------------------------------------------------------------------------------- */
+
+.jr-shop-by-age-bg {
+  background-image: url('/public/junior/shop-by-age-bg.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.jr-shop-by-age-title {
+  text-align: center;
+}
+
+.age-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0 100px
+}
+
+.age-item-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.age-item-contents img {
+  width: 150px
+}
+.age-item-contents p {
+  text-align: center;
+}
+
+.age-item {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  border: 1px solid #474546;
+  padding: 0 20px 20px 20px;
+  width: 20%;
+}
+
+/* --------------------------------------------------------------------------------
+What Do We Offer
+-------------------------------------------------------------------------------- */
+
+.jr-offer-bg {
+  background-image: url('../../../public/junior/offerbg.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-top: 75px;
+}
+
+.jr-offer {
+  background-color: #474546;
+  display: block;
+  margin: auto;
+  border: 2px solid #474546;
+  margin: 0 100px;
+  padding-bottom: 25px;
+}
+.jr-offer h2 {
+  text-align: center;
+}
+
+.jr-offer-items {
+  opacity: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-left: 30px;
+  z-index: 1;
+}
+
+.jr-offer-item {
+  display: flex;
+  flex-direction: row;
+  width: 25%;
+}
+.jr-offer-item img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+/* --------------------------------------------------------------------------------
+General
+-------------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------------
+General
+-------------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------------
+General
+-------------------------------------------------------------------------------- */
