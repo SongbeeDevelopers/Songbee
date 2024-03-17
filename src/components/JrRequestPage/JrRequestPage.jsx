@@ -59,7 +59,7 @@ export default function JrCheckoutPage({ routeVariants }) {
             <input 
               value={requestData.requester}
               className='reqFormInput'
-              placeholder='Age Dropdown'
+              placeholder="What is your child's age?"
               onChange={() => handleInput('requester', event.target.value)}
             ></input>
           </div>
@@ -82,7 +82,7 @@ export default function JrCheckoutPage({ routeVariants }) {
                 className='reqFormInput'
                 id='reqFormNameInput'
                 placeholder='Name of child or Nickname'
-                onChange={() => handleInput('recipient', event.target.value)}
+                onChange={(event) => handleInput('recipient', event.target.value)}
               ></input>
 
               <input
@@ -90,7 +90,7 @@ export default function JrCheckoutPage({ routeVariants }) {
                 className='reqFormInput'
                 id='reqFormNameInput'
                 placeholder='Pronunciation'
-                onChange={() => handleInput('pronunciation', event.target.value)}
+                onChange={(event) => handleInput('pronunciation', event.target.value)}
               ></input>
             </div>
 
@@ -98,23 +98,23 @@ export default function JrCheckoutPage({ routeVariants }) {
               value={requestData.recipient_relationship}
               className='reqFormInput'
               placeholder='My child, my niece, my grandson, etc.'
-              onChange={() => handleInput('recipient_relationship', event.target.value)}
+              onChange={(event) => handleInput('recipient_relationship', event.target.value)}
             ></input>
           </div>
-          <div className='reqFormGroup'>
+          <div className='reqFormGroup2'>
           <div className='reqFormInput'>
             <label>Describe Your Child for the Song</label>
-            <p className='reqFormPrompts'>
+            <p>
             It could be anything from their favorite animal or color to their name<br/>
             Give us a little information so we are able to customize your song to fit your child.<br/>
           </p>
             <div className='reqFormGroup'>
               <input
-                value={requestData.recipient}
+                value={requestData.description}
                 className='reqFormInput'
                 id='reqFormNameInput'
                 placeholder='Description'
-                onChange={() => handleInput('recipient', event.target.value)}
+                onChange={(event) => handleInput('description', event.target.value)}
               ></input>
               </div>
               </div>
@@ -157,7 +157,7 @@ export default function JrCheckoutPage({ routeVariants }) {
             </select>
           </div>
 
-          <div className='reqFormSelect'>
+          <div className='reqFormSelect2'>
             <label>Select a Tempo</label>
             <select
               value={requestData.tempo}
@@ -199,7 +199,7 @@ export default function JrCheckoutPage({ routeVariants }) {
           <input
             value={requestData.additional_info}
             placeholder='Additional Details'
-            onChange={() => handleInput('additional_info', event.target.value)}
+            onChange={(event) => handleInput('additional_info', event.target.value)}
           ></input>
         </div>
       </div>
@@ -211,19 +211,19 @@ export default function JrCheckoutPage({ routeVariants }) {
           </p>
           <h3 id='additionalDetailsHeader'>Song 1</h3>
           <input
-            value={requestData.additional_info}
+            value={requestData.song1_info}
             placeholder='Milestones'
             onChange={() => handleInput('additional_info', event.target.value)}
           ></input>
         <h3 id='additionalDetailsHeader'>Song 2</h3>
           <input
-            value={requestData.additional_info}
+            value={requestData.song2_info}
             placeholder='Milestones'
             onChange={() => handleInput('additional_info', event.target.value)}
           ></input>
         <h3 id='additionalDetailsHeader'>Song 3</h3>
           <input
-            value={requestData.additional_info}
+            value={requestData.song3_info}
             placeholder='Milestones'
             onChange={() => handleInput('additional_info', event.target.value)}
           ></input>
