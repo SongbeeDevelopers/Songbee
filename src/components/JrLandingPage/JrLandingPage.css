@@ -333,13 +333,50 @@ What Do We Offer
 }
 
 /* --------------------------------------------------------------------------------
-General
+Guesswork
 -------------------------------------------------------------------------------- */
 
 /* --------------------------------------------------------------------------------
-General
+Reviews
 -------------------------------------------------------------------------------- */
 
+.jr-reviews-bg {
+  background-image: url('../../../public/junior/speckled-bg.png');
+  background-size: contain;
+  padding: 50px;
+}
+
+.jr-reviews {
+  margin: auto;
+  background-color: #FEAF17;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: 85%;
+  padding: 30px 0;
+}
+
+.jr-reviews-header {
+  text-align: center;
+  margin-top: 0;
+}
+
+.jr-review-item-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0 20px
+}
+
+.jr-review-item {
+  width: 22%;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 0 15px
+}
+.jr-review-item img{
+  width: 120px
+}
+
 /* --------------------------------------------------------------------------------
-General
+Newsletter
 -------------------------------------------------------------------------------- */

@@ -30,7 +30,7 @@ function SBjrLandingPage({ routeVariants }) {
       <JrShopByAgeSection />
       <JrOfferSection />
       {/* <JrGuessworkSection /> */}
-      {/* <JrReviewsSection /> */}
+      <JrReviewsSection />
       {/* <JrNewsletterSection /> */}
     </motion.div>
    )
