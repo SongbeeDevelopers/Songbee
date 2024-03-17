@@ -213,19 +213,19 @@ export default function JrCheckoutPage({ routeVariants }) {
           <input
             value={requestData.song1_info}
             placeholder='Milestones'
-            onChange={() => handleInput('additional_info', event.target.value)}
+            onChange={() => handleInput('song1_info', event.target.value)}
           ></input>
         <h3 id='additionalDetailsHeader'>Song 2</h3>
           <input
             value={requestData.song2_info}
             placeholder='Milestones'
-            onChange={() => handleInput('additional_info', event.target.value)}
+            onChange={() => handleInput('song2_info', event.target.value)}
           ></input>
         <h3 id='additionalDetailsHeader'>Song 3</h3>
           <input
             value={requestData.song3_info}
             placeholder='Milestones'
-            onChange={() => handleInput('additional_info', event.target.value)}
+            onChange={() => handleInput('song3_info', event.target.value)}
           ></input>
         </div>
       </div>
