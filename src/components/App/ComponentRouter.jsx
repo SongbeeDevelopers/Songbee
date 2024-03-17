@@ -10,6 +10,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 
 // home
 import LandingPage from '../LandingPage/LandingPage';
+import SBjrLandingPage from '../SongbeeJrLanding/SBjrLandingPage';
 
 // order process
 import OrderPage from '../OrderPage/OrderPage';
@@ -25,6 +26,7 @@ import UserDetails from '../UserPage/UserPageTabs/UserDetailsTab/UserDetailsPage
 
 // information pages
 import FaqPage from '../InfoPages/FaqPage';
+import FaqPageSbJR from '../InfoPages/FaqPageSbJR'
 import PrivacyPolicyPage from '../InfoPages/PrivacyPolicyPage';
 import QualityGuaranteePage from '../InfoPages/QualityGuaranteePage';
 import TermsAndConditionsPage from '../InfoPages/TermsAndConditionsPage';
@@ -138,6 +140,10 @@ function ComponentRouter() {
 
             <Route exact path="/faq">
               <FaqPage routeVariants={routeVariants} />
+            </Route>
+
+            <Route exact path="/faqSbJR">
+              <FaqPageSbJR routeVariants={routeVariants} />
             </Route>
 
             <Route exact path="/songbeejr">
