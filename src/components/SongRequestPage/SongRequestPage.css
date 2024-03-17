@@ -43,10 +43,27 @@
 .reqFormGroup {
     display: flex;
     gap: 30px;
+    
 }
 
+/* --------This is for the syling for the description input and the Select Tempo
+and dropdown in Songbee JR */
+.reqFormGroup2   {
+    display: flex;
+    gap: 30px;
+    margin-top: -140px;   
+}
+.reqFormSelect2 {
+    margin-left: 20px;
+    margin-top: -90px;
+    flex: 1;
+
+}
+
+/* ------------------------ */
 .reqFormGroup label {
     font-weight: 500;
+    
 }
 
 .reqFormGroup input {
@@ -79,6 +96,8 @@
     justify-content: space-around;
     gap: 5px;
     width: 50%;
+    
+    
 }
 
 .reqFormSubmit {
@@ -99,7 +118,8 @@
 }
 
 #reqFormNameInput {
-    gap: 5px
+    gap: 5px;
+    width: 250px;
 }
 
 #additionalDetails {
