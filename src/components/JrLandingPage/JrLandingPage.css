@@ -336,6 +336,44 @@ What Do We Offer
 Guesswork
 -------------------------------------------------------------------------------- */
 
+.guesswork-bg {
+  background-image: linear-gradient(to right, #FEAF17, #FFDEB0);
+  position: relative;
+  height: 350px
+}
+
+.guesswork-text-container {
+  padding-top: 40px;
+  margin: auto;
+  width: 20%;
+}
+.guesswork-text-container h2 {
+  margin-bottom: 0;
+}
+.guesswork-text-container img {
+  margin-bottom: 10px;
+}
+
+/* .guesswork-bg h2 {
+  width: 200px;
+  text-align: center;
+  margin-right: 50px;
+  margin: 50px auto 0;
+} */
+.guesswork-baby-saxophone {
+  width: 200px;
+  position: absolute;
+  right: 15%;
+  bottom: -30px;
+}
+
+.guesswork-honeycomb {
+  width: 150px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
 /* --------------------------------------------------------------------------------
 Reviews
 -------------------------------------------------------------------------------- */
