@@ -8,7 +8,8 @@ import JrHeroSection from "./JrLandingSections/JrHeroSection";
 import JrJoinSection from "./JrLandingSections/JrJoinSection";
 import JrWorksSection from "./JrLandingSections/JrWorksSection";
 import JrBenefitsSection from "./JrLandingSections/JrBenefitsSection";
-// import ShopByAge from "./JrLandingSections/ShopByAge";
+import JrShopByAgeSection from "./JrLandingSections/JrShopByAgeSection";
+import JrOfferSection from "./JrLandingSections/JrOfferSection";
 
 
 function SBjrLandingPage({ routeVariants }) {
@@ -23,7 +24,8 @@ function SBjrLandingPage({ routeVariants }) {
       <JrJoinSection />
       <JrWorksSection />
       <JrBenefitsSection />
-      {/* <ShopByAge /> */}
+      <JrShopByAgeSection />
+      <JrOfferSection />
     </motion.div>
    )
     
