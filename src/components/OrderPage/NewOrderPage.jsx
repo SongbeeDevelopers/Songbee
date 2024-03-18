@@ -117,7 +117,7 @@ export default function NewOrderPage({ routeVariants }) {
           onChange={() => handleSelection('delivery_days', event.target.value)}
         >
           <option selected disabled>Select Delivery Option</option>
-          <option value={3} >3 Day Delivery</option>
+          <option value={3}>3 Day Delivery</option>
           <option value={4}>4 Day Delivery</option>
           <option value={6}>Standard 6 Day Delivery</option>
         </select>
