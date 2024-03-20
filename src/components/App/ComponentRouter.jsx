@@ -190,8 +190,7 @@ function ComponentRouter() {
               }
             </Route>
 
-            {/* this needs to be further protected */}
-            <ProtectedRoute exact path="/admin">
+            <ProtectedRoute exact path="/admin" userClass='admin'>
               <AdminPage routeVariants={routeVariants} />
             </ProtectedRoute>
 
