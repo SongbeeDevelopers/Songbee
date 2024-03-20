@@ -15,7 +15,7 @@ import LoginPage from '../LoginPage/LoginPage';
 // and by checking req.user for authorization
 
 
-function ProtectedRoute({ component, children, ...props }) {
+function ProtectedRoute({ userClass, component, children, ...props }) {
   
   const user = useSelector((store) => store.user);
 
@@ -24,6 +24,41 @@ function ProtectedRoute({ component, children, ...props }) {
   const ProtectedComponent = component || (() => children);
 
   // We return a Route component that gets added to our list of routes
+  if (userClass === 'admin'){
+    return (
+      <Route
+        // all props like 'exact' and 'path' that were passed in
+        // are now passed along to the 'Route' Component
+        {...props}
+      >
+        {user.class === 3 ?
+          // If the user is logged in, show the protected component
+          <ProtectedComponent />
+          :
+          // Otherwise, redirect to the Loginpage
+          <LoginPage />
+        }
+      </Route>  
+    )
+  }
+  else if (userClass === 'artist'){
+    return (
+      <Route
+        // all props like 'exact' and 'path' that were passed in
+        // are now passed along to the 'Route' Component
+        {...props}
+      >
+        {user.class <= 3 ?
+          // If the user is logged in, show the protected component
+          <ProtectedComponent />
+          :
+          // Otherwise, redirect to the Loginpage
+          <LoginPage />
+        }
+      </Route>  
+    )
+  }
+  else {
   return (
     <Route
       // all props like 'exact' and 'path' that were passed in
@@ -38,8 +73,8 @@ function ProtectedRoute({ component, children, ...props }) {
         <LoginPage />
       }
     </Route>
-
   );
+  }
 }
 
 export default ProtectedRoute;
