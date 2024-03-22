@@ -91,7 +91,7 @@ function ComponentRouter() {
               Visiting localhost:5173/user will show the UserPage if the user is logged in.
               If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
               Even though it seems like they are different pages, the user is always on localhost:5173/user */}
-            <ProtectedRoute exact path="/user">
+            <ProtectedRoute exact path="/user" allowedUserClasses={[1,2,3]}>
               <UserPage routeVariants={routeVariants} />
             </ProtectedRoute>
 
@@ -112,28 +112,28 @@ function ComponentRouter() {
             </Route>
 
 
-            <Route exact path="/artist-requests">
+            <ProtectedRoute exact path="/artist-requests" allowedUserClasses={[2,3]} >
               <ArtistRequests routeVariants={routeVariants} />
-            </Route>
+            </ProtectedRoute>
             
             
             <Route exact path="/requestform/:id">
               <SongRequestPage routeVariants={routeVariants} />
             </Route>
 
-            <ProtectedRoute exact path="/request/edit/:id">
+            <ProtectedRoute exact path="/request/edit/:id" allowedUserClasses={[1,2,3]} >
               <EditRequestPage routeVariants={routeVariants} />
             </ProtectedRoute>
 
-            <ProtectedRoute exact path="/jr-request/edit/:id">
+            <ProtectedRoute exact path="/jr-request/edit/:id"  allowedUserClasses={[1,2,3]}>
               <JrEditRequestPage routeVariants={routeVariants} />
             </ProtectedRoute>
 
-            <ProtectedRoute exact path="/details/:id">
+            <ProtectedRoute exact path="/details/:id"  allowedUserClasses={[2,3]}>
               <UserDetails routeVariants={routeVariants} />
             </ProtectedRoute>
 
-            <Route exact path="/terms">
+            <Route exact path="/terms" >
               <TermsAndConditionsPage routeVariants={routeVariants} />
             </Route>
 
@@ -191,7 +191,7 @@ function ComponentRouter() {
             </Route>
 
             {/* this needs to be further protected */}
-            <ProtectedRoute exact path="/admin">
+            <ProtectedRoute exact path="/admin" allowedUserClasses={[3]}>
               <AdminPage routeVariants={routeVariants} />
             </ProtectedRoute>
 
