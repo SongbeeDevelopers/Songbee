@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useMediaQuery } from "react-responsive";
 
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -16,13 +17,17 @@ import "./Header.css";
 
 function Header() {
 
+  const isMobile = useMediaQuery( { query: `(max-width: 815px)`} )
   const history = useHistory();
   const dispatch = useDispatch();
 
   const user = useSelector((store) => store.user);
+
+  // dropdown logic
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {
+
+  const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = (num) => {
@@ -36,7 +41,7 @@ function Header() {
     } else if (num === 4) {
       history.push("/faq");
     } else if (num === 5) {
-      
+      // ?
     } else if (num === 6) {
       history.push("/user");
     } else if (num === 7) {
@@ -46,17 +51,37 @@ function Header() {
     } else if (num === 9) {
       history.push("/faqSbJR")
     }
-   
   };
  
+
   return (
     <div className="nav">
 
-      <Link to="/home">
-        <img className="nav-title" src="header-icon.png"></img>
-      </Link>
+      <div className="nav-left">
+        <Link to="/home"><img className="nav-title" src="header-icon.png"/></Link>
+        |
+        <Link to="/songbeejr" className="nav-links">Songbee Junior</Link>
+        |
+        <Link to="/artists" className="nav-links">Artists</Link>
+      </div>
+
       <div className="nav-right">
-        <Link
+      
+        {!isMobile && user.id && user.class === 3 &&
+          <> <Link to="/admin" className="nav-links">Admin</Link> | </>
+        }
+
+        {!isMobile && user.id && 
+          <> <Link to="/user" className="nav-links">Account</Link> | </>
+        }
+
+        {!isMobile &&
+          <> <Link to="/faq" className="nav-links">FAQ</Link> | </>
+        }
+
+        {/* login/logout */}
+        <Link to="/login"
+          className="nav-links"
           onClick={(e) => {
             if (user?.id) {
               e.preventDefault();
@@ -72,55 +97,65 @@ function Header() {
               });
             }
           }}
-          className="nav-links"
-          to="/login"
         >
-          {user?.id? "Logout" : "Login"}
+          {user?.id ? "Logout" : "Login"}
         </Link>
-        <IconButton
-            size="large"
-            edge="start"
-            color="black"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-            id="basic-button"
-            aria-controls={open ? "basic-menu" : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? "true" : undefined}
-            onClick={handleClick}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Menu
-            id="basic-menu"
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            MenuListProps={{
-              "aria-labelledby": "basic-button",
-            }}
-          >
-            <MenuItem className="menu-nav" onClick={() => handleClose()}><img className="drawerHeaderBee" src="bee-button.png"></img></MenuItem>
-            <MenuItem onClick={() => handleClose(1)}>Home</MenuItem>
-            {user.id && (
-              <div>
-              <MenuItem onClick={() => handleClose(6)}>My Profile</MenuItem>
-              </div>
-            )}
-            {user.id && user.class === 3 && (
-              <div>
-              <MenuItem onClick={() => handleClose(7)}>Admin Page</MenuItem>
-              </div>
-            )}
-            <MenuItem onClick={() => handleClose(2)}>Start Your Song</MenuItem>
-            <MenuItem onClick={() => handleClose(3)}>Artist Application</MenuItem>
-            <MenuItem onClick={() => handleClose(4)}>FAQ</MenuItem>
-            <MenuItem onClick={() => handleClose(8)}>Songbee Jr</MenuItem>
-            <MenuItem onClick={() => handleClose(9)}>FAQ Songbee JR</MenuItem>
-            <MenuItem onClick={() => handleClose(5)}><a href="mailto:hello@songbee.com">Contact Us</a></MenuItem>
-            {/* If a user is logged in, show these links */}
-           
-          </Menu>
+
+
+
+        {/* admin, profile, FAQ */}
+
+        {/* dropdown menu for mobile users */}
+        {isMobile &&
+          <>
+            <IconButton
+              size="large"
+              edge="start"
+              color="black"
+              aria-label="menu"
+              sx={{ mr: -2 }}
+              id="basic-button"
+              aria-controls={open ? "basic-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? "true" : undefined}
+              onClick={handleMenu}
+            >
+              <MenuIcon />
+            </IconButton>
+
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{
+                "aria-labelledby": "basic-button",
+              }}
+            >
+              <MenuItem onClick={() => handleClose()}>
+                <img className="drawerHeaderBee" src="bee-button.png"></img>
+              </MenuItem>
+
+              <MenuItem onClick={() => handleClose(1)}>Home</MenuItem>
+
+              {user.id && <MenuItem onClick={() => handleClose(6)}>My Profile</MenuItem>}
+              
+              {user.id && user.class === 3 && <MenuItem onClick={() => handleClose(7)}>Admin Page</MenuItem>}
+              
+              <MenuItem onClick={() => handleClose(2)}>Start Your Song</MenuItem>
+              
+              <MenuItem onClick={() => handleClose(3)}>Artist Application</MenuItem>
+              
+              <MenuItem onClick={() => handleClose(4)}>FAQ</MenuItem>
+              
+              <MenuItem onClick={() => handleClose(8)}>Songbee Jr</MenuItem>
+              
+              <MenuItem onClick={() => handleClose(9)}>FAQ Songbee JR</MenuItem>
+              
+              <MenuItem onClick={() => handleClose(5)}><a href="mailto:hello@songbee.com">Contact Us</a></MenuItem>
+            </Menu>
+          </>
+        }
       </div>
     </div>
   );
