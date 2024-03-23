@@ -180,56 +180,56 @@
 
 
 DROP TABLE IF EXISTS "songbeejr_details",
-                    "subscription_song_details",
-                    "subscription",
-                    "jr_request",
-                    "artist_genres",
-                    "song_details",
-                    "artist",
-                    "song_request",
-                    "genres",
-                    "user",
-                    "documents";
+                     "subscription_song_details",
+                     "subscription",
+                     "jr_request",
+                     "artist_genres",
+                     "song_details",
+                     "artist",
+                     "song_request",
+                     "genres",
+                     "user",
+                     "documents";
 
 
 CREATE TABLE "user" (
-    "id" SERIAL PRIMARY KEY,
-    "email" VARCHAR (150) UNIQUE NOT NULL,
-    "password" VARCHAR (1000) NOT NULL,
-    "class" INT NOT NULL DEFAULT 1,
-    "name" VARCHAR (150),
-    "credit" INT,
-    "created_at" TIMESTAMPTZ DEFAULT NOW()
+  "id" SERIAL PRIMARY KEY,
+  "email" VARCHAR (150) UNIQUE NOT NULL,
+  "password" VARCHAR (1000) NOT NULL,
+  "class" INT NOT NULL DEFAULT 1,
+  "name" VARCHAR (150),
+  "credit" INT,
+  "created_at" TIMESTAMPTZ DEFAULT NOW()
 );
 
 CREATE TABLE "genres" (
-    "id" SERIAL PRIMARY KEY,
-    "name" VARCHAR (80) UNIQUE NOT NULL
+  "id" SERIAL PRIMARY KEY,
+  "name" VARCHAR (80) UNIQUE NOT NULL
 );
 
 CREATE TABLE "song_request" (
-    "id" SERIAL PRIMARY KEY,
-    "user_id" integer REFERENCES "user",
-    "genre_id" integer REFERENCES "genres",
-    "requester" VARCHAR (150),
-    "recipient" VARCHAR (150),
-    "pronunciation" VARCHAR (150),
-    "recipient_relationship" VARCHAR (150),
-    "occasion" VARCHAR (150) DEFAULT NULL,
-    "vocal_type" VARCHAR (150),
-    "vibe" VARCHAR (150),
-    "tempo" VARCHAR (150),
-    "inspiration" VARCHAR,
-    "story1" VARCHAR,
-    "story2" VARCHAR,
-    "important_what" VARCHAR,
-    "important_why" VARCHAR,
-    "additional_info" VARCHAR,
-    "created_at" TIMESTAMPTZ DEFAULT NOW(),
-    "delivery_days" integer,
-    "streaming" BOOLEAN,
-    "extra_verse" BOOLEAN,
-    "is_complete" BOOLEAN DEFAULT FALSE
+  "id" SERIAL PRIMARY KEY,
+  "user_id" integer REFERENCES "user",
+  "genre_id" integer REFERENCES "genres",
+  "requester" VARCHAR (150),
+  "recipient" VARCHAR (150),
+  "pronunciation" VARCHAR (150),
+  "recipient_relationship" VARCHAR (150),
+  "occasion" VARCHAR (150) DEFAULT NULL,
+  "vocal_type" VARCHAR (150),
+  "vibe" VARCHAR (150),
+  "tempo" VARCHAR (150),
+  "inspiration" VARCHAR,
+  "story1" VARCHAR,
+  "story2" VARCHAR,
+  "important_what" VARCHAR,
+  "important_why" VARCHAR,
+  "additional_info" VARCHAR,
+  "created_at" TIMESTAMPTZ DEFAULT NOW(),
+  "delivery_days" integer,
+  "streaming" BOOLEAN,
+  "extra_verse" BOOLEAN,
+  "is_complete" BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE "artist" (
@@ -249,13 +249,13 @@ CREATE TABLE "artist" (
 );
 
 CREATE TABLE "song_details" (
-    "id" SERIAL PRIMARY KEY,
-    "song_request_id" integer REFERENCES "public"."song_request"("id") ON DELETE CASCADE,
-    "url" VARCHAR (500),
-    "lyrics" VARCHAR,
-    "title" VARCHAR (250),
-    "artist_id" integer REFERENCES "artist",
-    "streaming_link" VARCHAR
+  "id" SERIAL PRIMARY KEY,
+  "song_request_id" integer REFERENCES "public"."song_request"("id") ON DELETE CASCADE,
+  "url" VARCHAR (500),
+  "lyrics" VARCHAR,
+  "title" VARCHAR (250),
+  "artist_id" integer REFERENCES "artist",
+  "streaming_link" VARCHAR
 );
 
 CREATE TABLE "artist_genres" (
@@ -278,8 +278,8 @@ CREATE TABLE "jr_request" (
   "description" VARCHAR,
   "goals" VARCHAR,
   "created_at" TIMESTAMPTZ DEFAULT NOW(),
-   "is_complete" BOOLEAN DEFAULT FALSE,
-     "accepted"  BOOLEAN DEFAULT FALSE
+  "is_complete" BOOLEAN DEFAULT FALSE,
+  "accepted"  BOOLEAN DEFAULT FALSE
 
 
 );
@@ -388,10 +388,6 @@ INSERT INTO "jr_request" (
   'Improve singing skills' -- Replace with the actual goals
 );
 
-
-
-
-
 INSERT INTO "jr_request" (
   "user_id",
   "requester",
@@ -413,8 +409,6 @@ INSERT INTO "jr_request" (
 (1, 'Bob Johnson', 'Emily', 'Em-i-ly', 12, 'Dancing', 'Energetic', 'Fast', 'Mezzo-Soprano', 'Choreography for Emily', 'Win a dance competition', FALSE, TRUE),
 (1, 'Alice Brown', 'Daniel', 'Dan-yel', 9, 'Drawing', 'Focused', 'Steady', 'Tenor', 'Drawing lessons for Daniel', 'Develop artistic skills', FALSE, FALSE);
 
-
-
 CREATE TABLE "songbeejr_details" (
     "id" SERIAL PRIMARY KEY,
     "jr_request_id" integer REFERENCES "public"."jr_request"("id") ON DELETE CASCADE,
@@ -425,12 +419,8 @@ CREATE TABLE "songbeejr_details" (
     "streaming_link" VARCHAR
 );
 
-
-INSERT INTO "songbeejr_details" ("jr_request_id") VALUES (1)
-INSERT INTO "songbeejr_details" ("jr_request_id") VALUES (2)
-INSERT INTO "songbeejr_details" ("jr_request_id") VALUES (3)
-INSERT INTO "songbeejr_details" ("jr_request_id") VALUES (4)
-INSERT INTO "songbeejr_details" ("jr_request_id") VALUES (5)
-
-
-   
+INSERT INTO "songbeejr_details" ("jr_request_id") VALUES (1);
+INSERT INTO "songbeejr_details" ("jr_request_id") VALUES (2);
+INSERT INTO "songbeejr_details" ("jr_request_id") VALUES (3);
+INSERT INTO "songbeejr_details" ("jr_request_id") VALUES (4);
+INSERT INTO "songbeejr_details" ("jr_request_id") VALUES (5);
