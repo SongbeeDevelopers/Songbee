@@ -1,11 +1,13 @@
 .sample-banner {
-  height: 4.7rem;
+  /* height: 3rem; */
   background-color: #feaf17;
 }
 
 .sample-banner p {
   text-align: center;
-  
+  padding-top: 14px;
+  padding-bottom: 14px;
+  margin: 0 auto 0;
 }
 
 .nav {
