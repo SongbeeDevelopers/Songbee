@@ -36,13 +36,18 @@ function RegisterForm() {
       })
     }
     // registers user to database
-    dispatch({
-      type: 'REGISTER',
-      payload: {
-        username: username,
-        password: password,
-      },
-    });
+    if (password.length >= 8) {
+      dispatch({
+        type: 'REGISTER',
+        payload: {
+          username: username,
+          password: password,
+        },
+      });
+    } else {
+      let warning = document.getElementById("register-warning")
+      warning.classList.add("register-warning")
+    }
   };
 
   return (
@@ -80,6 +85,7 @@ function RegisterForm() {
             onChange={(event) => setPassword(event.target.value)}
           />
         </label>
+        {password.length > 0 && password.length < 8 && <p id="register-warning" className='register-verification'>Password must be at least 8 characters.</p>}
       </div>
 
       <div>
