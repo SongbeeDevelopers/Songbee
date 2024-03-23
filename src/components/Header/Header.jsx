@@ -55,13 +55,19 @@ function Header() {
  
 
   return (
+    <>
+    <div className="sample-banner">
+      <p>
+        (rough idea) New! For educational materials, check out <Link to="/songbeejr" className="nav-links">Songbee Junior</Link>
+      </p>
+    </div>
     <div className="nav">
 
       <div className="nav-left">
         <Link to="/home"><img className="nav-title" src="header-icon.png"/></Link>
         |
-        <Link to="/songbeejr" className="nav-links">Songbee Junior</Link>
-        |
+        {/* <Link to="/songbeejr" className="nav-links">Songbee Junior</Link>
+        | */}
         <Link to="/artists" className="nav-links">Artists</Link>
       </div>
 
@@ -158,6 +164,7 @@ function Header() {
         }
       </div>
     </div>
+    </>
   );
 }
 
