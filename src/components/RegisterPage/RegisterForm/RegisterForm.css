@@ -31,6 +31,15 @@
     line-height: 20px;
 }
 
+.register-verification {
+    font-size: 14px;
+    text-align: center;
+}
+
+.register-warning {
+    color: red;
+}
+
 .registerButton{
     display: inline-block;
     margin-top: 20px;
