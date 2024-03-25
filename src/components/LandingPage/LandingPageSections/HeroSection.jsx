@@ -12,13 +12,28 @@ function HeroSection() {
 
   return (
     <div className="hero">
-      <h1>
-        Custom Songs <br/> For <span>Every</span> Moment
-      </h1>
 
-      <img src="/song.png"/>
+      {!isMobile ?
+        <>
+          <h1>
+            Custom Songs <br/> For <span>Every</span> Moment
+          </h1>
+          
+          <img src="/song.png"/>
 
-      <p>Studio-Quality Custom Songs For Any Occasion</p>
+          <p>Studio-Quality Custom Songs For Any Occasion</p>
+        </>
+      :
+        <>
+          <h1>
+            Custom Songs For <span>Every</span> Moment
+          </h1>
+
+          <img src="/song-mobile.png"/>
+
+          <p>Studio-Quality Custom Songs For Any Occasion</p>
+        </>
+      }
 
      <StartSongButton/>
     </div>

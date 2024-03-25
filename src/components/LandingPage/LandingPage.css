@@ -64,6 +64,10 @@ Hero Section
   gap: 15px;
   padding: 0px;
 }
+
+.hero img {
+  padding: 0 -30px
+}
   
 .hero span {
   color: #feaf17;
