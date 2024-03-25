@@ -88,9 +88,12 @@ How Songbee Works Section
   flex-direction: column;
   gap: 30px;
   margin-top: 50px;
-  padding: 0 30px 30px;
+  padding: 0 40px 40px;
   border-radius: 25px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+}
+.works-section h2 {
+  margin-bottom: 0;
 }
 
 .works-arrows {
@@ -106,6 +109,7 @@ How Songbee Works Section
   display: flex;
   justify-content: center;
   gap: 10%;
+  margin-top: 10px
 }
 
 .works-images div {
