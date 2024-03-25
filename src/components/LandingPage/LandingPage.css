@@ -298,15 +298,42 @@ Guarantee Section
 }
 
 .guarantee-inner-bg {
+  position: relative;
   background-color: white;
   display: flex;
   flex-direction: column;
   gap: 15px;
   text-align: center;
-  margin: 0 50px;
+  margin: 0 125px 0 125px;
   padding: 25px 100px;
   border-radius: 25px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+}
+
+.guarantee-img-container {
+  width: 200px;
+  position: absolute;
+  left: -60px;
+  top: -65px;
+}
+
+.guarantee-img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+}
+
+.guarantee-img-bee {
+  width: 75px;
+  position: absolute;
+  bottom: 0;
+  top: 155px;
+  left: 60px;
+  right: 0;
 }
 
 .guarantee-text-container {

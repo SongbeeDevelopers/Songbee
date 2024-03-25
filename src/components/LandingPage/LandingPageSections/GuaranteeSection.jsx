@@ -12,6 +12,11 @@ function Guarantee() {
     <div className="guarantee-sky-bg">
       <div className="guarantee-inner-bg">
 
+        <div className="guarantee-img-container">
+          <img className="guarantee-img" src="/guarantee-img.png"/>
+          <img className="guarantee-img-bee" src="/bee-button.png"/>
+        </div>
+
         <h2>
           Song Guarantee
         </h2>
