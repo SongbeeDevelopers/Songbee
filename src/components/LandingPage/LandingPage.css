@@ -64,6 +64,10 @@ Hero Section
   gap: 15px;
   padding: 0px;
 }
+
+.hero img {
+  padding: 0 -30px
+}
   
 .hero span {
   color: #feaf17;
@@ -88,9 +92,12 @@ How Songbee Works Section
   flex-direction: column;
   gap: 30px;
   margin-top: 50px;
-  padding: 0 30px 30px;
+  padding: 0 40px 40px;
   border-radius: 25px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+}
+.works-section h2 {
+  margin-bottom: 0;
 }
 
 .works-arrows {
@@ -106,6 +113,7 @@ How Songbee Works Section
   display: flex;
   justify-content: center;
   gap: 10%;
+  margin-top: 10px
 }
 
 .works-images div {
@@ -283,26 +291,56 @@ Guarantee Section
 }
 
 .guarantee-sky-bg {
+  position: relative;
   background-color: rgba(184, 213, 224, 0.73);
   background-image: url("/guarantee-background.png");
-  background-position: 50%;
-  background-size: 100rem;
+  background-position: center;
+  background-size: 80rem;
+  background-repeat: no-repeat;
   background-attachment: fixed;
-  padding: 7.5rem 1.4rem;
+  padding: 7.5rem 12rem;
   border-radius: 25px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
 }
 
 .guarantee-inner-bg {
+  position: relative;
   background-color: white;
   display: flex;
   flex-direction: column;
   gap: 15px;
   text-align: center;
-  margin: 0 50px;
+  margin: 0;
   padding: 25px 100px;
   border-radius: 25px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+}
+
+.guarantee-img-container {
+  z-index: 1;
+  width: 200px;
+  position: absolute;
+  left: 7%;
+  top: 7%;
+}
+
+.guarantee-img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+}
+
+.guarantee-img-bee {
+  width: 75px;
+  position: absolute;
+  bottom: 0;
+  top: 155px;
+  left: 60px;
+  right: 0;
 }
 
 .guarantee-text-container {
@@ -313,4 +351,119 @@ Guarantee Section
 .guarantee-link {
   color: #feaf17;
   font-weight: bold;
+}
+
+
+/* --------------------------------------------------------------------------------
+Device Responsivity
+-------------------------------------------------------------------------------- */
+
+@media (max-width: 1000px) {
+  .active-slide {
+    padding: 0 50px;
+  }
+}
+
+@media (max-width: 815px) {
+  /* --- LANDING PAGE --- */
+  /* layout */
+  .works-arrows {
+    display: none;
+  }
+  .works-images {
+    flex-direction: column;
+    align-items: center;
+  }
+  .works-images img {
+    width: 50%;
+    margin: auto
+  }
+  .beesButton {
+    margin-top: 30px;
+  }
+  /* sizing */
+  audio {
+    width: 275px
+  }
+  h2, .sample-songs h2 {
+  font-size: 2rem;
+  }
+  .hero h1 {
+    font-size: 30px;
+    line-height: 3.5rem;
+  }
+  .hero p {
+    font-size: medium;
+  }
+  .works-section h2 {
+    margin-bottom: 15px;
+  }
+  .main-button {
+    width: 12rem;
+    height: 2.3rem;
+    font-size: 1.2rem;
+  }
+  /* scrollables */
+  .active-slide {
+    flex-direction: column;
+    align-items: center;
+  }
+  /* margin & padding */
+  .works-section {
+    margin-top: 25px;
+  }
+  .testimonials-background {
+    margin-top: 50px;
+  }
+  .testimonials {
+    margin-top: 25px;
+    margin-bottom: 35px;
+  }
+  .sample-outer-bg {
+    padding-bottom: 25px;
+  }
+  .guarantee-container {
+    padding: 50px 40px 0;
+  }
+  .guarantee-sky-bg {
+    padding-top: 75px;
+    padding-bottom: 75px
+  }
+  .guarantee-inner-bg {
+    padding: 25px 50px
+  }
+}
+
+@media (max-width: 575px) {
+  .hero h1 {
+    font-size: 44px;
+    line-height: 3rem;
+  }
+  .container {
+    padding: 0 30px
+  }
+  .sample-outer-bg {
+    padding: 65px 25px 25px
+  }
+  .testimonials {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .guarantee-container {
+    padding: 50px 25px 0
+  }
+  .guarantee-inner-bg {
+    margin: 0 10px;
+    padding: 0 20px
+  }
+  .guarantee-inner-bg p {
+    font-size: small;
+  }
+  footer {
+    margin-top: 50px;
+  }
+  .flexContainer {
+    flex-direction: column;
+    align-items: center;
+  }
 }

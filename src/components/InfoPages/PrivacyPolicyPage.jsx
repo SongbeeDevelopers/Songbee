@@ -9,7 +9,7 @@ function PrivacyPolicyPage({ routeVariants }) {
   return (
 
     <motion.div
-      className="privacy-policy"
+      className="container"
       variants={routeVariants}
       initial="initial"
       animate="final"

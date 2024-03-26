@@ -26,7 +26,7 @@ function LandingPage({ routeVariants }) {
       </div>
       
       <TestimonialsSection />
-      <SampleSongsSection />
+      {/* <SampleSongsSection /> */}
 
       <div className="guarantee-container">
         <GuaranteeSection />

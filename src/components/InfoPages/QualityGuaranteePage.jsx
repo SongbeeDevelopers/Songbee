@@ -9,7 +9,7 @@ function QualityGuarantee({ routeVariants }) {
 
   return (
     <motion.div
-      className="guaranteePage"
+      className="container"
       variants={routeVariants}
       initial="initial"
       animate="final"
