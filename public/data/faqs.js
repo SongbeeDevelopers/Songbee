@@ -1,3 +1,4 @@
+// SONGBEE MAIN FAQS
 export const faqsMain = [
   {
     question: `
@@ -48,6 +49,7 @@ export const faqsMain = [
 ];
 
 
+// SONGBEE JUNIOR FAQS
 export const faqsJr = [
   {
     question: `
