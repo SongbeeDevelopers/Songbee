@@ -291,12 +291,14 @@ Guarantee Section
 }
 
 .guarantee-sky-bg {
+  position: relative;
   background-color: rgba(184, 213, 224, 0.73);
   background-image: url("/guarantee-background.png");
-  background-position: 50%;
-  background-size: 100rem;
+  background-position: center;
+  background-size: 80rem;
+  background-repeat: no-repeat;
   background-attachment: fixed;
-  padding: 7.5rem 1.4rem;
+  padding: 7.5rem 12rem;
   border-radius: 25px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
 }
@@ -308,17 +310,18 @@ Guarantee Section
   flex-direction: column;
   gap: 15px;
   text-align: center;
-  margin: 0 125px 0 125px;
+  margin: 0;
   padding: 25px 100px;
   border-radius: 25px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
 }
 
 .guarantee-img-container {
+  z-index: 1;
   width: 200px;
   position: absolute;
-  left: -60px;
-  top: -65px;
+  left: 7%;
+  top: 7%;
 }
 
 .guarantee-img {
@@ -386,7 +389,7 @@ Device Responsivity
   font-size: 2rem;
   }
   .hero h1 {
-    font-size: 48px;
+    font-size: 30px;
     line-height: 3.5rem;
   }
   .hero p {
