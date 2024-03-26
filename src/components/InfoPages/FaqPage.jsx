@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-// import OneFaq from './OneFaq';
 
 
 const faqs = [
@@ -14,16 +13,21 @@ const faqs = [
 
     Artist Gratuity: Our artists are working musicians and rely on tips to further their 
     careers and lives, so we strongly encourage you to tip your artist. All tips are 100% 
-    for the artist minus processing fees. You can tip your artist via the online portal.`,
+    for the artist minus processing fees. You can tip your artist via the online portal.
+    `
   },
   {
     question: "How long does song delivery take?",
-    answer: `We have a 6 day standard delivery as well as expedited delivery options (4 or 5 day)
-     for an additional fee.`,
+    answer: `
+    We have a 6 day standard delivery as well as expedited delivery options (4 or 5 day)
+    for an additional fee.
+    `
   },
   {
     question: "How are the songs delivered?",
-    answer: `Songs are delivered via online customer portal.`,
+    answer: `
+    Songs are delivered via online customer portal.
+    `
   },
   {
     question: "What if I am not happy with my song?",
@@ -35,60 +39,61 @@ const faqs = [
     All song deliveries will be locked in and unable to change after 7 days of 
     your 1st draft song delivery (regardless of additional requests or fees).
     NOTE: All requested edits must be submitted within 48 hours of song delivery or
-    additional fees will be applied and delivery time will vary due to artist availability.`,
+    additional fees will be applied and delivery time will vary due to artist availability.
+    `
   },
 ];
 
 
 // rendering of a single FAQ
-function OneFaq({ question, answer }) {
+// function OneFaq({ question, answer }) {
 
-  const [open, setOpen] = useState(false);
+//   const [open, setOpen] = useState(false);
 
-  return (
-    <div id="panel1" className="panel panel-default">
+//   return (
+//     <div id="panel1" className="panel panel-default">
 
-      <div className="panel-heading" onClick={() => setOpen(!open)}>
-        <h4 className="panel-title">
-          <p className="question">
-            {question}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="lucide lucide-chevron-down icon"
-            >
-              <path d="m6 9 6 6 6-6" />
-            </svg>
-          </p>
-        </h4>
-      </div>
+//       <div className="panel-heading" onClick={() => setOpen(!open)}>
+//         <h4 className="panel-title">
+//           <p className="question">
+//             {question}
+//             <svg
+//               xmlns="http://www.w3.org/2000/svg"
+//               width="24"
+//               height="24"
+//               viewBox="0 0 24 24"
+//               fill="none"
+//               stroke="currentColor"
+//               strokeWidth="2"
+//               strokeLinecap="round"
+//               strokeLinejoin="round"
+//               className="lucide lucide-chevron-down icon"
+//             >
+//               <path d="m6 9 6 6 6-6" />
+//             </svg>
+//           </p>
+//         </h4>
+//       </div>
 
-      <div
-        id="collapseOne"
-        className={`panel-collapse collapse in ${open ? "openFaq" : "closeFaq"}`}
-      >
-        <div className="panel-body">
-          {answer}
-        </div>
-      </div>
+//       <div
+//         id="collapseOne"
+//         className={`panel-collapse collapse in ${open ? "openFaq" : "closeFaq"}`}
+//       >
+//         <div className="panel-body">
+//           {answer}
+//         </div>
+//       </div>
 
-    </div>
-  );
-}
+//     </div>
+//   );
+// }
 
 
 // rendering of entire FAQ page
 function FaqPage({ routeVariants }) {
   return (
     <motion.div
-      className="container, faq"
+      className="container"
       variants={routeVariants}
       initial="initial"
       animate="final"
@@ -99,7 +104,14 @@ function FaqPage({ routeVariants }) {
         If you have additional questions, please reach out at{" "} <span className="suii">hello@songbee.com!</span>
       </p>
 
-      <section className="collapse-area">
+      {faqs.map((faq) => (
+        <div key={faqs.indexOf(faq)}>
+          <h3>{faq.question}</h3>
+          <p>{faq.answer}</p>
+        </div>
+      ))}
+
+      {/* <section className="collapse-area">
         <div className="container">
           <div className="row">
             <div className="collapse-tab col-xs-12">
@@ -115,7 +127,7 @@ function FaqPage({ routeVariants }) {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
     </motion.div>
   );
