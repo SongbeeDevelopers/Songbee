@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
-import faqs from '../../../public/data/faqs';
+import faqsMain from '../../../public/data/faqs';
 
 
 // rendering of a single FAQ
@@ -64,8 +64,8 @@ function FaqPage({ routeVariants }) {
         If you have additional questions, please reach out at{" "} <span className="suii">hello@songbee.com!</span>
       </p>
 
-      {faqs.map((faq) => (
-        <div key={faqs.indexOf(faq)}>
+      {faqsMain.map((faq) => (
+        <div key={faqsMain.indexOf(faq)}>
           <h3>{faq.question}</h3>
           <p>{faq.answer}</p>
         </div>
