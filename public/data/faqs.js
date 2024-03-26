@@ -1,6 +1,8 @@
 export const faqsMain = [
   {
-    question: "Song Cost & Length",
+    question: `
+      Song Cost & Length
+    `,
     answer: `
       Our custom songs are $225 for a standard 6 day delivery. 
       Expedited delivery is available for an additional fee. Each song is custom 
@@ -12,20 +14,26 @@ export const faqsMain = [
     `
   },
   {
-    question: "How long does song delivery take?",
+    question: `
+      How long does song delivery take?
+    `,
     answer: `
       We have a 6 day standard delivery as well as expedited delivery options (4 or 5 day)
       for an additional fee.
     `
   },
   {
-    question: "How are the songs delivered?",
+    question: `
+      How are the songs delivered?
+    `,
     answer: `
       Songs are delivered via online customer portal.
     `
   },
   {
-    question: "What if I am not happy with my song?",
+    question: `
+      What if I am not happy with my song?
+    `,
     answer: `
       With the Songbee Quality Guarantee, you can be rest assured that if your 1st draft 
       was not what you were looking for, you can provide edits to make your song perfect for you.
@@ -39,9 +47,12 @@ export const faqsMain = [
   },
 ];
 
+
 export const faqsJr = [
   {
-    question: "Subscription Cost & Length",
+    question: `
+      Subscription Cost & Length
+    `,
     answer: `
       Subscription Information: Our learning songs come with a guide on how to get the most out of the songs. How to teach your child
       with them, what tools to utilize, etc. Custom learning song purchased by parents/individuals is a 3 
@@ -54,24 +65,26 @@ export const faqsJr = [
       careers and lives, so we strongly encourage you to tip your artist. All tips are 100% 
       for the artist minus processing fees. You can tip your artist via the online portal.
     `
-
   },
   {
-    question: "Schools/Daycares",
+    question: `
+      Schools and Daycares
+    `,
     answer: `
-    If a school program is interested and would like to inquire about implementing Songbee JR in 
-    their schools, we ask them to email us at hello@songbee.com for custom program/school pricing.
-     Offerings: Non-Exclusive Contract:
-     A. Set of Songs from the Songbee Catalogue chosen to use in the school.
-     B. Upfront fee, then a subscription fee every term.
-     Exclusive Contract: 
-     A. Set of custom songs written specifically for the school.
-     B. Higher up front fee, but no subscription fee.
+      If a school program is interested and would like to inquire about implementing Songbee JR in 
+      their schools, we ask them to email us at hello@songbee.com for custom program/school pricing.
+      Offerings: Non-Exclusive Contract:
+      A. Set of Songs from the Songbee Catalogue chosen to use in the school.
+      B. Upfront fee, then a subscription fee every term.
+      Exclusive Contract: 
+      A. Set of custom songs written specifically for the school.
+      B. Higher up front fee, but no subscription fee.
     `
-
   },
   {
-    question: "What are the benefits",
+    question: `
+      What are the benefits
+    `,
     answer: `
       Cognitive Benefits: Music stimulates Emotional Benefits: Music is a beneficial tool to aid children from babies to teenagers in a developmental standpoint. 
       The usage of music  “provides and provokes many different responses in the human brain” and leads to “marked changes in emotions and movement” according to Trimble and Hesdorffer, 
@@ -84,28 +97,36 @@ export const faqsJr = [
     `
   },
   {
-    question: "When to use",
+    question: `
+      When to use
+    `,
     answer: `
-      Leson plans, Counseling A. Emotional intelligence B. Identifying emotions C. Work through bullying issues D. Coping Mechanisims. Sports (theme songs), school Theme Songs,
+      Lesson plans, Counseling A. Emotional intelligence B. Identifying emotions C. Work through bullying issues D. Coping Mechanisims. Sports (theme songs), school Theme Songs,
       Extra Curricular activites - songs to enhance and aid in them, Team Building, Artistic Expression, Structure and learning, Motor skills, Cognitive, Social skills and Brain development.
     `
-
   },
 
   {
-    question: "How long does song delivery take?",
-    answer: `At the time of subscription, it takes the first song 6 days to deliver,
+    question: `
+      How long does song delivery take?
+    `,
+    answer: `
+      At the time of subscription, it takes the first song 6 days to deliver,
       then after that it is every 7 days (depending on your subscription/amount of songs)
     `
   },
   {
-    question: "How are the songs delivered?",
+    question: `
+      How are the songs delivered?
+    `,
     answer: `
       Songs are delivered via online customer portal.
     `
   },
   {
-    question: "What if I am not happy with my song?",
+    question: `
+      What if I am not happy with my song?
+    `,
     answer: `
       With the Songbee Quality Guarantee, you can be rest assured that if your 1st draft 
       was not what you were looking for, you can provide edits to make your song perfect for you.
