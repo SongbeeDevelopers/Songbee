@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
-import faqsMain from '../../../public/data/faqs';
+import faqsMain from '../../../public/data/faqsMain';
 
 
 // rendering of a single FAQ

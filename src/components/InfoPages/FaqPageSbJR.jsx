@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 // import OneFaq from './OneFaq';
 
-import faqsJr from '../../../public/data/faqs';
+import faqsJr from '../../../public/data/faqsJunior';
 
 
 // rendering of a single FAQ
