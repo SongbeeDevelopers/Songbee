@@ -21,6 +21,8 @@ function Header() {
   const history = useHistory();
   const dispatch = useDispatch();
 
+  console.log(history)
+
   const user = useSelector((store) => store.user);
 
   // dropdown logic
@@ -56,114 +58,109 @@ function Header() {
 
   return (
     <>
-    <div className="sample-banner">
-      <p>
-        (rough idea) New! For educational materials, check out <Link to="/songbeejr" className="nav-links">Songbee Junior</Link>
-      </p>
-    </div>
-    <div className="nav">
+      <div className="nav">
 
-      <div className="nav-left">
-        <Link to="/home"><img className="nav-title" src="header-icon.png"/></Link>
-        |
-        {/* <Link to="/songbeejr" className="nav-links">Songbee Junior</Link>
-        | */}
-        <Link to="/artists" className="nav-links">Artists</Link>
+        <div className="nav-left">
+          <Link to="/home"><img className="nav-title" src="header-icon.png"/></Link>
+          |
+          {/* <Link to="/songbeejr" className="nav-links">Songbee Junior</Link>
+          | */}
+          <Link to="/artists" className="nav-links">Artists</Link>
+        </div>
+
+        <div className="nav-right">
+        
+          {!isMobile && user.id && user.class === 3 &&
+            <> <Link to="/admin" className="nav-links">Admin</Link> | </>
+          }
+
+          {!isMobile && user.id && 
+            <> <Link to="/user" className="nav-links">Account</Link> | </>
+          }
+
+          {!isMobile &&
+            <> <Link to="/faq" className="nav-links">FAQ</Link> | </>
+          }
+
+          {/* login/logout */}
+          <Link to="/login"
+            className="nav-links"
+            onClick={(e) => {
+              if (user?.id) {
+                e.preventDefault();
+                Swal.fire({
+                  title: "Do you want to log out?",
+                  showCancelButton: true,
+                  confirmButtonText: "Yes",
+                  icon: 'warning'
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    dispatch({ type: "LOGOUT" });
+                  }
+                });
+              }
+            }}
+          >
+            {user?.id ? "Logout" : "Login"}
+          </Link>
+
+
+
+          {/* admin, profile, FAQ */}
+
+          {/* dropdown menu for mobile users */}
+          {isMobile &&
+            <>
+              <IconButton
+                size="large"
+                edge="start"
+                color="black"
+                aria-label="menu"
+                sx={{ mr: -2 }}
+                id="basic-button"
+                aria-controls={open ? "basic-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? "true" : undefined}
+                onClick={handleMenu}
+              >
+                <MenuIcon />
+              </IconButton>
+
+              <Menu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                MenuListProps={{
+                  "aria-labelledby": "basic-button",
+                }}
+              >
+                <MenuItem onClick={() => handleClose()}>
+                  <img className="drawerHeaderBee" src="bee-button.png"></img>
+                </MenuItem>
+
+                <MenuItem onClick={() => handleClose(1)}>Home</MenuItem>
+
+                {user.id && <MenuItem onClick={() => handleClose(6)}>My Profile</MenuItem>}
+                
+                {user.id && user.class === 3 && <MenuItem onClick={() => handleClose(7)}>Admin Page</MenuItem>}
+                
+                <MenuItem onClick={() => handleClose(2)}>Start Your Song</MenuItem>
+                
+                <MenuItem onClick={() => handleClose(3)}>Artist Application</MenuItem>
+                
+                <MenuItem onClick={() => handleClose(4)}>FAQ</MenuItem>
+                
+                <MenuItem onClick={() => handleClose(8)}>Songbee Jr</MenuItem>
+                
+                <MenuItem onClick={() => handleClose(9)}>FAQ Songbee JR</MenuItem>
+                
+                <MenuItem onClick={() => handleClose(5)}><a href="mailto:hello@songbee.com">Contact Us</a></MenuItem>
+              </Menu>
+            </>
+          }
+        </div>
       </div>
-
-      <div className="nav-right">
-      
-        {!isMobile && user.id && user.class === 3 &&
-          <> <Link to="/admin" className="nav-links">Admin</Link> | </>
-        }
-
-        {!isMobile && user.id && 
-          <> <Link to="/user" className="nav-links">Account</Link> | </>
-        }
-
-        {!isMobile &&
-          <> <Link to="/faq" className="nav-links">FAQ</Link> | </>
-        }
-
-        {/* login/logout */}
-        <Link to="/login"
-          className="nav-links"
-          onClick={(e) => {
-            if (user?.id) {
-              e.preventDefault();
-              Swal.fire({
-                title: "Do you want to log out?",
-                showCancelButton: true,
-                confirmButtonText: "Yes",
-                icon: 'warning'
-              }).then((result) => {
-                if (result.isConfirmed) {
-                  dispatch({ type: "LOGOUT" });
-                }
-              });
-            }
-          }}
-        >
-          {user?.id ? "Logout" : "Login"}
-        </Link>
-
-
-
-        {/* admin, profile, FAQ */}
-
-        {/* dropdown menu for mobile users */}
-        {isMobile &&
-          <>
-            <IconButton
-              size="large"
-              edge="start"
-              color="black"
-              aria-label="menu"
-              sx={{ mr: -2 }}
-              id="basic-button"
-              aria-controls={open ? "basic-menu" : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}
-              onClick={handleMenu}
-            >
-              <MenuIcon />
-            </IconButton>
-
-            <Menu
-              id="basic-menu"
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              MenuListProps={{
-                "aria-labelledby": "basic-button",
-              }}
-            >
-              <MenuItem onClick={() => handleClose()}>
-                <img className="drawerHeaderBee" src="bee-button.png"></img>
-              </MenuItem>
-
-              <MenuItem onClick={() => handleClose(1)}>Home</MenuItem>
-
-              {user.id && <MenuItem onClick={() => handleClose(6)}>My Profile</MenuItem>}
-              
-              {user.id && user.class === 3 && <MenuItem onClick={() => handleClose(7)}>Admin Page</MenuItem>}
-              
-              <MenuItem onClick={() => handleClose(2)}>Start Your Song</MenuItem>
-              
-              <MenuItem onClick={() => handleClose(3)}>Artist Application</MenuItem>
-              
-              <MenuItem onClick={() => handleClose(4)}>FAQ</MenuItem>
-              
-              <MenuItem onClick={() => handleClose(8)}>Songbee Jr</MenuItem>
-              
-              <MenuItem onClick={() => handleClose(9)}>FAQ Songbee JR</MenuItem>
-              
-              <MenuItem onClick={() => handleClose(5)}><a href="mailto:hello@songbee.com">Contact Us</a></MenuItem>
-            </Menu>
-          </>
-        }
-      </div>
-    </div>
     </>
   );
 }
