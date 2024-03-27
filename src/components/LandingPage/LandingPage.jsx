@@ -19,7 +19,6 @@ function LandingPage({ routeVariants }) {
       initial="initial"
       animate="final"
     >
-      
       <div className="container">
         <HeroSection />
         <HowSongBeeWorksSection />
