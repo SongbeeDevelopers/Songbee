@@ -15,6 +15,7 @@ import AdminArtistTable from './AdminArtistTable';
 import AdminUserTable from './AdminUserTable';
 
 import './AdminPage.css'
+import AdminArtistsPendingEdits from './AdminArtistsPendingEdits';
 
 
 function AdminPage({ routeVariants }) {
@@ -87,6 +88,8 @@ function AdminPage({ routeVariants }) {
         <Tab label="Completed Requests" {...a11yProps(1)} />
         <Tab label="Users" {...a11yProps(2)} />
         <Tab label="Pending Artists" {...a11yProps(3)} />
+        <Tab label="Pending Artists Edits" {...a11yProps(4)} />
+
       </Tabs>
       
       <CustomTabPanel value={value} index={0}>
@@ -103,6 +106,11 @@ function AdminPage({ routeVariants }) {
 
       <CustomTabPanel value={value} index={3}>
         <AdminArtistTable />
+      </CustomTabPanel>
+
+
+      <CustomTabPanel value={value} index={4}>
+        <AdminArtistsPendingEdits />
       </CustomTabPanel>
 
     </motion.div>
