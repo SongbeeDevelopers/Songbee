@@ -1,0 +1,12 @@
+.banner {
+    position: absolute;
+    top: 0;
+    background-color: #feaf17;
+}
+
+.banner p {
+    text-align: center;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    margin: 0 auto 0;
+  }
