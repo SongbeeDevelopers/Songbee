@@ -9,9 +9,30 @@ const {
 /**
  * GET route template
  */
-router.get("/get/:artistid", (req, res) => {
+const getArtistIdByUserId = (userId) => {
+  return new Promise((resolve, reject) => {
+    const queryText = `
+      SELECT id FROM artist WHERE user_id = $1;
+    `;
+    pool.query(queryText, [userId], (error, result) => {
+      if (error) {
+        reject(error);
+      } else {
+        if (result.rows.length > 0) {
+          resolve(result.rows[0].id);
+        } else {
+          resolve(null); // Return null if no artist found for the user ID
+        }
+      }
+    });
+  });
+};
+
+router.get("/get", async (req, res) => {
   // this is getting artist info with the genre
   // we use the sql join to link artist and genre tables
+  const artistId = await getArtistIdByUserId(req.user.id)
+  console.log(artistId);
   const query = `
   SELECT 
   "artist"."id" AS "artistId",
@@ -31,7 +52,7 @@ router.get("/get/:artistid", (req, res) => {
   ON "artist_genres"."genre_id" ="genres"."id"
   WHERE "artist"."id"=$1;
   `;
-  pool.query(query, [req.params.artistid])
+  pool.query(query, [artistId])
     .then((result) => {
         res.send(result.rows);
     })
@@ -93,6 +114,73 @@ router.post("/", rejectUnauthenticated, (req, res) => {
       res.sendStatus(500);
     });
 });
+
+router.post("/edit", rejectUnauthenticated, async (req, res) => {
+  const editedArtistInfo = req.body;
+  const queryText = `
+    INSERT INTO "pendingartistedit" 
+    ("artist_id", "edited_artistName","edited_name", "edited_bio", "edited_website", "edited_vocal_type", "edited_genre_id")
+    VALUES
+    ($1, $2, $3, $4, $5, $6, $7);
+  `;
+    const artistId = await getArtistIdByUserId(req.user.id)
+console.log(artistId);
+  pool
+    .query(queryText, [
+      artistId,
+      editedArtistInfo.edited_artistName,
+      editedArtistInfo.edited_name,
+      editedArtistInfo.edited_bio,
+      editedArtistInfo.edited_website,
+      editedArtistInfo.edited_vocal_type,
+      editedArtistInfo.edited_genre_id
+    ])
+    .then(() => {
+      res.sendStatus(201); // Successfully requested edit
+    })
+    .catch((err) => {
+      console.error("Error requesting edit: ", err);
+      res.sendStatus(500);
+    });
+});
+
+
+router.put("/approve/:artistId", rejectUnauthenticated, (req, res) => {
+  const artistId = req.params.artistId;
+  const queryText = `
+    UPDATE "artist"
+    SET
+      "artist_name" = (SELECT "edited_artistName" FROM "pendingartistedit" WHERE "artist_id" = $1),
+      "name" = (SELECT "edited_name" FROM "pendingartistedit" WHERE "artist_id" = $1),
+      "bio" = (SELECT "edited_bio" FROM "pendingartistedit" WHERE "artist_id" = $1),
+      "website" = (SELECT "edited_website" FROM "pendingartistedit" WHERE "artist_id" = $1),
+      "vocal_type" = (SELECT "edited_vocal_type" FROM "pendingartistedit" WHERE "artist_id" = $1),
+  
+      "genre_id" = (SELECT "edited_genre_id" FROM "pendingartistedit" WHERE "artist_id" = $1)
+
+    WHERE "id" = $1;
+  `;
+  pool
+    .query(queryText, [artistId])
+    .then(() => {
+      // After updating artist information, delete the pending edit
+      const deleteQuery = `DELETE FROM "pendingartistedit" WHERE "artist_id" = $1;`;
+      pool
+        .query(deleteQuery, [artistId])
+        .then(() => {
+          res.sendStatus(200); // Successfully approved and applied edit
+        })
+        .catch((deleteErr) => {
+          console.error("Error deleting pending edit: ", deleteErr);
+          res.sendStatus(500);
+        });
+    })
+    .catch((err) => {
+      console.error("Error approving edit: ", err);
+      res.sendStatus(500);
+    });
+});
+
 
 router.get('/pending', (req, res) => {
     const query = `

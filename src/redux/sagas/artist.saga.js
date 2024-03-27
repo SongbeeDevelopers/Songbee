@@ -27,6 +27,19 @@ function* createNewArtist(action) {
   }
 }
 
+function* requestArtistEdit(action) {
+    try {
+      const response = yield axios({
+        method: "POST",
+        url: "/api/artist/edit",
+        data: action.payload,
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error("SAGA createNewArtist() failed:", error);
+    }
+  }
+
 function* approveArtist(action){
     try {
         yield axios.put(`/api/artist/${action.payload.id}`, {user_id: action.payload.user_id})
@@ -36,6 +49,23 @@ function* approveArtist(action){
     }
 }
 
+function* getArtistDetails(){
+    try {
+     const response =  yield axios.get(`/api/artist/get`)
+        yield put({ type: 'SET_ARTIST_PROFILE', payload: response.data[0]})
+    } catch (error) {
+        console.error('SAGA approveArtist() failed:', error)
+    }
+}
+
+function* approveEditArtistInfo(action){
+    try {
+        yield axios.put(`/api/artist/approve/${action.payload.id}`)
+        yield put({ type: 'FETCH_PENDING_ARTISTS'})
+    } catch (error) {
+        console.error('SAGA approveArtist() failed:', error)
+    }
+}
 function* deleteArtist(action){
     try {
         yield axios.delete(`/api/artist/${action.payload}`)
@@ -63,6 +93,11 @@ function* artistSaga() {
   yield takeLatest('APPROVE_ARTIST', approveArtist);
   yield takeLatest('DELETE_ARTIST', deleteArtist);
   yield takeLatest('FETCH_ALL_ARTISTS', fetchAllArtists);
+  yield takeLatest('APPROVE_EDIT_ARTIST', approveEditArtistInfo);
+  yield takeLatest('REQUEST_ARTIST_EDIT', requestArtistEdit);
+  yield takeLatest('GET_ARTIST_PROFILE', getArtistDetails);
+
+
 }
 
 export default artistSaga;

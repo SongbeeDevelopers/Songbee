@@ -1,19 +1,20 @@
-import { combineReducers } from 'redux';
-import errors from './errors.reducer';
-import user from './user.reducer';
-import userRequests from './userRequests.reducer';
-import genres from './genres.reducer';
-import completedRequests from './completedRequests.reducer';
-import pendingRequests from './pendingRequests.reducer';
-import currentRequest from './currentRequest.reducer';
-import newOrder from './newOrder.reducer';
-import requestData from './requestData.reducer';
-import allUsers from './allUsers.reducer';
-import filterResults from './filterResults.reducer';
-import pendingArtists from './pendingArtists.reducer';
-import allArtists from './allArtists.reducer';
-import juniorRequests from './juniorRequest.reducer';
-import jrRequestData from './jrRequestData.reducer';
+import { combineReducers } from "redux";
+import errors from "./errors.reducer";
+import user from "./user.reducer";
+import userRequests from "./userRequests.reducer";
+import genres from "./genres.reducer";
+import completedRequests from "./completedRequests.reducer";
+import pendingRequests from "./pendingRequests.reducer";
+import currentRequest from "./currentRequest.reducer";
+import newOrder from "./newOrder.reducer";
+import requestData from "./requestData.reducer";
+import allUsers from "./allUsers.reducer";
+import filterResults from "./filterResults.reducer";
+import pendingArtists from "./pendingArtists.reducer";
+import allArtists from "./allArtists.reducer";
+import juniorRequests from "./juniorRequest.reducer";
+import jrRequestData from "./jrRequestData.reducer";
+import artistProfile from "./artistProfile.reducer";
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
 // This is imported in index.js as rootSaga
@@ -36,7 +37,7 @@ const rootReducer = combineReducers({
   allArtists,
   juniorRequests,
   jrRequestData,
-
+  artistProfile,
 });
 
 export default rootReducer;
