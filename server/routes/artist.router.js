@@ -119,9 +119,9 @@ router.post("/edit", rejectUnauthenticated, async (req, res) => {
   const editedArtistInfo = req.body;
   const queryText = `
     INSERT INTO "pendingartistedit" 
-    ("artist_id", "edited_artistName","edited_name", "edited_bio", "edited_website", "edited_vocal_type", "edited_genre_id")
+    ("artist_id", "edited_artistName","edited_name", "edited_bio", "edited_website", "edited_vocal_type")
     VALUES
-    ($1, $2, $3, $4, $5, $6, $7);
+    ($1, $2, $3, $4, $5, $6);
   `;
     const artistId = await getArtistIdByUserId(req.user.id)
 console.log(artistId);
@@ -133,7 +133,6 @@ console.log(artistId);
       editedArtistInfo.edited_bio,
       editedArtistInfo.edited_website,
       editedArtistInfo.edited_vocal_type,
-      editedArtistInfo.edited_genre_id
     ])
     .then(() => {
       res.sendStatus(201); // Successfully requested edit
@@ -154,10 +153,7 @@ router.put("/approve/:artistId", rejectUnauthenticated, (req, res) => {
       "name" = (SELECT "edited_name" FROM "pendingartistedit" WHERE "artist_id" = $1),
       "bio" = (SELECT "edited_bio" FROM "pendingartistedit" WHERE "artist_id" = $1),
       "website" = (SELECT "edited_website" FROM "pendingartistedit" WHERE "artist_id" = $1),
-      "vocal_type" = (SELECT "edited_vocal_type" FROM "pendingartistedit" WHERE "artist_id" = $1),
-  
-      "genre_id" = (SELECT "edited_genre_id" FROM "pendingartistedit" WHERE "artist_id" = $1)
-
+      "vocal_type" = (SELECT "edited_vocal_type" FROM "pendingartistedit" WHERE "artist_id" = $1)
     WHERE "id" = $1;
   `;
   pool
@@ -180,6 +176,41 @@ router.put("/approve/:artistId", rejectUnauthenticated, (req, res) => {
       res.sendStatus(500);
     });
 });
+
+
+
+
+
+
+router.get("/pending-edits", rejectUnauthenticated, (req, res) => {
+  const queryText = `
+    SELECT * FROM "pendingartistedit";
+  `;
+  pool.query(queryText)
+    .then((result) => {
+      res.json(result.rows);
+    })
+    .catch((error) => {
+      console.error("Error fetching pending edits:", error);
+      res.status(500).json({ error: "Internal server error" });
+    });
+});
+
+router.delete("/deny/:artistId", rejectUnauthenticated, (req, res) => {
+  const artistId = req.params.artistId;
+  const queryText = `
+    DELETE FROM "pendingartistedit" WHERE "artist_id" = $1;
+  `;
+  pool.query(queryText, [artistId])
+    .then(() => {
+      res.sendStatus(200); // Successfully denied edit
+    })
+    .catch((error) => {
+      console.error("Error denying edit:", error);
+      res.status(500).json({ error: "Internal server error" });
+    });
+});
+
 
 
 router.get('/pending', (req, res) => {
