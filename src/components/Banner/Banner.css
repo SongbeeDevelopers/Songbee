@@ -1,7 +1,6 @@
 .banner {
-    position: absolute;
-    top: 0;
     background-color: #feaf17;
+    width: 100%
 }
 
 .banner p {
@@ -9,4 +8,9 @@
     padding-top: 14px;
     padding-bottom: 14px;
     margin: 0 auto 0;
-  }
+}
+
+.banner span {
+    color: black;
+    text-decoration: underline;
+}
