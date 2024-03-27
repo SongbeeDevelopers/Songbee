@@ -13,37 +13,31 @@ import TableRow from "@mui/material/TableRow";
 
 import FilterBar from "../FilterBar/FilterBar";
 
-function AdminArtistTable() {
+function AdminArtistsPendingEdits() {
   const dispatch = useDispatch();
 
-  const data = useSelector((store) => store.pendingArtists);
-  // const data = useSelector((store) => store.filterResults); ....//// filtering isnt needed??
+  const data = useSelector((store) => store.pendingEdits);
   
   console.log(data);
 
-  // useEffect(() => {
-  //   dispatch({
-  //     type: "SET_FILTER_RESULTS",
-  //     payload: artists,
-  //   });
-  // }, []);   this is the one doing thee filtering above ^
+
 
   useEffect(() => {
     dispatch({
-      type: "FETCH_PENDING_ARTISTS",
+      type: "GET_ARTIST_PENDING",
     });
   }, []);
 
-  const approveArtist = (id, user_id) => {
+  const approveArtist = (id) => {
     dispatch({
-      type: "APPROVE_ARTIST",
-      payload: { id, user_id },
+      type: "APPROVE_EDIT_ARTIST",
+      payload: { id},
     });
   };
 
   const denyArtist = (id) => {
     dispatch({
-      type: "DELETE_ARTIST",
+      type: "DENY_EDIT_ARTIST",
       payload: id,
     });
   };
@@ -90,21 +84,21 @@ function AdminArtistTable() {
               return (
                 <StyledTableRow key={artist.id}>
                   <StyledTableCell component="th" scope="row">
-                    {artist.artist_name}
+                    {artist.edited_artistName}
                   </StyledTableCell>
 
                   <StyledTableCell align="center">
-                    {artist.vocal_type}
+                    {artist.edited_vocal_type}
                   </StyledTableCell>
 
                   <StyledTableCell align="center">
-                    {artist.website}
+                    {artist.edited_website}
                   </StyledTableCell>
 
                   <StyledTableCell align="center">
                     <button
                       className="admin-button"
-                      onClick={() => approveArtist(artist.id, artist.user_id)}
+                      onClick={() => approveArtist(artist.artist_id)}
                     >
                       Approve
                     </button>
@@ -113,7 +107,7 @@ function AdminArtistTable() {
                   <StyledTableCell align="center">
                     <button
                       className="admin-button"
-                      onClick={() => denyArtist(artist.id)}
+                      onClick={() => denyArtist(artist.artist_id)}
                     >
                       Deny
                     </button>
@@ -128,4 +122,4 @@ function AdminArtistTable() {
   );
 }
 
-export default AdminArtistTable;
+export default AdminArtistsPendingEdits;
