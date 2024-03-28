@@ -2,6 +2,7 @@ import React from "react";
 
 import '../JrLandingPage.css'
 
+
 function JrOfferSection() {
 
   return (
