@@ -1,7 +1,5 @@
 import React from "react"
 
-import GetStartedButton from "../GetStartedButton/GetStartedButton";
-
 import "../JrLandingPage.css";
 
 
@@ -65,7 +63,9 @@ function HowSongbeeJrWorks() {
         <p>Enjoy your new teaching tools! Check out our provided song guides.</p>
       </div>
       <br/>
-      <GetStartedButton />
+      <button className="jr-landing-btn">
+        Get Started!
+      </button>
 
       <img className="jr-works-beehive" src="/junior/beehive.png"/>
 
