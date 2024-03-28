@@ -1,6 +1,5 @@
 import React from "react";
 
-import LearnMoreButton from '../LearnMoreButton/LearnMoreButton'
 
 function JrLearningPacksSection() {
 
