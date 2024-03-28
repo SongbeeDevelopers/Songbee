@@ -23,6 +23,7 @@ function SBjrLandingPage({ routeVariants }) {
       variants={routeVariants}
       initial="initial"
       animate="final"
+      className="junior"
     >
       <JrHeroSection />
       {/* <JrJoinSection /> */}
