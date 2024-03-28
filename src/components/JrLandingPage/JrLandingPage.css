@@ -294,11 +294,19 @@ What Do We Offer
 -------------------------------------------------------------------------------- */
 
 .jr-offer-bg {
+  position: relative;
   background-image: url('../../../public/junior/offerbg.png');
   background-repeat: no-repeat;
   background-size: contain;
   margin-top: 75px;
 }
+
+/* .jr-reviews-bg-bee {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 100px;
+} */
 
 .jr-offer {
   background-color: #474546;
@@ -333,13 +341,82 @@ What Do We Offer
 }
 
 /* --------------------------------------------------------------------------------
-General
+Guesswork
 -------------------------------------------------------------------------------- */
 
-/* --------------------------------------------------------------------------------
-General
--------------------------------------------------------------------------------- */
+.guesswork-bg {
+  background-image: linear-gradient(to right, #FEAF17, #FFDEB0);
+  position: relative;
+  height: 350px
+}
+
+.guesswork-text-container {
+  padding-top: 40px;
+  margin: auto;
+  width: 20%;
+}
+.guesswork-text-container h2 {
+  margin-bottom: 0;
+}
+.guesswork-text-container img {
+  margin-bottom: 10px;
+}
+
+.guesswork-baby-saxophone {
+  width: 200px;
+  position: absolute;
+  right: 15%;
+  bottom: -30px;
+}
+
+.guesswork-honeycomb {
+  width: 150px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
 
 /* --------------------------------------------------------------------------------
-General
+Reviews
+-------------------------------------------------------------------------------- */
+
+.jr-reviews-bg {
+  background-image: url('../../../public/junior/speckled-bg.png');
+  background-size: contain;
+  padding: 50px;
+}
+
+.jr-reviews {
+  margin: auto;
+  background-color: #FEAF17;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: 85%;
+  padding: 30px 0;
+}
+
+.jr-reviews-header {
+  text-align: center;
+  margin-top: 0;
+}
+
+.jr-review-item-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0 20px
+}
+
+.jr-review-item {
+  width: 22%;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 0 15px
+}
+.jr-review-item img{
+  width: 120px
+}
+
+/* --------------------------------------------------------------------------------
+Newsletter
 -------------------------------------------------------------------------------- */
