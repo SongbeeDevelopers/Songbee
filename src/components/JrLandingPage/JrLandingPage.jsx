@@ -8,7 +8,7 @@ import JrHeroSection from "./JrLandingSections/JrHeroSection";
 import JrJoinSection from "./JrLandingSections/JrJoinSection";
 import JrWorksSection from "./JrLandingSections/JrWorksSection";
 import JrBenefitsSection from "./JrLandingSections/JrBenefitsSection";
-import WhyJuniorSection from "./JrLandingSections/WhyJuniorSection"
+import WhyJuniorSection from "./JrLandingSections/JrWhySection"
 import JrLearningPacksSection from "./JrLandingSections/JrLearningPacksSection";
 import JrOfferSection from "./JrLandingSections/JrMoreThanMusic";
 import JrGuessworkSection from "./JrLandingSections/JrGuessworkSection";

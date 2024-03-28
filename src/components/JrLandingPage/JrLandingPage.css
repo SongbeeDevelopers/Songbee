@@ -267,6 +267,10 @@ Why Junior
 .why-junior-text {
 
 }
+.why-junior-text h2 {
+  text-shadow: 1px 2px #FEAF17;
+  font-size: 36px;
+}
 
 .why-junior-video {
   
