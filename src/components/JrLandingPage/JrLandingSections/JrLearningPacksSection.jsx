@@ -5,8 +5,8 @@ import LearnMoreButton from '../LearnMoreButton/LearnMoreButton'
 function JrLearningPacksSection() {
 
   return (
-    <div className="jr-shop-by-age-bg">
-      <h2 className="jr-shop-by-age-title">Shop By Age</h2>
+    <div className="jr-learning-packs-bg">
+      <h2 className="jr-learning-packs-title">Learning Packs</h2>
 
       <div className="age-container">
         <div className="age-item">
