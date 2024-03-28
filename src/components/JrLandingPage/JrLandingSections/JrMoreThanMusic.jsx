@@ -3,15 +3,15 @@ import React from "react";
 import '../JrLandingPage.css'
 
 
-function JrOfferSection() {
+function JrMoreThanMusicSection() {
 
   return (
-    <div className="jr-offer-bg">
-      <div className="jr-offer">
+    <div className="jr-mtjm-bg">
+      <div className="jr-mtjm">
         <h2>More Than Just Music</h2>
 
-        <div className="jr-offer-items">
-          <div className="jr-offer-item">
+        <div className="jr-mtjm-items">
+          <div className="jr-mtjm-item">
             <img src="/junior/music-notes.png"/>
             <div>
               <h3>Step by Step</h3>
@@ -19,7 +19,7 @@ function JrOfferSection() {
             </div>
           </div>
 
-          <div className="jr-offer-item">
+          <div className="jr-mtjm-item">
             <img src="/junior/music-notes.png"/>
             <div>
               <h3>Offer Support</h3>
@@ -27,7 +27,7 @@ function JrOfferSection() {
             </div>
           </div>
 
-          <div className="jr-offer-item">
+          <div className="jr-mtjm-item">
             <img src="/junior/music-notes.png"/>
             <div>
               <h3>Both</h3>
@@ -44,4 +44,4 @@ function JrOfferSection() {
   )
 }
 
-export default JrOfferSection
+export default JrMoreThanMusicSection
