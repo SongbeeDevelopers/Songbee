@@ -8,8 +8,9 @@ import JrHeroSection from "./JrLandingSections/JrHeroSection";
 import JrJoinSection from "./JrLandingSections/JrJoinSection";
 import JrWorksSection from "./JrLandingSections/JrWorksSection";
 import JrBenefitsSection from "./JrLandingSections/JrBenefitsSection";
-import JrShopByAgeSection from "./JrLandingSections/JrShopByAgeSection";
-import JrOfferSection from "./JrLandingSections/JrOfferSection";
+import WhyJuniorSection from "./JrLandingSections/WhyJuniorSection"
+import JrLearningPacksSection from "./JrLandingSections/JrLearningPacksSection";
+import JrOfferSection from "./JrLandingSections/JrMoreThanMusic";
 import JrGuessworkSection from "./JrLandingSections/JrGuessworkSection";
 import JrReviewsSection from "./JrLandingSections/JrReviewsSection";
 import JrNewsletterSection from "./JrLandingSections/JrNewsletterSection";
@@ -24,14 +25,15 @@ function SBjrLandingPage({ routeVariants }) {
       animate="final"
     >
       <JrHeroSection />
-      <JrJoinSection />
-      <JrWorksSection />
+      {/* <JrJoinSection /> */}
       <JrBenefitsSection />
-      <JrShopByAgeSection />
+      <JrWorksSection />
+      <WhyJuniorSection />
+      <JrLearningPacksSection />
       <JrOfferSection />
       <JrGuessworkSection />
       <JrReviewsSection />
-      {/* <JrNewsletterSection /> */}
+      {/* <JrFaqNewsletterSection /> */}
     </motion.div>
    )
     
