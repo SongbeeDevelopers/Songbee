@@ -14,7 +14,7 @@ function WhyJunior() {
           It engages both sides of their brain and allows them to improve on their cognitive, communication and language, motor (fine and gross), and social and emotional skills
         </p>
 
-        <button className="jr-landing-button">
+        <button id="try-it" className="jr-landing-btn">
           Try It!
         </button>
       </div>
