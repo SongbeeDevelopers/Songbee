@@ -176,7 +176,7 @@ How Jr Works
   width: 75%;
   margin: -25px auto 0;
   padding: 25px 50px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 3px 3px 5px #FEAF17
 }
 
 /* arrows and bees */
@@ -200,6 +200,7 @@ How Jr Works
 }
 .jr-works-header h5 {
   margin-top: 0;
+  margin-bottom: 0;
 }
 
 /* 1 2 3 section */

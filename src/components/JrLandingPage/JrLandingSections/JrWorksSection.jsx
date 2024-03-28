@@ -30,9 +30,8 @@ function HowSongbeeJrWorks() {
             <div className="jr-works-number">
               <h2>1</h2>
             </div>
-            <h3>Pick the age</h3>
+            <h3>Enter in your Child's Age</h3>
           </div>
-          {/* <p>Choose your child's age group.</p> */}
         </div>
 
         <div className="jr-works-item">
@@ -40,9 +39,8 @@ function HowSongbeeJrWorks() {
             <div className="jr-works-number">
               <h2>2</h2>
             </div>
-            <h3>Choose Your Goals</h3>
+            <h3>Select your Learning Pack</h3>
           </div>
-          {/* <p>Determine your child's custom milestones or choose from our learning options.</p> */}
         </div>
 
         <div className="jr-works-item">
@@ -50,17 +48,16 @@ function HowSongbeeJrWorks() {
             <div className="jr-works-number">
               <h2>3</h2>
             </div>
-            <h3>Enjoy!</h3>
+            <h3>Learn!</h3>
           </div>
-          {/* <p>Enjoy your new teaching tools! Check out our provided song guides.</p> */}
         </div>
         
       </div>
 
       <div className="jr-works">
-        <p>Choose your child's age group.</p>
-        <p>Determine your child's custom milestones or choose from our learning options.</p>
-        <p>Enjoy your new teaching tools! Check out our provided song guides.</p>
+        <p>Our learning packs are based on age and are created with your child's development in mind.</p>
+        <p>We will provide recommendations for the best learning pack based on age. We know every child develops at different rates so you also have the option to select a different Learning Pack as well!</p>
+        <p>Enjoy your new teaching tools! Check out our provided learning and play guides. </p>
       </div>
       <br/>
       <button className="jr-landing-btn">
