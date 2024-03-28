@@ -14,7 +14,7 @@ function JrLearningPacksSection() {
             <h4>0-1 Years</h4>
             <img src="/junior/shopbyageimg.png"/>
             <p>Your baby goes through so many changes in the first year. Help them meet their milestones.</p>
-            <LearnMoreButton />
+            <button className="jr-landing-btn jr-learn-more-btn">Learn More</button>
           </div>
         </div>
 
@@ -23,7 +23,7 @@ function JrLearningPacksSection() {
             <h4>0-1 Years</h4>
             <img src="/junior/shopbyageimg.png"/>
             <p>Your baby goes through so many changes in the first year. Help them meet their milestones.</p>
-            <LearnMoreButton />
+            <button className="jr-landing-btn jr-learn-more-btn">Learn More</button>
           </div>
         </div>
 
@@ -32,7 +32,7 @@ function JrLearningPacksSection() {
             <h4>0-1 Years</h4>
             <img src="/junior/shopbyageimg.png"/>
             <p>Your baby goes through so many changes in the first year. Help them meet their milestones.</p>
-            <LearnMoreButton />
+            <button className="jr-landing-btn jr-learn-more-btn">Learn More</button>
           </div>
         </div>
 
@@ -41,7 +41,7 @@ function JrLearningPacksSection() {
             <h4>0-1 Years</h4>
             <img src="/junior/shopbyageimg.png"/>
             <p>Your baby goes through so many changes in the first year. Help them meet their milestones.</p>
-            <LearnMoreButton />
+            <button className="jr-landing-btn jr-learn-more-btn">Learn More</button>
           </div>
         </div>
       </div>
