@@ -2,7 +2,7 @@ import React from "react";
 
 import LearnMoreButton from '../LearnMoreButton/LearnMoreButton'
 
-function JrShopByAgeSection() {
+function JrLearningPacksSection() {
 
   return (
     <div className="jr-shop-by-age-bg">
@@ -50,4 +50,4 @@ function JrShopByAgeSection() {
   )
 }
 
-export default JrShopByAgeSection
+export default JrLearningPacksSection
