@@ -8,22 +8,22 @@ function JrOfferSection() {
   return (
     <div className="jr-offer-bg">
       <div className="jr-offer">
-        <h2>What do we offer?</h2>
+        <h2>More Than Just Music</h2>
 
         <div className="jr-offer-items">
           <div className="jr-offer-item">
             <img src="/junior/music-notes.png"/>
             <div>
-              <h3>Subscription</h3>
-              <p>A monthly subscription with custom learning songs based on your child's provided needs.</p>
+              <h3>Step by Step</h3>
+              <p>A bi monthly learning pack delivery, designed by experts to help your baby with the skills they need most.</p>
             </div>
           </div>
 
           <div className="jr-offer-item">
             <img src="/junior/music-notes.png"/>
             <div>
-              <h3>Custom Song</h3>
-              <p>Individual custom songs.</p>
+              <h3>Offer Support</h3>
+              <p>Learning and Play guides provided to make the most of your learning pack and optimize your child's learning!</p>
             </div>
           </div>
 
@@ -35,6 +35,10 @@ function JrOfferSection() {
             </div>
           </div>
         </div>
+
+        <button id="more-than-music-btn" className="jr-landing-btn">
+          Get Started
+        </button>
       </div>
     </div>
   )
