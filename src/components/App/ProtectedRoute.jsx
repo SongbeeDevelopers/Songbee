@@ -15,10 +15,13 @@ import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 // by checking req.isAuthenticated for authentication
 // and by checking req.user for authorization
 
+
 function ProtectedRoute({ component, children, allowedUserClasses=[1,2,3], ...props }) {
+
   const user = useSelector((store) => store.user);
 
   const ProtectedComponent = component || (() => children);
+
 
   const isUserAllowed = allowedUserClasses.includes(user.class);
 
@@ -35,6 +38,7 @@ function ProtectedRoute({ component, children, allowedUserClasses=[1,2,3], ...pr
       )}
     </Route>
   );
+  }
 }
 
 export default ProtectedRoute;
