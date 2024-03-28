@@ -39,6 +39,5 @@ function ProtectedRoute({ component, children, allowedUserClasses=[1,2,3], ...pr
     </Route>
   );
   }
-}
 
 export default ProtectedRoute;
