@@ -14,6 +14,7 @@ import JrOfferSection from "./JrLandingSections/JrMoreThanMusic";
 import JrGuessworkSection from "./JrLandingSections/JrGuessworkSection";
 import JrReviewsSection from "./JrLandingSections/JrReviewsSection";
 import JrNewsletterSection from "./JrLandingSections/JrNewsletterSection";
+import FaqPageSbJR from '../InfoPages/FaqPageSbJR'
 
 
 function SBjrLandingPage({ routeVariants }) {
@@ -34,7 +35,8 @@ function SBjrLandingPage({ routeVariants }) {
       <JrOfferSection />
       <JrGuessworkSection />
       <JrReviewsSection />
-      {/* <JrFaqNewsletterSection /> */}
+      <FaqPageSbJR />
+      <JrNewsletterSection />
     </motion.div>
    )
     
