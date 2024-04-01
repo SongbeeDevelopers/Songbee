@@ -10,7 +10,7 @@ function JrGuessworkSection() {
 
         <img src="/junior/underline-white.png"/>
 
-        <button className="jr-landing-btn">
+        <button id="guesswork-btn" className="jr-landing-btn">
           Get Started!
         </button>
       </div>
