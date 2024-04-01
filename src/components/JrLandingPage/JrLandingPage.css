@@ -34,6 +34,7 @@ Hero
 .hero-section {
   position: relative;
   background-color: white;
+  z-index: 0;
 }
 
 /* header section */
@@ -174,7 +175,7 @@ How Jr Works
   position: relative;
   background-color: #e1ebef;
   width: 75%;
-  margin: -25px auto 0;
+  margin: auto;
   padding: 25px 50px;
   box-shadow: 3px 3px 5px #FEAF17
 }
@@ -232,6 +233,7 @@ How Jr Works
 .jr-works-item-header h3 {
   margin-top: 10px;
   margin-bottom: 0px;
+  width: 150px;
 }
 
 /* just the number of each item */
@@ -286,10 +288,14 @@ Benefits
 -------------------------------------------------------------------------------- */
 
 .jr-benefits-bg {
+  background-image: url('../../../public/junior/polygon-bg.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   background-color: white;
-  padding-top: 350px;
-  margin-top: -325px;
-  padding-bottom: 100px;
+  padding-top: 100px;
+  margin-top: -100px;
+  padding-bottom: 200px;
+  margin-bottom: -150px;
 }
 .jr-benefits h2 {
   text-align: center;
@@ -307,10 +313,11 @@ Learning Packs
 -------------------------------------------------------------------------------- */
 
 .jr-learning-packs-bg {
-  background-image: url('/public/junior/shop-by-age-bg.png');
+  background-image: url('/public/junior/honeycomb-fill.png');
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: center;
+  background-position: bottom;
+  padding-bottom: 50px;
 }
 
 .jr-learning-packs-title {
@@ -339,6 +346,9 @@ Learning Packs
 .age-item-contents img {
   width: 150px
 }
+.age-item-contents h4 {
+  text-shadow: 1px 1px #FEAF17;
+}
 .age-item-contents p {
   text-align: center;
 }
@@ -361,11 +371,13 @@ More than just music
 
 .jr-mtjm-bg {
   position: relative;
-  background-image: url('../../../public/junior/offerbg.png');
+  background-image: url('../../../public/junior/honeycomb-empty.png');
   background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  margin-top: 75px;
+  background-size: 100%;
+  background-position: top;
+  padding-top: 50px;
+  z-index: 1;
+  padding: 100px 0
 }
 
 .jr-mtjm {
@@ -431,8 +443,10 @@ Guesswork
 .guesswork-bg {
   background-image: linear-gradient(to right, #FEAF17, #FFDEB0);
   position: relative;
-  height: 350px;
-  margin-top: 65px;
+  height: 600px;
+  margin-top: -300px;
+  z-index: 0;
+  padding-top: 250px;
 }
 
 .guesswork-text-container {
@@ -442,6 +456,7 @@ Guesswork
 }
 .guesswork-text-container h2 {
   margin-bottom: 0;
+  text-shadow: 1px 1px white;
 }
 .guesswork-text-container img {
   margin-bottom: 10px;
@@ -459,6 +474,10 @@ Guesswork
   position: absolute;
   right: 10px;
   bottom: 10px;
+}
+
+#guesswork-btn {
+  background-color: white;
 }
 
 /* --------------------------------------------------------------------------------
@@ -498,8 +517,11 @@ Reviews
   text-align: center;
   padding: 0 15px
 }
-.jr-review-item img{
+.jr-review-item img {
   width: 120px
+}
+.jr-review-item p {
+  margin-top: 0;
 }
 
 /* --------------------------------------------------------------------------------

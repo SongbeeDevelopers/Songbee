@@ -17,6 +17,7 @@ function JrGuessworkSection() {
 
       <img className="guesswork-baby-saxophone" src="/junior/baby-saxophone.png"/>
       <img className="guesswork-honeycomb" src="/junior/empty-honeycomb.png"/>
+      
     </div>
   )
 }
