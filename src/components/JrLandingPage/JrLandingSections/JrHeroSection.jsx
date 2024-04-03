@@ -25,11 +25,7 @@ function HeroSectionJR() {
         </div>
 
         {/* get started box */}
-        <div className="every-age-every-stage">
-          <button id="explore" className="jr-landing-btn">
-            Explore!
-          </button>
-        </div> 
+
 
       </div>
     </>
