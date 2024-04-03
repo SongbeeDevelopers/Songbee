@@ -33,6 +33,7 @@ export default function NewOrderPage({ routeVariants }) {
   const history = useHistory();
 
   const genres = useSelector((store) => store.genres);
+  const artists = useSelector(store => store.allArtists);
   const requestData = useSelector((store) => store.requestData);
   const { id } = useParams();
 
@@ -101,8 +102,13 @@ export default function NewOrderPage({ routeVariants }) {
   };
 
   useEffect(() => {
-    dispatch({ type: "FETCH_GENRES" });
+    dispatch({ type: "FETCH_GENRES" })
   }, []);
+  useEffect(() => {
+    dispatch({ type: "FETCH_ALL_ARTISTS" })
+  }, []);
+
+  console.log("artits:", artists)
 
   const handleInput = (key, value) => {
     dispatch({
@@ -123,6 +129,39 @@ export default function NewOrderPage({ routeVariants }) {
   }
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState({});
+
+  const artistDisplay = (id) => {
+    artists.map((artist) => {
+      if (artist.id === id){
+        return (
+          <>
+               <Box sx={{ minWidth: 400, minHeight: 700}}>
+        <Card>
+        <CardContent className='cardContainer' sx={{p: "5%"}}>
+          <div className='songDetails'>
+          <Typography sx={{ fontSize: 4 }} variant="h2" gutterBottom>
+              <p className='songTitle'>Your Artist:</p> 
+            </Typography>
+            <img src={request.photo} />
+            <Typography sx={{ fontSize: 5 }} variant="h2" gutterBottom>
+              <p className='songTitle'>{request.artist_name}</p> 
+            </Typography>
+            <Typography variant="h5" component="div"> 
+              <p className='artistTitle'>{request.bio}</p>
+            </Typography>
+            <Typography variant="h5"> 
+            <a href={request.website}>{request.artist_name}'s website</a>
+            </Typography>
+            <button className="back-btn" onClick={() => history.goBack()}>Back</button> 
+          </div>
+        </CardContent>
+        </Card>
+        </Box>
+          </>
+        )
+      }
+    })
+  }
 
   const formDetails = () => {
     if (activeStep === 3) {
@@ -347,6 +386,30 @@ export default function NewOrderPage({ routeVariants }) {
           </Modal>
         </>
       );
+    } else if (activeStep === 2){
+      return (
+      <div className="reqFormGroup">
+      <div className="reqFormSelect">
+        <label>Choose your Artist</label>
+        <select
+          value={requestData.genre}
+          onChange={() => handleInput("genre", event.target.value)}
+        >
+          <option selected disabled>
+            Select Artist
+          </option>
+          {artists.map((artist) => (
+            <option key={artist.id} value={artist.id}>
+              {artist.artist_name}
+            </option>
+          ))}
+           <option>
+            Select Artist
+          </option>
+        </select>
+      </div>
+      </div>
+      )
     }
   };
 
