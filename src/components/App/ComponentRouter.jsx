@@ -49,6 +49,8 @@ import JrEditRequestPage from '../EditRequestPage/JrEditRequest';
 // jr pages
 import JrLandingPage from '../JrLandingPage/JrLandingPage';
 import JrCheckoutPage from '../JrRequestPage/JrRequestPage';
+import JrHeader from '../JrHeader/JrHeader';
+import JrFooter from '../JrFooter/JrFooter'
 
 
 function ComponentRouter() {
@@ -81,13 +83,17 @@ function ComponentRouter() {
     },
   };
 
-  console.log(location)
-
 
   return (
     <>
       {location.pathname === "/home" && <Banner />}
-      <Header />
+
+      {/* shows main header on main routes */}
+      { location.pathname === ( "/home" || "/user" || "/order" || "/neworder" || "/join-artist" || "/artist-requests" || "/requestform/:id" || "/request/edit/:id" || "/details/:id" || "/terms" || "/faq" || "/artist-community" || "/artist-process" || "/guarantee" || "/privacy" || "/created/:delivery_days/:extra_verse/:streaming" || "/login" || "/admin" ) && <Header />}
+    
+      {/* shows jr header on jr routes */}
+      { location.pathname === ( "/songbeejr" || "/jrcheckout" || "/jr-request/edit/:id" || "/faqSbJR" ) && <JrHeader />}
+      
       <Switch location={location} key={location.key}>
         {/* Visiting localhost:5173 will redirect to localhost:5173/home */}
         <Redirect exact from="/" to="/home" />
@@ -209,7 +215,10 @@ function ComponentRouter() {
           <NotFound />
         </Route>
       </Switch>
-      <Footer />
+
+      { location.pathname === ( "/home" || "/user" || "/order" || "/neworder" || "/join-artist" || "/artist-requests" || "/requestform/:id" || "/request/edit/:id" || "/details/:id" || "/terms" || "/faq" || "/artist-community" || "/artist-process" || "/guarantee" || "/privacy" || "/created/:delivery_days/:extra_verse/:streaming" || "/login" || "/admin" ) && <Footer />}
+      
+      { location.pathname === ( "/songbeejr" || "/jrcheckout" || "/jr-request/edit/:id" || "/faqSbJR" ) && <JrFooter />}
     </>
   )
 }
