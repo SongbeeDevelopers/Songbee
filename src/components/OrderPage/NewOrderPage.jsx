@@ -5,19 +5,28 @@ import Step from "@mui/material/Step";
 import StepButton from "@mui/material/StepButton";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import Modal from '@mui/material/Modal';
+import Modal from "@mui/material/Modal";
 
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import {
+  useParams,
+  useHistory,
+} from "react-router-dom/cjs/react-router-dom.min";
 
 import { motion } from "framer-motion";
 
 import Swal from "sweetalert2";
 
-import LoginRegisterForm from '../LoginRegisterForm/LoginRegisterForm'
+import LoginRegisterForm from "../LoginRegisterForm/LoginRegisterForm";
 
-const steps = ["Let's Get Started!", "Your Details", "Specifications", "Share Your Story"];
+const steps = [
+  "Let's Get Started!",
+  "Song Specfications",
+  "Select Your Artist",
+  "Delivery",
+  "Add-Ons",
+];
 
 export default function NewOrderPage({ routeVariants }) {
   const dispatch = useDispatch();
@@ -27,15 +36,22 @@ export default function NewOrderPage({ routeVariants }) {
   const requestData = useSelector((store) => store.requestData);
   const { id } = useParams();
 
-  const user = useSelector(store => store.user)
-  const newOrder = useSelector(store => store.newOrder)
+  const user = useSelector((store) => store.user);
+  const newOrder = useSelector((store) => store.newOrder);
 
   const handleSelection = (key, value) => {
     dispatch({
-      type: 'SET_NEW_ORDER',
-      payload: {...newOrder, [key]: value}
-    })
-  }
+      type: "SET_NEW_ORDER",
+      payload: { ...newOrder, [key]: value },
+    });
+  };
+
+  const now = new Date();
+  const msPerDay = 24 * 60 * 60 * 1000;
+
+  const threeDays = now.getTime() + msPerDay * 3;
+  const fiveDays = now.getTime() + msPerDay * 5;
+  const sixDays = now.getTime() + msPerDay * 6;
 
   // modal logic
   const [open, setOpen] = useState(false);
@@ -44,41 +60,45 @@ export default function NewOrderPage({ routeVariants }) {
 
   // modal appearance
   const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
     width: 500,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
+    bgcolor: "background.paper",
+    border: "2px solid #000",
     boxShadow: 24,
     p: 4,
   };
-  
+
   const submitOrder = (e) => {
-    e.preventDefault()
-    if (newOrder.delivery_days && newOrder.streaming && newOrder.extra_verse && user.id) {
+    e.preventDefault();
+    if (
+      newOrder.delivery_days &&
+      newOrder.streaming &&
+      newOrder.extra_verse &&
+      user.id
+    ) {
       Swal.fire({
         title: "Continue with selections?",
         showCancelButton: true,
         confirmButtonText: "Checkout",
-        icon: "question"
+        icon: "question",
       }).then((result) => {
         if (result.isConfirmed) {
           dispatch({
-            type: 'FETCH_CHECKOUT',
-            payload: { data: newOrder }
-          })
+            type: "FETCH_CHECKOUT",
+            payload: { data: newOrder },
+          });
         }
-      })
-    }
-    else {
+      });
+    } else {
       Swal.fire({
         title: "Please Select All Three Options and log in.",
-        icon: "error"
-      })
+        icon: "error",
+      });
     }
-  }
+  };
 
   useEffect(() => {
     dispatch({ type: "FETCH_GENRES" });
@@ -105,73 +125,45 @@ export default function NewOrderPage({ routeVariants }) {
   const [completed, setCompleted] = React.useState({});
 
   const formDetails = () => {
-    if (activeStep === 0) {
-        return (
-            <>
-        <form className='orderForm'>
-        <select
-          className='orderInput'
-          name="delivery_days"
-          defaultValue={'Select Delivery Option'}
-          value={newOrder.delivery_days}
-          onChange={() => handleSelection('delivery_days', event.target.value)}
-        >
-          <option selected disabled>Select Delivery Option</option>
-          <option value={3}>3 Day Delivery</option>
-          <option value={4}>4 Day Delivery</option>
-          <option value={6}>Standard 6 Day Delivery</option>
-        </select>
+    if (activeStep === 3) {
+      return (
+        <>
+          <form className="orderForm">
+            <div className="reqFormGroup">
+              <div className="reqFormInput">
+                <label>When would you like your song delivered?</label>
+                <button>{new Date(threeDays).toDateString()} + $80</button>
+                <button>{new Date(fiveDays).toDateString()} + $40</button>
+                <button>{new Date(sixDays).toDateString()} + $0</button>
+              </div>
+            </div>
+            {/* <select
+              className="orderInput"
+              name="delivery_days"
+              defaultValue={"Select Delivery Option"}
+              value={newOrder.delivery_days}
+              onChange={() =>
+                handleSelection("delivery_days", event.target.value)
+              }
+            >
+            </select> */}
 
-        <select
-          className='orderInput'
-          name="streaming"
-          value={newOrder.streaming}
-          onChange={() => handleSelection('streaming', event.target.value)}
-        >
-          <option selected disabled>Select Streaming Option</option>
-          <option value={true}>Add Streaming</option>
-          <option value={false}>Standard No Streaming</option>
-        </select>
 
-        <select
-          className='orderInput'
-          name="extra_verse"
-          value={newOrder.extra_verse}
-          onChange={() => handleSelection('extra_verse', event.target.value)}
-        >
-          <option selected disabled>Select Number of Verses</option>
-          <option value={false}>Standard 2 Verses</option>
-          <option value={true}>Add Extra Verse</option>
-        </select>
 
-        {!user.id &&
-          <button
-            className='checkoutLogRegBtn'
-            onClick={handleOpen}
-          >
-            Login / Register
-          </button>
-        }
-
-        <button className='orderCheckoutButton' onClick={submitOrder}>Checkout</button>
-      </form>
-
-      <p className='feeText'>*Nonstandard selections will incur additional fees</p>
-
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <LoginRegisterForm handleClose={handleClose} />
-        </Box>
-      </Modal>
-            </>
-        )
+            {!user.id && (
+              <button className="checkoutLogRegBtn" onClick={handleOpen}>
+                Login / Register
+              </button>
+            )}
+{/* 
+            <button className="orderCheckoutButton" onClick={submitOrder}>
+              Checkout
+            </button> */}
+          </form>
+        </>
+      );
     }
-    if (activeStep === 1) {
+    if (activeStep === 0) {
       return (
         <>
           <div className="reqFormGroup">
@@ -241,7 +233,7 @@ export default function NewOrderPage({ routeVariants }) {
           </div>
         </>
       );
-    } else if (activeStep === 2) {
+    } else if (activeStep === 1) {
       return (
         <>
           <div className="reqFormGroup">
@@ -313,95 +305,46 @@ export default function NewOrderPage({ routeVariants }) {
           </div>
         </>
       );
-    } else if (activeStep === 3) {
+    } else if (activeStep === 4) {
       return (
         <>
-          <div className="reqFormGroup">
-            <div className="reqFormInput">
-              <label>Tell us what is most important to your song</label>
-              <input
-                value={requestData.important_what}
-                className="reqFormInput"
-                placeholder="What?"
-                onChange={() =>
-                  handleInput("important_what", event.target.value)
-                }
-              ></input>
-            </div>
+            <select
+              className="orderInput"
+              name="streaming"
+              value={newOrder.streaming}
+              onChange={() => handleSelection("streaming", event.target.value)}
+            >
+              <option selected disabled>
+                Select Streaming Option
+              </option>
+              <option value={true}>Add Streaming</option>
+              <option value={false}>Standard No Streaming</option>
+            </select>
 
-            <div className="reqFormInput">
-              <label>Tell us why it is so important</label>
-              <input
-                value={requestData.important_why}
-                className="reqFormInput"
-                placeholder="Why?"
-                onChange={() =>
-                  handleInput("important_why", event.target.value)
-                }
-              ></input>
-            </div>
-          </div>
-
-          <div>
-            <h4 className="reqFormSubHeader">
-              Select two of our story prompts or just tell us memories and
-              stories that you feel tell your story.{" "}
-            </h4>
-
-            <p className="reqFormPrompts">
-              a. What they mean to you?
-              <br />
-              b. How did you meet?
-              <br />
-              c. Inside Jokes
-              <br />
-              d. Advice you have for them
-              <br />
-              e. Describe a memory about your loved one that makes you laugh
-              <br />
-              f. Describe or list things about them that makes them special to
-              you.
-              <br />
-              g. Other stories or memories
-              <br />
-            </p>
-
-            <h5 className="reqFormPrompts">
-              Tip: Include Descriptive language. Use your senses and really
-              describe your feelings and emotions. Be sure it makes sense when
-              someone outside of your relationship reads it.{" "}
-            </h5>
-
-            <div className="reqFormGroup">
-              <input
-                value={requestData.story1}
-                className="reqFormInput"
-                placeholder="Prompt 1"
-                onChange={() => handleInput("story1", event.target.value)}
-              ></input>
-              <input
-                value={requestData.story2}
-                className="reqFormInput"
-                placeholder="Prompt 2"
-                onChange={() => handleInput("story2", event.target.value)}
-              ></input>
-            </div>
-          </div>
-
-          <div className="reqFormGroup">
-            <div className="reqFormAdditionalDetails">
-              <h2 id="additionalDetailsHeader">
-                Is there anything else we should know?
-              </h2>
-              <input
-                value={requestData.additional_info}
-                placeholder="Additional Details"
-                onChange={() =>
-                  handleInput("additional_info", event.target.value)
-                }
-              ></input>
-            </div>
-          </div>
+            <select
+              className="orderInput"
+              name="extra_verse"
+              value={newOrder.extra_verse}
+              onChange={() =>
+                handleSelection("extra_verse", event.target.value)
+              }
+            >
+              <option selected disabled>
+                Select Number of Verses
+              </option>
+              <option value={false}>Standard 2 Verses</option>
+              <option value={true}>Add Extra Verse</option>
+            </select>
+            <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={style}>
+              <LoginRegisterForm handleClose={handleClose} />
+            </Box>
+          </Modal>
         </>
       );
     }
