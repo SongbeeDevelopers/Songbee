@@ -107,6 +107,18 @@ function* fetchAllArtists() {
   }
 }
 
+function* fetchCurrentArtist(action) {
+  try {
+    const response = yield axios.get(`/api/artist/current/${action.payload}`)
+    yield put({
+      type: "SET_CURRENT_ARTIST",
+      payload: response.data[0]
+    })
+  } catch (error) {
+    console.error("SAGA fetchCurrentArtist failed:", error)
+  }
+}
+
 function* artistSaga() {
   yield takeLatest("CREATE_ARTIST", createNewArtist);
   yield takeLatest("FETCH_PENDING_ARTISTS", fetchPendingArtist);
@@ -118,7 +130,7 @@ function* artistSaga() {
   yield takeLatest("GET_ARTIST_PROFILE", getArtistDetails);
   yield takeLatest("GET_ARTIST_PENDING", getPendingEdits);
   yield takeLatest("DENY_EDIT_ARTIST", denyEditArtistInfo);
-
+  yield takeLatest("FETCH_CURRENT_ARTIST", fetchCurrentArtist);
   
 }
 

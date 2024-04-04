@@ -6,6 +6,9 @@ import StepButton from "@mui/material/StepButton";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
 
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -19,6 +22,7 @@ import { motion } from "framer-motion";
 import Swal from "sweetalert2";
 
 import LoginRegisterForm from "../LoginRegisterForm/LoginRegisterForm";
+import ArtistDisplay from "./ArtistDisplay";
 
 const steps = [
   "Let's Get Started!",
@@ -119,7 +123,10 @@ export default function NewOrderPage({ routeVariants }) {
   const handleInput = (key, value) => {
     if (key === "artist"){
       console.log("artistId before", artistId)
-      artistId = value
+      dispatch({
+        type: "FETCH_CURRENT_ARTIST",
+        payload: value
+      })
       console.log("artistId after", artistId)
     }
     dispatch({
@@ -141,39 +148,39 @@ export default function NewOrderPage({ routeVariants }) {
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState({});
 
-  const ArtistDisplay = () => {
-    artists.map((artist) => {
-      console.log("artist.id", artist.id)
-      console.log("artistId", artistId)
-      if (artist.id === artistId){
-        return (
-          <>
-        <Box sx={{ minWidth: 400, minHeight: 700}}>
-        <Card>
-        <CardContent className='cardContainer' sx={{p: "5%"}}>
-          <div className='songDetails'>
-          <Typography sx={{ fontSize: 4 }} variant="h2" gutterBottom>
-              <p className='songTitle'>Your Artist:</p> 
-            </Typography>
-            <img src={request.photo} />
-            <Typography sx={{ fontSize: 5 }} variant="h2" gutterBottom>
-              <p className='songTitle'>{artist.artist_name}</p> 
-            </Typography>
-            <Typography variant="h5" component="div"> 
-              <p className='artistTitle'>{artist.bio}</p>
-            </Typography>
-            <Typography variant="h5"> 
-            <a href={artist.website}>{artist.artist_name}'s website</a>
-            </Typography>
-          </div>
-        </CardContent>
-        </Card>
-        </Box>
-          </>
-        )
-      }
-    })
-  }
+  // const ArtistDisplay = () => {
+  //   artists.map((artist) => {
+  //     console.log("artist.id", artist.id)
+  //     console.log("artistId", artistId)
+  //     if (artist.id === artistId){
+  //       return (
+  //         <>
+  //       <Box sx={{ minWidth: 400, minHeight: 700}}>
+  //       <Card>
+  //       <CardContent className='cardContainer' sx={{p: "5%"}}>
+  //         <div className='songDetails'>
+  //         <Typography sx={{ fontSize: 4 }} variant="h2" gutterBottom>
+  //             <p className='songTitle'>Your Artist:</p> 
+  //           </Typography>
+  //           <img src={request.photo} />
+  //           <Typography sx={{ fontSize: 5 }} variant="h2" gutterBottom>
+  //             <p className='songTitle'>{artist.artist_name}</p> 
+  //           </Typography>
+  //           <Typography variant="h5" component="div"> 
+  //             <p className='artistTitle'>{artist.bio}</p>
+  //           </Typography>
+  //           <Typography variant="h5"> 
+  //           <a href={artist.website}>{artist.artist_name}'s website</a>
+  //           </Typography>
+  //         </div>
+  //       </CardContent>
+  //       </Card>
+  //       </Box>
+  //         </>
+  //       )
+  //     }
+  //   })
+  // }
 
   const formDetails = () => {
     if (activeStep === 3) {
@@ -419,37 +426,7 @@ export default function NewOrderPage({ routeVariants }) {
             I would like the artist selected for me
           </option>
         </select>
-       {artists.map((artist) => {
-      console.log("artist.id", artist.id)
-      console.log("artistId", artistId)
-      if (artist.id === artistId){
-        return (
-          <>
-        <Box sx={{ minWidth: 400, minHeight: 700}}>
-        <Card>
-        <CardContent className='cardContainer' sx={{p: "5%"}}>
-          <div className='songDetails'>
-          <Typography sx={{ fontSize: 4 }} variant="h2" gutterBottom>
-              <p className='songTitle'>Your Artist:</p> 
-            </Typography>
-            <img src={request.photo} />
-            <Typography sx={{ fontSize: 5 }} variant="h2" gutterBottom>
-              <p className='songTitle'>{artist.artist_name}</p> 
-            </Typography>
-            <Typography variant="h5" component="div"> 
-              <p className='artistTitle'>{artist.bio}</p>
-            </Typography>
-            <Typography variant="h5"> 
-            <a href={artist.website}>{artist.artist_name}'s website</a>
-            </Typography>
-          </div>
-        </CardContent>
-        </Card>
-        </Box>
-          </>
-        )
-      }
-    })}
+            <ArtistDisplay />
       </div>
       </div>
       )
