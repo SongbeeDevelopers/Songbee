@@ -1,4 +1,4 @@
-.nav {
+.jr-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -10,32 +10,32 @@
     border-bottom: 1px solid black;
   }
   
-  .nav-links{
+  .jr-nav-links{
     font-size: .82rem;
     font-weight: 600;
     color: #474546;
     cursor: pointer;
   }
   
-  .nav-left {
+  .jr-nav-left {
     display: flex;
     gap: 10px;
     align-items: center;
   }
   
-  .nav-title {
+  .jr-nav-title {
     width: 9rem;
     margin-top: 7px;
   }
   
-  .nav-right{
+  .jr-nav-right{
     display: flex;
     align-items: center;
     justify-content: end;
     gap: 10px;
   }
   
-  .drawerHeaderBee {
+  .jr-drawerHeaderBee {
     width: 50px;
     margin: auto;
   }

@@ -55,28 +55,28 @@ function JrHeader() {
 
   return (
 
-    <div className="nav">
+    <div className="jr-nav">
 
-      <div className="nav-left">
-        <Link to="/" className="nav-links">Shop</Link>
+      <div className="jr-nav-left">
+        <Link to="/" className="jr-nav-links">Shop</Link>
         |
-        <Link to="/" className="nav-links">Gifting</Link>
+        <Link to="/" className="jr-nav-links">Gifting</Link>
         |
-        <Link to="/" className="nav-links">Schools & Groups</Link>
+        <Link to="/" className="jr-nav-links">Schools & Groups</Link>
       </div>
 
-      <div className="nav-center">
-        <Link to="/home"><img className="nav-title" src="junior/jr-logo.png" /></Link>
+      <div className="jr-nav-center">
+        <Link to="/home"><img className="jr-nav-title" src="junior/jr-logo.png" /></Link>
       </div>
       
-      <div className="nav-right">
+      <div className="jr-nav-right">
         <button className="jr-landing-btn">
           Get Started
         </button>
 
         {/* login/logout */}
         <Link to="/login"
-          className="nav-links"
+          className="jr-nav-links"
           onClick={(e) => {
             if (user?.id) {
               e.preventDefault();
@@ -123,7 +123,7 @@ function JrHeader() {
               }}
             >
               <MenuItem onClick={() => handleClose()}>
-                <img className="drawerHeaderBee" src="bee-button.png"></img>
+                <img className="jr-drawerHeaderBee" src="bee-button.png"></img>
               </MenuItem>
 
               <MenuItem onClick={() => handleClose(1)}>Home</MenuItem>
