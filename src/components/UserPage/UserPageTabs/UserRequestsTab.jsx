@@ -3,9 +3,9 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import RequestItem from './RequestItem/RequestItem';
+import RequestItem from './RequestItem';
 
-import './UserRequestsTab.css';
+import '../UserPage.css'
 
 
 // This function will display the user's order history

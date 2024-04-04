@@ -15,7 +15,7 @@ import { motion } from 'framer-motion';
 
 import PropTypes from 'prop-types';
 
-import './UserDetails.css';
+import '../UserPage.css'
 
 // This is will display the tabs for "Your Song" and "Your Artist"
 // In the "Your Song" tabs will display the lyrics and basic details

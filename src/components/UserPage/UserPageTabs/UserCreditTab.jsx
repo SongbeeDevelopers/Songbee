@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import './UserCreditTab.css';
+
+import '../UserPage.css'
 
 
 // This function will display the user's credit Balance

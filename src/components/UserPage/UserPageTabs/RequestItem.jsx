@@ -2,6 +2,9 @@ import { useHistory } from "react-router-dom";
 import Card from "@mui/material/Card";
 import { CardActionArea } from "@mui/material";
 
+import '../UserPage.css'
+
+
 function RequestItem({ song }) {
   const history = useHistory();
   const requestClick = () => {

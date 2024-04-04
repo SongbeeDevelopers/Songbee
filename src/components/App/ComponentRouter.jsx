@@ -25,7 +25,7 @@ import CreationPage from '../CreationPage/CreationPage';
 import UserPage from '../UserPage/UserPage';
 import AdminPage from '../AdminPage/AdminPage';
 import EditRequestPage from '../EditRequestPage/EditRequestPage';
-import UserDetails from '../UserPage/UserPageTabs/UserDetailsTab/UserDetailsPage';
+// import UserDetails from '../UserPage/UserPageTabs/UserDetailsTab/UserDetailsPage';
 
 // information pages
 import FaqPage from '../InfoPages/FaqPage';
@@ -165,9 +165,9 @@ function ComponentRouter() {
           <JrEditRequestPage routeVariants={routeVariants} />
         </ProtectedRoute>
 
-        <ProtectedRoute exact path="/details/:id" allowedUserClasses={[2, 3]}>
+        {/* <ProtectedRoute exact path="/details/:id" allowedUserClasses={[2, 3]}>
           <UserDetails routeVariants={routeVariants} />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
 
         <Route exact path="/terms" >
           <TermsAndConditionsPage routeVariants={routeVariants} />

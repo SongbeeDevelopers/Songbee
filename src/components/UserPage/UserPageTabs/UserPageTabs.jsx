@@ -3,8 +3,8 @@ import { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import UserRequestsTab from "./UserRequestsTab/UserRequestsTab";
-import UserCreditTab from "./UserCreditTab/UserCreditTab";
+import UserRequestsTab from "./UserRequestsTab";
+import UserCreditTab from "./UserCreditTab";
 
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
@@ -18,7 +18,7 @@ import Slide from "@mui/material/Slide";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 
-import "./UserPageTabs.css";
+import '../UserPage.css'
 
 // Inside here will have the user's email and password and have the option to edit details
 export default function BasicTabs() {
