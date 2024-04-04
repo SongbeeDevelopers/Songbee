@@ -89,10 +89,31 @@ function ComponentRouter() {
       {location.pathname === "/home" && <Banner />}
 
       {/* shows main header on main routes */}
-      { (location.pathname === ("/home" || "/user" || "/order" || "/neworder" || "/join-artist" || "/artist-requests" || "/requestform/:id" || "/request/edit/:id" || "/details/:id" || "/terms" || "/faq" || "/artist-community" || "/artist-process" || "/guarantee" || "/privacy" || "/created/:delivery_days/:extra_verse/:streaming" || "/login" || "/admin")) && <Header />}
-    
+      {location.pathname === "/home" && <Header />}
+      {location.pathname === "/user" && <Header />}
+      {location.pathname === "/admin" && <Header />}
+      {location.pathname === "/login" && <Header />}
+      {location.pathname === "/register" && <Header />}
+      {location.pathname === "/order" && <Header />}
+      {location.pathname === "/neworder" && <Header />}
+      {location.pathname === "/requestform/:id" && <Header />}
+      {location.pathname === "/request/edit/:id" && <Header />}
+      {location.pathname === "/details/:id" && <Header />}
+      {location.pathname === "/created/:delivery_days/:extra_verse/:streaming" && <Header />}
+      {location.pathname === "/artist-community" && <Header />}
+      {location.pathname === "/join-artist" && <Header />}
+      {location.pathname === "/artist-requests" && <Header />}
+      {location.pathname === "/artist-process" && <Header />}
+      {location.pathname === "/faq" && <Header />}
+      {location.pathname === "/terms" && <Header />}
+      {location.pathname === "/guarantee" && <Header />}
+      {location.pathname === "/privacy" && <Header />}
+
       {/* shows jr header on jr routes */}
-      { (location.pathname === ("/songbeejr" || "/jrcheckout" || "/jr-request/edit/:id" || "/faqSbJR")) &&  <JrHeader />}
+      {location.pathname === "/songbeejr" && <JrHeader /> }
+      {location.pathname === "/jrcheckout" && <JrHeader /> }
+      {location.pathname === "/jr-request/edit/:id" && <JrHeader /> }
+      {location.pathname === "/faqSbJR" && <JrHeader /> }
       
       <Switch location={location} key={location.key}>
         {/* Visiting localhost:5173 will redirect to localhost:5173/home */}
@@ -216,9 +237,32 @@ function ComponentRouter() {
         </Route>
       </Switch>
 
-      { location.pathname === ( "/home" || "/user" || "/order" || "/neworder" || "/join-artist" || "/artist-requests" || "/requestform/:id" || "/request/edit/:id" || "/details/:id" || "/terms" || "/faq" || "/artist-community" || "/artist-process" || "/guarantee" || "/privacy" || "/created/:delivery_days/:extra_verse/:streaming" || "/login" || "/admin" ) && <Footer />}
+      {/* shows main footer on main routes */}
+      {location.pathname === "/home" && <Footer />}
+      {location.pathname === "/user" && <Footer />}
+      {location.pathname === "/admin" && <Footer />}
+      {location.pathname === "/login" && <Footer />}
+      {location.pathname === "/register" && <Footer />}
+      {location.pathname === "/order" && <Footer />}
+      {location.pathname === "/neworder" && <Footer />}
+      {location.pathname === "/requestform/:id" && <Footer />}
+      {location.pathname === "/request/edit/:id" && <Footer />}
+      {location.pathname === "/details/:id" && <Footer />}
+      {location.pathname === "/created/:delivery_days/:extra_verse/:streaming" && <Footer />}
+      {location.pathname === "/artist-community" && <Footer />}
+      {location.pathname === "/join-artist" && <Footer />}
+      {location.pathname === "/artist-requests" && <Footer />}
+      {location.pathname === "/artist-process" && <Footer />}
+      {location.pathname === "/faq" && <Footer />}
+      {location.pathname === "/terms" && <Footer />}
+      {location.pathname === "/guarantee" && <Footer />}
+      {location.pathname === "/privacy" && <Footer />}
       
-      { location.pathname === ( "/songbeejr" || "/jrcheckout" || "/jr-request/edit/:id" || "/faqSbJR" ) && <JrFooter />}
+      {/* shows jr footer on jr routes */}
+      {location.pathname === "/songbeejr" && <JrFooter /> }
+      {location.pathname === "/jrcheckout" && <JrFooter /> }
+      {location.pathname === "/jr-request/edit/:id" && <JrFooter /> }
+      {location.pathname === "/faqSbJR" && <JrFooter /> }
     </>
   )
 }
