@@ -110,7 +110,18 @@ export default function NewOrderPage({ routeVariants }) {
 
   console.log("artits:", artists)
 
+  let artistId
+  const setId = (id) => {
+    artistId = id
+    console.log("id", id)
+  }
+
   const handleInput = (key, value) => {
+    if (key === "artist"){
+      console.log("artistId before", artistId)
+      artistId = value
+      console.log("artistId after", artistId)
+    }
     dispatch({
       type: "SET_REQUEST_DATA",
       payload: { ...requestData, [key]: value },
@@ -130,12 +141,14 @@ export default function NewOrderPage({ routeVariants }) {
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState({});
 
-  const artistDisplay = (id) => {
+  const ArtistDisplay = () => {
     artists.map((artist) => {
-      if (artist.id === id){
+      console.log("artist.id", artist.id)
+      console.log("artistId", artistId)
+      if (artist.id === artistId){
         return (
           <>
-               <Box sx={{ minWidth: 400, minHeight: 700}}>
+        <Box sx={{ minWidth: 400, minHeight: 700}}>
         <Card>
         <CardContent className='cardContainer' sx={{p: "5%"}}>
           <div className='songDetails'>
@@ -144,15 +157,14 @@ export default function NewOrderPage({ routeVariants }) {
             </Typography>
             <img src={request.photo} />
             <Typography sx={{ fontSize: 5 }} variant="h2" gutterBottom>
-              <p className='songTitle'>{request.artist_name}</p> 
+              <p className='songTitle'>{artist.artist_name}</p> 
             </Typography>
             <Typography variant="h5" component="div"> 
-              <p className='artistTitle'>{request.bio}</p>
+              <p className='artistTitle'>{artist.bio}</p>
             </Typography>
             <Typography variant="h5"> 
-            <a href={request.website}>{request.artist_name}'s website</a>
+            <a href={artist.website}>{artist.artist_name}'s website</a>
             </Typography>
-            <button className="back-btn" onClick={() => history.goBack()}>Back</button> 
           </div>
         </CardContent>
         </Card>
@@ -393,7 +405,7 @@ export default function NewOrderPage({ routeVariants }) {
         <label>Choose your Artist</label>
         <select
           value={requestData.genre}
-          onChange={() => handleInput("genre", event.target.value)}
+          onChange={() => handleInput("artist", event.target.value)}
         >
           <option selected disabled>
             Select Artist
@@ -404,9 +416,40 @@ export default function NewOrderPage({ routeVariants }) {
             </option>
           ))}
            <option>
-            Select Artist
+            I would like the artist selected for me
           </option>
         </select>
+       {artists.map((artist) => {
+      console.log("artist.id", artist.id)
+      console.log("artistId", artistId)
+      if (artist.id === artistId){
+        return (
+          <>
+        <Box sx={{ minWidth: 400, minHeight: 700}}>
+        <Card>
+        <CardContent className='cardContainer' sx={{p: "5%"}}>
+          <div className='songDetails'>
+          <Typography sx={{ fontSize: 4 }} variant="h2" gutterBottom>
+              <p className='songTitle'>Your Artist:</p> 
+            </Typography>
+            <img src={request.photo} />
+            <Typography sx={{ fontSize: 5 }} variant="h2" gutterBottom>
+              <p className='songTitle'>{artist.artist_name}</p> 
+            </Typography>
+            <Typography variant="h5" component="div"> 
+              <p className='artistTitle'>{artist.bio}</p>
+            </Typography>
+            <Typography variant="h5"> 
+            <a href={artist.website}>{artist.artist_name}'s website</a>
+            </Typography>
+          </div>
+        </CardContent>
+        </Card>
+        </Box>
+          </>
+        )
+      }
+    })}
       </div>
       </div>
       )
