@@ -25,7 +25,6 @@ export default function BasicTabs() {
   const [value, setValue] = useState(0);
   const user = useSelector((store) => store.user);
   const artistProfile = useSelector((store) => store.artistProfile);
-console.log(artistProfile);
   const emailRef = useRef(user.email);
   const passwordRef = useRef("");
   const history = useHistory();
