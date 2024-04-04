@@ -89,10 +89,10 @@ function ComponentRouter() {
       {location.pathname === "/home" && <Banner />}
 
       {/* shows main header on main routes */}
-      { location.pathname === ( "/home" || "/user" || "/order" || "/neworder" || "/join-artist" || "/artist-requests" || "/requestform/:id" || "/request/edit/:id" || "/details/:id" || "/terms" || "/faq" || "/artist-community" || "/artist-process" || "/guarantee" || "/privacy" || "/created/:delivery_days/:extra_verse/:streaming" || "/login" || "/admin" ) && <Header />}
+      { (location.pathname ===  "/home" || "/user" || "/order" || "/neworder" || "/join-artist" || "/artist-requests" || "/requestform/:id" || "/request/edit/:id" || "/details/:id" || "/terms" || "/faq" || "/artist-community" || "/artist-process" || "/guarantee" || "/privacy" || "/created/:delivery_days/:extra_verse/:streaming" || "/login" || "/admin" ) && <Header />}
     
       {/* shows jr header on jr routes */}
-      { location.pathname === ( "/songbeejr" || "/jrcheckout" || "/jr-request/edit/:id" || "/faqSbJR" ) && <JrHeader />}
+      { (location.pathname === "/songbeejr" || "/jrcheckout" || "/jr-request/edit/:id" || "/faqSbJR" ) && <JrHeader />}
       
       <Switch location={location} key={location.key}>
         {/* Visiting localhost:5173 will redirect to localhost:5173/home */}
