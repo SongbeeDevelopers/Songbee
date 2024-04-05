@@ -1,9 +1,9 @@
 import React from 'react';
-import UserPageTabs from './UserPageTabs/UserPageTabs';
 import { useSelector } from 'react-redux';
 
-import { motion } from 'framer-motion';
+import UserPageTabs from './UserPageTabs/UserPageTabs';
 
+import { motion } from 'framer-motion';
 import './UserPage.css';
 
 
