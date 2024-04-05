@@ -115,7 +115,7 @@ function UserProfileTab() {
 
 
   return (
-    <div className="userProfileTab">
+    <div className="user-profile-tab">
 
       <h1 className="profileHeader">Personal info</h1>
       <h3>{user.email}</h3>

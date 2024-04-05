@@ -10,7 +10,7 @@ function UserCreditTab() {
    const user = useSelector((store) => store.user);
 
    return (
-      <div className='creditBody'>
+      <div className='user-credit-tab'>
          <h2>Hello, {user.username}</h2>
          <p>Your current credit balance is: {user.credit === null ? "$0" : user.credit}</p>
       </div>

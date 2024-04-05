@@ -1,6 +1,6 @@
 import * as React from "react";
-import { useState, useRef, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import UserRequestsTab from "./UserRequestsTab";
@@ -12,7 +12,6 @@ import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
-import Slide from "@mui/material/Slide";
 import Typography from "@mui/material/Typography";
 
 import '../UserPage.css'
@@ -97,16 +96,16 @@ export default function BasicTabs() {
             {...a11yProps(2)}
             sx={{ color: "orange" }}
           />
-          
+
         </Tabs>
       </Box>
 
       {/* tab body */}
       <Box sx={{ width: "100%" }}>
-        <Card className="cardBackground" variant="outlined">
+        <Card variant="outlined">
           
           {/* order history tab */}
-          <CustomTabPanel className="cardBody" value={value} index={0}>
+          <CustomTabPanel value={value} index={0}>
             <UserRequestsTab />
           </CustomTabPanel>
 
