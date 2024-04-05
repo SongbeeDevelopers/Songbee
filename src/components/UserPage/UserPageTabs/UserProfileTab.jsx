@@ -7,10 +7,8 @@ import Box from "@mui/material/Box";
 import { Button } from "@mui/material";
 import CardContent from "@mui/material/CardContent";
 import Dialog from "@mui/material/Dialog";
-import PropTypes from "prop-types";
 import Slide from "@mui/material/Slide";
 import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
 
 import '../UserPage.css'
 
@@ -27,7 +25,6 @@ function UserProfileTab() {
 
   // local state
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(0);
   const [openArtist, setOpenArtist] = useState(false);
 
   // functions
