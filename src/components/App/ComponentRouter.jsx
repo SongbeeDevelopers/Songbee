@@ -133,134 +133,7 @@ function ComponentRouter() {
               Visiting localhost:5173/user will show the UserPage if the user is logged in.
               If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
               Even though it seems like they are different pages, the user is always on localhost:5173/user */}
-
-            <ProtectedRoute exact path="/user">
-              <UserPage routeVariants={routeVariants} />
-            </ProtectedRoute>
-
-            <Route exact path="/order">
-              <OrderPage routeVariants={routeVariants} />
-            </Route>
-
-            <Route exact path="/neworder">
-              <NewOrderPage routeVariants={routeVariants} />
-            </Route>
-
-            <Route exact path="/jrcheckout">
-              <JrCheckoutPage routeVariants={routeVariants} />
-            </Route>
-
-            <Route exact path="/join-artist">
-              <JoinArtistPage routeVariants={routeVariants} />
-            </Route>
-
-
-            <Route exact path="/artist-requests">
-              <ArtistRequests routeVariants={routeVariants} />
-            </Route>
-            
-            
-            <Route exact path="/requestform/:id">
-              <SongRequestPage routeVariants={routeVariants} />
-            </Route>
-
-            <ProtectedRoute exact path="/request/edit/:id">
-              <EditRequestPage routeVariants={routeVariants} />
-            </ProtectedRoute>
-
-            <ProtectedRoute exact path="/jr-request/edit/:id">
-              <JrEditRequestPage routeVariants={routeVariants} />
-            </ProtectedRoute>
-
-            <ProtectedRoute exact path="/details/:id">
-              <UserDetails routeVariants={routeVariants} />
-            </ProtectedRoute>
-
-            <Route exact path="/terms">
-              <TermsAndConditionsPage routeVariants={routeVariants} />
-            </Route>
-
-            <Route exact path="/faq">
-              <FaqPage routeVariants={routeVariants} />
-            </Route>
-
-            <Route exact path="/faqSbJR">
-              <FaqPageSbJR routeVariants={routeVariants} />
-            </Route>
-
-            <Route exact path="/learning-packs">
-              <LearningPacksPage routeVariants={routeVariants} />
-            </Route>
-
-            <Route exact path="/songbeejr">
-              <JrLandingPage routeVariants={routeVariants} />
-            </Route>
-
-            <Route exact path="/artist-community">
-              <ArtistCommunity routeVariants={routeVariants} />
-            </Route>
-
-            <Route exact path="/michaelBio">
-              <MichaelBioPage routeVariants={routeVariants} />
-            </Route>
-
-            <Route exact path="/BerchBio">
-              <BerchBioPage routeVariants={routeVariants} />
-            </Route>
-
-            <Route exact path="/PerrinBio">
-              <PerrinBioPage routeVariants={routeVariants} />
-            </Route>
-
-            <Route exact path="/artist-process">
-              <ArtistProcess routeVariants={routeVariants} />
-            </Route>
-
-            <Route exact path="/guarantee">
-              <QualityGuaranteePage routeVariants={routeVariants} />
-            </Route>
-
-            <Route exact path="/privacy">
-              <PrivacyPolicyPage routeVariants={routeVariants} />
-            </Route>
-
-            <Route exact path="/created/:delivery_days/:extra_verse/:streaming">
-              <CreationPage routeVariants={routeVariants} />
-            </Route>
-
-            <Route exact path="/login">
-              {user.id ?
-                // If the user is already logged in, 
-                // redirect to the /user page
-                <Redirect to="/user" />
-                :
-                // Otherwise, show the login page
-                <LoginPage routeVariants={routeVariants} />  
-              }
-            </Route>
-
-            <Route exact path="/registration">
-              {user.id ?
-                // If the user is already logged in, 
-                // redirect them to the /user page
-                <Redirect to="/user" />
-                :
-                // Otherwise, show the registration page
-                <RegisterPage routeVariants={routeVariants} />    
-              }
-            </Route>
-
-            {/* this needs to be further protected */}
-            <ProtectedRoute exact path="/admin">
-              <AdminPage routeVariants={routeVariants} />
-            </ProtectedRoute>
-
-            {/* If none of the other routes matched, we will show a 404. */}
-            <Route>
-              <NotFound />
-            </Route>
-          </Switch>
-    )
+  
 
         <ProtectedRoute exact path="/user" allowedUserClasses={[1, 2, 3]}>
           <UserPage routeVariants={routeVariants} />
@@ -320,6 +193,11 @@ function ComponentRouter() {
           <FaqPageSbJR routeVariants={routeVariants} />
         </Route>
 
+
+        <Route exact path="/learning-packs">
+              <LearningPacksPage routeVariants={routeVariants} />
+            </Route>
+
         <Route exact path="/songbeejr">
           <JrLandingPage routeVariants={routeVariants} />
         </Route>
@@ -327,6 +205,18 @@ function ComponentRouter() {
         <Route exact path="/artist-community">
           <ArtistCommunity routeVariants={routeVariants} />
         </Route>
+
+        <Route exact path="/michaelBio">
+              <MichaelBioPage routeVariants={routeVariants} />
+            </Route>
+
+            <Route exact path="/BerchBio">
+              <BerchBioPage routeVariants={routeVariants} />
+            </Route>
+
+            <Route exact path="/PerrinBio">
+              <PerrinBioPage routeVariants={routeVariants} />
+            </Route>
 
         <Route exact path="/artist-process">
           <ArtistProcess routeVariants={routeVariants} />
