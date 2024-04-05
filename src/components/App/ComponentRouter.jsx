@@ -54,6 +54,8 @@ import JrLandingPage from '../JrLandingPage/JrLandingPage';
 import JrCheckoutPage from '../JrRequestPage/JrRequestPage';
 import JrHeader from '../JrHeader/JrHeader';
 import JrFooter from '../JrFooter/JrFooter'
+import LearningPacksPage from '../LearningPacksPage/LearningPacksPage';
+
 
 
 function ComponentRouter() {
@@ -183,6 +185,10 @@ function ComponentRouter() {
 
             <Route exact path="/faqSbJR">
               <FaqPageSbJR routeVariants={routeVariants} />
+            </Route>
+
+            <Route exact path="/learning-packs">
+              <LearningPacksPage routeVariants={routeVariants} />
             </Route>
 
             <Route exact path="/songbeejr">
