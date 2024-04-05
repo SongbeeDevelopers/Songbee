@@ -15,7 +15,7 @@ import { motion } from 'framer-motion';
 
 import PropTypes from 'prop-types';
 
-import '../UserPage.css'
+import './RequestDetails.css'
 
 // This is will display the tabs for "Your Song" and "Your Artist"
 // In the "Your Song" tabs will display the lyrics and basic details
@@ -24,7 +24,7 @@ import '../UserPage.css'
 
 
 // This function will display the user's song request with a player so they can review their song
-function UserDetails() {
+function RequestDetails() {
 
   const routeVariants = {
     initial: {
@@ -268,4 +268,4 @@ function UserDetails() {
   )
 }
 
-export default UserDetails;
+export default RequestDetails;
