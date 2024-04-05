@@ -106,9 +106,28 @@ function* fetchAllArtists() {
     console.error("SAGA fetchAllArtists() failed:", error);
   }
 }
+// This is for fetching a single artist
+function* fetchSoloArtist() {
+    try {
+        const response = yield axios.get('/api/artist/:id')
+        yield put({
+            type: "SET_SOLO_ARTIST",
+            payload: response.data
+        })
+    } catch (error) {
+        console.error('SAGA fetchSoloArtist() faild:', error)
+    }
+}
 
 function* artistSaga() {
   yield takeLatest("CREATE_ARTIST", createNewArtist);
+
+  yield takeLatest('FETCH_PENDING_ARTISTS', fetchPendingArtist);
+  yield takeLatest('APPROVE_ARTIST', approveArtist);
+  yield takeLatest('DELETE_ARTIST', deleteArtist);
+  yield takeLatest('FETCH_ALL_ARTISTS', fetchAllArtists);
+  yield takeLatest('FETCH_SOLO_ARTIST', fetchSoloArtist);
+
   yield takeLatest("FETCH_PENDING_ARTISTS", fetchPendingArtist);
   yield takeLatest("APPROVE_ARTIST", approveArtist);
   yield takeLatest("DELETE_ARTIST", deleteArtist);
@@ -120,6 +139,7 @@ function* artistSaga() {
   yield takeLatest("DENY_EDIT_ARTIST", denyEditArtistInfo);
 
   
+
 }
 
 export default artistSaga;
