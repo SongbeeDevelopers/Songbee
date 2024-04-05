@@ -19,14 +19,13 @@ function LandingPage({ routeVariants }) {
       initial="initial"
       animate="final"
     >
-      
       <div className="container">
         <HeroSection />
         <HowSongBeeWorksSection />
       </div>
       
       <TestimonialsSection />
-      <SampleSongsSection />
+      {/* <SampleSongsSection /> */}
 
       <div className="guarantee-container">
         <GuaranteeSection />

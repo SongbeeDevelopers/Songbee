@@ -5,8 +5,9 @@ import Step from "@mui/material/Step";
 import StepButton from "@mui/material/StepButton";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import Modal from '@mui/material/Modal';
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
@@ -14,7 +15,9 @@ import { motion } from "framer-motion";
 
 import Swal from "sweetalert2";
 
-const steps = ["Your Details", "Specifications", "Share Your Story"];
+import LoginRegisterForm from '../LoginRegisterForm/LoginRegisterForm'
+
+const steps = ["Let's Get Started!", "Your Details", "Specifications", "Share Your Story"];
 
 export default function NewOrderPage({ routeVariants }) {
   const dispatch = useDispatch();
@@ -23,6 +26,59 @@ export default function NewOrderPage({ routeVariants }) {
   const genres = useSelector((store) => store.genres);
   const requestData = useSelector((store) => store.requestData);
   const { id } = useParams();
+
+  const user = useSelector(store => store.user)
+  const newOrder = useSelector(store => store.newOrder)
+
+  const handleSelection = (key, value) => {
+    dispatch({
+      type: 'SET_NEW_ORDER',
+      payload: {...newOrder, [key]: value}
+    })
+  }
+
+  // modal logic
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  // modal appearance
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 500,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
+  
+  const submitOrder = (e) => {
+    e.preventDefault()
+    if (newOrder.delivery_days && newOrder.streaming && newOrder.extra_verse && user.id) {
+      Swal.fire({
+        title: "Continue with selections?",
+        showCancelButton: true,
+        confirmButtonText: "Checkout",
+        icon: "question"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          dispatch({
+            type: 'FETCH_CHECKOUT',
+            payload: { data: newOrder }
+          })
+        }
+      })
+    }
+    else {
+      Swal.fire({
+        title: "Please Select All Three Options and log in.",
+        icon: "error"
+      })
+    }
+  }
 
   useEffect(() => {
     dispatch({ type: "FETCH_GENRES" });
@@ -50,6 +106,72 @@ export default function NewOrderPage({ routeVariants }) {
 
   const formDetails = () => {
     if (activeStep === 0) {
+        return (
+            <>
+        <form className='orderForm'>
+        <select
+          className='orderInput'
+          name="delivery_days"
+          defaultValue={'Select Delivery Option'}
+          value={newOrder.delivery_days}
+          onChange={() => handleSelection('delivery_days', event.target.value)}
+        >
+          <option selected disabled>Select Delivery Option</option>
+          <option value={3}>3 Day Delivery</option>
+          <option value={4}>4 Day Delivery</option>
+          <option value={6}>Standard 6 Day Delivery</option>
+        </select>
+
+        <select
+          className='orderInput'
+          name="streaming"
+          value={newOrder.streaming}
+          onChange={() => handleSelection('streaming', event.target.value)}
+        >
+          <option selected disabled>Select Streaming Option</option>
+          <option value={true}>Add Streaming</option>
+          <option value={false}>Standard No Streaming</option>
+        </select>
+
+        <select
+          className='orderInput'
+          name="extra_verse"
+          value={newOrder.extra_verse}
+          onChange={() => handleSelection('extra_verse', event.target.value)}
+        >
+          <option selected disabled>Select Number of Verses</option>
+          <option value={false}>Standard 2 Verses</option>
+          <option value={true}>Add Extra Verse</option>
+        </select>
+
+        {!user.id &&
+          <button
+            className='checkoutLogRegBtn'
+            onClick={handleOpen}
+          >
+            Login / Register
+          </button>
+        }
+
+        <button className='orderCheckoutButton' onClick={submitOrder}>Checkout</button>
+      </form>
+
+      <p className='feeText'>*Nonstandard selections will incur additional fees</p>
+
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <LoginRegisterForm handleClose={handleClose} />
+        </Box>
+      </Modal>
+            </>
+        )
+    }
+    if (activeStep === 1) {
       return (
         <>
           <div className="reqFormGroup">
@@ -119,7 +241,7 @@ export default function NewOrderPage({ routeVariants }) {
           </div>
         </>
       );
-    } else if (activeStep === 1) {
+    } else if (activeStep === 2) {
       return (
         <>
           <div className="reqFormGroup">
@@ -191,7 +313,7 @@ export default function NewOrderPage({ routeVariants }) {
           </div>
         </>
       );
-    } else if (activeStep === 2) {
+    } else if (activeStep === 3) {
       return (
         <>
           <div className="reqFormGroup">

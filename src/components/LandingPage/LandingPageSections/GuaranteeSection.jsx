@@ -10,7 +10,12 @@ function Guarantee() {
 
   return (
     <div className="guarantee-sky-bg">
+        <div className="guarantee-img-container">
+          <img className="guarantee-img" src="/guarantee-img.png"/>
+          <img className="guarantee-img-bee" src="/bee-button.png"/>
+        </div>
       <div className="guarantee-inner-bg">
+
 
         <h2>
           Song Guarantee

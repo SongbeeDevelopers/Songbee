@@ -1,46 +1,52 @@
-import * as React from 'react';
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import * as React from "react";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
-import Paper from '@mui/material/Paper';
-import { styled } from '@mui/material/styles';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
+import Paper from "@mui/material/Paper";
+import { styled } from "@mui/material/styles";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
 
-import FilterBar from '../FilterBar/FilterBar';
-
+import FilterBar from "../FilterBar/FilterBar";
 
 function AdminArtistTable() {
-
   const dispatch = useDispatch();
 
-  const artists = useSelector(store => store.pendingArtists);
-  const data = useSelector(store => store.filterResults);
+  const data = useSelector((store) => store.pendingArtists);
+  // const data = useSelector((store) => store.filterResults); ....//// filtering isnt needed??
   
+  console.log(data);
+
+  // useEffect(() => {
+  //   dispatch({
+  //     type: "SET_FILTER_RESULTS",
+  //     payload: artists,
+  //   });
+  // }, []);   this is the one doing thee filtering above ^
+
   useEffect(() => {
     dispatch({
-        type: "SET_FILTER_RESULTS",
-        payload: artists
-      })
-  }, [])
+      type: "FETCH_PENDING_ARTISTS",
+    });
+  }, []);
 
   const approveArtist = (id, user_id) => {
     dispatch({
-        type: "APPROVE_ARTIST",
-        payload: {id, user_id }
-    })
-  }
+      type: "APPROVE_ARTIST",
+      payload: { id, user_id },
+    });
+  };
 
   const denyArtist = (id) => {
     dispatch({
-        type: "DELETE_ARTIST",
-        payload: id
-    })
-  }
+      type: "DELETE_ARTIST",
+      payload: id,
+    });
+  };
 
   // header styling
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -52,26 +58,23 @@ function AdminArtistTable() {
       fontSize: 14,
     },
   }));
-  
+
   // row styling
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    '&:nth-of-type(odd)': {
+    "&:nth-of-type(odd)": {
       backgroundColor: theme.palette.action.hover,
     },
-    '&:last-child td, &:last-child th': {
+    "&:last-child td, &:last-child th": {
       border: 0, // hides last border
     },
   }));
 
-
   return (
     <div>
-
-      <FilterBar type='artist'/>
+      <FilterBar type="artist" />
 
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
-          
           <TableHead>
             <TableRow>
               <StyledTableCell>Artist Name</StyledTableCell>
@@ -99,20 +102,28 @@ function AdminArtistTable() {
                   </StyledTableCell>
 
                   <StyledTableCell align="center">
-                    <button className='admin-button' onClick={() => approveArtist(artist.id, artist.user_id)}>Approve</button>
+                    <button
+                      className="admin-button"
+                      onClick={() => approveArtist(artist.id, artist.user_id)}
+                    >
+                      Approve
+                    </button>
                   </StyledTableCell>
-                  
+
                   <StyledTableCell align="center">
-                    <button className='admin-button' onClick={() => denyArtist(artist.id)}>Deny</button>
+                    <button
+                      className="admin-button"
+                      onClick={() => denyArtist(artist.id)}
+                    >
+                      Deny
+                    </button>
                   </StyledTableCell>
                 </StyledTableRow>
-              )}
-            )}
+              );
+            })}
           </TableBody>
-
         </Table>
       </TableContainer>
-
     </div>
   );
 }

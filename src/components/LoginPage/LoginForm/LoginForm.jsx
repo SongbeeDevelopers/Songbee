@@ -7,9 +7,10 @@ function LoginForm() {
 
   const dispatch = useDispatch();
 
+  const errors = useSelector(store => store.errors);
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const errors = useSelector(store => store.errors);
 
   const login = (event) => {
     event.preventDefault();

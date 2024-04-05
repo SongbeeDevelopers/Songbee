@@ -33,7 +33,8 @@
     "redux-logger": "^3.0.6",
     "redux-saga": "^1.1.3",
     "stripe": "^14.15.0",
-    "sweetalert2": "^11.10.4"
+    "sweetalert2": "^11.10.4",
+    "validator": "^13.11.0"
   },
   "scripts": {
     "start": "node server/server.js | vite",

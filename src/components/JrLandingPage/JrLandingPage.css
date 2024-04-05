@@ -1,9 +1,40 @@
+.junior {
+  background-color: white;
+}
+
+/* --------------------------------------------------------------------------------
+Button
+-------------------------------------------------------------------------------- */
+
+.jr-landing-btn {
+  margin: auto;
+  position: relative;
+  display: flex;
+  width: 14rem;
+  height: 3rem;
+  background-color: #feaf17;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3px;
+  font-family: Poppins, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  transition: background-color 0.45s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border: 0;
+  outline: 0;
+  z-index: 2;
+}
+
 /* --------------------------------------------------------------------------------
 Hero
 -------------------------------------------------------------------------------- */
 
 .hero-section {
   position: relative;
+  background-color: white;
+  z-index: 0;
 }
 
 /* header section */
@@ -27,7 +58,7 @@ Hero
 }
 
 .header-text-music {
-  font-size: 3.5rem;
+  font-size: 4rem;
   line-height: 3rem;
   line-height: 5.5rem;
   color: #feaf17;
@@ -38,7 +69,7 @@ Hero
 
 .header-text-forEvery {
   text-align: center;
-  font-size: 3.5rem;
+  font-size: 4rem;
   line-height: 3rem;
   line-height: 5.5rem;
   margin: 0;
@@ -65,22 +96,26 @@ Hero
 
 /* Styling for the every age, every stage box  */
 .every-age-every-stage {
-  display: flex;
   background-image: url('../../../../public/junior/every-age-every-stage.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
   display: block;
-  margin: -100px auto 100px;
+  margin: -100px auto 0;
+  align-items: baseline;
   width: 450px;
   height: 225px;
   padding-top: 105px;
   position: relative;
-  z-index: 1;
+  z-index: 2;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+#explore {
+  margin-top: 40px
+}
+
 /* --------------------------------------------------------------------------------
-Join Section
+Join Section (cut)
 -------------------------------------------------------------------------------- */
 
 /* custom learning songs section */
@@ -140,9 +175,10 @@ How Jr Works
   position: relative;
   background-color: #e1ebef;
   width: 75%;
-  margin: -150px auto 0;
+  margin: auto;
   padding: 25px 50px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 3px 3px 5px #FEAF17;
+  z-index: 2;
 }
 
 /* arrows and bees */
@@ -152,7 +188,6 @@ How Jr Works
   flex-direction: row;
   justify-content: space-evenly;
 }
-
 .jr-works-arrows-and-bees img {
   width: 75px;
   margin-left: -40px;
@@ -162,13 +197,12 @@ How Jr Works
 .jr-works-header {
   text-align: center;
 }
-
 .jr-works-header h2 {
   margin-bottom: 0;
 }
-
 .jr-works-header h5 {
   margin-top: 0;
+  margin-bottom: 0;
 }
 
 /* 1 2 3 section */
@@ -178,7 +212,6 @@ How Jr Works
   justify-content: space-between;
   padding-left: 5%;
 }
-
 .jr-works p {
   font-size: small;
   width: 30%;
@@ -198,10 +231,10 @@ How Jr Works
   align-items: top;
   gap: 10px;
 }
-
 .jr-works-item-header h3 {
   margin-top: 10px;
   margin-bottom: 0px;
+  width: 150px;
 }
 
 /* just the number of each item */
@@ -211,7 +244,6 @@ How Jr Works
   border-radius: 25px;
   background-color: #FFDEB0;
 }
-
 .jr-works-number h2 {
   text-align: center;
   padding-top: 7px;
@@ -226,21 +258,52 @@ How Jr Works
 }
 
 /* --------------------------------------------------------------------------------
+Why Junior
+-------------------------------------------------------------------------------- */
+
+.why-junior {
+  display: flex;
+  flex-direction: row;
+  width: 75%;
+  margin: 35px auto;
+}
+
+.why-junior-text {
+
+}
+.why-junior-text h2 {
+  text-shadow: 1px 2px #FEAF17;
+  font-size: 36px;
+}
+
+.why-junior-video {
+  
+}
+
+#try-it {
+  margin-left: 0;
+}
+
+/* --------------------------------------------------------------------------------
 Benefits
 -------------------------------------------------------------------------------- */
 
 .jr-benefits-bg {
+  position: relative;
+  background-image: url('../../../public/junior/polygon-bg.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   background-color: white;
-  padding-top: 350px;
-  margin-top: -300px;
-  padding-bottom: 100px;
+  padding-top: 150px;
+  margin-top: -150px;
+  padding-bottom: 200px;
+  margin-bottom: -150px;
+  z-index: 1;
 }
-
 .jr-benefits h2 {
   text-align: center;
   font-size: 36px;
 }
-
 .jr-benefits img {
   width: 75%;
   margin: auto;
@@ -249,17 +312,26 @@ Benefits
 }
 
 /* --------------------------------------------------------------------------------
-Shop By Age
+Learning Packs
 -------------------------------------------------------------------------------- */
 
-.jr-shop-by-age-bg {
-  background-image: url('/public/junior/shop-by-age-bg.png');
+.jr-learning-packs-bg {
+  background-image: url('/public/junior/honeycomb-fill.png');
   background-repeat: no-repeat;
   background-size: contain;
+  background-position: bottom;
+  padding-bottom: 50px;
 }
 
-.jr-shop-by-age-title {
+.jr-learning-packs-title {
+  height: 55px;
+  color: white;
   text-align: center;
+  padding-top: 10px;
+  background-image: url('../../../public/junior/text-backer-gray.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 
 .age-container {
@@ -277,8 +349,12 @@ Shop By Age
 .age-item-contents img {
   width: 150px
 }
+.age-item-contents h4 {
+  text-shadow: 1px 1px #FEAF17;
+}
 .age-item-contents p {
   text-align: center;
+  font-size: 12px;
 }
 
 .age-item {
@@ -289,57 +365,202 @@ Shop By Age
   width: 20%;
 }
 
+.jr-learn-more-btn {
+  width: 10rem;
+}
+
 /* --------------------------------------------------------------------------------
-What Do We Offer
+More than just music
 -------------------------------------------------------------------------------- */
 
-.jr-offer-bg {
-  background-image: url('../../../public/junior/offerbg.png');
+.jr-mtjm-bg {
+  position: relative;
+  background-image: url('../../../public/junior/honeycomb-empty.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: top;
+  padding-top: 50px;
+  z-index: 1;
+  padding: 100px 0
+}
+
+.jr-mtjm {
+  padding: 0 25px;
+  background-color: rgba(71, 69, 70, 0.15);
+  display: block;
+  border: 8px solid #474546;
+  margin: 0 100px;
+}
+.jr-mtjm h2 {
+  text-align: center;
+  margin-bottom: 5px;
+  height: 80px;
+  padding-top: 22px;
+  background-image: url('../../../public/junior/text-backer-white.png');
   background-repeat: no-repeat;
   background-size: contain;
-  margin-top: 75px;
+  background-position: center;
+  text-shadow: 1px 1px #FEAF17;
 }
 
-.jr-offer {
-  background-color: #474546;
-  display: block;
-  margin: auto;
-  border: 2px solid #474546;
-  margin: 0 100px;
-  padding-bottom: 25px;
-}
-.jr-offer h2 {
-  text-align: center;
-}
-
-.jr-offer-items {
+.jr-mtjm-items {
+  background-image: url('../../../public/junior/text-backer-white.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
   opacity: 1;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  padding-left: 30px;
+  gap: 30px;
+  padding: 45px 4% 25px 8%;
   z-index: 1;
 }
 
-.jr-offer-item {
+.jr-mtjm-item {
   display: flex;
   flex-direction: row;
-  width: 25%;
+  width: 35%;
 }
-.jr-offer-item img {
+.jr-mtjm-item h3 {
+  margin-top: 0;
+  margin-bottom: 0
+}
+.jr-mtjm-item p {
+  margin-top: 0;
+  margin-bottom: 0
+}
+.jr-mtjm-item img {
+  margin: 25px 10px 0 0;
   width: 50px;
   height: 50px;
-  margin-right: 10px;
+}
+
+#more-than-music-btn {
+  margin-bottom: -25px;
+  margin-top: 20px;
 }
 
 /* --------------------------------------------------------------------------------
-General
+Guesswork
 -------------------------------------------------------------------------------- */
 
-/* --------------------------------------------------------------------------------
-General
--------------------------------------------------------------------------------- */
+.guesswork-bg {
+  background-image: linear-gradient(to right, #FEAF17, #FFDEB0);
+  position: relative;
+  height: 600px;
+  margin-top: -300px;
+  z-index: 0;
+  padding-top: 250px;
+}
+
+.guesswork-text-container {
+  padding-top: 40px;
+  margin: auto;
+  width: 20%;
+}
+.guesswork-text-container h2 {
+  margin-bottom: 0;
+  text-shadow: 1px 1px white;
+}
+.guesswork-text-container img {
+  margin-bottom: 10px;
+}
+
+.guesswork-baby-saxophone {
+  width: 200px;
+  position: absolute;
+  right: 15%;
+  bottom: -30px;
+}
+
+.guesswork-honeycomb {
+  width: 150px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+#guesswork-btn {
+  background-color: white;
+}
 
 /* --------------------------------------------------------------------------------
-General
+Reviews
 -------------------------------------------------------------------------------- */
+
+.jr-reviews-bg {
+  background-image: url('../../../public/junior/speckled-bg.png');
+  background-size: contain;
+  padding: 60px 50px;
+}
+
+.jr-reviews {
+  margin: auto;
+  background-color: #FEAF17;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: 85%;
+  padding: 30px 0;
+}
+
+.jr-reviews-header {
+  text-align: center;
+  margin-top: 0;
+}
+
+.jr-review-item-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0 20px
+}
+
+.jr-review-item {
+  width: 22%;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 0 15px
+}
+.jr-review-item img {
+  width: 120px
+}
+.jr-review-item p {
+  margin-top: 0;
+}
+
+/* --------------------------------------------------------------------------------
+Newsletter
+-------------------------------------------------------------------------------- */
+
+.jr-newsletter {
+  width: 60%;
+  margin: auto;
+  padding-left: 10%;
+  margin-top: 50px;
+  margin-bottom: -80px;
+  padding-bottom: 50px;
+}
+.jr-newsletter h2 {
+  font-size: 36px;
+  margin-bottom: 0;
+}
+.jr-newsletter p {
+  margin-left: 25px;
+}
+.jr-newsletter input {
+  height: 30px;
+  width: 350px;
+  border-radius: 15px;
+  padding-left: 25px;
+  background-color: #f3f1eb;
+  border: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#jr-newsletter-btn {
+  width: 125px;
+  height: 40px;
+  font-size: medium;
+  display: inline;
+  margin-left: 25px;
+}
