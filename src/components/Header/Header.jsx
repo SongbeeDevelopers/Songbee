@@ -101,6 +101,29 @@ function Header() {
               }
             }}
           >
+
+            <MenuItem className="menu-nav" onClick={() => handleClose()}><img className="drawerHeaderBee" src="bee-button.png"></img></MenuItem>
+            <MenuItem onClick={() => handleClose(1)}>Home</MenuItem>
+            {user.id && (
+              <div>
+              <MenuItem onClick={() => handleClose(6)}>My Profile</MenuItem>
+              </div>
+            )}
+            {user.id && user.class === 3 && (
+              <div>
+              <MenuItem onClick={() => handleClose(7)}>Admin Page</MenuItem>
+              </div>
+            )}
+            <MenuItem onClick={() => handleClose(2)}>Start Your Song</MenuItem>
+            <MenuItem onClick={() => handleClose(3)}>Artist Community</MenuItem>
+            <MenuItem onClick={() => handleClose(4)}>FAQ</MenuItem>
+            <MenuItem onClick={() => handleClose(8)}>Songbee Jr</MenuItem>
+            <MenuItem onClick={() => handleClose(9)}>FAQ Songbee JR</MenuItem>
+            <MenuItem onClick={() => handleClose(5)}><a href="mailto:hello@songbee.com">Contact Us</a></MenuItem>
+            {/* If a user is logged in, show these links */}
+           
+          </Menu>
+
             {user?.id ? "Logout" : "Login"}
           </Link>
 
@@ -160,6 +183,7 @@ function Header() {
             </>
           }
         </div>
+
       </div>
     </>
   );

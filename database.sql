@@ -58,6 +58,7 @@ CREATE TABLE "artist" (
   "user_id" integer REFERENCES "user",
   "vocal_type" VARCHAR (150),
   "website" VARCHAR,
+  "instagram_link" VARCHAR,
   "bio" VARCHAR,
   "photo" VARCHAR,
   "streaming_link" VARCHAR,
@@ -145,11 +146,11 @@ VALUES
 (1, 'Rap/Hip-Hop'), (2, 'Folk'), (3, 'Rock'), (4, 'Christian'), (5, 'R&B'), (6, 'Country'), (7, 'Singer Songwriter'), (8, 'Acoustic Pop'), (9, 'Spanish');
 
 INSERT INTO "artist"
-("artist_name", "name", "user_id", "vocal_type", "approved", "website", "bio", "photo")
+("artist_name", "name", "user_id", "vocal_type", "approved", "website", "instagram_link", "bio", "photo")
 VALUES
-('Hannah Rutti', 'Hannah Rutti', 5, 'female', TRUE, '', '', ''),
-('The Yellow Dart', 'Walker Neudorff', 2, 'male', FALSE, '', '', ''),
-('Linton Robinson', 'Linton', 6, 'male', TRUE, '', '', ''),
+('Hannah Rutti', 'Hannah Rutti', 5, 'female', TRUE, '', '', '', ''),
+('The Yellow Dart', 'Walker Neudorff', 2, 'male', FALSE, '', '', '', ''),
+('Linton Robinson', 'Linton', 6, 'male', TRUE, '', '', '', ''),
 ('Jene V', 'Jenny Vasquez', 8, 'female', TRUE, 'https://www.linkedin.com/in/walkerneudorff/', 'Jene V is a multi-disciplinary artist exploring R&B and Pop Music through a different lens. Jene V is breaking down genre borders and creating a sound all her own through unconventional instrumentation like ukulele and kazoo. Voted Next Artist to Watch by the Bayview Times!', 'https://wallpapers.com/images/hd/portrait-of-woman-with-random-people-5wu04gyr7p6p0i5c.jpg');
 
 INSERT INTO "song_request"
