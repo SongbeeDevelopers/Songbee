@@ -9,15 +9,16 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-
+import { useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
 
 import "./Header.css";
-
+import LearningPacksHeader from "./LearningPacksHeader";
 
 function Header() {
+  const location = useLocation();
 
-  const isMobile = useMediaQuery( { query: `(max-width: 815px)`} )
+  const isMobile = useMediaQuery({ query: `(max-width: 815px)` });
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -51,13 +52,15 @@ function Header() {
     } else if (num === 8) {
       history.push("/songbeejr");
     } else if (num === 9) {
-      history.push("/faqSbJR")
+      history.push("/faqSbJR");
     }
   };
- 
 
-  return (
+  return location?.pathname === "/learning-packs" ? (
+    <LearningPacksHeader />
+  ) : (
     <>
+
       <div className="nav">
 
         <div className="nav-left">
@@ -84,6 +87,7 @@ function Header() {
 
           {/* login/logout */}
           <Link to="/login"
+
             className="nav-links"
             onClick={(e) => {
               if (user?.id) {
@@ -101,6 +105,30 @@ function Header() {
               }
             }}
           >
+
+
+            <MenuItem className="menu-nav" onClick={() => handleClose()}><img className="drawerHeaderBee" src="bee-button.png"></img></MenuItem>
+            <MenuItem onClick={() => handleClose(1)}>Home</MenuItem>
+            {user.id && (
+              <div>
+              <MenuItem onClick={() => handleClose(6)}>My Profile</MenuItem>
+              </div>
+            )}
+            {user.id && user.class === 3 && (
+              <div>
+              <MenuItem onClick={() => handleClose(7)}>Admin Page</MenuItem>
+              </div>
+            )}
+            <MenuItem onClick={() => handleClose(2)}>Start Your Song</MenuItem>
+            <MenuItem onClick={() => handleClose(3)}>Artist Community</MenuItem>
+            <MenuItem onClick={() => handleClose(4)}>FAQ</MenuItem>
+            <MenuItem onClick={() => handleClose(8)}>Songbee Jr</MenuItem>
+            <MenuItem onClick={() => handleClose(9)}>FAQ Songbee JR</MenuItem>
+            <MenuItem onClick={() => handleClose(5)}><a href="mailto:hello@songbee.com">Contact Us</a></MenuItem>
+            {/* If a user is logged in, show these links */}
+           
+          </Menu>
+
             {user?.id ? "Logout" : "Login"}
           </Link>
 
@@ -110,6 +138,7 @@ function Header() {
 
           {/* dropdown menu for mobile users */}
           {isMobile &&
+
             <>
               <IconButton
                 size="large"
@@ -160,6 +189,7 @@ function Header() {
             </>
           }
         </div>
+
       </div>
     </>
   );

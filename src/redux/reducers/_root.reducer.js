@@ -1,3 +1,22 @@
+
+import { combineReducers } from 'redux';
+import errors from './errors.reducer';
+import user from './user.reducer';
+import userRequests from './userRequests.reducer';
+import genres from './genres.reducer';
+import completedRequests from './completedRequests.reducer';
+import pendingRequests from './pendingRequests.reducer';
+import currentRequest from './currentRequest.reducer';
+import newOrder from './newOrder.reducer';
+import requestData from './requestData.reducer';
+import allUsers from './allUsers.reducer';
+import filterResults from './filterResults.reducer';
+import pendingArtists from './pendingArtists.reducer';
+import allArtists from './allArtists.reducer';
+import soloArtist from './soloArtist.reducer';
+import juniorRequests from './juniorRequest.reducer';
+import jrRequestData from './jrRequestData.reducer';
+
 import { combineReducers } from "redux";
 import errors from "./errors.reducer";
 import user from "./user.reducer";
@@ -37,6 +56,7 @@ const rootReducer = combineReducers({
   filterResults,
   pendingArtists,
   allArtists,
+  soloArtist,
   juniorRequests,
   jrRequestData,
   artistProfile,

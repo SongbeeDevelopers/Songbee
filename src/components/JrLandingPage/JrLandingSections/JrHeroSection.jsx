@@ -1,7 +1,5 @@
 import React from "react";
 
-import GetStartedButton from "../GetStartedButton/GetStartedButton";
-
 import '../JrLandingPage.css';
 
 
@@ -27,9 +25,7 @@ function HeroSectionJR() {
         </div>
 
         {/* get started box */}
-        <div className="every-age-every-stage">
-          <GetStartedButton />
-        </div> 
+
 
       </div>
     </>
