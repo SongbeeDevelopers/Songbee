@@ -88,7 +88,7 @@ function AdminPage({ routeVariants }) {
         <Tab label="Completed Requests" {...a11yProps(1)} />
         <Tab label="Users" {...a11yProps(2)} />
         <Tab label="Pending Artists" {...a11yProps(3)} />
-        <Tab label="Pending Artists Edits" {...a11yProps(4)} />
+        <Tab label="Pending Artist Edits" {...a11yProps(4)} />
 
       </Tabs>
       

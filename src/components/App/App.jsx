@@ -6,7 +6,6 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import ComponentRouter from './ComponentRouter.jsx';
 import LocationProvider from './LocationProvider.jsx';
-
 import './App.css';
 
 

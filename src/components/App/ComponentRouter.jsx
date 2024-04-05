@@ -45,8 +45,7 @@ import JrEditRequestPage from '../EditRequestPage/JrEditRequest';
 // jr pages
 import JrLandingPage from '../JrLandingPage/JrLandingPage';
 import JrCheckoutPage from '../JrRequestPage/JrRequestPage';
-
-
+import LearningPacksPage from '../LearningPacksPage/LearningPacksPage';
 function ComponentRouter() {
 
     const location = useLocation()
@@ -119,6 +118,11 @@ function ComponentRouter() {
             
             <Route exact path="/requestform/:id">
               <SongRequestPage routeVariants={routeVariants} />
+            </Route>
+
+
+            <Route exact path="/learning-packs">
+              <LearningPacksPage routeVariants={routeVariants} />
             </Route>
 
             <ProtectedRoute exact path="/request/edit/:id" allowedUserClasses={[1,2,3]} >
