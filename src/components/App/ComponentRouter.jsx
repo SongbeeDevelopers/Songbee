@@ -20,6 +20,7 @@ import OrderPage from '../OrderPage/OrderPage';
 import SongRequestPage from '../SongRequestPage/SongRequestPage';
 import NewOrderPage from '../OrderPage/NewOrderPage';
 import CreationPage from '../CreationPage/CreationPage';
+import FinalQuestions from '../OrderPage/FinalQuestions';
 
 // user functionality
 import UserPage from '../UserPage/UserPage';
@@ -271,6 +272,10 @@ function ComponentRouter() {
 
         <Route exact path="/neworder">
           <NewOrderPage routeVariants={routeVariants} />
+        </Route>
+
+        <Route exact path="/finalquestions">
+          <FinalQuestions routeVariants={routeVariants} />
         </Route>
 
         <Route exact path="/jrcheckout">

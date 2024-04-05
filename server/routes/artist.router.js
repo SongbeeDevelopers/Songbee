@@ -289,4 +289,19 @@ router.get('/all', (req, res) => {
     })
   });
 
+router.get('/current/:id', (req, res) => {
+  const query = `
+  SELECT * FROM "artist"
+  WHERE "id"=$1
+  `
+  pool.query(query, [req.params.id])
+  .then((result) => {
+    res.send(result.rows)
+  })
+  .catch((error) => {
+    console.log('get current artist failed:', error)
+    res.sendStatus(500)
+  })
+})
+
 module.exports = router;
