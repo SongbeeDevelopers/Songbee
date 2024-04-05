@@ -12,6 +12,7 @@ import allUsers from './allUsers.reducer';
 import filterResults from './filterResults.reducer';
 import pendingArtists from './pendingArtists.reducer';
 import allArtists from './allArtists.reducer';
+import soloArtist from './soloArtist.reducer';
 import juniorRequests from './juniorRequest.reducer';
 import jrRequestData from './jrRequestData.reducer';
 // rootReducer is the primary reducer for our entire project
@@ -34,6 +35,7 @@ const rootReducer = combineReducers({
   filterResults,
   pendingArtists,
   allArtists,
+  soloArtist,
   juniorRequests,
   jrRequestData,
 

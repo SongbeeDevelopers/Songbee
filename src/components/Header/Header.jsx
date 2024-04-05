@@ -113,7 +113,7 @@ function Header() {
               </div>
             )}
             <MenuItem onClick={() => handleClose(2)}>Start Your Song</MenuItem>
-            <MenuItem onClick={() => handleClose(3)}>Artist Application</MenuItem>
+            <MenuItem onClick={() => handleClose(3)}>Artist Community</MenuItem>
             <MenuItem onClick={() => handleClose(4)}>FAQ</MenuItem>
             <MenuItem onClick={() => handleClose(8)}>Songbee Jr</MenuItem>
             <MenuItem onClick={() => handleClose(9)}>FAQ Songbee JR</MenuItem>

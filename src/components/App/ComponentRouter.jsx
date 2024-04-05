@@ -34,6 +34,9 @@ import TermsAndConditionsPage from '../InfoPages/TermsAndConditionsPage';
 import JoinArtistPage from '../JoinArtistPage/JoinArtistPage';
 import ArtistCommunity from '../JoinArtistPage/ArtistCommunity';
 import ArtistProcess from '../JoinArtistPage/ArtistProcess';
+import MichaelBioPage from '../ArtistBioPages/MichaelBioPage';
+import BerchBioPage from '../ArtistBioPages/BerchBioPage';
+import PerrinBioPage from '../ArtistBioPages/PerrinBioPage';
 
 // 404
 import NotFound from '../NotFoundPage/NotFoundPage';
@@ -153,9 +156,22 @@ function ComponentRouter() {
               <ArtistCommunity routeVariants={routeVariants} />
             </Route>
 
+            <Route exact path="/michaelBio">
+              <MichaelBioPage routeVariants={routeVariants} />
+            </Route>
+
+            <Route exact path="/BerchBio">
+              <BerchBioPage routeVariants={routeVariants} />
+            </Route>
+
+            <Route exact path="/PerrinBio">
+              <PerrinBioPage routeVariants={routeVariants} />
+            </Route>
+
             <Route exact path="/artist-process">
               <ArtistProcess routeVariants={routeVariants} />
             </Route>
+
             <Route exact path="/guarantee">
               <QualityGuaranteePage routeVariants={routeVariants} />
             </Route>
