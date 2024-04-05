@@ -52,11 +52,10 @@ import JrEditRequestPage from '../EditRequestPage/JrEditRequest';
 // jr pages
 import JrLandingPage from '../JrLandingPage/JrLandingPage';
 import JrCheckoutPage from '../JrRequestPage/JrRequestPage';
-
-import LearningPacksPage from '../LearningPacksPage/LearningPacksPage';
-
 import JrHeader from '../JrHeader/JrHeader';
 import JrFooter from '../JrFooter/JrFooter'
+import LearningPacksPage from '../LearningPacksPage/LearningPacksPage';
+
 
 
 function ComponentRouter() {
@@ -164,13 +163,7 @@ function ComponentRouter() {
               <SongRequestPage routeVariants={routeVariants} />
             </Route>
 
-
-            <Route exact path="/learning-packs">
-              <LearningPacksPage routeVariants={routeVariants} />
-            </Route>
-
-            <ProtectedRoute exact path="/request/edit/:id" allowedUserClasses={[1,2,3]} >
-
+            <ProtectedRoute exact path="/request/edit/:id">
               <EditRequestPage routeVariants={routeVariants} />
             </ProtectedRoute>
 
@@ -192,6 +185,10 @@ function ComponentRouter() {
 
             <Route exact path="/faqSbJR">
               <FaqPageSbJR routeVariants={routeVariants} />
+            </Route>
+
+            <Route exact path="/learning-packs">
+              <LearningPacksPage routeVariants={routeVariants} />
             </Route>
 
             <Route exact path="/songbeejr">
