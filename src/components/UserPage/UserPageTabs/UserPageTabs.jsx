@@ -70,7 +70,7 @@ export default function BasicTabs() {
 
   return (
     <>
-      {/* tab selection */}
+      {/* tab selector */}
       <Box sx={{ height: "80%", borderBottom: 1, borderColor: "divider" }}>
         <Tabs
           className="tabHeader"
@@ -78,49 +78,26 @@ export default function BasicTabs() {
           onChange={handleChange}
           aria-label="basic tabs example"
         >
-
-          <Tab
-            label="Order History"
-            {...a11yProps(0)}
-            sx={{ color: "orange" }}
-          />
-
-          <Tab 
-            label="Profile"
-            {...a11yProps(1)}
-            sx={{ color: "orange" }}
-          /> 
-
-          <Tab
-            label="Credit Balance"
-            {...a11yProps(2)}
-            sx={{ color: "orange" }}
-          />
-
+          <Tab label="Order History"  {...a11yProps(0)} sx={{ color: "orange" }} />
+          <Tab label="Profile"        {...a11yProps(1)} sx={{ color: "orange" }} /> 
+          <Tab label="Credit Balance" {...a11yProps(2)} sx={{ color: "orange" }} />
         </Tabs>
       </Box>
 
-      {/* tab body */}
-      <Box sx={{ width: "100%" }}>
-        <Card variant="outlined">
-          
-          {/* order history tab */}
-          <CustomTabPanel value={value} index={0}>
-            <UserRequestsTab />
-          </CustomTabPanel>
+      {/* order history tab */}
+      <CustomTabPanel value={value} index={0}>
+        <UserRequestsTab />
+      </CustomTabPanel>
 
-          {/* personal info tab */}
-          <CustomTabPanel value={value} index={1}>
-            <UserProfileTab />
-          </CustomTabPanel>
+      {/* personal info tab */}
+      <CustomTabPanel value={value} index={1}>
+        <UserProfileTab />
+      </CustomTabPanel>
 
-          {/* user credit tab */}
-          <CustomTabPanel value={value} index={2}>
-            <UserCreditTab />
-          </CustomTabPanel>
-          
-        </Card>
-      </Box>
+      {/* user credit tab */}
+      <CustomTabPanel value={value} index={2}>
+        <UserCreditTab />
+      </CustomTabPanel>
     </>
   );
 }

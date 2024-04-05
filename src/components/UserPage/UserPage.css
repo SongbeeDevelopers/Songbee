@@ -111,4 +111,11 @@ User Profile
 User Credit
 -------------------------------------------------------------------------------- */
 
-
+.user-credit-tab {
+    height: 14vh;
+    padding-top: 3vh;
+    background-color:antiquewhite;
+}
+.user-credit-tab p {
+    text-align: center;
+}
