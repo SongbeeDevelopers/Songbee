@@ -20,22 +20,36 @@ import Typography from "@mui/material/Typography";
 
 import '../UserPage.css'
 
-// Inside here will have the user's email and password and have the option to edit details
+
 export default function BasicTabs() {
-  const [value, setValue] = useState(0);
-  const user = useSelector((store) => store.user);
-  const artistProfile = useSelector((store) => store.artistProfile);
-  const emailRef = useRef(user.email);
-  const passwordRef = useRef("");
+
+  // hooks
   const history = useHistory();
   const dispatch = useDispatch();
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
+  // reducers
+  const user = useSelector((store) => store.user);
+  const artistProfile = useSelector((store) => store.artistProfile);
+
+  // local state
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(0);
   const [openArtist, setOpenArtist] = useState(false);
+
+  // functions
+  const handleClose = () => setOpen(false);
+  const handleOpen = () => setOpen(true);
   const handleOpenArtist = () => setOpenArtist(true);
   const handleCloseArtist = () => setOpenArtist(false);
+
+  // useRef variables
+  const passwordRef = useRef("");
+  const emailRef = useRef(user.email);
+
+  // grabs artist on mount
+  useEffect(() => {
+    dispatch({ type: "GET_ARTIST_PROFILE" });
+  }, []);
 
   // Handle function for the cancel button
   const handleCancel = (event) => {
@@ -55,9 +69,6 @@ export default function BasicTabs() {
     });
     history.push("/user");
   };
-  useEffect(() => {
-    dispatch({ type: "GET_ARTIST_PROFILE" });
-  }, []);
 
   // Handle function for the delete button
   // const handleDelete = (event) => {
@@ -131,6 +142,7 @@ export default function BasicTabs() {
       edited_website: musicLinksRef.current.value,
       edited_vocal_type: vocalTypeRef.current.value,
     };
+
     // some of the artist fields are not on the form and also some of the database fields are not on this form
     dispatch({
       type: "REQUEST_ARTIST_EDIT",
@@ -147,6 +159,8 @@ export default function BasicTabs() {
     aboutYourselfRef.current.value = "";
     history.push("/user");
   };
+
+
   return (
     <>
       {/* tab selection */}
@@ -158,15 +172,19 @@ export default function BasicTabs() {
           aria-label="basic tabs example"
         >
           <Tab
-            sx={{ color: "orange" }}
             label="Order History"
             {...a11yProps(0)}
-          />
-          <Tab sx={{ color: "orange" }} label="profile" {...a11yProps(1)} />
-          <Tab
             sx={{ color: "orange" }}
+          />
+          <Tab
+            label="Profile"
+            {...a11yProps(1)}
+            sx={{ color: "orange" }}
+          />
+          <Tab
             label="Credit Balance"
             {...a11yProps(2)}
+            sx={{ color: "orange" }}
           />
         </Tabs>
       </Box>
@@ -174,6 +192,7 @@ export default function BasicTabs() {
       {/* tab body */}
       <Box sx={{ width: "100%" }}>
         <Card className="cardBackground" variant="outlined">
+
           {/* order history tab */}
           <CustomTabPanel className="cardBody" value={value} index={0}>
             <UserRequestsTab />
