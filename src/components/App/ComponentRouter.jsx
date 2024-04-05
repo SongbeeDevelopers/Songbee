@@ -25,7 +25,7 @@ import CreationPage from '../CreationPage/CreationPage';
 import UserPage from '../UserPage/UserPage';
 import AdminPage from '../AdminPage/AdminPage';
 import EditRequestPage from '../EditRequestPage/EditRequestPage';
-// import UserDetails from '../UserPage/UserPageTabs/UserDetailsTab/UserDetailsPage';
+import RequestDetails from '../RequestDetails/RequestDetails';
 
 // information pages
 import FaqPage from '../InfoPages/FaqPage';
@@ -147,11 +147,9 @@ function ComponentRouter() {
           <JoinArtistPage routeVariants={routeVariants} />
         </Route>
 
-
         <ProtectedRoute exact path="/artist-requests" allowedUserClasses={[2, 3]} >
           <ArtistRequests routeVariants={routeVariants} />
         </ProtectedRoute>
-
 
         <Route exact path="/requestform/:id">
           <SongRequestPage routeVariants={routeVariants} />
@@ -165,9 +163,9 @@ function ComponentRouter() {
           <JrEditRequestPage routeVariants={routeVariants} />
         </ProtectedRoute>
 
-        {/* <ProtectedRoute exact path="/details/:id" allowedUserClasses={[2, 3]}>
-          <UserDetails routeVariants={routeVariants} />
-        </ProtectedRoute> */}
+        <ProtectedRoute exact path="/details/:id" allowedUserClasses={[2, 3]}>
+          <RequestDetails routeVariants={routeVariants} />
+        </ProtectedRoute>
 
         <Route exact path="/terms" >
           <TermsAndConditionsPage routeVariants={routeVariants} />
