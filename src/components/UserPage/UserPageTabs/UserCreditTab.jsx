@@ -11,6 +11,7 @@ function UserCreditTab() {
 
    return (
       <div className='tab-body'>
+         <h2>Credit Balance</h2>
          <p>Your current credit balance is: {user.credit === null ? "$0." : `$${user.credit}.`}</p>
       </div>
    )

@@ -76,21 +76,19 @@ export default function ArtistTabs() {
         >
           <Tab label="Artist Profile" {...a11yProps(0)} sx={{ color: "orange" }} />
           <Tab label="Songbee Requests" {...a11yProps(1)} sx={{ color: "orange" }} />
-          <Tab label="Songbee Junior Requests" {...a11yProps(2)} sx={{ color: "orange" }} />
+          <Tab label="Junior Requests" {...a11yProps(2)} sx={{ color: "orange" }} />
           <Tab label="Documents" {...a11yProps(3)} sx={{ color: "orange" }} />
         </Tabs>
       </Box>
 
-
+      {/* tabs */}
       <CustomTabPanel value={value} index={0}>
         <ArtistProfileTab />
       </CustomTabPanel>
 
-
       <CustomTabPanel value={value} index={1}>
         <ArtistSBRequestsTab />
       </CustomTabPanel>
-
 
       <CustomTabPanel value={value} index={2}>
         <ArtistSBjrRequestsTab />
