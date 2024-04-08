@@ -2,7 +2,10 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-
+import ArtistProfileTab from "./ArtistProfileTab";
+import ArtistSBRequestsTab from "./ArtistSBRequestsTab";
+import ArtistSBjrRequestsTab from "./ArtistSBjrRequestsTab";
+import ArtistDocuments from "./ArtistDocuments";
 
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
@@ -71,25 +74,30 @@ export default function ArtistTabs() {
           onChange={handleChange}
           aria-label="basic tabs example"
         >
-          <Tab label="" {...a11yProps(0)} sx={{ color: "orange" }} />
-          <Tab label="" {...a11yProps(1)} sx={{ color: "orange" }} />
-          <Tab label="" {...a11yProps(2)} sx={{ color: "orange" }} />
+          <Tab label="Artist Profile" {...a11yProps(0)} sx={{ color: "orange" }} />
+          <Tab label="Songbee Requests" {...a11yProps(1)} sx={{ color: "orange" }} />
+          <Tab label="Songbee Junior Requests" {...a11yProps(2)} sx={{ color: "orange" }} />
+          <Tab label="Documents" {...a11yProps(3)} sx={{ color: "orange" }} />
         </Tabs>
       </Box>
 
 
       <CustomTabPanel value={value} index={0}>
-
+        <ArtistProfileTab />
       </CustomTabPanel>
 
 
       <CustomTabPanel value={value} index={1}>
-
+        <ArtistSBRequestsTab />
       </CustomTabPanel>
 
 
       <CustomTabPanel value={value} index={2}>
+        <ArtistSBjrRequestsTab />
+      </CustomTabPanel>
 
+      <CustomTabPanel value={value} index={2}>
+        <ArtistDocuments />
       </CustomTabPanel>
     </>
   );
