@@ -339,9 +339,9 @@ export const Learningpacks = [
       {
         id: 1,
         imageUrl: "/junior/3years/babyThree.jpg",
-        name: "The Bonder",
+        name: "The Bonder-1",
         age: "43, 44, 45 months",
-        slug: "3-year-the-bonder",
+        slug: "3-year-the-bonder-1",
         delivery: "Delivers | every 2 months",
         pricing: "$120/Pack",
         about:
@@ -357,9 +357,9 @@ export const Learningpacks = [
       {
         id: 2,
         imageUrl: "/junior/3years/babyFour.jpg",
-        name: "The Bonder",
+        name: "The Bonder-2",
         age: "46, 47, 48 months",
-        slug: "3-year-the-bonder",
+        slug: "3-year-the-bonder-2",
         delivery: "Delivers | every 2 months",
         pricing: "$120/Pack",
         about:
