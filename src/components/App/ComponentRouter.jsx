@@ -38,6 +38,7 @@ import TermsAndConditionsPage from '../InfoPages/TermsAndConditionsPage';
 import JoinArtistPage from '../JoinArtistPage/JoinArtistPage';
 import ArtistCommunity from '../JoinArtistPage/ArtistCommunity';
 import ArtistProcess from '../JoinArtistPage/ArtistProcess';
+import ArtistPage from '../ArtistPage/ArtistPage'
 
 // 404
 import NotFound from '../NotFoundPage/NotFoundPage';
@@ -91,6 +92,7 @@ function ComponentRouter() {
       {/* shows main header on main routes */}
       {location.pathname === "/home" && <Header />}
       {location.pathname === "/user" && <Header />}
+      {location.pathname === "/artist" && <Header />}
       {location.pathname === "/admin" && <Header />}
       {location.pathname === "/login" && <Header />}
       {location.pathname === "/register" && <Header />}
@@ -227,6 +229,10 @@ function ComponentRouter() {
         {/* this needs to be further protected */}
         <ProtectedRoute exact path="/admin" allowedUserClasses={[3]}>
           <AdminPage routeVariants={routeVariants} />
+        </ProtectedRoute>
+
+        <ProtectedRoute exact path="/artist" allowedUserClasses={[2, 3]}>
+          <ArtistPage routeVariants={routeVariants} />
         </ProtectedRoute>
 
         {/* If none of the other routes matched, we will show a 404. */}
