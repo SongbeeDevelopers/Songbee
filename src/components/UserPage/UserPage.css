@@ -6,6 +6,10 @@ General
     text-align: center;
 }
 
+.tabHeader {
+    background-color: #f2e9d8;
+}
+
 .tab-body {
     display: flex;
     flex-direction: column;
@@ -93,10 +97,6 @@ User Profile
     margin: 10px;
     display:flex;
     justify-content: space-around;     
-}
-
-.tabHeader {
-    background-color: #f2e9d8;
 }
 
 /* --------------------------------------------------------------------------------

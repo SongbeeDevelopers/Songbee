@@ -9,7 +9,6 @@ import UserProfileTab from "./UserProfileTab";
 
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import Typography from "@mui/material/Typography";
@@ -37,7 +36,6 @@ export default function BasicTabs() {
 
   const CustomTabPanel = (props) => {
     const { children, value, index, ...other } = props;
-
     return (
       <div
         role="tabpanel"
@@ -47,7 +45,7 @@ export default function BasicTabs() {
         {...other}
       >
         {value === index && (
-          <Box sx={{ p: 3 }}>
+          <Box>
             <Typography>{children}</Typography>
           </Box>
         )}
@@ -71,7 +69,7 @@ export default function BasicTabs() {
   return (
     <>
       {/* tab selector */}
-      <Box sx={{ height: "80%", borderBottom: 1, borderColor: "divider" }}>
+      <Box sx={{ height: "80%", borderBottom: 2, borderColor: "divider"}}>
         <Tabs
           className="tabHeader"
           value={value}

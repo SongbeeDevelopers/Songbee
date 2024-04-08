@@ -115,9 +115,9 @@ function UserProfileTab() {
 
 
   return (
-    <div className="user-profile-tab">
+    <div className="tab-body">
 
-      <h1 className="profileHeader">Personal info</h1>
+      <h2>Personal info</h2>
       <h3>{user.email}</h3>
 
       <CardContent variant="outlined">
