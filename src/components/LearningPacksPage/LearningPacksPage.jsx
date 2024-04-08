@@ -4,6 +4,7 @@ import "./LearningPacksPage.css";
 import Packs from "./Packs";
 import LearningpacksHero from "./LearningPacksHero";
 import { Link } from "react-router-dom";
+import PlayToLearn from "./PlayToLearn";
 function LearningPacksPage({ routeVariants }) {
   return (
     <motion.div
@@ -22,7 +23,7 @@ function LearningPacksPage({ routeVariants }) {
           <div className="lp-hero-text">
             <h1>Learning Packs</h1>
             <p>Support Your Child’s Development</p>
-            <button className="jr-get-started-btn">Get Started</button>
+            <button className="jr-landing-btn">Get Started</button>
           </div>
         </div>
 
@@ -42,6 +43,7 @@ function LearningPacksPage({ routeVariants }) {
       </section>
 
       <Packs />
+      <PlayToLearn/>
     </motion.div>
   );
 }
