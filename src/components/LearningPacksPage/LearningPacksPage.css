@@ -32,6 +32,11 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.onePack:last-child {
+  margin-bottom: 50px;
 }
 
 .packItems {
@@ -46,16 +51,18 @@
   display: flex;
   flex-direction: column;
   gap: 0;
+  color: black;
 }
 
 .onePackItem img {
   width: 100%;
-  height: 250px;
+  /* height: 250px; */
   margin-bottom: 15px;
   background-position: top;
   background-size: cover;
   object-position: top;
   object-fit: cover;
+  border-radius: 0 !important;
 }
 
 .onePack h2 {
@@ -160,7 +167,6 @@
   position: absolute;
   top: -20px;
   left: -60px;
-  
 }
 
 .lp-honeycomb-topright {
@@ -170,37 +176,203 @@
   width: 200px;
 }
 
-
-
 .lp-honeycomb-bottomleft {
-    position: absolute;
-    bottom: -100px;
-    left: -50px;
-    width: 200px;
-  }
+  position: absolute;
+  bottom: -100px;
+  left: -50px;
+  width: 200px;
+}
 
+.lp-title {
+  width: 100%;
+  text-align: center;
+  margin-top: 50px;
+}
 
-  .lp-title{
-    width: 100%;
-    text-align: center;
-    margin-top: 50px;
-  }
-  
-  .lp-title h2{
-    font-size: 35px;
-    padding: 0;
-    margin: 0;
-  }
+.lp-title h2 {
+  font-size: 35px;
+  padding: 0;
+  margin: 0;
+}
 
-  .lp-links{
-    display: flex;
-    gap: 10px;
-    width: 100%;
-    justify-content: center;
-  }
+.lp-links {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
+}
 
-  .lp-links a{
-    text-decoration: underline;
-    color: black;
-  }
+.lp-links a {
+  text-decoration: underline;
+  color: black;
+}
 
+.lp-header {
+  background-color: white !important;
+}
+
+.onePack p {
+  text-align: left !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.lp-dots {
+  width: 400px;
+  height: 0;
+  border-bottom: 2px dashed #feaf17;
+  position: absolute;
+  left: 0;
+  bottom: -25px;
+}
+
+.lp-playtolearn {
+  background-color: #ffdeb0;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.lp-playtolearnCards {
+  display: flex;
+  gap: 20px;
+  background-image: url("/junior/text-backer-white.png");
+  background-repeat: no-repeat;
+  /* background-size: contain; */
+  background-position: center;
+  width: 100%;
+  padding: 100px;
+  background-size: 100% 100%;
+}
+
+.lp-playtolearnCard {
+  display: flex;
+  gap: 20px;
+}
+
+.lp-cardRight {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.lp-music-notes {
+  height: 70px;
+  width: auto;
+  background-size: contain;
+}
+
+.lp-cardRight h3 {
+  margin: 0;
+  padding: 0;
+}
+
+.lp-cardRight p {
+  margin: 0 !important;
+  padding: 0;
+}
+
+.lp-playtolearn h2 {
+  background-image: url("/junior/text-backer-white.png");
+  background-repeat: no-repeat;
+
+  background-position: center;
+  width: max-content;
+  padding: 50px 150px;
+  background-size: 100% 100%;
+}
+.pack-view-dots {
+  position: static !important;
+  margin: 20px 0;
+}
+
+.pack-view-hero {
+  display: flex;
+  align-items: center;
+}
+
+.pack-view-img {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pack-view-content {
+  width: 50%;
+  height: 100%;
+  min-height: 600px;
+}
+
+.pack-view-img img {
+  width: 80%;
+  height: auto;
+  /* background-size: contain; */
+  border-radius: 0 !important;
+  margin: auto;
+}
+.pack-view-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.pack-view-content h1,
+.pack-view-content p {
+  margin: 0 !important;
+  padding: 0;
+}
+.yellowLine {
+  width: 100%;
+  height: 40px;
+}
+
+.pack-view-content h1 {
+  text-align: left !important;
+  font-size: 28px;
+  margin: 0;
+  padding: 0;
+  margin-bottom: -20px;
+}
+
+.pv-age {
+}
+
+.pv-pricing {
+  font-weight: 600;
+}
+
+.pv-delivery {
+  text-decoration: underline;
+}
+.pv-button {
+  border: 0 !important;
+  margin-left: 0 !important;
+}
+
+.pv-skip {
+  text-decoration: underline;
+}
+
+.pack-view-content h2 {
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.pv-included li {
+  color: black;
+}
+
+.pv-included {
+  margin-top: -20px;
+}
+
+.pv-about {
+  display: flex;
+  flex-direction: column;
+}
