@@ -23,24 +23,22 @@ function UserHistory() {
 
 
   return (
-    <div className='user-history-tab'>
-      { userRequests.length > 0 ?
+    <div className='tab-body'>
+      <h2>Order History</h2>
 
+      { userRequests.length > 0 ?
         // if requests exist
-        <div className='requestContainer'>
+        <div>
           {userRequests.map((request, i) => (
             <RequestItem song={request} key={i} />
           ))}
         </div>
-
         :
-
         // if no requests
         <div>
           <h1 className='noRequests'>You have no song requests!</h1>
           <button onClick={() => { history.push('/order') }} className='userStartSong'>Start Your Song</button>
         </div>
-
       }
     </div>
   )

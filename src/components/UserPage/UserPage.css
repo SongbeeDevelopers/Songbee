@@ -6,49 +6,18 @@ General
     text-align: center;
 }
 
-.event-item {
+.tab-body {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    font-size: 1.5rem;
-    height: 160px;
-    justify-content: space-around;
-  }
-
-.event-item-header {
-    display: flex;
-    justify-content: center;
-}
-
-.event-item p {
-    text-align: center;
+    gap: 20px;
+    padding: 15px 50px 50px;
+    background-color: #f2e9d8;
 }
 
 /* --------------------------------------------------------------------------------
 Request History
 -------------------------------------------------------------------------------- */
-
-.recipientTitle {
-    font-family: Poppins;
-    font-size: 1.75rem;
-    color: rgb(51, 51, 51);
-}
-
-.detailsBtn {
-    background-color: #feaf17;
-    border: 1px solid #000;
-    border-radius: 13px;
-    font-family: Poppins, sans-serif;
-    font-weight: 600;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
-    padding: 9px 15px;
-
-}
-.historyBody {
-    background-image: url("../../../public/honey_combs.jpeg");
-    width: 100%;
-    
-}
 
 .noRequests {
     text-align: center;
@@ -79,12 +48,35 @@ Request History
     outline: 0;
 }
 
-.requestContainer {
+/* --------------------------------------------------------------------------------
+Request Item
+-------------------------------------------------------------------------------- */
+
+.event-item-header {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+}
+
+.event-item {
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    gap: 20px;
-    padding: 50px
+    font-size: 1.5rem;
+    height: 160px;
+    justify-content: space-around;
+}
+.event-item p {
+    text-align: center;
+}
+
+.detailsBtn {
+    background-color: #feaf17;
+    border: 1px solid #000;
+    border-radius: 13px;
+    font-family: Poppins, sans-serif;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    padding: 9px 15px;
 }
 
 /* --------------------------------------------------------------------------------
