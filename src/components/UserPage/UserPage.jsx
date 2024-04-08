@@ -19,7 +19,6 @@ function UserPage({ routeVariants }) {
       animate="final"
     >
       <h2 className='user-welcome'>Welcome {user.email}!</h2>
-
       <UserPageTabs />  
   </motion.div>
   );
