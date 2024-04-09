@@ -60,7 +60,6 @@ import LearningPackView from "../LearningPacksPage/LearningPackView/LearningPack
 
 function ComponentRouter() {
   const location = useLocation();
-
   const user = useSelector((store) => store.user);
 
   // styling for route fade-ins
@@ -87,38 +86,49 @@ function ComponentRouter() {
     },
   };
 
+// /:id NOT WORKING!!!
   return (
     <>
-      {location.pathname === "/home" && <Banner />}
+      {location.pathname === "/home"  && <Banner />}
 
       {/* shows main header on main routes */}
-      {location.pathname === "/home" && <Header />}
-      {location.pathname === "/user" && <Header />}
-      {location.pathname === "/admin" && <Header />}
-      {location.pathname === "/login" && <Header />}
-      {location.pathname === "/register" && <Header />}
-      {location.pathname === "/order" && <Header />}
-      {location.pathname === "/neworder" && <Header />}
-      {location.pathname === "/requestform/:id" && <Header />}
-      {location.pathname === "/request/edit/:id" && <Header />}
-      {location.pathname === "/details/:id" && <Header />}
-      {location.pathname ===
-        "/created/:delivery_days/:extra_verse/:streaming" && <Header />}
-      {location.pathname === "/artist-community" && <Header />}
-      {location.pathname === "/join-artist" && <Header />}
-      {location.pathname === "/artist-requests" && <Header />}
-      {location.pathname === "/artist-process" && <Header />}
-      {location.pathname === "/faq" && <Header />}
-      {location.pathname === "/terms" && <Header />}
-      {location.pathname === "/guarantee" && <Header />}
-      {location.pathname === "/privacy" && <Header />}
+      {
+        (location.pathname === "/home" || 
+        // accounts
+        location.pathname === "/user" ||
+        location.pathname === "/artist" ||
+        location.pathname === "/admin" ||
+        // login/reg
+        location.pathname === "/login" ||
+        location.pathname === "/register" ||
+        // order
+        location.pathname === "/order" ||
+        location.pathname === "/neworder" ||
+        location.pathname === "/requestform/:id" ||
+        location.pathname === "/details/:id" ||
+        location.pathname === "/created/:delivery_days/:extra_verse/:streaming" ||
+        // artists
+        location.pathname === "/artist-community" ||
+        location.pathname === "/join-artist" ||
+        location.pathname === "/artist-requests" ||
+        location.pathname === "/artist-process" ||
+        // info
+        location.pathname === "/faq" ||
+        location.pathname === "/terms" ||
+        location.pathname === "/guarantee" ||
+        location.pathname === "/privacy"
+        ) && <Header />
+      }
 
       {/* shows jr header on jr routes */}
-      {location.pathname === "/songbeejr" && <JrHeader />}
-      {location.pathname === "/jrcheckout" && <JrHeader />}
-      {location.pathname === "/jr-request/edit/:id" && <JrHeader />}
-      {location.pathname === "/faqSbJR" && <JrHeader />}
-
+      {
+        (location.pathname === "/songbeejr" ||
+        location.pathname === "/jrcheckout" ||
+        location.pathname === "/jr-request/edit/:id" ||
+        location.pathname === "/faqSbJR"
+        ) && <JrHeader />
+      }
+      
       <Switch location={location} key={location.key}>
         {/* Visiting localhost:5173 will redirect to localhost:5173/home */}
         <Redirect exact from="/" to="/home" />
@@ -156,11 +166,8 @@ function ComponentRouter() {
           <JoinArtistPage routeVariants={routeVariants} />
         </Route>
 
-        <ProtectedRoute
-          exact
-          path="/artist-requests"
-          allowedUserClasses={[2, 3]}
-        >
+
+        <ProtectedRoute exact path="/artist-requests" allowedUserClasses={[2, 3]}>
           <ArtistRequests routeVariants={routeVariants} />
         </ProtectedRoute>
 
@@ -184,8 +191,8 @@ function ComponentRouter() {
           <JrEditRequestPage routeVariants={routeVariants} />
         </ProtectedRoute>
 
-        <ProtectedRoute exact path="/details/:id" allowedUserClasses={[2, 3]}>
-          <UserDetails routeVariants={routeVariants} />
+        <ProtectedRoute exact path="/details/:id" allowedUserClasses={[1, 2, 3]}>
+          <RequestDetails routeVariants={routeVariants} />
         </ProtectedRoute>
 
         <Route exact path="/terms">
@@ -256,9 +263,9 @@ function ComponentRouter() {
           )}
         </Route>
 
-        <Route exact path="/registration">
-          {user.id ? (
-            // If the user is already logged in,
+        <Route exact path="/register">
+          {user.id ?
+            // If the user is already logged in, 
             // redirect them to the /user page
             <Redirect to="/user" />
           ) : (
@@ -272,6 +279,10 @@ function ComponentRouter() {
           <AdminPage routeVariants={routeVariants} />
         </ProtectedRoute>
 
+        <ProtectedRoute exact path="/artist" allowedUserClasses={[2, 3]}>
+          <ArtistPage routeVariants={routeVariants} />
+        </ProtectedRoute>
+
         {/* If none of the other routes matched, we will show a 404. */}
         <Route>
           <NotFound />
@@ -279,32 +290,42 @@ function ComponentRouter() {
       </Switch>
 
       {/* shows main footer on main routes */}
-      {location.pathname === "/home" && <Footer />}
-      {location.pathname === "/user" && <Footer />}
-      {location.pathname === "/admin" && <Footer />}
-      {location.pathname === "/login" && <Footer />}
-      {location.pathname === "/register" && <Footer />}
-      {location.pathname === "/order" && <Footer />}
-      {location.pathname === "/neworder" && <Footer />}
-      {location.pathname === "/requestform/:id" && <Footer />}
-      {location.pathname === "/request/edit/:id" && <Footer />}
-      {location.pathname === "/details/:id" && <Footer />}
-      {location.pathname ===
-        "/created/:delivery_days/:extra_verse/:streaming" && <Footer />}
-      {location.pathname === "/artist-community" && <Footer />}
-      {location.pathname === "/join-artist" && <Footer />}
-      {location.pathname === "/artist-requests" && <Footer />}
-      {location.pathname === "/artist-process" && <Footer />}
-      {location.pathname === "/faq" && <Footer />}
-      {location.pathname === "/terms" && <Footer />}
-      {location.pathname === "/guarantee" && <Footer />}
-      {location.pathname === "/privacy" && <Footer />}
-
+      {
+        (location.pathname === "/home" || 
+        // accounts
+        location.pathname === "/user" ||
+        location.pathname === "/artist" ||
+        location.pathname === "/admin" ||
+        // login/reg
+        location.pathname === "/login" ||
+        location.pathname === "/register" ||
+        // order
+        location.pathname === "/order" ||
+        location.pathname === "/neworder" ||
+        location.pathname === "/requestform/:id" ||
+        location.pathname === "/details/:id" ||
+        location.pathname === "/created/:delivery_days/:extra_verse/:streaming" ||
+        // artists
+        location.pathname === "/artist-community" ||
+        location.pathname === "/join-artist" ||
+        location.pathname === "/artist-requests" ||
+        location.pathname === "/artist-process" ||
+        // info
+        location.pathname === "/faq" ||
+        location.pathname === "/terms" ||
+        location.pathname === "/guarantee" ||
+        location.pathname === "/privacy"
+        ) && <Footer />
+      }
+      
       {/* shows jr footer on jr routes */}
-      {location.pathname === "/songbeejr" && <JrFooter />}
-      {location.pathname === "/jrcheckout" && <JrFooter />}
-      {location.pathname === "/jr-request/edit/:id" && <JrFooter />}
-      {location.pathname === "/faqSbJR" && <JrFooter />}
+      {
+        (location.pathname === "/songbeejr" ||
+        location.pathname === "/jrcheckout" ||
+        location.pathname === "/jr-request/edit/:id" ||
+        location.pathname === "/faqSbJR"
+        ) && <JrFooter />
+      }
     </>
   );
 }

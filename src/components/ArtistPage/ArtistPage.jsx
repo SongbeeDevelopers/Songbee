@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import UserPageTabs from './UserPageTabs/UserPageTabs';
+import ArtistPageTabs from './ArtistPageTabs/ArtistPageTabs'
 
 import { motion } from 'framer-motion';
-import './UserPage.css';
+import './ArtistPage.css';
 
 
 function UserPage({ routeVariants }) {
@@ -18,9 +18,8 @@ function UserPage({ routeVariants }) {
       initial="initial"
       animate="final"
     >
-      <h2 className='user-welcome'>Customer Portal</h2>
-      <br/>
-      <UserPageTabs />  
+      <h2 className='artist-welcome'>Welcome {user.email}!</h2>
+      <ArtistPageTabs /> 
   </motion.div>
   );
 }

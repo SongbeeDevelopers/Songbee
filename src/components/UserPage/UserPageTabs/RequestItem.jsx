@@ -1,12 +1,19 @@
 import { useHistory } from "react-router-dom";
+
 import Card from "@mui/material/Card";
 import { CardActionArea } from "@mui/material";
 
+import '../UserPage.css'
+
+
 function RequestItem({ song }) {
+
   const history = useHistory();
+  
   const requestClick = () => {
     history.push(`/details/${song.id}`);
   };
+
   const now = new Date ();
   const msPerDay = 24 * 60 * 60 * 1000;
   const creationTime = new Date (song.created_at);
