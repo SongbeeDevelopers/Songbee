@@ -26,7 +26,7 @@ function LoginPage({ routeVariants }) {
       <button
         type="button"
         className="loginRegButton"
-        onClick={() => {history.push('/registration')}}
+        onClick={() => {history.push('/register')}}
       >
         Register
       </button>
