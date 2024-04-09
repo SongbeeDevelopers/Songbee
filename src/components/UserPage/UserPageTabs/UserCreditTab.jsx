@@ -1,6 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
+import { Card, CardContent } from "@mui/material"
+
 import '../UserPage.css'
 
 
@@ -12,7 +14,25 @@ function UserCreditTab() {
    return (
       <div className='tab-body'>
          <h2>Credit Balance</h2>
-         <p>Your current credit balance is: {user.credit === null ? "$0." : `$${user.credit}.`}</p>
+         <Card
+         sx={{
+            minWidth: 900,
+            display: "flex",
+            flexDirection: "row",
+            outline: "#feaf17 solid 4px",
+            justifyContent: "space-between",
+            gap: 2,
+            mb: 3,
+            backgroundColor: "#fff4df",
+            p: 2
+         }}
+         >
+         <CardContent sx={{m: "auto"}}>
+            <div className="user-profile">
+               <p>Your current credit balance is: {user.credit === null ? "$0." : `$${user.credit}.`}</p>
+            </div>
+         </CardContent>
+         </Card>
       </div>
    )
 }

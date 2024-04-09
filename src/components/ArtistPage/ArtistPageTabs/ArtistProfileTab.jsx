@@ -1,9 +1,14 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useSelector } from "react-redux";
 
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+
+import { Button } from "@mui/material";
+import Dialog from "@mui/material/Dialog";
+import Slide from "@mui/material/Slide";
+import Box from "@mui/material/Box";
 
 
 function ArtistProfileTab() {
@@ -58,6 +63,11 @@ function ArtistProfileTab() {
     aboutYourselfRef.current.value = "";
     history.push("/user");
   };
+
+    // This is for the dialog
+    const Transition = React.forwardRef(function Transition(props, ref) {
+      return <Slide direction="up" ref={ref} {...props} />;
+    });
 
 
   return (

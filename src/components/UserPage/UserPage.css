@@ -93,10 +93,81 @@ User Profile
     color: rgb(51, 51, 51);
 }
 
+.profile-tab-body {
+    border: 4px solid #feaf17;
+    border-radius: 10px;
+    background-color: #fff4df;
+    width: 75%;
+    padding: 20px 30px 30px;
+    text-align: center;
+}
+
+.user-button {
+    display: block;
+    background-color: #feaf17;
+    border: 1px solid #000;
+    border-radius: 13px;
+    font-family: Poppins, sans-serif;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    padding: 9px 15px;
+    margin: auto;
+}
+
+.user-profile {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px;
+}
+
 .modalBtns {
-    margin: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     display:flex;
-    justify-content: space-around;     
+    justify-content: center;   
+    gap: 15%;  
+}
+.modalBtns button {
+    background-color: #feaf17;
+    border: 1px solid #000;
+    border-radius: 13px;
+    font-family: Poppins, sans-serif;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    padding: 9px 15px;
+    width: 85px
+}
+
+.modal-save {
+    background-color: greenyellow;
+    border: 1px solid #000;
+    border-radius: 13px;
+    font-family: Poppins, sans-serif;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    padding: 9px 15px;
+}
+
+.user-dialog-contents {
+    min-width: 600px;
+    padding: 30px 50px;
+    text-align: center;
+}
+
+.user-dialog-contents input {
+    width: 65%;
+    height: 38px;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    margin: 0 auto 15px;
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 1.42857;
+    display: block;
+    border-radius: 7px;
 }
 
 /* --------------------------------------------------------------------------------
