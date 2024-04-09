@@ -28,13 +28,6 @@ audio::-webkit-media-controls-time-remaining-display {
 }
 
 /* This will be for styling the headers and titles */
-.cardContainer {
-  background-color:  #fff4df;
-  min-height:calc(100vh - 1px);
-  height:auto;
-  box-sizing:border-box;
-  background-image: url('honey_combs.jpeg');
-}
 
 .artistHeader {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -70,16 +63,6 @@ audio::-webkit-media-controls-time-remaining-display {
   text-align: center;
 }
 
-.detailsContainer {
-  display: flex;
-  flex-direction: column;
-  padding: 15px 40px 40px 40px;
-  background-color: #fff4df;
-  border-radius: 4px;
-  margin-top: 50px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
-  /* gap: 25px */
-}
 
 .detailsRow {
   display: flex;
@@ -104,19 +87,6 @@ audio::-webkit-media-controls-time-remaining-display {
 
 .detailsItem p {
   margin: 0
-}
-
-.songDetails {
-  margin-bottom: 500px;
-  margin-top: 100px;
-  width: 50%;
-  min-width: 600px;
-  margin: auto;
-  border-radius: 4px;
-  outline: #feaf17 solid 4px;
-  padding: 16px;
-  background-color: #fff4df;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
 }
 
 .songDetails h1 {

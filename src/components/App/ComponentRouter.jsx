@@ -52,11 +52,13 @@ import JrLandingPage from '../JrLandingPage/JrLandingPage';
 import JrCheckoutPage from '../JrRequestPage/JrRequestPage';
 import JrHeader from '../JrHeader/JrHeader';
 import JrFooter from '../JrFooter/JrFooter'
+import { LocationDisabled } from '@mui/icons-material';
 
 
 function ComponentRouter() {
 
   const location = useLocation()
+  console.log(location.pathname)
 
   const user = useSelector(store => store.user);
 
@@ -84,7 +86,7 @@ function ComponentRouter() {
     },
   };
 
-
+// /:id NOT WORKING!!!
   return (
     <>
       {location.pathname === "/home"  && <Banner />}
