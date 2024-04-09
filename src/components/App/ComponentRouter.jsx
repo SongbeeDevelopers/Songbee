@@ -26,7 +26,7 @@ import FinalQuestions from "../OrderPage/FinalQuestions";
 import UserPage from "../UserPage/UserPage";
 import AdminPage from "../AdminPage/AdminPage";
 import EditRequestPage from "../EditRequestPage/EditRequestPage";
-import UserDetails from "../UserPage/UserPageTabs/UserDetailsTab/UserDetailsPage";
+import RequestDetails from "../RequestDetails/RequestDetails"
 
 // information pages
 import FaqPage from "../InfoPages/FaqPage";
@@ -36,6 +36,7 @@ import QualityGuaranteePage from "../InfoPages/QualityGuaranteePage";
 import TermsAndConditionsPage from "../InfoPages/TermsAndConditionsPage";
 
 // artist pages
+import ArtistPage from "../ArtistPage/ArtistPage"
 import JoinArtistPage from "../JoinArtistPage/JoinArtistPage";
 import ArtistCommunity from "../JoinArtistPage/ArtistCommunity";
 import ArtistProcess from "../JoinArtistPage/ArtistProcess";
@@ -264,7 +265,7 @@ function ComponentRouter() {
         </Route>
 
         <Route exact path="/register">
-          {user.id ?
+          {user.id ? (
             // If the user is already logged in, 
             // redirect them to the /user page
             <Redirect to="/user" />

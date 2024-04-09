@@ -17,7 +17,7 @@
     align-items: center;
 }
 
-img {
+.content img {
     border-radius: 50%;
     width: 300px;
     height: auto;
@@ -41,7 +41,7 @@ img {
   
 }
 
- h2 {
+ .nameHeader h2 {
     font-family: Poppins, sans-serif;
     font-size: 48px;
     line-height: 50px;
@@ -202,13 +202,6 @@ img {
 
   .songItems p {
     margin-top: 10px;
-  }
-
-   
-  p {
-    margin: 0px;
-    margin-top: 30px;
-    margin-left: 150px;
   }
 
   .audioWrapper {
