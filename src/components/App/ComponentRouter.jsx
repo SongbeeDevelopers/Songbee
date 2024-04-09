@@ -87,35 +87,45 @@ function ComponentRouter() {
 
   return (
     <>
-      {location.pathname === "/home" && <Banner />}
+      {location.pathname === "/home"  && <Banner />}
 
       {/* shows main header on main routes */}
-      {location.pathname === "/home" && <Header />}
-      {location.pathname === "/user" && <Header />}
-      {location.pathname === "/artist" && <Header />}
-      {location.pathname === "/admin" && <Header />}
-      {location.pathname === "/login" && <Header />}
-      {location.pathname === "/register" && <Header />}
-      {location.pathname === "/order" && <Header />}
-      {location.pathname === "/neworder" && <Header />}
-      {location.pathname === "/requestform/:id" && <Header />}
-      {location.pathname === "/request/edit/:id" && <Header />}
-      {location.pathname === "/details/:id" && <Header />}
-      {location.pathname === "/created/:delivery_days/:extra_verse/:streaming" && <Header />}
-      {location.pathname === "/artist-community" && <Header />}
-      {location.pathname === "/join-artist" && <Header />}
-      {location.pathname === "/artist-requests" && <Header />}
-      {location.pathname === "/artist-process" && <Header />}
-      {location.pathname === "/faq" && <Header />}
-      {location.pathname === "/terms" && <Header />}
-      {location.pathname === "/guarantee" && <Header />}
-      {location.pathname === "/privacy" && <Header />}
+      {
+        (location.pathname === "/home" || 
+        // accounts
+        location.pathname === "/user" ||
+        location.pathname === "/artist" ||
+        location.pathname === "/admin" ||
+        // login/reg
+        location.pathname === "/login" ||
+        location.pathname === "/register" ||
+        // order
+        location.pathname === "/order" ||
+        location.pathname === "/neworder" ||
+        location.pathname === "/requestform/:id" ||
+        location.pathname === "/details/:id" ||
+        location.pathname === "/created/:delivery_days/:extra_verse/:streaming" ||
+        // artists
+        location.pathname === "/artist-community" ||
+        location.pathname === "/join-artist" ||
+        location.pathname === "/artist-requests" ||
+        location.pathname === "/artist-process" ||
+        // info
+        location.pathname === "/faq" ||
+        location.pathname === "/terms" ||
+        location.pathname === "/guarantee" ||
+        location.pathname === "/privacy"
+        ) && <Header />
+      }
 
       {/* shows jr header on jr routes */}
-      {location.pathname === "/songbeejr" && <JrHeader /> }
-      {location.pathname === "/jrcheckout" && <JrHeader /> }
-      {location.pathname === "/jr-request/edit/:id" && <JrHeader /> }
-      {location.pathname === "/faqSbJR" && <JrHeader /> }
+      {
+        (location.pathname === "/songbeejr" ||
+        location.pathname === "/jrcheckout" ||
+        location.pathname === "/jr-request/edit/:id" ||
+        location.pathname === "/faqSbJR"
+        ) && <JrHeader />
+      }
       
       <Switch location={location} key={location.key}>
         {/* Visiting localhost:5173 will redirect to localhost:5173/home */}
