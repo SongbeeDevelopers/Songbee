@@ -9,15 +9,16 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-
+import { useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
 
 import "./Header.css";
-
+import LearningPacksHeader from "./LearningPacksHeader";
 
 function Header() {
+  const location = useLocation();
 
-  const isMobile = useMediaQuery( { query: `(max-width: 815px)`} )
+  const isMobile = useMediaQuery({ query: `(max-width: 815px)` });
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -51,13 +52,15 @@ function Header() {
     } else if (num === 8) {
       history.push("/songbeejr");
     } else if (num === 9) {
-      history.push("/faqSbJR")
+      history.push("/faqSbJR");
     }
   };
- 
 
-  return (
+  return location?.pathname === "/learning-packs" ? (
+    <LearningPacksHeader />
+  ) : (
     <>
+
       <div className="nav">
 
         <div className="nav-left">
@@ -88,6 +91,7 @@ function Header() {
 
           {/* login/logout */}
           <Link to="/login"
+
             className="nav-links"
             onClick={(e) => {
               if (user?.id) {
@@ -105,15 +109,14 @@ function Header() {
               }
             }}
           >
-            {user?.id ? "Logout" : "Login"}
+             {user?.id ? "Logout" : "Login"}
           </Link>
-
-
 
           {/* admin, profile, FAQ */}
 
           {/* dropdown menu for mobile users */}
           {isMobile &&
+
             <>
               <IconButton
                 size="large"
@@ -164,6 +167,7 @@ function Header() {
             </>
           }
         </div>
+
       </div>
     </>
   );

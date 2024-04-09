@@ -1,76 +1,76 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
+import React from "react";
+import { useSelector } from "react-redux";
+import { Redirect, Route, Switch, useLocation } from "react-router-dom";
 
-import ProtectedRoute from './ProtectedRoute';
+import ProtectedRoute from "./ProtectedRoute";
 
-import Banner from '../Banner/Banner'
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
+import Banner from "../Banner/Banner";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 // login/reg
-import LoginPage from '../LoginPage/LoginPage';
-import RegisterPage from '../RegisterPage/RegisterPage';
+import LoginPage from "../LoginPage/LoginPage";
+import RegisterPage from "../RegisterPage/RegisterPage";
 
 // home
-import LandingPage from '../LandingPage/LandingPage';
+import LandingPage from "../LandingPage/LandingPage";
 
 // order process
-import OrderPage from '../OrderPage/OrderPage';
-import SongRequestPage from '../SongRequestPage/SongRequestPage';
-import NewOrderPage from '../OrderPage/NewOrderPage';
-import CreationPage from '../CreationPage/CreationPage';
+import OrderPage from "../OrderPage/OrderPage";
+import SongRequestPage from "../SongRequestPage/SongRequestPage";
+import NewOrderPage from "../OrderPage/NewOrderPage";
+import CreationPage from "../CreationPage/CreationPage";
+import FinalQuestions from "../OrderPage/FinalQuestions";
 
 // user functionality
-import UserPage from '../UserPage/UserPage';
-import AdminPage from '../AdminPage/AdminPage';
-import EditRequestPage from '../EditRequestPage/EditRequestPage';
-import RequestDetails from '../RequestDetails/RequestDetails';
+import UserPage from "../UserPage/UserPage";
+import AdminPage from "../AdminPage/AdminPage";
+import EditRequestPage from "../EditRequestPage/EditRequestPage";
+import UserDetails from "../UserPage/UserPageTabs/UserDetailsTab/UserDetailsPage";
 
 // information pages
-import FaqPage from '../InfoPages/FaqPage';
-import FaqPageSbJR from '../InfoPages/FaqPageSbJR'
-import PrivacyPolicyPage from '../InfoPages/PrivacyPolicyPage';
-import QualityGuaranteePage from '../InfoPages/QualityGuaranteePage';
-import TermsAndConditionsPage from '../InfoPages/TermsAndConditionsPage';
+import FaqPage from "../InfoPages/FaqPage";
+import FaqPageSbJR from "../InfoPages/FaqPageSbJR";
+import PrivacyPolicyPage from "../InfoPages/PrivacyPolicyPage";
+import QualityGuaranteePage from "../InfoPages/QualityGuaranteePage";
+import TermsAndConditionsPage from "../InfoPages/TermsAndConditionsPage";
 
 // artist pages
-import JoinArtistPage from '../JoinArtistPage/JoinArtistPage';
-import ArtistCommunity from '../JoinArtistPage/ArtistCommunity';
-import ArtistProcess from '../JoinArtistPage/ArtistProcess';
-import ArtistPage from '../ArtistPage/ArtistPage'
+import JoinArtistPage from "../JoinArtistPage/JoinArtistPage";
+import ArtistCommunity from "../JoinArtistPage/ArtistCommunity";
+import ArtistProcess from "../JoinArtistPage/ArtistProcess";
+import MichaelBioPage from "../ArtistBioPages/MichaelBioPage";
+import BerchBioPage from "../ArtistBioPages/BerchBioPage";
+import PerrinBioPage from "../ArtistBioPages/PerrinBioPage";
 
 // 404
-import NotFound from '../NotFoundPage/NotFoundPage';
+import NotFound from "../NotFoundPage/NotFoundPage";
 
-
-import ArtistRequests from '../ArtistRequests/ArtistRequests';
-import JrEditRequestPage from '../EditRequestPage/JrEditRequest';
+import ArtistRequests from "../ArtistRequests/ArtistRequests";
+import JrEditRequestPage from "../EditRequestPage/JrEditRequest";
 
 // jr pages
-import JrLandingPage from '../JrLandingPage/JrLandingPage';
-import JrCheckoutPage from '../JrRequestPage/JrRequestPage';
-import JrHeader from '../JrHeader/JrHeader';
-import JrFooter from '../JrFooter/JrFooter'
-import { LocationDisabled } from '@mui/icons-material';
-
+import JrLandingPage from "../JrLandingPage/JrLandingPage";
+import JrCheckoutPage from "../JrRequestPage/JrRequestPage";
+import JrHeader from "../JrHeader/JrHeader";
+import JrFooter from "../JrFooter/JrFooter";
+import LearningPacksPage from "../LearningPacksPage/LearningPacksPage";
+import LearningPacksHeader from "../Header/LearningPacksHeader";
+import LearningPackView from "../LearningPacksPage/LearningPackView/LearningPackView";
 
 function ComponentRouter() {
+  const location = useLocation();
+  const user = useSelector((store) => store.user);
 
-  const location = useLocation()
-  console.log(location.pathname)
-
-  const user = useSelector(store => store.user);
-
-  // styling for route fade-ins 
+  // styling for route fade-ins
   const routeVariants = {
     initial: {
-      opacity: 0
+      opacity: 0,
     },
     final: {
-      opacity: 1
-    }
-  }
+      opacity: 1,
+    },
+  };
   const landingVariants = {
     initial: {
       opacity: 0,
@@ -141,6 +141,7 @@ function ComponentRouter() {
               Visiting localhost:5173/user will show the UserPage if the user is logged in.
               If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
               Even though it seems like they are different pages, the user is always on localhost:5173/user */}
+
         <ProtectedRoute exact path="/user" allowedUserClasses={[1, 2, 3]}>
           <UserPage routeVariants={routeVariants} />
         </ProtectedRoute>
@@ -153,6 +154,10 @@ function ComponentRouter() {
           <NewOrderPage routeVariants={routeVariants} />
         </Route>
 
+        <Route exact path="/finalquestions">
+          <FinalQuestions routeVariants={routeVariants} />
+        </Route>
+
         <Route exact path="/jrcheckout">
           <JrCheckoutPage routeVariants={routeVariants} />
         </Route>
@@ -161,7 +166,8 @@ function ComponentRouter() {
           <JoinArtistPage routeVariants={routeVariants} />
         </Route>
 
-        <ProtectedRoute exact path="/artist-requests" allowedUserClasses={[2, 3]} >
+
+        <ProtectedRoute exact path="/artist-requests" allowedUserClasses={[2, 3]}>
           <ArtistRequests routeVariants={routeVariants} />
         </ProtectedRoute>
 
@@ -169,11 +175,19 @@ function ComponentRouter() {
           <SongRequestPage routeVariants={routeVariants} />
         </Route>
 
-        <ProtectedRoute exact path="/request/edit/:id" allowedUserClasses={[1, 2, 3]} >
+        <ProtectedRoute
+          exact
+          path="/request/edit/:id"
+          allowedUserClasses={[1, 2, 3]}
+        >
           <EditRequestPage routeVariants={routeVariants} />
         </ProtectedRoute>
 
-        <ProtectedRoute exact path="/jr-request/edit/:id" allowedUserClasses={[1, 2, 3]}>
+        <ProtectedRoute
+          exact
+          path="/jr-request/edit/:id"
+          allowedUserClasses={[1, 2, 3]}
+        >
           <JrEditRequestPage routeVariants={routeVariants} />
         </ProtectedRoute>
 
@@ -181,7 +195,7 @@ function ComponentRouter() {
           <RequestDetails routeVariants={routeVariants} />
         </ProtectedRoute>
 
-        <Route exact path="/terms" >
+        <Route exact path="/terms">
           <TermsAndConditionsPage routeVariants={routeVariants} />
         </Route>
 
@@ -193,12 +207,34 @@ function ComponentRouter() {
           <FaqPageSbJR routeVariants={routeVariants} />
         </Route>
 
+        <Route exact path="/learning-packs">
+          <LearningPacksHeader />
+          <LearningPacksPage routeVariants={routeVariants} />
+        </Route>
+
+        <Route exact path="/learning-packs/:slug">
+          <LearningPacksHeader />
+          <LearningPackView routeVariants={routeVariants} />
+        </Route>
+
         <Route exact path="/songbeejr">
           <JrLandingPage routeVariants={routeVariants} />
         </Route>
 
         <Route exact path="/artist-community">
           <ArtistCommunity routeVariants={routeVariants} />
+        </Route>
+
+        <Route exact path="/michaelBio">
+          <MichaelBioPage routeVariants={routeVariants} />
+        </Route>
+
+        <Route exact path="/BerchBio">
+          <BerchBioPage routeVariants={routeVariants} />
+        </Route>
+
+        <Route exact path="/PerrinBio">
+          <PerrinBioPage routeVariants={routeVariants} />
         </Route>
 
         <Route exact path="/artist-process">
@@ -217,14 +253,14 @@ function ComponentRouter() {
         </Route>
 
         <Route exact path="/login">
-          {user.id ?
-            // If the user is already logged in, 
+          {user.id ? (
+            // If the user is already logged in,
             // redirect to the /user page
             <Redirect to="/user" />
-            :
+          ) : (
             // Otherwise, show the login page
             <LoginPage routeVariants={routeVariants} />
-          }
+          )}
         </Route>
 
         <Route exact path="/register">
@@ -232,10 +268,10 @@ function ComponentRouter() {
             // If the user is already logged in, 
             // redirect them to the /user page
             <Redirect to="/user" />
-            :
+          ) : (
             // Otherwise, show the registration page
             <RegisterPage routeVariants={routeVariants} />
-          }
+          )}
         </Route>
 
         {/* this needs to be further protected */}
@@ -291,7 +327,7 @@ function ComponentRouter() {
         ) && <JrFooter />
       }
     </>
-  )
+  );
 }
 
-export default ComponentRouter
+export default ComponentRouter;
