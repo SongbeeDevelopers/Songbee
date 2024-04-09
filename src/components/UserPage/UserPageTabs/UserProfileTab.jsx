@@ -21,7 +21,6 @@ function UserProfileTab() {
 
   return (
     <div className="tab-body">
-
       <h2>User Profile</h2>
 
       <Card

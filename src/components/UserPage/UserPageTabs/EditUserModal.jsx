@@ -1,36 +1,69 @@
 import React from "react";
-import { useRef, useState } from "react";
-import validator from "validator";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 
-import { Dialog, Slide } from "@mui/material"
+import validator from "validator";
+import Swal from 'sweetalert2';
+
+import { Modal, Box } from "@mui/material"
 
 
 function EditUserModal({ user, open, handleClose }) {
 
-  const passwordRef = useRef("");
-  const emailRef = useRef(user.email);
+  const dispatch = useDispatch()
+
+  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState(user.email)
 
   const [invalidEmail, setInvalidEmail] = useState(false)
   const [invalidPassword, setInvalidPassword] = useState(false)
 
-  // Handle function for the edit button
+  // submit changes
   const handleEdit = (event) => {
     event.preventDefault();
 
-    if (validator.isEmail(emailRef)) {
-      console.log('nice')
+    // email invalid
+    if (!validator.isEmail(email)) {
+      setInvalidEmail(true)
+    } else {
+      setInvalidEmail(false)
     }
-    // dispatch({
-    //   type: "UPDATE_USER",
-    //   payload: {
-    //     email: emailRef.current,
-    //     password: passwordRef.current,
-    //   },
-    // });
-    // history.push("/user");
+    // password invalid
+    if (password.length < 8) {
+      setInvalidPassword(true)
+    } else {
+      setInvalidPassword(false)
+    }
+    // success
+    if (validator.isEmail(email) && password.length > 7 || validator.isEmail(email) && !password) {
+      setInvalidEmail(false)
+      setInvalidPassword(false)
+      handleClose()
+      Swal.fire({
+        title: "Confirm Changes?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Confirm"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          dispatch({
+            type: "UPDATE_USER",
+            payload: {
+              email: email,
+              password: password,
+            },
+          });
+          Swal.fire({
+            title: "Changed!",
+            text: "Your account has been updated.",
+            icon: "success"
+          });
+        }
+      });
+    }
   };
  
-  // Handle function for the delete button
+  // delete account
   const handleDelete = (event) => {
     event.preventDefault();
     dispatch({
@@ -40,46 +73,54 @@ function EditUserModal({ user, open, handleClose }) {
     history.push('/user')
   }
 
-  const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
-  });
-
+  // modal style
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 500,
+    bgcolor: 'background.paper',
+    boxShadow: 24,
+  };
 
   return (
-    <Dialog
+    <Modal
       open={open}
       keepMounted
-      TransitionComponent={Transition}
       onClose={handleClose}
-      aria-describedby="alert-dialog-slide-description"
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
     >
-      <div className="user-dialog-contents">
-        <h2>Edit Your Info</h2>
+      <Box sx={style}>
+        <div className="user-dialog-contents">
+          <h2>Edit Your Info</h2>
 
-        <input
-          placeholder="Email"
-          defaultValue={emailRef.current}
-          onChange={(e) => { emailRef.current = e.target.value }}
-        />
-        {invalidEmail && <p>Please enter a valid email address.</p>}
-        <input
-          placeholder="Password"
-          onChange={(e) => { passwordRef.current = e.target.value }}
-        />
-        {invalidPassword && <p>Password must be at least 8 characters.</p>}
+          <input
+            placeholder="Email"
+            defaultValue={email}
+            onChange={(e) => { setEmail(e.target.value) }}
+          />
+          {invalidEmail && <p>Please enter a valid email address.</p>}
+          <input
+            placeholder="Password"
+            type="password"
+            onChange={(e) => { setPassword(e.target.value) }}
+          />
+          {invalidPassword && <p>Password must be at least 8 characters.</p>}
 
-        <div className="modalBtns">
-          <button className="modal-save" onClick={handleEdit}>
-            Save
-          </button>
+          <div className="modalBtns">
+            <button className="modal-save" onClick={handleEdit}>
+              Save
+            </button>
 
-          <button className="modal-cancel" onClick={handleClose}>
-            Cancel
-          </button>
+            <button className="modal-cancel" onClick={handleClose}>
+              Cancel
+            </button>
+          </div>
         </div>
-
-      </div>
-    </Dialog>
+      </Box>
+    </Modal>
   )
 }
 
