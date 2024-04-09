@@ -18,7 +18,8 @@ function UserPage({ routeVariants }) {
       initial="initial"
       animate="final"
     >
-      <h2 className='user-welcome'>Welcome {user.email}!</h2>
+      <h2 className='user-welcome'>Customer Portal</h2>
+      <br/>
       <UserPageTabs />  
   </motion.div>
   );

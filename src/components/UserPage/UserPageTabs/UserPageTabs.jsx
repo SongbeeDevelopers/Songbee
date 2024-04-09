@@ -65,8 +65,8 @@ export default function UserTabs() {
           onChange={handleChange}
           aria-label="basic tabs example"
         >
-          <Tab label="Order History"  {...a11yProps(0)} sx={{ color: "orange" }} />
-          <Tab label="Profile"        {...a11yProps(1)} sx={{ color: "orange" }} /> 
+          <Tab label="Order History" {...a11yProps(0)} sx={{ color: "orange" }} />
+          <Tab label="User Profile" {...a11yProps(1)} sx={{ color: "orange" }} /> 
           <Tab label="Credit Balance" {...a11yProps(2)} sx={{ color: "orange" }} />
         </Tabs>
       </Box>
