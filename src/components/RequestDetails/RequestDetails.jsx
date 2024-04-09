@@ -3,8 +3,6 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 
-import Typography from '@mui/material/Typography';
-
 import { motion } from 'framer-motion';
 
 import './RequestDetails.css'

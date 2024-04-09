@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+import { Card, CardContent } from '@mui/material'
+
 import RequestItem from './RequestItem';
 
 import '../UserPage.css'
@@ -21,6 +23,10 @@ function UserHistory() {
     dispatch({ type: 'FETCH_USER_REQUESTS' })
   }, []);
 
+  const startSong = () => {
+    history.push('/order')
+  }
+
 
   return (
     <div className='tab-body'>
@@ -36,9 +42,25 @@ function UserHistory() {
         :
         // if no requests
         <div>
-          <h1 className='noRequests'>You have no song requests!</h1>
-          <button onClick={() => { history.push('/order') }} className='userStartSong'>Start Your Song</button>
-        </div>
+         <Card
+            sx={{
+            minWidth: 900,
+            display: "flex",
+            flexDirection: "row",
+            outline: "#feaf17 solid 4px",
+            justifyContent: "space-between",
+            gap: 2,
+            mb: 3,
+            backgroundColor: "#fff4df",
+            p: 2
+         }}
+         >
+         <CardContent sx={{m: "auto"}}>
+            <h2>You have no song requests!</h2>
+            <button onClick={startSong} className='user-button'>Start Your Song</button>
+         </CardContent>
+         </Card>
+      </div>
       }
     </div>
   )

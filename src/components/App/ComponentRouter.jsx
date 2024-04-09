@@ -177,7 +177,7 @@ function ComponentRouter() {
           <JrEditRequestPage routeVariants={routeVariants} />
         </ProtectedRoute>
 
-        <ProtectedRoute exact path="/details/:id" allowedUserClasses={[2, 3]}>
+        <ProtectedRoute exact path="/details/:id" allowedUserClasses={[1, 2, 3]}>
           <RequestDetails routeVariants={routeVariants} />
         </ProtectedRoute>
 

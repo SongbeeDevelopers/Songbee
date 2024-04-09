@@ -41,7 +41,8 @@ audio::-webkit-media-controls-time-remaining-display {
   text-align: center;
   border: 5px solid #feaf17;
   border-radius: 13px;
-  padding: 50px 25px
+  padding: 50px 25px;
+  background-color: #f2e9d8;
 }
 .songDetails h1 {
   text-align: center;
@@ -101,18 +102,24 @@ audio::-webkit-media-controls-time-remaining-display {
   display: flex;
   gap: 50px;
   justify-content: space-between;
+  padding: 0 20%;
 }
 
 .detailsItem {
   display: flex;
   flex-direction: column;
-  width: 50%
+  text-align: left;
+}
+.detailsItem p {
+  text-align: left;
 }
 
 .detailsItem2 {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+
+  text-align: right;
 }
 .detailsItem2 p {
   text-align: right;
