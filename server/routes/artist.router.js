@@ -276,9 +276,24 @@ router.put('/:id', async (req, res) => {
 
 router.get('/all', (req, res) => {
     const query = `
-    SELECT * FROM "artist"
-    WHERE "approved"=TRUE;
-    `
+    SELECT 
+    "artist"."id" AS "artistId",
+    "artist"."artist_name" AS "artistName",
+    "artist"."name",
+    "artist"."vocal_type" AS "vocalType",
+    "artist"."website" AS "website",
+    "artist"."bio" AS "bio",
+    "artist"."photo" AS "photo",
+    "artist"."streaming_link" AS "streamingLink",
+    "artist"."approved" AS "approved",
+  "genres"."name" AS "genre"
+    FROM "artist"
+    LEFT JOIN "artist_genres"
+    ON "artist"."id"="artist_genres"."artist_id"
+    LEFT JOIN "genres"
+    ON "artist_genres"."genre_id" ="genres"."id"
+    WHERE "artist"."approved"=TRUE;
+    `;
     pool.query(query)
     .then((result) => {
       res.send(result.rows);
