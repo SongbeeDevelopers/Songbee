@@ -30,7 +30,6 @@ function UserHistory() {
 
   return (
     <div className='tab-body'>
-      <h2>Order History</h2>
 
       { userRequests.length > 0 ?
         // if requests exist
@@ -47,11 +46,9 @@ function UserHistory() {
             minWidth: 900,
             display: "flex",
             flexDirection: "row",
-            outline: "#feaf17 solid 4px",
             justifyContent: "space-between",
             gap: 2,
             mb: 3,
-            backgroundColor: "#fff4df",
             p: 2
          }}
          >

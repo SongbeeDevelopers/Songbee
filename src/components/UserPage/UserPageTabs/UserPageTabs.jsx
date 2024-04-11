@@ -58,12 +58,10 @@ export default function UserTabs() {
   return (
     <>
       {/* tab selector */}
-      <Box sx={{ height: "80%", borderBottom: 2, borderColor: "divider"}}>
+      <Box sx={{ height: "80%"}}>
         <Tabs
-          className="tabHeader"
           value={value}
           onChange={handleChange}
-          aria-label="basic tabs example"
         >
           <Tab label="Order History" {...a11yProps(0)} sx={{ color: "orange" }} />
           <Tab label="User Profile" {...a11yProps(1)} sx={{ color: "orange" }} /> 
