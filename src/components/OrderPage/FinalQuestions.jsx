@@ -307,7 +307,7 @@ function FinalQuestions ({ routeVariants }) {
       >
         <h1>Song Request Details</h1>
   
-        <p>Once you provide details we can begin creating your song!</p>
+        <p>Once you provide these final details we can begin creating your song!</p>
         <Box sx={{ width: "100%" }}>
     
         <Stepper nonLinear activeStep={activeStep}>
