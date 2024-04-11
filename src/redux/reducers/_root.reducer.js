@@ -13,7 +13,6 @@ import allUsers from './allUsers.reducer';
 import filterResults from './filterResults.reducer';
 import pendingArtists from './pendingArtists.reducer';
 import allArtists from './allArtists.reducer';
-import soloArtist from './soloArtist.reducer';
 import juniorRequests from './juniorRequest.reducer';
 import jrRequestData from './jrRequestData.reducer';
 import artistProfile from "./artistProfile.reducer";
@@ -41,7 +40,6 @@ const rootReducer = combineReducers({
   filterResults,
   pendingArtists,
   allArtists,
-  soloArtist,
   juniorRequests,
   jrRequestData,
   artistProfile,

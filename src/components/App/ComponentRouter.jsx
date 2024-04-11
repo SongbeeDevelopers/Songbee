@@ -36,13 +36,10 @@ import QualityGuaranteePage from "../InfoPages/QualityGuaranteePage";
 import TermsAndConditionsPage from "../InfoPages/TermsAndConditionsPage";
 
 // artist pages
-import ArtistPage from "../ArtistPage/ArtistPage"
-import JoinArtistPage from "../JoinArtistPage/JoinArtistPage";
-import ArtistCommunity from "../JoinArtistPage/ArtistCommunity";
-import ArtistProcess from "../JoinArtistPage/ArtistProcess";
-import MichaelBioPage from "../ArtistBioPages/MichaelBioPage";
-import BerchBioPage from "../ArtistBioPages/BerchBioPage";
-import PerrinBioPage from "../ArtistBioPages/PerrinBioPage";
+import JoinArtistPage from '../JoinArtistPage/JoinArtistPage';
+import ArtistCommunity from '../JoinArtistPage/ArtistCommunity';
+import ArtistProcess from '../JoinArtistPage/ArtistProcess';
+import ArtistBioPage from '../ArtistBioPages/ArtistBioPage';
 
 // 404
 import NotFound from "../NotFoundPage/NotFoundPage";
@@ -222,20 +219,12 @@ function ComponentRouter() {
           <JrLandingPage routeVariants={routeVariants} />
         </Route>
 
-        <Route exact path="/artist-community">
+        <Route exact path="/artists">
           <ArtistCommunity routeVariants={routeVariants} />
         </Route>
 
-        <Route exact path="/michaelBio">
-          <MichaelBioPage routeVariants={routeVariants} />
-        </Route>
-
-        <Route exact path="/BerchBio">
-          <BerchBioPage routeVariants={routeVariants} />
-        </Route>
-
-        <Route exact path="/PerrinBio">
-          <PerrinBioPage routeVariants={routeVariants} />
+        <Route exact path="/ArtistBioPage/:id">
+          <ArtistBioPage routeVariants={routeVariants} />
         </Route>
 
         <Route exact path="/artist-process">
