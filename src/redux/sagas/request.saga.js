@@ -38,7 +38,8 @@ function* fetchCheckout (action) {
             method: "POST",
             url: '/api/stripe',
             data: {
-                orderDetails: action.payload.data}
+                orderDetails: action.payload.data,
+                id: action.payload.id}
         })
         // console.log("stripeResponse:", stripeResponse)
         yield window.location.href = stripeResponse.data
