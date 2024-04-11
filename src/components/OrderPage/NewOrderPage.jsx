@@ -113,12 +113,9 @@ export default function NewOrderPage({ routeVariants }) {
   console.log("artits:", artists)
 
   let artistId
-  const setId = (id) => {
-    artistId = id
-    console.log("id", id)
-  }
 
   const handleInput = (key, value) => {
+    event.preventDefault();
     if (key === "artist"){
       console.log("artistId before", artistId)
       dispatch({
@@ -135,9 +132,8 @@ export default function NewOrderPage({ routeVariants }) {
 
   function dispatchDetails() {
     dispatch({
-      type: "UPDATE_SONG_REQUEST",
+      type: "CREATE_SONG_REQUEST",
       payload: {
-        id: id,
         history: history,
         data: requestData,
       },
@@ -154,9 +150,9 @@ export default function NewOrderPage({ routeVariants }) {
             <div className="reqFormGroup">
               <div className="reqFormInput">
                 <label>When would you like your song delivered?</label>
-                <button>{new Date(threeDays).toDateString()} + $80</button>
-                <button>{new Date(fiveDays).toDateString()} + $40</button>
-                <button>{new Date(sixDays).toDateString()} + $0</button>
+                <button onClick={() => handleInput("delivery_days", 3)}>{new Date(threeDays).toDateString()} + $80</button>
+                <button onClick={() => handleInput("delivery_days", 5)}>{new Date(fiveDays).toDateString()} + $40</button>
+                <button onClick={() => handleInput("delivery_days", 6)}>{new Date(sixDays).toDateString()} + $0</button>
               </div>
             </div>
 
@@ -318,33 +314,32 @@ export default function NewOrderPage({ routeVariants }) {
     } else if (activeStep === 4) {
       return (
         <>
-            <select
+            <button
               className="orderInput"
-              name="streaming"
-              value={newOrder.streaming}
-              onChange={() => handleInput("streaming", event.target.value)}
-            >
-              <option selected disabled>
-                Select Streaming Option
-              </option>
-              <option value={true}>Add Streaming</option>
-              <option value={false}>Standard No Streaming</option>
-            </select>
+              onClick={() => handleInput("streaming", true)}
+            >Add My Song to Streaming Services!</button>
 
-            <select
+            <button
               className="orderInput"
-              name="extra_verse"
-              value={newOrder.extra_verse}
-              onChange={() =>
-                handleInput("extra_verse", event.target.value)
+              onClick={() =>
+                handleInput("extra_verse", true)
               }
-            >
-              <option selected disabled>
-                Select Number of Verses
-              </option>
-              <option value={false}>Standard 2 Verses</option>
-              <option value={true}>Add Extra Verse</option>
-            </select>
+            >Add an Additional Verse!</button>
+
+            <button
+              className="orderInput"
+              onClick={() =>
+                handleInput("license", true)
+              }
+            >I Need a Commercial License for My Song!</button>
+
+            <button
+              className="orderInput"
+              onClick={() =>
+                handleInput("backing_track", true)
+              }
+            >Add an instrumental backing track!</button>
+
             <Modal
             open={open}
             onClose={handleClose}
@@ -437,7 +432,8 @@ export default function NewOrderPage({ routeVariants }) {
       requestData.delivery_days &&
       requestData.streaming &&
       requestData.extra_verse &&
-      user.id
+      user.id &&
+      allStepsCompleted()
 
     ) {
       Swal.fire({
@@ -451,7 +447,7 @@ export default function NewOrderPage({ routeVariants }) {
           dispatchDetails();
         }
       });
-    } else {
+    } else if (allStepsCompleted()){
       Swal.fire({
         title: "Submit?",
         text: "You have left important details blank. Do you want to submit anyways?",
@@ -522,9 +518,9 @@ export default function NewOrderPage({ routeVariants }) {
                   Back
                 </Button>
                 <Box sx={{ flex: "1 1 auto" }} />
-                <Button onClick={handleNext} sx={{ mr: 1 }}>
+                <button className="orderCheckoutButton" onClick={handleNext} sx={{ mr: 1 }}>
                   Next
-                </Button>
+                </button>
                 {activeStep !== steps.length &&
                   (completed[activeStep] ? (
                     <Typography
@@ -534,11 +530,11 @@ export default function NewOrderPage({ routeVariants }) {
                       Step {activeStep + 1} already completed
                     </Typography>
                   ) : (
-                    <Button onClick={handleComplete} className="reqFormSubmit">
+                    <button onClick={handleComplete} className="orderCheckoutButton">
                       {completedSteps() === totalSteps() - 1
                         ? "Finish"
                         : "Complete Step"}
-                    </Button>
+                    </button>
                   ))}
               </Box>
             </React.Fragment>

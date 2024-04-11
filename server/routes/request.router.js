@@ -203,9 +203,22 @@ router.post('/create', async (req, res) => {
 
     connection.query("BEGIN;");
     const userId = req.user.id;
+    const requester = req.body.requester;
+    const recipient = req.body.recipient;
+    const pronunciation = req.body.pronunciation;
+    const recipientRelationship = req.body.recipient_relationship;
+    const occasion = req.body.occasion;
+    const genreId = req.body.genre;
+    const vocalType = req.body.vocal_type;
+    const vibe = req.body.vibe;
+    const tempo = req.body.tempo;
+    const inspiration = req.body.inspiration;
+    const artist = req.body.artist
     const deliveryDays = req.body.delivery_days;
     const streaming = req.body.streaming;
     const extraVerse = req.body.extra_verse;
+    const license = req.body.license
+    const backingTrack = req.body.backing_track
     const requestQuery = `
     INSERT INTO "song_request"
       ("user_id", "delivery_days", "streaming", "extra_verse")
@@ -214,6 +227,10 @@ router.post('/create', async (req, res) => {
       RETURNING "id";
     `
     const response = await connection.query(requestQuery, [userId, deliveryDays, streaming, extraVerse])
+
+    console.log("artist:", artist);
+    console.log("req.body:", req.body)
+    if (artist === ''){
     const detailsQuery = `
     INSERT INTO "song_details"
         ("song_request_id")
@@ -222,6 +239,16 @@ router.post('/create', async (req, res) => {
     `
     console.log('created id:', response.rows[0].id)
     const detailsResponse = await connection.query(detailsQuery, [response.rows[0].id])
+    } else {
+      const detailsQuery = `
+      INSERT INTO "song_details"
+          ("song_request_id", "artist_id")
+          VALUES
+          ($1, $2)
+      `
+      console.log('created id:', response.rows[0].id)
+      const detailsResponse = await connection.query(detailsQuery, [response.rows[0].id, artist])
+    }
     connection.query("COMMIT;");
     connection.release();
     res.send({id: response.rows[0].id})
