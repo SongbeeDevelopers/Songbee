@@ -6,13 +6,20 @@ General
     text-align: center;
 }
 
-
 .tab-body {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    padding: 15px 50px 50px;
+    padding-top: 30px
+}
+
+.user-portal-start {
+    height: 40px;
+    width: 125px;
+    background-color:#feaf17;
+    border: 0;
+    border-radius: 5px;
 }
 
 /* --------------------------------------------------------------------------------
@@ -48,35 +55,17 @@ Request History
     outline: 0;
 }
 
-/* --------------------------------------------------------------------------------
-Request Item
--------------------------------------------------------------------------------- */
-
-.event-item-header {
-    display: flex;
-    justify-content: center;
-}
-
-.event-item {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-size: 1.5rem;
-    height: 160px;
-    justify-content: space-around;
-}
-.event-item p {
-    text-align: center;
-}
-
-.detailsBtn {
+.user-portal-details-btn {
+    margin: 0 auto;
+    padding: 3px 10px;
+    color: var(--black\<deleted\|variable-f6301105\>);
     background-color: #feaf17;
-    border: 1px solid #000;
-    border-radius: 13px;
+    border-radius: 5px;
     font-family: Poppins, sans-serif;
-    font-weight: 600;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
-    padding: 9px 15px;
+    transition: background-color 0.45s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border: 0;
+    outline: 0;
 }
 
 /* --------------------------------------------------------------------------------

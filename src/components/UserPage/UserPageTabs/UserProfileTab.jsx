@@ -21,14 +21,12 @@ function UserProfileTab() {
 
   return (
     <div className="tab-body">
-      <h2>User Profile</h2>
 
       <Card
         sx={{
           minWidth: 900,
           display: "flex",
           flexDirection: "row",
-          outline: "#feaf17 solid 4px",
           justifyContent: "space-between",
           gap: 2,
           mb: 3,
