@@ -11,11 +11,11 @@ const requestData = (
     tempo: "",
     inspiration: "",
     artist: "",
-    delivery_days: "",
-    streaming: "",
-    extra_verse: "",
-    license: "",
-    backing_track: ""
+    delivery_days: false,
+    streaming: false,
+    extra_verse: false,
+    license: false,
+    backing_track: false
   },
   action
 ) => {
@@ -35,11 +35,11 @@ const requestData = (
         tempo: "",
         inspiration: "",
         artist: "",
-        delivery_days: "",
-        streaming: "",
-        extra_verse: "",
-        license: "",
-        backing_track: ""
+        delivery_days: false,
+        streaming: false,
+        extra_verse: false,
+        license: false,
+        backing_track: false
       };
     default:
       return state;
