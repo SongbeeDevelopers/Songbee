@@ -2,7 +2,6 @@ import * as React from "react";
 import { useState } from "react";
 
 import UserRequestsTab from "./UserRequestsTab";
-import UserCreditTab from "./UserCreditTab";
 import UserProfileTab from "./UserProfileTab";
 
 import PropTypes from "prop-types";
@@ -65,7 +64,6 @@ export default function UserTabs() {
         >
           <Tab label="Order History" {...a11yProps(0)} sx={{ color: "orange" }} />
           <Tab label="User Profile" {...a11yProps(1)} sx={{ color: "orange" }} /> 
-          <Tab label="Credit Balance" {...a11yProps(2)} sx={{ color: "orange" }} />
         </Tabs>
       </Box>
 
@@ -77,11 +75,6 @@ export default function UserTabs() {
       {/* personal info tab */}
       <CustomTabPanel value={value} index={1}>
         <UserProfileTab />
-      </CustomTabPanel>
-
-      {/* user credit tab */}
-      <CustomTabPanel value={value} index={2}>
-        <UserCreditTab />
       </CustomTabPanel>
     </>
   );
