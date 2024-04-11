@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 
 import UserPageTabs from './UserPageTabs/UserPageTabs';
 
@@ -8,8 +7,6 @@ import './UserPage.css';
 
 
 function UserPage({ routeVariants }) {
-
-  const user = useSelector(store => store.user)
   
   return (
     <motion.div
