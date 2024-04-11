@@ -57,9 +57,14 @@ CREATE TABLE "artist" (
   "name" VARCHAR,
   "user_id" integer REFERENCES "user",
   "vocal_type" VARCHAR (150),
+  "is_active" BOOLEAN DEFAULT TRUE, -- 👈 added is_active for the artist
   "website" VARCHAR,
   "instagram_link" VARCHAR,
+  "sample_song_1" VARCHAR DEFAULT NULL,
+  "sample_song_2" VARCHAR DEFAULT NULL,
+  "sample_song_3" VARCHAR DEFAULT NULL,
   "bio" VARCHAR,
+  "location" VARCHAR,
   "photo" VARCHAR,
   "streaming_link" VARCHAR,
   "approved" BOOLEAN DEFAULT FALSE,
@@ -137,21 +142,38 @@ VALUES
 ('hannahrutti@gmail.com', '$2a$10$beIgxp.l45eRiz5HYgUxBuTN6anPZwKY3TRE/nE2Ltg/5Fo1Jylw6', 2),
 ('linton@gmail.com', '$2a$10$beIgxp.l45eRiz5HYgUxBuTN6anPZwKY3TRE/nE2Ltg/5Fo1Jylw6', 2),
 ('sandylapras@gmail.com', '$2a$10$beIgxp.l45eRiz5HYgUxBuTN6anPZwKY3TRE/nE2Ltg/5Fo1Jylw6', 1),
-('jenevee@godess.com', '$2a$10$beIgxp.l45eRiz5HYgUxBuTN6anPZwKY3TRE/nE2Ltg/5Fo1Jylw6', 2);
+('jenevee@godess.com', '$2a$10$beIgxp.l45eRiz5HYgUxBuTN6anPZwKY3TRE/nE2Ltg/5Fo1Jylw6', 2),
+('berchmanpaul@gmail.com', '$2a$10$9bWLNdvC42J3xoCKYD.JtuFt0eD9Zxn7FqkuV.Fy6F.efBhs6CoYC', 2),
+('perrin.xthona@gmail.com', '$2a$10$YsNEzVgTG29iizCMzHaPpuUGQDgQ7.CGae6OJq0oKOFvXtonvy6V2', 2),
+('lefevre.michaelj@gmail.com', '$2a$10$S/gUrKEDMRPAQigNo5cBcuyDAQDu1PXkbn6zjQNTqHclshKlpZLqe', 2);
 
 --Password for songbee account is: password
 
 INSERT INTO "genres"
 VALUES
-(1, 'Rap/Hip-Hop'), (2, 'Folk'), (3, 'Rock'), (4, 'Christian'), (5, 'R&B'), (6, 'Country'), (7, 'Singer Songwriter'), (8, 'Acoustic Pop'), (9, 'Spanish');
+(1, 'Rap/Hip-Hop'), (2, 'Folk'), (3, 'Rock'), (4, 'R&B'), (5, 'Country'), (6, 'Singer Songwriter'), (7, 'Acoustic Pop');
 
 INSERT INTO "artist"
-("artist_name", "name", "user_id", "vocal_type", "approved", "website", "instagram_link", "bio", "photo")
+("artist_name", "name", "user_id", "vocal_type", "approved", "is_active", "website", "instagram_link", "sample_song_1", "sample_song_2", "sample_song_3", "bio","location", "photo", "streaming_link")
 VALUES
-('Hannah Rutti', 'Hannah Rutti', 5, 'female', TRUE, '', '', '', ''),
-('The Yellow Dart', 'Walker Neudorff', 2, 'male', FALSE, '', '', '', ''),
-('Linton Robinson', 'Linton', 6, 'male', TRUE, '', '', '', ''),
-('Jene V', 'Jenny Vasquez', 8, 'female', TRUE, 'https://www.linkedin.com/in/walkerneudorff/', 'Jene V is a multi-disciplinary artist exploring R&B and Pop Music through a different lens. Jene V is breaking down genre borders and creating a sound all her own through unconventional instrumentation like ukulele and kazoo. Voted Next Artist to Watch by the Bayview Times!', 'https://wallpapers.com/images/hd/portrait-of-woman-with-random-people-5wu04gyr7p6p0i5c.jpg');
+('Michael LeFerve', 'Michael Leferve', 7, 'male', TRUE, TRUE, '', 'https://www.instagram.com/thefevaa/', '/Michael_Leferve_Summers_With_You.mp3', '/Blossoming_by_Michael_leferve.mp3', '/Michael-LeFevre-smile.mp3', 'Michael LeFevre is the lead singer and songwriter of None The Younger and Sleepy Soul. 
+          While he has been writing music for well over a decade, he has been producing and recording out of his studio full time for the last 4 years.
+          This has given him the experiences necessary to really perfect his craft. 
+          Since his time as a full-time musician, he has been featured in Spotify and Youtube Editorial playlists, had many magazine write-ups, and accumulated millions of streams across all platforms.
+          He looks forward to continuing to write and spread joy through music.', 'St. Louis, Missouri', '/public/michael-photo.jpeg', 'https://open.spotify.com/artist/32SXond7qEk5OOXU9M8Sq7?si=MZ2frkvaR6OUOmIYwGKd5w&nd=1&dlsi=3dca887b59374406/'),
+
+('Berch', 'Berch', 1, 'male', TRUE, TRUE, '', 'https://www.instagram.com/mynameisberch/?igshid=MzMyNGUyNmU2YQ%3D%3D&utm_source=qr', '/Berch.mp3', '/Berch_fee_fi_fo_fum.mp3', '/Berch_feel_so_good.mp3', 'Mynameisberch, hailing from Richmond, Virginia, is a versatile artist known for his pop,
+             hip-hop, and soulful vocal style. With influences ranging from John Mayer to Lenny Kravitz and Drake, he effortlessly blends catchy melodies and heartfelt lyrics into his captivating compositions. 
+             As a published BMI songwriter, mynameisberch consistently delivers multiple songs and records each year, showcasing his dedication to his craft. Additionally, 
+             he has been recognized as a featured songwriter in Worship Leader magazine,
+             a national publication in the contemporary Christian music scene. Combining his musical talents with his role as a worship leader at his church, mynameisberch/s passion for creating unique and impactful music shines through.
+             With a genuine 
+             desire to connect with individuals going through various situations and seasons, mynameisberch is excited to bring his creativity to Songbee, crafting personalized songs that resonate with each listener. He says, 
+             "I love creating for unique people going through unique situations in unique seasons.', 'Richmond, Virginia', '/public/berch.jpeg', 'https://mynameisberch.bandcamp.com/'),
+
+('Perrin Xthona', 'Perrin Xthona', 7, 'female', TRUE, TRUE, 'https://www.tiktok.com/@perrinxthona?_t=8hjAn9c36du&_r=1/', 'https://www.instagram.com/perrinxthona/', '/Perrin_Xthona.mp3', '/to_the_moon_and_back_PerrinXthona.mp3', '/You_Are_My_Home_PerrinXthona.mp3', 'Perrin Xthona is a pop songwriter from Portland, Oregon. She recently graduated from the Berklee College of Music, and her influences are Julia Michaels, 
+                        Lennon Stella, Halsey, Jeremy Zucker, Lauv, and Harry Styles. 
+                        She/s always loved writing songs, and the only thing she loves more is getting to hear other peoples stories.', 'Portland, Oregon', '/public/perrin_photo.jpeg', 'https://open.spotify.com/artist/1bNx6UhsCYSNuoIeL9LcnD?si=MLyNUmi6RJm2qLdyip1vMA&nd=1&dlsi=27bc328009f646c5/');
 
 INSERT INTO "song_request"
 ("user_id", "genre_id", "requester", "recipient", "pronunciation", "recipient_relationship", "occasion", "vocal_type", "vibe", "tempo", "inspiration", "story1", "story2", "important_what", "important_why", "additional_info", "created_at", "delivery_days", "streaming", "extra_verse", "is_complete")
@@ -172,14 +194,7 @@ VALUES
 INSERT INTO "artist_genres"
 ("artist_id", "genre_id")
 VALUES
-(1, 5),
-(1, 7),
-(2, 1),
-(2, 2),
-(3, 7),
-(3, 8),
-(4, 8),
-(4, 5);
+(1, 7);
 
 
 INSERT INTO "jr_request" (

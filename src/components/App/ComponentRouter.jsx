@@ -39,9 +39,7 @@ import TermsAndConditionsPage from '../InfoPages/TermsAndConditionsPage';
 import JoinArtistPage from '../JoinArtistPage/JoinArtistPage';
 import ArtistCommunity from '../JoinArtistPage/ArtistCommunity';
 import ArtistProcess from '../JoinArtistPage/ArtistProcess';
-import MichaelBioPage from '../ArtistBioPages/MichaelBioPage';
-import BerchBioPage from '../ArtistBioPages/BerchBioPage';
-import PerrinBioPage from '../ArtistBioPages/PerrinBioPage';
+import ArtistBioPage from '../ArtistBioPages/ArtistBioPage';
 
 // 404
 import NotFound from '../NotFoundPage/NotFoundPage';
@@ -106,7 +104,7 @@ function ComponentRouter() {
       {location.pathname === "/request/edit/:id" && <Header />}
       {location.pathname === "/details/:id" && <Header />}
       {location.pathname === "/created/:delivery_days/:extra_verse/:streaming" && <Header />}
-      {location.pathname === "/artist-community" && <Header />}
+      {location.pathname === "/artists" && <Header />}
       {location.pathname === "/join-artist" && <Header />}
       {location.pathname === "/artist-requests" && <Header />}
       {location.pathname === "/artist-process" && <Header />}
@@ -202,21 +200,13 @@ function ComponentRouter() {
           <JrLandingPage routeVariants={routeVariants} />
         </Route>
 
-        <Route exact path="/artist-community">
+        <Route exact path="/artists">
           <ArtistCommunity routeVariants={routeVariants} />
         </Route>
 
-        <Route exact path="/michaelBio">
-              <MichaelBioPage routeVariants={routeVariants} />
-            </Route>
-
-            <Route exact path="/BerchBio">
-              <BerchBioPage routeVariants={routeVariants} />
-            </Route>
-
-            <Route exact path="/PerrinBio">
-              <PerrinBioPage routeVariants={routeVariants} />
-            </Route>
+        <Route exact path="/ArtistBioPage/:id">
+          <ArtistBioPage routeVariants={routeVariants} />
+        </Route>
 
         <Route exact path="/artist-process">
           <ArtistProcess routeVariants={routeVariants} />
