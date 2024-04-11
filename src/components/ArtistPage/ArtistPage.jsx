@@ -1,5 +1,6 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import ArtistPageTabs from './ArtistPageTabs/ArtistPageTabs'
 
@@ -9,7 +10,13 @@ import './ArtistPage.css';
 
 function UserPage({ routeVariants }) {
 
-  const user = useSelector(store => store.user)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch({
+      type: 'GET_ARTIST_PROFILE'
+    })
+  }, [])
   
   return (
     <motion.div
@@ -18,7 +25,7 @@ function UserPage({ routeVariants }) {
       initial="initial"
       animate="final"
     >
-      <h2 className='artist-welcome'>Welcome {user.email}!</h2>
+      <h2 className='artist-welcome'>Artist Portal</h2>
       <ArtistPageTabs /> 
   </motion.div>
   );

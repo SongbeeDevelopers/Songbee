@@ -19,3 +19,28 @@ General
     background-color: #f2e9d8;
 }
 
+/* --------------------------------------------------------------------------------
+Artist Profile Tab
+-------------------------------------------------------------------------------- */
+
+.artist-profile-body p {
+    display: inline-block;
+    width: 50%
+}
+
+.artist-profile-body img {
+    width: 50%
+}
+
+.artist-profile-name {
+    text-align: center;
+}
+.artist-profile-flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.artist-profile-row {
+    display: flex;
+    flex-direction: row;
+}

@@ -6,9 +6,6 @@ const {
   rejectUnauthenticated,
 } = require("../modules/authentication-middleware");
 
-/**
- * GET route template
- */
 const getArtistIdByUserId = (userId) => {
   return new Promise((resolve, reject) => {
     const queryText = `
@@ -32,7 +29,7 @@ router.get("/get", async (req, res) => {
   // this is getting artist info with the genre
   // we use the sql join to link artist and genre tables
   const artistId = await getArtistIdByUserId(req.user.id)
-  console.log(artistId);
+  // console.log(artistId);
   const query = `
   SELECT 
   "artist"."id" AS "artistId",
