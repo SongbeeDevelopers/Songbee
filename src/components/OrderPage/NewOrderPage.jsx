@@ -322,7 +322,7 @@ export default function NewOrderPage({ routeVariants }) {
               className="orderInput"
               name="streaming"
               value={newOrder.streaming}
-              onChange={() => handleSelection("streaming", event.target.value)}
+              onChange={() => handleInput("streaming", event.target.value)}
             >
               <option selected disabled>
                 Select Streaming Option
@@ -336,7 +336,7 @@ export default function NewOrderPage({ routeVariants }) {
               name="extra_verse"
               value={newOrder.extra_verse}
               onChange={() =>
-                handleSelection("extra_verse", event.target.value)
+                handleInput("extra_verse", event.target.value)
               }
             >
               <option selected disabled>
@@ -431,15 +431,14 @@ export default function NewOrderPage({ routeVariants }) {
       requestData.recipient_relationship &&
       requestData.occasion &&
       requestData.vocal_type &&
-      requestData.vocal_type &&
-      requestData.vibe &&
       requestData.vibe &&
       requestData.tempo &&
       requestData.inspiration &&
-      requestData.story1 &&
-      requestData.story2 &&
-      requestData.important_what &&
-      requestData.important_why
+      requestData.delivery_days &&
+      requestData.streaming &&
+      requestData.extra_verse &&
+      user.id
+
     ) {
       Swal.fire({
         title: "Submit?",

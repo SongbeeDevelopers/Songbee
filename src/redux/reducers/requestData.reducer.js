@@ -10,11 +10,12 @@ const requestData = (
     vibe: "",
     tempo: "",
     inspiration: "",
-    story1: "",
-    story2: "",
-    important_what: "",
-    important_why: "",
-    additional_info: "",
+    artist: "",
+    delivery_days: "",
+    streaming: "",
+    extra_verse: "",
+    license: "",
+    backing_track: ""
   },
   action
 ) => {
@@ -33,11 +34,12 @@ const requestData = (
         vibe: "",
         tempo: "",
         inspiration: "",
-        story1: "",
-        story2: "",
-        important_what: "",
-        important_why: "",
-        additional_info: "",
+        artist: "",
+        delivery_days: "",
+        streaming: "",
+        extra_verse: "",
+        license: "",
+        backing_track: ""
       };
     default:
       return state;
