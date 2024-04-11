@@ -263,3 +263,18 @@ CREATE TABLE "songbeejr_details" (
 
 INSERT INTO "songbeejr_details" ("jr_request_id") VALUES (1)
    
+
+
+CREATE TABLE "pendingartistedit" (
+    "id" SERIAL PRIMARY KEY,
+    "artist_id" INTEGER REFERENCES "artist"(id) ON DELETE CASCADE,
+    "edited_name" VARCHAR(255),
+    "edited_artistName" VARCHAR(255),
+    "edited_bio" TEXT,
+    "edited_website" VARCHAR(255),
+    "edited_vocal_type" VARCHAR(100),
+    "edited_genre_id" INTEGER REFERENCES "genres"(id),
+    "created_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+   

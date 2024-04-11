@@ -1,0 +1,21 @@
+/* --------------------------------------------------------------------------------
+General
+-------------------------------------------------------------------------------- */
+
+.artist-welcome {
+    text-align: center;
+}
+
+.tabHeader {
+    background-color: #f2e9d8;
+}
+
+.tab-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 50px 50px;
+    background-color: #f2e9d8;
+}
+

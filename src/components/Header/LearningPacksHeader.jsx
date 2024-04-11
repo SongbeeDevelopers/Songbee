@@ -2,10 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 
+
 function LearningPacksHeader() {
   return (
     <>
-      <div className="nav">
+      <div className="nav lp-header">
         <div className="nav-left">
           <Link to="/artists" className="nav-links">
             Subscription Kits
@@ -19,7 +20,7 @@ function LearningPacksHeader() {
           <img className="nav-title" src="header-icon.png" />
         </Link>
         <div className="nav-right">
-          <button className="jr-get-started-btn">Get Started</button>
+          <button className="jr-landing-btn">Get Started</button>
         </div>
       </div>
     </>

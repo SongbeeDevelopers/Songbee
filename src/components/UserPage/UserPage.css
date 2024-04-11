@@ -1,5 +1,64 @@
-.greeting {
+/* --------------------------------------------------------------------------------
+General
+-------------------------------------------------------------------------------- */
+
+.user-welcome {
     text-align: center;
+}
+
+.tabHeader {
+    background-color: #f2e9d8;
+}
+
+.tab-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 50px 50px;
+    background-color: #f2e9d8;
+}
+
+/* --------------------------------------------------------------------------------
+Request History
+-------------------------------------------------------------------------------- */
+
+.noRequests {
+    text-align: center;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, .2);
+}
+
+.userStartSong {
+    margin: 0 auto;
+    z-index: 100;
+    width: 14rem;
+    height: 3rem;
+    color: var(--black\<deleted\|variable-f6301105\>);
+    background-color: #feaf17;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    font-family: Poppins, sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    transition: background-color 0.45s;
+    display: flex;
+    position: static;
+    top: 99px;
+    left: 219px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border: 0;
+    outline: 0;
+}
+
+/* --------------------------------------------------------------------------------
+Request Item
+-------------------------------------------------------------------------------- */
+
+.event-item-header {
+    display: flex;
+    justify-content: center;
 }
 
 .event-item {
@@ -9,13 +68,121 @@
     font-size: 1.5rem;
     height: 160px;
     justify-content: space-around;
-  }
-
-.event-item-header {
-    display: flex;
-    justify-content: center;
+}
+.event-item p {
+    text-align: center;
 }
 
-.event-item p {
+.detailsBtn {
+    background-color: #feaf17;
+    border: 1px solid #000;
+    border-radius: 13px;
+    font-family: Poppins, sans-serif;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    padding: 9px 15px;
+}
+
+/* --------------------------------------------------------------------------------
+User Profile
+-------------------------------------------------------------------------------- */
+
+.profileHeader {
+    font-family: Poppins;
+    font-size: 2rem;
+    color: rgb(51, 51, 51);
+}
+
+.profile-tab-body {
+    border: 4px solid #feaf17;
+    border-radius: 10px;
+    background-color: #fff4df;
+    width: 75%;
+    padding: 20px 30px 30px;
+    text-align: center;
+}
+
+.user-button {
+    display: block;
+    background-color: #feaf17;
+    border: 1px solid #000;
+    border-radius: 13px;
+    font-family: Poppins, sans-serif;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    padding: 9px 15px;
+    margin: auto;
+}
+
+.user-profile {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px;
+}
+
+/* --------------------------------------------------------------------------------
+User Edit Modal
+-------------------------------------------------------------------------------- */
+
+.user-dialog-contents {
+    min-width: 400px;
+    padding: 50px 50px;
+    text-align: center;
+}
+
+.user-dialog-contents input {
+    width: 300px;
+    height: 38px;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    margin: 0 auto 15px;
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 1.42857;
+    display: block;
+    border-radius: 7px;
+}
+
+.modalBtns {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display:flex;
+    justify-content: center;   
+    gap: 10%;  
+}
+.modalBtns button {
+    background-color: #feaf17;
+    border: 1px solid #000;
+    border-radius: 13px;
+    font-family: Poppins, sans-serif;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    padding: px 15px;
+    width: 85px
+}
+
+.modal-save {
+    background-color: greenyellow;
+    border: 1px solid #000;
+    border-radius: 13px;
+    font-family: Poppins, sans-serif;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    padding: 9px 15px;
+}
+
+/* --------------------------------------------------------------------------------
+User Credit
+-------------------------------------------------------------------------------- */
+
+.user-credit-tab {
+    height: 14vh;
+    padding-top: 3vh;
+    background-color:antiquewhite;
+}
+.user-credit-tab p {
     text-align: center;
 }
