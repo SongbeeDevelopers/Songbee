@@ -34,7 +34,7 @@ function UserHistory() {
   function getDueDate(requestDay, deliveryDays) {
     const msPerDay = 24 * 60 * 60 * 1000;
     const due = new Date(requestDay).getTime() + msPerDay*deliveryDays
-    const dateSplit = new Date(due).toLocaleString().split(',')
+    const dateSplit = new Date(due).toLocaleString('en-us').split(',')
     return dateSplit[0];
   }
 
@@ -46,20 +46,20 @@ function UserHistory() {
             <TableRow>
               <TableCell align="left">Request Date</TableCell>
               <TableCell align="center">Due</TableCell>
-              <TableCell align="center">Status</TableCell>
               <TableCell align="center">Recipient</TableCell>
               <TableCell align="center">Artist</TableCell>
+              <TableCell align="center">Status</TableCell>
               <TableCell align="center">Details</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
               {userRequests.map((request, i) =>(
                 <TableRow key={i}>
-                  <TableCell align="left">{new Date(request.created_at).toLocaleString('en-us')}</TableCell>
+                  <TableCell align="left">{(new Date(request.created_at).toLocaleString('en-us').split(','))[0]}</TableCell>
                   <TableCell align="center">{getDueDate(request.created_at, request.delivery_days)}</TableCell>
+                  <TableCell align="center">{request.recipient}</TableCell>
+                  <TableCell align="center">{}</TableCell>
                   <TableCell align="center">{request.is_complete ? `Complete!` : `In Progress`}</TableCell>
-                  <TableCell align="center">{request.recipient}</TableCell>
-                  <TableCell align="center">{request.recipient}</TableCell>
                   <TableCell align="center"><button onClick={() => viewDetails(request.id)} className='user-portal-details-btn'>Details</button></TableCell>
                 </TableRow>
               ))}
