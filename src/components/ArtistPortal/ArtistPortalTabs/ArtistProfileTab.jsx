@@ -10,7 +10,7 @@ import Dialog from "@mui/material/Dialog";
 import Slide from "@mui/material/Slide";
 import Box from "@mui/material/Box";
 
-import "../ArtistPage.css"
+import "../ArtistPortal.css"
 
 
 function ArtistProfileTab() {

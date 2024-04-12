@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import '../UserPage.css'
+import '../UserPortal.css'
 
 function UserCreditTab() {
 

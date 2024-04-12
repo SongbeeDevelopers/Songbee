@@ -1,9 +1,9 @@
 import React from 'react';
 
-import UserPageTabs from './UserPageTabs/UserPageTabs';
+import UserPortalTabs from './UserPortalTabs/UserPortalTabs';
 
 import { motion } from 'framer-motion';
-import './UserPage.css';
+import './UserPortal.css';
 
 
 function UserPage({ routeVariants }) {
@@ -17,7 +17,7 @@ function UserPage({ routeVariants }) {
     >
       <h2 className='portal-title'>Customer Portal</h2>
       <br/>
-      <UserPageTabs />  
+      <UserPortalTabs />  
   </motion.div>
   );
 }

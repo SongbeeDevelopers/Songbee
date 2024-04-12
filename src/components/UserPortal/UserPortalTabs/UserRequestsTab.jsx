@@ -7,7 +7,7 @@ import StartSongButton from '../../StartSongButton/StartSongButton'
 
 import { Table, TableHead, TableRow, TableBody, TableCell } from '@mui/material'
 
-import '../UserPage.css'
+import '../UserPortal.css'
 
 
 // This function will display the user's order history
@@ -45,29 +45,29 @@ function UserHistory() {
           <TableHead>
             <TableRow>
               <TableCell align="left">Request Date</TableCell>
-              <TableCell align="right">Due</TableCell>
-              <TableCell align="right">Status</TableCell>
-              <TableCell align="right">Recipient</TableCell>
-              <TableCell align="right">Artist</TableCell>
-              <TableCell align="right">Details</TableCell>
+              <TableCell align="center">Due</TableCell>
+              <TableCell align="center">Status</TableCell>
+              <TableCell align="center">Recipient</TableCell>
+              <TableCell align="center">Artist</TableCell>
+              <TableCell align="center">Details</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
               {userRequests.map((request, i) =>(
                 <TableRow key={i}>
                   <TableCell align="left">{new Date(request.created_at).toLocaleString('en-us')}</TableCell>
-                  <TableCell align="right">{getDueDate(request.created_at, request.delivery_days)}</TableCell>
-                  <TableCell align="right">{request.is_complete ? `Complete!` : `In Progress`}</TableCell>
-                  <TableCell align="right">{request.recipient}</TableCell>
-                  <TableCell align="right">{request.recipient}</TableCell>
-                  <TableCell align="right"><button onClick={() => viewDetails(request.id)} className='user-portal-details-btn'>Details</button></TableCell>
+                  <TableCell align="center">{getDueDate(request.created_at, request.delivery_days)}</TableCell>
+                  <TableCell align="center">{request.is_complete ? `Complete!` : `In Progress`}</TableCell>
+                  <TableCell align="center">{request.recipient}</TableCell>
+                  <TableCell align="center">{request.recipient}</TableCell>
+                  <TableCell align="center"><button onClick={() => viewDetails(request.id)} className='user-portal-details-btn'>Details</button></TableCell>
                 </TableRow>
               ))}
           </TableBody>
         </Table>
         :
         <>
-          <p>You have no requests!</p>
+          <p>You have no orders!</p>
           <StartSongButton />
         </>
         }

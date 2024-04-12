@@ -2,10 +2,10 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import ArtistPageTabs from './ArtistPageTabs/ArtistPageTabs'
+import ArtistPortalTabs from './ArtistPortalTabs/ArtistPortalTabs'
 
 import { motion } from 'framer-motion';
-import './ArtistPage.css';
+import './ArtistPortal.css';
 
 
 function UserPage({ routeVariants }) {
@@ -26,7 +26,7 @@ function UserPage({ routeVariants }) {
       animate="final"
     >
       <h2 className='artist-welcome'>Artist Portal</h2>
-      <ArtistPageTabs /> 
+      <ArtistPortalTabs /> 
   </motion.div>
   );
 }

@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import validator from "validator";
 import Swal from "sweetalert2"
 
-import '../UserPage.css'
+import '../UserPortal.css'
 
 
 function UserProfileTab() {

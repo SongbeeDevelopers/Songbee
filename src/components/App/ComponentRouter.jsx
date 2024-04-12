@@ -23,7 +23,7 @@ import CreationPage from "../CreationPage/CreationPage";
 import FinalQuestions from "../OrderPage/FinalQuestions";
 
 // user functionality
-import UserPage from "../UserPage/UserPage";
+import UserPortal from "../UserPortal/UserPortal";
 import AdminPage from "../AdminPage/AdminPage";
 import EditRequestPage from "../EditRequestPage/EditRequestPage";
 import RequestDetails from "../RequestDetails/RequestDetails"
@@ -36,7 +36,7 @@ import QualityGuaranteePage from "../InfoPages/QualityGuaranteePage";
 import TermsAndConditionsPage from "../InfoPages/TermsAndConditionsPage";
 
 // artist pages
-import ArtistPage from "../ArtistPage/ArtistPage"
+import ArtistPortal from "../ArtistPortal/ArtistPortal"
 import JoinArtistPage from "../JoinArtistPage/JoinArtistPage";
 import ArtistCommunity from "../JoinArtistPage/ArtistCommunity";
 import ArtistProcess from "../JoinArtistPage/ArtistProcess";
@@ -144,7 +144,7 @@ function ComponentRouter() {
               Even though it seems like they are different pages, the user is always on localhost:5173/user */}
 
         <ProtectedRoute exact path="/user" allowedUserClasses={[1, 2, 3]}>
-          <UserPage routeVariants={routeVariants} />
+          <UserPortal routeVariants={routeVariants} />
         </ProtectedRoute>
 
         <Route exact path="/order">
@@ -281,7 +281,7 @@ function ComponentRouter() {
         </ProtectedRoute>
 
         <ProtectedRoute exact path="/artist" allowedUserClasses={[2, 3]}>
-          <ArtistPage routeVariants={routeVariants} />
+          <ArtistPortal routeVariants={routeVariants} />
         </ProtectedRoute>
 
         {/* If none of the other routes matched, we will show a 404. */}
