@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   background-color: white;
+  padding-bottom: 100px;
 }
 
 .lp-hero {
@@ -375,4 +376,147 @@
 .pv-about {
   display: flex;
   flex-direction: column;
+}
+
+.lp-video {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+}
+.lp-video video {
+  height: auto;
+  width: 1000px;
+}
+
+.video-colorMusicNotes {
+  position: absolute;
+  height: auto;
+  width: 100px;
+  bottom: 100px;
+  left: 100px;
+}
+.video-blackMusicNotes {
+  position: absolute;
+  height: auto;
+  width: 50px;
+  top: 30%;
+  left: 30px;
+}
+
+.video-colorFlowers {
+  position: absolute;
+  height: auto;
+  width: 100px;
+  top: 50px;
+  right: 50px;
+}
+
+.video-bee {
+  position: absolute;
+  height: auto;
+  width: 150px;
+  top: 0;
+  left: 40px;
+}
+
+.lp-video h2 {
+  background-image: url("/junior/text-backer-white.png");
+  background-repeat: no-repeat;
+  margin-top: -15px;
+  background-position: center;
+  width: max-content;
+  padding: 50px 150px;
+  background-size: 100% 100%;
+  z-index: 50;
+}
+
+.learningMadeEasy {
+  background-color: #feaf17;
+}
+
+.lp-otherPacks {
+  position: relative;
+  margin-top: 100px;
+}
+
+.lp-otherBee {
+  top: -120px !important;
+  z-index: 60;
+}
+
+.other-beehives {
+  width: 100px;
+  position: absolute;
+  right: 10px;
+  top: -80px;
+  z-index: 40;
+}
+
+.other-yellowLine {
+  position: relative;
+  z-index: 50;
+}
+
+.lp-packsOther {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.dots-other {
+  width: 500px !important;
+  margin: 0 auto !important;
+  position: static !important;
+  border-width: 4px !important;
+}
+
+.lp-otherLinks {
+  display: flex;
+  gap: 30px;
+  color: black;
+}
+
+.lp-packsOther h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 45px;
+}
+.lp-otherLinks a {
+  color: black;
+  text-decoration: underline;
+  font-size: 25px;
+}
+
+.otherPacks-baby {
+  width: 100%;
+  height: auto;
+}
+
+
+.lp-otherImages{
+width: 500px;
+position: relative;
+margin-top: 50px;
+}
+
+
+.other-music{
+position: absolute;
+height: auto;
+width: 100px;
+top: -40px;
+right: -60px;
+}
+
+.other-honey{
+  position: absolute;
+  height: auto;
+  width: 50px;
+  bottom: 0;
+  left: -20px;
 }
