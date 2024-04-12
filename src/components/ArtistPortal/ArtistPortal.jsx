@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import ArtistPortalTabs from './ArtistPortalTabs/ArtistPortalTabs'
 
@@ -26,6 +26,7 @@ function UserPage({ routeVariants }) {
       animate="final"
     >
       <h2 className='artist-welcome'>Artist Portal</h2>
+      <br/>
       <ArtistPortalTabs /> 
   </motion.div>
   );

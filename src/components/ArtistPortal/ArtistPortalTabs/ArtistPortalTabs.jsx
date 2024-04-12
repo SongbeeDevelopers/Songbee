@@ -67,17 +67,17 @@ export default function ArtistTabs() {
   return (
     <>
       {/* tab selector */}
-      <Box sx={{ height: "80%", borderBottom: 2, borderColor: "divider" }}>
+      <Box sx={{ height: "80%"}}>
         <Tabs
           className="tabHeader"
           value={value}
           onChange={handleChange}
-          aria-label="basic tabs example"
+          centered
         >
-          <Tab label="Artist Profile" {...a11yProps(0)} sx={{ color: "orange" }} />
-          <Tab label="Songbee Requests" {...a11yProps(1)} sx={{ color: "orange" }} />
-          <Tab label="Junior Requests" {...a11yProps(2)} sx={{ color: "orange" }} />
-          <Tab label="Documents" {...a11yProps(3)} sx={{ color: "orange" }} />
+          <Tab label="Artist Profile" {...a11yProps(0)}  />
+          <Tab label="Songbee Requests" {...a11yProps(1)} />
+          <Tab label="Junior Requests" {...a11yProps(2)} />
+          <Tab label="Documents" {...a11yProps(3)} />
         </Tabs>
       </Box>
 
