@@ -1,7 +1,14 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { Learningpacks } from "../Data";
+import { Learningpacks } from "../LearningPacksPage/Data";
 import { motion } from "framer-motion";
+import LearningPackVideo from "./PacksVideo";
+import LearningMadeEasy from "./MadeEasy";
+import WhyFamiliesLoveUs from "./WhyFamsLoveUs";
+import FaqPage from "../InfoPages/FaqPageSbJR";
+import JrNewsletterSection from "../JrLandingPage/JrLandingSections/JrNewsletterSection";
+import OtherPacks from "./OtherPacks";
+import JrFooter from "../JrFooter/JrFooter";
 
 function LearningPackView({ routeVariants }) {
   const { slug } = useParams();
@@ -40,6 +47,14 @@ function LearningPackView({ routeVariants }) {
         </div>
       </section>
       <img src="/junior/YellowLine.png" alt="" className="yellowLine" />
+
+      <LearningPackVideo />
+      <LearningMadeEasy/>
+      <WhyFamiliesLoveUs/>
+     <OtherPacks/>
+     <FaqPage/>
+     <JrNewsletterSection/>
+     <JrFooter/>
     </motion.div>
   );
 }
