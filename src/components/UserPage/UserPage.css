@@ -14,45 +14,13 @@ General
     padding-top: 30px
 }
 
-.user-portal-start {
-    height: 40px;
-    width: 125px;
-    background-color:#feaf17;
-    border: 0;
-    border-radius: 5px;
-}
-
 /* --------------------------------------------------------------------------------
-Request History
+Requests Tab
 -------------------------------------------------------------------------------- */
 
 .noRequests {
     text-align: center;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, .2);
-}
-
-.userStartSong {
-    margin: 0 auto;
-    z-index: 100;
-    width: 14rem;
-    height: 3rem;
-    color: var(--black\<deleted\|variable-f6301105\>);
-    background-color: #feaf17;
-    border-radius: 20px;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 25px;
-    font-family: Poppins, sans-serif;
-    font-size: 1.4rem;
-    font-weight: 600;
-    transition: background-color 0.45s;
-    display: flex;
-    position: static;
-    top: 99px;
-    left: 219px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    border: 0;
-    outline: 0;
 }
 
 .user-portal-details-btn {
@@ -69,41 +37,19 @@ Request History
 }
 
 /* --------------------------------------------------------------------------------
-User Profile
+Profile Tab
 -------------------------------------------------------------------------------- */
 
-.profileHeader {
-    font-family: Poppins;
-    font-size: 2rem;
-    color: rgb(51, 51, 51);
+.user-portal-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
-
-.profile-tab-body {
-    border: 4px solid #feaf17;
-    border-radius: 10px;
-    background-color: #fff4df;
-    width: 75%;
-    padding: 20px 30px 30px;
+.user-portal-inputs p {
+    margin: 0;
     text-align: center;
 }
-
-.user-button {
-    display: block;
-    background-color: #feaf17;
-    border: 1px solid #000;
-    border-radius: 13px;
-    font-family: Poppins, sans-serif;
-    font-weight: 600;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
-    padding: 9px 15px;
-    margin: auto;
-}
-
-.user-dialog-contents p {
-    margin: 0;
-}
-
-.user-dialog-contents input {
+.user-portal-inputs input {
     width: 300px;
     height: 38px;
     color: #333;
@@ -113,44 +59,34 @@ User Profile
     font-size: 14px;
     line-height: 1.42857;
     display: block;
-    border-radius: 7px;
+    border-radius: 5px;
     margin-top: 10px;
 }
 
-.user-portal-credit {
-    margin: 0
+.user-invalid-text {
+    color: red;
 }
 
-.modalBtns button {
+.user-portal-save {
     background-color: #feaf17;
     border: 1px solid #000;
-    border-radius: 13px;
+    border-radius: 10px;
     font-family: Poppins, sans-serif;
     font-weight: 600;
     box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
-    padding: px 15px;
-    width: 85px
-}
-
-.modal-save {
-    background-color: greenyellow;
-    border: 1px solid #000;
-    border-radius: 13px;
-    font-family: Poppins, sans-serif;
-    font-weight: 600;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
-    padding: 9px 15px;
+    padding: 5px 15px;
+    width: 85px;
+    margin: auto;
 }
 
 /* --------------------------------------------------------------------------------
-User Credit
+Credit Tab
 -------------------------------------------------------------------------------- */
 
 .user-credit-tab {
-    height: 14vh;
-    padding-top: 3vh;
-    background-color:antiquewhite;
-}
-.user-credit-tab p {
     text-align: center;
+}
+
+.user-credit-tab a {
+    color: #feaf17;
 }

@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+import StartSongButton from '../../StartSongButton/StartSongButton'
+
 import { Table, TableHead, TableRow, TableBody, TableCell } from '@mui/material'
 
 import '../UserPage.css'
@@ -66,7 +68,7 @@ function UserHistory() {
         :
         <>
           <p>You have no requests!</p>
-          <button className='userStartSong' onClick={startSong}>Start Your Song</button>
+          <StartSongButton />
         </>
         }
     </div>

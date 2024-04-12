@@ -4,10 +4,36 @@ import { HashRouter as Router } from 'react-router-dom';
 
 import ComponentRouter from './ComponentRouter.jsx';
 import LocationProvider from './LocationProvider.jsx';
+
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Poppins from "../../../public/Poppins.ttf"
 import './App.css';
 
 
 function App() {
+
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#FEAF17'
+      }
+    },
+    typography: {
+      fontFamily: 'Poppins, Arial'
+    },
+    components: {
+      MuiCssBaseline: {
+        styleOverrides: `
+          @font-face {
+            font-family: 'Poppins';
+            font-style: normal;
+            font-display: swap;
+            src: local('Poppins'), local('Poppins-Regular'), url(${Poppins}), format('ttf);
+          }
+        `
+      }
+    }
+  })
 
   const dispatch = useDispatch();
 
@@ -19,7 +45,9 @@ function App() {
   return (
     <Router>
           <LocationProvider>
-            <ComponentRouter />
+            <ThemeProvider theme={theme}>
+              <ComponentRouter />
+            </ThemeProvider>
           </LocationProvider>
     </Router>
   );

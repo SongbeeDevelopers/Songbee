@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import UserRequestsTab from "./UserRequestsTab";
 import UserProfileTab from "./UserProfileTab";
+import UserCreditTab from "./UserCreditTab";
 
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
@@ -10,10 +11,13 @@ import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import Typography from "@mui/material/Typography";
 
+import { useTheme } from '@mui/material/styles';
 import '../UserPage.css'
 
 
 export default function UserTabs() {
+
+  const theme = useTheme()
   
   const [value, setValue] = useState(0);
 
@@ -61,9 +65,13 @@ export default function UserTabs() {
         <Tabs
           value={value}
           onChange={handleChange}
+          centered
+          textColor="primary"
+          indicatorColor="primary"
         >
-          <Tab label="Order History" {...a11yProps(0)} sx={{ color: "orange" }} />
-          <Tab label="User Profile" {...a11yProps(1)} sx={{ color: "orange" }} /> 
+          <Tab label="Orders" {...a11yProps(0)} />
+          <Tab label="Profile" {...a11yProps(1)} /> 
+          <Tab label="Credit" {...a11yProps(2)} /> 
         </Tabs>
       </Box>
 
@@ -75,6 +83,10 @@ export default function UserTabs() {
       {/* personal info tab */}
       <CustomTabPanel value={value} index={1}>
         <UserProfileTab />
+      </CustomTabPanel>
+
+      <CustomTabPanel value={value} index={2}>
+        <UserCreditTab />
       </CustomTabPanel>
     </>
   );
