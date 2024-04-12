@@ -270,7 +270,7 @@ function ComponentRouter() {
         </ProtectedRoute>
 
         <ProtectedRoute exact path="/artist" allowedUserClasses={[2, 3]}>
-          <ArtistPage routeVariants={routeVariants} />
+          <ArtistBioPage routeVariants={routeVariants} />
         </ProtectedRoute>
 
         {/* If none of the other routes matched, we will show a 404. */}
