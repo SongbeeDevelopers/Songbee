@@ -7,11 +7,11 @@ import StartSongButton from '../../StartSongButton/StartSongButton'
 
 import { Table, TableHead, TableRow, TableBody, TableCell } from '@mui/material'
 
-import '../UserPortal.css'
+import '../CustomerPortal.css'
 
 
 // This function will display the user's order history
-function UserHistory() {
+function CustomerRequests() {
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -75,4 +75,4 @@ function UserHistory() {
   )
 }
 
-export default UserHistory;
+export default CustomerRequests;

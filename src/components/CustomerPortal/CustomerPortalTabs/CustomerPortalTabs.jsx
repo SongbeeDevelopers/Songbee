@@ -1,9 +1,9 @@
 import * as React from "react";
 import { useState } from "react";
 
-import UserRequestsTab from "./UserRequestsTab";
-import UserProfileTab from "./UserProfileTab";
-import UserCreditTab from "./UserCreditTab";
+import CustomerRequestsTab from "./CustomerRequestsTab";
+import CustomerProfileTab from "./CustomerProfileTab";
+import CustomerCreditTab from "./CustomerCreditTab";
 
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
@@ -12,10 +12,10 @@ import Tabs from "@mui/material/Tabs";
 import Typography from "@mui/material/Typography";
 
 import { useTheme } from '@mui/material/styles';
-import '../UserPortal.css'
+import '../CustomerPortal.css'
 
 
-export default function UserTabs() {
+export default function CustomerPortalTabs() {
 
   const theme = useTheme()
   
@@ -77,16 +77,16 @@ export default function UserTabs() {
 
       {/* order history tab */}
       <CustomTabPanel value={value} index={0}>
-        <UserRequestsTab />
+        <CustomerRequestsTab />
       </CustomTabPanel>
 
       {/* personal info tab */}
       <CustomTabPanel value={value} index={1}>
-        <UserProfileTab />
+        <CustomerProfileTab />
       </CustomTabPanel>
 
       <CustomTabPanel value={value} index={2}>
-        <UserCreditTab />
+        <CustomerCreditTab />
       </CustomTabPanel>
     </>
   );

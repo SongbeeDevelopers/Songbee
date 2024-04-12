@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import '../UserPortal.css'
+import '../CustomerPortal.css'
 
-function UserCreditTab() {
+function CustomerCreditTab() {
 
   const user = useSelector(store => store.user)
 
@@ -18,4 +18,4 @@ function UserCreditTab() {
   )
 }
 
-export default UserCreditTab;
+export default CustomerCreditTab;

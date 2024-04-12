@@ -4,10 +4,10 @@ import { useSelector, useDispatch } from "react-redux";
 import validator from "validator";
 import Swal from "sweetalert2"
 
-import '../UserPortal.css'
+import '../CustomerPortal.css'
 
 
-function UserProfileTab() {
+function CustomerProfileTab() {
 
   const dispatch = useDispatch()
 
@@ -97,4 +97,4 @@ function UserProfileTab() {
   )
 }
 
-export default UserProfileTab
+export default CustomerProfileTab

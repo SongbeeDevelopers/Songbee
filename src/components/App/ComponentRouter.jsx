@@ -23,7 +23,7 @@ import CreationPage from "../CreationPage/CreationPage";
 import FinalQuestions from "../OrderPage/FinalQuestions";
 
 // user functionality
-import UserPortal from "../UserPortal/UserPortal";
+import CustomerPortal from "../CustomerPortal/CustomerPortal";
 import AdminPage from "../AdminPage/AdminPage";
 import EditRequestPage from "../EditRequestPage/EditRequestPage";
 import RequestDetails from "../RequestDetails/RequestDetails"
@@ -142,7 +142,7 @@ function ComponentRouter() {
               Even though it seems like they are different pages, the user is always on localhost:5173/user */}
 
         <ProtectedRoute exact path="/user" allowedUserClasses={[1, 2, 3]}>
-          <UserPortal routeVariants={routeVariants} />
+          <CustomerPortal routeVariants={routeVariants} />
         </ProtectedRoute>
 
         <Route exact path="/order">
