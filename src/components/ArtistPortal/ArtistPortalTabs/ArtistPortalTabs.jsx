@@ -1,9 +1,11 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 
-import UserRequestsTab from "./UserRequestsTab";
-import UserCreditTab from "./UserCreditTab";
-import UserProfileTab from "./UserProfileTab";
+import ArtistProfileTab from "./ArtistProfileTab";
+import ArtistSBRequestsTab from "./ArtistSBRequestsTab";
+import ArtistSBjrRequestsTab from "./ArtistSBjrRequestsTab";
+import ArtistDocuments from "./ArtistDocuments";
 
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
@@ -11,12 +13,19 @@ import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import Typography from "@mui/material/Typography";
 
-import '../UserPage.css'
+import '../ArtistPortal.css'
 
 
-export default function UserTabs() {
-  
+export default function ArtistTabs() {
+
+  const dispatch = useDispatch();
+
   const [value, setValue] = useState(0);
+
+  // grabs artist on mount
+  useEffect(() => {
+    dispatch({ type: "GET_ARTIST_PROFILE" });
+  }, []);
 
   // tab structure
   const handleChange = (event, newValue) => {
@@ -58,32 +67,35 @@ export default function UserTabs() {
   return (
     <>
       {/* tab selector */}
-      <Box sx={{ height: "80%", borderBottom: 2, borderColor: "divider"}}>
+      <Box sx={{ height: "80%"}}>
         <Tabs
           className="tabHeader"
           value={value}
           onChange={handleChange}
-          aria-label="basic tabs example"
+          centered
         >
-          <Tab label="Order History" {...a11yProps(0)} sx={{ color: "orange" }} />
-          <Tab label="User Profile" {...a11yProps(1)} sx={{ color: "orange" }} /> 
-          <Tab label="Credit Balance" {...a11yProps(2)} sx={{ color: "orange" }} />
+          <Tab label="Artist Profile" {...a11yProps(0)}  />
+          <Tab label="Songbee Requests" {...a11yProps(1)} />
+          <Tab label="Junior Requests" {...a11yProps(2)} />
+          <Tab label="Documents" {...a11yProps(3)} />
         </Tabs>
       </Box>
 
-      {/* order history tab */}
+      {/* tabs */}
       <CustomTabPanel value={value} index={0}>
-        <UserRequestsTab />
+        <ArtistProfileTab />
       </CustomTabPanel>
 
-      {/* personal info tab */}
       <CustomTabPanel value={value} index={1}>
-        <UserProfileTab />
+        <ArtistSBRequestsTab />
       </CustomTabPanel>
 
-      {/* user credit tab */}
       <CustomTabPanel value={value} index={2}>
-        <UserCreditTab />
+        <ArtistSBjrRequestsTab />
+      </CustomTabPanel>
+
+      <CustomTabPanel value={value} index={2}>
+        <ArtistDocuments />
       </CustomTabPanel>
     </>
   );

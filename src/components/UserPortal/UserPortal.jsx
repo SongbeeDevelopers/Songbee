@@ -1,15 +1,12 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 
-import UserPageTabs from './UserPageTabs/UserPageTabs';
+import UserPortalTabs from './UserPortalTabs/UserPortalTabs';
 
 import { motion } from 'framer-motion';
-import './UserPage.css';
+import './UserPortal.css';
 
 
 function UserPage({ routeVariants }) {
-
-  const user = useSelector(store => store.user)
   
   return (
     <motion.div
@@ -18,9 +15,9 @@ function UserPage({ routeVariants }) {
       initial="initial"
       animate="final"
     >
-      <h2 className='user-welcome'>Customer Portal</h2>
+      <h2 className='portal-title'>Customer Portal</h2>
       <br/>
-      <UserPageTabs />  
+      <UserPortalTabs />  
   </motion.div>
   );
 }

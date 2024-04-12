@@ -6,7 +6,7 @@ html,
 body,
 #react-root {
   height: 100%;
-  font-family: "Poppins";
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
 }
 
 * {

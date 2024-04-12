@@ -3,10 +3,10 @@ import { takeLatest, put } from "redux-saga/effects";
 
 function* fetchPendingArtist() {
   try {
-    console.log("THIS IS DATA2222");
+    // console.log("THIS IS DATA2222");
 
     const response = yield axios.get("/api/artist/pending");
-    console.log("THIS IS DATA", response.data);
+    // console.log("THIS IS DATA", response.data);
     yield put({ type: "SET_PENDING_ARTISTS", payload: response.data });
   } catch (error) {
     console.error("SAGA fetchPendingArtist() failed:", error);
@@ -33,7 +33,7 @@ function* requestArtistEdit(action) {
       url: "/api/artist/edit",
       data: action.payload,
     });
-    console.log(response.data);
+    // console.log(response.data);
   } catch (error) {
     console.error("SAGA createNewArtist() failed:", error);
   }

@@ -1,27 +1,28 @@
-import React from "react";
+import * as React from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
 import validator from "validator";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2"
 
-import { Modal, Box } from "@mui/material"
+import '../UserPortal.css'
 
 
-function EditUserModal({ user, open, handleClose }) {
+function UserProfileTab() {
 
   const dispatch = useDispatch()
+
+  const user = useSelector((store) => store.user);
 
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState(user.email)
 
+  // changes validation
   const [invalidEmail, setInvalidEmail] = useState(false)
   const [invalidPassword, setInvalidPassword] = useState(false)
 
   // submit changes
   const handleEdit = (event) => {
     event.preventDefault();
-
     // email invalid
     if (!validator.isEmail(email)) {
       setInvalidEmail(true)
@@ -35,10 +36,9 @@ function EditUserModal({ user, open, handleClose }) {
       setInvalidPassword(false)
     }
     // success
-    if (validator.isEmail(email) && password.length > 7 || validator.isEmail(email) && !password) {
+    if (validator.isEmail(email) && password.length > 7) {
       setInvalidEmail(false)
       setInvalidPassword(false)
-      handleClose()
       Swal.fire({
         title: "Confirm Changes?",
         icon: "warning",
@@ -62,66 +62,39 @@ function EditUserModal({ user, open, handleClose }) {
       });
     }
   };
- 
-  // delete account
-  const handleDelete = (event) => {
-    event.preventDefault();
-    dispatch({
-      type: 'DELETE_USER',
-      payload: { id: user.id }
-    })
-    history.push('/user')
-  }
 
-  // modal style
-  const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 500,
-    bgcolor: 'background.paper',
-    boxShadow: 24,
-  };
 
   return (
-    <Modal
-      open={open}
-      keepMounted
-      onClose={handleClose}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
-    >
-      <Box sx={style}>
-        <div className="user-dialog-contents">
-          <h2>Edit Your Info</h2>
+    <div className="tab-body">
+      <div className="user-portal-inputs">
 
+        <div>
+          <p>Email Address</p>
           <input
             placeholder="Email"
             defaultValue={email}
             onChange={(e) => { setEmail(e.target.value) }}
           />
-          {invalidEmail && <p>Please enter a valid email address.</p>}
+          {invalidEmail && <p className="user-invalid-text">Please enter a valid email address.</p>}
+        </div>
+
+        <div>
+          <p>Password</p>
           <input
             placeholder="Password"
             type="password"
             onChange={(e) => { setPassword(e.target.value) }}
           />
-          {invalidPassword && <p>Password must be at least 8 characters.</p>}
-
-          <div className="modalBtns">
-            <button className="modal-save" onClick={handleEdit}>
-              Save
-            </button>
-
-            <button className="modal-cancel" onClick={handleClose}>
-              Cancel
-            </button>
-          </div>
+          {invalidPassword && <p className="user-invalid-text">Password must be at least 8 characters.</p>}
         </div>
-      </Box>
-    </Modal>
+
+        <button className="user-portal-save" onClick={handleEdit}>
+          Save
+        </button>
+
+      </div>
+    </div>
   )
 }
 
-export default EditUserModal
+export default UserProfileTab
