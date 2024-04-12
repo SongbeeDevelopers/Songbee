@@ -40,9 +40,7 @@ import ArtistPortal from "../ArtistPortal/ArtistPortal"
 import JoinArtistPage from "../JoinArtistPage/JoinArtistPage";
 import ArtistCommunity from "../JoinArtistPage/ArtistCommunity";
 import ArtistProcess from "../JoinArtistPage/ArtistProcess";
-import MichaelBioPage from "../ArtistBioPages/MichaelBioPage";
-import BerchBioPage from "../ArtistBioPages/BerchBioPage";
-import PerrinBioPage from "../ArtistBioPages/PerrinBioPage";
+import ArtistBioPage from '../ArtistBioPages/ArtistBioPage';
 
 // 404
 import NotFound from "../NotFoundPage/NotFoundPage";
@@ -55,9 +53,9 @@ import JrLandingPage from "../JrLandingPage/JrLandingPage";
 import JrCheckoutPage from "../JrRequestPage/JrRequestPage";
 import JrHeader from "../JrHeader/JrHeader";
 import JrFooter from "../JrFooter/JrFooter";
-import LearningPacksPage from "../LearningPacksPage/LearningPacksPage";
+import LearningPacksPage from "../LearningPacksPage/PacksPage";
 import LearningPacksHeader from "../Header/LearningPacksHeader";
-import LearningPackView from "../LearningPacksPage/LearningPackView/LearningPackView";
+import LearningPackView from "../LearningPackView/PackView";
 
 function ComponentRouter() {
   const location = useLocation();
@@ -222,20 +220,12 @@ function ComponentRouter() {
           <JrLandingPage routeVariants={routeVariants} />
         </Route>
 
-        <Route exact path="/artist-community">
+        <Route exact path="/artists">
           <ArtistCommunity routeVariants={routeVariants} />
         </Route>
 
-        <Route exact path="/michaelBio">
-          <MichaelBioPage routeVariants={routeVariants} />
-        </Route>
-
-        <Route exact path="/BerchBio">
-          <BerchBioPage routeVariants={routeVariants} />
-        </Route>
-
-        <Route exact path="/PerrinBio">
-          <PerrinBioPage routeVariants={routeVariants} />
+        <Route exact path="/ArtistBioPage/:id">
+          <ArtistBioPage routeVariants={routeVariants} />
         </Route>
 
         <Route exact path="/artist-process">
@@ -283,6 +273,10 @@ function ComponentRouter() {
         <ProtectedRoute exact path="/artist" allowedUserClasses={[2, 3]}>
           <ArtistPortal routeVariants={routeVariants} />
         </ProtectedRoute>
+        
+        <Route exact path="/artists">
+          <ArtistBioPage routeVariants={routeVariants} />
+        </Route>
 
         {/* If none of the other routes matched, we will show a 404. */}
         <Route>

@@ -15,6 +15,7 @@
 .content {
     display: flex;
     align-items: center;
+    
 }
 
 .content img {
@@ -25,7 +26,7 @@
 
 
 
-.nameHeader {
+.nameHeader h2{
     font-family: Poppins, sans-serif;
     text-align: center;
     margin-bottom: 20px;
@@ -36,10 +37,12 @@
 
 .location  {
   position: relative;
-  left: -10px;
-  top: -30px;
+  left: 95px;
+  top: -20px;
   
 }
+
+
 
  .nameHeader h2 {
     font-family: Poppins, sans-serif;
@@ -50,20 +53,21 @@
     
  }
 
+
  .subHeader {
-    /* text-align: center; */
     font-size: 20px;
     opacity: 0.5;
     font-family: Poppins, sans-serif;
     margin: 0px;
-    margin-top: -40px;
-    margin-bottom: 30px;
+    margin-top: -30px;
+    margin-bottom: 40px;
+    margin-left: 100px;
  }
 
  .community-button {
    
     margin-top: 20px;
-    left: 0px;
+    left: -30px;
 }
 
 
@@ -97,7 +101,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    left: 60px;
+    left: 100px;
     width: 300px;
     margin-top: -10px;
   }
@@ -141,7 +145,7 @@
   .website {
     max-width: 10%;
     height: 100px;
-   margin-left: 20px;
+    margin-left: 20px;
   }
 
   .songListWrapper {
@@ -203,6 +207,7 @@
   .songItems p {
     margin-top: 10px;
   }
+
 
   .audioWrapper {
     box-sizing: border-box;

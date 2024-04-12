@@ -132,9 +132,9 @@
 
 .artist-community  {
   display: flex;
+  flex-flow: row;
   height: 80vh;
   justify-content: center;
-  /* align-items: center; */
   text-align: center;
   gap: 100px;
  
@@ -192,59 +192,52 @@
 
 /*--------For the artists photos------------ */
 .artist-container  {
-  width: 900px;
+  width: 1400px;
+  height: 600px;
   box-sizing: border-box;
-  display: block;
-  margin-left: -200px;
+  display: flex;
+  margin-left: 200px;
   margin-top: 100px;
 }
 
 .artist-slider {
   display: flex;
-  /* flex-direction: row; */
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
+
+
 .artist-slide {
- display: flex;
- flex-wrap: nowrap;
- justify-content: space-evenly;
- align-items: center;
+  width: 600px;
+  height: 400px;
+  margin: 0 auto 1.25rem;
+  border-radius: 50%;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
 } 
 
 .artist-card {
-  width: 400px;
-  margin:  0 10px;
-  flex: 0 0 auto;
-  /* text-align: center; */
+  /* width: 500px; */
+  /* height: 500px; */
+  /* margin:  0 150px; */
+  display: flex;
+  flex-flow: row;
+  gap: 50px;
+  text-align: center;
 }
 
 .artistSlide-img {
-  width: 300px;
-  height: 300px;
-  margin: 0 auto 1.25rem;
+  /* width: 400px; */
+  /* height: 400px; */
+  /* width: 800px; */
+  /* height: 90%; */
+  /* margin:  auto 1.25rem; */
   border-radius: 50%;
-  object-fit: cover; 
+  object-fit: cover;
 }
 
-
-.artist-title {
-  width: 250px;
-  font-size: 1.375rem;
-  font-weight: 600;
-  line-height: 1.225rem;
-  text-decoration: underline;
-  font-family: Poppins, sans-serif;
-}
-
-
-.artistSlide-description {
-  height: 8.125rem;
-  margin: 1.25rem 0;
-  font-size: 1.375rem;
-  font-weight: 400;
-  line-height: 1.325rem;
-}
 
 .audio-wrapper {
   display: flex;
@@ -252,9 +245,9 @@
 }
 
 .audio {
-  width: 150%;
+  width: 50%;
   margin: 0px; 
-  margin-top: -30%;
+  margin-top: 0%;
   margin-left: -1%;
   
 }
