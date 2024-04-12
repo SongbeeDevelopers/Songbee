@@ -52,9 +52,9 @@ import JrLandingPage from "../JrLandingPage/JrLandingPage";
 import JrCheckoutPage from "../JrRequestPage/JrRequestPage";
 import JrHeader from "../JrHeader/JrHeader";
 import JrFooter from "../JrFooter/JrFooter";
-import LearningPacksPage from "../LearningPacksPage/LearningPacksPage";
+import LearningPacksPage from "../LearningPacksPage/PacksPage";
 import LearningPacksHeader from "../Header/LearningPacksHeader";
-import LearningPackView from "../LearningPacksPage/LearningPackView/LearningPackView";
+import LearningPackView from "../LearningPackView/PackView";
 
 function ComponentRouter() {
   const location = useLocation();
@@ -270,7 +270,7 @@ function ComponentRouter() {
         </ProtectedRoute>
 
         <ProtectedRoute exact path="/artist" allowedUserClasses={[2, 3]}>
-          <ArtistPage routeVariants={routeVariants} />
+          <ArtistBioPage routeVariants={routeVariants} />
         </ProtectedRoute>
 
         {/* If none of the other routes matched, we will show a 404. */}
