@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 import AdminRequestsTab from './AdminRequestsTab';
 import AdminArtistApplicationsTab from './AdminArtistApplicationsTab';
@@ -18,6 +19,9 @@ import '../AdminPortal.css'
 export default function AdminPortalTabs() {
 
   const [value, setValue] = useState(0);
+
+  const pendingRequests = useSelector(store => store.pendingRequests)
+  const completedRequests = useSelector(store => store.completedRequests)
 
   // MUI tab structure
   const handleChange = (event, newValue) => {
@@ -67,11 +71,11 @@ export default function AdminPortalTabs() {
       </Tabs>
 
       <CustomTabPanel value={value} index={0}>
-        <AdminRequestsTab num={0} />
+        <AdminRequestsTab num={0} data={pendingRequests} />
       </CustomTabPanel>
 
       <CustomTabPanel value={value} index={1}>
-        <AdminRequestsTab num={1} />
+        <AdminRequestsTab num={1} data={completedRequests} />
       </CustomTabPanel>
 
       <CustomTabPanel value={value} index={2}>

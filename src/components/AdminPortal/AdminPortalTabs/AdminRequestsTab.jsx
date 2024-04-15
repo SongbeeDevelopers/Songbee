@@ -17,16 +17,14 @@ import AdminDetailsDialog from './AdminDetailsDialog';
 import FilterBar from '../../FilterBar/FilterBar';
 
 
-function AdminRequestsTab({ num }) {
+function AdminRequestsTab({ num, data }) {
 
   // hooks
   const history = useHistory();
   const dispatch = useDispatch();
 
   // reducers
-  const pendingRequests = useSelector(store => store.pendingRequests)
-  const completedRequests = useSelector(store => store.completedRequests)
-  const data = useSelector(store => store.filterResults);
+
 
   // modal state
   const [open, setOpen] = useState(false);
@@ -35,21 +33,6 @@ function AdminRequestsTab({ num }) {
   // date/time
   const now = new Date();
   const msPerDay = 24 * 60 * 60 * 1000;
-
-  // filters for completed and uncompleted reqs depending on tab
-  // useEffect(() => {
-  //   if (num === 0) {
-  //     dispatch({
-  //       type: "SET_FILTER_RESULTS",
-  //       payload: pendingRequests
-  //     })
-  //   } else if (num === 1) {
-  //     dispatch({
-  //       type: "SET_FILTER_RESULTS",
-  //       payload: completedRequests
-  //     })
-  //   }
-  // }, [])
 
   // --- modal logic ---
   const handleClickOpen = (id, x) => {
@@ -138,59 +121,57 @@ function AdminRequestsTab({ num }) {
 
   return (
     <div>
-
       <FilterBar type={num === 0 ? 'pending' : 'completed'} />
 
-        <Table sx={{ minWidth: 700 }}>
+      <Table sx={{ minWidth: 700 }}>
 
-          <TableHead>
-            <TableRow>
-              <TableCell>Creation Date</TableCell>
-              <TableCell align="center">Requester E-Mail</TableCell>
-              <TableCell align="center">Requester / Recipient</TableCell>
-              <TableCell align="center">Due</TableCell>
-              <TableCell align="center">View Details</TableCell>
-              <TableCell align="center">Completion Form</TableCell>
-            </TableRow>
-          </TableHead>
+        <TableHead>
+          <TableRow>
+            <TableCell>Creation Date</TableCell>
+            <TableCell align="center">Requester E-Mail</TableCell>
+            <TableCell align="center">Requester / Recipient</TableCell>
+            <TableCell align="center">Due</TableCell>
+            <TableCell align="center">View Details</TableCell>
+            <TableCell align="center">Completion Form</TableCell>
+          </TableRow>
+        </TableHead>
 
-          <TableBody>
-            {data.map((row) => {
-              const creationTime = new Date(row.created_at);
-              const daysLeft = Math.round((now.getTime() - creationTime.getTime()) / msPerDay);
-              return (
-                <StyledTableRow key={row.id}>
-                  <TableCell component="th" scope="row">
-                    {new Date(row.created_at).toLocaleString('en-us')}
-                  </TableCell>
-                  <TableCell align="center">
-                    {row.email}
-                  </TableCell>
-                  <TableCell align="center">
-                    {row.requester} / {row.recipient}
-                  </TableCell>
-                  <TableCell align="center">
-                    {row.is_complete ?
-                      "Complete!" :
-                      `Due in ${row.delivery_days - daysLeft} days`
-                    }</TableCell>
-                  <TableCell align="center">
-                    <button className='admin-button' onClick={() => goToEdit(row.id)}>Details</button>
-                    <DetailsDialogSlide />
-                  </TableCell>
-                  <TableCell align="center">
-                    <button className='admin-button' onClick={() => handleClickOpen(row.id)}>
-                      Complete
-                    </button>
-                    <AlertDialogSlide />
-                  </TableCell>
-                </StyledTableRow>
-              )
-            })}
-          </TableBody>
-          
-        </Table>
+        <TableBody>
+          {data.map((row) => {
+            const creationTime = new Date(row.created_at);
+            const daysLeft = Math.round((now.getTime() - creationTime.getTime()) / msPerDay);
+            return (
+              <StyledTableRow key={row.id}>
+                <TableCell component="th" scope="row">
+                  {new Date(row.created_at).toLocaleString('en-us')}
+                </TableCell>
+                <TableCell align="center">
+                  {row.email}
+                </TableCell>
+                <TableCell align="center">
+                  {row.requester} / {row.recipient}
+                </TableCell>
+                <TableCell align="center">
+                  {row.is_complete ?
+                    "Complete!" :
+                    `Due in ${row.delivery_days - daysLeft} days`
+                  }</TableCell>
+                <TableCell align="center">
+                  <button className='admin-button' onClick={() => goToEdit(row.id)}>Details</button>
+                  <DetailsDialogSlide />
+                </TableCell>
+                <TableCell align="center">
+                  <button className='admin-button' onClick={() => handleClickOpen(row.id)}>
+                    Complete
+                  </button>
+                  <AlertDialogSlide />
+                </TableCell>
+              </StyledTableRow>
+            )
+          })}
+        </TableBody>
 
+      </Table>
     </div>
   );
 }
