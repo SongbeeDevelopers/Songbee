@@ -2,24 +2,19 @@ import * as React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 
 import FilterBar from "../../FilterBar/FilterBar";
 
-function AdminArtistTable() {
+function AdminArtistTable({ data }) {
+
   const dispatch = useDispatch();
 
-  const data = useSelector((store) => store.pendingArtists);
-  // const data = useSelector((store) => store.filterResults); ....//// filtering isnt needed??
-  
-  console.log(data);
 
   // useEffect(() => {
   //   dispatch({
@@ -29,9 +24,7 @@ function AdminArtistTable() {
   // }, []);   this is the one doing thee filtering above ^
 
   useEffect(() => {
-    dispatch({
-      type: "FETCH_PENDING_ARTISTS",
-    });
+
   }, []);
 
   const approveArtist = (id, user_id) => {
@@ -73,15 +66,14 @@ function AdminArtistTable() {
     <div>
       <FilterBar type="artist" />
 
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+        <Table sx={{ minWidth: 700 }}>
           <TableHead>
             <TableRow>
-              <StyledTableCell>Artist Name</StyledTableCell>
-              <StyledTableCell align="center">Vocal Type</StyledTableCell>
-              <StyledTableCell align="center">Website</StyledTableCell>
-              <StyledTableCell align="center">Approve</StyledTableCell>
-              <StyledTableCell align="center">Deny</StyledTableCell>
+              <TableCell>Artist Name</TableCell>
+              <TableCell align="center">Vocal Type</TableCell>
+              <TableCell align="center">Website</TableCell>
+              <TableCell align="center">Approve</TableCell>
+              <TableCell align="center">Deny</TableCell>
             </TableRow>
           </TableHead>
 
@@ -123,7 +115,6 @@ function AdminArtistTable() {
             })}
           </TableBody>
         </Table>
-      </TableContainer>
     </div>
   );
 }

@@ -16,6 +16,7 @@ function AdminPortal({ routeVariants }) {
   useEffect(() => {
     dispatch({ type: "FETCH_ALL_REQUESTS" });
     dispatch({ type: 'FETCH_ALL_USERS' })
+    dispatch({ type: "FETCH_PENDING_ARTISTS" });
   }, [])
 
   return (
