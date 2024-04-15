@@ -130,7 +130,7 @@ function AdminRequestsTab({ num, data }) {
           <TableRow>
             <TableCell>Creation Date</TableCell>
             <TableCell align="center">Requester E-Mail</TableCell>
-            <TableCell align="center">Requester / Recipient</TableCell>
+            <TableCell align="center">Artist</TableCell>
             <TableCell align="center">Due</TableCell>
             <TableCell align="center">View Details</TableCell>
             <TableCell align="center">Completion Form</TableCell>
@@ -153,9 +153,9 @@ function AdminRequestsTab({ num, data }) {
                   {row.email}
                 </TableCell>
 
-                {/* requester/recipient */}
+                {/* artist */}
                 <TableCell align="center">
-                  {row.requester} / {row.recipient}
+
                 </TableCell>
 
                 {/* due */}
