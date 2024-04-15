@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import AdminPortalTabs from './AdminPortalTabs/AdminPortalTabs';
+import AdminPortalTabs from './AdminPortalTabs/_AdminPortalTabs';
 
 import { motion } from 'framer-motion';
 import './AdminPortal.css'
