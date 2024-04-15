@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
 
-import AdminRequestTable from './AdminRequestTable';
-import AdminArtistTable from './AdminArtistTable';
-import AdminUserTable from './AdminUserTable';
-import AdminArtistsPendingEdits from './AdminArtistsPendingEdits';
+import AdminRequestsTab from './AdminRequestsTab';
+import AdminArtistApplicationsTab from './AdminArtistApplicationsTab';
+import AdminUsersTab from './AdminUsersTab';
+import AdminArtistEdits from './AdminArtistEdits';
 
 import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
@@ -70,29 +70,28 @@ export default function AdminPortalTabs() {
         <Tab label="Pending Requests" {...a11yProps(0)} />
         <Tab label="Completed Requests" {...a11yProps(1)} />
         <Tab label="Users" {...a11yProps(2)} />
-        <Tab label="Pending Artists" {...a11yProps(3)} />
-        <Tab label="Pending Artist Edits" {...a11yProps(4)} />
+        <Tab label="Artist Applications" {...a11yProps(3)} />
+        <Tab label="Artist Edits" {...a11yProps(4)} />
       </Tabs>
 
       <CustomTabPanel value={value} index={0}>
-        <AdminRequestTable num={0} />
+        <AdminRequestsTab num={0} />
       </CustomTabPanel>
 
       <CustomTabPanel value={value} index={1}>
-        <AdminRequestTable num={1} />
+        <AdminRequestsTab num={1} />
       </CustomTabPanel>
 
       <CustomTabPanel value={value} index={2}>
-        <AdminUserTable />
+        <AdminUsersTab />
       </CustomTabPanel>
 
       <CustomTabPanel value={value} index={3}>
-        <AdminArtistTable />
+        <AdminArtistApplicationsTab />
       </CustomTabPanel>
 
-
       <CustomTabPanel value={value} index={4}>
-        <AdminArtistsPendingEdits />
+        <AdminArtistEdits />
       </CustomTabPanel>
     </div>
   )

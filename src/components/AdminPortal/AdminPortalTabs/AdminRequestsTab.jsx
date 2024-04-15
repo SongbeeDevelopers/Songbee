@@ -17,9 +17,7 @@ import AdminDetailsDialog from './AdminDetailsDialog';
 import FilterBar from '../../FilterBar/FilterBar';
 
 
-function AdminRequestTable({ num }) {
-
-  console.log(num)
+function AdminRequestsTab({ num }) {
 
   // hooks
   const history = useHistory();
@@ -208,4 +206,4 @@ function AdminRequestTable({ num }) {
   );
 }
 
-export default AdminRequestTable;
+export default AdminRequestsTab;

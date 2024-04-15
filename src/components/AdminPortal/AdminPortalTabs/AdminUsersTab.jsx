@@ -14,7 +14,7 @@ import TableRow from '@mui/material/TableRow';
 import UserClassSelector from './UserClassSelector';
 import FilterBar from '../../FilterBar/FilterBar';
 
-function AdminUserTable({num}) {
+function AdminUsersTab({num}) {
 
   // table header styling
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -95,4 +95,4 @@ function AdminUserTable({num}) {
   );
 }
 
-export default AdminUserTable;
+export default AdminUsersTab;
