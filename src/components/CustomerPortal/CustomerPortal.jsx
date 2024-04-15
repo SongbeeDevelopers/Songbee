@@ -1,6 +1,6 @@
 import React from 'react';
 
-import CustomerPortalTabs from './CustomerPortalTabs/CustomerPortalTabs';
+import CustomerPortalTabs from './CustomerPortalTabs/_CustomerPortalTabs';
 
 import { motion } from 'framer-motion';
 import './CustomerPortal.css';
