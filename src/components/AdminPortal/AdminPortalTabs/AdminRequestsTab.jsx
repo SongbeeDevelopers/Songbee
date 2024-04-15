@@ -37,19 +37,19 @@ function AdminRequestsTab({ num }) {
   const msPerDay = 24 * 60 * 60 * 1000;
 
   // filters for completed and uncompleted reqs depending on tab
-  useEffect(() => {
-    if (num === 0) {
-      dispatch({
-        type: "SET_FILTER_RESULTS",
-        payload: pendingRequests
-      })
-    } else if (num === 1) {
-      dispatch({
-        type: "SET_FILTER_RESULTS",
-        payload: completedRequests
-      })
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (num === 0) {
+  //     dispatch({
+  //       type: "SET_FILTER_RESULTS",
+  //       payload: pendingRequests
+  //     })
+  //   } else if (num === 1) {
+  //     dispatch({
+  //       type: "SET_FILTER_RESULTS",
+  //       payload: completedRequests
+  //     })
+  //   }
+  // }, [])
 
   // --- modal logic ---
   const handleClickOpen = (id, x) => {
@@ -79,17 +79,6 @@ function AdminRequestsTab({ num }) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
   // --- /modal logic ---
-
-  // header styling
-  const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    [`&.${tableCellClasses.head}`]: {
-      backgroundColor: theme.palette.common.black,
-      color: theme.palette.common.white,
-    },
-    [`&.${tableCellClasses.body}`]: {
-      fontSize: 14,
-    },
-  }));
 
   // row styling
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
@@ -171,30 +160,30 @@ function AdminRequestsTab({ num }) {
               const daysLeft = Math.round((now.getTime() - creationTime.getTime()) / msPerDay);
               return (
                 <StyledTableRow key={row.id}>
-                  <StyledTableCell component="th" scope="row">
+                  <TableCell component="th" scope="row">
                     {new Date(row.created_at).toLocaleString('en-us')}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
+                  </TableCell>
+                  <TableCell align="center">
                     {row.email}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
+                  </TableCell>
+                  <TableCell align="center">
                     {row.requester} / {row.recipient}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
+                  </TableCell>
+                  <TableCell align="center">
                     {row.is_complete ?
                       "Complete!" :
                       `Due in ${row.delivery_days - daysLeft} days`
-                    }</StyledTableCell>
-                  <StyledTableCell align="center">
+                    }</TableCell>
+                  <TableCell align="center">
                     <button className='admin-button' onClick={() => goToEdit(row.id)}>Details</button>
                     <DetailsDialogSlide />
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
+                  </TableCell>
+                  <TableCell align="center">
                     <button className='admin-button' onClick={() => handleClickOpen(row.id)}>
                       Complete
                     </button>
                     <AlertDialogSlide />
-                  </StyledTableCell>
+                  </TableCell>
                 </StyledTableRow>
               )
             })}
