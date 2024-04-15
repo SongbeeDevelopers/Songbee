@@ -22,8 +22,6 @@ function Header() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  console.log(history)
-
   const user = useSelector((store) => store.user);
 
   // dropdown logic
