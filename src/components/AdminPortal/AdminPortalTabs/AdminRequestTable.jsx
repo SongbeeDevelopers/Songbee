@@ -16,7 +16,7 @@ import TableRow from '@mui/material/TableRow';
 
 import AdminCompleteDialog from './AdminCompleteDialog';
 import AdminDetailsDialog from './AdminDetailsDialog';
-import FilterBar from '../FilterBar/FilterBar';
+import FilterBar from '../../FilterBar/FilterBar';
 
 
 function AdminRequestTable({ num }) {

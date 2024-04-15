@@ -11,7 +11,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 
-import FilterBar from "../FilterBar/FilterBar";
+import FilterBar from "../../FilterBar/FilterBar";
 
 function AdminArtistTable() {
   const dispatch = useDispatch();

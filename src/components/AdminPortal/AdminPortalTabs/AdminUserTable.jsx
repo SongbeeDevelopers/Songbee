@@ -12,7 +12,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
 import UserClassSelector from './UserClassSelector';
-import FilterBar from '../FilterBar/FilterBar';
+import FilterBar from '../../FilterBar/FilterBar';
 
 function AdminUserTable({num}) {
 
