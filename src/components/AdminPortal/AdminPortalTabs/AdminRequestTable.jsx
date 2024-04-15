@@ -4,13 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
 
 import Dialog from '@mui/material/Dialog';
-import Paper from '@mui/material/Paper';
 import Slide from '@mui/material/Slide';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
@@ -21,39 +19,39 @@ import FilterBar from '../../FilterBar/FilterBar';
 
 function AdminRequestTable({ num }) {
 
+  console.log(num)
+
   // hooks
   const history = useHistory();
   const dispatch = useDispatch();
-  
+
   // reducers
   const pendingRequests = useSelector(store => store.pendingRequests)
   const completedRequests = useSelector(store => store.completedRequests)
   const data = useSelector(store => store.filterResults);
-  
+
   // modal state
   const [open, setOpen] = useState(false);
   const [open1, setOpen1] = useState(false);
-  
+
   // date/time
-  const now = new Date ();
+  const now = new Date();
   const msPerDay = 24 * 60 * 60 * 1000;
 
-  
   // filters for completed and uncompleted reqs depending on tab
   useEffect(() => {
-    if (num === 0){
+    if (num === 0) {
       dispatch({
         type: "SET_FILTER_RESULTS",
         payload: pendingRequests
       })
-    } else if (num === 1){
+    } else if (num === 1) {
       dispatch({
         type: "SET_FILTER_RESULTS",
         payload: completedRequests
       })
     }
   }, [])
-  
 
   // --- modal logic ---
   const handleClickOpen = (id, x) => {
@@ -61,32 +59,28 @@ function AdminRequestTable({ num }) {
       type: "FETCH_CURRENT_REQUEST",
       payload: id
     })
-    if (x===1){
+    if (x === 1) {
       setOpen1(true);
     }
     else {
       setOpen(true);
     }
   };
-
   const handleClose = (x) => {
-    if (x===1){
+    if (x === 1) {
       setOpen1(false);
     }
     else {
       setOpen(false);
     }
   };
-
   const goToEdit = (id) => {
     history.push(`/request/edit/${id}`)
   }
-
   const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
   // --- /modal logic ---
-  
 
   // header styling
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -98,7 +92,7 @@ function AdminRequestTable({ num }) {
       fontSize: 14,
     },
   }));
-  
+
   // row styling
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
     '&:nth-of-type(odd)': {
@@ -124,10 +118,10 @@ function AdminRequestTable({ num }) {
             boxShadow: 'none'
           }
         }}
-      fullWidth={true}
-      maxWidth='sm'
+        fullWidth={true}
+        maxWidth='sm'
       >
-        <AdminCompleteDialog handleClose={handleClose}/>
+        <AdminCompleteDialog handleClose={handleClose} />
       </Dialog>
     );
   }
@@ -141,15 +135,15 @@ function AdminRequestTable({ num }) {
         keepMounted
         onClose={() => handleClose(1)}
         aria-describedby="alert-dialog-slide-description"
-        sx={{ 
-          width: 800, 
-          display: 'flex', 
-          flexDirection: 'column', 
+        sx={{
+          width: 800,
+          display: 'flex',
+          flexDirection: 'column',
           alignItems: 'center',
           ml: 10
         }}
       >
-        <AdminDetailsDialog handleClose={handleClose}/>
+        <AdminDetailsDialog handleClose={handleClose} />
       </Dialog>
     );
   }
@@ -158,60 +152,58 @@ function AdminRequestTable({ num }) {
   return (
     <div>
 
-      <FilterBar type={num === 0 ? 'pending' : 'completed'}/>
+      <FilterBar type={num === 0 ? 'pending' : 'completed'} />
 
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+        <Table sx={{ minWidth: 700 }}>
 
           <TableHead>
             <TableRow>
-              <StyledTableCell>Creation Date</StyledTableCell>
-              <StyledTableCell align="center">Requester E-Mail</StyledTableCell>
-              <StyledTableCell align="center">Requester / Recipient</StyledTableCell>
-              <StyledTableCell align="center">Due</StyledTableCell>
-              <StyledTableCell align="center">View Details</StyledTableCell>
-              <StyledTableCell align="center">Completion Form</StyledTableCell>
+              <TableCell>Creation Date</TableCell>
+              <TableCell align="center">Requester E-Mail</TableCell>
+              <TableCell align="center">Requester / Recipient</TableCell>
+              <TableCell align="center">Due</TableCell>
+              <TableCell align="center">View Details</TableCell>
+              <TableCell align="center">Completion Form</TableCell>
             </TableRow>
           </TableHead>
 
           <TableBody>
             {data.map((row) => {
-            const creationTime = new Date (row.created_at);
-            const daysLeft = Math.round((now.getTime() - creationTime.getTime()) / msPerDay);
-            return (
-              <StyledTableRow key={row.id}>
-                <StyledTableCell component="th" scope="row">
-                {new Date(row.created_at).toLocaleString('en-us')}
-                </StyledTableCell>
-                <StyledTableCell align="center">
-                {row.email}
-                </StyledTableCell>
-                <StyledTableCell align="center">
-                {row.requester} / {row.recipient}
-                </StyledTableCell>
-                <StyledTableCell align="center">
-                  { row.is_complete ? 
+              const creationTime = new Date(row.created_at);
+              const daysLeft = Math.round((now.getTime() - creationTime.getTime()) / msPerDay);
+              return (
+                <StyledTableRow key={row.id}>
+                  <StyledTableCell component="th" scope="row">
+                    {new Date(row.created_at).toLocaleString('en-us')}
+                  </StyledTableCell>
+                  <StyledTableCell align="center">
+                    {row.email}
+                  </StyledTableCell>
+                  <StyledTableCell align="center">
+                    {row.requester} / {row.recipient}
+                  </StyledTableCell>
+                  <StyledTableCell align="center">
+                    {row.is_complete ?
                       "Complete!" :
                       `Due in ${row.delivery_days - daysLeft} days`
-                  }</StyledTableCell>
-                <StyledTableCell align="center">
-                  <button className='admin-button' onClick={() => goToEdit(row.id)}>Details</button>
-                  <DetailsDialogSlide />
-                </StyledTableCell>
-                <StyledTableCell align="center">
-                  <button className='admin-button' onClick={() => handleClickOpen(row.id)}>
+                    }</StyledTableCell>
+                  <StyledTableCell align="center">
+                    <button className='admin-button' onClick={() => goToEdit(row.id)}>Details</button>
+                    <DetailsDialogSlide />
+                  </StyledTableCell>
+                  <StyledTableCell align="center">
+                    <button className='admin-button' onClick={() => handleClickOpen(row.id)}>
                       Complete
-                  </button>
-                <AlertDialogSlide />
-                </StyledTableCell>
-              </StyledTableRow>
-            )}
-            )}
+                    </button>
+                    <AlertDialogSlide />
+                  </StyledTableCell>
+                </StyledTableRow>
+              )
+            })}
           </TableBody>
-
+          
         </Table>
-      </TableContainer>
-      
+
     </div>
   );
 }

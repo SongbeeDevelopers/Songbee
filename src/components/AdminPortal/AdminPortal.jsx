@@ -14,7 +14,7 @@ function AdminPortal({ routeVariants }) {
 
   // on mount
   useEffect(() => {
-    dispatch({ type: "3" });
+    dispatch({ type: "FETCH_ALL_REQUESTS" });
   }, [])
   
   return (
