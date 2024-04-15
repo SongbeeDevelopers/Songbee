@@ -62,16 +62,16 @@ export default function AdminPortalTabs() {
     index: PropTypes.number.isRequired,
     value: PropTypes.number.isRequired,
   };
+  
 
   return (
     <div>
-      <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+      <Tabs value={value} onChange={handleChange} centered>
         <Tab label="Pending Requests" {...a11yProps(0)} />
         <Tab label="Completed Requests" {...a11yProps(1)} />
         <Tab label="Users" {...a11yProps(2)} />
         <Tab label="Pending Artists" {...a11yProps(3)} />
         <Tab label="Pending Artist Edits" {...a11yProps(4)} />
-
       </Tabs>
 
       <CustomTabPanel value={value} index={0}>
