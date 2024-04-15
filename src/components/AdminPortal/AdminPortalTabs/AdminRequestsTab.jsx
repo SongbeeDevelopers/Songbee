@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from 'react';
+import { useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
 
 import Dialog from '@mui/material/Dialog';
@@ -8,7 +8,7 @@ import Slide from '@mui/material/Slide';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
@@ -22,9 +22,6 @@ function AdminRequestsTab({ num, data }) {
   // hooks
   const history = useHistory();
   const dispatch = useDispatch();
-
-  // reducers
-
 
   // modal state
   const [open, setOpen] = useState(false);

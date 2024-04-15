@@ -16,7 +16,7 @@ function AdminPortal({ routeVariants }) {
   useEffect(() => {
     dispatch({ type: "FETCH_ALL_REQUESTS" });
   }, [])
-  
+
   return (
     <motion.div
       className="container"
@@ -24,6 +24,8 @@ function AdminPortal({ routeVariants }) {
       initial="initial"
       animate="final"
     >
+      <h2 className='portal-title'>Admin Portal</h2>
+      <br />
       <AdminPortalTabs />
     </motion.div>
   );
