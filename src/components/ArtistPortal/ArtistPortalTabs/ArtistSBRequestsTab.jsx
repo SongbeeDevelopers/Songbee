@@ -2,12 +2,10 @@ import React from "react";
 
 import '../ArtistPortal.css'
 
-function ArtistSBRequestsTab() {
+export default function ArtistSBRequestsTab() {
     return (
-        <div>
-
+        <div className="tab-body">
+            
         </div>
     )
 }
-
-export default ArtistSBRequestsTab
