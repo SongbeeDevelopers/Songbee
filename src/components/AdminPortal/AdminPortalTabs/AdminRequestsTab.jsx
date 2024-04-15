@@ -115,6 +115,10 @@ function AdminRequestsTab({ num, data }) {
     );
   }
 
+  function getDueDate(requestDay, deliveryDays) {
+    const due = new Date(requestDay).getTime() + msPerDay * deliveryDays
+    return new Date(due).toLocaleString('en-us')
+  }
 
   return (
     <div>
@@ -139,24 +143,33 @@ function AdminRequestsTab({ num, data }) {
             const daysLeft = Math.round((now.getTime() - creationTime.getTime()) / msPerDay);
             return (
               <StyledTableRow key={row.id}>
-                <TableCell component="th" scope="row">
+                {/* creation date */}
+                <TableCell>
                   {new Date(row.created_at).toLocaleString('en-us')}
                 </TableCell>
+
+                {/* email */}
                 <TableCell align="center">
                   {row.email}
                 </TableCell>
+
+                {/* requester/recipient */}
                 <TableCell align="center">
                   {row.requester} / {row.recipient}
                 </TableCell>
+
+                {/* due */}
                 <TableCell align="center">
-                  {row.is_complete ?
-                    "Complete!" :
-                    `Due in ${row.delivery_days - daysLeft} days`
-                  }</TableCell>
+                  {getDueDate(row.created_at, row.delivery_days)}
+                </TableCell>
+
+                {/* details btn */}
                 <TableCell align="center">
                   <button className='admin-button' onClick={() => goToEdit(row.id)}>Details</button>
                   <DetailsDialogSlide />
                 </TableCell>
+
+                {/* complete button */}
                 <TableCell align="center">
                   <button className='admin-button' onClick={() => handleClickOpen(row.id)}>
                     Complete

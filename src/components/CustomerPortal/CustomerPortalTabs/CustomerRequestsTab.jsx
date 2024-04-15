@@ -55,7 +55,7 @@ function CustomerRequests() {
           <TableBody>
               {userRequests.map((request, i) =>(
                 <TableRow key={i}>
-                  <TableCell align="left">{(new Date(request.created_at).toLocaleString('en-us').split(','))[0]}</TableCell>
+                  <TableCell>{(new Date(request.created_at).toLocaleString('en-us').split(','))[0]}</TableCell>
                   <TableCell align="center">{getDueDate(request.created_at, request.delivery_days)}</TableCell>
                   <TableCell align="center">{request.recipient}</TableCell>
                   <TableCell align="center">{}</TableCell>
