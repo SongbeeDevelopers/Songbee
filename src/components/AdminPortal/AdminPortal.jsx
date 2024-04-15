@@ -15,6 +15,7 @@ function AdminPortal({ routeVariants }) {
   // on mount
   useEffect(() => {
     dispatch({ type: "FETCH_ALL_REQUESTS" });
+    dispatch({ type: 'FETCH_ALL_USERS' })
   }, [])
 
   return (
