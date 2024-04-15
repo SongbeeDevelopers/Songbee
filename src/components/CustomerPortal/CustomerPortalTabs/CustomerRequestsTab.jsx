@@ -55,12 +55,40 @@ function CustomerRequests() {
           <TableBody>
               {userRequests.map((request, i) =>(
                 <TableRow key={i}>
-                  <TableCell>{(new Date(request.created_at).toLocaleString('en-us').split(','))[0]}</TableCell>
-                  <TableCell align="center">{getDueDate(request.created_at, request.delivery_days)}</TableCell>
-                  <TableCell align="center">{request.recipient}</TableCell>
-                  <TableCell align="center">{}</TableCell>
-                  <TableCell align="center">{request.is_complete ? `Complete!` : `In Progress`}</TableCell>
-                  <TableCell align="center"><button onClick={() => viewDetails(request.id)} className='user-portal-details-btn'>Details</button></TableCell>
+                  {/* req date */}
+                  <TableCell>
+                    {(new Date(request.created_at).toLocaleString('en-us').split(','))[0]}
+                  </TableCell>
+
+                  {/* due date */}
+                  <TableCell align="center">
+                    {getDueDate(request.created_at, request.delivery_days)}
+                  </TableCell>
+
+                  {/* recipient */}
+                  <TableCell align="center">
+                    {request.recipient}
+                  </TableCell>
+
+                  {/* artist */}
+                  <TableCell align="center">
+
+                  </TableCell>
+
+                  {/* status */}
+                  <TableCell align="center">
+                    {request.is_complete ? `Complete!` : `In Progress`}
+                  </TableCell>
+
+                  {/* details */}
+                  <TableCell align="center">
+                    <button
+                      className='user-portal-details-btn'
+                      onClick={() => viewDetails(request.id)}
+                    >
+                      Details
+                    </button>
+                  </TableCell>
                 </TableRow>
               ))}
           </TableBody>
