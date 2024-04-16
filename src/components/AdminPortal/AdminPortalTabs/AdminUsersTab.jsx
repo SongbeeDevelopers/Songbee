@@ -13,7 +13,7 @@ import UserClassSelector from './UserClassSelector';
 import FilterBar from '../../FilterBar/FilterBar';
 
 
-function AdminUsersTab({ data }) {
+export default function AdminUsersTab({ data }) {
 
   const dispatch = useDispatch();
 
@@ -79,5 +79,3 @@ function AdminUsersTab({ data }) {
     </div>
   );
 }
-
-export default AdminUsersTab;

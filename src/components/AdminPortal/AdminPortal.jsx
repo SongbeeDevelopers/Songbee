@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 import './AdminPortal.css'
 
 
-function AdminPortal({ routeVariants }) {
+export default function AdminPortal({ routeVariants }) {
 
   const dispatch = useDispatch();
 
@@ -33,5 +33,3 @@ function AdminPortal({ routeVariants }) {
     </motion.div>
   );
 }
-
-export default AdminPortal;

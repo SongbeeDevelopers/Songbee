@@ -11,7 +11,7 @@ import TableRow from "@mui/material/TableRow";
 import FilterBar from "../../FilterBar/FilterBar";
 
 
-function AdminArtistTable({ data }) {
+export default function AdminArtistTable({ data }) {
 
   const dispatch = useDispatch();
 
@@ -101,5 +101,3 @@ function AdminArtistTable({ data }) {
     </div>
   );
 }
-
-export default AdminArtistTable;

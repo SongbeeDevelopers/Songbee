@@ -11,7 +11,7 @@ import TableRow from "@mui/material/TableRow";
 import FilterBar from "../../FilterBar/FilterBar";
 
 
-function AdminArtistsPendingEdits({ data }) {
+export default function AdminArtistsPendingEdits({ data }) {
 
   const dispatch = useDispatch();
 
@@ -101,5 +101,3 @@ function AdminArtistsPendingEdits({ data }) {
     </div>
   );
 }
-
-export default AdminArtistsPendingEdits;

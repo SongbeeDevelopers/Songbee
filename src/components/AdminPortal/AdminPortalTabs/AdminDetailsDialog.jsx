@@ -9,7 +9,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Typography from "@mui/material/Typography";
 
 
-function AdminDetailsDialog({ handleClose }) {
+export default function AdminDetailsDialog({ handleClose }) {
 
   const song = useSelector(store => store.currentRequest);
 
@@ -96,5 +96,3 @@ function AdminDetailsDialog({ handleClose }) {
     </>
   );
 }
-
-export default AdminDetailsDialog

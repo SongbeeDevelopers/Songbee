@@ -17,7 +17,7 @@ import AdminDetailsDialog from './AdminDetailsDialog';
 import FilterBar from '../../FilterBar/FilterBar';
 
 
-function AdminRequestsTab({ num, data }) {
+export default function AdminRequestsTab({ num, data }) {
 
   // hooks
   const history = useHistory();
@@ -186,5 +186,3 @@ function AdminRequestsTab({ num, data }) {
     </div>
   );
 }
-
-export default AdminRequestsTab;
