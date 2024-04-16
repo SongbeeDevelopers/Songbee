@@ -368,7 +368,7 @@ function FinalQuestions ({ routeVariants }) {
         initial="initial"
         animate="final"
       >
-        <h1>Song Request Details</h1>
+        <h1>Final Song Details</h1>
   
         <p>Once you provide these final details we can begin creating your song!</p>
         <Box sx={{ width: "100%" }}>
