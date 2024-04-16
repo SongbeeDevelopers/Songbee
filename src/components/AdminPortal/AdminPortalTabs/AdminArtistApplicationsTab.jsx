@@ -1,31 +1,19 @@
 import * as React from "react";
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 
 import FilterBar from "../../FilterBar/FilterBar";
 
+
 function AdminArtistTable({ data }) {
 
   const dispatch = useDispatch();
-
-
-  // useEffect(() => {
-  //   dispatch({
-  //     type: "SET_FILTER_RESULTS",
-  //     payload: artists,
-  //   });
-  // }, []);   this is the one doing thee filtering above ^
-
-  useEffect(() => {
-
-  }, []);
 
   const approveArtist = (id, user_id) => {
     dispatch({
@@ -41,17 +29,6 @@ function AdminArtistTable({ data }) {
     });
   };
 
-  // header styling
-  const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    [`&.${tableCellClasses.head}`]: {
-      backgroundColor: theme.palette.common.black,
-      color: theme.palette.common.white,
-    },
-    [`&.${tableCellClasses.body}`]: {
-      fontSize: 14,
-    },
-  }));
-
   // row styling
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
     "&:nth-of-type(odd)": {
@@ -66,55 +43,61 @@ function AdminArtistTable({ data }) {
     <div>
       <FilterBar type="artist" />
 
-        <Table sx={{ minWidth: 700 }}>
-          <TableHead>
-            <TableRow>
-              <TableCell>Artist Name</TableCell>
-              <TableCell align="center">Vocal Type</TableCell>
-              <TableCell align="center">Website</TableCell>
-              <TableCell align="center">Approve</TableCell>
-              <TableCell align="center">Deny</TableCell>
-            </TableRow>
-          </TableHead>
+      <Table sx={{ minWidth: 700 }}>
 
-          <TableBody>
-            {data.map((artist) => {
-              return (
-                <StyledTableRow key={artist.id}>
-                  <StyledTableCell component="th" scope="row">
-                    {artist.artist_name}
-                  </StyledTableCell>
+        <TableHead>
+          <TableRow>
+            <TableCell>Artist Name</TableCell>
+            <TableCell align="center">Vocal Type</TableCell>
+            <TableCell align="center">Website</TableCell>
+            <TableCell align="center">Approve</TableCell>
+            <TableCell align="center">Deny</TableCell>
+          </TableRow>
+        </TableHead>
 
-                  <StyledTableCell align="center">
-                    {artist.vocal_type}
-                  </StyledTableCell>
+        <TableBody>
+          {data.map((artist) => {
+            return (
+              <StyledTableRow key={artist.id}>
+                {/* artist name */}
+                <TableCell>
+                  {artist.artist_name}
+                </TableCell>
 
-                  <StyledTableCell align="center">
-                    {artist.website}
-                  </StyledTableCell>
+                {/* vocal type */}
+                <TableCell align="center">
+                  {artist.vocal_type}
+                </TableCell>
 
-                  <StyledTableCell align="center">
-                    <button
-                      className="admin-button"
-                      onClick={() => approveArtist(artist.id, artist.user_id)}
-                    >
-                      Approve
-                    </button>
-                  </StyledTableCell>
+                {/* website */}
+                <TableCell align="center">
+                  {artist.website}
+                </TableCell>
 
-                  <StyledTableCell align="center">
-                    <button
-                      className="admin-button"
-                      onClick={() => denyArtist(artist.id)}
-                    >
-                      Deny
-                    </button>
-                  </StyledTableCell>
-                </StyledTableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
+                {/* approve button */}
+                <TableCell align="center">
+                  <button
+                    className="admin-button"
+                    onClick={() => approveArtist(artist.id, artist.user_id)}
+                  >
+                    Approve
+                  </button>
+                </TableCell>
+
+                {/* deny button */}
+                <TableCell align="center">
+                  <button
+                    className="admin-button"
+                    onClick={() => denyArtist(artist.id)}
+                  >
+                    Deny
+                  </button>
+                </TableCell>
+              </StyledTableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
     </div>
   );
 }

@@ -17,6 +17,7 @@ function AdminPortal({ routeVariants }) {
     dispatch({ type: "FETCH_ALL_REQUESTS" });
     dispatch({ type: 'FETCH_ALL_USERS' })
     dispatch({ type: "FETCH_PENDING_ARTISTS" });
+    dispatch({ type: "GET_ARTIST_PENDING" });
   }, [])
 
   return (

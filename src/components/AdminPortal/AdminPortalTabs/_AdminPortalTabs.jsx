@@ -24,6 +24,7 @@ export default function AdminPortalTabs() {
   const completedRequests = useSelector(store => store.completedRequests)
   const users = useSelector(store => store.allUsers)
   const artistApplications = useSelector((store) => store.pendingArtists);
+  const artistEdits = useSelector((store) => store.pendingEdits);
 
   // MUI tab structure
   const handleChange = (event, newValue) => {
@@ -89,7 +90,7 @@ export default function AdminPortalTabs() {
       </CustomTabPanel>
 
       <CustomTabPanel value={value} index={4}>
-        <AdminArtistEdits />
+        <AdminArtistEdits data={artistEdits} />
       </CustomTabPanel>
     </div>
   )

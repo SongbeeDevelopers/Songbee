@@ -1,37 +1,24 @@
 import * as React from "react";
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
+import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 
 import FilterBar from "../../FilterBar/FilterBar";
 
-function AdminArtistsPendingEdits() {
+
+function AdminArtistsPendingEdits({ data }) {
+
   const dispatch = useDispatch();
-
-  const data = useSelector((store) => store.pendingEdits);
-  
-  console.log(data);
-
-
-
-  useEffect(() => {
-    dispatch({
-      type: "GET_ARTIST_PENDING",
-    });
-  }, []);
 
   const approveArtist = (id) => {
     dispatch({
       type: "APPROVE_EDIT_ARTIST",
-      payload: { id},
+      payload: { id },
     });
   };
 
@@ -41,17 +28,6 @@ function AdminArtistsPendingEdits() {
       payload: id,
     });
   };
-
-  // header styling
-  const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    [`&.${tableCellClasses.head}`]: {
-      backgroundColor: theme.palette.common.black,
-      color: theme.palette.common.white,
-    },
-    [`&.${tableCellClasses.body}`]: {
-      fontSize: 14,
-    },
-  }));
 
   // row styling
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
@@ -63,61 +39,65 @@ function AdminArtistsPendingEdits() {
     },
   }));
 
+
   return (
     <div>
       <FilterBar type="artist" />
 
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 700 }} aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>Artist Name</StyledTableCell>
-              <StyledTableCell align="center">Vocal Type</StyledTableCell>
-              <StyledTableCell align="center">Website</StyledTableCell>
-              <StyledTableCell align="center">Approve</StyledTableCell>
-              <StyledTableCell align="center">Deny</StyledTableCell>
-            </TableRow>
-          </TableHead>
+      <Table sx={{ minWidth: 700 }} aria-label="customized table">
+        <TableHead>
+          <TableRow>
+            <TableCell>Artist Name</TableCell>
+            <TableCell align="center">Vocal Type</TableCell>
+            <TableCell align="center">Website</TableCell>
+            <TableCell align="center">Approve</TableCell>
+            <TableCell align="center">Deny</TableCell>
+          </TableRow>
+        </TableHead>
 
-          <TableBody>
-            {data.map((artist) => {
-              return (
-                <StyledTableRow key={artist.id}>
-                  <StyledTableCell component="th" scope="row">
-                    {artist.edited_artistName}
-                  </StyledTableCell>
+        <TableBody>
+          {data.map((artist) => {
+            return (
+              <StyledTableRow key={artist.id}>
+                {/* artist name */}
+                <TableCell component="th" scope="row">
+                  {artist.edited_artistName}
+                </TableCell>
 
-                  <StyledTableCell align="center">
-                    {artist.edited_vocal_type}
-                  </StyledTableCell>
+                {/* vocal type */}
+                <TableCell align="center">
+                  {artist.edited_vocal_type}
+                </TableCell>
 
-                  <StyledTableCell align="center">
-                    {artist.edited_website}
-                  </StyledTableCell>
+                {/* website */}
+                <TableCell align="center">
+                  {artist.edited_website}
+                </TableCell>
 
-                  <StyledTableCell align="center">
-                    <button
-                      className="admin-button"
-                      onClick={() => approveArtist(artist.artist_id)}
-                    >
-                      Approve
-                    </button>
-                  </StyledTableCell>
+                {/* approve btn */}
+                <TableCell align="center">
+                  <button
+                    className="admin-button"
+                    onClick={() => approveArtist(artist.artist_id)}
+                  >
+                    Approve
+                  </button>
+                </TableCell>
 
-                  <StyledTableCell align="center">
-                    <button
-                      className="admin-button"
-                      onClick={() => denyArtist(artist.artist_id)}
-                    >
-                      Deny
-                    </button>
-                  </StyledTableCell>
-                </StyledTableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
-      </TableContainer>
+                {/* deny btn */}
+                <TableCell align="center">
+                  <button
+                    className="admin-button"
+                    onClick={() => denyArtist(artist.artist_id)}
+                  >
+                    Deny
+                  </button>
+                </TableCell>
+              </StyledTableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
     </div>
   );
 }
