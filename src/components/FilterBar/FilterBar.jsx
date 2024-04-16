@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { Button, Select, MenuItem } from "@mui/material";
+import { Button, Select, MenuItem, InputLabel, FormControl } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 
@@ -60,16 +60,20 @@ function FilterBar({ type }) {
           <Typography gutterBottom variant="overline" display="block" mt={1}>
             Filter by user class:
           </Typography>
-          <Select
-            value={classQuery}
-            label="User Class"
-            onChange={(event) => setClassQuery(event.target.value)}
-            sx={{width: 125, mr: 4 }}
-          >
-            <MenuItem value={1}>User</MenuItem>
-            <MenuItem value={2}>Artist</MenuItem>
-            <MenuItem value={3}>Admin</MenuItem>
-          </Select>
+          <FormControl>
+            <InputLabel>Class</InputLabel>
+            <Select
+              value={classQuery}
+              label="User Class"
+              onChange={(event) => setClassQuery(event.target.value)}
+              sx={{ width: 125, mr: 4 }}
+            >
+              <MenuItem></MenuItem>
+              <MenuItem value={1}>User</MenuItem>
+              <MenuItem value={2}>Artist</MenuItem>
+              <MenuItem value={3}>Admin</MenuItem>
+            </Select>
+          </FormControl>
         </div>
       }
 
