@@ -6,6 +6,7 @@ import StepButton from "@mui/material/StepButton";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import TextField from '@mui/material/TextField';
 
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -24,6 +25,7 @@ const steps = [
     "Tell us more!",
     "Why's it important?",
     "Memories, Stories, Etc.",
+    "Memories cont.",
     "Anything else?",
   ];
 
@@ -101,107 +103,159 @@ function FinalQuestions ({ routeVariants }) {
         if (activeStep === 0) {
           return (
             <>
-        <div className="reqFormGroup">
-          <div className="reqFormInput">
-            <label>Tell us what is most important to your song</label>
-            <input
-              value={requestData.important_what}
-              className="reqFormInput"
-              placeholder="What?"
-              onChange={() =>
-                handleInput("important_what", event.target.value)
-              }
-            ></input>
-          </div>
-          </div>
+              <div className="reqFormGroup3">
+                <div className="reqFormInput">
+                  <label>
+                    Why are you creating a song? Tell us what Is Important to
+                    your song?
+                  </label>
+                  <h5 className="reqFormPrompts">
+                    Tell your artist why you’re writing this song. What emotions
+                    do you want the listener to feel?{" "}
+                  </h5>
+                  <p className="reqFormPrompts">
+                    Minimum Required characters 50-max 500.
+                  </p>
+                  <TextField
+                    value={requestData.important_what}
+                    className="reqFormGroup3input"
+                    placeholder="What?"
+                    onChange={() =>
+                      handleInput("important_what", event.target.value)
+                    }
+                    multiline
+                    rows={4}
+                  />
+                </div>
+              </div>
             </>
           );
         }
         if (activeStep === 1) {
           return (
             <>
-              <div className="reqFormGroup">
-              <div className="reqFormInput">
-            <label>Tell us why it is so important</label>
-            <input
-              value={requestData.important_why}
-              className="reqFormInput"
-              placeholder="Why?"
-              onChange={() =>
-                handleInput("important_why", event.target.value)
-              }
-            ></input>
-          </div>
-        </div>
+              <div className="reqFormGroup3">
+                <div className="reqFormInput">
+                  <label>Tell us why it is so important</label>
+                  <TextField
+                    value={requestData.important_why}
+                    className="reqFormGroup3input"
+                    placeholder="Why?"
+                    onChange={() =>
+                      handleInput("important_why", event.target.value)
+                    }
+                    multiline
+                    rows={4}
+                  />
+                </div>
+              </div>
             </>
           );
         } else if (activeStep === 2) {
           return (
             <>
- <div>
-          <h4 className="reqFormSubHeader">
-            Select two of our story prompts or just tell us memories and
-            stories that you feel tell your story.{" "}
-          </h4>
+              <div>
+                <h4 className="reqFormSubHeader">
+                  Select two of our story prompts or just tell us memories and
+                  stories that you feel tell your story.{" "}
+                </h4>
 
-          <p className="reqFormPrompts">
-            a. What they mean to you?
-            <br />
-            b. How did you meet?
-            <br />
-            c. Inside Jokes
-            <br />
-            d. Advice you have for them
-            <br />
-            e. Describe a memory about your loved one that makes you laugh
-            <br />
-            f. Describe or list things about them that makes them special to
-            you.
-            <br />
-            g. Other stories or memories
-            <br />
-          </p>
+                <p className="reqFormPrompts">
+                  a. What they mean to you?
+                  <br />
+                  b. How did you meet?
+                  <br />
+                  c. Inside Jokes
+                  <br />
+                  d. Advice you have for them
+                  <br />
+                  e. Describe a memory about your loved one that makes you laugh
+                  <br />
+                  f. Describe or list things about them that makes them special
+                  to you.
+                  <br />
+                  g. Other stories or memories
+                  <br />
+                </p>
 
-          <h5 className="reqFormPrompts">
-            Tip: Include Descriptive language. Use your senses and really
-            describe your feelings and emotions. Be sure it makes sense when
-            someone outside of your relationship reads it.{" "}
-          </h5>
+                <h5 className="reqFormPrompts">
+                  Tip: Include Descriptive language. Use your senses and really
+                  describe your feelings and emotions. Be sure it makes sense
+                  when someone outside of your relationship reads it.{" "}
+                </h5>
 
-          <div className="reqFormGroup">
-            <input
-              value={requestData.story1}
-              className="reqFormInput"
-              placeholder="Prompt 1"
-              onChange={() => handleInput("story1", event.target.value)}
-            ></input>
-            <input
-              value={requestData.story2}
-              className="reqFormInput"
-              placeholder="Prompt 2"
-              onChange={() => handleInput("story2", event.target.value)}
-            ></input>
-          </div>
-        </div>
+                <div className="reqFormGroup">
+                  <input
+                    value={requestData.story1}
+                    className="reqFormInput"
+                    placeholder="Prompt 1"
+                    onChange={() => handleInput("story1", event.target.value)}
+                  ></input>
+                </div>
+              </div>
             </>
           );
         } else if (activeStep === 3) {
+            return (
+              <>
+                <div>
+                  <h4 className="reqFormSubHeader">
+                    Select two of our story prompts or just tell us memories and
+                    stories that you feel tell your story.{" "}
+                  </h4>
+  
+                  <p className="reqFormPrompts">
+                    a. What they mean to you?
+                    <br />
+                    b. How did you meet?
+                    <br />
+                    c. Inside Jokes
+                    <br />
+                    d. Advice you have for them
+                    <br />
+                    e. Describe a memory about your loved one that makes you laugh
+                    <br />
+                    f. Describe or list things about them that makes them special
+                    to you.
+                    <br />
+                    g. Other stories or memories
+                    <br />
+                  </p>
+  
+                  <h5 className="reqFormPrompts">
+                    Tip: Include Descriptive language. Use your senses and really
+                    describe your feelings and emotions. Be sure it makes sense
+                    when someone outside of your relationship reads it.{" "}
+                  </h5>
+  
+                  <div className="reqFormGroup">
+                    <input
+                      value={requestData.story2}
+                      className="reqFormInput"
+                      placeholder="Prompt 2"
+                      onChange={() => handleInput("story2", event.target.value)}
+                    ></input>
+                  </div>
+                </div>
+              </>
+            );
+          } else if (activeStep === 4) {
           return (
             <>
-        <div className="reqFormGroup">
-          <div className="reqFormAdditionalDetails">
-            <h2 id="additionalDetailsHeader">
-              Is there anything else we should know?
-            </h2>
-            <input
-              value={requestData.additional_info}
-              placeholder="Additional Details"
-              onChange={() =>
-                handleInput("additional_info", event.target.value)
-              }
-            ></input>
-          </div>
-        </div>
+              <div className="reqFormGroup">
+                <div className="reqFormAdditionalDetails">
+                  <h2 id="additionalDetailsHeader">
+                    Is there anything else we should know?
+                  </h2>
+                  <input
+                    value={requestData.additional_info}
+                    placeholder="Additional Details"
+                    onChange={() =>
+                      handleInput("additional_info", event.target.value)
+                    }
+                  ></input>
+                </div>
+              </div>
             </>
           );
         }
@@ -337,18 +391,18 @@ function FinalQuestions ({ routeVariants }) {
               </Typography>
               <form className="reqForm">{formDetails()}</form>
               <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-                <Button
+                <button
                   color="inherit"
                   disabled={activeStep === 0}
                   onClick={handleBack}
-                  sx={{ mr: 1 }}
+                  className="orderCheckoutButton"
                 >
                   Back
-                </Button>
+                </button>
                 <Box sx={{ flex: "1 1 auto" }} />
-                <Button onClick={handleNext} sx={{ mr: 1 }}>
+                <button onClick={handleNext} className="orderCheckoutButton">
                   Next
-                </Button>
+                </button>
                 {activeStep !== steps.length &&
                   (completed[activeStep] ? (
                     <Typography
@@ -358,11 +412,11 @@ function FinalQuestions ({ routeVariants }) {
                       Step {activeStep + 1} already completed
                     </Typography>
                   ) : (
-                    <Button onClick={handleComplete} className="reqFormSubmit">
+                    <button onClick={handleComplete} className="orderCheckoutButton">
                       {completedSteps() === totalSteps() - 1
                         ? "Finish"
                         : "Complete Step"}
-                    </Button>
+                    </button>
                   ))}
               </Box>
             </React.Fragment>
