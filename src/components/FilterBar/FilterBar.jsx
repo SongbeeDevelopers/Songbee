@@ -64,7 +64,7 @@ function FilterBar({ type }) {
             value={classQuery}
             label="User Class"
             onChange={(event) => setClassQuery(event.target.value)}
-            sx={{ mr: 4 }}
+            sx={{width: 125, mr: 4 }}
           >
             <MenuItem value={1}>User</MenuItem>
             <MenuItem value={2}>Artist</MenuItem>
@@ -76,7 +76,7 @@ function FilterBar({ type }) {
       <Button
         variant="contained"
         onClick={submitSearch}
-        sx={{ mt: 1, backgroundColor: "#feaf17", color: "black" }}
+        sx={{ height: 40, mt: 6.5, backgroundColor: "#feaf17", color: "black" }}
       >
         FILTER
       </Button>
