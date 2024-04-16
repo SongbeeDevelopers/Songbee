@@ -8,92 +8,79 @@ import Typography from "@mui/material/Typography";
 import './FilterBar.css'
 
 
-function FilterBar({type}){
+function FilterBar({ type }) {
 
   const dispatch = useDispatch();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [classQuery, setClassQuery] = useState('');
 
-  // regular filter logic
   const submitSearch = () => {
-    dispatch({
-      type: "FETCH_RESULTS",
-      payload: {
-        type,
-        query: searchQuery
-      }
-    });
+    // submits user search
+    type === 'user' ?
+      dispatch({
+        type: 'FETCH_RESULTS',
+        payload: {
+          type,
+          query: searchQuery,
+          classQuery
+        }
+      })
+      :
+      // submits standard search
+      dispatch({
+        type: "FETCH_RESULTS",
+        payload: {
+          type,
+          query: searchQuery
+        }
+      });
   };
-
-  // user class logic
-  const submitClassSearch = () => {
-    dispatch({
-        type: "FETCH_CLASS_FILTER",
-        payload: classQuery
-    })
-  }
-
-  // if in users tab create additional filter by user class filter
-  const UserFilter = () => {
-    if (type === 'user'){
-      return (
-        <>
-          <Typography gutterBottom variant="overline" display="block" mt={1}>
-            Filter by user class:
-          </Typography>
-
-          <Select
-          value={classQuery}
-          label="User Class"
-          onChange={(event) => setClassQuery(event.target.value)}
-          sx={{mr: 5}}
-          >
-            <MenuItem value={1}>User</MenuItem>
-            <MenuItem value={2}>Artist</MenuItem>
-            <MenuItem value={3}>Admin</MenuItem>
-          </Select>
-
-          <Button
-            variant="contained"
-            onClick={submitClassSearch}
-            sx={{mb: 1, backgroundColor: "#feaf17", color: "black"}}
-          >
-            FILTER
-          </Button>
-        </>
-      )
-    }
-  }
 
 
   return (
     <div className="filters">
+
       <div className="filter-bar">
         <Typography gutterBottom variant="overline" display="block" mt={1}>
           Filter by keyword:
         </Typography>
-
         <TextField
           label="Enter Text"
           type="search"
           onChange={(event) => setSearchQuery(event.target.value)}
           value={searchQuery}
-          sx={{mr: 5}}
+          sx={{ mr: 4 }}
         />
-    
-        <Button
-          variant="contained"
-          onClick={submitSearch}
-          sx={{mt: 1, backgroundColor: "#feaf17", color: "black"}}
-        >
-          FILTER
-        </Button>
       </div>
-      
-      <div className="userFilter">
-        <UserFilter />
-      </div>
+
+      {/* additional filter for user class on users tab */}
+      {type === 'user' &&
+        <div className="userFilter">
+          <Typography gutterBottom variant="overline" display="block" mt={1}>
+            Filter by user class:
+          </Typography>
+          <Select
+            value={classQuery}
+            label="User Class"
+            onChange={(event) => setClassQuery(event.target.value)}
+            sx={{ mr: 4 }}
+          >
+            <MenuItem value={1}>User</MenuItem>
+            <MenuItem value={2}>Artist</MenuItem>
+            <MenuItem value={3}>Admin</MenuItem>
+          </Select>
+        </div>
+      }
+
+      <Button
+        variant="contained"
+        onClick={submitSearch}
+        sx={{ mt: 1, backgroundColor: "#feaf17", color: "black" }}
+      >
+        FILTER
+      </Button>
+
     </div>
   )
 }

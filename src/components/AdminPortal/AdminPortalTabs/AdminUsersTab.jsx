@@ -15,15 +15,6 @@ import FilterBar from '../../FilterBar/FilterBar';
 
 export default function AdminUsersTab({ data }) {
 
-  const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch({
-  //     type: "SET_FILTER_RESULTS",
-  //     payload: users
-  //   })
-  // }, [])
-
   // table row styling
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
     '&:nth-of-type(odd)': {
