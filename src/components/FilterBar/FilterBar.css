@@ -1,10 +1,11 @@
 .filters {
     display: flex;
+    justify-content: center;
     gap: 50px;
 }
 
 .filter-bar {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .userFilter {
