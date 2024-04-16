@@ -155,6 +155,7 @@ function FinalQuestions ({ routeVariants }) {
           return (
             <>
               <div>
+                <h2 className="reqFormGroup3">Share Your Story Part 1</h2>
                 <h4 className="reqFormSubHeader">
                   Select two of our story prompts or just tell us memories and
                   stories that you feel tell your story.{" "}
@@ -184,13 +185,15 @@ function FinalQuestions ({ routeVariants }) {
                   when someone outside of your relationship reads it.{" "}
                 </h5>
 
-                <div className="reqFormGroup">
-                  <input
-                    value={requestData.story1}
-                    className="reqFormInput"
-                    placeholder="Prompt 1"
-                    onChange={() => handleInput("story1", event.target.value)}
-                  ></input>
+                <div className="reqFormGroup3">
+                <TextField
+                                  value={requestData.story1}
+                                  className="reqFormGroup3input"
+                                  placeholder="Prompt 1"
+                                  onChange={() => handleInput("story1", event.target.value)}
+                    multiline
+                    rows={4}
+                  />
                 </div>
               </div>
             </>
@@ -199,6 +202,7 @@ function FinalQuestions ({ routeVariants }) {
             return (
               <>
                 <div>
+                <h2 className="reqFormGroup3">Part 2</h2>
                   <h4 className="reqFormSubHeader">
                     Select two of our story prompts or just tell us memories and
                     stories that you feel tell your story.{" "}
@@ -228,13 +232,15 @@ function FinalQuestions ({ routeVariants }) {
                     when someone outside of your relationship reads it.{" "}
                   </h5>
   
-                  <div className="reqFormGroup">
-                    <input
-                      value={requestData.story2}
-                      className="reqFormInput"
-                      placeholder="Prompt 2"
-                      onChange={() => handleInput("story2", event.target.value)}
-                    ></input>
+                  <div className="reqFormGroup3">
+                          <TextField
+                                  value={requestData.story1}
+                                  className="reqFormGroup3input"
+                                  placeholder="Prompt 2"
+                                  onChange={() => handleInput("story2", event.target.value)}
+                    multiline
+                    rows={4}
+                  />
                   </div>
                 </div>
               </>
@@ -242,18 +248,21 @@ function FinalQuestions ({ routeVariants }) {
           } else if (activeStep === 4) {
           return (
             <>
-              <div className="reqFormGroup">
+              <div className="reqFormGroup3">
                 <div className="reqFormAdditionalDetails">
                   <h2 id="additionalDetailsHeader">
                     Is there anything else we should know?
                   </h2>
-                  <input
-                    value={requestData.additional_info}
-                    placeholder="Additional Details"
-                    onChange={() =>
-                      handleInput("additional_info", event.target.value)
-                    }
-                  ></input>
+                             <TextField
+                                  className="reqFormGroup3input"
+                                  value={requestData.additional_info}
+                                  placeholder="Additional Details"
+                                  onChange={() =>
+                                    handleInput("additional_info", event.target.value)
+                                  }
+                    multiline
+                    rows={4}
+                  />
                 </div>
               </div>
             </>
