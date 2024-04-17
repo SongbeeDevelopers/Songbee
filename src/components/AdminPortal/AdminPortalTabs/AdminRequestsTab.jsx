@@ -123,68 +123,70 @@ export default function AdminRequestsTab({ num, data }) {
 
   return (
     <div>
-      <FilterBar type={num === 0 ? 'pending' : 'completed'} />
+      {data.length > 0 ?
+        <>
+          <FilterBar type={num === 0 ? 'pending' : 'completed'} />
 
-      <Table sx={{ minWidth: 700 }}>
-        <TableHead>
-          <TableRow>
-            <TableCell>Creation Date</TableCell>
-            <TableCell align="center">Requester E-Mail</TableCell>
-            <TableCell align="center">Artist</TableCell>
-            <TableCell align="center">Due</TableCell>
-            <TableCell align="center">View Details</TableCell>
-            <TableCell align="center">Completion Form</TableCell>
-          </TableRow>
-        </TableHead>
+          <Table sx={{ minWidth: 700 }}>
+            <TableHead>
+              <TableRow>
+                <TableCell>Creation Date</TableCell>
+                <TableCell align="center">Requester E-Mail</TableCell>
+                <TableCell align="center">Artist</TableCell>
+                <TableCell align="center">Due</TableCell>
+                <TableCell align="center">View Details</TableCell>
+                <TableCell align="center">Completion Form</TableCell>
+              </TableRow>
+            </TableHead>
 
-        {data.length > 0 ?
-          <TableBody>
-            {data.map((row) => {
-              const creationTime = new Date(row.created_at);
-              const daysLeft = Math.round((now.getTime() - creationTime.getTime()) / msPerDay);
-              return (
-                <StyledTableRow key={row.id}>
-                  {/* creation date */}
-                  <TableCell>
-                    {new Date(row.created_at).toLocaleString('en-us')}
-                  </TableCell>
+            <TableBody>
+              {data.map((row) => {
+                const creationTime = new Date(row.created_at);
+                const daysLeft = Math.round((now.getTime() - creationTime.getTime()) / msPerDay);
+                return (
+                  <StyledTableRow key={row.id}>
+                    {/* creation date */}
+                    <TableCell>
+                      {new Date(row.created_at).toLocaleString('en-us')}
+                    </TableCell>
 
-                  {/* email */}
-                  <TableCell align="center">
-                    {row.email}
-                  </TableCell>
+                    {/* email */}
+                    <TableCell align="center">
+                      {row.email}
+                    </TableCell>
 
-                  {/* artist */}
-                  <TableCell align="center">
+                    {/* artist */}
+                    <TableCell align="center">
 
-                  </TableCell>
+                    </TableCell>
 
-                  {/* due */}
-                  <TableCell align="center">
-                    {getDueDate(row.created_at, row.delivery_days)}
-                  </TableCell>
+                    {/* due */}
+                    <TableCell align="center">
+                      {getDueDate(row.created_at, row.delivery_days)}
+                    </TableCell>
 
-                  {/* details btn */}
-                  <TableCell align="center">
-                    <button className='admin-button' onClick={() => goToEdit(row.id)}>Details</button>
-                    <DetailsDialogSlide />
-                  </TableCell>
+                    {/* details btn */}
+                    <TableCell align="center">
+                      <button className='admin-button' onClick={() => goToEdit(row.id)}>Details</button>
+                      <DetailsDialogSlide />
+                    </TableCell>
 
-                  {/* complete button */}
-                  <TableCell align="center">
-                    <button className='admin-button' onClick={() => handleClickOpen(row.id)}>
-                      Complete
-                    </button>
-                    <AlertDialogSlide />
-                  </TableCell>
-                </StyledTableRow>
-              )
-            })}
-          </TableBody>
-          :
-          <p className='admin-empty-msg'>There are no requests.</p>
-        }
-      </Table>
+                    {/* complete button */}
+                    <TableCell align="center">
+                      <button className='admin-button' onClick={() => handleClickOpen(row.id)}>
+                        Complete
+                      </button>
+                      <AlertDialogSlide />
+                    </TableCell>
+                  </StyledTableRow>
+                )
+              })}
+            </TableBody>
+          </Table>
+        </>
+        :
+        <p className='admin-empty-msg'>There are no requests.</p>
+      }
 
     </div>
   );
