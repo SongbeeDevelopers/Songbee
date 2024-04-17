@@ -89,6 +89,7 @@ and dropdown in Songbee JR */
     box-shadow: 0 2px 3px rgba(0, 0, 0, .2);
 }
 .reqFormGroup3input {
+    justify-self: center;
     border-radius: 8px;
     width: 100;
     border: 0;
