@@ -316,7 +316,7 @@ Learning Packs
 -------------------------------------------------------------------------------- */
 
 .jr-learning-packs-bg {
-  background-image: url('/public/junior/honeycomb-fill.png');
+  background-image: url('https://res.cloudinary.com/dke4ukd0z/image/upload/v1713363089/honeycomb-fill_lbnvzh.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: bottom;
@@ -375,7 +375,7 @@ More than just music
 
 .jr-mtjm-bg {
   position: relative;
-  background-image: url('../../../public/junior/honeycomb-empty.png');
+  background-image: url('https://res.cloudinary.com/dke4ukd0z/image/upload/v1713363101/honeycomb-empty_vby8kg.png');
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: top;
