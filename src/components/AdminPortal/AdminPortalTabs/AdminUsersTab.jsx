@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
@@ -28,45 +26,52 @@ export default function AdminUsersTab({ data }) {
 
   return (
     <div>
-      <FilterBar type='user' />
-        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+      {data.length > 0 ?
+        <>
+          <FilterBar type='user' />
+          <Table sx={{ minWidth: 700 }} aria-label="customized table">
 
-          <TableHead>
-            <TableRow>
-              <TableCell>Email</TableCell>
-              <TableCell align="center">Credit</TableCell>
-              <TableCell align="center">Created At</TableCell>
-              <TableCell align="center">User Class</TableCell>
-            </TableRow>
-          </TableHead>
+            <TableHead>
+              <TableRow>
+                <TableCell>Email</TableCell>
+                <TableCell align="center">Credit</TableCell>
+                <TableCell align="center">Created At</TableCell>
+                <TableCell align="center">User Class</TableCell>
+              </TableRow>
+            </TableHead>
 
-          <TableBody>
-            {data.map((user) => (
-              <StyledTableRow key={user.id}>
-                {/* email */}
-                <TableCell component="th" scope="row">
-                  {user.email}
-                </TableCell>
+            <TableBody>
+              {data.map((user) => (
+                <StyledTableRow key={user.id}>
+                  {/* email */}
+                  <TableCell component="th" scope="row">
+                    {user.email}
+                  </TableCell>
 
-                {/* credit */}
-                <TableCell align="center">
-                  {user.credit ? user.credit : "0"}
-                </TableCell>
+                  {/* credit */}
+                  <TableCell align="center">
+                    {user.credit ? user.credit : "0"}
+                  </TableCell>
 
-                {/* creation date */}
-                <TableCell align="center">
-                  {new Date(user.created_at).toLocaleString('en-us')}
-                </TableCell>
+                  {/* creation date */}
+                  <TableCell align="center">
+                    {new Date(user.created_at).toLocaleString('en-us')}
+                  </TableCell>
 
-                {/* class */}
-                <TableCell align="center">
-                  <UserClassSelector user={user} />
-                </TableCell>
-              </StyledTableRow>
-            ))}
-          </TableBody>
+                  {/* class */}
+                  <TableCell align="center">
+                    <UserClassSelector user={user} />
+                  </TableCell>
+                </StyledTableRow>
+              ))}
+            </TableBody>
 
-        </Table>
+          </Table>
+        </>
+        :
+        <p className='admin-empty-msg'>There are no users.</p>
+      }
     </div>
+
   );
 }

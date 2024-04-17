@@ -42,62 +42,68 @@ export default function AdminArtistsPendingEdits({ data }) {
 
   return (
     <div>
-      <FilterBar type="artist" />
+      {data.length > 0 ?
+        <>
+          <FilterBar type="artist" />
 
-      <Table sx={{ minWidth: 700 }} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Artist Name</TableCell>
-            <TableCell align="center">Vocal Type</TableCell>
-            <TableCell align="center">Website</TableCell>
-            <TableCell align="center">Approve</TableCell>
-            <TableCell align="center">Deny</TableCell>
-          </TableRow>
-        </TableHead>
+          <Table sx={{ minWidth: 700 }} aria-label="customized table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Artist Name</TableCell>
+                <TableCell align="center">Vocal Type</TableCell>
+                <TableCell align="center">Website</TableCell>
+                <TableCell align="center">Approve</TableCell>
+                <TableCell align="center">Deny</TableCell>
+              </TableRow>
+            </TableHead>
 
-        <TableBody>
-          {data.map((artist) => {
-            return (
-              <StyledTableRow key={artist.id}>
-                {/* artist name */}
-                <TableCell component="th" scope="row">
-                  {artist.edited_artistName}
-                </TableCell>
+            <TableBody>
+              {data.map((artist) => {
+                return (
+                  <StyledTableRow key={artist.id}>
+                    {/* artist name */}
+                    <TableCell component="th" scope="row">
+                      {artist.edited_artistName}
+                    </TableCell>
 
-                {/* vocal type */}
-                <TableCell align="center">
-                  {artist.edited_vocal_type}
-                </TableCell>
+                    {/* vocal type */}
+                    <TableCell align="center">
+                      {artist.edited_vocal_type}
+                    </TableCell>
 
-                {/* website */}
-                <TableCell align="center">
-                  {artist.edited_website}
-                </TableCell>
+                    {/* website */}
+                    <TableCell align="center">
+                      {artist.edited_website}
+                    </TableCell>
 
-                {/* approve btn */}
-                <TableCell align="center">
-                  <button
-                    className="admin-button"
-                    onClick={() => approveArtist(artist.artist_id)}
-                  >
-                    Approve
-                  </button>
-                </TableCell>
+                    {/* approve btn */}
+                    <TableCell align="center">
+                      <button
+                        className="admin-button"
+                        onClick={() => approveArtist(artist.artist_id)}
+                      >
+                        Approve
+                      </button>
+                    </TableCell>
 
-                {/* deny btn */}
-                <TableCell align="center">
-                  <button
-                    className="admin-button"
-                    onClick={() => denyArtist(artist.artist_id)}
-                  >
-                    Deny
-                  </button>
-                </TableCell>
-              </StyledTableRow>
-            );
-          })}
-        </TableBody>
-      </Table>
+                    {/* deny btn */}
+                    <TableCell align="center">
+                      <button
+                        className="admin-button"
+                        onClick={() => denyArtist(artist.artist_id)}
+                      >
+                        Deny
+                      </button>
+                    </TableCell>
+                  </StyledTableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        </>
+        :
+        <p className='admin-empty-msg'>There are no pending edits.</p>
+      }
     </div>
   );
 }

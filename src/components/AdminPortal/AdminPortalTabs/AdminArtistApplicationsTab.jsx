@@ -41,63 +41,69 @@ export default function AdminArtistTable({ data }) {
 
   return (
     <div>
-      <FilterBar type="artist" />
+      {data.length > 0 ?
+        <>
+          <FilterBar type="artist" />
 
-      <Table sx={{ minWidth: 700 }}>
+          <Table sx={{ minWidth: 700 }}>
 
-        <TableHead>
-          <TableRow>
-            <TableCell>Artist Name</TableCell>
-            <TableCell align="center">Vocal Type</TableCell>
-            <TableCell align="center">Website</TableCell>
-            <TableCell align="center">Approve</TableCell>
-            <TableCell align="center">Deny</TableCell>
-          </TableRow>
-        </TableHead>
+            <TableHead>
+              <TableRow>
+                <TableCell>Artist Name</TableCell>
+                <TableCell align="center">Vocal Type</TableCell>
+                <TableCell align="center">Website</TableCell>
+                <TableCell align="center">Approve</TableCell>
+                <TableCell align="center">Deny</TableCell>
+              </TableRow>
+            </TableHead>
 
-        <TableBody>
-          {data.map((artist) => {
-            return (
-              <StyledTableRow key={artist.id}>
-                {/* artist name */}
-                <TableCell>
-                  {artist.artist_name}
-                </TableCell>
+            <TableBody>
+              {data.map((artist) => {
+                return (
+                  <StyledTableRow key={artist.id}>
+                    {/* artist name */}
+                    <TableCell>
+                      {artist.artist_name}
+                    </TableCell>
 
-                {/* vocal type */}
-                <TableCell align="center">
-                  {artist.vocal_type}
-                </TableCell>
+                    {/* vocal type */}
+                    <TableCell align="center">
+                      {artist.vocal_type}
+                    </TableCell>
 
-                {/* website */}
-                <TableCell align="center">
-                  {artist.website}
-                </TableCell>
+                    {/* website */}
+                    <TableCell align="center">
+                      {artist.website}
+                    </TableCell>
 
-                {/* approve button */}
-                <TableCell align="center">
-                  <button
-                    className="admin-button"
-                    onClick={() => approveArtist(artist.id, artist.user_id)}
-                  >
-                    Approve
-                  </button>
-                </TableCell>
+                    {/* approve button */}
+                    <TableCell align="center">
+                      <button
+                        className="admin-button"
+                        onClick={() => approveArtist(artist.id, artist.user_id)}
+                      >
+                        Approve
+                      </button>
+                    </TableCell>
 
-                {/* deny button */}
-                <TableCell align="center">
-                  <button
-                    className="admin-button"
-                    onClick={() => denyArtist(artist.id)}
-                  >
-                    Deny
-                  </button>
-                </TableCell>
-              </StyledTableRow>
-            );
-          })}
-        </TableBody>
-      </Table>
+                    {/* deny button */}
+                    <TableCell align="center">
+                      <button
+                        className="admin-button"
+                        onClick={() => denyArtist(artist.id)}
+                      >
+                        Deny
+                      </button>
+                    </TableCell>
+                  </StyledTableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        </>
+        :
+        <p className='admin-empty-msg'>There are no artist applications.</p>
+      }
     </div>
   );
 }
