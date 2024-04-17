@@ -6,9 +6,7 @@ import StepButton from "@mui/material/StepButton";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
+
 
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -115,12 +113,9 @@ export default function NewOrderPage({ routeVariants }) {
   console.log("artits:", artists)
 
   let artistId
-  const setId = (id) => {
-    artistId = id
-    console.log("id", id)
-  }
 
   const handleInput = (key, value) => {
+    event.preventDefault();
     if (key === "artist"){
       console.log("artistId before", artistId)
       dispatch({
@@ -137,9 +132,8 @@ export default function NewOrderPage({ routeVariants }) {
 
   function dispatchDetails() {
     dispatch({
-      type: "UPDATE_SONG_REQUEST",
+      type: "CREATE_SONG_REQUEST",
       payload: {
-        id: id,
         history: history,
         data: requestData,
       },
@@ -147,40 +141,6 @@ export default function NewOrderPage({ routeVariants }) {
   }
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState({});
-
-  // const ArtistDisplay = () => {
-  //   artists.map((artist) => {
-  //     console.log("artist.id", artist.id)
-  //     console.log("artistId", artistId)
-  //     if (artist.id === artistId){
-  //       return (
-  //         <>
-  //       <Box sx={{ minWidth: 400, minHeight: 700}}>
-  //       <Card>
-  //       <CardContent className='cardContainer' sx={{p: "5%"}}>
-  //         <div className='songDetails'>
-  //         <Typography sx={{ fontSize: 4 }} variant="h2" gutterBottom>
-  //             <p className='songTitle'>Your Artist:</p> 
-  //           </Typography>
-  //           <img src={request.photo} />
-  //           <Typography sx={{ fontSize: 5 }} variant="h2" gutterBottom>
-  //             <p className='songTitle'>{artist.artist_name}</p> 
-  //           </Typography>
-  //           <Typography variant="h5" component="div"> 
-  //             <p className='artistTitle'>{artist.bio}</p>
-  //           </Typography>
-  //           <Typography variant="h5"> 
-  //           <a href={artist.website}>{artist.artist_name}'s website</a>
-  //           </Typography>
-  //         </div>
-  //       </CardContent>
-  //       </Card>
-  //       </Box>
-  //         </>
-  //       )
-  //     }
-  //   })
-  // }
 
   const formDetails = () => {
     if (activeStep === 3) {
@@ -190,23 +150,11 @@ export default function NewOrderPage({ routeVariants }) {
             <div className="reqFormGroup">
               <div className="reqFormInput">
                 <label>When would you like your song delivered?</label>
-                <button>{new Date(threeDays).toDateString()} + $80</button>
-                <button>{new Date(fiveDays).toDateString()} + $40</button>
-                <button>{new Date(sixDays).toDateString()} + $0</button>
+                <button onClick={() => handleInput("delivery_days", 3)}>{new Date(threeDays).toDateString()} + $80</button>
+                <button onClick={() => handleInput("delivery_days", 5)}>{new Date(fiveDays).toDateString()} + $40</button>
+                <button onClick={() => handleInput("delivery_days", 6)}>{new Date(sixDays).toDateString()} + $0</button>
               </div>
             </div>
-            {/* <select
-              className="orderInput"
-              name="delivery_days"
-              defaultValue={"Select Delivery Option"}
-              value={newOrder.delivery_days}
-              onChange={() =>
-                handleSelection("delivery_days", event.target.value)
-              }
-            >
-            </select> */}
-
-
 
             {!user.id && (
               <button className="checkoutLogRegBtn" onClick={handleOpen}>
@@ -366,33 +314,32 @@ export default function NewOrderPage({ routeVariants }) {
     } else if (activeStep === 4) {
       return (
         <>
-            <select
+            <button
               className="orderInput"
-              name="streaming"
-              value={newOrder.streaming}
-              onChange={() => handleSelection("streaming", event.target.value)}
-            >
-              <option selected disabled>
-                Select Streaming Option
-              </option>
-              <option value={true}>Add Streaming</option>
-              <option value={false}>Standard No Streaming</option>
-            </select>
+              onClick={() => handleInput("streaming", true)}
+            >Add My Song to Streaming Services!</button>
 
-            <select
+            <button
               className="orderInput"
-              name="extra_verse"
-              value={newOrder.extra_verse}
-              onChange={() =>
-                handleSelection("extra_verse", event.target.value)
+              onClick={() =>
+                handleInput("extra_verse", true)
               }
-            >
-              <option selected disabled>
-                Select Number of Verses
-              </option>
-              <option value={false}>Standard 2 Verses</option>
-              <option value={true}>Add Extra Verse</option>
-            </select>
+            >Add an Additional Verse!</button>
+
+            <button
+              className="orderInput"
+              onClick={() =>
+                handleInput("license", true)
+              }
+            >I Need a Commercial License for My Song!</button>
+
+            <button
+              className="orderInput"
+              onClick={() =>
+                handleInput("backing_track", true)
+              }
+            >Add an instrumental backing track!</button>
+
             <Modal
             open={open}
             onClose={handleClose}
@@ -479,15 +426,15 @@ export default function NewOrderPage({ routeVariants }) {
       requestData.recipient_relationship &&
       requestData.occasion &&
       requestData.vocal_type &&
-      requestData.vocal_type &&
-      requestData.vibe &&
       requestData.vibe &&
       requestData.tempo &&
       requestData.inspiration &&
-      requestData.story1 &&
-      requestData.story2 &&
-      requestData.important_what &&
-      requestData.important_why
+      requestData.delivery_days &&
+      requestData.streaming &&
+      requestData.extra_verse &&
+      user.id &&
+      allStepsCompleted()
+
     ) {
       Swal.fire({
         title: "Submit?",
@@ -500,7 +447,7 @@ export default function NewOrderPage({ routeVariants }) {
           dispatchDetails();
         }
       });
-    } else {
+    } else if (allStepsCompleted()){
       Swal.fire({
         title: "Submit?",
         text: "You have left important details blank. Do you want to submit anyways?",
@@ -571,9 +518,9 @@ export default function NewOrderPage({ routeVariants }) {
                   Back
                 </Button>
                 <Box sx={{ flex: "1 1 auto" }} />
-                <Button onClick={handleNext} sx={{ mr: 1 }}>
+                <button className="orderCheckoutButton" onClick={handleNext} sx={{ mr: 1 }}>
                   Next
-                </Button>
+                </button>
                 {activeStep !== steps.length &&
                   (completed[activeStep] ? (
                     <Typography
@@ -583,11 +530,11 @@ export default function NewOrderPage({ routeVariants }) {
                       Step {activeStep + 1} already completed
                     </Typography>
                   ) : (
-                    <Button onClick={handleComplete} className="reqFormSubmit">
+                    <button onClick={handleComplete} className="orderCheckoutButton">
                       {completedSteps() === totalSteps() - 1
                         ? "Finish"
                         : "Complete Step"}
-                    </Button>
+                    </button>
                   ))}
               </Box>
             </React.Fragment>

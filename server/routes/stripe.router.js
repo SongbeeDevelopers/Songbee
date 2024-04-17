@@ -18,37 +18,49 @@ router.post('/', async (req, res) => {
       const order = req.body.orderDetails
       let lineitemArray = [{
         // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-        price: 'price_1OCT4RJoOrJf4ICWm5W7fop0',
+        price: 'price_1P4PlQJoOrJf4ICWdNFf9Ebt',
         quantity: 1,
       }];
-      if (order.streaming === 'true'){
+      if (order.streaming === true){
         lineitemArray.push({
             price: 'price_1Ohf5YJoOrJf4ICWTcOS5hjJ',
             quantity: 1,
           })
       }
-      if (order.extra_verse === 'true'){
+      if (order.extra_verse === true){
         lineitemArray.push({
-            price: 'price_1Ohf1WJoOrJf4ICWVuPjtbGj',
+            price: 'price_1P4PhlJoOrJf4ICWe3kmugcl',
             quantity: 1,
           })
       }
-      if (order.delivery_days === '4') {
+      if (order.license === true){
+        lineitemArray.push({
+            price: 'price_1P4PTrJoOrJf4ICWnYmIY3E7',
+            quantity: 1,
+          })
+      }
+      if (order.backing_track === true){
+        lineitemArray.push({
+            price: 'price_1P4PSZJoOrJf4ICW8C5NWDNW',
+            quantity: 1,
+          })
+      }
+      if (order.delivery_days === 5) {
         lineitemArray.push({
             price: 'price_1Ohf4WJoOrJf4ICWVvSZkHVH',
             quantity: 1,
           })
       }
-      else if (order.delivery_days === '3') {
+      else if (order.delivery_days === 3) {
         lineitemArray.push({
-            price: 'price_1Ohf2lJoOrJf4ICW6WQBD9iE',
+            price: 'price_1P4PRCJoOrJf4ICW8lmdZoDQ',
             quantity: 1,
           })
       }
       const session = await stripe.checkout.sessions.create({
         line_items: lineitemArray,
         mode: 'payment',
-        success_url: `https://songbee-cf8d644750db.herokuapp.com/#/created/${order.delivery_days}/${order.extra_verse}/${order.streaming}`,
+        success_url: `http://localhost:5173/#/finalquestions/${req.body.id}`,
         cancel_url: `https://songbee-cf8d644750db.herokuapp.com/#/order`,
         automatic_tax: {enabled: true},
       });

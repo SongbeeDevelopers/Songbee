@@ -38,7 +38,8 @@ function* fetchCheckout (action) {
             method: "POST",
             url: '/api/stripe',
             data: {
-                orderDetails: action.payload.data}
+                orderDetails: action.payload.data,
+                id: action.payload.id}
         })
         // console.log("stripeResponse:", stripeResponse)
         yield window.location.href = stripeResponse.data
@@ -54,7 +55,11 @@ function* createSongRequest (action){
             url: "/api/request/create",
             data: action.payload.data
         })
-        yield action.payload.history.push(`/requestform/${response.data.id}`)
+        yield put ({
+            type: "FETCH_CHECKOUT",
+            payload: { data: action.payload.data, 
+                        id: response.data.id }
+        })
         
         yield put ({ type: 'ADD_ORDER_ID', payload: response.data.id })
     } catch (error) {

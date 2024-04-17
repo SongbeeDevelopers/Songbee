@@ -153,7 +153,7 @@ function ComponentRouter() {
           <NewOrderPage routeVariants={routeVariants} />
         </Route>
 
-        <Route exact path="/finalquestions">
+        <Route exact path="/finalquestions/:id">
           <FinalQuestions routeVariants={routeVariants} />
         </Route>
 
