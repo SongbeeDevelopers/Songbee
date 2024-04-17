@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import ArtistPortalTabs from './ArtistPortalTabs/ArtistPortalTabs'
+import ArtistPortalTabs from './ArtistPortalTabs/_ArtistPortalTabs'
 
 import { motion } from 'framer-motion';
 import './ArtistPortal.css';

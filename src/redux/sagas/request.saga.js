@@ -99,7 +99,6 @@ function* loadEditPage (action) {
     }
 }
 
-
 function* jrLoadEditPage (action) {
     try {
         const response = yield axios.get(`/api/jr-request/current/${action.payload}`);

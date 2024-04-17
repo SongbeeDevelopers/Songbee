@@ -16,7 +16,7 @@ import Typography from "@mui/material/Typography";
 import '../ArtistPortal.css'
 
 
-export default function ArtistTabs() {
+export default function ArtistPortalTabs() {
 
   const dispatch = useDispatch();
 

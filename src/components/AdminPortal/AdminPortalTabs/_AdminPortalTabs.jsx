@@ -1,42 +1,36 @@
-import * as React from 'react';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React from "react";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 
-import { motion } from 'framer-motion';
+import AdminRequestsTab from './AdminRequestsTab';
+import AdminArtistApplicationsTab from './AdminArtistApplicationsTab';
+import AdminUsersTab from './AdminUsersTab';
+import AdminArtistEdits from './AdminArtistEdits';
 
-import AdminRequestTable from './AdminRequestTable';
 import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
+import Typography from '@mui/material/Typography';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
-import Typography from '@mui/material/Typography';
 
-import AdminArtistTable from './AdminArtistTable';
-import AdminUserTable from './AdminUserTable';
-
-import './AdminPage.css'
-import AdminArtistsPendingEdits from './AdminArtistsPendingEdits';
+import '../AdminPortal.css'
 
 
-function AdminPage({ routeVariants }) {
+export default function AdminPortalTabs() {
 
-  const dispatch = useDispatch();
+  const [value, setValue] = useState(0);
 
-  // local state
-  const [value, setValue] = React.useState(0);
+  const pendingRequests = useSelector(store => store.pendingRequests)
+  const completedRequests = useSelector(store => store.completedRequests)
+  const users = useSelector(store => store.allUsers)
+  const artistApplications = useSelector((store) => store.pendingArtists);
+  const artistEdits = useSelector((store) => store.pendingEdits);
 
-  // on mount
-  useEffect(() => {
-    dispatch({ type: "3" });
-  }, [])
-
-  // handles tabs state
+  // MUI tab structure
   const handleChange = (event, newValue) => {
     event.preventDefault();
     setValue(newValue);
   };
-
-  // tabs layout
   const CustomTabPanel = (props) => {
     const { children, value, index, ...other } = props;
     return (
@@ -55,66 +49,49 @@ function AdminPage({ routeVariants }) {
       </div>
     );
   }
-  
-  // tab logic
   CustomTabPanel.propTypes = {
     children: PropTypes.node,
     index: PropTypes.number.isRequired,
     value: PropTypes.number.isRequired,
   };
-  
-  // controls tab switching
   const a11yProps = (index) => {
-    if (index === 0) {
-
-    }
     return {
       id: `simple-tab-${index}`,
       'aria-controls': `simple-tabpanel-${index}`,
     };
   }
+  // end of tab structure
   
-  
-  return (
-    <motion.div
-      className="container"
-      variants={routeVariants}
-      initial="initial"
-      animate="final"
-    >
 
-      <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+  return (
+    <div>
+      <Tabs value={value} onChange={handleChange} centered>
         <Tab label="Pending Requests" {...a11yProps(0)} />
         <Tab label="Completed Requests" {...a11yProps(1)} />
         <Tab label="Users" {...a11yProps(2)} />
-        <Tab label="Pending Artists" {...a11yProps(3)} />
-        <Tab label="Pending Artist Edits" {...a11yProps(4)} />
-
+        <Tab label="Artist Applications" {...a11yProps(3)} />
+        <Tab label="Artist Edits" {...a11yProps(4)} />
       </Tabs>
-      
+
       <CustomTabPanel value={value} index={0}>
-        <AdminRequestTable num={0}/>
+        <AdminRequestsTab num={0} data={pendingRequests} />
       </CustomTabPanel>
 
       <CustomTabPanel value={value} index={1}>
-        <AdminRequestTable num={1}/>
+        <AdminRequestsTab num={1} data={completedRequests} />
       </CustomTabPanel>
 
       <CustomTabPanel value={value} index={2}>
-        <AdminUserTable />
+        <AdminUsersTab data={users} />
       </CustomTabPanel>
 
       <CustomTabPanel value={value} index={3}>
-        <AdminArtistTable />
+        <AdminArtistApplicationsTab data={artistApplications} />
       </CustomTabPanel>
-
 
       <CustomTabPanel value={value} index={4}>
-        <AdminArtistsPendingEdits />
+        <AdminArtistEdits data={artistEdits} />
       </CustomTabPanel>
-
-    </motion.div>
-  );
+    </div>
+  )
 }
-
-export default AdminPage;

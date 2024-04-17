@@ -24,7 +24,7 @@ import FinalQuestions from "../OrderPage/FinalQuestions";
 
 // user functionality
 import CustomerPortal from "../CustomerPortal/CustomerPortal";
-import AdminPage from "../AdminPage/AdminPage";
+import AdminPortal from "../AdminPortal/AdminPortal";
 import EditRequestPage from "../EditRequestPage/EditRequestPage";
 import RequestDetails from "../RequestDetails/RequestDetails"
 
@@ -56,6 +56,7 @@ import JrFooter from "../JrFooter/JrFooter";
 import LearningPacksPage from "../LearningPacksPage/PacksPage";
 import LearningPacksHeader from "../Header/LearningPacksHeader";
 import LearningPackView from "../LearningPackView/PackView";
+
 
 function ComponentRouter() {
   const location = useLocation();
@@ -267,7 +268,7 @@ function ComponentRouter() {
 
         {/* this needs to be further protected */}
         <ProtectedRoute exact path="/admin" allowedUserClasses={[3]}>
-          <AdminPage routeVariants={routeVariants} />
+          <AdminPortal routeVariants={routeVariants} />
         </ProtectedRoute>
 
         <ProtectedRoute exact path="/artist" allowedUserClasses={[2, 3]}>

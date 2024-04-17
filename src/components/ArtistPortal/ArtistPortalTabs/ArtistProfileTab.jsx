@@ -2,10 +2,12 @@ import React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
+import ArtistBioPage from "../../ArtistBioPages/ArtistBioPage";
+import EditArtistProfileDialog from "./EditArtistProfileDialog";
+
 import { Button } from "@mui/material";
 
 import "../ArtistPortal.css"
-import EditArtistProfileDialog from "./EditArtistProfileDialog";
 
 
 function ArtistProfileTab() {
@@ -22,7 +24,7 @@ function ArtistProfileTab() {
     <div className="tab-body">
       {artistProfile ?
         <>
-
+          <ArtistBioPage />
           <Button sx={{ color: "black" }} onClick={handleOpenArtist}>
             Edit Artist Profile Info
           </Button>

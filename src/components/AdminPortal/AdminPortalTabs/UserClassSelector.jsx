@@ -5,7 +5,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 
 
-function UserClassSelector({ user }) {
+export default function UserClassSelector({ user }) {
 
   const dispatch = useDispatch()
 
@@ -33,5 +33,3 @@ function UserClassSelector({ user }) {
     </Select>
   )
 }
-
-export default UserClassSelector
