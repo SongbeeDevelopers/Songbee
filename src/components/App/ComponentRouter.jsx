@@ -18,7 +18,6 @@ import LandingPage from "../LandingPage/LandingPage";
 // order process
 import OrderPage from "../OrderPage/OrderPage";
 import SongRequestPage from "../SongRequestPage/SongRequestPage";
-import NewOrderPage from "../OrderPage/NewOrderPage";
 import CreationPage from "../CreationPage/CreationPage";
 import FinalQuestions from "../OrderPage/FinalQuestions";
 
@@ -103,7 +102,6 @@ function ComponentRouter() {
         location.pathname === "/register" ||
         // order
         location.pathname === "/order" ||
-        location.pathname === "/neworder" ||
         location.pathname === "/requestform/:id" ||
         location.pathname === "/details/:id" ||
         location.pathname === "/created/:delivery_days/:extra_verse/:streaming" ||
@@ -148,10 +146,6 @@ function ComponentRouter() {
 
         <Route exact path="/order">
           <OrderPage routeVariants={routeVariants} />
-        </Route>
-
-        <Route exact path="/neworder">
-          <NewOrderPage routeVariants={routeVariants} />
         </Route>
 
         <Route exact path="/finalquestions/:id">

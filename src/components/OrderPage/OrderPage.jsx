@@ -509,16 +509,15 @@ export default function OrderPage({ routeVariants }) {
               </Typography>
               <form className="reqForm">{formDetails()}</form>
               <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-                <Button
-                  color="inherit"
+                <button
+                  className="user-portal-details-btn"
                   disabled={activeStep === 0}
                   onClick={handleBack}
-                  sx={{ mr: 1 }}
                 >
                   Back
-                </Button>
+                </button>
                 <Box sx={{ flex: "1 1 auto" }} />
-                <button className="orderCheckoutButton" onClick={handleNext} sx={{ mr: 1 }}>
+                <button className="user-portal-details-btn" onClick={handleNext} sx={{ mr: 1 }}>
                   Next
                 </button>
                 {activeStep !== steps.length &&
@@ -530,7 +529,7 @@ export default function OrderPage({ routeVariants }) {
                       Step {activeStep + 1} already completed
                     </Typography>
                   ) : (
-                    <button onClick={handleComplete} className="orderCheckoutButton">
+                    <button onClick={handleComplete} className="user-portal-details-btn">
                       {completedSteps() === totalSteps() - 1
                         ? "Finish"
                         : "Complete Step"}

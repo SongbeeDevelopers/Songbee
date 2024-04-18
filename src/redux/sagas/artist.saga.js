@@ -113,7 +113,7 @@ function* fetchCurrentArtist(action) {
     const response = yield axios.get(`/api/artist/current/${action.payload}`)
     yield put({
       type: "SET_CURRENT_ARTIST",
-      payload: response.data[0]
+      payload: response.data
     })
   } catch (error) {
     console.error("SAGA fetchCurrentArtist failed:", error)

@@ -313,7 +313,7 @@ router.get('/current/:id', async (req, res) => {
   artistResponse.rows[0].genres = genreResponse.rows
   console.log("artistResponse", artistResponse.rows[0]);
   console.log("genreResponse", genreResponse.rows);
-  // res.send(artistResponse.rows[0]);
+  res.send(artistResponse.rows[0]);
 } catch (error){
   console.log('get current artist failed:', error)
   connection.query("ROLLBACK;");

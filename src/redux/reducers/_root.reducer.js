@@ -18,6 +18,7 @@ import jrRequestData from './jrRequestData.reducer';
 import artistProfile from "./artistProfile.reducer";
 import pendingEdits from "./pendingEdits.reducer";
 import currentArtist from "./currentArtist.reducer";
+import finalQuestions from './finalQuestions.reducer';
 
 
 // rootReducer is the primary reducer for our entire project
@@ -44,7 +45,8 @@ const rootReducer = combineReducers({
   jrRequestData,
   artistProfile,
   pendingEdits,
-  currentArtist
+  currentArtist,
+  finalQuestions
 });
 
 export default rootReducer;
