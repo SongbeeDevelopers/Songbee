@@ -69,7 +69,7 @@ export default function AdminUsersTab({ data }) {
           </Table>
         </>
         :
-        <p className='admin-empty-msg'>There are no users.</p>
+        <p className='admin-empty-msg'>There are currently no users.</p>
       }
     </div>
 

@@ -1,12 +1,15 @@
 import * as React from 'react';
 import { useState } from 'react';
 
-import Dialog from '@mui/material/Dialog';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
+import {
+  Button,
+  Dialog,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 import AdminCompleteDialog from './AdminPortalDialogs/AdminCompleteDialog';
@@ -75,7 +78,7 @@ export default function AdminRequestsTab({ num, data }) {
 
                   {/* artist */}
                   <TableCell align="center">
-                  {/* NEED TO FILL THIS */}
+                    {/* NEED TO FILL THIS */}
                   </TableCell>
 
                   {/* due */}
@@ -85,14 +88,16 @@ export default function AdminRequestsTab({ num, data }) {
 
                   {/* details btn */}
                   <TableCell align="center">
-                    <button className='admin-button' onClick={() => setDetailsOpen(true)}>
-                      Details
-                    </button>
+                    <Button variant="contained"
+                      onClick={() => setDetailsOpen(true)}
+                      sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
+                    >
+                      DETAILS
+                    </Button>
 
                     {/* details dialog */}
-                    <Dialog
+                    <Dialog keepMounted fullWidth maxWidth="md"
                       open={detailsOpen}
-                      keepMounted
                       onClose={() => setDetailsOpen(false)}
                     >
                       <AdminDetailsDialog request={row} />
@@ -101,14 +106,16 @@ export default function AdminRequestsTab({ num, data }) {
 
                   {/* complete button */}
                   <TableCell align="center">
-                    <button className='admin-button' onClick={() => setCompleteOpen(true)}>
-                      Complete
-                    </button>
+                    <Button variant="contained"
+                      onClick={() => setCompleteOpen(true)}
+                      sx={{ height: 35, width: 95, backgroundColor: "#feaf17", color: "black" }}
+                    >
+                      COMPLETE
+                    </Button>
 
-                    {/* details dialog */}
-                    <Dialog
+                    {/* complete dialog */}
+                    <Dialog keepMounted fullWidth maxWidth="md"
                       open={completeOpen}
-                      keepMounted
                       onClose={() => setCompleteOpen(false)}
                     >
                       <AdminCompleteDialog request={row} />
@@ -121,7 +128,7 @@ export default function AdminRequestsTab({ num, data }) {
           </Table>
         </>
         :
-        <p className='admin-empty-msg'>There are no requests.</p>
+        <p className='admin-empty-msg'>There are currently no requests.</p>
       }
     </div>
   );

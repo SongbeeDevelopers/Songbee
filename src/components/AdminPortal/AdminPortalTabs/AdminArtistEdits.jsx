@@ -102,7 +102,7 @@ export default function AdminArtistsPendingEdits({ data }) {
           </Table>
         </>
         :
-        <p className='admin-empty-msg'>There are no pending edits.</p>
+        <p className='admin-empty-msg'>There are currently no pending edits.</p>
       }
     </div>
   );

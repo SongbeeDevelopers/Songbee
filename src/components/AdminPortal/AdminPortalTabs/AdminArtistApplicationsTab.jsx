@@ -102,7 +102,7 @@ export default function AdminArtistTable({ data }) {
           </Table>
         </>
         :
-        <p className='admin-empty-msg'>There are no artist applications.</p>
+        <p className='admin-empty-msg'>There are currently no artist applications.</p>
       }
     </div>
   );
