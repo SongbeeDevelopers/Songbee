@@ -105,10 +105,7 @@ function FinalQuestions ({ routeVariants }) {
             <>
               <div className="reqFormGroup3">
                 <div className="reqFormInput">
-                  <label>
-                    Why are you creating a song? Tell us what Is Important to
-                    your song?
-                  </label>
+                <h2 className="reqFormGroup3">Tell us what Is Important to your song?</h2>
                   <h5 className="reqFormPrompts">
                     Tell your artist why you’re writing this song. What emotions
                     do you want the listener to feel?{" "}
@@ -136,7 +133,10 @@ function FinalQuestions ({ routeVariants }) {
             <>
               <div className="reqFormGroup3">
                 <div className="reqFormInput">
-                  <label>Tell us why it is so important</label>
+                <h2 className="reqFormGroup3">Tell us why it is so important</h2>
+                <h5 className="reqFormPrompts">
+                    Tell the artist more about your inspiration{" "}
+                  </h5>
                   <TextField
                     value={requestData.important_why}
                     className="reqFormGroup3input"
@@ -253,6 +253,9 @@ function FinalQuestions ({ routeVariants }) {
                   <h2 id="additionalDetailsHeader">
                     Is there anything else we should know?
                   </h2>
+                  <h5 className="reqFormPrompts">
+                    Provide any additional details you would like the artist to know!{" "}
+                  </h5>
                              <TextField
                                   className="reqFormGroup3input"
                                   value={requestData.additional_info}
