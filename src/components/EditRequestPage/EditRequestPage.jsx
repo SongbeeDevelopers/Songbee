@@ -5,7 +5,7 @@ import { useParams, useHistory } from 'react-router-dom/cjs/react-router-dom.min
 
 import { motion } from 'framer-motion';
 
-function EditRequestPage({ routeVariants }) {
+function EditRequestPage({ routeVariants, request }) {
 
   const dispatch = useDispatch()
   const history = useHistory()
@@ -14,18 +14,18 @@ function EditRequestPage({ routeVariants }) {
   const requestData = useSelector(store => store.requestData)
   const { id } = useParams()
 
-  useEffect(() => {
-    dispatch({
-        type: 'LOAD_EDIT_PAGE',
-        payload: id})
-  }, [id])
+  // useEffect(() => {
+  //   dispatch({
+  //       type: 'LOAD_EDIT_PAGE',
+  //       payload: id})
+  // }, [id])
 
-  const handleInput = (key, value) => {
-    dispatch({
-      type: 'SET_REQUEST_DATA',
-      payload: {...requestData, [key]: value}
-    })
-  }
+  // const handleInput = (key, value) => {
+  //   dispatch({
+  //     type: 'SET_REQUEST_DATA',
+  //     payload: {...requestData, [key]: value}
+  //   })
+  // }
 
   const submitRequest = (event) => {
     event.preventDefault()
@@ -56,7 +56,7 @@ function EditRequestPage({ routeVariants }) {
           <div className='reqFormInput'>
             <label>Who is Creating the Song?</label>
             <input 
-              value={requestData.requester}
+              value={request.requester}
               className='reqFormInput'
               placeholder='You, the family, the team, etc.'
               onChange={() => handleInput('requester', event.target.value)}
@@ -66,7 +66,7 @@ function EditRequestPage({ routeVariants }) {
           <div className='reqFormInput'>
             <label>Is this song for a Special Occasion?</label>
             <input
-              value={requestData.occasion}
+              value={request.occasion}
               className='reqFormInput'
               placeholder='Type the Occasion Here'
               onChange={() => handleInput('occasion', event.target.value)}
@@ -79,7 +79,7 @@ function EditRequestPage({ routeVariants }) {
             <label>Who is this Song For?</label>
             <div className='reqFormGroup'>
               <input
-                value={requestData.recipient}
+                value={request.recipient}
                 className='reqFormInput'
                 id='reqFormNameInput'
                 placeholder='Name or Nickname'
@@ -87,7 +87,7 @@ function EditRequestPage({ routeVariants }) {
               ></input>
 
               <input
-                value={requestData.pronunciation}
+                value={request.pronunciation}
                 className='reqFormInput'
                 id='reqFormNameInput'
                 placeholder='Pronunciation'
@@ -96,7 +96,7 @@ function EditRequestPage({ routeVariants }) {
             </div>
 
             <input
-              value={requestData.recipient_relationship}
+              value={request.recipient_relationship}
               className='reqFormInput'
               placeholder='Relationship'
               onChange={() => handleInput('recipient_relationship', event.target.value)}
@@ -106,7 +106,7 @@ function EditRequestPage({ routeVariants }) {
           <div className='reqFormInput'>
               <label>What inspired your song?</label>
               <input
-                value={requestData.inspiration}
+                value={request.inspiration}
                 className='reqFormInput'
                 placeholder='Inspiration'
                 onChange={() => handleInput('inspiration', event.target.value)}
@@ -120,7 +120,7 @@ function EditRequestPage({ routeVariants }) {
           <div className='reqFormSelect'>
             <label>Choose a Genre</label>
             <select 
-              value={requestData.genre}
+              value={request.genre}
               onChange={() => handleInput('genre_id', event.target.value)}
             >
               <option selected disabled>Select Genre</option>
@@ -135,7 +135,7 @@ function EditRequestPage({ routeVariants }) {
           <div className='reqFormSelect'>
             <label>Set the Vibe</label>
             <select
-              value={requestData.vibe}
+              value={request.vibe}
               onChange={() => handleInput('vibe', event.target.value)}
             >
               <option selected disabled>Select Vibe</option>
@@ -153,7 +153,7 @@ function EditRequestPage({ routeVariants }) {
           <div className='reqFormSelect'>
             <label>What Vocal Style Suits Your Song?</label>
             <select
-              value={requestData.vocal_type}
+              value={request.vocal_type}
               onChange={() => handleInput('vocal_type', event.target.value)}
             >
               <option selected disabled>Select Style</option>
@@ -165,7 +165,7 @@ function EditRequestPage({ routeVariants }) {
           <div className='reqFormSelect'>
             <label>Select a Tempo</label>
             <select
-              value={requestData.tempo}
+              value={request.tempo}
               onChange={() => handleInput('tempo', event.target.value)}
             >
               <option selected disabled>Select Tempo</option>
@@ -182,7 +182,7 @@ function EditRequestPage({ routeVariants }) {
           <div className='reqFormInput'>
             <label>Tell us what is most important to your song</label>
             <input
-              value={requestData.important_what}
+              value={request.important_what}
               className='reqFormInput'
               placeholder='What?'
               onChange={() => handleInput('important_what', event.target.value)}
@@ -192,7 +192,7 @@ function EditRequestPage({ routeVariants }) {
           <div className='reqFormInput'>
             <label>Tell us why it is so important</label>
             <input
-              value={requestData.important_why}
+              value={request.important_why}
               className='reqFormInput'
               placeholder='Why?'
               onChange={() => handleInput('important_why', event.target.value)}
@@ -217,13 +217,13 @@ function EditRequestPage({ routeVariants }) {
 
           <div className='reqFormGroup'>
             <input
-              value={requestData.story1}
+              value={request.story1}
               className='reqFormInput'
               placeholder='Prompt 1'
               onChange={() => handleInput('story1', event.target.value)}
             ></input>
             <input
-              value={requestData.story2}
+              value={request.story2}
               className='reqFormInput'
               placeholder='Prompt 2'
               onChange={() => handleInput('story2', event.target.value)}
@@ -235,7 +235,7 @@ function EditRequestPage({ routeVariants }) {
         <div className='reqFormAdditionalDetails'>
           <h2 id='additionalDetailsHeader'>Is there anything else we should know?</h2>
           <input
-            value={requestData.additional_info}
+            value={request.additional_info}
             placeholder='Additional Details'
             onChange={() => handleInput('additional_info', event.target.value)}
           ></input>
