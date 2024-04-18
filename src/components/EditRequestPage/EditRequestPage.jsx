@@ -3,9 +3,8 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
-import { motion } from 'framer-motion';
 
-function EditRequestPage({ routeVariants, request }) {
+function EditRequestPage({ request }) {
 
   const dispatch = useDispatch()
   const history = useHistory()
@@ -40,12 +39,7 @@ function EditRequestPage({ routeVariants, request }) {
     }
 
   return (
-    <motion.div
-      className="reqFormPage"
-      variants={routeVariants}
-      initial='initial'
-      animate='final'
-    >
+    <div className='reqFormPage'>
       <h1>Edit Song Request Details</h1>
 
       <form className='reqForm'>
@@ -250,7 +244,7 @@ function EditRequestPage({ routeVariants, request }) {
         </button>
 
       </form>
-    </motion.div>
+    </div>
   );
 }
 
