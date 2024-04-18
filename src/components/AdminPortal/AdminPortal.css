@@ -4,10 +4,25 @@
 }
 
 .admin-req-details-edit {
-  padding: 25px 50px
+  padding: 0 50px 25px;
 }
 .admin-req-details-edit h2 {
   font-size: 36px;
+  text-align: center;
+}
+.admin-req-details-edit form {
+  width: fit-content;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-details-edit-row {
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
 }
 
 .admin-portal-inputs {
@@ -17,6 +32,20 @@
   background-color: #fff;
   border: 1px solid #ccc;
   padding: 8px 12px;
+  font-size: 14px;
+  line-height: 1.42857;
+  display: block;
+  border-radius: 5px;
+}
+
+.admin-portal-textarea {
+  width: 300px;
+  height: 80px;
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  font-family: 'Arial';
   font-size: 14px;
   line-height: 1.42857;
   display: block;
