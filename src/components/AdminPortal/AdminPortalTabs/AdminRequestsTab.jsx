@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { useState } from 'react';
 
+import AdminCompleteDialog from './AdminPortalDialogs/AdminCompleteDialog';
+import AdminDetailsDialog from './AdminPortalDialogs/AdminDetailsDialog'
+import FilterBar from '../../FilterBar/FilterBar';
+
 import {
   Button,
   Dialog,
@@ -10,11 +14,6 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material';
-import { styled } from '@mui/material/styles';
-
-import AdminCompleteDialog from './AdminPortalDialogs/AdminCompleteDialog';
-import AdminDetailsDialog from './AdminPortalDialogs/AdminDetailsDialog'
-import FilterBar from '../../FilterBar/FilterBar';
 
 
 export default function AdminRequestsTab({ num, data }) {
@@ -29,16 +28,6 @@ export default function AdminRequestsTab({ num, data }) {
     const due = new Date(requestDay).getTime() + msPerDay * deliveryDays
     return new Date(due).toLocaleString('en-us')
   }
-
-  // row styling
-  const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    '&:nth-of-type(odd)': {
-      backgroundColor: theme.palette.action.hover,
-    },
-    '&:last-child td, &:last-child th': {
-      border: 0, // hide last border
-    },
-  }));
 
 
   return (
@@ -64,7 +53,7 @@ export default function AdminRequestsTab({ num, data }) {
             {/* table body */}
             <TableBody>
               {data.map((row) => (
-                <StyledTableRow key={row.id}>
+                <TableRow hover key={row.id}>
 
                   {/* creation date */}
                   <TableCell>
@@ -122,7 +111,7 @@ export default function AdminRequestsTab({ num, data }) {
                     </Dialog>
                   </TableCell>
 
-                </StyledTableRow>
+                </TableRow>
               ))}
             </TableBody>
           </Table>

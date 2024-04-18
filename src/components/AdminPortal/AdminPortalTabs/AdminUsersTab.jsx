@@ -1,28 +1,19 @@
 import * as React from 'react';
 
-import { styled } from '@mui/material/styles';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-
 import UserClassSelector from './UserClassSelector';
 import FilterBar from '../../FilterBar/FilterBar';
+
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from "@mui/material"
 
 
 export default function AdminUsersTab({ data }) {
 
-  // table row styling
-  const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    '&:nth-of-type(odd)': {
-      backgroundColor: theme.palette.action.hover,
-    },
-    // hide last border
-    '&:last-child td, &:last-child th': {
-      border: 0,
-    },
-  }));
 
   return (
     <div>
@@ -42,7 +33,7 @@ export default function AdminUsersTab({ data }) {
 
             <TableBody>
               {data.map((user) => (
-                <StyledTableRow key={user.id}>
+                <TableRow hover key={user.id}>
                   {/* email */}
                   <TableCell component="th" scope="row">
                     {user.email}
@@ -62,7 +53,7 @@ export default function AdminUsersTab({ data }) {
                   <TableCell align="center">
                     <UserClassSelector user={user} />
                   </TableCell>
-                </StyledTableRow>
+                </TableRow>
               ))}
             </TableBody>
 

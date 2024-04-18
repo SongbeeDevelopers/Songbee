@@ -1,14 +1,16 @@
 import * as React from "react";
 import { useDispatch } from "react-redux";
 
-import { styled } from "@mui/material/styles";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-
 import FilterBar from "../../FilterBar/FilterBar";
+
+import {
+  Button,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from "@mui/material"
 
 
 export default function AdminArtistsPendingEdits({ data }) {
@@ -28,16 +30,6 @@ export default function AdminArtistsPendingEdits({ data }) {
       payload: id,
     });
   };
-
-  // row styling
-  const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.action.hover,
-    },
-    "&:last-child td, &:last-child th": {
-      border: 0, // hides last border
-    },
-  }));
 
 
   return (
@@ -60,7 +52,7 @@ export default function AdminArtistsPendingEdits({ data }) {
             <TableBody>
               {data.map((artist) => {
                 return (
-                  <StyledTableRow key={artist.id}>
+                  <TableRow hover key={artist.id}>
                     {/* artist name */}
                     <TableCell component="th" scope="row">
                       {artist.edited_artistName}
@@ -78,24 +70,24 @@ export default function AdminArtistsPendingEdits({ data }) {
 
                     {/* approve btn */}
                     <TableCell align="center">
-                      <button
-                        className="admin-button"
+                      <Button variant="contained"
                         onClick={() => approveArtist(artist.artist_id)}
+                        sx={{ height: 35, width: 90, backgroundColor: "#feaf17", color: "black" }}
                       >
-                        Approve
-                      </button>
+                        APPROVE
+                      </Button>
                     </TableCell>
 
                     {/* deny btn */}
                     <TableCell align="center">
-                      <button
-                        className="admin-button"
+                      <Button variant="contained"
                         onClick={() => denyArtist(artist.artist_id)}
+                        sx={{ height: 35, width: 65, backgroundColor: "#feaf17", color: "black" }}
                       >
-                        Deny
-                      </button>
+                        DENY
+                      </Button>
                     </TableCell>
-                  </StyledTableRow>
+                  </TableRow>
                 );
               })}
             </TableBody>
