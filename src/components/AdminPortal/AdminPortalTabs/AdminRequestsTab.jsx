@@ -9,8 +9,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { styled } from '@mui/material/styles';
 
-import AdminCompleteDialog from './AdminCompleteDialog';
-import EditRequestPage from '../../EditRequestPage/EditRequestPage'
+import AdminCompleteDialog from './AdminPortalDialogs/AdminCompleteDialog';
+import AdminDetailsDialog from './AdminPortalDialogs/AdminDetailsDialog'
 import FilterBar from '../../FilterBar/FilterBar';
 
 
@@ -95,7 +95,7 @@ export default function AdminRequestsTab({ num, data }) {
                       keepMounted
                       onClose={() => setDetailsOpen(false)}
                     >
-                      <EditRequestPage request={row} />
+                      <AdminDetailsDialog request={row} />
                     </Dialog>
                   </TableCell>
 
