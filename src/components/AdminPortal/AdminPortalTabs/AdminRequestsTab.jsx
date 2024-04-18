@@ -2,17 +2,16 @@ import * as React from 'react';
 import { useState } from 'react';
 
 import Dialog from '@mui/material/Dialog';
-import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import { styled } from '@mui/material/styles';
 
 import AdminCompleteDialog from './AdminCompleteDialog';
-import FilterBar from '../../FilterBar/FilterBar';
-
 import EditRequestPage from '../../EditRequestPage/EditRequestPage'
+import FilterBar from '../../FilterBar/FilterBar';
 
 
 export default function AdminRequestsTab({ num, data }) {
@@ -27,14 +26,6 @@ export default function AdminRequestsTab({ num, data }) {
     const due = new Date(requestDay).getTime() + msPerDay * deliveryDays
     return new Date(due).toLocaleString('en-us')
   }
-
-  // --- modal logic ---
-  // const handleClickOpen = (id, x) => {
-  //   dispatch({
-  //     type: "FETCH_CURRENT_REQUEST",
-  //     payload: id
-  //   })
-  // }
 
   // row styling
   const StyledTableRow = styled(TableRow)(({ theme }) => ({

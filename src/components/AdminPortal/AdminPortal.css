@@ -26,3 +26,16 @@
   margin-top: 25px;
   text-align: center;
 }
+
+.admin-portal-inputs {
+  width: 300px;
+  height: 38px;
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  font-size: 14px;
+  line-height: 1.42857;
+  display: block;
+  border-radius: 5px;
+}

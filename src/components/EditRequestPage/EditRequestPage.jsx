@@ -13,6 +13,7 @@ function EditRequestPage({ request }) {
   const requestData = useSelector(store => store.requestData)
   const { id } = useParams()
 
+  // dont think i need these 👇 will check after artist portal
   // useEffect(() => {
   //   dispatch({
   //       type: 'LOAD_EDIT_PAGE',
@@ -29,14 +30,14 @@ function EditRequestPage({ request }) {
   const submitRequest = (event) => {
     event.preventDefault()
     dispatch({
-        type: 'UPDATE_SONG_REQUEST',
-        payload: {
-          id: id,
-          history: history,
-          data: requestData,
-        }
-      })
-    }
+      type: 'UPDATE_SONG_REQUEST',
+      payload: {
+        id: id,
+        history: history,
+        data: requestData,
+      }
+    })
+  }
 
   return (
     <div className='reqFormPage'>
@@ -44,12 +45,12 @@ function EditRequestPage({ request }) {
 
       <form className='reqForm'>
 
-      <h2>Your Details</h2>
+        <h2>Your Details</h2>
 
         <div className='reqFormGroup'>
           <div className='reqFormInput'>
             <label>Who is Creating the Song?</label>
-            <input 
+            <input
               value={request.requester}
               className='reqFormInput'
               placeholder='You, the family, the team, etc.'
@@ -98,22 +99,22 @@ function EditRequestPage({ request }) {
           </div>
 
           <div className='reqFormInput'>
-              <label>What inspired your song?</label>
-              <input
-                value={request.inspiration}
-                className='reqFormInput'
-                placeholder='Inspiration'
-                onChange={() => handleInput('inspiration', event.target.value)}
-              ></input>
+            <label>What inspired your song?</label>
+            <input
+              value={request.inspiration}
+              className='reqFormInput'
+              placeholder='Inspiration'
+              onChange={() => handleInput('inspiration', event.target.value)}
+            ></input>
           </div>
         </div>
 
-      <h2>Specifications</h2>
+        <h2>Specifications</h2>
 
         <div className='reqFormGroup'>
           <div className='reqFormSelect'>
             <label>Choose a Genre</label>
-            <select 
+            <select
               value={request.genre}
               onChange={() => handleInput('genre_id', event.target.value)}
             >
@@ -198,13 +199,13 @@ function EditRequestPage({ request }) {
           <h4 className='reqFormSubHeader'>Select two of our story prompts or just tell us memories and stories that you feel tell your story. </h4>
 
           <p className='reqFormPrompts'>
-            a. What they mean to you?<br/>
-            b. How did you meet?<br/>
-            c. Inside Jokes<br/>
-            d. Advice you have for them<br/>
-            e. Describe a memory about your loved one that makes you laugh<br/>
-            f. Describe or list things about them that makes them special to you.<br/>
-            g. Other stories or memories<br/>
+            a. What they mean to you?<br />
+            b. How did you meet?<br />
+            c. Inside Jokes<br />
+            d. Advice you have for them<br />
+            e. Describe a memory about your loved one that makes you laugh<br />
+            f. Describe or list things about them that makes them special to you.<br />
+            g. Other stories or memories<br />
           </p>
 
           <h5 className='reqFormPrompts'>Tip: Include Descriptive language. Use your senses and really describe your feelings and emotions. Be sure it makes sense when someone outside of your relationship reads it. </h5>
@@ -225,16 +226,16 @@ function EditRequestPage({ request }) {
           </div>
         </div>
 
-      <div className='reqFormGroup'>
-        <div className='reqFormAdditionalDetails'>
-          <h2 id='additionalDetailsHeader'>Is there anything else we should know?</h2>
-          <input
-            value={request.additional_info}
-            placeholder='Additional Details'
-            onChange={() => handleInput('additional_info', event.target.value)}
-          ></input>
+        <div className='reqFormGroup'>
+          <div className='reqFormAdditionalDetails'>
+            <h2 id='additionalDetailsHeader'>Is there anything else we should know?</h2>
+            <input
+              value={request.additional_info}
+              placeholder='Additional Details'
+              onChange={() => handleInput('additional_info', event.target.value)}
+            ></input>
+          </div>
         </div>
-      </div>
 
         <button
           className='reqFormSubmit'
