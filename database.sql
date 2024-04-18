@@ -151,7 +151,7 @@ VALUES
 
 INSERT INTO "genres"
 VALUES
-(1, 'Rap/Hip-Hop'), (2, 'Folk'), (3, 'Rock'), (4, 'R&B'), (5, 'Country'), (6, 'Singer Songwriter'), (7, 'Acoustic Pop');
+(1, 'Rap/Hip-Hop'), (2, 'Folk'), (3, 'Rock'), (4, 'R&B'), (5, 'Country'), (6, 'Singer Songwriter'), (7, 'Acoustic Pop'), (8, 'Pop');
 
 INSERT INTO "artist"
 ("artist_name", "name", "user_id", "vocal_type", "approved", "is_active", "website", "instagram_link", "sample_song_1", "sample_song_2", "sample_song_3", "bio","location", "photo", "streaming_link")
@@ -194,7 +194,11 @@ VALUES
 INSERT INTO "artist_genres"
 ("artist_id", "genre_id")
 VALUES
-(1, 7);
+(1, 6),
+(2, 1),
+(2, 8),
+(3, 6),
+(3, 8);
 
 
 INSERT INTO "jr_request" (
@@ -276,5 +280,4 @@ CREATE TABLE "pendingartistedit" (
     "edited_genre_id" INTEGER REFERENCES "genres"(id),
     "created_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
    
