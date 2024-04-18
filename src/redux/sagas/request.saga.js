@@ -80,6 +80,19 @@ function* updateSongRequest (action) {
     }
 }
 
+function* finishSongRequest (action) {
+    try {
+        const response = yield axios({
+            method: "PUT",
+            url: `/api/request/update/${action.payload.id}`,
+            data: action.payload.data
+        })
+        yield action.payload.history.push('/user')
+    } catch (error) {
+        console.error('SAGA updateSongRequest() failed:', error)
+    }
+}
+
 function* deleteSongRequest (action){
     try {
         const response = yield axios.delete(`/api/request/${action.payload}`)
@@ -135,6 +148,7 @@ function* requestSaga() {
     yield takeLatest('JR_LOAD_EDIT_PAGE', jrLoadEditPage);
     yield takeLatest('LOAD_ADMIN_PAGE', loadAdminPage);
     yield takeLatest('FETCH_CHECKOUT', fetchCheckout);
+    yield takeLatest('FINISH_SONG_REQUEST', finishSongRequest);
 }
 
 export default requestSaga;

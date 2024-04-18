@@ -9,9 +9,9 @@ const finalQuestions = (
     action
   ) => {
     switch (action.type) {
-      case "SET_REQUEST_DATA":
+      case "SET_FINAL_QUESTIONS":
         return action.payload;
-      case "CLEAR_REQUEST_DATA":
+      case "CLEAR_FINAL_QUESTIONS":
         return {
           story1: "",
           story2: "",
