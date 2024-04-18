@@ -404,12 +404,12 @@ function FinalQuestions ({ routeVariants }) {
                   color="inherit"
                   disabled={activeStep === 0}
                   onClick={handleBack}
-                  className="orderCheckoutButton"
+                  className="user-portal-details-btn"
                 >
                   Back
                 </button>
                 <Box sx={{ flex: "1 1 auto" }} />
-                <button onClick={handleNext} className="orderCheckoutButton">
+                <button onClick={handleNext} className="user-portal-details-btn">
                   Next
                 </button>
                 {activeStep !== steps.length &&
@@ -421,7 +421,7 @@ function FinalQuestions ({ routeVariants }) {
                       Step {activeStep + 1} already completed
                     </Typography>
                   ) : (
-                    <button onClick={handleComplete} className="orderCheckoutButton">
+                    <button onClick={handleComplete} className="user-portal-details-btn">
                       {completedSteps() === totalSteps() - 1
                         ? "Finish"
                         : "Complete Step"}
