@@ -2,6 +2,7 @@ import React from "react";
 import { useParams, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import AudioButton from './AudioButton';
 
 
 import "./JoinArtistPage.css";
@@ -11,6 +12,8 @@ function ArtistCommunity() {
   const { id } = useParams();
   const history = useHistory();
   const dispatch = useDispatch();
+
+
   useEffect(() => {
     dispatch({
       type: 'FETCH_ALL_ARTISTS',
@@ -20,7 +23,12 @@ function ArtistCommunity() {
   console.log(artistCommunity)
 
 
+
+
+
+
   return (
+    
     artistCommunity &&
     <div className="artist-community">
       <div className="artist-left">
@@ -35,23 +43,30 @@ function ArtistCommunity() {
             <div className="artist-slide">
               <div className="artist-card">
                {artistCommunity.map((artist, i) => (
-                <img className="artistSlide-img" key={i} onClick={()=> history.push(`/ArtistBioPage/${artist.id}`)}
-                src={ artist.photo} alt="Artist photos" />
-                 
-               ))}
+                <><img className="artistSlide-img" key={i} onClick={() => history.push(`/ArtistBioPage/${artist.id}`)}
+                   src={artist.photo} alt="Artist photos" />
+                   
+                   <AudioButton  url={artist.sample_song_1} /> </>
+                  
+                   
+               ))}   
                 </div>
+                  {/* <audio id="track">
+                     <source src={artistCommunity[0] ?.sample_song_1} type="audio/mpeg" />
+                   </audio> */}
+                   {/* <div id="player-container">
+                 <div id="play-pause" className="play" onClick={() => playPause(document.getElementById('track'), document.getElementById('play-pause'))}>
+                  Play
+                </div>
+              </div> */}
           </div>
          </div>
         </div>
       </div> 
-      {/* <div className="audio-wrapper">
-                <audio className="audio" controls>
-                <source src="/Singer Songwriter Michael LeFevre (1).mp3" type="audio/mpeg" />
-                </audio>
-                </div> */}
     </div>  
     
     );
+    
   }
 
 export default ArtistCommunity;
