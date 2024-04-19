@@ -7,7 +7,7 @@ import { Button } from "@mui/material"
 import '../../AdminPortal.css'
 
 
-function AdminDetaisDialog({ request }) {
+export default function AdminDetaisDialog({ request }) {
 
   const dispatch = useDispatch()
   const history = useHistory()
@@ -27,6 +27,7 @@ function AdminDetaisDialog({ request }) {
       }
     })
   }
+
 
   return (
     <div className='admin-req-details-edit'>
@@ -206,5 +207,3 @@ function AdminDetaisDialog({ request }) {
     </div>
   );
 }
-
-export default AdminDetaisDialog;
