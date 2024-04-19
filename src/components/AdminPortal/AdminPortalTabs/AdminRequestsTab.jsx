@@ -1,121 +1,30 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { useDispatch } from "react-redux";
-import { useHistory } from 'react-router-dom';
 
-import Dialog from '@mui/material/Dialog';
-import Slide from '@mui/material/Slide';
-import { styled } from '@mui/material/styles';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-
-import AdminCompleteDialog from './AdminCompleteDialog';
-import AdminDetailsDialog from './AdminDetailsDialog';
+import AdminCompleteDialog from './AdminPortalDialogs/AdminCompleteDialog';
+import AdminDetailsDialog from './AdminPortalDialogs/AdminDetailsDialog'
 import FilterBar from '../../FilterBar/FilterBar';
+
+import {
+  Button,
+  Dialog,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from '@mui/material';
 
 
 export default function AdminRequestsTab({ num, data }) {
 
-  // hooks
-  const history = useHistory();
-  const dispatch = useDispatch();
-
   // modal state
-  const [open, setOpen] = useState(false);
-  const [open1, setOpen1] = useState(false);
+  const [detailsOpen, setDetailsOpen] = useState(false);
+  const [completeOpen, setCompleteOpen] = useState(false)
 
   // date/time
-  const now = new Date();
-  const msPerDay = 24 * 60 * 60 * 1000;
-
-  // --- modal logic ---
-  const handleClickOpen = (id, x) => {
-    dispatch({
-      type: "FETCH_CURRENT_REQUEST",
-      payload: id
-    })
-    if (x === 1) {
-      setOpen1(true);
-    }
-    else {
-      setOpen(true);
-    }
-  };
-  const handleClose = (x) => {
-    if (x === 1) {
-      setOpen1(false);
-    }
-    else {
-      setOpen(false);
-    }
-  };
-  const goToEdit = (id) => {
-    history.push(`/request/edit/${id}`)
-  }
-  const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
-  });
-  // --- /modal logic ---
-
-  // row styling
-  const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    '&:nth-of-type(odd)': {
-      backgroundColor: theme.palette.action.hover,
-    },
-    '&:last-child td, &:last-child th': {
-      border: 0, // hide last border
-    },
-  }));
-
-  // complete form dialogue
-  const AlertDialogSlide = () => {
-    return (
-      <Dialog
-        open={open}
-        TransitionComponent={Transition}
-        keepMounted
-        onClose={handleClose}
-        aria-describedby="alert-dialog-slide-description"
-        BackdropProps={{
-          style: {
-            backgroundColor: 'transparent',
-            boxShadow: 'none'
-          }
-        }}
-        fullWidth={true}
-        maxWidth='sm'
-      >
-        <AdminCompleteDialog handleClose={handleClose} />
-      </Dialog>
-    );
-  }
-
-  // details modal
-  const DetailsDialogSlide = () => {
-    return (
-      <Dialog
-        open={open1}
-        TransitionComponent={Transition}
-        keepMounted
-        onClose={() => handleClose(1)}
-        aria-describedby="alert-dialog-slide-description"
-        sx={{
-          width: 800,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          ml: 10
-        }}
-      >
-        <AdminDetailsDialog handleClose={handleClose} />
-      </Dialog>
-    );
-  }
-
   function getDueDate(requestDay, deliveryDays) {
+    const msPerDay = 24 * 60 * 60 * 1000;
     const due = new Date(requestDay).getTime() + msPerDay * deliveryDays
     return new Date(due).toLocaleString('en-us')
   }
@@ -123,27 +32,29 @@ export default function AdminRequestsTab({ num, data }) {
 
   return (
     <div>
-      <FilterBar type={num === 0 ? 'pending' : 'completed'} />
+      {data.length > 0 ?
+        <>
+          <FilterBar type={num === 0 ? 'pending' : 'completed'} />
 
-      <Table sx={{ minWidth: 700 }}>
-        <TableHead>
-          <TableRow>
-            <TableCell>Creation Date</TableCell>
-            <TableCell align="center">Requester E-Mail</TableCell>
-            <TableCell align="center">Artist</TableCell>
-            <TableCell align="center">Due</TableCell>
-            <TableCell align="center">View Details</TableCell>
-            <TableCell align="center">Completion Form</TableCell>
-          </TableRow>
-        </TableHead>
+          <Table sx={{ minWidth: 700 }}>
 
-        {data.length > 0 ?
-          <TableBody>
-            {data.map((row) => {
-              const creationTime = new Date(row.created_at);
-              const daysLeft = Math.round((now.getTime() - creationTime.getTime()) / msPerDay);
-              return (
-                <StyledTableRow key={row.id}>
+            {/* table header */}
+            <TableHead>
+              <TableRow>
+                <TableCell>Creation Date</TableCell>
+                <TableCell align="center">Requester E-Mail</TableCell>
+                <TableCell align="center">Artist</TableCell>
+                <TableCell align="center">Due</TableCell>
+                <TableCell align="center">View Details</TableCell>
+                <TableCell align="center">Completion Form</TableCell>
+              </TableRow>
+            </TableHead>
+
+            {/* table body */}
+            <TableBody>
+              {data.map((row) => (
+                <TableRow hover key={row.id}>
+
                   {/* creation date */}
                   <TableCell>
                     {new Date(row.created_at).toLocaleString('en-us')}
@@ -156,7 +67,7 @@ export default function AdminRequestsTab({ num, data }) {
 
                   {/* artist */}
                   <TableCell align="center">
-
+                    {/* NEED TO FILL THIS */}
                   </TableCell>
 
                   {/* due */}
@@ -166,26 +77,48 @@ export default function AdminRequestsTab({ num, data }) {
 
                   {/* details btn */}
                   <TableCell align="center">
-                    <button className='admin-button' onClick={() => goToEdit(row.id)}>Details</button>
-                    <DetailsDialogSlide />
+                    <Button variant="contained"
+                      onClick={() => setDetailsOpen(true)}
+                      sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
+                    >
+                      DETAILS
+                    </Button>
+
+                    {/* details dialog */}
+                    <Dialog keepMounted fullWidth maxWidth="md"
+                      open={detailsOpen}
+                      onClose={() => setDetailsOpen(false)}
+                    >
+                      <AdminDetailsDialog request={row} />
+                    </Dialog>
                   </TableCell>
 
                   {/* complete button */}
                   <TableCell align="center">
-                    <button className='admin-button' onClick={() => handleClickOpen(row.id)}>
-                      Complete
-                    </button>
-                    <AlertDialogSlide />
-                  </TableCell>
-                </StyledTableRow>
-              )
-            })}
-          </TableBody>
-          :
-          <p className='admin-empty-msg'>There are no requests.</p>
-        }
-      </Table>
+                    <Button variant="contained"
+                      onClick={() => setCompleteOpen(true)}
+                      sx={{ height: 35, width: 95, backgroundColor: "#feaf17", color: "black" }}
+                    >
+                      COMPLETE
+                    </Button>
 
+                    {/* complete dialog */}
+                    <Dialog keepMounted fullWidth maxWidth="md"
+                      open={completeOpen}
+                      onClose={() => setCompleteOpen(false)}
+                    >
+                      <AdminCompleteDialog request={row} />
+                    </Dialog>
+                  </TableCell>
+
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </>
+        :
+        <p className='admin-empty-msg'>There are currently no requests.</p>
+      }
     </div>
   );
 }

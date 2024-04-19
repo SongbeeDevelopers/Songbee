@@ -24,7 +24,6 @@ import FinalQuestions from "../OrderPage/FinalQuestions";
 // user functionality
 import CustomerPortal from "../CustomerPortal/CustomerPortal";
 import AdminPortal from "../AdminPortal/AdminPortal";
-import EditRequestPage from "../EditRequestPage/EditRequestPage";
 import RequestDetails from "../RequestDetails/RequestDetails"
 
 // information pages
@@ -168,14 +167,6 @@ function ComponentRouter() {
         <Route exact path="/requestform/:id">
           <SongRequestPage routeVariants={routeVariants} />
         </Route>
-
-        <ProtectedRoute
-          exact
-          path="/request/edit/:id"
-          allowedUserClasses={[1, 2, 3]}
-        >
-          <EditRequestPage routeVariants={routeVariants} />
-        </ProtectedRoute>
 
         <ProtectedRoute
           exact
