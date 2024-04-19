@@ -1,0 +1,273 @@
+.si-page {
+  width: 100%;
+}
+
+.si-hero {
+  position: relative;
+  color: white;
+}
+
+.si-hero h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 50px;
+  text-align: left;
+  margin-bottom: -20px;
+}
+
+.si-hero p {
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  text-align: left;
+}
+
+.si-hero button {
+  margin-left: 0 !important;
+}
+
+.si-heroContents {
+  position: absolute;
+  bottom: 50px;
+  left: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.si-yellowLine {
+  margin: 0 auto !important;
+  width: 100%;
+}
+
+.mother-yellowLine {
+  width: auto;
+  margin: 0 40px;
+}
+
+.si-types {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  background-color: white;
+  padding: 0 50px;
+  background-image: url("/junior/schoolsInspiration/si-checker.jpg");
+}
+
+.si-types-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+.si-types-1 img {
+  width: 200px;
+  height: 200px;
+  border-radius: 9999px;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  z-index: 30;
+}
+
+.si-types-1-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-image: url("/junior/si-blue-textbox.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: max-content;
+  padding: 20px 30px;
+  background-size: 100% 100%;
+  text-align: center;
+  margin-top: -50px;
+  position: relative;
+  z-index: 20;
+  padding-top: 40px;
+}
+
+.si-types-1-text h2 {
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+  margin-bottom: -0.5rem;
+}
+
+.si-types-1-text p {
+  padding: 0;
+  margin: 0;
+  width: 250px;
+}
+
+.left-buzz {
+  position: relative;
+  width: 40%;
+  padding-left: 50px;
+}
+.left-buzz img {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 30px;
+}
+
+.buzz-title {
+  width: 100%;
+  display: flex;
+  gap: 0px;
+}
+
+.buzz-title img {
+  width: 150px;
+  height: auto;
+  position: static !important;
+  margin-left: -50px;
+}
+
+.theBuzz {
+  padding: 30px;
+  background-color: #ffdeb0;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+
+}
+
+.buzz-title h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 2.5rem !important;
+  font-weight: 700;
+  background-image: url("/junior/schoolsInspiration/WTB.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: max-content;
+  padding: 20px 30px;
+  background-size: 100% 100%;
+}
+
+.left-buzz a {
+  background-color: #ffa200;
+  color: black;
+  padding: 5px 10px;
+  font-weight: bolder;
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: 5px;
+}
+
+.left-buzz p {
+  max-width: 80%;
+}
+
+.right-buzz img {
+  transform: rotate(-10deg);
+  width: 90%;
+}
+
+.right-buzz {
+  position: relative;
+  width: 55%;
+}
+
+.theBook {
+  display: flex;
+  position: absolute;
+  top: 20px;
+  left: 0;
+  transform: rotate(-10deg);
+  width: 85%;
+  gap: 100px;
+  font-family: papyrus;
+  font-weight: bolder;
+  font-size: 18px;
+}
+
+.theBook-left {
+  padding-left: 20px;
+}
+
+.theBook-right {
+  padding-top: 50px;
+}
+
+.bookList p > img {
+  width: 30px;
+  height: 30px;
+  background-position: center;
+  background-size: contain;
+}
+
+.bookList p {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0;
+  margin: 0;
+  font-size: 18px;
+}
+
+.bookList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.theBook-left h3 {
+  text-decoration: underline;
+  font-weight: bolder;
+  text-align: center;
+  font-size: 30px;
+}
+
+.theBook-learn {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+position: relative;
+}
+
+.theBook-learn p {
+  background-color: #feaf17;
+  padding: 5px;
+  color: black;
+  font-family: poppins;
+  font-size: 10px;
+
+}
+
+.theBook-learn a {
+  background-color: #feaf17;
+  padding: 5px 10px;
+  color: black;
+  font-family: poppins;
+}
+
+.buzz-arrows {
+  width: 50px !important;
+  height: auto !important ;
+  position: absolute;
+  top: -30px;
+  transform: rotate(170deg);
+  left: -10px;
+}
+
+.buzz-pencil{
+position: absolute;
+right: 30px;
+bottom: 200px;
+height: auto;
+width: 10px;
+z-index: 30;
+
+}
+
+.buzz-honeycomb{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: auto;
+    width: 300px;
+}
