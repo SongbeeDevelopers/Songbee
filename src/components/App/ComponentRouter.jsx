@@ -55,6 +55,8 @@ import JrFooter from "../JrFooter/JrFooter";
 import LearningPacksPage from "../LearningPacksPage/PacksPage";
 import LearningPacksHeader from "../Header/LearningPacksHeader";
 import LearningPackView from "../LearningPackView/PackView";
+import SchoolsInspirationHeader from "../Header/SchoolsInspirationHeader";
+import SchoolsInspiration from "../SchoolsInspiration/SchoolsInspiration";
 
 function ComponentRouter() {
   const location = useLocation();
@@ -159,6 +161,14 @@ function ComponentRouter() {
         <Route exact path="/jrcheckout">
           <JrCheckoutPage routeVariants={routeVariants} />
         </Route>
+      
+
+      
+        <Route exact path="/schools-inspiration">
+          
+          <SchoolsInspirationHeader />
+          <SchoolsInspiration routeVariants={routeVariants} ></SchoolsInspiration>
+        </Route>
 
         <Route exact path="/join-artist">
           <JoinArtistPage routeVariants={routeVariants} />
@@ -209,6 +219,8 @@ function ComponentRouter() {
           <LearningPacksHeader />
           <LearningPacksPage routeVariants={routeVariants} />
         </Route>
+
+        
 
         <Route exact path="/learning-packs/:slug">
           <LearningPacksHeader />
