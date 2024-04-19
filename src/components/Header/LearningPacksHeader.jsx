@@ -17,7 +17,7 @@ function LearningPacksHeader() {
           </Link>
         </div>
         <Link to="/home">
-          <img className="nav-title" src="header-icon.png" />
+          <img className="nav-title" src="junior/jr-logo.png" />
         </Link>
         <div className="nav-right">
           <button className="jr-landing-btn">Get Started</button>
