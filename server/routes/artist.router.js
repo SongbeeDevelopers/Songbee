@@ -271,20 +271,59 @@ router.put('/:id', async (req, res) => {
     }
 })
 
-router.get('/all', (req, res) => {
+// router.get('/all', (req, res) => {
+//     const query = `
+//     SELECT * FROM "artist"
+//     WHERE "approved"=TRUE;
+//     `;
+//     pool.query(query)
+//     .then((result) => {
+//       res.send(result.rows);
+//     })
+//     .catch((err) => {
+//       console.log('Get all artists failed:', err);
+//       res.sendStatus(500);
+//     })
+//   });
+
+  router.get('/all', async (req, res) => {
+    let connection
+    try {
+    connection = await pool.connect();
+  
+    connection.query("BEGIN;");
     const query = `
     SELECT * FROM "artist"
     WHERE "approved"=TRUE;
     `;
-    pool.query(query)
-    .then((result) => {
-      res.send(result.rows);
-    })
-    .catch((err) => {
-      console.log('Get all artists failed:', err);
-      res.sendStatus(500);
-    })
-  });
+    const artistResponse = await connection.query(query)
+    for (let i=0; i<artistResponse.rows.length; i++){
+      const genreQuery = `
+      SELECT
+      "genres"."id" AS "id",
+      "genres"."name" AS "genre"
+      FROM "genres"
+      LEFT JOIN "artist_genres"
+      ON "genres"."id"="artist_genres"."genre_id"
+      WHERE "artist_genres"."artist_id"=$1
+      `
+      const genreResponse = await connection.query(genreQuery, [artistResponse.rows[i].id])
+      console.log('artist response id', artistResponse.rows[i].id)
+      artistResponse.rows[i].genres = genreResponse.rows
+      console.log("genreResponse", genreResponse.rows);
+    }
+
+    connection.query("COMMIT;");
+    connection.release();
+    console.log("artistResponse", artistResponse.rows);
+    res.send(artistResponse.rows);
+  } catch (error){
+    console.log('get current artist failed:', error)
+    connection.query("ROLLBACK;");
+    connection.release();
+    res.sendStatus(500)
+  }
+  })
 
 router.get('/current/:id', async (req, res) => {
   let connection

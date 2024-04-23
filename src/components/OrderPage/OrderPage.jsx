@@ -364,12 +364,18 @@ export default function OrderPage({ routeVariants }) {
           <option selected disabled>
             Select Artist
           </option>
-          {artists.map((artist) => (
-            <option key={artist.id} value={artist.id}>
-              {artist.artist_name}
-            </option>
-          ))}
-           <option>
+          {artists.map((artist) => {
+            artist.genres.map((genre) => {
+              if (genre.id === requestData.genre){
+                return (
+                  <option key={artist.id} value={artist.id}>
+                  {artist.artist_name}
+                </option>
+                )
+              }
+            })
+          })}
+           <option key={artists.length} value=''>
             I would like the artist selected for me
           </option>
         </select>
