@@ -365,7 +365,6 @@ export default function OrderPage({ routeVariants }) {
             Select Artist
           </option>
           {artists.map((artist) => {
-              console.log("artist", artist.genres[0].id)
               if (artist.genres[0].id === Number(requestData.genre) || artist.genres[1] && artist.genres[1].id === Number(requestData.genre) || requestData.genre === ''){
                 return (
                 <option key={artist.id} value={artist.id}>
