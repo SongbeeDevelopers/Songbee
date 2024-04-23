@@ -6,6 +6,7 @@ import StepButton from "@mui/material/StepButton";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import LetsGetStarted from "./LetsGetStarted";
 
 
 import { useEffect, useState } from "react";
@@ -41,13 +42,6 @@ export default function OrderPage({ routeVariants }) {
 
   const user = useSelector((store) => store.user);
   const newOrder = useSelector((store) => store.newOrder);
-
-  const handleSelection = (key, value) => {
-    dispatch({
-      type: "SET_NEW_ORDER",
-      payload: { ...newOrder, [key]: value },
-    });
-  };
 
   const now = new Date();
   const msPerDay = 24 * 60 * 60 * 1000;
@@ -172,6 +166,7 @@ export default function OrderPage({ routeVariants }) {
     if (activeStep === 0) {
       return (
         <>
+        <LetsGetStarted />
           <div className="reqFormGroup">
             <div className="reqFormInput">
               <label>Who is Creating the Song?</label>
