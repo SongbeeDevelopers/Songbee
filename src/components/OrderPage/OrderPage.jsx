@@ -361,12 +361,15 @@ export default function OrderPage({ routeVariants }) {
           value={requestData.genre}
           onChange={() => handleInput("artist", event.target.value)}
         >
-          <option selected disabled>
+          <option selected>
             Select Artist
           </option>
-          {artists.map((artist) => {
+          {artists.map((artist) => (
             artist.genres.map((genre) => {
-              if (genre.id === requestData.genre){
+              console.log("genre.id", genre.id)
+              console.log("requestData.genre", requestData.genre)
+              if (genre.id === Number(requestData.genre) || requestData.genre === ''){
+                console.log("artist", artist)
                 return (
                   <option key={artist.id} value={artist.id}>
                   {artist.artist_name}
@@ -374,7 +377,7 @@ export default function OrderPage({ routeVariants }) {
                 )
               }
             })
-          })}
+          ))}
            <option key={artists.length} value=''>
             I would like the artist selected for me
           </option>
