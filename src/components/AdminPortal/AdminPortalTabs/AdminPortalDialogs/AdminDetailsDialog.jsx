@@ -17,12 +17,14 @@ export default function AdminDetaisDialog({ setDetailsOpen }) {
   const edit = useSelector(store => store.edit)
   const genres = useSelector(store => store.genres)
 
+  // stores changes
   const handleInput = (key, value) => {
     dispatch({type: 'EDIT_INPUT', payload: {key, value}})
   }
 
   const submitRequest = (event) => {
     event.preventDefault()
+    // confirmation message
     Swal.fire({
       title: "Save changes?",
       showCancelButton: true,

@@ -6,6 +6,8 @@ const edit = (state = {}, action) => {
       let key = action.payload.key
       let value = action.payload.value
       return {...state, [key]: value}
+    case 'CLEAR_EDIT_DATA':
+      return {}
     default:
       return state;
   }

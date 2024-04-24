@@ -34,6 +34,7 @@ export default function AdminRequestsTab({ num, data }) {
     return new Date(due).toLocaleString('en-us')
   }
 
+  // details modal logic
   const openDetails = (row) => {
     // grabs genre id from genre in reducer
     for (let genre of genres) {
@@ -44,7 +45,19 @@ export default function AdminRequestsTab({ num, data }) {
     dispatch({ type: 'SET_EDIT_DATA', payload: row })
     setDetailsOpen(true)
   }
+  const closeDetails = () => {
+    dispatch({ type: 'CLEAR_EDIT_DATA'})
+    setDetailsOpen(false)
+  }
 
+  // complete modal logic
+  const openComplete = () => {
+
+  }
+  const closeComplete = () => {
+    dispatch({ type: 'CLEAR_EDIT_DATA'})
+    setCompleteOpen(false)
+  }
 
   return (
     <div>
@@ -103,7 +116,7 @@ export default function AdminRequestsTab({ num, data }) {
                     {/* details dialog */}
                     <Dialog keepMounted fullWidth maxWidth="md"
                       open={detailsOpen}
-                      onClose={() => setDetailsOpen(false)}
+                      onClose={closeDetails}
                     >
                       <AdminDetailsDialog setDetailsOpen={setDetailsOpen} />
                     </Dialog>
@@ -121,7 +134,7 @@ export default function AdminRequestsTab({ num, data }) {
                     {/* complete dialog */}
                     <Dialog keepMounted fullWidth maxWidth="md"
                       open={completeOpen}
-                      onClose={() => setCompleteOpen(false)}
+                      onClose={closeComplete}
                     >
                       <AdminCompleteDialog request={row} />
                     </Dialog>
