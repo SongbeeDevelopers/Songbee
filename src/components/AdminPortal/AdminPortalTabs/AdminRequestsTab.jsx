@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import AdminCompleteDialog from './AdminPortalDialogs/AdminCompleteDialog';
 import AdminDetailsDialog from './AdminPortalDialogs/AdminDetailsDialog'
@@ -18,6 +19,10 @@ import {
 
 export default function AdminRequestsTab({ num, data }) {
 
+  const dispatch = useDispatch()
+
+  const genres = useSelector(store => store.genres)
+
   // modal state
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [completeOpen, setCompleteOpen] = useState(false)
@@ -27,6 +32,17 @@ export default function AdminRequestsTab({ num, data }) {
     const msPerDay = 24 * 60 * 60 * 1000;
     const due = new Date(requestDay).getTime() + msPerDay * deliveryDays
     return new Date(due).toLocaleString('en-us')
+  }
+
+  const openDetails = (row) => {
+    // grabs genre id from genre in reducer
+    for (let genre of genres) {
+      if (row.genre === genre.name) {
+        row.genre = genre.id
+      }
+    }
+    dispatch({ type: 'SET_EDIT_DATA', payload: row })
+    setDetailsOpen(true)
   }
 
 
@@ -78,7 +94,7 @@ export default function AdminRequestsTab({ num, data }) {
                   {/* details btn */}
                   <TableCell align="center">
                     <Button variant="contained"
-                      onClick={() => setDetailsOpen(true)}
+                      onClick={() => openDetails(row)}
                       sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
                     >
                       DETAILS
@@ -89,7 +105,7 @@ export default function AdminRequestsTab({ num, data }) {
                       open={detailsOpen}
                       onClose={() => setDetailsOpen(false)}
                     >
-                      <AdminDetailsDialog request={row} />
+                      <AdminDetailsDialog />
                     </Dialog>
                   </TableCell>
 

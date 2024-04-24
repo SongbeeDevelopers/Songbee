@@ -18,6 +18,7 @@ export default function AdminPortal({ routeVariants }) {
     dispatch({ type: 'FETCH_ALL_USERS' })
     dispatch({ type: "FETCH_PENDING_ARTISTS" });
     dispatch({ type: "GET_ARTIST_PENDING" });
+    dispatch({ type: 'FETCH_GENRES' })
   }, [])
 
   return (

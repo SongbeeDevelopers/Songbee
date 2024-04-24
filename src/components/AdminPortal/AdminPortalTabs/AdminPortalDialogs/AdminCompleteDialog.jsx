@@ -19,9 +19,9 @@ export default function AdminCompleteDialog ({ handleClose }) {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch({ type: "FETCH_ALL_ARTISTS" });
-  }, [])
+  // useEffect(() => {
+  //   dispatch({ type: "FETCH_ALL_ARTISTS" });
+  // }, [])
   
   const song = useSelector(store => store.currentRequest);
   const artists = useSelector(store => store.allArtists);
