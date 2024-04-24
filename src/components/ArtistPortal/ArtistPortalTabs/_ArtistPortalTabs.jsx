@@ -94,7 +94,7 @@ export default function ArtistPortalTabs() {
         <ArtistSBjrRequestsTab />
       </CustomTabPanel>
 
-      <CustomTabPanel value={value} index={2}>
+      <CustomTabPanel value={value} index={3}>
         <ArtistDocuments />
       </CustomTabPanel>
     </>
