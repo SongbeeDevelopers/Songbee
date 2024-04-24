@@ -6,7 +6,6 @@ import StepButton from "@mui/material/StepButton";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import LetsGetStarted from "./LetsGetStarted";
 
 
 import { useEffect, useState } from "react";
@@ -22,6 +21,8 @@ import Swal from "sweetalert2";
 
 import LoginRegisterForm from "../LoginRegisterForm/LoginRegisterForm";
 import ArtistDisplay from "./ArtistDisplay";
+import LetsGetStarted from "./LetsGetStarted";
+import SongSpecifications from "./SongSpecifications";
 
 const steps = [
   "Let's Get Started!",
@@ -172,73 +173,7 @@ export default function OrderPage({ routeVariants }) {
     } else if (activeStep === 1) {
       return (
         <>
-          <div className="reqFormGroup">
-            <div className="reqFormSelect">
-              <label>Choose a Genre</label>
-              <select
-                value={requestData.genre}
-                onChange={() => handleInput("genre", event.target.value)}
-              >
-                <option selected disabled>
-                  Select Genre
-                </option>
-                {genres.map((genre) => (
-                  <option key={genre.id} value={genre.id}>
-                    {genre.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div className="reqFormSelect">
-              <label>Set the Vibe</label>
-              <select
-                value={requestData.vibe}
-                onChange={() => handleInput("vibe", event.target.value)}
-              >
-                <option selected disabled>
-                  Select Vibe
-                </option>
-                <option value="happy">Happy</option>
-                <option value="lighthearted">Lighthearted</option>
-                <option value="heartfelt">Heartfelt</option>
-                <option value="romantic">Romantic</option>
-                <option value="reflective">Reflective</option>
-                <option value="somber">Somber</option>
-              </select>
-            </div>
-          </div>
-
-          <div className="reqFormGroup">
-            <div className="reqFormSelect">
-              <label>What Vocal Style Suits Your Song?</label>
-              <select
-                value={requestData.vocal_type}
-                onChange={() => handleInput("vocal_type", event.target.value)}
-              >
-                <option selected disabled>
-                  Select Style
-                </option>
-                <option value="female">Female</option>
-                <option value="male">Male</option>
-              </select>
-            </div>
-
-            <div className="reqFormSelect">
-              <label>Select a Tempo</label>
-              <select
-                value={requestData.tempo}
-                onChange={() => handleInput("tempo", event.target.value)}
-              >
-                <option selected disabled>
-                  Select Tempo
-                </option>
-                <option value="slow">Slow</option>
-                <option value="medium">Medium</option>
-                <option value="fast">Up-Tempo</option>
-              </select>
-            </div>
-          </div>
+          <SongSpecifications />
         </>
       );
     } else if (activeStep === 4) {
