@@ -7,10 +7,6 @@ import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  useParams,
-  useHistory,
-} from "react-router-dom/cjs/react-router-dom.min";
 
 export default function LetsGetStarted() {
   const dispatch = useDispatch();
@@ -55,14 +51,16 @@ export default function LetsGetStarted() {
     if (activeStep === 1) {
       return (
         <>
-          <div className="reqFormInput">
-            <label>Is this song for a Special Occasion?</label>
-            <input
-              value={requestData.occasion}
-              className="reqFormInput"
-              placeholder="Type the Occasion Here"
-              onChange={() => handleInput("occasion", event.target.value)}
-            ></input>
+          <div className="reqFormGroup">
+            <div className="reqFormInput">
+              <label>Is this song for a Special Occasion?</label>
+              <input
+                value={requestData.occasion}
+                className="reqFormInput"
+                placeholder="Type the Occasion Here"
+                onChange={() => handleInput("occasion", event.target.value)}
+              ></input>
+            </div>
           </div>
         </>
       );
@@ -100,28 +98,35 @@ export default function LetsGetStarted() {
     if (activeStep === 3) {
       return (
         <>
-          <input
-            value={requestData.recipient_relationship}
-            className="reqFormInput"
-            placeholder="Relationship"
-            onChange={() =>
-              handleInput("recipient_relationship", event.target.value)
-            }
-          ></input>
+          <div className="reqFormGroup">
+            <div className="reqFormInput">
+              <label>What is your relationship with this person?</label>
+              <input
+                value={requestData.recipient_relationship}
+                className="reqFormInput"
+                placeholder="Relationship"
+                onChange={() =>
+                  handleInput("recipient_relationship", event.target.value)
+                }
+              ></input>
+            </div>
+          </div>
         </>
       );
     }
     if (activeStep === 4) {
       return (
         <>
-          <div className="reqFormInput">
-            <label>What inspired your song?</label>
-            <input
-              value={requestData.inspiration}
-              className="reqFormInput"
-              placeholder="Inspiration"
-              onChange={() => handleInput("inspiration", event.target.value)}
-            ></input>
+          <div className="reqFormGroup">
+            <div className="reqFormInput">
+              <label>What inspired your song?</label>
+              <input
+                value={requestData.inspiration}
+                className="reqFormInput"
+                placeholder="Inspiration"
+                onChange={() => handleInput("inspiration", event.target.value)}
+              ></input>
+            </div>
           </div>
         </>
       );
@@ -130,34 +135,44 @@ export default function LetsGetStarted() {
 
   return (
     <>
-      <MobileStepper
-        variant="progress"
-        steps={5}
-        position="static"
-        activeStep={activeStep}
-        sx={{ maxWidth: 400, flexGrow: 1 }}
-        nextButton={
-          <Button size="small" onClick={handleNext} disabled={activeStep === 5}>
-            Next
-            {theme.direction === "rtl" ? (
-              <KeyboardArrowLeft />
-            ) : (
-              <KeyboardArrowRight />
-            )}
-          </Button>
-        }
-        backButton={
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-            {theme.direction === "rtl" ? (
-              <KeyboardArrowRight />
-            ) : (
-              <KeyboardArrowLeft />
-            )}
-            Back
-          </Button>
-        }
-      />
-      {startedSteps()}
+      <div className="startedBox">
+        {startedSteps()}
+        <MobileStepper
+          variant="progress"
+          steps={5}
+          position="static"
+          activeStep={activeStep}
+          sx={{ m: "auto", maxWidth: 400, flexGrow: 1, mt: 6 }}
+          nextButton={
+            <Button
+              size="small"
+              onClick={handleNext}
+              disabled={activeStep === 5}
+            >
+              Next
+              {theme.direction === "rtl" ? (
+                <KeyboardArrowLeft />
+              ) : (
+                <KeyboardArrowRight />
+              )}
+            </Button>
+          }
+          backButton={
+            <Button
+              size="small"
+              onClick={handleBack}
+              disabled={activeStep === 0}
+            >
+              {theme.direction === "rtl" ? (
+                <KeyboardArrowRight />
+              ) : (
+                <KeyboardArrowLeft />
+              )}
+              Back
+            </Button>
+          }
+        />
+      </div>
     </>
   );
 }

@@ -43,7 +43,7 @@
 .reqFormGroup {
     display: flex;
     gap: 30px;
-    
+    justify-content: center;
 }
 
 /* --------This is for the syling for the description input and the Select Tempo

@@ -167,71 +167,6 @@ export default function OrderPage({ routeVariants }) {
       return (
         <>
         <LetsGetStarted />
-          <div className="reqFormGroup">
-            <div className="reqFormInput">
-              <label>Who is Creating the Song?</label>
-              <input
-                value={requestData.requester}
-                className="reqFormInput"
-                placeholder="You, the family, the team, etc."
-                onChange={() => handleInput("requester", event.target.value)}
-              ></input>
-            </div>
-
-            <div className="reqFormInput">
-              <label>Is this song for a Special Occasion?</label>
-              <input
-                value={requestData.occasion}
-                className="reqFormInput"
-                placeholder="Type the Occasion Here"
-                onChange={() => handleInput("occasion", event.target.value)}
-              ></input>
-            </div>
-          </div>
-
-          <div className="reqFormGroup">
-            <div className="reqFormInput">
-              <label>Who is this Song For?</label>
-              <div className="reqFormGroup">
-                <input
-                  value={requestData.recipient}
-                  className="reqFormInput"
-                  id="reqFormNameInput"
-                  placeholder="Name or Nickname"
-                  onChange={() => handleInput("recipient", event.target.value)}
-                ></input>
-
-                <input
-                  value={requestData.pronunciation}
-                  className="reqFormInput"
-                  id="reqFormNameInput"
-                  placeholder="Pronunciation"
-                  onChange={() =>
-                    handleInput("pronunciation", event.target.value)
-                  }
-                ></input>
-              </div>
-
-              <input
-                value={requestData.recipient_relationship}
-                className="reqFormInput"
-                placeholder="Relationship"
-                onChange={() =>
-                  handleInput("recipient_relationship", event.target.value)
-                }
-              ></input>
-            </div>
-
-            <div className="reqFormInput">
-              <label>What inspired your song?</label>
-              <input
-                value={requestData.inspiration}
-                className="reqFormInput"
-                placeholder="Inspiration"
-                onChange={() => handleInput("inspiration", event.target.value)}
-              ></input>
-            </div>
-          </div>
         </>
       );
     } else if (activeStep === 1) {
@@ -465,6 +400,11 @@ export default function OrderPage({ routeVariants }) {
     }
   };
 
+  const handleButton = () => {
+    handleNext()
+    handleComplete()
+  }
+
   const handleReset = () => {
     setActiveStep(0);
     setCompleted({});
@@ -516,10 +456,10 @@ export default function OrderPage({ routeVariants }) {
                   Back
                 </button>
                 <Box sx={{ flex: "1 1 auto" }} />
-                <button className="user-portal-details-btn" onClick={handleNext} sx={{ mr: 1 }}>
+                <button className="user-portal-details-btn" onClick={handleButton} sx={{ mr: 1 }}>
                   Next
                 </button>
-                {activeStep !== steps.length &&
+                {/* {activeStep !== steps.length &&
                   (completed[activeStep] ? (
                     <Typography
                       variant="caption"
@@ -533,7 +473,13 @@ export default function OrderPage({ routeVariants }) {
                         ? "Finish"
                         : "Complete Step"}
                     </button>
-                  ))}
+                  ))} */}
+                  {completedSteps() === totalSteps() - 1 ? 
+                     <button onClick={handleComplete} className="user-portal-details-btn">
+                    Finish
+                    </button>
+                    : ""
+                  }
               </Box>
             </React.Fragment>
           )}

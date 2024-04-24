@@ -64,3 +64,16 @@
 .feeText {
     margin-top: 30px;
 }
+
+.startedBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reqFormGroup4 {
+
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+}
