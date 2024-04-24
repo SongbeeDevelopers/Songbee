@@ -219,6 +219,7 @@ export default function OrderPage({ routeVariants }) {
       );
     } else if (activeStep === 2){
       return (
+        <>
       <div className="reqFormGroup">
       <div className="reqFormSelect">
         <label>Choose your Artist</label>
@@ -242,9 +243,10 @@ export default function OrderPage({ routeVariants }) {
             I would like the artist selected for me
           </option>
         </select>
-            <ArtistDisplay />
       </div>
       </div>
+      <ArtistDisplay />
+      </>
       )
     }
   };
