@@ -49,7 +49,7 @@ router.put("/:id", rejectUnauthenticated, cloudinaryUpload.single("file"), async
       }
       const lyrics = req.body.lyrics;
       const title = req.body.title;
-      const artist = req.body.artist;
+      const artist = req.body.artist_id;
       const streaming_link = req.body.streaming_link;
       const songRequestId = req.params.id;
   

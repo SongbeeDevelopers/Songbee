@@ -23,17 +23,18 @@ export default function AdminDetaisDialog({ setDetailsOpen }) {
     event.preventDefault()
     // confirmation message
     Swal.fire({
+      icon: "question",
       title: "Save changes?",
       showCancelButton: true,
       confirmButtonText: "Save",
     }).then((result) => {
-      setDetailsOpen(false)
       if (result.isConfirmed) {
         Swal.fire("Saved!", "", "success");
         dispatch({
           type: 'SUBMIT_REQUEST_EDIT',
           payload: edit
         })
+        setDetailsOpen(false)
       }
     })
   }

@@ -12,9 +12,10 @@ import {
   MenuItem,
   Select
 } from '@mui/material'
+import Swal from 'sweetalert2';
 
 
-export default function AdminCompleteDialog({ handleClose }) {
+export default function AdminCompleteDialog({ setCompleteOpen }) {
 
   const dispatch = useDispatch();
 
@@ -23,43 +24,63 @@ export default function AdminCompleteDialog({ handleClose }) {
   const artists = useSelector(store => store.allArtists);
 
   const [songFile, setSongFile] = useState('')
-  const [title, setTitle] = useState(song.title ? song.title : '');
-  const [artist, setArtist] = useState(song.artist ? song.artist : '');
-  const [lyrics, setLyrics] = useState(song.lyrics ? song.lyrics : '');
-  const [streamingLink, setStreamingLink] = useState(song.streaming_link ? song.streaming_link : '');
 
   const detailsForm = new FormData();
 
+  // stores changes
+  const handleInput = (key, value) => {
+    dispatch({ type: 'EDIT_INPUT', payload: { key, value } })
+  }
+
   // submission logic
   const submitDetails = () => {
-    if (songFile === '') {
-      detailsForm.append("url", song.url)
-    }
-    else {
-      detailsForm.append("file", songFile)
-    }
-
-    detailsForm.append("title", title)
-    detailsForm.append("artist", artist)
-    detailsForm.append("lyrics", lyrics)
-    detailsForm.append("streaming_link", streamingLink)
-    dispatch({
-      type: "UPDATE_SONG_DETAILS",
-      payload: {
-        id: song.id,
-        data: detailsForm
+    Swal.fire({
+      icon: "question",
+      title: "Save changes?",
+      showCancelButton: true,
+      confirmButtonText: "Save",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Saved!", "", "success");
+        if (songFile === '') {
+          detailsForm.append("url", edit.url)
+        } else {
+          detailsForm.append("file", songFile)
+        }
+        detailsForm.append("title", edit.title)
+        detailsForm.append("artist_id", edit.artist_id)
+        detailsForm.append("lyrics", edit.lyrics)
+        detailsForm.append("streaming_link", edit.streaming_link)
+        dispatch({
+          type: "UPDATE_SONG_DETAILS",
+          payload: {
+            id: edit.id,
+            data: detailsForm
+          }
+        });
+        setCompleteOpen(false)
       }
-    });
-    handleClose()
+    })
   };
 
   // deletion logic
   const deleteRequest = () => {
-    dispatch({
-      type: "DELETE_SONG_REQUEST",
-      payload: song.id
-    })
-    handleClose()
+    Swal.fire({
+      icon: "warning",
+      title: "Are you sure you want to delete this request?",
+      text: "This cannot be undone.",
+      showCancelButton: true,
+      confirmButtonText: "Delete",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Deleted!", "", "success");
+        dispatch({
+          type: "DELETE_SONG_REQUEST",
+          payload: song.id
+        })
+        setCompleteOpen(false)
+      }
+    });
   };
 
 
@@ -93,8 +114,8 @@ export default function AdminCompleteDialog({ handleClose }) {
                 placeholder="Song Title"
                 multiline
                 maxRows={4}
-                value={title}
-                onChange={(event) => setTitle(event.target.value)}
+                value={edit.title}
+                onChange={(event) => handleInput("title", event.target.value)}
                 fullWidth={true}
               />
             </div>
@@ -104,8 +125,8 @@ export default function AdminCompleteDialog({ handleClose }) {
                 Select Artist:
               </Typography>
               <Select
-                value={artist}
-                onChange={(event) => setArtist(event.target.value)}
+                value={edit.artist_id}
+                onChange={(event) => handleInput('artist_id', event.target.value)}
                 fullWidth={true}
               >
                 {artists.map((artist) => (
@@ -123,8 +144,8 @@ export default function AdminCompleteDialog({ handleClose }) {
                 placeholder="Lyrics"
                 multiline
                 rows={6}
-                value={lyrics}
-                onChange={(event) => setLyrics(event.target.value)}
+                value={edit.lyrics}
+                onChange={(event) => handleInput("lyrics", event.target.value)}
                 fullWidth={true}
               />
             </div>
@@ -137,8 +158,8 @@ export default function AdminCompleteDialog({ handleClose }) {
                 placeholder="Streaming Link"
                 multiline
                 rows={2}
-                value={streamingLink}
-                onChange={(event) => setStreamingLink(event.target.value)}
+                value={edit.streamingLink}
+                onChange={(event) => handleInput("streaming_link", event.target.value)}
                 fullWidth={true}
               />
             </div>
@@ -147,7 +168,7 @@ export default function AdminCompleteDialog({ handleClose }) {
       </DialogContent>
 
       <DialogActions sx={{ justifyContent: 'center' }}>
-        <Button variant="contained" color="success" onClick={submitDetails}>
+        <Button variant="contained" onClick={submitDetails}>
           Submit
         </Button>
         <Button variant="contained" color="error" onClick={deleteRequest}>
