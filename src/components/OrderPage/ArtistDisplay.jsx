@@ -22,7 +22,7 @@ function ArtistDisplay({ artists, artistId }) {
   console.log("artist", artist);
   return (
     <>
-      <Box sx={{ minWidth: 800, minHeight: 700 }}>
+      <Box sx={{ minWidth: 800 }}>
         <Card>
           <CardContent className="cardContainer" sx={{ p: "5%" }}>
             <div className="songDetails">
