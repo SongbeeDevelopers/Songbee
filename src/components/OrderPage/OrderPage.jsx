@@ -6,6 +6,9 @@ import StepButton from "@mui/material/StepButton";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 
 
 import { useEffect, useState } from "react";
@@ -204,7 +207,10 @@ export default function OrderPage({ routeVariants }) {
                 handleInput("backing_track", true)
               }
             >Add an instrumental backing track!</button>
-
+            <FormGroup
+              sx={{display: "flex", justifyContent: "center"}}>
+            <FormControlLabel required control={<Checkbox />} label="I Have Read and Agree to the Terms of Service" />
+            </FormGroup>
             <Modal
             open={open}
             onClose={handleClose}
