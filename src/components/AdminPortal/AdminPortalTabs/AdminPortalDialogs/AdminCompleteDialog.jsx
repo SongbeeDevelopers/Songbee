@@ -44,13 +44,24 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
         Swal.fire("Saved!", "", "success");
         if (songFile === '') {
           detailsForm.append("url", edit.url)
-        } else {
-          detailsForm.append("file", songFile)
         }
-        detailsForm.append("title", edit.title)
-        detailsForm.append("artist_id", edit.artist_id)
-        detailsForm.append("lyrics", edit.lyrics)
-        detailsForm.append("streaming_link", edit.streaming_link)
+      } else {
+        detailsForm.append("file", songFile)
+      }
+      detailsForm.append("title", edit.title)
+      detailsForm.append("artist_id", edit.artist_id)
+      detailsForm.append("lyrics", edit.lyrics)
+      detailsForm.append("streaming_link", edit.streaming_link)
+
+      if (edit.is_complete === false) {
+        dispatch({
+          type: 'CREATE_SONG_DETAILS',
+          payload: {
+            id: edit.id,
+            data: detailsForm
+          }
+        })
+      } else {
         dispatch({
           type: "UPDATE_SONG_DETAILS",
           payload: {
@@ -58,10 +69,11 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
             data: detailsForm
           }
         });
-        setCompleteOpen(false)
       }
+      setCompleteOpen(false)
     })
-  };
+  }
+
 
   // deletion logic
   const deleteRequest = () => {
@@ -158,7 +170,7 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
                 placeholder="Streaming Link"
                 multiline
                 rows={2}
-                value={edit.streamingLink}
+                value={edit.streaming_link}
                 onChange={(event) => handleInput("streaming_link", event.target.value)}
                 fullWidth={true}
               />
