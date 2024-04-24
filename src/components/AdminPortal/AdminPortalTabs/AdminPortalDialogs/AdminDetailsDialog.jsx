@@ -6,8 +6,10 @@ import { Button } from "@mui/material"
 
 import '../../AdminPortal.css'
 
+import Swal from 'sweetalert2';
 
-export default function AdminDetaisDialog() {
+
+export default function AdminDetaisDialog({ setDetailsOpen }) {
 
   const dispatch = useDispatch()
   const { id } = useParams()
@@ -21,10 +23,20 @@ export default function AdminDetaisDialog() {
 
   const submitRequest = (event) => {
     event.preventDefault()
-    dispatch({
-      type: 'SUBMIT_REQUEST_EDIT',
-      payload: edit
-    })
+    Swal.fire({
+      title: "Save changes?",
+      showCancelButton: true,
+      confirmButtonText: "Save",
+    }).then((result) => {
+      setDetailsOpen(false)
+      if (result.isConfirmed) {
+        Swal.fire("Saved!", "", "success");
+        dispatch({
+          type: 'SUBMIT_REQUEST_EDIT',
+          payload: edit
+        })
+      }
+    });
   }
 
 

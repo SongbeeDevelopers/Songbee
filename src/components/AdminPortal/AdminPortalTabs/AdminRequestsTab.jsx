@@ -105,7 +105,7 @@ export default function AdminRequestsTab({ num, data }) {
                       open={detailsOpen}
                       onClose={() => setDetailsOpen(false)}
                     >
-                      <AdminDetailsDialog />
+                      <AdminDetailsDialog setDetailsOpen={setDetailsOpen} />
                     </Dialog>
                   </TableCell>
 
