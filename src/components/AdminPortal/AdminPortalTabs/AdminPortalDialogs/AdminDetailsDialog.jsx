@@ -1,18 +1,15 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
 import { Button } from "@mui/material"
+import Swal from 'sweetalert2';
 
 import '../../AdminPortal.css'
-
-import Swal from 'sweetalert2';
 
 
 export default function AdminDetaisDialog({ setDetailsOpen }) {
 
   const dispatch = useDispatch()
-  const { id } = useParams()
   
   const edit = useSelector(store => store.edit)
   const genres = useSelector(store => store.genres)
@@ -38,13 +35,13 @@ export default function AdminDetaisDialog({ setDetailsOpen }) {
           payload: edit
         })
       }
-    });
+    })
   }
 
 
   return (
     <div className='admin-req-details-edit'>
-      <h2>Edit Song Request Details</h2>
+      <h3>Edit Song Request Details</h3>
 
       <form>
 

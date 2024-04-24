@@ -51,8 +51,9 @@ export default function AdminRequestsTab({ num, data }) {
   }
 
   // complete modal logic
-  const openComplete = () => {
-
+  const openComplete = (row) => {
+    dispatch({ type: 'SET_EDIT_DATA', payload: row})
+    setCompleteOpen(true)
   }
   const closeComplete = () => {
     dispatch({ type: 'CLEAR_EDIT_DATA'})
@@ -125,7 +126,7 @@ export default function AdminRequestsTab({ num, data }) {
                   {/* complete button */}
                   <TableCell align="center">
                     <Button variant="contained"
-                      onClick={() => setCompleteOpen(true)}
+                      onClick={() => openComplete(row)}
                       sx={{ height: 35, width: 95, backgroundColor: "#feaf17", color: "black" }}
                     >
                       COMPLETE
@@ -136,7 +137,7 @@ export default function AdminRequestsTab({ num, data }) {
                       open={completeOpen}
                       onClose={closeComplete}
                     >
-                      <AdminCompleteDialog request={row} />
+                      <AdminCompleteDialog setCompleteOpen={setCompleteOpen} />
                     </Dialog>
                   </TableCell>
 
