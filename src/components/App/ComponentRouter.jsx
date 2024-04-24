@@ -107,7 +107,7 @@ function ComponentRouter() {
         location.pathname === "/details/:id" ||
         location.pathname === "/created/:delivery_days/:extra_verse/:streaming" ||
         // artists
-        location.pathname === "/artist-community" ||
+        location.pathname === "/artists" ||
         location.pathname === "/join-artist" ||
         location.pathname === "/artist-requests" ||
         location.pathname === "/artist-process" ||
@@ -299,7 +299,7 @@ function ComponentRouter() {
         location.pathname === "/details/:id" ||
         location.pathname === "/created/:delivery_days/:extra_verse/:streaming" ||
         // artists
-        location.pathname === "/artist-community" ||
+        // location.pathname === "/artists" ||
         location.pathname === "/join-artist" ||
         location.pathname === "/artist-requests" ||
         location.pathname === "/artist-process" ||

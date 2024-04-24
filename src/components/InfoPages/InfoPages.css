@@ -207,6 +207,14 @@ FAQ Page
     color: #feaf17;
 }
 
+.faq-below-title-artist{
+    font-size: 0.8rem;
+    line-height: 130%;
+    text-align: center;
+    margin-top: 20px;
+    /* margin-left: 600px; */
+}
+
 /* --------------------------------------------------------------------------------
 Quality Guarantee Page
 -------------------------------------------------------------------------------- */
