@@ -292,11 +292,11 @@ export default function OrderPage({ routeVariants }) {
   };
 
   const handleComplete = (event) => {
+    event.preventDefault();
     const newCompleted = completed;
     newCompleted[activeStep] = true;
     setCompleted(newCompleted);
     handleNext();
-    event.preventDefault();
     if (
       requestData.requester &&
       requestData.recipient &&
