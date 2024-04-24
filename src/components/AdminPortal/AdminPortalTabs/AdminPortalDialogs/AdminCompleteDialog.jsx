@@ -31,7 +31,6 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
     dispatch({ type: 'EDIT_INPUT', payload: { key, value } })
   }
 
-      // THIS DOES NOT WORK!!!!!!!! NEED TO FIX!!!!
   // submission logic
   const submitDetails = () => {
     Swal.fire({
@@ -44,33 +43,32 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
         Swal.fire("Saved!", "", "success");
         if (songFile === '' || null) {
           detailsForm.append("url", edit.url)
+        } else {
+          detailsForm.append("file", songFile)
         }
-      } else {
-        detailsForm.append("file", songFile)
+        detailsForm.append("title", edit.title)
+        detailsForm.append("artist_id", edit.artist_id)
+        detailsForm.append("lyrics", edit.lyrics)
+        detailsForm.append("streaming_link", edit.streaming_link)
+        if (edit.is_complete === false) {
+          dispatch({
+            type: 'CREATE_SONG_DETAILS',
+            payload: {
+              id: edit.id,
+              data: detailsForm
+            }
+          })
+        } else {
+          dispatch({
+            type: "UPDATE_SONG_DETAILS",
+            payload: {
+              id: edit.id,
+              data: detailsForm
+            }
+          });
+        }
+        setCompleteOpen(false)
       }
-      detailsForm.append("title", edit.title)
-      detailsForm.append("artist_id", edit.artist_id)
-      detailsForm.append("lyrics", edit.lyrics)
-      detailsForm.append("streaming_link", edit.streaming_link)
-
-      if (edit.is_complete === false) {
-        dispatch({
-          type: 'CREATE_SONG_DETAILS',
-          payload: {
-            id: edit.id,
-            data: detailsForm
-          }
-        })
-      } else {
-        dispatch({
-          type: "UPDATE_SONG_DETAILS",
-          payload: {
-            id: edit.id,
-            data: detailsForm
-          }
-        });
-      }
-      setCompleteOpen(false)
     })
   }
 
@@ -108,6 +106,7 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
               </Typography>
 
               <TextField
+                required
                 type="file"
                 className="form-control-file"
                 name="uploaded_file"
@@ -122,6 +121,7 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
               </Typography>
 
               <TextField
+                required
                 placeholder="Song Title"
                 multiline
                 maxRows={4}
@@ -136,6 +136,7 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
                 Select Artist:
               </Typography>
               <Select
+
                 value={edit.artist_id}
                 onChange={(event) => handleInput('artist_id', event.target.value)}
                 fullWidth={true}
