@@ -14,7 +14,7 @@ export default function AdminDetaisDialog({ setDetailsOpen }) {
   const edit = useSelector(store => store.edit)
   const genres = useSelector(store => store.genres)
 
-  // stores changes
+  // stores changes in edit reducer
   const handleInput = (key, value) => {
     dispatch({type: 'EDIT_INPUT', payload: {key, value}})
   }
@@ -30,6 +30,7 @@ export default function AdminDetaisDialog({ setDetailsOpen }) {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire("Saved!", "", "success");
+        // if confirmed, updates db with edit reducer data
         dispatch({
           type: 'SUBMIT_REQUEST_EDIT',
           payload: edit

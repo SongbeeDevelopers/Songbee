@@ -88,7 +88,7 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
         Swal.fire("Deleted!", "", "success");
         dispatch({
           type: "DELETE_SONG_REQUEST",
-          payload: song.id
+          payload: edit.id
         })
         setCompleteOpen(false)
       }

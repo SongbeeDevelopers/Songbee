@@ -42,15 +42,17 @@ export default function AdminRequestsTab({ num, data }) {
         row.genre = genre.id
       }
     }
+    // sets edit reducer with request data
     dispatch({ type: 'SET_EDIT_DATA', payload: row })
     setDetailsOpen(true)
   }
   const closeDetails = () => {
+    // clears reducer on close
     dispatch({ type: 'CLEAR_EDIT_DATA'})
     setDetailsOpen(false)
   }
 
-  // complete modal logic
+  // same as above, logic for complete dialog
   const openComplete = (row) => {
     dispatch({ type: 'SET_EDIT_DATA', payload: row})
     setCompleteOpen(true)
