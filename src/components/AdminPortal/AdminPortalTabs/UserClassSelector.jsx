@@ -5,7 +5,7 @@ import {
   MenuItem,
   Select,
 } from "@mui/material"
-
+import Swal from "sweetalert2";
 
 export default function UserClassSelector({ user }) {
 
@@ -14,13 +14,24 @@ export default function UserClassSelector({ user }) {
   const [userClass, setUserClass] = useState(user.class)
 
   const updateUserClass = (value) => {
-    dispatch({
-      type: "UPDATE_USER_CLASS",
-      payload: {
-        id: user.id,
-        data: value
+    Swal.fire({
+      icon: "warning" ,
+      title: "Reassign this user's class?",
+      showCancelButton: true,
+      confirmButtonText: "Reassign",
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        dispatch({
+          type: "UPDATE_USER_CLASS",
+          payload: {
+            id: user.id,
+            data: value
+          }
+        })
+        Swal.fire("Done!", "", "success");
       }
-    })
+    });
   };
 
   return (
