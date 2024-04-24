@@ -20,7 +20,6 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
   const dispatch = useDispatch();
 
   const edit = useSelector(store => store.edit)
-  const song = useSelector(store => store.currentRequest);
   const artists = useSelector(store => store.allArtists);
 
   const [songFile, setSongFile] = useState('')
@@ -32,6 +31,7 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
     dispatch({ type: 'EDIT_INPUT', payload: { key, value } })
   }
 
+      // THIS DOES NOT WORK!!!!!!!! NEED TO FIX!!!!
   // submission logic
   const submitDetails = () => {
     Swal.fire({
@@ -42,7 +42,7 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire("Saved!", "", "success");
-        if (songFile === '') {
+        if (songFile === '' || null) {
           detailsForm.append("url", edit.url)
         }
       } else {
@@ -73,7 +73,6 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
       setCompleteOpen(false)
     })
   }
-
 
   // deletion logic
   const deleteRequest = () => {
