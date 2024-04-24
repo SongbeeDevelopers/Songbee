@@ -135,7 +135,7 @@
   flex-flow: row;
   height: 80vh;
   justify-content: center;
-  text-align: center;
+  /* text-align: center; */
   gap: 100px;
  
 }
@@ -209,7 +209,6 @@
 
 
 .artist-slide {
-  width: 600px;
   height: 400px;
   margin: 0 auto 1.25rem;
   border-radius: 50%;
@@ -229,8 +228,9 @@
 }
 
 .artistSlide-img {
-  /* width: 400px; */
-  /* height: 400px; */
+  width: 400px;
+  height: 400px;
+  display: inline-block;
   /* width: 800px; */
   /* height: 90%; */
   /* margin:  auto 1.25rem; */
@@ -257,20 +257,25 @@
 .player-container  {
   cursor: pointer;
   text-indent: -999999px;
-  height: 70px;
-  width: 70px;
+  height: 50px;
+  width: 50px;
   padding: 12px 18px;
   z-index: 2;
+  
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMiAyNHYtMjRsMjAgMTItMjAgMTJ6Ii8+PC9zdmc+);
     background-repeat: no-repeat!important;
     background-position: absolute;
-    background-size: 16px;
     border-radius: 50%;
-    margin-top: 320px;
-    margin-left: -230px;
+    margin-top: 408px;
+    margin-left: -470px;
+   
   background-repeat:no-repeat;
   background-position:center;
-  background-size:30px;
+  background-size: 25px;
+  background-color: transparent;
+}
+
+.player-container:hover {
   background-color: orange;
 }
 .play {
@@ -282,6 +287,10 @@
 }
 
 /* ----------End style for play button------- */
+
+.faq-section {
+  margin-top: 200px;
+}
 
 .community-button {
   width: 100%;
@@ -302,9 +311,9 @@
   padding: 0;
 }
 
-.artist-left p {
+/* .artist-left p {
   max-width: 350px;
-}
+} */
 
 .artist-left {
   display: flex;
