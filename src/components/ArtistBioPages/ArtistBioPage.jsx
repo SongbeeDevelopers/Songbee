@@ -12,23 +12,23 @@ function ArtistBioPage() {
 const { id } = useParams();
 const dispatch = useDispatch();
 const artist = useSelector(store => store.currentArtist);
-// const [selectedSong, setSelectedSong] = useState(null);
+const artistGenre = useSelector(store => store.fetchGenres);
+
 
 
 
 useEffect(() => {
-    // setSelectedSong(null);
     dispatch({
         type: 'FETCH_CURRENT_ARTIST',
         payload: id})
   }, [id])
   console.log("artist", artist)
-
-//   function for handling song selection
-    // const handleSongSelect = (artist) => {
-    //     setSelectedSong(artist);
-    //     setSelectedSong(null);
-    // }
+// 
+useEffect(() => {
+    dispatch({
+        type: 'FETCH_GENRES',
+        payload: id})
+}, [id])
   
 
   
@@ -41,7 +41,7 @@ useEffect(() => {
            <div className="nameHeader">
                <h2>{artist && artist.name}</h2>
                <h4 className="location">{artist.location}</h4>
-               <p className="subHeader">Pop, Hip hop</p> 
+               {/* <p className="subHeader">Pop, Hip hop</p>  */}
                <div className="socialLinks">
                 <div className="instagram">
                    <a href={artist.instagram_link} >
@@ -63,6 +63,8 @@ useEffect(() => {
                </div>
             </div> 
            </div>
+           {/* <h2>Bio</h2> */}
+           <h4 className="bio">{artist.bio}</h4>
          </div>
         </div>
         <div className="songListWrapper">
@@ -71,7 +73,7 @@ useEffect(() => {
                <div className="headerItem"> 
                    <div className="title">
                       Title
-                       {artist.title}
+                       
                    </div>
                </div>
                <div class="headerItem"> 
@@ -89,24 +91,19 @@ useEffect(() => {
 
                    <div className="audioFiles" key={index}>  
                         <AudioButton url={sampleSong} />
-                        {/* <AudioButton url={artist.sample_song_2}/> */}
-                        {/* <AudioButton url={artist.sample_song_3}/> */}
-                       {/* <audio controls onClick ={() => handleSongSelect(sampleSong)}>
-                           <source src={sampleSong} type="audio/mpeg" />
-                       </audio> */}
                        {console.log('Logging sampleSong:', sampleSong)}
-                        {console.log('Logging the sample_song_1:',artist.sample_song_1)}
-
-
-                       {/* 👇 We will need to map for genres and have it render here */}
-                       <p>Singer songwriter</p>
+                
+                       {artist.genres.map((genre) => (
+                            <p>{genre.genre}</p>
+                       ))}
+                      
                    </div>
+                   
                        );
                     })}
+                   
                </div>
            </div>
-           <h2>Bio</h2>
-           <h4 className="bio">{artist.bio}</h4>
        </div>
    </div>
         

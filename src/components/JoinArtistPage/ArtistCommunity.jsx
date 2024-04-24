@@ -4,8 +4,12 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import AudioButton from './AudioButton';
 
+import FaqArtistPage from '../InfoPages/FaqArtistPage';
+
+
 
 import "./JoinArtistPage.css";
+
 
 function ArtistCommunity() {
 
@@ -47,22 +51,18 @@ function ArtistCommunity() {
                    src={artist.photo} alt="Artist photos" />
                    
                    <AudioButton  url={artist.sample_song_1} /> </>
-                  
-                   
-               ))}   
+                             
+               ))}  
+  
                 </div>
-                  {/* <audio id="track">
-                     <source src={artistCommunity[0] ?.sample_song_1} type="audio/mpeg" />
-                   </audio> */}
-                   {/* <div id="player-container">
-                 <div id="play-pause" className="play" onClick={() => playPause(document.getElementById('track'), document.getElementById('play-pause'))}>
-                  Play
-                </div>
-              </div> */}
           </div>
          </div>
+  
         </div>
-      </div> 
+        <div className="faq-section">
+         <FaqArtistPage />
+        </div>
+      </div>
     </div>  
     
     );
