@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import AdminCompleteDialog from './AdminPortalDialogs/AdminCompleteDialog';
 import AdminDetailsDialog from './AdminPortalDialogs/AdminDetailsDialog'
@@ -18,6 +19,11 @@ import {
 
 export default function AdminRequestsTab({ num, data }) {
 
+  const dispatch = useDispatch()
+
+  const genres = useSelector(store => store.genres)
+  const artists = useSelector(store => store.allArtists)
+
   // modal state
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [completeOpen, setCompleteOpen] = useState(false)
@@ -29,6 +35,33 @@ export default function AdminRequestsTab({ num, data }) {
     return new Date(due).toLocaleString('en-us')
   }
 
+  // details modal logic
+  const openDetails = (row) => {
+    // grabs genre id from genre in reducer
+    for (let genre of genres) {
+      if (row.genre === genre.name) {
+        row.genre = genre.id
+      }
+    }
+    // sets edit reducer with request data
+    dispatch({ type: 'SET_EDIT_DATA', payload: row })
+    setDetailsOpen(true)
+  }
+  const closeDetails = () => {
+    // clears reducer on close
+    dispatch({ type: 'CLEAR_EDIT_DATA'})
+    setDetailsOpen(false)
+  }
+
+  // same as above, logic for complete dialog
+  const openComplete = (row) => {
+    dispatch({ type: 'SET_EDIT_DATA', payload: row})
+    setCompleteOpen(true)
+  }
+  const closeComplete = () => {
+    dispatch({ type: 'CLEAR_EDIT_DATA'})
+    setCompleteOpen(false)
+  }
 
   return (
     <div>
@@ -67,7 +100,15 @@ export default function AdminRequestsTab({ num, data }) {
 
                   {/* artist */}
                   <TableCell align="center">
-                    {/* NEED TO FILL THIS */}
+                    {row.artist_id ?
+                      artists.map((artist) => {
+                        if (artist.id === row.artist_id) {
+                          return artist.artist_name
+                        }
+                      })
+                      :
+                      'Unassigned'
+                    }
                   </TableCell>
 
                   {/* due */}
@@ -78,7 +119,7 @@ export default function AdminRequestsTab({ num, data }) {
                   {/* details btn */}
                   <TableCell align="center">
                     <Button variant="contained"
-                      onClick={() => setDetailsOpen(true)}
+                      onClick={() => openDetails(row)}
                       sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
                     >
                       DETAILS
@@ -87,16 +128,16 @@ export default function AdminRequestsTab({ num, data }) {
                     {/* details dialog */}
                     <Dialog keepMounted fullWidth maxWidth="md"
                       open={detailsOpen}
-                      onClose={() => setDetailsOpen(false)}
+                      onClose={closeDetails}
                     >
-                      <AdminDetailsDialog request={row} />
+                      <AdminDetailsDialog setDetailsOpen={setDetailsOpen} />
                     </Dialog>
                   </TableCell>
 
                   {/* complete button */}
                   <TableCell align="center">
                     <Button variant="contained"
-                      onClick={() => setCompleteOpen(true)}
+                      onClick={() => openComplete(row)}
                       sx={{ height: 35, width: 95, backgroundColor: "#feaf17", color: "black" }}
                     >
                       COMPLETE
@@ -105,9 +146,9 @@ export default function AdminRequestsTab({ num, data }) {
                     {/* complete dialog */}
                     <Dialog keepMounted fullWidth maxWidth="md"
                       open={completeOpen}
-                      onClose={() => setCompleteOpen(false)}
+                      onClose={closeComplete}
                     >
-                      <AdminCompleteDialog request={row} />
+                      <AdminCompleteDialog setCompleteOpen={setCompleteOpen} />
                     </Dialog>
                   </TableCell>
 

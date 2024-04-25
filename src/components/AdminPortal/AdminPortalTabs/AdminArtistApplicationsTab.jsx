@@ -1,33 +1,60 @@
 import * as React from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import FilterBar from "../../FilterBar/FilterBar";
+import ArtistAppDetailsDialog from "./AdminPortalDialogs/ArtistAppDetailsDialog"
 
 import {
   Button,
+  Dialog,
   Table,
   TableBody,
   TableCell,
   TableHead,
   TableRow,
 } from "@mui/material"
+import Swal from "sweetalert2";
 
 
 export default function AdminArtistTable({ data }) {
 
   const dispatch = useDispatch();
 
+  const [openApp, setOpenApp] = useState(false)
+
   const approveArtist = (id, user_id) => {
-    dispatch({
-      type: "APPROVE_ARTIST",
-      payload: { id, user_id },
+    Swal.fire({
+      icon: 'question',
+      title: "Approve Artist?",
+      showCancelButton: true,
+      confirmButtonText: "Approve",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch({
+          type: "APPROVE_ARTIST",
+          payload: { id, user_id },
+        });
+        Swal.fire("Approved!", "", "success");
+      }
     });
   };
 
   const denyArtist = (id) => {
-    dispatch({
-      type: "DELETE_ARTIST",
-      payload: id,
+    Swal.fire({
+      icon: 'warning',
+      title: "Deny Artist?",
+      text: "This cannot be undone.",
+      showCancelButton: true,
+      confirmButtonText: "Deny",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch({
+          type: "DELETE_ARTIST",
+          payload: id,
+        });
+        Swal.fire("Denied!", "", "success");
+      }
     });
   };
 
@@ -45,6 +72,7 @@ export default function AdminArtistTable({ data }) {
                 <TableCell>Artist Name</TableCell>
                 <TableCell align="center">Vocal Type</TableCell>
                 <TableCell align="center">Website</TableCell>
+                <TableCell align="center">Details</TableCell>
                 <TableCell align="center">Approve</TableCell>
                 <TableCell align="center">Deny</TableCell>
               </TableRow>
@@ -67,6 +95,22 @@ export default function AdminArtistTable({ data }) {
                     {/* website */}
                     <TableCell align="center">
                       {artist.website}
+                    </TableCell>
+
+                    <TableCell align="center">
+                      <Button variant="contained"
+                        onClick={() => setOpenApp(true)}
+                        sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
+                      >
+                        Details
+                      </Button>
+
+                      <Dialog keepMounted fullWidth maxWidth="md"
+                        open={openApp}
+                        onClose={() => setOpenApp(false)}
+                      >
+                        <ArtistAppDetailsDialog artist={artist} setOpenApp={setOpenApp} />
+                      </Dialog>
                     </TableCell>
 
                     {/* approve button */}

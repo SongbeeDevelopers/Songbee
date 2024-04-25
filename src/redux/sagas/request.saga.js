@@ -137,6 +137,18 @@ function* loadAdminPage (action) {
     }
 }
 
+function* submitRequestEdit (action) {
+    try {
+        const response = yield axios({
+            method: 'PUT',
+            url: `/api/request/update/${action.payload.id}`,
+            data: action.payload
+        })
+    } catch (error) {
+        console.error('SAGA submitRequestEdit failed:', error)
+    }
+}
+
 function* requestSaga() {
     yield takeLatest('FETCH_ALL_REQUESTS', fetchAllRequests);
     yield takeLatest('FETCH_USER_REQUESTS', fetchUserRequests);
@@ -149,6 +161,7 @@ function* requestSaga() {
     yield takeLatest('LOAD_ADMIN_PAGE', loadAdminPage);
     yield takeLatest('FETCH_CHECKOUT', fetchCheckout);
     yield takeLatest('FINISH_SONG_REQUEST', finishSongRequest);
+    yield takeLatest('SUBMIT_REQUEST_EDIT', submitRequestEdit);
 }
 
 export default requestSaga;

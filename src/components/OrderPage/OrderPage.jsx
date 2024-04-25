@@ -6,6 +6,9 @@ import StepButton from "@mui/material/StepButton";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 
 
 import { useEffect, useState } from "react";
@@ -21,6 +24,8 @@ import Swal from "sweetalert2";
 
 import LoginRegisterForm from "../LoginRegisterForm/LoginRegisterForm";
 import ArtistDisplay from "./ArtistDisplay";
+import LetsGetStarted from "./LetsGetStarted";
+import SongSpecifications from "./SongSpecifications";
 
 const steps = [
   "Let's Get Started!",
@@ -41,13 +46,6 @@ export default function OrderPage({ routeVariants }) {
 
   const user = useSelector((store) => store.user);
   const newOrder = useSelector((store) => store.newOrder);
-
-  const handleSelection = (key, value) => {
-    dispatch({
-      type: "SET_NEW_ORDER",
-      payload: { ...newOrder, [key]: value },
-    });
-  };
 
   const now = new Date();
   const msPerDay = 24 * 60 * 60 * 1000;
@@ -172,143 +170,13 @@ export default function OrderPage({ routeVariants }) {
     if (activeStep === 0) {
       return (
         <>
-          <div className="reqFormGroup">
-            <div className="reqFormInput">
-              <label>Who is Creating the Song?</label>
-              <input
-                value={requestData.requester}
-                className="reqFormInput"
-                placeholder="You, the family, the team, etc."
-                onChange={() => handleInput("requester", event.target.value)}
-              ></input>
-            </div>
-
-            <div className="reqFormInput">
-              <label>Is this song for a Special Occasion?</label>
-              <input
-                value={requestData.occasion}
-                className="reqFormInput"
-                placeholder="Type the Occasion Here"
-                onChange={() => handleInput("occasion", event.target.value)}
-              ></input>
-            </div>
-          </div>
-
-          <div className="reqFormGroup">
-            <div className="reqFormInput">
-              <label>Who is this Song For?</label>
-              <div className="reqFormGroup">
-                <input
-                  value={requestData.recipient}
-                  className="reqFormInput"
-                  id="reqFormNameInput"
-                  placeholder="Name or Nickname"
-                  onChange={() => handleInput("recipient", event.target.value)}
-                ></input>
-
-                <input
-                  value={requestData.pronunciation}
-                  className="reqFormInput"
-                  id="reqFormNameInput"
-                  placeholder="Pronunciation"
-                  onChange={() =>
-                    handleInput("pronunciation", event.target.value)
-                  }
-                ></input>
-              </div>
-
-              <input
-                value={requestData.recipient_relationship}
-                className="reqFormInput"
-                placeholder="Relationship"
-                onChange={() =>
-                  handleInput("recipient_relationship", event.target.value)
-                }
-              ></input>
-            </div>
-
-            <div className="reqFormInput">
-              <label>What inspired your song?</label>
-              <input
-                value={requestData.inspiration}
-                className="reqFormInput"
-                placeholder="Inspiration"
-                onChange={() => handleInput("inspiration", event.target.value)}
-              ></input>
-            </div>
-          </div>
+        <LetsGetStarted />
         </>
       );
     } else if (activeStep === 1) {
       return (
         <>
-          <div className="reqFormGroup">
-            <div className="reqFormSelect">
-              <label>Choose a Genre</label>
-              <select
-                value={requestData.genre}
-                onChange={() => handleInput("genre", event.target.value)}
-              >
-                <option selected disabled>
-                  Select Genre
-                </option>
-                {genres.map((genre) => (
-                  <option key={genre.id} value={genre.id}>
-                    {genre.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div className="reqFormSelect">
-              <label>Set the Vibe</label>
-              <select
-                value={requestData.vibe}
-                onChange={() => handleInput("vibe", event.target.value)}
-              >
-                <option selected disabled>
-                  Select Vibe
-                </option>
-                <option value="happy">Happy</option>
-                <option value="lighthearted">Lighthearted</option>
-                <option value="heartfelt">Heartfelt</option>
-                <option value="romantic">Romantic</option>
-                <option value="reflective">Reflective</option>
-                <option value="somber">Somber</option>
-              </select>
-            </div>
-          </div>
-
-          <div className="reqFormGroup">
-            <div className="reqFormSelect">
-              <label>What Vocal Style Suits Your Song?</label>
-              <select
-                value={requestData.vocal_type}
-                onChange={() => handleInput("vocal_type", event.target.value)}
-              >
-                <option selected disabled>
-                  Select Style
-                </option>
-                <option value="female">Female</option>
-                <option value="male">Male</option>
-              </select>
-            </div>
-
-            <div className="reqFormSelect">
-              <label>Select a Tempo</label>
-              <select
-                value={requestData.tempo}
-                onChange={() => handleInput("tempo", event.target.value)}
-              >
-                <option selected disabled>
-                  Select Tempo
-                </option>
-                <option value="slow">Slow</option>
-                <option value="medium">Medium</option>
-                <option value="fast">Up-Tempo</option>
-              </select>
-            </div>
-          </div>
+          <SongSpecifications />
         </>
       );
     } else if (activeStep === 4) {
@@ -339,7 +207,10 @@ export default function OrderPage({ routeVariants }) {
                 handleInput("backing_track", true)
               }
             >Add an instrumental backing track!</button>
-
+            <FormGroup
+              sx={{display: "flex", justifyContent: "center"}}>
+            <FormControlLabel required control={<Checkbox />} label="I Have Read and Agree to the Terms of Service" />
+            </FormGroup>
             <Modal
             open={open}
             onClose={handleClose}
@@ -354,6 +225,7 @@ export default function OrderPage({ routeVariants }) {
       );
     } else if (activeStep === 2){
       return (
+        <>
       <div className="reqFormGroup">
       <div className="reqFormSelect">
         <label>Choose your Artist</label>
@@ -361,21 +233,26 @@ export default function OrderPage({ routeVariants }) {
           value={requestData.genre}
           onChange={() => handleInput("artist", event.target.value)}
         >
-          <option selected disabled>
+          <option selected>
             Select Artist
           </option>
-          {artists.map((artist) => (
-            <option key={artist.id} value={artist.id}>
-              {artist.artist_name}
-            </option>
-          ))}
-           <option>
+          {artists.map((artist) => {
+              if (artist.genres[0].id === Number(requestData.genre) || artist.genres[1] && artist.genres[1].id === Number(requestData.genre) || requestData.genre === ''){
+                return (
+                <option key={artist.id} value={artist.id}>
+                  {artist.artist_name}
+                </option>
+                )
+                }
+                })}
+           <option key={artists.length} value=''>
             I would like the artist selected for me
           </option>
         </select>
-            <ArtistDisplay />
       </div>
       </div>
+      <ArtistDisplay />
+      </>
       )
     }
   };
@@ -415,11 +292,11 @@ export default function OrderPage({ routeVariants }) {
   };
 
   const handleComplete = (event) => {
+    event.preventDefault();
     const newCompleted = completed;
     newCompleted[activeStep] = true;
     setCompleted(newCompleted);
     handleNext();
-    event.preventDefault();
     if (
       requestData.requester &&
       requestData.recipient &&
@@ -465,6 +342,11 @@ export default function OrderPage({ routeVariants }) {
       });
     }
   };
+
+  const handleButton = () => {
+    handleNext()
+    handleComplete()
+  }
 
   const handleReset = () => {
     setActiveStep(0);
@@ -517,10 +399,10 @@ export default function OrderPage({ routeVariants }) {
                   Back
                 </button>
                 <Box sx={{ flex: "1 1 auto" }} />
-                <button className="user-portal-details-btn" onClick={handleNext} sx={{ mr: 1 }}>
+                <button className="user-portal-details-btn" onClick={handleButton} sx={{ mr: 1 }}>
                   Next
                 </button>
-                {activeStep !== steps.length &&
+                {/* {activeStep !== steps.length &&
                   (completed[activeStep] ? (
                     <Typography
                       variant="caption"
@@ -534,7 +416,13 @@ export default function OrderPage({ routeVariants }) {
                         ? "Finish"
                         : "Complete Step"}
                     </button>
-                  ))}
+                  ))} */}
+                  {completedSteps() === totalSteps() - 1 ? 
+                     <button onClick={handleComplete} className="user-portal-details-btn">
+                    Finish
+                    </button>
+                    : ""
+                  }
               </Box>
             </React.Fragment>
           )}
