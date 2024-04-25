@@ -29,7 +29,7 @@ router.get("/get", async (req, res) => {
   // this is getting artist info with the genre
   // we use the sql join to link artist and genre tables
   const artistId = await getArtistIdByUserId(req.user.id)
-  // console.log(artistId);
+  console.log("artist id", artistId);
   const query = `
   SELECT 
   "artist"."id" AS "artistId",
@@ -51,6 +51,7 @@ router.get("/get", async (req, res) => {
   `;
   pool.query(query, [artistId])
     .then((result) => {
+      console.log("result.rows", result.rows)
         res.send(result.rows);
     })
     .catch((error) => {

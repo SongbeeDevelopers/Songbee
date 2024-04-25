@@ -3,10 +3,9 @@ import { useRef } from "react";
 import { useDispatch } from "react-redux";
 
 import Dialog from "@mui/material/Dialog";
-import Slide from "@mui/material/Slide";
 import Box from "@mui/material/Box";
 
-function EditArtistProfileDialog({ artistProfile, openArtist, handleCloseArtist}) {
+function EditArtistProfileDialog({ artistProfile, openArtist, setOpenArtist}) {
 
   const dispatch = useDispatch()
 
@@ -45,25 +44,10 @@ function EditArtistProfileDialog({ artistProfile, openArtist, handleCloseArtist}
     aboutYourselfRef.current.value = "";
   };
 
-  const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
-  });
+
 
 
   return (
-    <Dialog
-      open={openArtist}
-      keepMounted
-      TransitionComponent={Transition}
-      // onClose={handleCloseArtist}
-      aria-describedby="alert-dialog-slide-description"
-      sx={{
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
       <Box
         sx={{
           width: "100%",
@@ -164,7 +148,6 @@ function EditArtistProfileDialog({ artistProfile, openArtist, handleCloseArtist}
           </button>
         </form>
       </Box>
-    </Dialog>
   )
 }
 
