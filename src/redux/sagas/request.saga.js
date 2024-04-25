@@ -24,11 +24,11 @@ function* fetchUserRequests () {
 
 function* fetchArtistRequests () {
     try {
-        const response = yield axios.get('/api/request/user')
-        yield put({ type: 'SET_USER_REQUESTS', payload: response.data})
+        const response = yield axios.get(`/api/request/artist/${action.payload}`)
+        yield put({ type: 'SET_ARTIST_REQUESTS', payload: response.data})
     }
     catch (error) {
-        console.error('SAGA fetchUserRequests() failed:', error)
+        console.error('SAGA fetchArtistRequests() failed:', error)
     }
 }
 
@@ -172,6 +172,7 @@ function* requestSaga() {
     yield takeLatest('FETCH_CHECKOUT', fetchCheckout);
     yield takeLatest('FINISH_SONG_REQUEST', finishSongRequest);
     yield takeLatest('SUBMIT_REQUEST_EDIT', submitRequestEdit);
+    yield takeLatest('FETCH_ARTIST_REQUESTS', fetchArtistRequests);
 }
 
 export default requestSaga;
