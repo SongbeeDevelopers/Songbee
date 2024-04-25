@@ -50,7 +50,11 @@ function ArtistCommunity() {
                 <><img className="artistSlide-img" key={i} onClick={() => history.push(`/ArtistBioPage/${artist.id}`)}
                    src={artist.photo} alt="Artist photos" />
                    
-                   <AudioButton  url={artist.sample_song_1} /> </>
+                   <div className="artistCommunityBtn">
+                   <AudioButton  url={artist.sample_song_1} /> 
+                   </div>
+                   </>
+                  
                              
                ))}  
   

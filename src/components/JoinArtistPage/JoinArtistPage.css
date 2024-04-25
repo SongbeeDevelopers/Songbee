@@ -266,7 +266,7 @@
     background-repeat: no-repeat!important;
     background-position: absolute;
     border-radius: 50%;
-    margin-top: 408px;
+    margin-top: 410px;
     margin-left: -470px;
    
   background-repeat:no-repeat;
@@ -274,6 +274,28 @@
   background-size: 25px;
   background-color: transparent;
 }
+
+/* .artistCommunityBtn {
+  cursor: pointer;
+  text-indent: -999999px;
+  height: 50px;
+  width: 50px;
+  padding: 12px 18px;
+  z-index: 2;
+  
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMiAyNHYtMjRsMjAgMTItMjAgMTJ6Ii8+PC9zdmc+);
+    background-repeat: no-repeat!important;
+    background-position: absolute;
+    border-radius: 50%;
+    margin-top: 410px;
+    margin-left: -100px;
+    
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size: 25px;
+  background-color: transparent;
+} */
+
 
 .player-container:hover {
   background-color: orange;

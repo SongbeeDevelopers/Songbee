@@ -61,8 +61,11 @@ CREATE TABLE "artist" (
   "website" VARCHAR,
   "instagram_link" VARCHAR,
   "sample_song_1" VARCHAR DEFAULT NULL,
+  "song_title_1" VARCHAR DEFAULT NULL,
   "sample_song_2" VARCHAR DEFAULT NULL,
+  "song_title_2" VARCHAR DEFAULT NULL,
   "sample_song_3" VARCHAR DEFAULT NULL,
+  "song_title_3" VARCHAR DEFAULT NULL,
   "bio" VARCHAR,
   "location" VARCHAR,
   "photo" VARCHAR,
@@ -154,15 +157,15 @@ VALUES
 (1, 'Rap/Hip-Hop'), (2, 'Folk'), (3, 'Rock'), (4, 'R&B'), (5, 'Country'), (6, 'Singer Songwriter'), (7, 'Acoustic Pop'), (8, 'Pop');
 
 INSERT INTO "artist"
-("artist_name", "name", "user_id", "vocal_type", "approved", "is_active", "website", "instagram_link", "sample_song_1", "sample_song_2", "sample_song_3", "bio","location", "photo", "streaming_link")
+("artist_name", "name", "user_id", "vocal_type", "approved", "is_active", "website", "instagram_link", "sample_song_1", "song_title_1", "sample_song_2", "song_title_2", "sample_song_3", "song_title_3", "bio","location", "photo", "streaming_link")
 VALUES
-('Michael LeFerve', 'Michael Leferve', 7, 'male', TRUE, TRUE, '', 'https://www.instagram.com/thefevaa/', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321165/Michael_Leferve_Summers_With_You_jxknhm.mp3', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321147/Blossoming_by_Michael_leferve_v6ylay.mp3', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321186/Michael-LeFevre-smile_kt9evo.mp3', 'Michael LeFevre is the lead singer and songwriter of None The Younger and Sleepy Soul. 
+('Michael LeFerve', 'Michael Leferve', 7, 'male', TRUE, TRUE, '', 'https://www.instagram.com/thefevaa/', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321165/Michael_Leferve_Summers_With_You_jxknhm.mp3', 'Summers With You', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321147/Blossoming_by_Michael_leferve_v6ylay.mp3', 'Blossoming', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321186/Michael-LeFevre-smile_kt9evo.mp3', 'Smile', 'Michael LeFevre is the lead singer and songwriter of None The Younger and Sleepy Soul. 
           While he has been writing music for well over a decade, he has been producing and recording out of his studio full time for the last 4 years.
           This has given him the experiences necessary to really perfect his craft. 
           Since his time as a full-time musician, he has been featured in Spotify and Youtube Editorial playlists, had many magazine write-ups, and accumulated millions of streams across all platforms.
           He looks forward to continuing to write and spread joy through music.', 'St. Louis, Missouri', 'https://res.cloudinary.com/dke4ukd0z/image/upload/v1713458694/michael-photo_edh5b9.jpg', 'https://open.spotify.com/artist/32SXond7qEk5OOXU9M8Sq7?si=MZ2frkvaR6OUOmIYwGKd5w&nd=1&dlsi=3dca887b59374406/'),
 
-('Berch', 'Berch', 1, 'male', TRUE, TRUE, '', 'https://www.instagram.com/mynameisberch/?igshid=MzMyNGUyNmU2YQ%3D%3D&utm_source=qr', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321136/Berch_m2vbfj.mp3', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321126/Berch_fee_fi_fo_fum_lgnkd3.mp3', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321572/Berch_feel_so_good_kwia9r.mp3', 'Mynameisberch, hailing from Richmond, Virginia, is a versatile artist known for his pop,
+('Berch', 'Berch', 1, 'male', TRUE, TRUE, '', 'https://www.instagram.com/mynameisberch/?igshid=MzMyNGUyNmU2YQ%3D%3D&utm_source=qr', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321136/Berch_m2vbfj.mp3', 'Berch', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321126/Berch_fee_fi_fo_fum_lgnkd3.mp3', 'FEE FI FUM', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321572/Berch_feel_so_good_kwia9r.mp3', 'Feel So Good', 'Mynameisberch, hailing from Richmond, Virginia, is a versatile artist known for his pop,
              hip-hop, and soulful vocal style. With influences ranging from John Mayer to Lenny Kravitz and Drake, he effortlessly blends catchy melodies and heartfelt lyrics into his captivating compositions. 
              As a published BMI songwriter, mynameisberch consistently delivers multiple songs and records each year, showcasing his dedication to his craft. Additionally, 
              he has been recognized as a featured songwriter in Worship Leader magazine,
@@ -171,9 +174,9 @@ VALUES
              desire to connect with individuals going through various situations and seasons, mynameisberch is excited to bring his creativity to Songbee, crafting personalized songs that resonate with each listener. He says, 
              "I love creating for unique people going through unique situations in unique seasons.', 'Richmond, Virginia', 'https://res.cloudinary.com/dke4ukd0z/image/upload/v1713458683/berch_bdrlty.jpg', 'https://mynameisberch.bandcamp.com/'),
 
-('Perrin Xthona', 'Perrin Xthona', 7, 'female', TRUE, TRUE, 'https://www.tiktok.com/@perrinxthona?_t=8hjAn9c36du&_r=1/', 'https://www.instagram.com/perrinxthona/', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321199/Perrin_Xthona_faqiwx.mp3', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321212/to_the_moon_and_back_PerrinXthona_wfqrgi.mp3', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321226/You_Are_My_Home_PerrinXthona_vdkbkt.mp3', 'Perrin Xthona is a pop songwriter from Portland, Oregon. She recently graduated from the Berklee College of Music, and her influences are Julia Michaels, 
+('Perrin Xthona', 'Perrin Xthona', 7, 'female', TRUE, TRUE, 'https://www.tiktok.com/@perrinxthona?_t=8hjAn9c36du&_r=1/', 'https://www.instagram.com/perrinxthona/', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321199/Perrin_Xthona_faqiwx.mp3', 'As long As I/m With You', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321212/to_the_moon_and_back_PerrinXthona_wfqrgi.mp3', 'To The Moon and Back', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321226/You_Are_My_Home_PerrinXthona_vdkbkt.mp3', 'You Are My Home', 'Perrin Xthona is a pop songwriter from Portland, Oregon. She recently graduated from the Berklee College of Music, and her influences are Julia Michaels, 
                         Lennon Stella, Halsey, Jeremy Zucker, Lauv, and Harry Styles. 
-                        She/s always loved writing songs, and the only thing she loves more is getting to hear other peoples stories.', 'Portland, Oregon', 'https://res.cloudinary.com/dke4ukd0z/image/upload/v1713458705/perrin_photo_mhtkti.jpg', 'https://open.spotify.com/artist/1bNx6UhsCYSNuoIeL9LcnD?si=MLyNUmi6RJm2qLdyip1vMA&nd=1&dlsi=27bc328009f646c5/');
+                        Shes always loved writing songs, and the only thing she loves more is getting to hear other peoples stories.', 'Portland, Oregon', 'https://res.cloudinary.com/dke4ukd0z/image/upload/v1713458705/perrin_photo_mhtkti.jpg', 'https://open.spotify.com/artist/1bNx6UhsCYSNuoIeL9LcnD?si=MLyNUmi6RJm2qLdyip1vMA&nd=1&dlsi=27bc328009f646c5/');
 
 INSERT INTO "song_request"
 ("user_id", "genre_id", "requester", "recipient", "pronunciation", "recipient_relationship", "occasion", "vocal_type", "vibe", "tempo", "inspiration", "story1", "story2", "important_what", "important_why", "additional_info", "created_at", "delivery_days", "streaming", "extra_verse", "is_complete")
