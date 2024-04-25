@@ -3,10 +3,13 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-import LoginRegisterForm from "../LoginRegisterForm/LoginRegisterForm";
-import ArtistDisplay from "./ArtistDisplay";
-import LetsGetStarted from "./LetsGetStarted";
-import SongSpecifications from "./SongSpecifications";
+// form steps
+import LetsGetStarted from "./OrderFormSteps/LetsGetStarted";
+import SongSpecifications from "./OrderFormSteps/SongSpecifications";
+import SelectYourArtist from "./OrderFormSteps/SelectYourArtist";
+import Delivery from "./OrderFormSteps/Delivery";
+import AddOns from "./OrderFormSteps/AddOns";
+
 
 import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
@@ -14,10 +17,6 @@ import Step from "@mui/material/Step";
 import StepButton from "@mui/material/StepButton";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 
 import { motion } from "framer-motion";
 import Swal from "sweetalert2";
@@ -41,17 +40,9 @@ export default function OrderPage({ routeVariants }) {
 
   // reducers
   const genres = useSelector((store) => store.genres);
-  const artists = useSelector(store => store.allArtists);
   const requestData = useSelector((store) => store.requestData);
   const user = useSelector((store) => store.user);
   const newOrder = useSelector((store) => store.newOrder);
-
-  // date logic
-  const now = new Date();
-  const msPerDay = 24 * 60 * 60 * 1000;
-  const threeDays = now.getTime() + msPerDay * 3;
-  const fiveDays = now.getTime() + msPerDay * 5;
-  const sixDays = now.getTime() + msPerDay * 6;
 
   // modal logic
   const [open, setOpen] = useState(false);
@@ -124,18 +115,7 @@ export default function OrderPage({ routeVariants }) {
     });
   }
 
-  // modal appearance
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 500,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
-  };
+
 
   // ----- FORM LOGIC -----
 
@@ -240,99 +220,15 @@ export default function OrderPage({ routeVariants }) {
     }
     // step 3
     else if (activeStep === 2) {
-      return (
-        <>
-          <div className="reqFormGroup">
-            <div className="reqFormSelect">
-              <label>Choose your Artist</label>
-              <select
-                value={requestData.genre}
-                onChange={() => handleInput("artist", event.target.value)}
-              >
-                <option selected>
-                  Select Artist
-                </option>
-                {artists.map((artist) => {
-                  if (artist.genres[0].id === Number(requestData.genre) || artist.genres[1] && artist.genres[1].id === Number(requestData.genre) || requestData.genre === '') {
-                    return (
-                      <option key={artist.id} value={artist.id}>
-                        {artist.artist_name}
-                      </option>
-                    )
-                  }
-                })}
-                <option key={artists.length} value=''>
-                  I would like the artist selected for me
-                </option>
-              </select>
-            </div>
-          </div>
-          <ArtistDisplay />
-        </>
-      )
+      return <SelectYourArtist handleInput={handleInput} />
     }
     // step 4
     else if (activeStep === 3) {
-      return (
-        <form className="orderForm">
-          <div className="reqFormGroup">
-            <div className="reqFormInput">
-              <label>When would you like your song delivered?</label>
-              <button onClick={() => handleInput("delivery_days", 3)}>{new Date(threeDays).toDateString()} + $80</button>
-              <button onClick={() => handleInput("delivery_days", 5)}>{new Date(fiveDays).toDateString()} + $40</button>
-              <button onClick={() => handleInput("delivery_days", 6)}>{new Date(sixDays).toDateString()} + $0</button>
-            </div>
-          </div>
-          {!user.id && (
-            <button className="checkoutLogRegBtn" onClick={handleOpen}>
-              Login / Register
-            </button>
-          )}
-        </form>
-      );
+      return <Delivery handleInput={handleInput} handleOpen={handleOpen} />
     }
     // step 5
     else if (activeStep === 4) {
-      return (
-        <>
-          <button
-            className="orderInput"
-            onClick={() => handleInput("streaming", true)}
-          >Add My Song to Streaming Services!</button>
-
-          <button
-            className="orderInput"
-            onClick={() => handleInput("extra_verse", true)}
-          >Add an Additional Verse!</button>
-
-          <button
-            className="orderInput"
-            onClick={() => handleInput("license", true)}
-          > I Need a Commercial License for My Song!
-          </button>
-
-          <button
-            className="orderInput"
-            onClick={() => handleInput("backing_track", true)}
-          > Add an instrumental backing track!
-          </button>
-
-          <FormGroup
-            sx={{ display: "flex", justifyContent: "center" }}>
-            <FormControlLabel required control={<Checkbox />} label="I Have Read and Agree to the Terms of Service" />
-          </FormGroup>
-          <Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <Box sx={style}>
-              <LoginRegisterForm handleClose={handleClose} />
-            </Box>
-          </Modal>
-        </>
-      );
+      return <AddOns handleInput={handleInput} handleClose={handleClose} open={open} />
     }
   };
   // ----- END FORM LOGIC -----
