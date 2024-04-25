@@ -1,6 +1,11 @@
 import React from "react";
 import "./SI.css";
 import WhatsTheBuzz from "./TheBuzz";
+import BeeSmart from "./BeeSmart";
+import ForAllAges from "./ForAllAges";
+import WhyExpertsLoveUs from "./WhyExpertsLoveUs";
+import JrFaq from "../JrFaq.jsx/JrFaq";
+import JrFooter from "../JrFooter/JrFooter";
 function SchoolsInspiration() {
   const siTypes = [
     {
@@ -38,7 +43,7 @@ function SchoolsInspiration() {
       <div className="si-hero">
         <img src="public/junior/si-hero.jpeg" alt="" />
         <div className="si-heroContents">
-          <h1>Music-based learning programs</h1>
+          <h1> <span className="highlight">Music-based</span>learning programs</h1>
           <p>
             Motivate our next generation of trail blazers with songs <br /> and
             guides carefully crafted to teach and inspire.
@@ -67,6 +72,11 @@ function SchoolsInspiration() {
         ))}
       </div>
       <WhatsTheBuzz/>
+      <BeeSmart/>
+      <ForAllAges/>
+      <WhyExpertsLoveUs/>
+      <JrFaq/>
+      <JrFooter/>
     </div>
   );
 }

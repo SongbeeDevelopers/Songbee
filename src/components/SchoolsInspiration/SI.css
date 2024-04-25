@@ -7,6 +7,10 @@
   color: white;
 }
 
+.si-hero img {
+  height: 700px;
+}
+
 .si-hero h1 {
   margin: 0;
   padding: 0;
@@ -132,7 +136,6 @@
   display: flex;
   justify-content: space-between;
   position: relative;
-
 }
 
 .buzz-title h2 {
@@ -226,7 +229,7 @@
   display: flex;
   gap: 10px;
   margin-top: 15px;
-position: relative;
+  position: relative;
 }
 
 .theBook-learn p {
@@ -235,7 +238,6 @@ position: relative;
   color: black;
   font-family: poppins;
   font-size: 10px;
-
 }
 
 .theBook-learn a {
@@ -254,20 +256,229 @@ position: relative;
   left: -10px;
 }
 
-.buzz-pencil{
-position: absolute;
-right: 30px;
-bottom: 200px;
-height: auto;
-width: 10px;
-z-index: 30;
+.buzz-pencil {
+  position: absolute;
+  right: 30px;
+  bottom: 200px;
+  height: auto;
+  width: 10px;
+  z-index: 30;
+}
+
+.buzz-honeycomb {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: auto;
+  width: 300px;
+}
+
+.si-heroContents h1 {
+  background-image: url("/junior/schoolsInspiration/si-header-thingy.png");
+color:#474546;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: max-content;
+  padding: 5px 40px;
+  background-size: 100% 100%;
+}
+
+.si-heroContents p {
+  background-image: url("/junior/schoolsInspiration/si-header-thingy.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: max-content;
+  padding: 20px 50px;
+  background-size: 100% 100%;
+  color: black;
+  font-weight: 600;
+}
+
+.beeSmart {
+  background-color: white;
+  display: flex;
+  padding: 50px;
+}
+
+.bs-leftText h2 {
+  background-image: url("/junior/beeSmart/backgroundddd.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: max-content;
+  padding: 30px 80px;
+  background-size: 100% 100%;
+  font-size: 4rem;
+}
+
+.bs-left > img {
+  height: 200px;
+  width: auto;
+  position: absolute;
+  left: 10px;
+  top: 20px;
+  transform: rotate(45deg);
+  z-index: 30;
+}
+
+.bs-leftText img {
+  height: 100px;
+  width: auto;
+  position: absolute;
+  right: 35px;
+  top: 90px;
+}
+
+.bs-leftText {
+  position: relative;
+  width: max-content;
+}
+
+.bs-highlight {
+  color: #feaf17;
+}
+
+.bs-left {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.bs-right {
+  display: flex;
+  width: 40%;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.bs-rightCard {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+.bs-rightImage {
+  background-color: #feaf17;
+  height: 100px;
+  width: 100px;
+  border-radius: 9999px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100px;
+}
+
+.bs-rightImage img {
+  width: 70px;
+  height: auto;
+}
+
+.bs-rightCard p {
+  font-weight: 500;
+  font-size: 25px;
+}
+
+.faa {
+  background-color: #e1ebef;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.faa h2 {
+  background-image: url("/img-12.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: max-content;
+  padding: 10px 50px;
+  background-size: 100% 100%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+.faaCards {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.faaCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.faaCard img {
+  height: 200px;
+  width: 200px;
+  border-radius: 9999px;
+  border: 1px solid #feaf17;
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+  object-position: center;
+}
+
+.experts {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 50px;
+  background-color: white;
+  padding-bottom: 0;
+}
+
+.experts h2 {
+  background-image: url("/junior/bottom-si/bottom-si.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: max-content;
+  padding: 10px 50px;
+  background-size: 100% 100%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 2.5rem;
+  color: #474546;
+}
+
+.experts-cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.expert-card {
+  width: 400px;
+  background-image: url("/junior/bottom-si/bottom-si-cover.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 30px 50px;
+  background-size: 100% 100%;
+}
+
+.card-contents p{
+font-size: 14px;
+margin: 0;
+padding: 0;
 
 }
 
-.buzz-honeycomb{
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    height: auto;
-    width: 300px;
+.card-contents h3{
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.card-contents span{
+  font-size: 1rem;
+  
+}
+
+.card-contents{
+  display: flex;
+  flex-direction: column;
+  gap: 10px; 
 }
