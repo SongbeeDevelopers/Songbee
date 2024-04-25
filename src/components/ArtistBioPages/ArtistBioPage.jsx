@@ -12,7 +12,7 @@ function ArtistBioPage() {
 const { id } = useParams();
 const dispatch = useDispatch();
 const artist = useSelector(store => store.currentArtist);
-const artistGenre = useSelector(store => store.fetchGenres);
+
 
 
 
@@ -23,13 +23,7 @@ useEffect(() => {
         payload: id})
   }, [id])
   console.log("artist", artist)
-// 
-useEffect(() => {
-    dispatch({
-        type: 'FETCH_GENRES',
-        payload: id})
-}, [id])
-  
+
 
   
 
@@ -63,7 +57,6 @@ useEffect(() => {
                </div>
             </div> 
            </div>
-           {/* <h2>Bio</h2> */}
            <h4 className="bio">{artist.bio}</h4>
          </div>
         </div>
@@ -87,21 +80,27 @@ useEffect(() => {
                <div className="songItems">
                  {[1, 2, 3].map((index) => {
                     const sampleSong = artist[`sample_song_${index}`];
+                    const songTitle = artist[`song_title_${index}`];
                   return sampleSong && (
 
-                   <div className="audioFiles" key={index}>  
-                        <AudioButton url={sampleSong} />
+                   <div className="audioFiles" key={index}> 
+                   <div className="songTitles">
+                    <p>{songTitle}</p>
+                    
+                    <AudioButton url={sampleSong} />
                        {console.log('Logging sampleSong:', sampleSong)}
-                
+                    
+                   </div>
+                   <div className="genres">
                        {artist.genres.map((genre) => (
-                            <p>{genre.genre}</p>
-                       ))}
-                      
+                            <h3>{genre.genre}</h3>
+                       ))} 
+                     </div>    
                    </div>
                    
                        );
                     })}
-                   
+                
                </div>
            </div>
        </div>
