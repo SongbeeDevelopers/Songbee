@@ -11,17 +11,27 @@ function ArtistBioPage() {
 
 const { id } = useParams();
 const dispatch = useDispatch();
-const artist = useSelector(store => store.currentArtist);
+
+let artist
+if (id){
+    artist = useSelector(store => store.currentArtist);
+}
+else {
+    artist = useSelector((store) => store.artistProfile);
+}
+const artistGenre = useSelector(store => store.fetchGenres);
+console.log("id", id)
 
 
 
-
-
+if (id){
 useEffect(() => {
     dispatch({
         type: 'FETCH_CURRENT_ARTIST',
         payload: id})
   }, [id])
+}
+
   console.log("artist", artist)
 
 
@@ -69,7 +79,7 @@ useEffect(() => {
                        
                    </div>
                </div>
-               <div class="headerItem"> 
+               <div className="headerItem"> 
                    <div className="genre">
                        Genre
                    </div>

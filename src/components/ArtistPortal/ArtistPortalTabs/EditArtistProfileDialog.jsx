@@ -2,11 +2,9 @@ import React from "react";
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
 
-import Dialog from "@mui/material/Dialog";
-import Slide from "@mui/material/Slide";
 import Box from "@mui/material/Box";
 
-function EditArtistProfileDialog({ artistProfile, openArtist, handleCloseArtist}) {
+function EditArtistProfileDialog({ artistProfile, openArtist, setOpenArtist}) {
 
   const dispatch = useDispatch()
 
@@ -45,25 +43,15 @@ function EditArtistProfileDialog({ artistProfile, openArtist, handleCloseArtist}
     aboutYourselfRef.current.value = "";
   };
 
-  const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
-  });
+  const handleActive = () => {
+    dispatch({
+      type: "UPDATE_ACTIVE_ARTIST",
+      payload: artistProfile.id
+    })
+  }
 
 
   return (
-    <Dialog
-      open={openArtist}
-      keepMounted
-      TransitionComponent={Transition}
-      // onClose={handleCloseArtist}
-      aria-describedby="alert-dialog-slide-description"
-      sx={{
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
       <Box
         sx={{
           width: "100%",
@@ -76,6 +64,18 @@ function EditArtistProfileDialog({ artistProfile, openArtist, handleCloseArtist}
           justifyContent: "center",
         }}
       >
+        {artistProfile && artistProfile.is_active ? 
+          <>
+          <h3>Would you like to set yourself as inactive?</h3>
+          <button className="join-button" onClick={handleActive}>Inactive</button>
+          </>
+          :
+          <>
+          <h3>Would you like to set yourself as active?</h3>
+          <button className="join-button" onClick={handleActive}>Active</button>
+          </>
+        }
+
         <h3>Would you like to make an edit ?</h3>
 
         <form className="artist-form">
@@ -160,11 +160,10 @@ function EditArtistProfileDialog({ artistProfile, openArtist, handleCloseArtist}
             </p>
           </div>
           <button onClick={submit} className="join-button">
-            Apply Now
+            Apply Changes
           </button>
         </form>
       </Box>
-    </Dialog>
   )
 }
 
