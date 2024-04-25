@@ -22,6 +22,7 @@ export default function AdminRequestsTab({ num, data }) {
   const dispatch = useDispatch()
 
   const genres = useSelector(store => store.genres)
+  const artists = useSelector(store => store.allArtists)
 
   // modal state
   const [detailsOpen, setDetailsOpen] = useState(false);
@@ -99,7 +100,15 @@ export default function AdminRequestsTab({ num, data }) {
 
                   {/* artist */}
                   <TableCell align="center">
-                    {/* NEED TO FILL THIS */}
+                    {row.artist_id ?
+                      artists.map((artist) => {
+                        if (artist.id === row.artist_id) {
+                          return artist.artist_name
+                        }
+                      })
+                      :
+                      'Unassigned'
+                    }
                   </TableCell>
 
                   {/* due */}
