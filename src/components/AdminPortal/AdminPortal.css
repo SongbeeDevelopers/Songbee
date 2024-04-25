@@ -4,10 +4,9 @@
 }
 
 .admin-req-details-edit {
-  padding: 0 50px 25px;
+  padding: 25px 50px;
 }
-.admin-req-details-edit h2 {
-  font-size: 36px;
+.admin-req-details-edit h3 {
   text-align: center;
 }
 .admin-req-details-edit form {
@@ -50,4 +49,17 @@
   line-height: 1.42857;
   display: block;
   border-radius: 5px;
+}
+
+.admin-complete-dialog {
+  padding: 25px 100px;
+}
+.admin-complete-dialog h3 {
+  text-align: center;
+}
+
+.completeDialogueContent{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

@@ -17,10 +17,12 @@ function CustomerRequests() {
   const history = useHistory();
 
   const userRequests = useSelector((store) => store.userRequests);
+  const artists = useSelector((store => store.allArtists))
 
   // retrieves request history on mount
   useEffect(() => {
     dispatch({ type: 'FETCH_USER_REQUESTS' })
+    dispatch({ type: 'FETCH_ALL_ARTISTS' })
   }, []);
 
   const viewDetails = (reqId) => {
@@ -72,7 +74,11 @@ function CustomerRequests() {
 
                   {/* artist */}
                   <TableCell align="center">
-
+                    {artists.map((artist) => {
+                      if (request.artist_id === artist.id) {
+                        return artist.artist_name
+                      }
+                    })}
                   </TableCell>
 
                   {/* status */}

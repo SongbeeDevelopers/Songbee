@@ -22,6 +22,7 @@ export default function AdminRequestsTab({ num, data }) {
   const dispatch = useDispatch()
 
   const genres = useSelector(store => store.genres)
+  const artists = useSelector(store => store.allArtists)
 
   // modal state
   const [detailsOpen, setDetailsOpen] = useState(false);
@@ -42,17 +43,20 @@ export default function AdminRequestsTab({ num, data }) {
         row.genre = genre.id
       }
     }
+    // sets edit reducer with request data
     dispatch({ type: 'SET_EDIT_DATA', payload: row })
     setDetailsOpen(true)
   }
   const closeDetails = () => {
+    // clears reducer on close
     dispatch({ type: 'CLEAR_EDIT_DATA'})
     setDetailsOpen(false)
   }
 
-  // complete modal logic
-  const openComplete = () => {
-
+  // same as above, logic for complete dialog
+  const openComplete = (row) => {
+    dispatch({ type: 'SET_EDIT_DATA', payload: row})
+    setCompleteOpen(true)
   }
   const closeComplete = () => {
     dispatch({ type: 'CLEAR_EDIT_DATA'})
@@ -96,7 +100,15 @@ export default function AdminRequestsTab({ num, data }) {
 
                   {/* artist */}
                   <TableCell align="center">
-                    {/* NEED TO FILL THIS */}
+                    {row.artist_id ?
+                      artists.map((artist) => {
+                        if (artist.id === row.artist_id) {
+                          return artist.artist_name
+                        }
+                      })
+                      :
+                      'Unassigned'
+                    }
                   </TableCell>
 
                   {/* due */}
@@ -125,7 +137,7 @@ export default function AdminRequestsTab({ num, data }) {
                   {/* complete button */}
                   <TableCell align="center">
                     <Button variant="contained"
-                      onClick={() => setCompleteOpen(true)}
+                      onClick={() => openComplete(row)}
                       sx={{ height: 35, width: 95, backgroundColor: "#feaf17", color: "black" }}
                     >
                       COMPLETE
@@ -136,7 +148,7 @@ export default function AdminRequestsTab({ num, data }) {
                       open={completeOpen}
                       onClose={closeComplete}
                     >
-                      <AdminCompleteDialog request={row} />
+                      <AdminCompleteDialog setCompleteOpen={setCompleteOpen} />
                     </Dialog>
                   </TableCell>
 
