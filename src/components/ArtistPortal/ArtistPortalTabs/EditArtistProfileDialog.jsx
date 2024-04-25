@@ -67,12 +67,12 @@ function EditArtistProfileDialog({ artistProfile, openArtist, setOpenArtist}) {
         {artistProfile && artistProfile.is_active ? 
           <>
           <h3>Would you like to set yourself as inactive?</h3>
-          <button onClick={handleActive}>Inactive</button>
+          <button className="join-button" onClick={handleActive}>Inactive</button>
           </>
           :
           <>
           <h3>Would you like to set yourself as active?</h3>
-          <button onClick={handleActive}>Active</button>
+          <button className="join-button" onClick={handleActive}>Active</button>
           </>
         }
 
@@ -160,7 +160,7 @@ function EditArtistProfileDialog({ artistProfile, openArtist, setOpenArtist}) {
             </p>
           </div>
           <button onClick={submit} className="join-button">
-            Apply Now
+            Apply Changes
           </button>
         </form>
       </Box>
