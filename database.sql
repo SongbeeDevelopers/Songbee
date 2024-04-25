@@ -80,6 +80,7 @@ CREATE TABLE "song_details" (
   "lyrics" VARCHAR,
   "title" VARCHAR (250),
   "artist_id" integer REFERENCES "artist" ON DELETE CASCADE,
+  "accepted" BOOLEAN DEFAULT FALSE,
   "streaming_link" VARCHAR
 );
 

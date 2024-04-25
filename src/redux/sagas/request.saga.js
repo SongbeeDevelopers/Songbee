@@ -32,6 +32,16 @@ function* fetchArtistRequests (action) {
     }
 }
 
+function* fetchCompletedArtistRequests (action) {
+    try {
+        const response = yield axios.get(`/api/request/artist/complete/${action.payload}`)
+        yield put({ type: 'SET_COMPLETED_ARTIST_REQUESTS', payload: response.data})
+    }
+    catch (error) {
+        console.error('SAGA fetchArtistRequests() failed:', error)
+    }
+}
+
 function* fetchCurrentRequest (action){
     try {
         const response = yield axios.get(`/api/request/current/${action.payload}`);
@@ -173,6 +183,7 @@ function* requestSaga() {
     yield takeLatest('FINISH_SONG_REQUEST', finishSongRequest);
     yield takeLatest('SUBMIT_REQUEST_EDIT', submitRequestEdit);
     yield takeLatest('FETCH_ARTIST_REQUESTS', fetchArtistRequests);
+    yield takeLatest('FETCH_COMPLETED_ARTIST_REQUESTS', fetchCompletedArtistRequests);
 }
 
 export default requestSaga;

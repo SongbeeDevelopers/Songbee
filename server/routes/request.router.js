@@ -34,6 +34,7 @@ router.get('/user', rejectUnauthenticated, (req, res) => {
   "song_details"."lyrics",
   "song_details"."title",
   "song_details"."streaming_link",
+  "song_details"."approved",
   "genres"."name" AS "genre"
   FROM "song_request"
   LEFT JOIN "genres"
@@ -83,6 +84,7 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     "song_details"."lyrics",
     "song_details"."title",
     "song_details"."streaming_link",
+    "song_details"."approved",
     "genres"."name" AS "genre",
     "user"."email"
     FROM "song_request"
@@ -120,6 +122,7 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     "song_details"."lyrics",
     "song_details"."title",
     "song_details"."streaming_link",
+    "song_details"."approved",
     "genres"."name" AS "genre",
     "user"."email"
     FROM "song_request"
@@ -169,6 +172,7 @@ router.get('/current/:id', (req, res) => {
     "song_details"."lyrics",
     "song_details"."title",
     "song_details"."streaming_link",
+    "song_details"."approved",
     "genres"."name" AS "genre",
     "artist"."artist_name",
     "artist"."website",
@@ -353,6 +357,7 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
     "song_details"."lyrics",
     "song_details"."title",
     "song_details"."streaming_link",
+    "song_details"."approved",
     "genres"."name" AS "genre",
     "user"."email"
     FROM "song_request"
@@ -362,7 +367,61 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
     ON "song_request"."id"="song_details"."song_request_id"
     LEFT JOIN "user"
     ON "song_request"."user_id"="user"."id"
-    WHERE "song_details"."artist_id"=$1;
+    WHERE "song_details"."artist_id"=$1
+    AND
+    "song_request"."is_complete"=FALSE;
+    `
+    pool.query(requestQuery, [req.params.id])
+    .then((result) => {
+      res.send(result.rows);
+      // console.log("Request router GET all user requests", result.rows)
+    })
+    .catch((error) => {
+      console.error("Error in request router GET all artist requests", error);
+      res.sendStatus(500);
+    })
+  });
+
+  router.get('/artist/complete/:id', rejectUnauthenticated, (req, res) => {
+    const requestQuery = `
+    SELECT 
+    "song_request"."id" AS "id",
+    "song_request"."user_id",
+    "song_request"."requester",
+    "song_request"."recipient",
+    "song_request"."pronunciation",
+    "song_request"."recipient_relationship",
+    "song_request"."occasion",
+    "song_request"."vocal_type",
+    "song_request"."vibe",
+    "song_request"."tempo",
+    "song_request"."inspiration",
+    "song_request"."story1",
+    "song_request"."story2",
+    "song_request"."important_what",
+    "song_request"."important_why",
+    "song_request"."additional_info",
+    "song_request"."created_at",
+    "song_request"."delivery_days",
+    "song_request"."is_complete",
+    "song_details"."url",
+    "song_details"."lyrics",
+    "song_details"."title",
+    "song_details"."streaming_link",
+    "song_details"."approved",
+    "genres"."name" AS "genre",
+    "user"."email"
+    FROM "song_request"
+    LEFT JOIN "genres"
+    ON "song_request"."genre_id"="genres"."id"
+    LEFT JOIN "song_details"
+    ON "song_request"."id"="song_details"."song_request_id"
+    LEFT JOIN "user"
+    ON "song_request"."user_id"="user"."id"
+    WHERE 
+    "song_details"."artist_id"=$1
+    AND
+    "song_request"."is_complete"=TRUE;
     `
     pool.query(requestQuery, [req.params.id])
     .then((result) => {
