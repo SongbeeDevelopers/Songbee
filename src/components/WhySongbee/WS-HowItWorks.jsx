@@ -24,12 +24,12 @@ function WsHowItWorks() {
       </div>
       <div className="works-cards">
         <div className="works-card">
-          <img src="/junior/whySongbee/one-howitworks.png" alt="" />
+          <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714075119/Songbee/one-howitworks_nsuld7.png" alt="" />
           <p>Contact Us!</p>
         </div>
 
         <div className="works-card">
-          <img src="/junior/whySongbee/two-howitworks.png" alt="" />
+          <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714075130/Songbee/two-howitworks_s5uoe5.png" alt="" />
           <p>
             Speak with one of our experts to help select and design a program
             for your needs.
@@ -37,7 +37,7 @@ function WsHowItWorks() {
         </div>
 
         <div className="works-card">
-          <img src="/junior/whySongbee/three-howitworks.png" alt="" />
+          <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714075125/Songbee/three-howitworks_lx3pyz.png" alt="" />
           <p>Motivate and Inspire with your new teaching tools!</p>
         </div>
       </div>

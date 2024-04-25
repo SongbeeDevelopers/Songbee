@@ -57,7 +57,7 @@ function WhyExpertsLoveUs() {
           </div>
         </div>
       </div>
-      <img className="yellowLine" src="/junior/YellowLine.png" alt="" />
+      <img className="yellowLine" src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076677/Songbee/YellowLine_kbce6u.png" alt="" />
     </div>
   );
 }

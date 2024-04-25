@@ -6,7 +6,7 @@ function WhatsTheBuzz() {
     <div className="theBuzz">
 
         <img className="buzz-pencil" src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074399/Songbee/BuzzPencil_tvlatl.png" alt="" />
-        <img className="buzz-honeycomb" src="/junior/empty-honeycomb.png" alt="" />
+        <img className="buzz-honeycomb" src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076575/Songbee/empty-honeycomb_ivocdn.png" alt="" />
       <div className="left-buzz">
         <div className="buzz-title">
           <h2>What’s the buzz?</h2>
