@@ -293,7 +293,7 @@ Guarantee Section
 .guarantee-sky-bg {
   position: relative;
   background-color: rgba(184, 213, 224, 0.73);
-  background-image: url("/guarantee-background.png");
+  background-image: url("https://res.cloudinary.com/dke4ukd0z/image/upload/v1714070466/Songbee/guarantee-background_dhhc0a.png");
   background-position: center;
   background-size: 80rem;
   background-repeat: no-repeat;

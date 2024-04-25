@@ -11,21 +11,21 @@ function WhyFamiliesLoveUs() {
         <div className="jr-review-item-container">
           <div className="jr-review-item">
             <h3>Example Name</h3>
-            <img src="/star-one.png" />
+            <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714070494/Songbee/star-one_ohfquo.png" />
             <p>
               "Songbee JR is the best! SongBee is the best! SongBee is the best!"
             </p>
           </div>
           <div className="jr-review-item">
             <h3>Example Name</h3>
-            <img src="/star-one.png" />
+            <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714070494/Songbee/star-one_ohfquo.png" />
             <p>
               "Songbee JR is the best! SongBee is the best! SongBee is the best!"
             </p>
           </div>
           <div className="jr-review-item">
             <h3>Example Name</h3>
-            <img src="/star-one.png" />
+            <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714070494/Songbee/star-one_ohfquo.png" />
             <p>
               "Songbee JR is the best! SongBee is the best! SongBee is the best!"
             </p>

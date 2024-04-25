@@ -39,9 +39,9 @@ function RequestDetails({ routeVariants }) {
         {request.is_complete ?
         // displays when request is comlete
         <>
-          <img className='bee-deco' src='/bee-button.png'/>
+          <img className='bee-deco' src='https://res.cloudinary.com/dke4ukd0z/image/upload/v1714070457/Songbee/bee-button_iwlxrg.png'/>
           <h1>{request.title}</h1>
-          <img className='bee-deco' src='/bee-button-reversed.png'/>
+          <img className='bee-deco' src='https://res.cloudinary.com/dke4ukd0z/image/upload/v1714070455/Songbee/bee-button-reversed_faxbyx.png'/>
           <img className='song-underline' src='junior/underline.png'/>
           <h3>Dedicated to <span>{request.recipient}</span> from {request.requester}</h3>
           <img className='artist-photo' src={request.photo}></img>
