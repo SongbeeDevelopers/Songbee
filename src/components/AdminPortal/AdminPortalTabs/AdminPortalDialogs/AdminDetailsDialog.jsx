@@ -1,23 +1,20 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
 import { Button } from "@mui/material"
+import Swal from 'sweetalert2';
 
 import '../../AdminPortal.css'
-
-import Swal from 'sweetalert2';
 
 
 export default function AdminDetaisDialog({ setDetailsOpen }) {
 
   const dispatch = useDispatch()
-  const { id } = useParams()
   
   const edit = useSelector(store => store.edit)
   const genres = useSelector(store => store.genres)
 
-  // stores changes
+  // stores changes in edit reducer
   const handleInput = (key, value) => {
     dispatch({type: 'EDIT_INPUT', payload: {key, value}})
   }
@@ -26,25 +23,27 @@ export default function AdminDetaisDialog({ setDetailsOpen }) {
     event.preventDefault()
     // confirmation message
     Swal.fire({
+      icon: "question",
       title: "Save changes?",
       showCancelButton: true,
       confirmButtonText: "Save",
     }).then((result) => {
-      setDetailsOpen(false)
       if (result.isConfirmed) {
         Swal.fire("Saved!", "", "success");
+        // if confirmed, updates db with edit reducer data
         dispatch({
           type: 'SUBMIT_REQUEST_EDIT',
           payload: edit
         })
+        setDetailsOpen(false)
       }
-    });
+    })
   }
 
 
   return (
     <div className='admin-req-details-edit'>
-      <h2>Edit Song Request Details</h2>
+      <h3>Edit Song Request Details</h3>
 
       <form>
 

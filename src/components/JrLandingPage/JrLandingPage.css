@@ -39,7 +39,7 @@ Hero
 
 /* header section */
 .hero-header-section {
-  background-image: url('https://res.cloudinary.com/dke4ukd0z/image/upload/v1713364116/songbeejr_col3rr.png');
+  background-image: url('https://res.cloudinary.com/dke4ukd0z/image/upload/v1713364116/Songbee/songbeejr_col3rr.png');
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -96,7 +96,7 @@ Hero
 
 /* Styling for the every age, every stage box  */
 .every-age-every-stage {
-  background-image: url('../../../../public/junior/every-age-every-stage.png');
+  background-image: url('https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076581/Songbee/every-age-every-stage_tuktms.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
   display: block;
@@ -121,7 +121,7 @@ Join Section (cut)
 /* custom learning songs section */
 .hero-try-section {
   margin-top: -235px;
-  background-image: url('../../../../public/junior/polygon-bg.png');
+  background-image: url('https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076621/Songbee/polygon-bg_ebq3yh.png');
   background-repeat: no-repeat;
   background-size: contain;
   width: 100%;
@@ -268,17 +268,13 @@ Why Junior
   margin: 35px auto;
 }
 
-.why-junior-text {
 
-}
 .why-junior-text h2 {
   text-shadow: 1px 2px #FEAF17;
   font-size: 36px;
 }
 
-.why-junior-video {
-  
-}
+
 
 #try-it {
   margin-left: 0;
@@ -290,7 +286,7 @@ Benefits
 
 .jr-benefits-bg {
   position: relative;
-  background-image: url('../../../public/junior/polygon-bg.png');
+  background-image: url('https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076621/Songbee/polygon-bg_ebq3yh.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-color: white;
@@ -316,7 +312,7 @@ Learning Packs
 -------------------------------------------------------------------------------- */
 
 .jr-learning-packs-bg {
-  background-image: url('https://res.cloudinary.com/dke4ukd0z/image/upload/v1713363089/honeycomb-fill_lbnvzh.png');
+  background-image: url('https://res.cloudinary.com/dke4ukd0z/image/upload/v1713363089/Songbee/honeycomb-fill_lbnvzh.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: bottom;
@@ -328,7 +324,7 @@ Learning Packs
   color: white;
   text-align: center;
   padding-top: 10px;
-  background-image: url('../../../public/junior/text-backer-gray.png');
+  background-image: url('https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076655/Songbee/text-backer-gray_bpu0tv.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -375,7 +371,7 @@ More than just music
 
 .jr-mtjm-bg {
   position: relative;
-  background-image: url('https://res.cloudinary.com/dke4ukd0z/image/upload/v1713363101/honeycomb-empty_vby8kg.png');
+  background-image: url('https://res.cloudinary.com/dke4ukd0z/image/upload/v1713363101/Songbee/honeycomb-empty_vby8kg.png');
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: top;
@@ -396,7 +392,7 @@ More than just music
   margin-bottom: 5px;
   height: 80px;
   padding-top: 22px;
-  background-image: url('../../../public/junior/text-backer-white.png');
+  background-image: url('https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076661/Songbee/text-backer-white_gnaiwk.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -404,7 +400,7 @@ More than just music
 }
 
 .jr-mtjm-items {
-  background-image: url('../../../public/junior/text-backer-white.png');
+  background-image: url('https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076661/Songbee/text-backer-white_gnaiwk.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center;
@@ -489,7 +485,7 @@ Reviews
 -------------------------------------------------------------------------------- */
 
 .jr-reviews-bg {
-  background-image: url('../../../public/junior/speckled-bg.png');
+  background-image: url('https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076649/Songbee/speckled-bg_wehfni.png');
   background-size: contain;
   padding: 60px 50px;
 }

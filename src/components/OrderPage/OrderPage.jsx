@@ -1,31 +1,26 @@
 import * as React from "react";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams, useHistory } from "react-router-dom/cjs/react-router-dom.min";
+
+// form steps
+import LetsGetStarted from "./OrderFormSteps/LetsGetStarted";
+import SongSpecifications from "./OrderFormSteps/SongSpecifications";
+import SelectYourArtist from "./OrderFormSteps/SelectYourArtist";
+import Delivery from "./OrderFormSteps/Delivery";
+import AddOns from "./OrderFormSteps/AddOns";
+
+
 import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepButton from "@mui/material/StepButton";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-
-
-import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  useParams,
-  useHistory,
-} from "react-router-dom/cjs/react-router-dom.min";
 
 import { motion } from "framer-motion";
-
 import Swal from "sweetalert2";
 
-import LoginRegisterForm from "../LoginRegisterForm/LoginRegisterForm";
-import ArtistDisplay from "./ArtistDisplay";
-import LetsGetStarted from "./LetsGetStarted";
-import SongSpecifications from "./SongSpecifications";
 
 const steps = [
   "Let's Get Started!",
@@ -35,43 +30,34 @@ const steps = [
   "Add-Ons",
 ];
 
+
 export default function OrderPage({ routeVariants }) {
+
+  // hooks
   const dispatch = useDispatch();
   const history = useHistory();
-
-  const genres = useSelector((store) => store.genres);
-  const artists = useSelector(store => store.allArtists);
-  const requestData = useSelector((store) => store.requestData);
   const { id } = useParams();
 
+  // reducers
+  const genres = useSelector((store) => store.genres);
+  const requestData = useSelector((store) => store.requestData);
   const user = useSelector((store) => store.user);
   const newOrder = useSelector((store) => store.newOrder);
-
-  const now = new Date();
-  const msPerDay = 24 * 60 * 60 * 1000;
-
-  const threeDays = now.getTime() + msPerDay * 3;
-  const fiveDays = now.getTime() + msPerDay * 5;
-  const sixDays = now.getTime() + msPerDay * 6;
 
   // modal logic
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  // modal appearance
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 500,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
-  };
+  // fetch reducers on mount
+  useEffect(() => {
+    dispatch({ type: "FETCH_GENRES" })
+  }, []);
+  useEffect(() => {
+    dispatch({ type: "FETCH_ALL_ARTISTS" })
+  }, []);
 
+  // submit function
   const submitOrder = (e) => {
     e.preventDefault();
     if (
@@ -101,20 +87,11 @@ export default function OrderPage({ routeVariants }) {
     }
   };
 
-  useEffect(() => {
-    dispatch({ type: "FETCH_GENRES" })
-  }, []);
-  useEffect(() => {
-    dispatch({ type: "FETCH_ALL_ARTISTS" })
-  }, []);
-
-  console.log("artits:", artists)
 
   let artistId
-
   const handleInput = (key, value) => {
     event.preventDefault();
-    if (key === "artist"){
+    if (key === "artist") {
       console.log("artistId before", artistId)
       dispatch({
         type: "FETCH_CURRENT_ARTIST",
@@ -137,148 +114,28 @@ export default function OrderPage({ routeVariants }) {
       },
     });
   }
+
+
+
+  // ----- FORM LOGIC -----
+
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState({});
 
-  const formDetails = () => {
-    if (activeStep === 3) {
-      return (
-        <>
-          <form className="orderForm">
-            <div className="reqFormGroup">
-              <div className="reqFormInput">
-                <label>When would you like your song delivered?</label>
-                <button onClick={() => handleInput("delivery_days", 3)}>{new Date(threeDays).toDateString()} + $80</button>
-                <button onClick={() => handleInput("delivery_days", 5)}>{new Date(fiveDays).toDateString()} + $40</button>
-                <button onClick={() => handleInput("delivery_days", 6)}>{new Date(sixDays).toDateString()} + $0</button>
-              </div>
-            </div>
+  const totalSteps = () => { return steps.length };
 
-            {!user.id && (
-              <button className="checkoutLogRegBtn" onClick={handleOpen}>
-                Login / Register
-              </button>
-            )}
-{/* 
-            <button className="orderCheckoutButton" onClick={submitOrder}>
-              Checkout
-            </button> */}
-          </form>
-        </>
-      );
-    }
-    if (activeStep === 0) {
-      return (
-        <>
-        <LetsGetStarted />
-        </>
-      );
-    } else if (activeStep === 1) {
-      return (
-        <>
-          <SongSpecifications />
-        </>
-      );
-    } else if (activeStep === 4) {
-      return (
-        <>
-            <button
-              className="orderInput"
-              onClick={() => handleInput("streaming", true)}
-            >Add My Song to Streaming Services!</button>
+  const completedSteps = () => { return Object.keys(completed).length };
 
-            <button
-              className="orderInput"
-              onClick={() =>
-                handleInput("extra_verse", true)
-              }
-            >Add an Additional Verse!</button>
+  const isLastStep = () => { return activeStep === totalSteps() - 1 };
 
-            <button
-              className="orderInput"
-              onClick={() =>
-                handleInput("license", true)
-              }
-            >I Need a Commercial License for My Song!</button>
-
-            <button
-              className="orderInput"
-              onClick={() =>
-                handleInput("backing_track", true)
-              }
-            >Add an instrumental backing track!</button>
-            <FormGroup
-              sx={{display: "flex", justifyContent: "center"}}>
-            <FormControlLabel required control={<Checkbox />} label="I Have Read and Agree to the Terms of Service" />
-            </FormGroup>
-            <Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <Box sx={style}>
-              <LoginRegisterForm handleClose={handleClose} />
-            </Box>
-          </Modal>
-        </>
-      );
-    } else if (activeStep === 2){
-      return (
-        <>
-      <div className="reqFormGroup">
-      <div className="reqFormSelect">
-        <label>Choose your Artist</label>
-        <select
-          value={requestData.genre}
-          onChange={() => handleInput("artist", event.target.value)}
-        >
-          <option selected>
-            Select Artist
-          </option>
-          {artists.map((artist) => {
-              if (artist.genres[0].id === Number(requestData.genre) || artist.genres[1] && artist.genres[1].id === Number(requestData.genre) || requestData.genre === ''){
-                return (
-                <option key={artist.id} value={artist.id}>
-                  {artist.artist_name}
-                </option>
-                )
-                }
-                })}
-           <option key={artists.length} value=''>
-            I would like the artist selected for me
-          </option>
-        </select>
-      </div>
-      </div>
-      <ArtistDisplay />
-      </>
-      )
-    }
-  };
-
-  const totalSteps = () => {
-    return steps.length;
-  };
-
-  const completedSteps = () => {
-    return Object.keys(completed).length;
-  };
-
-  const isLastStep = () => {
-    return activeStep === totalSteps() - 1;
-  };
-
-  const allStepsCompleted = () => {
-    return completedSteps() === totalSteps();
-  };
+  const allStepsCompleted = () => { return completedSteps() === totalSteps() };
 
   const handleNext = () => {
     const newActiveStep =
       isLastStep() && !allStepsCompleted()
         ? // It's the last step, but not all steps have been completed,
-          // find the first step that has been completed
-          steps.findIndex((step, i) => !(i in completed))
+        // find the first step that has been completed
+        steps.findIndex((step, i) => !(i in completed))
         : activeStep + 1;
     setActiveStep(newActiveStep);
   };
@@ -311,7 +168,6 @@ export default function OrderPage({ routeVariants }) {
       requestData.extra_verse &&
       user.id &&
       allStepsCompleted()
-
     ) {
       Swal.fire({
         title: "Submit?",
@@ -324,7 +180,7 @@ export default function OrderPage({ routeVariants }) {
           dispatchDetails();
         }
       });
-    } else if (allStepsCompleted()){
+    } else if (allStepsCompleted()) {
       Swal.fire({
         title: "Submit?",
         text: "You have left important details blank. Do you want to submit anyways?",
@@ -353,6 +209,30 @@ export default function OrderPage({ routeVariants }) {
     setCompleted({});
   };
 
+  const formDetails = () => {
+    // step 1
+    if (activeStep === 0) {
+      return <LetsGetStarted />
+    }
+    // step 2
+    else if (activeStep === 1) {
+      return <SongSpecifications />
+    }
+    // step 3
+    else if (activeStep === 2) {
+      return <SelectYourArtist handleInput={handleInput} />
+    }
+    // step 4
+    else if (activeStep === 3) {
+      return <Delivery handleInput={handleInput} handleOpen={handleOpen} />
+    }
+    // step 5
+    else if (activeStep === 4) {
+      return <AddOns handleInput={handleInput} handleClose={handleClose} open={open} />
+    }
+  };
+  // ----- END FORM LOGIC -----
+
   return (
     <motion.div
       className="reqFormPage"
@@ -361,10 +241,12 @@ export default function OrderPage({ routeVariants }) {
       animate="final"
     >
       <h1>Song Request Details</h1>
-
       <p>Once you provide details we can begin creating your song!</p>
+
       <Box sx={{ width: "100%" }}>
-        <Stepper nonLinear activeStep={activeStep}>
+
+        {/* progress bar */}
+        <Stepper nonLinear activeStep={activeStep} sx={{ mb: 8 }}>
           {steps.map((label, index) => (
             <Step key={label} completed={completed[index]}>
               <StepButton color="inherit" onClick={handleStep(index)}>
@@ -373,9 +255,11 @@ export default function OrderPage({ routeVariants }) {
             </Step>
           ))}
         </Stepper>
+
+        {/* page including form */}
         <div>
           {allStepsCompleted() ? (
-            <React.Fragment>
+            <>
               <Typography sx={{ mt: 2, mb: 1 }}>
                 All steps completed - you&apos;re finished
               </Typography>
@@ -383,48 +267,33 @@ export default function OrderPage({ routeVariants }) {
                 <Box sx={{ flex: "1 1 auto" }} />
                 <Button onClick={handleReset}>Reset</Button>
               </Box>
-            </React.Fragment>
+            </>
           ) : (
-            <React.Fragment>
-              <Typography sx={{ mt: 2, mb: 1, py: 1 }}>
-                Step {activeStep + 1}
-              </Typography>
+            <>
+              {/* form components */}
               <form className="reqForm">{formDetails()}</form>
-              <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-                <button
-                  className="user-portal-details-btn"
-                  disabled={activeStep === 0}
+
+              {/* buttons */}
+              <Box sx={{ display: "flex", flexDirection: "row", mt: 8 }}>
+                <Button variant="contained"
                   onClick={handleBack}
-                >
-                  Back
-                </button>
+                  sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
+                > BACK
+                </Button>
                 <Box sx={{ flex: "1 1 auto" }} />
-                <button className="user-portal-details-btn" onClick={handleButton} sx={{ mr: 1 }}>
-                  Next
-                </button>
-                {/* {activeStep !== steps.length &&
-                  (completed[activeStep] ? (
-                    <Typography
-                      variant="caption"
-                      sx={{ display: "inline-block" }}
-                    >
-                      Step {activeStep + 1} already completed
-                    </Typography>
-                  ) : (
-                    <button onClick={handleComplete} className="user-portal-details-btn">
-                      {completedSteps() === totalSteps() - 1
-                        ? "Finish"
-                        : "Complete Step"}
-                    </button>
-                  ))} */}
-                  {completedSteps() === totalSteps() - 1 ? 
-                     <button onClick={handleComplete} className="user-portal-details-btn">
+                <Button variant="contained"
+                  onClick={handleButton}
+                  sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
+                > NEXT
+                </Button>
+                {completedSteps() === totalSteps() - 1 ?
+                  <button onClick={handleComplete} className="user-portal-details-btn">
                     Finish
-                    </button>
-                    : ""
-                  }
+                  </button>
+                  : ""
+                }
               </Box>
-            </React.Fragment>
+            </>
           )}
         </div>
       </Box>

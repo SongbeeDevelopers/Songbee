@@ -61,7 +61,7 @@ export default function CustomerPortalTabs() {
   return (
     <>
       {/* tab selector */}
-      <Box sx={{ height: "80%"}}>
+      <Box sx={{ height: "80%" }}>
         <Tabs
           value={value}
           onChange={handleChange}
@@ -70,8 +70,8 @@ export default function CustomerPortalTabs() {
           indicatorColor="primary"
         >
           <Tab label="Orders" {...a11yProps(0)} />
-          <Tab label="Profile" {...a11yProps(1)} /> 
-          <Tab label="Credit" {...a11yProps(2)} /> 
+          <Tab label="Profile" {...a11yProps(1)} />
+          <Tab label="Credit" {...a11yProps(2)} />
         </Tabs>
       </Box>
 

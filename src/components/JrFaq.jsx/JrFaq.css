@@ -1,0 +1,46 @@
+.jr-faq {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  background-image: url("https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074405/Songbee/si-checker_cqzcqt.webp");
+  width: 100%;
+  padding-bottom: 50px;
+  margin-bottom: -100px;
+}
+
+.jr-faq h2 {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.highlight {
+  color: #feaf17;
+}
+
+.faq-questions {
+  width: 100% !important;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+  gap: 15px;
+  justify-content: space-between;
+}
+
+.faq-question {
+  width: 49%;
+  background-color: #ffdeb0;
+  padding: 10px 30px;
+  overflow: hidden;
+  border-radius: 30px;
+}
+
+.faq-question-title {
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.faq-question p {
+  margin: 0;
+  padding: 0;
+}

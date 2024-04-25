@@ -12,7 +12,7 @@ function JrMoreThanMusicSection() {
 
         <div className="jr-mtjm-items">
           <div className="jr-mtjm-item">
-            <img src="/junior/music-notes.png"/>
+            <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076610/Songbee/music-notes_meuusw.png"/>
             <div>
               <h3>Step by Step</h3>
               <p>A bi monthly learning pack delivery, designed by experts to help your baby with the skills they need most.</p>
@@ -20,7 +20,7 @@ function JrMoreThanMusicSection() {
           </div>
 
           <div className="jr-mtjm-item">
-            <img src="/junior/music-notes.png"/>
+            <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076610/Songbee/music-notes_meuusw.png"/>
             <div>
               <h3>Offer Support</h3>
               <p>Learning and Play guides provided to make the most of your learning pack and optimize your child's learning!</p>
@@ -28,7 +28,7 @@ function JrMoreThanMusicSection() {
           </div>
 
           <div className="jr-mtjm-item">
-            <img src="/junior/music-notes.png"/>
+            <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076610/Songbee/music-notes_meuusw.png"/>
             <div>
               <h3>Both</h3>
               <p>Learning Guides to supplement the custom songs.</p>

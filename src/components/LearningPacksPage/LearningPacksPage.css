@@ -240,7 +240,7 @@
 .lp-playtolearnCards {
   display: flex;
   gap: 20px;
-  background-image: url("/junior/text-backer-white.png");
+  background-image: url("https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076661/Songbee/text-backer-white_gnaiwk.png");
   background-repeat: no-repeat;
   /* background-size: contain; */
   background-position: center;
@@ -277,7 +277,7 @@
 }
 
 .lp-playtolearn h2 {
-  background-image: url("/junior/text-backer-white.png");
+  background-image: url("https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076661/Songbee/text-backer-white_gnaiwk.png");
   background-repeat: no-repeat;
 
   background-position: center;
@@ -339,8 +339,6 @@
   margin-bottom: -20px;
 }
 
-.pv-age {
-}
 
 .pv-pricing {
   font-weight: 600;
@@ -423,7 +421,7 @@
 }
 
 .lp-video h2 {
-  background-image: url("/junior/text-backer-white.png");
+  background-image: url("https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076661/Songbee/text-backer-white_gnaiwk.png");
   background-repeat: no-repeat;
   margin-top: -15px;
   background-position: center;

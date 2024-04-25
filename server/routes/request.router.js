@@ -33,6 +33,7 @@ router.get('/user', rejectUnauthenticated, (req, res) => {
   "song_details"."url",
   "song_details"."lyrics",
   "song_details"."title",
+  "song_details"."artist_id",
   "song_details"."streaming_link",
   "song_details"."accepted",
   "genres"."name" AS "genre"
@@ -83,6 +84,7 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     "song_details"."url",
     "song_details"."lyrics",
     "song_details"."title",
+    "song_details"."artist_id",
     "song_details"."streaming_link",
     "song_details"."accepted",
     "genres"."name" AS "genre",
@@ -121,6 +123,7 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     "song_details"."url",
     "song_details"."lyrics",
     "song_details"."title",
+    "song_details"."artist_id",
     "song_details"."streaming_link",
     "song_details"."accepted",
     "genres"."name" AS "genre",

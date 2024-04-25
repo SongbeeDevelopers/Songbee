@@ -46,7 +46,7 @@ function LearningPackView({ routeVariants }) {
           </ul>
         </div>
       </section>
-      <img src="/junior/YellowLine.png" alt="" className="yellowLine" />
+      <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076677/Songbee/YellowLine_kbce6u.png" alt="" className="yellowLine" />
 
       <LearningPackVideo />
       <LearningMadeEasy/>

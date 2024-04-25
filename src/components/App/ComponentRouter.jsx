@@ -56,6 +56,7 @@ import LearningPacksHeader from "../Header/LearningPacksHeader";
 import LearningPackView from "../LearningPackView/PackView";
 import SchoolsInspirationHeader from "../Header/SchoolsInspirationHeader";
 import SchoolsInspiration from "../SchoolsInspiration/SchoolsInspiration";
+import WhySongbee from "../WhySongbee/WhySongbee";
 
 
 function ComponentRouter() {
@@ -165,6 +166,10 @@ function ComponentRouter() {
           <SchoolsInspiration routeVariants={routeVariants} ></SchoolsInspiration>
         </Route>
 
+        <Route exact path="/why-songbee">
+          <WhySongbee routeVariants={routeVariants} />
+        </Route>
+
         <Route exact path="/join-artist">
           <JoinArtistPage routeVariants={routeVariants} />
         </Route>
@@ -229,6 +234,7 @@ function ComponentRouter() {
         <Route exact path="/artist-process">
           <ArtistProcess routeVariants={routeVariants} />
         </Route>
+        
         <Route exact path="/guarantee">
           <QualityGuaranteePage routeVariants={routeVariants} />
         </Route>

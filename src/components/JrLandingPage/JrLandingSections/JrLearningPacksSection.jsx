@@ -11,7 +11,7 @@ function JrLearningPacksSection() {
         <div className="age-item">
           <div className="age-item-contents">
             <h4>0-12 months</h4>
-            <img src="/junior/0-1.png"/>
+            <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076166/Songbee/0-1_mdeh2q.png"/>
             <p>
               Your baby goes through so many changes in the first year.
               Help them meet their milestones.
@@ -23,7 +23,7 @@ function JrLearningPacksSection() {
         <div className="age-item">
           <div className="age-item-contents">
             <h4>1- 2 Years</h4>
-            <img src="/junior/1-2.png"/>
+            <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076171/Songbee/1-2_om40ht.png"/>
             <p>
               Your baby is growing up! <br/> They are starting to walk,
               play, and communicate on their own. Enhance learning to help them through each new step.
@@ -35,7 +35,7 @@ function JrLearningPacksSection() {
         <div className="age-item">
           <div className="age-item-contents">
             <h4>3-4 Years</h4>
-            <img src="/junior/3-4.png"/>
+            <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076177/Songbee/3-4_vabtho.png"/>
             <p>
               Learn communication skills, collaboration, and emotional understanding.
               Help your child excel in school or at home with musical learning.
@@ -47,7 +47,7 @@ function JrLearningPacksSection() {
         <div className="age-item">
           <div className="age-item-contents">
             <h4>5 years & up!</h4>
-            <img src="/junior/5up.png"/>
+            <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076182/Songbee/5up_qme8dk.png"/>
             <p>
               Develop a more mature and logical way of thinking. Further your child's social,
               physical, cognitive,  motor, and language development.

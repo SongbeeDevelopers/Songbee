@@ -13,13 +13,13 @@ function HowSongbeeJrWorks() {
       </div>
 
       <div className="jr-works-arrows-and-bees">
-        <img src="/junior/Bee.png"/>
-        <img src="/junior/Bee.png"/>
+        <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076528/Songbee/Bee_e8eelp.png"/>
+        <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076528/Songbee/Bee_e8eelp.png"/>
       </div>
 
       <div className="jr-works-arrows-and-bees">
-        <img src="/junior/dotted-arrow.png"/>
-        <img src="/junior/dotted-arrow.png"/>
+        <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076563/Songbee/dotted-arrow_ahzs2i.png"/>
+        <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076563/Songbee/dotted-arrow_ahzs2i.png"/>
       </div>
 
       <div className="jr-works">
@@ -64,7 +64,7 @@ function HowSongbeeJrWorks() {
         Get Started!
       </button>
 
-      <img className="jr-works-beehive" src="/junior/beehive.png"/>
+      <img className="jr-works-beehive" src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076534/Songbee/beehive_lzsfmu.png"/>
 
     </div>
   )

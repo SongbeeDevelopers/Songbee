@@ -3,40 +3,14 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import AudioButton from "../JoinArtistPage/AudioButton";
+import AudioButton from "../../../JoinArtistPage/AudioButton";
 
-import "./ArtistBioPages.css";
-
-function ArtistBioPage() {
+function ArtistBioPage({ artist }) {
 
 const { id } = useParams();
 const dispatch = useDispatch();
-
-let artist
-if (id){
-    artist = useSelector(store => store.currentArtist);
-}
-else {
-    artist = useSelector((store) => store.artistProfile);
-}
 const artistGenre = useSelector(store => store.fetchGenres);
-console.log("id", id)
-
-
-
-if (id){
-useEffect(() => {
-    dispatch({
-        type: 'FETCH_CURRENT_ARTIST',
-        payload: id})
-  }, [id])
-}
-
-  console.log("artist", artist)
-
-
   
-
     return artist ?(
         <>
         <div className="imgBox">
@@ -63,10 +37,10 @@ useEffect(() => {
                 </a>
                 </div>
                <div className="community-button">
-                   <Link to="/artist-process">Start a song with me</Link>
                </div>
             </div> 
            </div>
+           {/* <h2>Bio</h2> */}
            <h4 className="bio">{artist.bio}</h4>
          </div>
         </div>
@@ -79,7 +53,7 @@ useEffect(() => {
                        
                    </div>
                </div>
-               <div className="headerItem"> 
+               <div class="headerItem"> 
                    <div className="genre">
                        Genre
                    </div>
@@ -87,31 +61,25 @@ useEffect(() => {
            </div>
            
            <div className="songList">
-               <div className="songItems">
+               {/* <div className="songItems">
                  {[1, 2, 3].map((index) => {
                     const sampleSong = artist[`sample_song_${index}`];
-                    const songTitle = artist[`song_title_${index}`];
                   return sampleSong && (
 
-                   <div className="audioFiles" key={index}> 
-                   <div className="songTitles">
-                    <p>{songTitle}</p>
-                    
-                    <AudioButton url={sampleSong} />
+                   <div className="audioFiles" key={index}>  
+                        <AudioButton url={sampleSong} />
                        {console.log('Logging sampleSong:', sampleSong)}
-                    
-                   </div>
-                   <div className="genres">
+                
                        {artist.genres.map((genre) => (
-                            <h3>{genre.genre}</h3>
-                       ))} 
-                     </div>    
+                            <p>{genre.genre}</p>
+                       ))}
+                      
                    </div>
                    
                        );
                     })}
-                
-               </div>
+                   
+               </div> */}
            </div>
        </div>
    </div>
