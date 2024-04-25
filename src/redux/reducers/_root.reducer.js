@@ -20,6 +20,7 @@ import pendingEdits from "./pendingEdits.reducer";
 import currentArtist from "./currentArtist.reducer";
 import finalQuestions from './finalQuestions.reducer';
 import edit from './edit.reducer';
+import artistRequests from './artistRequests.reducer';
 
 
 // rootReducer is the primary reducer for our entire project
@@ -49,6 +50,7 @@ const rootReducer = combineReducers({
   currentArtist,
   finalQuestions,
   edit,
+  artistRequests
 });
 
 export default rootReducer;

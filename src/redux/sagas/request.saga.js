@@ -22,6 +22,16 @@ function* fetchUserRequests () {
     }
 }
 
+function* fetchArtistRequests () {
+    try {
+        const response = yield axios.get('/api/request/user')
+        yield put({ type: 'SET_USER_REQUESTS', payload: response.data})
+    }
+    catch (error) {
+        console.error('SAGA fetchUserRequests() failed:', error)
+    }
+}
+
 function* fetchCurrentRequest (action){
     try {
         const response = yield axios.get(`/api/request/current/${action.payload}`);

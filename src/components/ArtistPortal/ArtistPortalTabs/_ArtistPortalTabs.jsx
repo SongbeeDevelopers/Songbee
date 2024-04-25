@@ -74,11 +74,13 @@ export default function ArtistPortalTabs({artistProfile}) {
           <Tab label="Artist Profile" {...a11yProps(0)}  />
           <Tab label="Songbee Requests" {...a11yProps(1)} />
           {artistProfile && artistProfile.jr_approved ?
+          <>
           <Tab label="Junior Requests" {...a11yProps(2)} />
-          :
-          ''
-          }
           <Tab label="Documents" {...a11yProps(3)} />
+          </>
+          :
+          <Tab label="Documents" {...a11yProps(2)} />
+          }
         </Tabs>
       </Box>
 
@@ -90,7 +92,8 @@ export default function ArtistPortalTabs({artistProfile}) {
       <CustomTabPanel value={value} index={1}>
         <ArtistSBRequestsTab />
       </CustomTabPanel>
-
+      {artistProfile && artistProfile.jr_approved ?
+      <>
       <CustomTabPanel value={value} index={2}>
         <ArtistSBjrRequestsTab />
       </CustomTabPanel>
@@ -98,6 +101,12 @@ export default function ArtistPortalTabs({artistProfile}) {
       <CustomTabPanel value={value} index={3}>
         <ArtistDocuments />
       </CustomTabPanel>
+      </>
+      :
+      <CustomTabPanel value={value} index={2}>
+      <ArtistDocuments />
+    </CustomTabPanel>
+      }
     </>
   );
 }
