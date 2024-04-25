@@ -234,6 +234,7 @@ function ComponentRouter() {
         <Route exact path="/artist-process">
           <ArtistProcess routeVariants={routeVariants} />
         </Route>
+        
         <Route exact path="/guarantee">
           <QualityGuaranteePage routeVariants={routeVariants} />
         </Route>

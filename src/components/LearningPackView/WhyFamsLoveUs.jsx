@@ -32,8 +32,6 @@ function WhyFamiliesLoveUs() {
           </div>
         </div>
       </div>
-
-      {/* <img className="jr-reviews-bg-bee" src="/junior/Bee.png"/> */}
     </div>
   )
 }

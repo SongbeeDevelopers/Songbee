@@ -10,14 +10,14 @@ function WhySongbee() {
   return (
     <div className="whySongbee">
       <div className="ws-hero">
-        <img src="/junior/whySongbee/whySongbeeHero.jpg" alt="" />
+        <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714075147/Songbee/whySongbeeHero_qaklw8.jpg" alt="" />
         <div className="ws-heroContents">
           <h1>Why Songbee?</h1>
           <button className="jr-landing-btn">Get Started</button>
         </div>
       </div>
       <img
-        src="/junior/YellowLine.png"
+        src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076677/Songbee/YellowLine_kbce6u.png"
         alt=""
         className="yellowLine ws-yellowLine"
       />
@@ -35,8 +35,8 @@ function WhySongbee() {
         </p>
       </div>
       <div className="ws-yellowLine">
-        <img src="/junior/YellowLine.png" alt="" className="yellowLine" />{" "}
-        <img className="whysong-Bee" src="/junior/Bee.png" alt="" />
+        <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076677/Songbee/YellowLine_kbce6u.png" alt="" className="yellowLine" />{" "}
+        <img className="whysong-Bee" src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076528/Songbee/Bee_e8eelp.png" alt="" />
       </div>
       <JrFaq/>
       <JrFooter/>

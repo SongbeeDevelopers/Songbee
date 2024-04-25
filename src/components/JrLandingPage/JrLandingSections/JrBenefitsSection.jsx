@@ -18,7 +18,7 @@ function BenefitsSection() {
         <div className="jr-benefits">
           <h2>The Benefits</h2>
 
-          <img src="/junior/benefits.png" />
+          <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076540/Songbee/benefits_r52ee9.png" />
         </div>
       </div>
     </>

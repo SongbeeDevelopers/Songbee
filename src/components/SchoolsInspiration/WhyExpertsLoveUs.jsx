@@ -10,7 +10,7 @@ function WhyExpertsLoveUs() {
           <div className="card-contents">
             <h3>Emily F.</h3>
             <span>Education Specialist</span>
-            <img src="/junior/bottom-si/si-bottom-stars.webp" alt="" />
+            <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714072113/Songbee/si-bottom-stars_f2asun.webp" alt="" />
             <p>
               Songbee provides such an amazing opportunity to pair music with
               learning, social/emotional development, and fun!{" "}
@@ -22,7 +22,7 @@ function WhyExpertsLoveUs() {
           <div className="card-contents">
             <h3>Amrit D., PHD</h3>
             <span> Student Health & Wellness</span>
-            <img src="/junior/bottom-si/si-bottom-stars.webp" alt="" />
+            <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714072113/Songbee/si-bottom-stars_f2asun.webp" alt="" />
            <p>
               As an educator, I love working with Songbee. The learning and
               clinical applications of the songs written for our Lower School
@@ -36,7 +36,7 @@ function WhyExpertsLoveUs() {
           <div className="card-contents">
             <h3>Erin L. </h3>
             <span>Educator</span>
-            <img src="/junior/bottom-si/si-bottom-stars.webp" alt="" />
+            <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714072113/Songbee/si-bottom-stars_f2asun.webp" alt="" />
              <p>
               Songbee's music is inspiring, fun to listen to, has a sincere and
               genuine message that all children, teachers, caretakers, parents,
@@ -50,7 +50,7 @@ function WhyExpertsLoveUs() {
           <div className="card-contents">
             <h3>Example Name</h3>
             <span>Education Specialist</span>
-            <img src="/junior/bottom-si/si-bottom-stars.webp" alt="" />
+            <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714072113/Songbee/si-bottom-stars_f2asun.webp" alt="" />
             <p>
               "SongBee is the best! SongBee is the best! SongBee is the best!"{" "}
               </p>

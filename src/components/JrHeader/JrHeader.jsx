@@ -66,7 +66,7 @@ function JrHeader() {
       </div>
 
       <div className="jr-nav-center">
-        <Link to="/home"><img className="jr-nav-title" src="junior/jr-logo.png" /></Link>
+        <Link to="/home"><img className="jr-nav-title" src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076598/Songbee/jr-logo_f9dxxu.png" /></Link>
       </div>
       
       <div className="jr-nav-right">

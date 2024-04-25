@@ -8,12 +8,12 @@ function WsHowItWorks() {
     <div className="how-it-works">
       <img
         className="works-comb"
-        src="/junior/whySongbee/howitworks-honey.png"
+        src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714072106/Songbee/howitworks-honey_myehca.png"
         alt=""
       />
       <img
         className="works-honey"
-        src="/junior/whySongbee/Honeyjar.png"
+        src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714075108/Songbee/Honeyjar_judyw5.png"
         alt=""
       />
       <div className="works-header">

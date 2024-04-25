@@ -55,7 +55,7 @@
   gap: 30px;
   background-color: white;
   padding: 0 50px;
-  background-image: url("/junior/schoolsInspiration/si-checker.jpg");
+  background-image: url("https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074405/Songbee/si-checker_cqzcqt.webp");
 }
 
 .si-types-1 {
@@ -79,7 +79,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  background-image: url("/junior/si-blue-textbox.png");
+  background-image: url("https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076633/Songbee/si-blue-textbox_lcxoih.png");
   background-repeat: no-repeat;
   background-position: center;
   width: max-content;
@@ -143,7 +143,7 @@
   padding: 0;
   font-size: 2.5rem !important;
   font-weight: 700;
-  background-image: url("/junior/schoolsInspiration/WTB.png");
+  background-image: url("https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074421/Songbee/WTB_iikpwr.webp");
   background-repeat: no-repeat;
   background-position: center;
   width: max-content;
@@ -274,7 +274,7 @@
 }
 
 .si-heroContents h1 {
-  background-image: url("/junior/schoolsInspiration/si-header-thingy.png");
+  background-image: url("https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074410/Songbee/si-header-thingy_bosynn.png");
 color:#474546;
   background-repeat: no-repeat;
   background-position: center;
@@ -284,7 +284,7 @@ color:#474546;
 }
 
 .si-heroContents p {
-  background-image: url("/junior/schoolsInspiration/si-header-thingy.png");
+  background-image: url("https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074410/Songbee/si-header-thingy_bosynn.png");
   background-repeat: no-repeat;
   background-position: center;
   width: max-content;
@@ -301,7 +301,7 @@ color:#474546;
 }
 
 .bs-leftText h2 {
-  background-image: url("/junior/beeSmart/backgroundddd.png");
+  background-image: url("https://res.cloudinary.com/dke4ukd0z/image/upload/v1714072088/Songbee/backgroundddd_ccuuao.png");
   background-repeat: no-repeat;
   background-position: center;
   width: max-content;
@@ -387,7 +387,7 @@ color:#474546;
 }
 
 .faa h2 {
-  background-image: url("/img-12.png");
+  background-image: url("https://res.cloudinary.com/dke4ukd0z/image/upload/v1714072109/Songbee/img-12_t3mf0e.png");
   background-repeat: no-repeat;
   background-position: center;
   width: max-content;
@@ -431,7 +431,7 @@ color:#474546;
 }
 
 .experts h2 {
-  background-image: url("/junior/bottom-si/bottom-si.png");
+  background-image: url("https://res.cloudinary.com/dke4ukd0z/image/upload/v1714072102/Songbee/bottom-si_x37m6w.png");
   background-repeat: no-repeat;
   background-position: center;
   width: max-content;
@@ -451,7 +451,7 @@ color:#474546;
 
 .expert-card {
   width: 400px;
-  background-image: url("/junior/bottom-si/bottom-si-cover.png");
+  background-image: url("https://res.cloudinary.com/dke4ukd0z/image/upload/v1714072098/Songbee/bottom-si-cover_hcyz8o.png");
   background-repeat: no-repeat;
   background-position: center;
   padding: 30px 50px;

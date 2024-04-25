@@ -5,12 +5,12 @@ function WhatsTheBuzz() {
   return (
     <div className="theBuzz">
 
-        <img className="buzz-pencil" src="/junior/schoolsInspiration/BuzzPencil.png" alt="" />
+        <img className="buzz-pencil" src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074399/Songbee/BuzzPencil_tvlatl.png" alt="" />
         <img className="buzz-honeycomb" src="/junior/empty-honeycomb.png" alt="" />
       <div className="left-buzz">
         <div className="buzz-title">
           <h2>What’s the buzz?</h2>
-          <img src="/junior/Bee.png" alt="" />
+          <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076528/Songbee/Bee_e8eelp.png" alt="" />
         </div>
         <p>
           Songbee’s BEE programs are crafted with learning in mind. The BEE
@@ -42,34 +42,34 @@ function WhatsTheBuzz() {
       </div>
 
       <div className="right-buzz">
-        <img src="/junior/schoolsInspiration/BuzzBook.png" alt="" />
+        <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074389/Songbee/BuzzBook_uapcsh.png" alt="" />
 
         <div className="theBook">
           <div className="theBook-left">
             <h3>Benefits</h3>
             <div className="bookList">
               <p>
-                <img src="/junior/schoolsInspiration/buzzCheck.png" alt="" />
+                <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074394/Songbee/buzzCheck_kwpdpq.webp" alt="" />
                 Engages the whole brain
               </p>
               <p>
-                <img src="/junior/schoolsInspiration/buzzCheck.png" alt="" />
+                <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074394/Songbee/buzzCheck_kwpdpq.webp" alt="" />
                 Boosts confidence
               </p>
               <p>
-                <img src="/junior/schoolsInspiration/buzzCheck.png" alt="" />
+                <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074394/Songbee/buzzCheck_kwpdpq.webp" alt="" />
                 Improves language skills
               </p>
               <p>
-                <img src="/junior/schoolsInspiration/buzzCheck.png" alt="" />
+                <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074394/Songbee/buzzCheck_kwpdpq.webp" alt="" />
                 Increases participation
               </p>
               <p>
-                <img src="/junior/schoolsInspiration/buzzCheck.png" alt="" />
+                <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074394/Songbee/buzzCheck_kwpdpq.webp" alt="" />
                 Aids memory retention
               </p>
               <p>
-                <img src="/junior/schoolsInspiration/buzzCheck.png" alt="" />
+                <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074394/Songbee/buzzCheck_kwpdpq.webp" alt="" />
                 Teaches emotional intelligence
               </p>
             </div>
@@ -77,36 +77,36 @@ function WhatsTheBuzz() {
           <div className="theBook-right">
             <div className="bookList">
               <p>
-                <img src="/junior/schoolsInspiration/buzzCheck.png" alt="" />
+                <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074394/Songbee/buzzCheck_kwpdpq.webp" alt="" />
                 Helps modify behaviors
               </p>
               <p>
-                <img src="/junior/schoolsInspiration/buzzCheck.png" alt="" />
+                <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074394/Songbee/buzzCheck_kwpdpq.webp" alt="" />
                 Inspires innovation
               </p>
               <p>
-                <img src="/junior/schoolsInspiration/buzzCheck.png" alt="" />
+                <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074394/Songbee/buzzCheck_kwpdpq.webp" alt="" />
                 Positive learning tool
               </p>
               <p>
-                <img src="/junior/schoolsInspiration/buzzCheck.png" alt="" />
+                <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074394/Songbee/buzzCheck_kwpdpq.webp" alt="" />
                 Instills creativity
               </p>
               <p>
-                <img src="/junior/schoolsInspiration/buzzCheck.png" alt="" />
+                <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074394/Songbee/buzzCheck_kwpdpq.webp" alt="" />
                 Builds social skills
               </p>
               <p>
-                <img src="/junior/schoolsInspiration/buzzCheck.png" alt="" />
+                <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074394/Songbee/buzzCheck_kwpdpq.webp" alt="" />
                 Promotes Patience
               </p>
               <p>
-                <img src="/junior/schoolsInspiration/buzzCheck.png" alt="" />
+                <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074394/Songbee/buzzCheck_kwpdpq.webp" alt="" />
                 Encourages community
               </p>
               <div className="theBook-learn">
                 <div className="buzz-arrows">
-                  <img src="/junior/schoolsInspiration/buzzArrows.png" />
+                  <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074383/Songbee/buzzArrows_giu747.webp" />
                 </div>
                 <p>
                   Click <br /> Here

@@ -13,14 +13,14 @@ function SchoolsInspiration() {
       name: "Schools & Groups",
       description:
         "Public, Independent, Perochial schools, and Charter Schools. After-school programs and  community events.",
-      imgurl: "/junior/si-below-hero/si-hero1.jpg",
+      imgurl: "https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074741/Songbee/si-hero1_yy0pez.jpg",
     },
 
     {
       id: 1,
       name: "Home School",
       description: "Virtual classes, home schools, Home educators",
-      imgurl: "/junior/si-below-hero/si-hero2.jpg",
+      imgurl: "https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074746/Songbee/si-hero2_gpuyku.jpg",
     },
 
     {
@@ -28,20 +28,20 @@ function SchoolsInspiration() {
       name: "Counseling",
       description:
         "Counseling, Grief therapy, developmental therapy, music therapy offices",
-      imgurl: "/junior/si-below-hero/si-hero3.jpg",
+      imgurl: "https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074751/Songbee/si-hero3_bkkfmh.jpg",
     },
 
     {
       id: 3,
       name: "Music Programs",
       description: "Government funded programs, community centers",
-      imgurl: "/junior/si-below-hero/si-hero4.jpg",
+      imgurl: "https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074757/Songbee/si-hero4_gjb99j.jpg",
     },
   ];
   return (
     <div className="si-page">
       <div className="si-hero">
-        <img src="public/junior/si-hero.jpeg" alt="" />
+        <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076638/Songbee/si-hero_drm2uh.jpg" alt="" />
         <div className="si-heroContents">
           <h1> <span className="highlight">Music-based</span>learning programs</h1>
           <p>
@@ -55,7 +55,7 @@ function SchoolsInspiration() {
       <div className="mother-yellowLine">
         <img
           className="si-yellowLine"
-          src="public/junior/YellowLine.png"
+          src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076677/Songbee/YellowLine_kbce6u.png"
           alt=""
         />
       </div>

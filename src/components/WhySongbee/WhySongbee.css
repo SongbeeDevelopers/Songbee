@@ -17,7 +17,7 @@
   font-size: 50px;
   text-align: left;
   margin-bottom: -20px;
-  background-image: url("/junior/whySongbee/whySongbeeHeader.png");
+  background-image: url("https://res.cloudinary.com/dke4ukd0z/image/upload/v1714075141/Songbee/whySongbeeHeader_x6s5fw.png");
   color: #FEAF17;
   background-repeat: no-repeat;
   background-position: center;
@@ -98,7 +98,7 @@ justify-content: center;
 }
 
 .ws-right{
-  background-image: url("/junior/whySongbee/yellowBlob.png");
+  background-image: url("https://res.cloudinary.com/dke4ukd0z/image/upload/v1714075152/Songbee/yellowBlob_wcubbo.png");
   color: black;
   background-repeat: no-repeat;
   background-position: center;
@@ -129,7 +129,7 @@ justify-content: center;
 }
 
 .works-header{
-  background-image: url("/junior/whySongbee/white-header2.png");
+  background-image: url("https://res.cloudinary.com/dke4ukd0z/image/upload/v1714075136/Songbee/white-header2_qu1kfz.png");
   background-repeat: no-repeat;
   background-position: center;
   width: max-content;
