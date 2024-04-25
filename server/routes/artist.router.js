@@ -28,35 +28,41 @@ const getArtistIdByUserId = (userId) => {
 router.get("/get", async (req, res) => {
   // this is getting artist info with the genre
   // we use the sql join to link artist and genre tables
+  let connection
+  try {
+  connection = await pool.connect();
+
+  connection.query("BEGIN;");
   const artistId = await getArtistIdByUserId(req.user.id)
   console.log("artist id", artistId);
   const query = `
-  SELECT 
-  "artist"."id" AS "artistId",
-  "artist"."artist_name" AS "artistName",
-  "artist"."name",
-  "artist"."vocal_type" AS "vocalType",
-  "artist"."website" AS "website",
-  "artist"."bio" AS "bio",
-  "artist"."photo" AS "photo",
-  "artist"."streaming_link" AS "streamingLink",
-  "artist"."approved" AS "approved",
-"genres"."name" AS "genre"
-  FROM "artist"
-  LEFT JOIN "artist_genres"
-  ON "artist"."id"="artist_genres"."artist_id"
-  LEFT JOIN "genres"
-  ON "artist_genres"."genre_id" ="genres"."id"
-  WHERE "artist"."id"=$1;
+  SELECT * FROM "artist"
+  WHERE "id"=$1;
   `;
-  pool.query(query, [artistId])
-    .then((result) => {
-      console.log("result.rows", result.rows)
-        res.send(result.rows);
-    })
-    .catch((error) => {
-        console.error("Error in request router GET current request:", error)
-    })
+  const artistResponse = await connection.query(query, [artistId])
+
+  const genreQuery = `
+  SELECT
+  "genres"."id" AS "id",
+  "genres"."name" AS "genre"
+  FROM "genres"
+  LEFT JOIN "artist_genres"
+  ON "genres"."id"="artist_genres"."genre_id"
+  WHERE "artist_genres"."artist_id"=$1
+  `
+  const genreResponse = await connection.query(genreQuery, [artistId])
+  connection.query("COMMIT;");
+  connection.release();
+  artistResponse.rows[0].genres = genreResponse.rows
+  console.log("artistResponse", artistResponse.rows[0]);
+  console.log("genreResponse", genreResponse.rows);
+  res.send(artistResponse.rows[0]);
+} catch (error){
+  console.log('get artist profile failed:', error)
+  connection.query("ROLLBACK;");
+  connection.release();
+  res.sendStatus(500)
+}
 });
 
 
@@ -345,6 +351,30 @@ router.get('/current/:id', async (req, res) => {
   connection.release();
   res.sendStatus(500)
 }
+})
+
+router.put('/active/:id', async (req, res) => {
+  let connection
+  try {
+  connection = await pool.connect();
+
+  connection.query("BEGIN;");
+  const approvalQuery = `
+  UPDATE "artist"
+  SET "is_active"=NOT "is_active"
+  WHERE id=$1;
+  `
+  console.log('req.params.id:', req.params.id)
+  await connection.query(approvalQuery, [req.params.id])
+  connection.query("COMMIT;");
+  connection.release();
+  res.sendStatus(200);
+  } catch (error) {
+      console.error("Artist router is active Update failed:", error)
+      connection.query("ROLLBACK;");
+      connection.release();
+      res.sendStatus(500)
+  }
 })
 
 module.exports = router;

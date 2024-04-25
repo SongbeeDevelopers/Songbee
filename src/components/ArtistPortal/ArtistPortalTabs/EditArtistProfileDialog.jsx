@@ -2,7 +2,6 @@ import React from "react";
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
 
-import Dialog from "@mui/material/Dialog";
 import Box from "@mui/material/Box";
 
 function EditArtistProfileDialog({ artistProfile, openArtist, setOpenArtist}) {
@@ -44,7 +43,12 @@ function EditArtistProfileDialog({ artistProfile, openArtist, setOpenArtist}) {
     aboutYourselfRef.current.value = "";
   };
 
-
+  const handleActive = () => {
+    dispatch({
+      type: "UPDATE_ACTIVE_ARTIST",
+      payload: artistProfile.id
+    })
+  }
 
 
   return (
@@ -60,6 +64,18 @@ function EditArtistProfileDialog({ artistProfile, openArtist, setOpenArtist}) {
           justifyContent: "center",
         }}
       >
+        {artistProfile && artistProfile.is_active ? 
+          <>
+          <h3>Would you like to set yourself as inactive?</h3>
+          <button onClick={handleActive}>Inactive</button>
+          </>
+          :
+          <>
+          <h3>Would you like to set yourself as active?</h3>
+          <button onClick={handleActive}>Active</button>
+          </>
+        }
+
         <h3>Would you like to make an edit ?</h3>
 
         <form className="artist-form">

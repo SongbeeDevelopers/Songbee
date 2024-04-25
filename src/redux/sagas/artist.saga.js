@@ -53,7 +53,7 @@ function* approveArtist(action) {
 function* getArtistDetails() {
   try {
     const response = yield axios.get(`/api/artist/get`);
-    yield put({ type: "SET_ARTIST_PROFILE", payload: response.data[0] });
+    yield put({ type: "SET_ARTIST_PROFILE", payload: response.data });
   } catch (error) {
     console.error("SAGA approveArtist() failed:", error);
   }
@@ -120,6 +120,17 @@ function* fetchCurrentArtist(action) {
   }
 }
 
+function* updateActiveArtist(action) {
+  try {
+    yield axios.put(`/api/artist/active/${action.payload}`)
+    yield put({
+      type: "GET_ARTIST_PROFILE"
+    })
+  } catch (error) {
+    console.error("SAGA updateActiveArtist failed")
+  }
+}
+
 function* artistSaga() {
   yield takeLatest("CREATE_ARTIST", createNewArtist);
 
@@ -140,7 +151,7 @@ function* artistSaga() {
   yield takeLatest("DENY_EDIT_ARTIST", denyEditArtistInfo);
   yield takeLatest("FETCH_CURRENT_ARTIST", fetchCurrentArtist);
   
-
+  yield takeLatest("UPDATE_ACTIVE_ARTIST", updateActiveArtist);
 }
 
 export default artistSaga;

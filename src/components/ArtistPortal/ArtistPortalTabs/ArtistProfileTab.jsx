@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import ArtistBioPage from "../../ArtistBioPages/ArtistBioPage";
 import EditArtistProfileDialog from "./EditArtistProfileDialog";
 
-import { Button, Dialog, Slide } from "@mui/material";
+import { Button, Dialog } from "@mui/material";
 
 import "../ArtistPortal.css";
 
@@ -22,9 +22,6 @@ function ArtistProfileTab() {
 
   // dialog logic
   const [openArtist, setOpenArtist] = useState(false);
-  const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
-  });
 
   return (
     <div className="tab-body">
@@ -42,7 +39,6 @@ function ArtistProfileTab() {
       <Dialog
         open={openArtist}
         keepMounted
-        TransitionComponent={Transition}
         onClose={() => setOpenArtist(false)}
         aria-describedby="alert-dialog-slide-description"
         sx={{
