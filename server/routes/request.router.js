@@ -34,7 +34,7 @@ router.get('/user', rejectUnauthenticated, (req, res) => {
   "song_details"."lyrics",
   "song_details"."title",
   "song_details"."streaming_link",
-  "song_details"."approved",
+  "song_details"."accepted",
   "genres"."name" AS "genre"
   FROM "song_request"
   LEFT JOIN "genres"
@@ -84,7 +84,7 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     "song_details"."lyrics",
     "song_details"."title",
     "song_details"."streaming_link",
-    "song_details"."approved",
+    "song_details"."accepted",
     "genres"."name" AS "genre",
     "user"."email"
     FROM "song_request"
@@ -122,7 +122,7 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     "song_details"."lyrics",
     "song_details"."title",
     "song_details"."streaming_link",
-    "song_details"."approved",
+    "song_details"."accepted",
     "genres"."name" AS "genre",
     "user"."email"
     FROM "song_request"
@@ -172,7 +172,7 @@ router.get('/current/:id', (req, res) => {
     "song_details"."lyrics",
     "song_details"."title",
     "song_details"."streaming_link",
-    "song_details"."approved",
+    "song_details"."accepted",
     "genres"."name" AS "genre",
     "artist"."artist_name",
     "artist"."website",
@@ -357,7 +357,7 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
     "song_details"."lyrics",
     "song_details"."title",
     "song_details"."streaming_link",
-    "song_details"."approved",
+    "song_details"."accepted",
     "genres"."name" AS "genre",
     "user"."email"
     FROM "song_request"
@@ -408,7 +408,7 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
     "song_details"."lyrics",
     "song_details"."title",
     "song_details"."streaming_link",
-    "song_details"."approved",
+    "song_details"."accepted",
     "genres"."name" AS "genre",
     "user"."email"
     FROM "song_request"

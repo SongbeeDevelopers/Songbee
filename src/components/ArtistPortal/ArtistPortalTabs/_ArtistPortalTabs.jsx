@@ -6,6 +6,8 @@ import ArtistProfileTab from "./ArtistProfileTab";
 import ArtistSBRequestsTab from "./ArtistSBRequestsTab";
 import ArtistSBjrRequestsTab from "./ArtistSBjrRequestsTab";
 import ArtistDocuments from "./ArtistDocuments";
+import ArtistCompletedRequestsTab from "./ArtistCompletedRequestsTab";
+
 
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
@@ -73,14 +75,9 @@ export default function ArtistPortalTabs({artistProfile}) {
         >
           <Tab label="Artist Profile" {...a11yProps(0)}  />
           <Tab label="Songbee Requests" {...a11yProps(1)} />
-          {artistProfile && artistProfile.jr_approved ?
-          <>
           <Tab label="Junior Requests" {...a11yProps(2)} />
           <Tab label="Documents" {...a11yProps(3)} />
-          </>
-          :
-          <Tab label="Documents" {...a11yProps(2)} />
-          }
+          <Tab label="Completed Requests" {...a11yProps(4)} />
         </Tabs>
       </Box>
 
@@ -93,8 +90,6 @@ export default function ArtistPortalTabs({artistProfile}) {
         <ArtistSBRequestsTab artistId={artistProfile && artistProfile.id}/>
       </CustomTabPanel>
 
-      {artistProfile && artistProfile.jr_approved ?
-      <>
       <CustomTabPanel value={value} index={2}>
         <ArtistSBjrRequestsTab />
       </CustomTabPanel>
@@ -102,12 +97,11 @@ export default function ArtistPortalTabs({artistProfile}) {
       <CustomTabPanel value={value} index={3}>
         <ArtistDocuments />
       </CustomTabPanel>
-      </>
-      :
-      <CustomTabPanel value={value} index={2}>
-      <ArtistDocuments />
-    </CustomTabPanel>
-      }
+
+      <CustomTabPanel value={value} index={4}>
+        <ArtistCompletedRequestsTab artistId={artistProfile && artistProfile.id}/>
+      </CustomTabPanel>
+ 
     </>
   );
 }
