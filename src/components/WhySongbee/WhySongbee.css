@@ -1,0 +1,228 @@
+.whySongbee {
+    width: 100%;
+}
+.ws-hero {
+  position: relative;
+  width: 100%;
+  
+}
+
+.ws-hero img {
+  height: 700px;
+  width: 100%;
+}
+
+.ws-hero h1 {
+  margin: 0;
+  font-size: 50px;
+  text-align: left;
+  margin-bottom: -20px;
+  background-image: url("/junior/whySongbee/whySongbeeHeader.png");
+  color: #FEAF17;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: max-content;
+  padding: 5px 50px;
+  background-size: 100% 100%;
+}
+
+.ws-hero button {
+
+
+}
+
+.ws-heroContents {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  transform: translateX(-50%);
+}
+
+.ws-yellowLine{
+    margin-top: -30px;
+    position: relative;
+    z-index: 30;
+}
+
+.ws-features{
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  background-color: #E1EBEF;
+  padding: 50px;
+}
+.feature-card{
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.feature-text{
+  border: 5px solid #FEAF17;
+  padding: 5px 10px;
+  height: 250px;
+}
+.feature-card h3{
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  margin-bottom: -10px;
+}
+
+
+.feature-text p{
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+}
+
+.ws-music{
+background-color: white;
+padding: 30px;
+display: flex;
+gap: 50px;
+}
+
+.ws-left{
+width: 40%;
+display: flex;
+flex-direction: column;
+text-align: center;
+justify-content: center;
+
+}
+
+.ws-right{
+  background-image: url("/junior/whySongbee/yellowBlob.png");
+  color: black;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 60%;
+  padding: 5px 50px;
+  background-size: 100% 100%;
+
+}
+
+.ws-left h2{
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.ws-right p{
+  font-size: 20px;
+}
+
+.how-it-works{
+  display: flex;
+  flex-direction: column;
+  padding: 70px;
+  gap: 70px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: #FFDEB0;
+}
+
+.works-header{
+  background-image: url("/junior/whySongbee/white-header2.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: max-content;
+  padding: 5px 50px;
+  display: flex;
+  flex-direction: column;
+  background-size: 100% 100%;
+  text-align: center;
+}
+
+.works-comb{
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 280px;
+  height: auto;
+}
+
+
+.works-honey{
+  position: absolute;
+  right: 0;
+   bottom: 0;
+  width: 100px;
+  height: auto;
+}
+
+.works-cards{
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.works-card{
+  display: flex;
+  gap: 10px;
+  width: 400px;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.works-card img{
+  width: 50px;
+  height: auto !important ;
+  object-fit: contain;
+
+}
+
+.works-header h2{
+  color: #FEAF17;
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+  margin-bottom: -30px;
+}
+
+.works-header p{
+  font-size: 22px;
+}
+
+.works-card p{
+  font-weight: 500;
+  font-size: 1.5rem;
+margin: 0;
+padding: 0;
+}
+
+.bottom-howitworks{
+  background-color: white;
+  width: auto;
+  margin: 0 -70px;
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.bottom-howitworks p{
+  font-weight: 500;
+  font-size: 1.5rem;
+  width: 70%;
+  margin: 0 auto;
+  
+}
+
+.whysong-Bee{
+width: 150px;
+height: auto;
+bottom: -5px;
+left: -20px;
+z-index: 30;
+position: absolute;
+transform: rotate(30deg);
+}
