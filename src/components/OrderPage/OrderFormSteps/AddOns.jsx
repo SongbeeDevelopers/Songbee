@@ -1,13 +1,15 @@
 import React from "react";
-import { useState } from "react";
-
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Modal from "@mui/material/Modal";
-
-import { Box, Checkbox } from "@mui/material";
 
 import LoginRegisterForm from "../../LoginRegisterForm/LoginRegisterForm";
+
+import {
+  Box,
+  Button,
+  Checkbox,
+  FormControlLabel,
+  FormGroup,
+  Modal
+} from "@mui/material";
 
 
 export default function AddOns({ handleInput, handleClose, open }) {
@@ -25,44 +27,53 @@ export default function AddOns({ handleInput, handleClose, open }) {
     p: 4,
   };
 
+
   return (
-    <>
-      <button
-        className="orderInput"
-        onClick={() => handleInput("streaming", true)}
-      >Add My Song to Streaming Services!</button>
+    <div className="reqForm">
+      <div className="reqFormGroup">
+        <div className="reqFormInput">
+          <label>Would you like any add-ons?</label>
 
-      <button
-        className="orderInput"
-        onClick={() => handleInput("extra_verse", true)}
-      >Add an Additional Verse!</button>
+          <Button variant="contained"
+            onClick={() => handleInput("streaming", true)}
+            sx={{ height: 35, backgroundColor: "#feaf17", color: "black" }}
+          > Add My Song to Streaming Services!
+          </Button>
 
-      <button
-        className="orderInput"
-        onClick={() => handleInput("license", true)}
-      > I Need a Commercial License for My Song!
-      </button>
+          <Button variant="contained"
+            onClick={() => handleInput("extra_verse", true)}
+            sx={{ height: 35, backgroundColor: "#feaf17", color: "black" }}
+          > Add an Additional Verse!
+          </Button>
 
-      <button
-        className="orderInput"
-        onClick={() => handleInput("backing_track", true)}
-      > Add an instrumental backing track!
-      </button>
+          <Button variant="contained"
+            onClick={() => handleInput("license", true)}
+            sx={{ height: 35, backgroundColor: "#feaf17", color: "black" }}
+          > I Need a Commercial License for My Song!
+          </Button>
 
-      <FormGroup
-        sx={{ display: "flex", justifyContent: "center" }}>
-        <FormControlLabel required control={<Checkbox />} label="I Have Read and Agree to the Terms of Service" />
-      </FormGroup>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <LoginRegisterForm handleClose={handleClose} />
-        </Box>
-      </Modal>
-    </>
+          <Button variant="contained"
+            onClick={() => handleInput("backing_track", true)}
+            sx={{ height: 35, backgroundColor: "#feaf17", color: "black" }}
+          > Add an instrumental backing track!
+          </Button>
+
+          <FormGroup
+            sx={{ display: "flex", justifyContent: "center" }}>
+            <FormControlLabel required control={<Checkbox />} label="I Have Read and Agree to the Terms of Service" />
+          </FormGroup>
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={style}>
+              <LoginRegisterForm handleClose={handleClose} />
+            </Box>
+          </Modal>
+        </div>
+      </div>
+    </div>
   )
 }

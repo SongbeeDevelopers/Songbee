@@ -270,7 +270,10 @@ export default function OrderPage({ routeVariants }) {
             </>
           ) : (
             <>
+              {/* form components */}
               <form className="reqForm">{formDetails()}</form>
+
+              {/* buttons */}
               <Box sx={{ display: "flex", flexDirection: "row", mt: 8 }}>
                 <Button variant="contained"
                   onClick={handleBack}

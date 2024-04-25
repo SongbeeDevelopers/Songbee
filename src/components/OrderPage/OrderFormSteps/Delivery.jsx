@@ -1,6 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
+import { Button } from "@mui/material";
+
 
 export default function Delivery({ handleInput, handleOpen }) {
 
@@ -18,9 +20,24 @@ export default function Delivery({ handleInput, handleOpen }) {
       <div className="reqFormGroup">
         <div className="reqFormInput">
           <label>When would you like your song delivered?</label>
-          <button onClick={() => handleInput("delivery_days", 3)}>{new Date(threeDays).toDateString()} + $80</button>
-          <button onClick={() => handleInput("delivery_days", 5)}>{new Date(fiveDays).toDateString()} + $40</button>
-          <button onClick={() => handleInput("delivery_days", 6)}>{new Date(sixDays).toDateString()} + $0</button>
+          
+          <Button variant="contained"
+            onClick={() => handleInput("delivery_days", 3)}
+            sx={{ height: 35, backgroundColor: "#feaf17", color: "black" }}
+          > {new Date(threeDays).toDateString()} + $80
+          </Button>
+
+          <Button variant="contained"
+            onClick={() => handleInput("delivery_days", 5)}
+            sx={{ height: 35, backgroundColor: "#feaf17", color: "black" }}
+          > {new Date(fiveDays).toDateString()} + $40
+          </Button>
+
+          <Button variant="contained"
+            onClick={() => handleInput("delivery_days", 6)}
+            sx={{ height: 35, backgroundColor: "#feaf17", color: "black" }}
+          > {new Date(sixDays).toDateString()} + $0
+          </Button>
         </div>
       </div>
       {!user.id && (
