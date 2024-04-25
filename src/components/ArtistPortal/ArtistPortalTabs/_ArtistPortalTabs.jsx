@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import ArtistProfileTab from "./ArtistProfileTab";
 import ArtistSBRequestsTab from "./ArtistSBRequestsTab";
@@ -16,17 +16,14 @@ import Typography from "@mui/material/Typography";
 import '../ArtistPortal.css'
 
 
-export default function ArtistPortalTabs() {
+export default function ArtistPortalTabs({artistProfile}) {
 
   const dispatch = useDispatch();
 
   const [value, setValue] = useState(0);
 
   // grabs artist on mount
-  useEffect(() => {
-    dispatch({ type: "GET_ARTIST_PROFILE" });
-  }, []);
-
+  // const artistProfile = useSelector((store) => store.artistProfile);
   // tab structure
   const handleChange = (event, newValue) => {
     event.preventDefault();
@@ -76,14 +73,18 @@ export default function ArtistPortalTabs() {
         >
           <Tab label="Artist Profile" {...a11yProps(0)}  />
           <Tab label="Songbee Requests" {...a11yProps(1)} />
+          {artistProfile && artistProfile.jr_approved ?
           <Tab label="Junior Requests" {...a11yProps(2)} />
+          :
+          ''
+          }
           <Tab label="Documents" {...a11yProps(3)} />
         </Tabs>
       </Box>
 
       {/* tabs */}
       <CustomTabPanel value={value} index={0}>
-        <ArtistProfileTab />
+        <ArtistProfileTab artistProfile={artistProfile}/>
       </CustomTabPanel>
 
       <CustomTabPanel value={value} index={1}>

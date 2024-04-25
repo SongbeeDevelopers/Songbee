@@ -9,15 +9,9 @@ import { Button, Dialog } from "@mui/material";
 
 import "../ArtistPortal.css";
 
-function ArtistProfileTab() {
+function ArtistProfileTab({artistProfile}) {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch({
-      type: "GET_ARTIST_PROFILE",
-    });
-  }, []);
 
-  const artistProfile = useSelector((store) => store.artistProfile);
   console.log("artistProfile", artistProfile);
 
   // dialog logic

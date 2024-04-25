@@ -24,18 +24,14 @@ console.log("id", id)
 
 
 
-
+if (id){
 useEffect(() => {
-    if(id){
     dispatch({
         type: 'FETCH_CURRENT_ARTIST',
-        payload: id})}
-    else {
-        dispatch({
-            type: 'GET_ARTIST_PROFILE'
-          })
-    }
+        payload: id})
   }, [id])
+}
+
   console.log("artist", artist)
 // 
 useEffect(() => {
