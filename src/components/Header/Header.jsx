@@ -62,7 +62,7 @@ function Header() {
       <div className="nav">
 
         <div className="nav-left">
-          <Link to="/home"><img className="nav-title" src="header-icon.png"/></Link>
+          <Link to="/home"><img className="nav-title" src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714070470/Songbee/header-icon_gzi9s3.png"/></Link>
           |
           {/* <Link to="/songbeejr" className="nav-links">Songbee Junior</Link>
           | */}
@@ -141,7 +141,7 @@ function Header() {
                 }}
               >
                 <MenuItem onClick={() => handleClose()}>
-                  <img className="drawerHeaderBee" src="bee-button.png"></img>
+                  <img className="drawerHeaderBee" src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714070457/Songbee/bee-button_iwlxrg.png"></img>
                 </MenuItem>
 
                 <MenuItem onClick={() => handleClose(1)}>Home</MenuItem>

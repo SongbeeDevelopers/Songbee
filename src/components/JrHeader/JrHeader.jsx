@@ -123,7 +123,7 @@ function JrHeader() {
               }}
             >
               <MenuItem onClick={() => handleClose()}>
-                <img className="jr-drawerHeaderBee" src="bee-button.png"></img>
+                <img className="jr-drawerHeaderBee" src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714070457/Songbee/bee-button_iwlxrg.png"></img>
               </MenuItem>
 
               <MenuItem onClick={() => handleClose(1)}>Home</MenuItem>
