@@ -353,12 +353,15 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
     "song_details"."lyrics",
     "song_details"."title",
     "song_details"."streaming_link",
-    "genres"."name" AS "genre"
+    "genres"."name" AS "genre",
+    "user"."email"
     FROM "song_request"
     LEFT JOIN "genres"
     ON "song_request"."genre_id"="genres"."id"
     LEFT JOIN "song_details"
     ON "song_request"."id"="song_details"."song_request_id"
+    LEFT JOIN "user"
+    ON "song_request"."user_id"="user"."id"
     WHERE "song_details"."artist_id"=$1;
     `
     pool.query(requestQuery, [req.params.id])
@@ -367,7 +370,7 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
       // console.log("Request router GET all user requests", result.rows)
     })
     .catch((error) => {
-      console.error("Error in request router GET all user requests", error);
+      console.error("Error in request router GET all artist requests", error);
       res.sendStatus(500);
     })
   });

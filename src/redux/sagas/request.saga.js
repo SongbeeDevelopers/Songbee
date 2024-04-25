@@ -22,7 +22,7 @@ function* fetchUserRequests () {
     }
 }
 
-function* fetchArtistRequests () {
+function* fetchArtistRequests (action) {
     try {
         const response = yield axios.get(`/api/request/artist/${action.payload}`)
         yield put({ type: 'SET_ARTIST_REQUESTS', payload: response.data})

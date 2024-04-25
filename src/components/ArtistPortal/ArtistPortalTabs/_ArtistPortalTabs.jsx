@@ -90,7 +90,7 @@ export default function ArtistPortalTabs({artistProfile}) {
       </CustomTabPanel>
 
       <CustomTabPanel value={value} index={1}>
-        <ArtistSBRequestsTab artistId={artistProfile.id}/>
+        <ArtistSBRequestsTab artistId={artistProfile && artistProfile.id}/>
       </CustomTabPanel>
 
       {artistProfile && artistProfile.jr_approved ?
