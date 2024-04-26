@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Redirect, Route, Switch, useLocation } from "react-router-dom";
+import { Redirect, Switch, useLocation } from "react-router-dom";
 
 import ProtectedRoute from "./ProtectedRoute";
 import MainRoute from "./MainRoute"
