@@ -19,7 +19,7 @@ function CustomerCreditTab() {
         <div className="user-portal-inputs">
         <input
           placeholder="Email address"
-          type="password"
+          type="email"
           onChange={(e) => { setReferralEmail(e.target.value) }}
         />
         <Button variant="contained"
