@@ -39,10 +39,8 @@ audio::-webkit-media-controls-time-remaining-display {
 
 .songDetails {
   text-align: center;
-  border: 5px solid #feaf17;
   border-radius: 13px;
-  padding: 50px 25px;
-  background-color: #f2e9d8;
+  padding: 0 25px;
 }
 .songDetails h1 {
   text-align: center;
