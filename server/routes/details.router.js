@@ -167,7 +167,7 @@ router.put("/:id", rejectUnauthenticated, cloudinaryUpload.single("file"), async
         res.sendStatus(201);
       })
       .catch((error) => {
-        console.error("Error accepting request in details router:", error);
+        console.error("Error denying request in details router:", error);
         res.sendStatus(500);
       });
   });

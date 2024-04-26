@@ -6,6 +6,7 @@ import FilterBar from '../../FilterBar/FilterBar';
 import AdminDetailsDialog from "../../ArtistRequests/AdminDetailsDialog";
 import AdminCompleteDialog from "../../AdminPortal/AdminPortalTabs/AdminPortalDialogs/AdminCompleteDialog";
 import RequestDetails from "../../RequestDetails/RequestDetails";
+import AcceptSelector from "./AcceptSelector";
 
 import {
   Button,
@@ -110,7 +111,7 @@ export default function ArtistSBRequestsTab({artistId}) {
                     {row.accepted ? 
                     "Accepted"
                 :
-                    ""
+                    <AcceptSelector request={row}/>
                 }
                   </TableCell>
 

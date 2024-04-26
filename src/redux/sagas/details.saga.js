@@ -41,9 +41,10 @@ function* acceptRequest (action){
     try {
         const response = yield axios({
             method: "PUT",
-            url: `/api/details/accept/${action.payload}`
+            url: `/api/details/accept/${action.payload.id}`
         })
-        yield put ({ type: "FETCH_ARTIST_REQUESTS"})
+        yield put ({ type: "FETCH_ARTIST_REQUESTS",
+                    payload: action.payload.artist})
     } catch (error) {
         console.error('SAGA accept request failed', error)
     }
@@ -53,9 +54,10 @@ function* denyRequest (action){
     try {
         const response = yield axios({
             method: "PUT",
-            url: `/api/details/deny/${action.payload}`
+            url: `/api/details/deny/${action.payload.id}`
         })
-        yield put ({ type: "FETCH_ARTIST_REQUESTS"})
+        yield put ({ type: "FETCH_ARTIST_REQUESTS",
+                    payload: action.payload.artist})
     } catch (error) {
         console.error('SAGA deny request failed', error)
     }

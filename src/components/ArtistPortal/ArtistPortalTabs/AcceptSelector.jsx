@@ -23,7 +23,8 @@ export default function AcceptSelector({ request }) {
             if (result.isConfirmed) {
               dispatch({
                 type: "ACCEPT_REQUEST",
-                payload: request.details_id
+                payload: {id: request.details_id,
+                        artist: request.artist_id}
               })
               Swal.fire("Done!", "", "success");
             }
@@ -39,7 +40,8 @@ export default function AcceptSelector({ request }) {
             if (result.isConfirmed) {
               dispatch({
                 type: "DENY_REQUEST",
-                payload: request.details_id
+                payload: {id: request.details_id,
+                    artist: request.artist_id}
               })
               Swal.fire("Done!", "", "success");
             }
@@ -49,6 +51,7 @@ export default function AcceptSelector({ request }) {
 
   return (
     <Select
+      value={''}
       label="Accept/Deny"
       onChange={(event) => handleAccept(event.target.value)}
     >
