@@ -15,6 +15,10 @@ import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 // by checking req.isAuthenticated for authentication
 // and by checking req.user for authorization
 
+{/* For protected routes, the view could show one of several things on the same route.
+              Visiting localhost:5173/user will show the UserPage if the user is logged in.
+              If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
+              Even though it seems like they are different pages, the user is always on localhost:5173/user */}
 
 function ProtectedRoute({ component, children, allowedUserClasses=[1,2,3], ...props }) {
 
