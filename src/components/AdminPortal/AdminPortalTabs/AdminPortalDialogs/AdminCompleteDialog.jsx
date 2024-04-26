@@ -19,8 +19,9 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
 
   const dispatch = useDispatch();
 
-  const edit = useSelector(store => store.edit)
+  const edit = useSelector(store => store.edit);
   const artists = useSelector(store => store.allArtists);
+  const user = useSelector(store => store.user);
 
   const [songFile, setSongFile] = useState('')
 
@@ -183,9 +184,13 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
         <Button variant="contained" onClick={submitDetails}>
           Submit
         </Button>
+        { user.class === 3 ?
         <Button variant="contained" color="error" onClick={deleteRequest}>
           Delete
         </Button>
+        :
+        ''
+        }
       </DialogActions>
     </div>
   );

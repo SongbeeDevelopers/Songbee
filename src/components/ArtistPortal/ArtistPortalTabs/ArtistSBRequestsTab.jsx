@@ -77,10 +77,10 @@ export default function ArtistSBRequestsTab({artistId}) {
             {/* table header */}
             <TableHead>
               <TableRow>
-                <TableCell>Creation Date</TableCell>
+                <TableCell >Accepted?</TableCell>
+                <TableCell align="center">Creation Date</TableCell>
                 <TableCell align="center">Due</TableCell>
                 <TableCell align="center">Requester E-Mail</TableCell>
-                <TableCell align="center">Accepted?</TableCell>
                 <TableCell align="center">View Details</TableCell>
                 <TableCell align="center">Completion Form</TableCell>
               </TableRow>
@@ -90,6 +90,15 @@ export default function ArtistSBRequestsTab({artistId}) {
             <TableBody>
               {artistRequests.map((row) => (
                 <TableRow hover key={row.id}>
+
+                    {/* accepted */}
+                    <TableCell align="center">
+                    {row.accepted ? 
+                    "Accepted"
+                :
+                    <AcceptSelector request={row}/>
+                }
+                  </TableCell>
 
                   {/* creation date */}
                   <TableCell>
@@ -104,15 +113,6 @@ export default function ArtistSBRequestsTab({artistId}) {
                   {/* email */}
                   <TableCell align="center">
                     {row.email}
-                  </TableCell>
-
-                  {/* accepted */}
-                  <TableCell align="center">
-                    {row.accepted ? 
-                    "Accepted"
-                :
-                    <AcceptSelector request={row}/>
-                }
                   </TableCell>
 
                   {/* details btn */}
