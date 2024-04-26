@@ -1,6 +1,9 @@
 import * as React from "react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+
+import { Button } from "@mui/material"
+
 import validator from "validator";
 import Swal from "sweetalert2"
 
@@ -88,9 +91,12 @@ function CustomerProfileTab() {
           {invalidPassword && <p className="user-invalid-text">Password must be at least 8 characters.</p>}
         </div>
 
-        <button className="user-portal-save" onClick={handleEdit}>
-          Save
-        </button>
+        <Button variant="contained"
+          onClick={() => onClick = { handleEdit }}
+          sx={{ height: 35, width: 80, m: 'auto', backgroundColor: "#feaf17", color: "black" }}
+        >
+          SAVE
+        </Button>
 
       </div>
     </div>

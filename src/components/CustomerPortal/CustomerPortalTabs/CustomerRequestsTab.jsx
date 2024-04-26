@@ -5,7 +5,14 @@ import { useHistory } from 'react-router-dom';
 
 import StartSongButton from '../../StartSongButton/StartSongButton'
 
-import { Table, TableHead, TableRow, TableBody, TableCell } from '@mui/material'
+import {
+  Button,
+  Table,
+  TableHead,
+  TableRow,
+  TableBody,
+  TableCell
+} from '@mui/material'
 
 import '../CustomerPortal.css'
 
@@ -35,14 +42,14 @@ function CustomerRequests() {
 
   function getDueDate(requestDay, deliveryDays) {
     const msPerDay = 24 * 60 * 60 * 1000;
-    const due = new Date(requestDay).getTime() + msPerDay*deliveryDays
+    const due = new Date(requestDay).getTime() + msPerDay * deliveryDays
     const dateSplit = new Date(due).toLocaleString('en-us').split(',')
     return dateSplit[0];
   }
 
   return (
     <div className='tab-body'>
-        {userRequests.length > 1 ?
+      {userRequests.length > 1 ?
         <Table>
           <TableHead>
             <TableRow>
@@ -55,48 +62,48 @@ function CustomerRequests() {
             </TableRow>
           </TableHead>
           <TableBody>
-              {userRequests.map((request, i) =>(
-                <TableRow key={i}>
-                  {/* req date */}
-                  <TableCell>
-                    {(new Date(request.created_at).toLocaleString('en-us').split(','))[0]}
-                  </TableCell>
+            {userRequests.map((request, i) => (
+              <TableRow key={i}>
+                {/* req date */}
+                <TableCell>
+                  {(new Date(request.created_at).toLocaleString('en-us').split(','))[0]}
+                </TableCell>
 
-                  {/* due date */}
-                  <TableCell align="center">
-                    {getDueDate(request.created_at, request.delivery_days)}
-                  </TableCell>
+                {/* due date */}
+                <TableCell align="center">
+                  {getDueDate(request.created_at, request.delivery_days)}
+                </TableCell>
 
-                  {/* recipient */}
-                  <TableCell align="center">
-                    {request.recipient}
-                  </TableCell>
+                {/* recipient */}
+                <TableCell align="center">
+                  {request.recipient}
+                </TableCell>
 
-                  {/* artist */}
-                  <TableCell align="center">
-                    {artists.map((artist) => {
-                      if (request.artist_id === artist.id) {
-                        return artist.artist_name
-                      }
-                    })}
-                  </TableCell>
+                {/* artist */}
+                <TableCell align="center">
+                  {artists.map((artist) => {
+                    if (request.artist_id === artist.id) {
+                      return artist.artist_name
+                    }
+                  })}
+                </TableCell>
 
-                  {/* status */}
-                  <TableCell align="center">
-                    {request.is_complete ? `Complete!` : `In Progress`}
-                  </TableCell>
+                {/* status */}
+                <TableCell align="center">
+                  {request.is_complete ? `Complete!` : `In Progress`}
+                </TableCell>
 
-                  {/* details */}
-                  <TableCell align="center">
-                    <button
-                      className='user-portal-details-btn'
-                      onClick={() => viewDetails(request.id)}
-                    >
-                      Details
-                    </button>
-                  </TableCell>
-                </TableRow>
-              ))}
+                {/* details */}
+                <TableCell align="center">
+                  <Button variant="contained"
+                    onClick={() => viewDetails(request.id)}
+                    sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
+                  >
+                    DETAILS
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
         :
@@ -104,7 +111,7 @@ function CustomerRequests() {
           <p>You have no orders!</p>
           <StartSongButton />
         </>
-        }
+      }
     </div>
   )
 }
