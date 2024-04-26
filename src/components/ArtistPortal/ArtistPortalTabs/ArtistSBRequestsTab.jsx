@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import FilterBar from '../../FilterBar/FilterBar';
 import AdminDetailsDialog from "../../ArtistRequests/AdminDetailsDialog";
 import AdminCompleteDialog from "../../AdminPortal/AdminPortalTabs/AdminPortalDialogs/AdminCompleteDialog";
+import RequestDetails from "../../RequestDetails/RequestDetails";
 
 import {
   Button,
@@ -76,9 +77,9 @@ export default function ArtistSBRequestsTab({artistId}) {
             <TableHead>
               <TableRow>
                 <TableCell>Creation Date</TableCell>
-                <TableCell align="center">Requester E-Mail</TableCell>
-                <TableCell align="center">Something</TableCell>
                 <TableCell align="center">Due</TableCell>
+                <TableCell align="center">Requester E-Mail</TableCell>
+                <TableCell align="center">Accepted?</TableCell>
                 <TableCell align="center">View Details</TableCell>
                 <TableCell align="center">Completion Form</TableCell>
               </TableRow>
@@ -94,19 +95,23 @@ export default function ArtistSBRequestsTab({artistId}) {
                     {new Date(row.created_at).toLocaleString('en-us')}
                   </TableCell>
 
+                {/* due */}
+                  <TableCell align="center">
+                    {getDueDate(row.created_at, row.delivery_days)}
+                  </TableCell>
+
                   {/* email */}
                   <TableCell align="center">
                     {row.email}
                   </TableCell>
 
-                  {/* artist */}
+                  {/* accepted */}
                   <TableCell align="center">
-                    {/* NEED TO FILL THIS */}
-                  </TableCell>
-
-                  {/* due */}
-                  <TableCell align="center">
-                    {getDueDate(row.created_at, row.delivery_days)}
+                    {row.accepted ? 
+                    "Accepted"
+                :
+                    ""
+                }
                   </TableCell>
 
                   {/* details btn */}
@@ -123,7 +128,7 @@ export default function ArtistSBRequestsTab({artistId}) {
                       open={detailsOpen}
                       onClose={closeDetails}
                     >
-                      <AdminDetailsDialog setDetailsOpen={setDetailsOpen} />
+                      <RequestDetails requestId={row.id}/>
                     </Dialog>
                   </TableCell>
 
