@@ -361,6 +361,7 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
     "song_details"."title",
     "song_details"."streaming_link",
     "song_details"."accepted",
+    "song_details"."id" AS "details_id",
     "genres"."name" AS "genre",
     "user"."email"
     FROM "song_request"
@@ -412,6 +413,7 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
     "song_details"."title",
     "song_details"."streaming_link",
     "song_details"."accepted",
+    "song_details"."id" AS "details_id",
     "genres"."name" AS "genre",
     "user"."email"
     FROM "song_request"

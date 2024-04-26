@@ -140,6 +140,39 @@ router.put("/:id", rejectUnauthenticated, cloudinaryUpload.single("file"), async
     }
   });
 
+  router.put("/accept/:id", rejectUnauthenticated, (req, res) => {
+    const queryText = `
+      UPDATE "song_details"
+      SET "accepted"=TRUE
+      WHERE "id"=$1
+    `;
+    pool.query(queryText, [req.params.id])
+      .then((result) => {
+        res.sendStatus(201);
+      })
+      .catch((error) => {
+        console.error("Error accepting request in details router:", error);
+        res.sendStatus(500);
+      });
+  });
+
+  router.put("/deny/:id", rejectUnauthenticated, (req, res) => {
+    const queryText = `
+      UPDATE "song_details"
+      SET "artist_id"=NULL
+      WHERE "id"=$1
+    `;
+    pool.query(queryText, [req.params.id])
+      .then((result) => {
+        res.sendStatus(201);
+      })
+      .catch((error) => {
+        console.error("Error accepting request in details router:", error);
+        res.sendStatus(500);
+      });
+  });
+
+
 
 
 module.exports = router;
