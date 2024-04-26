@@ -22,11 +22,8 @@ export default function AcceptSelector({ request }) {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
               dispatch({
-                type: "UPDATE_USER_CLASS",
-                payload: {
-                  id: user.id,
-                  data: value
-                }
+                type: "ACCEPT_REQUEST",
+                payload: request.details_id
               })
               Swal.fire("Done!", "", "success");
             }
@@ -41,11 +38,8 @@ export default function AcceptSelector({ request }) {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
               dispatch({
-                type: "UPDATE_USER_CLASS",
-                payload: {
-                  id: user.id,
-                  data: value
-                }
+                type: "DENY_REQUEST",
+                payload: request.details_id
               })
               Swal.fire("Done!", "", "success");
             }
