@@ -112,7 +112,7 @@ function WhatsTheBuzz() {
                   Click <br /> Here
                 </p>
 
-                <Link>Learn More</Link>
+                <Link to="/why-songbee">Learn More</Link>
               </div>
             </div>
           </div>
