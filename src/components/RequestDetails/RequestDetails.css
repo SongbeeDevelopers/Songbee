@@ -144,3 +144,12 @@ audio::-webkit-media-controls-time-remaining-display {
   box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
   padding: 9px 15px;
 }
+
+.requestdetailsaddons {
+  display: flex;
+  flex-direction: row;
+}
+
+.requestDetailsaddon {
+  width: 200px;
+}
