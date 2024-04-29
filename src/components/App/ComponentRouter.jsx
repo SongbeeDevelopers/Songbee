@@ -52,8 +52,9 @@ import LearningPackView from "../LearningPackView/PackView";
 import SchoolsInspirationHeader from "../Header/SchoolsInspirationHeader";
 import SchoolsInspiration from "../SchoolsInspiration/SchoolsInspiration";
 import WhySongbee from "../WhySongbee/WhySongbee";
-
-
+import WhatsIncluded from "../WhatsIncludedSchoolsInspiration/WhatsIncluded";
+import DiveIntoBenefits from "../SiDiveInBenefits/DiveIntoBenefits";
+import ScrollToTop from "./ScrollToTop";
 function ComponentRouter() {
 
   const location = useLocation();
@@ -87,8 +88,47 @@ function ComponentRouter() {
 
   return (
     <>
-      {/* shows banner on homepage above header */}
-      {location.pathname === "/home" && <Banner />}
+    
+      {location.pathname === "/home"  && <Banner />}
+
+      {/* shows main header on main routes */}
+      {
+        (location.pathname === "/home" || 
+        // accounts
+        location.pathname === "/user" ||
+        location.pathname === "/artist" ||
+        location.pathname === "/admin" ||
+        // login/reg
+        location.pathname === "/login" ||
+        location.pathname === "/register" ||
+        // order
+        location.pathname === "/order" ||
+        location.pathname === "/requestform/:id" ||
+        location.pathname === "/details/:id" ||
+        location.pathname === "/created/:delivery_days/:extra_verse/:streaming" ||
+        // artists
+        location.pathname === "/artists" ||
+        location.pathname === "/join-artist" ||
+        location.pathname === "/artist-requests" ||
+        location.pathname === "/artist-process" ||
+        // info
+        location.pathname === "/faq" ||
+        location.pathname === "/terms" ||
+        location.pathname === "/guarantee" ||
+        location.pathname === "/privacy"
+        ) && <Header />
+      }
+
+      {/* shows jr header on jr routes */}
+      {
+        (location.pathname === "/songbeejr" ||
+        location.pathname === "/jrcheckout" ||
+        location.pathname === "/jr-request/edit/:id" ||
+        location.pathname === "/faqSbJR"
+        ) && <JrHeader />
+      }
+      <ScrollToTop />
+
 
       <Switch location={location} key={location.key}>
 
@@ -115,6 +155,15 @@ function ComponentRouter() {
           )}
         </MainRoute>
 
+
+        <Route exact path="/whatsIncluded">
+          <WhatsIncluded routeVariants={routeVariants} />
+        </Route>
+
+        <Route exact path="/join-artist">
+          <JoinArtistPage routeVariants={routeVariants} />
+        </Route>
+
         <MainRoute exact path="/register">
           {user.id ? (
             // If the user is already logged in, redirect them to the /user page
@@ -124,6 +173,7 @@ function ComponentRouter() {
             <RegisterPage routeVariants={routeVariants} />
           )}
         </MainRoute>
+
 
 
         {/* account pages */}
@@ -183,9 +233,14 @@ function ComponentRouter() {
           <ArtistCommunity routeVariants={routeVariants} />
         </MainRoute>
 
-        <MainRoute exact path="/artists/:id">
-          <ArtistBioPage routeVariants={routeVariants} />
-        </MainRoute>
+
+
+        <Route exact path="/si-benefits">
+          <DiveIntoBenefits routeVariants={routeVariants} />
+        </Route>
+       
+
+       
         {/* 👆 redundant 👇 */}
         <MainRoute exact path="/ArtistBioPage/:id">
           <ArtistBioPage routeVariants={routeVariants} />
