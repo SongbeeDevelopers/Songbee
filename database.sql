@@ -17,7 +17,6 @@ CREATE TABLE "user" (
   "password" VARCHAR (1000) NOT NULL,
   "class" INT NOT NULL DEFAULT 1,
   "name" VARCHAR (150),
-  "credit" INT,
   "created_at" TIMESTAMPTZ DEFAULT NOW()
 );
 

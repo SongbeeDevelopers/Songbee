@@ -71,7 +71,7 @@ export default function CustomerPortalTabs() {
         >
           <Tab label="Orders" {...a11yProps(0)} />
           <Tab label="Profile" {...a11yProps(1)} />
-          <Tab label="Credit" {...a11yProps(2)} />
+          <Tab label="Refer a Friend" {...a11yProps(2)} />
         </Tabs>
       </Box>
 
