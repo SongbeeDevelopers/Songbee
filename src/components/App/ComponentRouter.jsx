@@ -55,6 +55,9 @@ import WhySongbee from "../WhySongbee/WhySongbee";
 import WhatsIncluded from "../WhatsIncludedSchoolsInspiration/WhatsIncluded";
 import DiveIntoBenefits from "../SiDiveInBenefits/DiveIntoBenefits";
 import ScrollToTop from "./ScrollToTop";
+import Header from "../Header/Header";
+import { Route } from "react-router-dom";
+import JrHeader from "../JrHeader/JrHeader";
 function ComponentRouter() {
 
   const location = useLocation();
@@ -92,41 +95,10 @@ function ComponentRouter() {
       {location.pathname === "/home"  && <Banner />}
 
       {/* shows main header on main routes */}
-      {
-        (location.pathname === "/home" || 
-        // accounts
-        location.pathname === "/user" ||
-        location.pathname === "/artist" ||
-        location.pathname === "/admin" ||
-        // login/reg
-        location.pathname === "/login" ||
-        location.pathname === "/register" ||
-        // order
-        location.pathname === "/order" ||
-        location.pathname === "/requestform/:id" ||
-        location.pathname === "/details/:id" ||
-        location.pathname === "/created/:delivery_days/:extra_verse/:streaming" ||
-        // artists
-        location.pathname === "/artists" ||
-        location.pathname === "/join-artist" ||
-        location.pathname === "/artist-requests" ||
-        location.pathname === "/artist-process" ||
-        // info
-        location.pathname === "/faq" ||
-        location.pathname === "/terms" ||
-        location.pathname === "/guarantee" ||
-        location.pathname === "/privacy"
-        ) && <Header />
-      }
+     
 
       {/* shows jr header on jr routes */}
-      {
-        (location.pathname === "/songbeejr" ||
-        location.pathname === "/jrcheckout" ||
-        location.pathname === "/jr-request/edit/:id" ||
-        location.pathname === "/faqSbJR"
-        ) && <JrHeader />
-      }
+     
       <ScrollToTop />
 
 
@@ -273,14 +245,14 @@ function ComponentRouter() {
           <JrCheckoutPage routeVariants={routeVariants} />
         </JrRoute>
 
-        <JrRoute exact path="/schools-inspiration">
+        <Route exact path="/schools-inspiration">
           <SchoolsInspirationHeader />
           <SchoolsInspiration routeVariants={routeVariants} ></SchoolsInspiration>
-        </JrRoute>
+        </Route>
 
-        <JrRoute exact path="/why-songbee">
+        <Route exact path="/why-songbee">
           <WhySongbee routeVariants={routeVariants} />
-        </JrRoute>
+        </Route>
 
         <ProtectedRoute exact path="/jr-request/edit/:id" allowedUserClasses={[1, 2, 3]}>
           <JrRoute>
@@ -292,15 +264,15 @@ function ComponentRouter() {
           <FaqPageSbJR routeVariants={routeVariants} />
         </JrRoute>
 
-        <JrRoute exact path="/learning-packs">
+        <Route exact path="/learning-packs">
           <LearningPacksHeader />
           <LearningPacksPage routeVariants={routeVariants} />
-        </JrRoute>
+        </Route>
 
-        <JrRoute exact path="/learning-packs/:slug">
+        <Route exact path="/learning-packs/:slug">
           <LearningPacksHeader />
           <LearningPackView routeVariants={routeVariants} />
-        </JrRoute>
+        </Route>
 
 
 
