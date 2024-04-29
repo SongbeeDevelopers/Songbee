@@ -5,6 +5,8 @@ import Button from "@mui/material/Button";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 
+import '../OrderPage.css'
+
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 

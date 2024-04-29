@@ -1,5 +1,7 @@
 import React from "react";
 
+import '../OrderPage.css'
+
 import LoginRegisterForm from "../../LoginRegisterForm/LoginRegisterForm";
 
 import {
