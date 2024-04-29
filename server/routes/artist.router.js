@@ -34,7 +34,7 @@ router.get("/get", async (req, res) => {
 
   connection.query("BEGIN;");
   const artistId = await getArtistIdByUserId(req.user.id)
-  console.log("artist id", artistId);
+  // console.log("artist id", artistId);
   const query = `
   SELECT * FROM "artist"
   WHERE "id"=$1;
@@ -54,8 +54,8 @@ router.get("/get", async (req, res) => {
   connection.query("COMMIT;");
   connection.release();
   artistResponse.rows[0].genres = genreResponse.rows
-  console.log("artistResponse", artistResponse.rows[0]);
-  console.log("genreResponse", genreResponse.rows);
+  // console.log("artistResponse", artistResponse.rows[0]);
+  // console.log("genreResponse", genreResponse.rows);
   res.send(artistResponse.rows[0]);
 } catch (error){
   console.log('get artist profile failed:', error)
@@ -222,7 +222,7 @@ router.get('/pending', (req, res) => {
     SELECT * FROM "artist"
     WHERE "approved"=FALSE;
     `
-    console.log("Inside pending artist GET route");
+    // console.log("Inside pending artist GET route");
     pool.query(query)
     .then((response) => {
         res.send(response.rows)
@@ -258,7 +258,7 @@ router.put('/:id', async (req, res) => {
     SET "approved"=TRUE
     WHERE id=$1;
     `
-    console.log('req.params.id:', req.params.id)
+    // console.log('req.params.id:', req.params.id)
     await connection.query(approvalQuery, [req.params.id])
     const classQuery = `
     UPDATE "user"
@@ -300,14 +300,14 @@ router.put('/:id', async (req, res) => {
       WHERE "artist_genres"."artist_id"=$1
       `
       const genreResponse = await connection.query(genreQuery, [artistResponse.rows[i].id])
-      console.log('artist response id', artistResponse.rows[i].id)
+      // console.log('artist response id', artistResponse.rows[i].id)
       artistResponse.rows[i].genres = genreResponse.rows
-      console.log("genreResponse", genreResponse.rows);
+      // console.log("genreResponse", genreResponse.rows);
     }
 
     connection.query("COMMIT;");
     connection.release();
-    console.log("artistResponse", artistResponse.rows);
+    // console.log("artistResponse", artistResponse.rows);
     res.send(artistResponse.rows);
   } catch (error){
     console.log('get current artist failed:', error)
@@ -342,8 +342,8 @@ router.get('/current/:id', async (req, res) => {
   connection.query("COMMIT;");
   connection.release();
   artistResponse.rows[0].genres = genreResponse.rows
-  console.log("artistResponse", artistResponse.rows[0]);
-  console.log("genreResponse", genreResponse.rows);
+  // console.log("artistResponse", artistResponse.rows[0]);
+  // console.log("genreResponse", genreResponse.rows);
   res.send(artistResponse.rows[0]);
 } catch (error){
   console.log('get current artist failed:', error)
@@ -364,7 +364,7 @@ router.put('/active/:id', async (req, res) => {
   SET "is_active"=NOT "is_active"
   WHERE id=$1;
   `
-  console.log('req.params.id:', req.params.id)
+  // console.log('req.params.id:', req.params.id)
   await connection.query(approvalQuery, [req.params.id])
   connection.query("COMMIT;");
   connection.release();
