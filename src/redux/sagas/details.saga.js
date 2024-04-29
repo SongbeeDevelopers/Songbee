@@ -37,9 +37,37 @@ function* updateSongDetails (action) {
     }
 }
 
+function* acceptRequest (action){
+    try {
+        const response = yield axios({
+            method: "PUT",
+            url: `/api/details/accept/${action.payload.id}`
+        })
+        yield put ({ type: "FETCH_ARTIST_REQUESTS",
+                    payload: action.payload.artist})
+    } catch (error) {
+        console.error('SAGA accept request failed', error)
+    }
+}
+
+function* denyRequest (action){
+    try {
+        const response = yield axios({
+            method: "PUT",
+            url: `/api/details/deny/${action.payload.id}`
+        })
+        yield put ({ type: "FETCH_ARTIST_REQUESTS",
+                    payload: action.payload.artist})
+    } catch (error) {
+        console.error('SAGA deny request failed', error)
+    }
+}
+
 function* detailsSaga() {
     yield takeLatest("CREATE_SONG_DETAILS", createSongDetails);
     yield takeLatest("UPDATE_SONG_DETAILS", updateSongDetails);
+    yield takeLatest("ACCEPT_REQUEST", acceptRequest);
+    yield takeLatest("DENY_REQUEST", denyRequest);
 }
 
 export default detailsSaga

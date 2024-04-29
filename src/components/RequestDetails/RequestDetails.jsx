@@ -9,7 +9,7 @@ import './RequestDetails.css'
 
 
 // This function will display the user's song request with a player so they can review their song
-function RequestDetails({ routeVariants }) {
+function RequestDetails({ routeVariants, requestId }) {
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -21,10 +21,17 @@ function RequestDetails({ routeVariants }) {
 
   useEffect(() => {
     console.log('expecting to get the id of song(s)', ID);
+    { ID.id ?
     dispatch({
       type: 'FETCH_CURRENT_REQUEST',
       payload: ID.id
     })
+    :
+    dispatch({
+      type: 'FETCH_CURRENT_REQUEST',
+      payload: requestId
+    })
+  }
   }, [ID.id])
 
 
