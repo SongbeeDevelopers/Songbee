@@ -57,8 +57,9 @@ import LearningPackView from "../LearningPackView/PackView";
 import SchoolsInspirationHeader from "../Header/SchoolsInspirationHeader";
 import SchoolsInspiration from "../SchoolsInspiration/SchoolsInspiration";
 import WhySongbee from "../WhySongbee/WhySongbee";
-
-
+import WhatsIncluded from "../WhatsIncludedSchoolsInspiration/WhatsIncluded";
+import DiveIntoBenefits from "../SiDiveInBenefits/DiveIntoBenefits";
+import ScrollToTop from "./ScrollToTop";
 function ComponentRouter() {
   const location = useLocation();
   const user = useSelector((store) => store.user);
@@ -128,7 +129,7 @@ function ComponentRouter() {
         location.pathname === "/faqSbJR"
         ) && <JrHeader />
       }
-      
+      <ScrollToTop />
       <Switch location={location} key={location.key}>
         {/* Visiting localhost:5173 will redirect to localhost:5173/home */}
         <Redirect exact from="/" to="/home" />
@@ -168,6 +169,10 @@ function ComponentRouter() {
 
         <Route exact path="/why-songbee">
           <WhySongbee routeVariants={routeVariants} />
+        </Route>
+
+        <Route exact path="/whatsIncluded">
+          <WhatsIncluded routeVariants={routeVariants} />
         </Route>
 
         <Route exact path="/join-artist">
@@ -227,6 +232,10 @@ function ComponentRouter() {
           <ArtistCommunity routeVariants={routeVariants} />
         </Route>
 
+
+        <Route exact path="/si-benefits">
+          <DiveIntoBenefits routeVariants={routeVariants} />
+        </Route>
         <Route exact path="/ArtistBioPage/:id">
           <ArtistBioPage routeVariants={routeVariants} />
         </Route>
