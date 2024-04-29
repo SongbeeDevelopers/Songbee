@@ -30,7 +30,7 @@ function PlayToLearn() {
       <div className="lp-playtolearnCards">
         {text.map((card) => (
           <div className="lp-playtolearnCard">
-            <img src="/junior/music-notes.png" alt="" className="lp-music-notes" />
+            <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076610/Songbee/music-notes_meuusw.png" alt="" className="lp-music-notes" />
             <div className="lp-cardRight">
               <h3>{card.title}</h3>
               <p>{card.description}</p>

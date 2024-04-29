@@ -11,8 +11,8 @@ function Guarantee() {
   return (
     <div className="guarantee-sky-bg">
         <div className="guarantee-img-container">
-          <img className="guarantee-img" src="/guarantee-img.png"/>
-          <img className="guarantee-img-bee" src="/bee-button.png"/>
+          <img className="guarantee-img" src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714070468/Songbee/guarantee-img_re8gvi.png"/>
+          <img className="guarantee-img-bee" src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714070457/Songbee/bee-button_iwlxrg.png"/>
         </div>
       <div className="guarantee-inner-bg">
 

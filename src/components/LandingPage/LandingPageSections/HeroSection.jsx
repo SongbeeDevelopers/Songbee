@@ -19,7 +19,7 @@ function HeroSection() {
             Custom Songs <br/> For <span>Every</span> Moment
           </h1>
           
-          <img src="/song.png"/>
+          <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714070492/Songbee/song_i4wnln.png"/>
 
           <p>Studio-Quality Custom Songs For Any Occasion</p>
         </>
@@ -29,7 +29,7 @@ function HeroSection() {
             Custom Songs For <span>Every</span> Moment
           </h1>
 
-          <img src="/song-mobile.png"/>
+          <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714070490/Songbee/song-mobile_mnekv4.png"/>
 
           <p>Studio-Quality Custom Songs For Any Occasion</p>
         </>

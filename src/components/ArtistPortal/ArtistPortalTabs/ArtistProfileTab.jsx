@@ -1,45 +1,55 @@
 import React from "react";
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import ArtistBioPage from "../../ArtistBioPages/ArtistBioPage";
 import EditArtistProfileDialog from "./EditArtistProfileDialog";
 
-import { Button } from "@mui/material";
+import { Button, Dialog } from "@mui/material";
 
-import "../ArtistPortal.css"
+import "../ArtistPortal.css";
 
+function ArtistProfileTab({artistProfile}) {
+  const dispatch = useDispatch();
 
-function ArtistProfileTab() {
-
-  const artistProfile = useSelector((store) => store.artistProfile);
+  console.log("artistProfile", artistProfile);
 
   // dialog logic
   const [openArtist, setOpenArtist] = useState(false);
-  const handleOpenArtist = () => setOpenArtist(true);
-  const handleCloseArtist = () => setOpenArtist(false);
-
 
   return (
     <div className="tab-body">
-      {artistProfile ?
+      {artistProfile ? (
         <>
           <ArtistBioPage />
-          <Button sx={{ color: "black" }} onClick={handleOpenArtist}>
+
+          <Button sx={{ color: "black" }} onClick={() => setOpenArtist(true)}>
             Edit Artist Profile Info
           </Button>
         </>
-        :
+      ) : (
         <p>You have no artist profile.</p>
-      }
-
-      <EditArtistProfileDialog
-        artistProfile={artistProfile}
-        openArtist={openArtist}
-        handleCloseArtist={handleCloseArtist}
-      />
-    </div >
-  )
+      )}
+      <Dialog
+        open={openArtist}
+        keepMounted
+        onClose={() => setOpenArtist(false)}
+        aria-describedby="alert-dialog-slide-description"
+        sx={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <EditArtistProfileDialog
+          artistProfile={artistProfile}
+          openArtist={openArtist}
+          setOpenArtist={setOpenArtist}
+        />
+      </Dialog>
+    </div>
+  );
 }
 
-export default ArtistProfileTab
+export default ArtistProfileTab;

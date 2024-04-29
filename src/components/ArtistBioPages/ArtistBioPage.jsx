@@ -11,17 +11,27 @@ function ArtistBioPage() {
 
 const { id } = useParams();
 const dispatch = useDispatch();
-const artist = useSelector(store => store.currentArtist);
+
+let artist
+if (id){
+    artist = useSelector(store => store.currentArtist);
+}
+else {
+    artist = useSelector((store) => store.artistProfile);
+}
+const artistGenre = useSelector(store => store.fetchGenres);
+console.log("id", id)
 
 
 
-
-
+if (id){
 useEffect(() => {
     dispatch({
         type: 'FETCH_CURRENT_ARTIST',
         payload: id})
   }, [id])
+}
+
   console.log("artist", artist)
 
 
@@ -39,17 +49,17 @@ useEffect(() => {
                <div className="socialLinks">
                 <div className="instagram">
                    <a href={artist.instagram_link} >
-                    <img src="/Social-images/instagram-link.png" alt="Artist Instagram" />
+                    <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714071882/Songbee/instagram-link_f6urma.png" alt="Artist Instagram" />
                    </a>
                 </div>
                 <div className="spotify">
                 <a href={artist.streaming_link}>
-                   <img src="/Social-images/spotify-img.png" alt="Artist Spotify" />
+                   <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714071890/Songbee/spotify-img_nlukbm.png" alt="Artist Spotify" />
                 </a>
                 </div>
                 <div className="website">
                 <a href={artist.website}>
-                   <img src="/Social-images/artist-website.png" alt="Artist Website" />
+                   <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714071878/Songbee/artist-website_s1wuuu.png" alt="Artist Website" />
                 </a>
                 </div>
                <div className="community-button">
@@ -69,7 +79,7 @@ useEffect(() => {
                        
                    </div>
                </div>
-               <div class="headerItem"> 
+               <div className="headerItem"> 
                    <div className="genre">
                        Genre
                    </div>

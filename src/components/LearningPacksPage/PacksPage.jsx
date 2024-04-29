@@ -20,7 +20,7 @@ function LearningPacksPage({ routeVariants }) {
       <section className="lp-hero">
         <div
           className="lp-cta"
-          style={{ backgroundImage: `url('/junior/baby-learningpacks.jpg'  )` }}
+          style={{ backgroundImage: `url('https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076506/Songbee/baby-learningpacks_of5pzv.jpg'  )` }}
         >
           <div className="lp-white-overlay"></div>
 

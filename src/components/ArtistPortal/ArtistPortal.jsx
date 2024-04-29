@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import ArtistPortalTabs from './ArtistPortalTabs/_ArtistPortalTabs'
 
@@ -11,12 +11,12 @@ import './ArtistPortal.css';
 function UserPage({ routeVariants }) {
 
   const dispatch = useDispatch()
-
   useEffect(() => {
     dispatch({
-      type: 'GET_ARTIST_PROFILE'
-    })
+        type: 'GET_ARTIST_PROFILE'})
   }, [])
+  
+  const artistProfile = useSelector((store) => store.artistProfile);
   
   return (
     <motion.div
@@ -27,7 +27,7 @@ function UserPage({ routeVariants }) {
     >
       <h2 className='artist-welcome'>Artist Portal</h2>
       <br/>
-      <ArtistPortalTabs /> 
+      <ArtistPortalTabs artistProfile={artistProfile}/> 
   </motion.div>
   );
 }

@@ -18,14 +18,14 @@ import {
 
 import '../ArtistPortal.css'
 
-export default function ArtistSBRequestsTab({artistId}) {
+export default function ArtistCompletedRequestsTab({artistId}) {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch({ type: "FETCH_ARTIST_REQUESTS",
+        dispatch({ type: "FETCH_COMPLETED_ARTIST_REQUESTS",
                     payload: artistId});
       }, [])
-    const artistRequests = useSelector(store => store.artistRequests)
+    const artistRequests = useSelector(store => store.completedArtistRequests)
     console.log("artist requests:", artistRequests)
     const genres = useSelector(store => store.genres)
 

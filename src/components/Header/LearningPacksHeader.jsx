@@ -17,7 +17,7 @@ function LearningPacksHeader() {
           </Link>
         </div>
         <Link to="/home">
-          <img className="nav-title" src="junior/jr-logo.png" />
+          <img className="nav-title" src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076598/Songbee/jr-logo_f9dxxu.png" />
         </Link>
         <div className="nav-right">
           <button className="jr-landing-btn">Get Started</button>

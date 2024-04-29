@@ -77,3 +77,8 @@
         gap: 30px;
         justify-content: center;
 }
+
+.order-addons {
+    display: flex;
+    flex-direction: column;
+}

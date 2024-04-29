@@ -5,15 +5,15 @@ function OtherPacks() {
     <div className="lp-otherPacks">
       <img
         className="lp-hero-bee lp-otherBee"
-        src="/junior/dancingBeee.png"
+        src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076557/Songbee/dancingBeee_zsnlif.png"
         alt=""
       />
       <img
-        src="/junior/YellowLine.png"
+        src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076677/Songbee/YellowLine_kbce6u.png"
         alt=""
         className="yellowLine other-yellowLine"
       />
-      <img className="other-beehives" src="public/junior/honeypot.png" alt="" />
+      <img className="other-beehives" src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076586/Songbee/honeypot_hpwors.png" alt="" />
 
       <div className="lp-packsOther">
         <h2>Other Learning Packs</h2>
@@ -28,11 +28,11 @@ function OtherPacks() {
           {" "}
           <img
             className="otherPacks-baby"
-            src="public/junior/0-12/babyTwo.jpg"
+            src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714072908/Songbee/babyTwo_wwwfns.jpg"
             alt=""
           />
-          <img className="other-honey" src="/junior/honeypot.png" alt="" />
-          <img className="other-music" src="/junior/color-music-notes.png" alt="" />
+          <img className="other-honey" src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076586/Songbee/honeypot_hpwors.png" alt="" />
+          <img className="other-music" src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076545/Songbee/color-music-notes_ouootu.png" alt="" />
         </div>
 
         <div>

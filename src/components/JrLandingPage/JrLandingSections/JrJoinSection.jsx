@@ -15,10 +15,10 @@ function JrJoinSection() {
           {/* <GetStartedButton id='jr-hero-try-it' /> */}
         </div>
 
-        <img className="baby-maracas" src="/junior/baby-maracas.png" />
+        <img className="baby-maracas" src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076511/Songbee/baby-maracas_j0etwf.png" />
       </div>
 
-      <img className="try-bee" src="/junior/Bee.png"/>
+      <img className="try-bee" src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076528/Songbee/Bee_e8eelp.png"/>
     </div >
   )
 }

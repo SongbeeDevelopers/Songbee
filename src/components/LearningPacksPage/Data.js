@@ -10,7 +10,7 @@ export const Learningpacks = [
     items: [
       {
         id: 0,
-        imageUrl: "/junior/0-12/babyOne.jpg",
+        imageUrl: "https://res.cloudinary.com/dke4ukd0z/image/upload/v1714072560/Songbee/babyOne_r5yrzu.jpg",
         name: "The Bonder",
         age: "0-12 Weeks",
         slug: "0-12-months-the-bonder",
@@ -28,7 +28,7 @@ export const Learningpacks = [
       },
       {
         id: 1,
-        imageUrl: "/junior/0-12/babyTwo.jpg",
+        imageUrl: "https://res.cloudinary.com/dke4ukd0z/image/upload/v1714072908/Songbee/babyTwo_wwwfns.jpg",
         name: "The Feeler",
         age: "3-4 months",
         slug: "0-12-months-the-feeler",
@@ -46,7 +46,7 @@ export const Learningpacks = [
       },
       {
         id: 2,
-        imageUrl: "/junior/0-12/babyThree.jpg",
+        imageUrl: "https://res.cloudinary.com/dke4ukd0z/image/upload/v1714072568/Songbee/babyThree_vboal1.jpg",
         name: "The Detector",
         age: "5-6 months",
         slug: "0-12-months-the-detector",
@@ -65,7 +65,7 @@ export const Learningpacks = [
 
       {
         id: 0,
-        imageUrl: "/junior/0-12/babyFour.jpg",
+        imageUrl: "https://res.cloudinary.com/dke4ukd0z/image/upload/v1714072556/Songbee/babyFour_ofxfso.jpg",
         name: "The Experimenter",
         age: "7-8 months",
         slug: "0-12-months-the-experimenter",
@@ -83,7 +83,7 @@ export const Learningpacks = [
       },
       {
         id: 1,
-        imageUrl: "/junior/0-12/babyFive.jpg",
+        imageUrl: "https://res.cloudinary.com/dke4ukd0z/image/upload/v1714072542/Songbee/babyFive_gdsvsb.jpg",
         name: "The Investigator",
         age: "9-10 months",
         slug: "0-12-months-the-investigator",
@@ -101,7 +101,7 @@ export const Learningpacks = [
       },
       {
         id: 2,
-        imageUrl: "/junior/0-12/babySix.jpg",
+        imageUrl: "https://res.cloudinary.com/dke4ukd0z/image/upload/v1714072564/Songbee/babySix_tknwqu.jpg",
         name: "The Discoverer",
         age: "11-12 months",
         slug: "0-12-months-the-discoverer",
@@ -131,7 +131,7 @@ export const Learningpacks = [
     items: [
       {
         id: 0,
-        imageUrl: "/junior/1year/babyOne.jpg",
+        imageUrl: "https://res.cloudinary.com/dke4ukd0z/image/upload/v1714073363/Songbee/babyOne_q445gx.jpg",
         name: "The Talker",
         age: "13-14 months",
         slug: "1-year-the-talker",
@@ -149,7 +149,7 @@ export const Learningpacks = [
       },
       {
         id: 1,
-        imageUrl: "/junior/1year/babyTwo.jpg",
+        imageUrl: "https://res.cloudinary.com/dke4ukd0z/image/upload/v1714073386/Songbee/babyTwo_gcggyn.jpg",
         name: "The Explorer",
         age: "15-16 months",
         slug: "1-year-the-explorer",
@@ -167,7 +167,7 @@ export const Learningpacks = [
       },
       {
         id: 2,
-        imageUrl: "/junior/1year/babyThree.jpg",
+        imageUrl: "https://res.cloudinary.com/dke4ukd0z/image/upload/v1714073380/Songbee/babyThree_v2wsiv.jpg",
         name: "The Pathfinder",
         age: "17-18 months",
         slug: "1-year-the-pathfinder",
@@ -186,7 +186,7 @@ export const Learningpacks = [
 
       {
         id: 0,
-        imageUrl: "/junior/1year/babyFour.jpg",
+        imageUrl: "https://res.cloudinary.com/dke4ukd0z/image/upload/v1714073358/Songbee/babyFour_ejxqbj.jpg",
         name: "The Looker",
         age: "19-20 months",
         slug: "1-year-the-looker",
@@ -216,7 +216,7 @@ export const Learningpacks = [
     items: [
       {
         id: 0,
-        imageUrl: "/junior/2year/babyOne.jpg",
+        imageUrl: "https://res.cloudinary.com/dke4ukd0z/image/upload/v1714073509/Songbee/babyOne_qtdodv.jpg",
         name: "The Experimenter",
         age: "25-26 months",
         slug: "2-years-the-experimenter",
@@ -234,7 +234,7 @@ export const Learningpacks = [
       },
       {
         id: 1,
-        imageUrl: "/junior/2year/babyTwo.jpg",
+        imageUrl: "https://res.cloudinary.com/dke4ukd0z/image/upload/v1714073528/Songbee/babyTwo_op35fc.jpg",
         name: "The Story Teller",
         age: "27-28 months",
         slug: "2-years-the-story-teller",
@@ -252,7 +252,7 @@ export const Learningpacks = [
       },
       {
         id: 2,
-        imageUrl: "/junior/2year/babyThree.jpg",
+        imageUrl: "https://res.cloudinary.com/dke4ukd0z/image/upload/v1714073517/Songbee/babyThree_b1rm5j.jpg",
         name: "The Creator",
         age: "29-30 months",
         slug: "2-years-the-creator",
@@ -271,7 +271,7 @@ export const Learningpacks = [
 
       {
         id: 0,
-        imageUrl: "/junior/2year/babyFour.jpg",
+        imageUrl: "https://res.cloudinary.com/dke4ukd0z/image/upload/v1714073504/Songbee/babyFour_zhzybi.jpg",
         name: "The Adventurer",
         age: "31-32 months",
         slug: "2-years-the-adventurer",
@@ -301,7 +301,7 @@ export const Learningpacks = [
     items: [
       {
         id: 2,
-        imageUrl: "/junior/3years/babyOne.jpg",
+        imageUrl: "https://res.cloudinary.com/dke4ukd0z/image/upload/v1714073639/Songbee/babyOne_qbm7zu.jpg",
         name: "The Problem Solver",
         age: "37, 38, 39 months",
         slug: "3-year-the-problem-solver",
@@ -320,7 +320,7 @@ export const Learningpacks = [
 
       {
         id: 0,
-        imageUrl: "/junior/3years/babyTwo.jpg",
+        imageUrl: "https://res.cloudinary.com/dke4ukd0z/image/upload/v1714073662/Songbee/babyTwo_no332w.jpg",
         name: "The Tinkerer",
         age: "40, 41, 42 months",
         slug: "3-year-the-tinkerer",
@@ -338,7 +338,7 @@ export const Learningpacks = [
       },
       {
         id: 1,
-        imageUrl: "/junior/3years/babyThree.jpg",
+        imageUrl: "https://res.cloudinary.com/dke4ukd0z/image/upload/v1714073657/Songbee/babyThree_hhyawv.jpg",
         name: "The Bonder-1",
         age: "43, 44, 45 months",
         slug: "3-year-the-bonder-1",
@@ -356,7 +356,7 @@ export const Learningpacks = [
       },
       {
         id: 2,
-        imageUrl: "/junior/3years/babyFour.jpg",
+        imageUrl: "https://res.cloudinary.com/dke4ukd0z/image/upload/v1714073635/Songbee/babyFour_zrp2tt.jpg",
         name: "The Bonder-2",
         age: "46, 47, 48 months",
         slug: "3-year-the-bonder-2",
@@ -386,7 +386,7 @@ export const Learningpacks = [
     items: [
       {
         id: 2,
-        imageUrl: "/junior/4years/babyOne.jpg",
+        imageUrl: "https://res.cloudinary.com/dke4ukd0z/image/upload/v1714073743/Songbee/babyOne_gwodu8.jpg",
         name: "The Bonder-1",
         age: "49, 50, 51, months",
         slug: "4-years-the-bonder-1",
@@ -405,7 +405,7 @@ export const Learningpacks = [
 
       {
         id: 0,
-        imageUrl: "/junior/4years/babyTwo.jpg",
+        imageUrl: "https://res.cloudinary.com/dke4ukd0z/image/upload/v1714073753/Songbee/babyTwo_zrnspn.jpg",
         name: "The Bonder-2",
         age: "52, 53, 54 months",
         slug: "4-years-the-bonder-2",
@@ -423,7 +423,7 @@ export const Learningpacks = [
       },
       {
         id: 1,
-        imageUrl: "/junior/4years/babyThree.jpg",
+        imageUrl: "https://res.cloudinary.com/dke4ukd0z/image/upload/v1714073747/Songbee/babyThree_xxputr.jpg",
         name: "The Bonder-3",
         age: "55, 56, 57 months",
         slug: "4-years-the-bonder-3",
@@ -441,7 +441,7 @@ export const Learningpacks = [
       },
       {
         id: 2,
-        imageUrl: "/junior/4years/babyFour.jpg",
+        imageUrl: "https://res.cloudinary.com/dke4ukd0z/image/upload/v1714073738/Songbee/babyFour_xlknjs.jpg",
         name: "The Bonder-4",
         age: "58, 59, 60 months",
         slug: "4-years-the-bonder-4",
