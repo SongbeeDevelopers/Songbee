@@ -38,35 +38,6 @@ function FinalQuestions({ routeVariants }) {
 
   const user = useSelector((store) => store.user);
 
-  const submitOrder = (e) => {
-    e.preventDefault();
-    if (
-      newOrder.delivery_days &&
-      newOrder.streaming &&
-      newOrder.extra_verse &&
-      user.id
-    ) {
-      Swal.fire({
-        title: "Continue with selections?",
-        showCancelButton: true,
-        confirmButtonText: "Checkout",
-        icon: "question",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          dispatch({
-            type: "FETCH_CHECKOUT",
-            payload: { data: newOrder },
-          });
-        }
-      });
-    } else {
-      Swal.fire({
-        title: "Please Select All Three Options and log in.",
-        icon: "error",
-      });
-    }
-  };
-
   const handleInput = (key, value) => {
     dispatch({
       type: "SET_FINAL_QUESTIONS",
@@ -224,7 +195,7 @@ function FinalQuestions({ routeVariants }) {
 
             <div className="reqFormGroup3">
               <TextField
-                value={requestData.story1}
+                value={requestData.story2}
                 className="reqFormGroup3input"
                 placeholder="Prompt 2"
                 onChange={() => handleInput("story2", event.target.value)}

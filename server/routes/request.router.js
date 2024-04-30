@@ -272,64 +272,36 @@ router.post('/create', async (req, res) => {
     }
   });
 
-router.post('/final/:id', async (req, res) => {
+router.put('/finish/:id', async (req, res) => {
   // console.log("req.body:", req.body)
     let connection
     try {
     connection = await pool.connect();
 
     connection.query("BEGIN;");
-    const userId = req.user.id;
-    const genreId = req.body.genre;
-    const requester = req.body.requester;
-    const recipient = req.body.recipient;
-    const pronunciation = req.body.pronunciation;
-    const recipientRelationship = req.body.recipient_relationship;
-    const occasion = req.body.occasion;
-    const vocalType = req.body.vocal_type;
-    const vibe = req.body.vibe;
-    const tempo = req.body.tempo;
-    const inspiration = req.body.inspiration;
-    const artist = req.body.artist
-    const deliveryDays = req.body.delivery_days;
-    const streaming = req.body.streaming;
-    const extraVerse = req.body.extra_verse;
-    const license = req.body.license
-    const backingTrack = req.body.backing_track
+    const story1 = req.body.story1
+    const story2 = req.body.story2
+    const important_what = req.body.important_what
+    const important_why = req.body.important_why
+    const additional_info = req.body.additional_info
+    
     const requestQuery = `
-    INSERT INTO "song_request"
-      ("user_id", "genre_id", "requester", "recipient", "pronunciation", "recipeint_relationship", "occasion", "vocal_type", "vibe", "tempo", "inspiration", "delivery_days", "streaming", "extra_verse", "license", "backing_track")
-      VALUES
-      ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)
-      RETURNING "id";
+    UPDATE "song_request"
+    SET
+    "story1"=$1,
+    "story2"=$2,
+    "important_what"=$3,
+    "important_why"=$4,
+    "additional_info"=$5
+    WHERE "id"=$6
     `
-    const response = await connection.query(requestQuery, [userId, genreId, requester, recipient, pronunciation, recipientRelationship, occasion, vocalType, vibe, tempo, inspiration, deliveryDays, streaming, extraVerse, license, backingTrack])
+    const response = await connection.query(requestQuery, [story1, story2, important_what, important_why, additional_info, req.params.id])
 
-    // console.log("artist:", artist);
-    if (artist === ''){
-    const detailsQuery = `
-    INSERT INTO "song_details"
-        ("song_request_id")
-        VALUES
-        ($1)
-    `
-    // console.log('created id:', response.rows[0].id)
-    const detailsResponse = await connection.query(detailsQuery, [response.rows[0].id])
-    } else {
-      const detailsQuery = `
-      INSERT INTO "song_details"
-          ("song_request_id", "artist_id")
-          VALUES
-          ($1, $2)
-      `
-      // console.log('created id:', response.rows[0].id)
-      const detailsResponse = await connection.query(detailsQuery, [response.rows[0].id, artist])
-    }
     connection.query("COMMIT;");
     connection.release();
-    res.send({id: response.rows[0].id})
+    res.sendStatus(201);
     } catch (error) {
-        console.error("Error in request router POST create request", error);
+        console.error("Error in request router PUT final questions", error);
         connection.query("ROLLBACK;");
         connection.release();
         res.sendStatus(500);
