@@ -92,8 +92,7 @@ export default function OrderPage({ routeVariants }) {
 
   let artistId
   const handleInput = (key, value) => {
-    event.preventDefault();
-    if (key === "artist") {
+    if (key === "artist" && value > 0) {
       console.log("artistId before", artistId)
       dispatch({
         type: "FETCH_CURRENT_ARTIST",
