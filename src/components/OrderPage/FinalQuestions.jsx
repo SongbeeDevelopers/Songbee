@@ -274,6 +274,11 @@ function FinalQuestions({ routeVariants }) {
     setCompleted({});
   };
 
+  const handleButton = () => {
+    handleNext()
+    handleComplete()
+  }
+
   const handleComplete = (event) => {
     const newCompleted = completed;
     newCompleted[activeStep] = true;
@@ -356,40 +361,24 @@ function FinalQuestions({ routeVariants }) {
                 Step {activeStep + 1}
               </Typography>
               <form className="reqForm">{formDetails()}</form>
-              <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-                <button
-                  color="inherit"
-                  disabled={activeStep === 0}
+              <Box sx={{ display: "flex", flexDirection: "row", mt: 8 }}>
+                <Button variant="contained"
                   onClick={handleBack}
-                  className="user-portal-details-btn"
-                >
-                  Back
-                </button>
+                  sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
+                > BACK
+                </Button>
                 <Box sx={{ flex: "1 1 auto" }} />
-                <button
-                  onClick={handleNext}
-                  className="user-portal-details-btn"
-                >
-                  Next
-                </button>
-                {activeStep !== steps.length &&
-                  (completed[activeStep] ? (
-                    <Typography
-                      variant="caption"
-                      sx={{ display: "inline-block" }}
-                    >
-                      Step {activeStep + 1} already completed
-                    </Typography>
-                  ) : (
-                    <button
-                      onClick={handleComplete}
-                      className="user-portal-details-btn"
-                    >
-                      {completedSteps() === totalSteps() - 1
-                        ? "Finish"
-                        : "Complete Step"}
-                    </button>
-                  ))}
+                <Button variant="contained"
+                  onClick={handleButton}
+                  sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
+                > NEXT
+                </Button>
+                {completedSteps() === totalSteps() - 1 ?
+                  <button onClick={handleComplete} className="user-portal-details-btn">
+                    Finish
+                  </button>
+                  : ""
+                }
               </Box>
             </React.Fragment>
           )}
