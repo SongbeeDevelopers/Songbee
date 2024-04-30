@@ -36,8 +36,6 @@ function FinalQuestions({ routeVariants }) {
   const requestData = useSelector((store) => store.finalQuestions);
   const { id } = useParams();
 
-  const user = useSelector((store) => store.user);
-
   const handleInput = (key, value) => {
     dispatch({
       type: "SET_FINAL_QUESTIONS",
@@ -284,7 +282,6 @@ function FinalQuestions({ routeVariants }) {
     newCompleted[activeStep] = true;
     setCompleted(newCompleted);
     handleNext();
-    event.preventDefault();
     if (
       requestData.story1 &&
       requestData.story2 &&
