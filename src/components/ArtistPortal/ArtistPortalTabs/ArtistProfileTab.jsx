@@ -21,11 +21,10 @@ function ArtistProfileTab({artistProfile}) {
     <div className="tab-body">
       {artistProfile ? (
         <>
-          <ArtistBioPage />
-
           <Button sx={{ color: "black" }} onClick={() => setOpenArtist(true)}>
             Edit Artist Profile Info
           </Button>
+          <ArtistBioPage />
         </>
       ) : (
         <p>You have no artist profile.</p>

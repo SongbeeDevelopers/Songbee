@@ -21,10 +21,10 @@ export default function SelectYourArtist({ handleInput }) {
             value={requestData.genre}
             onChange={() => handleInput("artist", event.target.value)}
           >
-            <option selected>
+            <option disabled>
               Select Artist
             </option>
-            <option key={artists.length} value=''>
+            <option value='' key={0}>
               I would like the artist selected for me
             </option>
             {artists.map((artist) => {
@@ -39,7 +39,11 @@ export default function SelectYourArtist({ handleInput }) {
           </select>
         </div>
       </div>
+      { requestData.artist !== '' ?
       <ArtistDisplay />
+      :
+      ''
+      }
     </>
   )
 }
