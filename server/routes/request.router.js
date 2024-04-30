@@ -9,6 +9,7 @@ const {
  */
 router.get('/user', rejectUnauthenticated, (req, res) => {
   const userId = req.user.id;
+  console.log("req.user.id", req.user.id)
   const requestQuery = `
   SELECT 
   "song_request"."id" AS "id",
@@ -48,7 +49,7 @@ router.get('/user', rejectUnauthenticated, (req, res) => {
   pool.query(requestQuery, [userId])
   .then((result) => {
     res.send(result.rows);
-    // console.log("Request router GET all user requests", result.rows)
+    console.log("Request router GET all user requests", result.rows)
   })
   .catch((error) => {
     console.error("Error in request router GET all user requests", error);
@@ -175,6 +176,7 @@ router.get('/current/:id', (req, res) => {
     "song_request"."delivery_days",
     "song_request"."is_complete",
     "song_details"."url",
+    "song_details"."artist_id",
     "song_details"."lyrics",
     "song_details"."title",
     "song_details"."streaming_link",
@@ -213,12 +215,12 @@ router.post('/create', async (req, res) => {
 
     connection.query("BEGIN;");
     const userId = req.user.id;
+    const genreId = req.body.genre;
     const requester = req.body.requester;
     const recipient = req.body.recipient;
     const pronunciation = req.body.pronunciation;
     const recipientRelationship = req.body.recipient_relationship;
     const occasion = req.body.occasion;
-    const genreId = req.body.genre;
     const vocalType = req.body.vocal_type;
     const vibe = req.body.vibe;
     const tempo = req.body.tempo;
@@ -231,15 +233,15 @@ router.post('/create', async (req, res) => {
     const backingTrack = req.body.backing_track
     const requestQuery = `
     INSERT INTO "song_request"
-      ("user_id", "delivery_days", "streaming", "extra_verse")
+      ("user_id", "genre_id", "requester", "recipient", "pronunciation", "recipient_relationship", "occasion", "vocal_type", "vibe", "tempo", "inspiration", "delivery_days", "streaming", "extra_verse", "license", "backing_track")
       VALUES
-      ($1, $2, $3, $4)
+      ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)
       RETURNING "id";
     `
-    const response = await connection.query(requestQuery, [userId, deliveryDays, streaming, extraVerse])
+    const response = await connection.query(requestQuery, [userId, genreId, requester, recipient, pronunciation, recipientRelationship, occasion, vocalType, vibe, tempo, inspiration, deliveryDays, streaming, extraVerse, license, backingTrack])
 
-    console.log("artist:", artist);
-    console.log("req.body:", req.body)
+    // console.log("artist:", artist);
+    // console.log("req.body:", req.body)
     if (artist === ''){
     const detailsQuery = `
     INSERT INTO "song_details"
@@ -247,7 +249,7 @@ router.post('/create', async (req, res) => {
         VALUES
         ($1)
     `
-    console.log('created id:', response.rows[0].id)
+    // console.log('created id:', response.rows[0].id)
     const detailsResponse = await connection.query(detailsQuery, [response.rows[0].id])
     } else {
       const detailsQuery = `
@@ -256,7 +258,71 @@ router.post('/create', async (req, res) => {
           VALUES
           ($1, $2)
       `
-      console.log('created id:', response.rows[0].id)
+      // console.log('created id:', response.rows[0].id)
+      const detailsResponse = await connection.query(detailsQuery, [response.rows[0].id, artist])
+    }
+    connection.query("COMMIT;");
+    connection.release();
+    res.send({id: response.rows[0].id})
+    } catch (error) {
+        console.error("Error in request router POST create request", error);
+        connection.query("ROLLBACK;");
+        connection.release();
+        res.sendStatus(500);
+    }
+  });
+
+router.post('/final/:id', async (req, res) => {
+  // console.log("req.body:", req.body)
+    let connection
+    try {
+    connection = await pool.connect();
+
+    connection.query("BEGIN;");
+    const userId = req.user.id;
+    const genreId = req.body.genre;
+    const requester = req.body.requester;
+    const recipient = req.body.recipient;
+    const pronunciation = req.body.pronunciation;
+    const recipientRelationship = req.body.recipient_relationship;
+    const occasion = req.body.occasion;
+    const vocalType = req.body.vocal_type;
+    const vibe = req.body.vibe;
+    const tempo = req.body.tempo;
+    const inspiration = req.body.inspiration;
+    const artist = req.body.artist
+    const deliveryDays = req.body.delivery_days;
+    const streaming = req.body.streaming;
+    const extraVerse = req.body.extra_verse;
+    const license = req.body.license
+    const backingTrack = req.body.backing_track
+    const requestQuery = `
+    INSERT INTO "song_request"
+      ("user_id", "genre_id", "requester", "recipient", "pronunciation", "recipeint_relationship", "occasion", "vocal_type", "vibe", "tempo", "inspiration", "delivery_days", "streaming", "extra_verse", "license", "backing_track")
+      VALUES
+      ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)
+      RETURNING "id";
+    `
+    const response = await connection.query(requestQuery, [userId, genreId, requester, recipient, pronunciation, recipientRelationship, occasion, vocalType, vibe, tempo, inspiration, deliveryDays, streaming, extraVerse, license, backingTrack])
+
+    // console.log("artist:", artist);
+    if (artist === ''){
+    const detailsQuery = `
+    INSERT INTO "song_details"
+        ("song_request_id")
+        VALUES
+        ($1)
+    `
+    // console.log('created id:', response.rows[0].id)
+    const detailsResponse = await connection.query(detailsQuery, [response.rows[0].id])
+    } else {
+      const detailsQuery = `
+      INSERT INTO "song_details"
+          ("song_request_id", "artist_id")
+          VALUES
+          ($1, $2)
+      `
+      // console.log('created id:', response.rows[0].id)
       const detailsResponse = await connection.query(detailsQuery, [response.rows[0].id, artist])
     }
     connection.query("COMMIT;");

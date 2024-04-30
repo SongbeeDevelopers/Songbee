@@ -60,8 +60,8 @@ router.post('/', async (req, res) => {
       const session = await stripe.checkout.sessions.create({
         line_items: lineitemArray,
         mode: 'payment',
-        success_url: `http://localhost:5173/#/finalquestions/${req.body.id}`,
-        cancel_url: `https://songbee-cf8d644750db.herokuapp.com/#/order`,
+        success_url: `https://songbee.com/#/finalquestions/${req.body.id}`,
+        cancel_url: `https://songbee.com/#/order`,
         automatic_tax: {enabled: true},
       });
       console.log("sesion:", session)

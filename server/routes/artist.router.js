@@ -265,7 +265,7 @@ router.put('/:id', async (req, res) => {
     SET "class"=$1
     WHERE "id"=$2;
     `
-    console.log('req.body.user_id', req.body.user_id);
+    // console.log('req.body.user_id', req.body.user_id);
     await connection.query(classQuery, [2, req.body.user_id])
     connection.query("COMMIT;");
     connection.release();
@@ -328,7 +328,7 @@ router.get('/current/:id', async (req, res) => {
   WHERE "id"=$1
   `
   const artistResponse = await connection.query(query, [req.params.id])
-
+  // console.log("artistResponse", artistResponse.rows[0]);
   const genreQuery = `
   SELECT
   "genres"."id" AS "id",
@@ -342,7 +342,6 @@ router.get('/current/:id', async (req, res) => {
   connection.query("COMMIT;");
   connection.release();
   artistResponse.rows[0].genres = genreResponse.rows
-  // console.log("artistResponse", artistResponse.rows[0]);
   // console.log("genreResponse", genreResponse.rows);
   res.send(artistResponse.rows[0]);
 } catch (error){
