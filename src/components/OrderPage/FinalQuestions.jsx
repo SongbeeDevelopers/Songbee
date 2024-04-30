@@ -36,37 +36,6 @@ function FinalQuestions({ routeVariants }) {
   const requestData = useSelector((store) => store.finalQuestions);
   const { id } = useParams();
 
-  const user = useSelector((store) => store.user);
-
-  const submitOrder = (e) => {
-    e.preventDefault();
-    if (
-      newOrder.delivery_days &&
-      newOrder.streaming &&
-      newOrder.extra_verse &&
-      user.id
-    ) {
-      Swal.fire({
-        title: "Continue with selections?",
-        showCancelButton: true,
-        confirmButtonText: "Checkout",
-        icon: "question",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          dispatch({
-            type: "FETCH_CHECKOUT",
-            payload: { data: newOrder },
-          });
-        }
-      });
-    } else {
-      Swal.fire({
-        title: "Please Select All Three Options and log in.",
-        icon: "error",
-      });
-    }
-  };
-
   const handleInput = (key, value) => {
     dispatch({
       type: "SET_FINAL_QUESTIONS",
@@ -224,7 +193,7 @@ function FinalQuestions({ routeVariants }) {
 
             <div className="reqFormGroup3">
               <TextField
-                value={requestData.story1}
+                value={requestData.story2}
                 className="reqFormGroup3input"
                 placeholder="Prompt 2"
                 onChange={() => handleInput("story2", event.target.value)}
@@ -303,12 +272,16 @@ function FinalQuestions({ routeVariants }) {
     setCompleted({});
   };
 
+  const handleButton = () => {
+    handleNext()
+    handleComplete()
+  }
+
   const handleComplete = (event) => {
     const newCompleted = completed;
     newCompleted[activeStep] = true;
     setCompleted(newCompleted);
     handleNext();
-    event.preventDefault();
     if (
       requestData.story1 &&
       requestData.story2 &&
@@ -385,40 +358,24 @@ function FinalQuestions({ routeVariants }) {
                 Step {activeStep + 1}
               </Typography>
               <form className="reqForm">{formDetails()}</form>
-              <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-                <button
-                  color="inherit"
-                  disabled={activeStep === 0}
+              <Box sx={{ display: "flex", flexDirection: "row", mt: 8 }}>
+                <Button variant="contained"
                   onClick={handleBack}
-                  className="user-portal-details-btn"
-                >
-                  Back
-                </button>
+                  sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
+                > BACK
+                </Button>
                 <Box sx={{ flex: "1 1 auto" }} />
-                <button
-                  onClick={handleNext}
-                  className="user-portal-details-btn"
-                >
-                  Next
-                </button>
-                {activeStep !== steps.length &&
-                  (completed[activeStep] ? (
-                    <Typography
-                      variant="caption"
-                      sx={{ display: "inline-block" }}
-                    >
-                      Step {activeStep + 1} already completed
-                    </Typography>
-                  ) : (
-                    <button
-                      onClick={handleComplete}
-                      className="user-portal-details-btn"
-                    >
-                      {completedSteps() === totalSteps() - 1
-                        ? "Finish"
-                        : "Complete Step"}
-                    </button>
-                  ))}
+                <Button variant="contained"
+                  onClick={handleButton}
+                  sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
+                > NEXT
+                </Button>
+                {completedSteps() === totalSteps() - 1 ?
+                  <button onClick={handleComplete} className="user-portal-details-btn">
+                    Finish
+                  </button>
+                  : ""
+                }
               </Box>
             </React.Fragment>
           )}

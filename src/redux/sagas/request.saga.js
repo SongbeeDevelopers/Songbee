@@ -104,12 +104,13 @@ function* finishSongRequest (action) {
     try {
         const response = yield axios({
             method: "PUT",
-            url: `/api/request/update/${action.payload.id}`,
+            url: `/api/request/finish/${action.payload.id}`,
             data: action.payload.data
         })
+        yield put ({type: 'FETCH_USER_REQUESTS'})
         yield action.payload.history.push('/user')
     } catch (error) {
-        console.error('SAGA updateSongRequest() failed:', error)
+        console.error('SAGA finishSongRequest() failed:', error)
     }
 }
 

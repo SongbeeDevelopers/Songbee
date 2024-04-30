@@ -47,6 +47,8 @@ CREATE TABLE "song_request" (
   "delivery_days" integer,
   "streaming" BOOLEAN,
   "extra_verse" BOOLEAN,
+  "license" BOOLEAN,
+  "backing_track" BOOLEAN,
   "is_complete" BOOLEAN DEFAULT FALSE
 );
 

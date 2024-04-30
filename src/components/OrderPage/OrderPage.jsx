@@ -59,36 +59,6 @@ export default function OrderPage({ routeVariants }) {
     dispatch({ type: "FETCH_ALL_ARTISTS" })
   }, []);
 
-  // submit function
-  const submitOrder = (e) => {
-    e.preventDefault();
-    if (
-      newOrder.delivery_days &&
-      newOrder.streaming &&
-      newOrder.extra_verse &&
-      user.id
-    ) {
-      Swal.fire({
-        title: "Continue with selections?",
-        showCancelButton: true,
-        confirmButtonText: "Checkout",
-        icon: "question",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          dispatch({
-            type: "FETCH_CHECKOUT",
-            payload: { data: newOrder },
-          });
-        }
-      });
-    } else {
-      Swal.fire({
-        title: "Please Select All Three Options and log in.",
-        icon: "error",
-      });
-    }
-  };
-
 
   let artistId
   const handleInput = (key, value) => {
@@ -150,7 +120,6 @@ export default function OrderPage({ routeVariants }) {
   };
 
   const handleComplete = (event) => {
-    // event.preventDefault();
     const newCompleted = completed;
     newCompleted[activeStep] = true;
     setCompleted(newCompleted);

@@ -129,7 +129,7 @@ export default function ArtistSBRequestsTab({artistId}) {
                       open={detailsOpen}
                       onClose={closeDetails}
                     >
-                      <RequestDetails requestId={row.id}/>
+                      <AdminDetailsDialog setDetailsOpen={setDetailsOpen} />
                     </Dialog>
                   </TableCell>
 

@@ -23,14 +23,14 @@ function CustomerRequests() {
   const dispatch = useDispatch();
   const history = useHistory();
 
+    // retrieves request history on mount
+    useEffect(() => {
+      dispatch({ type: 'FETCH_USER_REQUESTS' })
+      dispatch({ type: 'FETCH_ALL_ARTISTS' })
+    }, []);
+
   const userRequests = useSelector((store) => store.userRequests);
   const artists = useSelector((store => store.allArtists))
-
-  // retrieves request history on mount
-  useEffect(() => {
-    dispatch({ type: 'FETCH_USER_REQUESTS' })
-    dispatch({ type: 'FETCH_ALL_ARTISTS' })
-  }, []);
 
   const viewDetails = (reqId) => {
     history.push(`/details/${reqId}`);
@@ -49,7 +49,7 @@ function CustomerRequests() {
 
   return (
     <div className='tab-body'>
-      {userRequests.length > 1 ?
+      {userRequests.length > 0 ?
         <Table>
           <TableHead>
             <TableRow>
