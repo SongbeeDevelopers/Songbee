@@ -151,7 +151,7 @@ export default function OrderPage({ routeVariants }) {
   };
 
   const handleComplete = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     const newCompleted = completed;
     newCompleted[activeStep] = true;
     setCompleted(newCompleted);
