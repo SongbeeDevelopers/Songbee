@@ -58,7 +58,7 @@ CREATE TABLE "artist" (
   "name" VARCHAR,
   "user_id" integer REFERENCES "user",
   "vocal_type" VARCHAR (150),
-  "is_active" BOOLEAN DEFAULT TRUE, -- 👈 added is_active for the artist
+  "is_active" BOOLEAN DEFAULT TRUE, 
   "website" VARCHAR,
   "instagram_link" VARCHAR,
   "sample_song_1" VARCHAR DEFAULT NULL,
@@ -165,18 +165,18 @@ VALUES
           Since his time as a full-time musician, he has been featured in Spotify and Youtube Editorial playlists, had many magazine write-ups, and accumulated millions of streams across all platforms.
           He looks forward to continuing to write and spread joy through music.', 'St. Louis, Missouri', 'https://res.cloudinary.com/dke4ukd0z/image/upload/v1713458694/Songbee/michael-photo_edh5b9.jpg', 'https://open.spotify.com/artist/32SXond7qEk5OOXU9M8Sq7?si=MZ2frkvaR6OUOmIYwGKd5w&nd=1&dlsi=3dca887b59374406/'),
 
-('Berch', 'Berch', 9, 'male', TRUE, TRUE, '', 'https://www.instagram.com/mynameisberch/?igshid=MzMyNGUyNmU2YQ%3D%3D&utm_source=qr', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321136/Berch_m2vbfj.mp3', 'Berch', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321126/Berch_fee_fi_fo_fum_lgnkd3.mp3', 'FEE FI FUM', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321572/Berch_feel_so_good_kwia9r.mp3', 'Feel So Good', 'Mynameisberch, hailing from Richmond, Virginia, is a versatile artist known for his pop,
+('Berch', 'Berch', 9, 'male', TRUE, TRUE, '', 'https://www.instagram.com/mynameisberch/?igshid=MzMyNGUyNmU2YQ%3D%3D&utm_source=qr', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321136/Berch_m2vbfj.mp3', 'Berch', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321126/Berch_fee_fi_fo_fum_lgnkd3.mp3', 'FEE FI  FO FUM', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321572/Berch_feel_so_good_kwia9r.mp3', 'Feel So Good', 'Mynameisberch, hailing from Richmond, Virginia, is a versatile artist known for his pop,
              hip-hop, and soulful vocal style. With influences ranging from John Mayer to Lenny Kravitz and Drake, he effortlessly blends catchy melodies and heartfelt lyrics into his captivating compositions. 
              As a published BMI songwriter, mynameisberch consistently delivers multiple songs and records each year, showcasing his dedication to his craft. Additionally, 
              he has been recognized as a featured songwriter in Worship Leader magazine,
-             a national publication in the contemporary Christian music scene. Combining his musical talents with his role as a worship leader at his church, mynameisberch/s passion for creating unique and impactful music shines through.
+             a national publication in the contemporary Christian music scene. Combining his musical talents with his role as a worship leader at his church, mynameisberch''s passion for creating unique and impactful music shines through.
              With a genuine 
              desire to connect with individuals going through various situations and seasons, mynameisberch is excited to bring his creativity to Songbee, crafting personalized songs that resonate with each listener. He says, 
              I love creating for unique people going through unique situations in unique seasons.', 'Richmond, Virginia', 'https://res.cloudinary.com/dke4ukd0z/image/upload/v1713458683/Songbee/berch_bdrlty.jpg', 'https://mynameisberch.bandcamp.com/'),
 
-('Perrin Xthona', 'Perrin Xthona', 10, 'female', TRUE, TRUE, 'https://www.tiktok.com/@perrinxthona?_t=8hjAn9c36du&_r=1/', 'https://www.instagram.com/perrinxthona/', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321199/Perrin_Xthona_faqiwx.mp3', 'As long As I/m With You', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321212/to_the_moon_and_back_PerrinXthona_wfqrgi.mp3', 'To The Moon and Back', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321226/You_Are_My_Home_PerrinXthona_vdkbkt.mp3', 'You Are My Home', 'Perrin Xthona is a pop songwriter from Portland, Oregon. She recently graduated from the Berklee College of Music, and her influences are Julia Michaels, 
+('Perrin Xthona', 'Perrin Xthona', 10, 'female', TRUE, TRUE, 'https://www.tiktok.com/@perrinxthona?_t=8hjAn9c36du&_r=1/', 'https://www.instagram.com/perrinxthona/', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321199/Perrin_Xthona_faqiwx.mp3', 'As long As I''m With You', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321212/to_the_moon_and_back_PerrinXthona_wfqrgi.mp3', 'To The Moon and Back', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321226/You_Are_My_Home_PerrinXthona_vdkbkt.mp3', 'You Are My Home', 'Perrin Xthona is a pop songwriter from Portland, Oregon. She recently graduated from the Berklee College of Music, and her influences are Julia Michaels, 
                         Lennon Stella, Halsey, Jeremy Zucker, Lauv, and Harry Styles. 
-                        Shes always loved writing songs, and the only thing she loves more is getting to hear other peoples stories.', 'Portland, Oregon', 'https://res.cloudinary.com/dke4ukd0z/image/upload/v1713458705/Songbee/perrin_photo_mhtkti.jpg', 'https://open.spotify.com/artist/1bNx6UhsCYSNuoIeL9LcnD?si=MLyNUmi6RJm2qLdyip1vMA&nd=1&dlsi=27bc328009f646c5/');
+                        She''s always loved writing songs, and the only thing she loves more is getting to hear other peoples stories.', 'Portland, Oregon', 'https://res.cloudinary.com/dke4ukd0z/image/upload/v1713458705/Songbee/perrin_photo_mhtkti.jpg', 'https://open.spotify.com/artist/1bNx6UhsCYSNuoIeL9LcnD?si=MLyNUmi6RJm2qLdyip1vMA&nd=1&dlsi=27bc328009f646c5/');
 
 
 
