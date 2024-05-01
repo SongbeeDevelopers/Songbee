@@ -4,8 +4,6 @@ import { TextField } from "@mui/material";
 
 export default function MemoriesCont({ handleInput, value }) {
 
-  const requestData = useSelector((store) => store.requestData);
-
   return (
     <div>
       <h2 className="reqFormGroup3">Part 2</h2>
