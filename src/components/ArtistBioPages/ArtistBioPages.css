@@ -5,7 +5,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 300px;
   background-color: white;
   padding: 20px;
   width: 100%;
@@ -18,11 +17,11 @@
     margin-left: 40px;
 }
 
+
 .content img {
     border-radius: 50%;
     width: 300px;
     height: auto;
-    /* margin-left: 120px; */
 }
 
 
@@ -154,20 +153,12 @@
   }
 
   .songListWrapper {
-    max-width: 545px;
+    max-width: 700px;
     margin: auto;
     margin-top: 80px !important;
-    
   }
 
-  .songTable {
-    padding-bottom: 8px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-left: -20px;
-    margin-right: -20px;
-  }
-
+  
 
   .tableHeader {
     display: flex;
@@ -221,13 +212,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid  #e1ded6;
-    padding: 10px 20px;
+    border-bottom: 2px solid  #e1ded6;
     margin-bottom: 20px;
     
   }
   
-
 
   .audioFiles div{
     margin-bottom: 1px;
@@ -240,9 +229,13 @@
     display: flex;
     align-items: center;
     width: 60%;
+    padding-top: 10px;
   }
 
-  .songTitles p{
+  
+
+
+  .songTitles h3{
     margin-right: 20px;
     margin-bottom: 0;
     width: 60%;
@@ -250,7 +243,7 @@
 
   .genres {
     margin-left: auto;
-   
+    padding-top: 20px;
   }
 
 
@@ -261,8 +254,15 @@
   .headerItem {
     display: inline-block;
     flex: 1;
-    border-bottom: 1px solid #e1ded6;
+    border-bottom: 2px solid #e1ded6;
    
+}
+
+.artistCommunityBtns {
+  height: auto;
+  max-width: 100%;
+  margin-right: 20px;
+  padding: 50px 20px 120px;
 }
 
   

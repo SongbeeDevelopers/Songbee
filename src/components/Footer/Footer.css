@@ -1,8 +1,9 @@
 footer {
-  margin-top: 80px;
+  margin-top: 40px;
   padding: 20px;
   text-align: center;
   background-color: #f3f1eb;
+  
 }
 
 .footerIcon{
@@ -13,7 +14,7 @@ footer {
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   display: flex;
 }
 

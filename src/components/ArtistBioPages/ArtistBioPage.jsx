@@ -45,7 +45,6 @@ useEffect(() => {
            <div className="nameHeader">
                <h2>{artist && artist.name}</h2>
                <h4 className="location">{artist.location}</h4>
-               {/* <p className="subHeader">Pop, Hip hop</p>  */}
                <div className="socialLinks">
                 <div className="instagram">
                    <a href={artist.instagram_link} >
@@ -71,7 +70,6 @@ useEffect(() => {
          </div>
         </div>
         <div className="songListWrapper">
-       <div className="songTable">
            <div className="tableHeader">
                <div className="headerItem"> 
                    <div className="title">
@@ -95,11 +93,11 @@ useEffect(() => {
 
                    <div className="audioFiles" key={index}> 
                    <div className="songTitles">
-                    <p>{songTitle}</p>
-                    
-                    <AudioButton url={sampleSong} />
+                    <h3>{songTitle}</h3>
+                      <div className="artistCommunityBtns">
+                        <AudioButton url={sampleSong} />
                        {console.log('Logging sampleSong:', sampleSong)}
-                    
+                      </div>
                    </div>
                    <div className="genres">
                        {artist.genres.map((genre) => (
@@ -113,7 +111,6 @@ useEffect(() => {
                 
                </div>
            </div>
-       </div>
    </div>
         
      </>
