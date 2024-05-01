@@ -5,25 +5,28 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import AudioButton from "../JoinArtistPage/AudioButton";
 
-import "./ArtistBioPages.css";
 
-function ArtistBioPage() {
+function RequestDetailsArtistBio() {
 
 const { id } = useParams();
 const dispatch = useDispatch();
 
+const request = useSelector((store) => store.currentRequest);
+
 useEffect(() => {
-        dispatch({
-            type: 'FETCH_CURRENT_ARTIST',
-            payload: id})
-      }, [id])
+            dispatch({
+                type: 'FETCH_CURRENT_ARTIST',
+                payload: request.artist_id})
+          }, [request])
 
 const artist = useSelector(store => store.currentArtist);
 
 const artistGenre = useSelector(store => store.fetchGenres);
 console.log("id", id)
+console.log("request", request)
 
-console.log("artist", artist)
+
+  console.log("artist", artist)
 
 
   
@@ -109,4 +112,4 @@ console.log("artist", artist)
     ) : null;
 }
 
-export default ArtistBioPage;
+export default RequestDetailsArtistBio;

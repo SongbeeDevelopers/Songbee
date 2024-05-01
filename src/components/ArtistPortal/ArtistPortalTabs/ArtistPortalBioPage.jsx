@@ -1,32 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import AudioButton from "../JoinArtistPage/AudioButton";
+import AudioButton from "../../JoinArtistPage/AudioButton";
 
-import "./ArtistBioPages.css";
 
-function ArtistBioPage() {
+function ArtistPortalBioPage() {
 
-const { id } = useParams();
 const dispatch = useDispatch();
 
-useEffect(() => {
-        dispatch({
-            type: 'FETCH_CURRENT_ARTIST',
-            payload: id})
-      }, [id])
+const request = useSelector((store) => store.currentRequest);
 
-const artist = useSelector(store => store.currentArtist);
+const artist = useSelector((store) => store.artistProfile);
 
 const artistGenre = useSelector(store => store.fetchGenres);
-console.log("id", id)
 
-console.log("artist", artist)
-
-
-  
 
     return artist ?(
         <>
@@ -109,4 +97,4 @@ console.log("artist", artist)
     ) : null;
 }
 
-export default ArtistBioPage;
+export default ArtistPortalBioPage;
