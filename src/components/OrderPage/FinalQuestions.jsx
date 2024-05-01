@@ -21,6 +21,9 @@ import Swal from "sweetalert2";
 
 import LoginRegisterForm from "../LoginRegisterForm/LoginRegisterForm";
 
+import '../SongRequestPage/SongRequestPage.css'
+
+
 const steps = [
   "Tell us more!",
   "Why's it important?",
@@ -62,16 +65,13 @@ function FinalQuestions({ routeVariants }) {
         <>
           <div className="reqFormGroup3">
             <div className="reqFormInput">
-              <h2 className="reqFormGroup3">
+              <h2 className="">
                 Tell us what Is Important to your song?
               </h2>
-              <h5 className="reqFormPrompts">
+              <label className="">
                 Tell your artist why you’re writing this song. What emotions do
                 you want the listener to feel?{" "}
-              </h5>
-              <p className="reqFormPrompts">
-                Minimum Required characters 50-max 500.
-              </p>
+              </label>
               <TextField
                 value={requestData.important_what}
                 className="reqFormGroup3input"
@@ -81,7 +81,11 @@ function FinalQuestions({ routeVariants }) {
                 }
                 multiline
                 rows={4}
+                sx={{backgroundColor: 'white'}}
               />
+              <p className="reqFormPrompts">
+                Minimum Required characters 50-max 500.
+              </p>
             </div>
           </div>
         </>
@@ -93,9 +97,9 @@ function FinalQuestions({ routeVariants }) {
           <div className="reqFormGroup3">
             <div className="reqFormInput">
               <h2 className="reqFormGroup3">Tell us why it is so important</h2>
-              <h5 className="reqFormPrompts">
+              <label>
                 Tell the artist more about your inspiration{" "}
-              </h5>
+              </label>
               <TextField
                 value={requestData.important_why}
                 className="reqFormGroup3input"
@@ -105,6 +109,7 @@ function FinalQuestions({ routeVariants }) {
                 }
                 multiline
                 rows={4}
+                sx={{backgroundColor: 'white'}}
               />
             </div>
           </div>
@@ -113,7 +118,7 @@ function FinalQuestions({ routeVariants }) {
     } else if (activeStep === 2) {
       return (
         <>
-          <div>
+          <div className="">
             <h2 className="reqFormGroup3">Share Your Story Part 1</h2>
             <h4 className="reqFormSubHeader">
               Select two of our story prompts or just tell us memories and
@@ -138,11 +143,11 @@ function FinalQuestions({ routeVariants }) {
               <br />
             </p>
 
-            <h5 className="reqFormPrompts">
+            <label className="">
               Tip: Include Descriptive language. Use your senses and really
               describe your feelings and emotions. Be sure it makes sense when
               someone outside of your relationship reads it.{" "}
-            </h5>
+            </label>
 
             <div className="reqFormGroup3">
               <TextField
@@ -152,6 +157,7 @@ function FinalQuestions({ routeVariants }) {
                 onChange={() => handleInput("story1", event.target.value)}
                 multiline
                 rows={4}
+                sx={{backgroundColor: 'white'}}
               />
             </div>
           </div>
@@ -199,6 +205,7 @@ function FinalQuestions({ routeVariants }) {
                 onChange={() => handleInput("story2", event.target.value)}
                 multiline
                 rows={4}
+                sx={{backgroundColor: 'white'}}
               />
             </div>
           </div>
@@ -212,10 +219,12 @@ function FinalQuestions({ routeVariants }) {
               <h2 id="additionalDetailsHeader">
                 Is there anything else we should know?
               </h2>
-              <h5 className="reqFormPrompts">
+              <label>
                 Provide any additional details you would like the artist to
                 know!{" "}
-              </h5>
+              </label>
+              <div className="reqFormGroup3">
+
               <TextField
                 className="reqFormGroup3input"
                 value={requestData.additional_info}
@@ -225,7 +234,9 @@ function FinalQuestions({ routeVariants }) {
                 }
                 multiline
                 rows={4}
-              />
+                sx={{backgroundColor: 'white'}}
+                />
+                </div>
             </div>
           </div>
         </>
@@ -332,7 +343,7 @@ function FinalQuestions({ routeVariants }) {
         Once you provide these final details we can begin creating your song!
       </p>
       <Box sx={{ width: "100%" }}>
-        <Stepper nonLinear activeStep={activeStep}>
+        <Stepper nonLinear activeStep={activeStep} sx={{ mb: 8 }}>
           {steps.map((label, index) => (
             <Step key={label} completed={completed[index]}>
               <StepButton color="inherit" onClick={handleStep(index)}>
@@ -354,9 +365,6 @@ function FinalQuestions({ routeVariants }) {
             </React.Fragment>
           ) : (
             <React.Fragment>
-              <Typography sx={{ mt: 2, mb: 1, py: 1 }}>
-                Step {activeStep + 1}
-              </Typography>
               <form className="reqForm">{formDetails()}</form>
               <Box sx={{ display: "flex", flexDirection: "row", mt: 8 }}>
                 <Button variant="contained"

@@ -59,16 +59,12 @@ export default function OrderPage({ routeVariants }) {
     dispatch({ type: "FETCH_ALL_ARTISTS" })
   }, []);
 
-
-  let artistId
   const handleInput = (key, value) => {
     if (key === "artist" && value > 0) {
-      console.log("artistId before", artistId)
       dispatch({
         type: "FETCH_CURRENT_ARTIST",
         payload: value
       })
-      console.log("artistId after", artistId)
     }
     dispatch({
       type: "SET_REQUEST_DATA",
@@ -85,8 +81,6 @@ export default function OrderPage({ routeVariants }) {
       },
     });
   }
-
-
 
   // ----- FORM LOGIC -----
 

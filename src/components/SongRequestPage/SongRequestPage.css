@@ -13,6 +13,7 @@
 
 .reqFormPage h2 {
     margin-bottom: 0;
+    margin-top: 0;
 }
 
 .reqFormPage h4 {
@@ -58,9 +59,9 @@ and dropdown in Songbee JR */
 .reqFormGroup3 {
     display: flex;
     gap: 30px;
-    justify-content: center;
-    
+    justify-content: center;   
 }
+
 .reqFormSelect2 {
     margin-left: 20px;
     margin-top: -90px;
@@ -72,6 +73,10 @@ and dropdown in Songbee JR */
 .reqFormGroup label {
     font-weight: 500;
     
+}
+.reqFormGroup3 label {
+    font-weight: 500;
+
 }
 
 .reqFormGroup input {
