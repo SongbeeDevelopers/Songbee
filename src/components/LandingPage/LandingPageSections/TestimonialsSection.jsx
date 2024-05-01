@@ -142,7 +142,7 @@ function TestimonialSection() {
             testimonialsSingle.map((item) => (
               <div className="active-slide" key={item.name1}>
                 <img className="bee-one" src={item.image1} alt="" />
-                <img className="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714070494/Songbee/star-one_ohfquo.png" src="/https://res.cloudinary.com/dke4ukd0z/image/upload/v1714070494/Songbee/star-one_ohfquo.png.png" alt="" />
+                <img className="star-one" src="/https://res.cloudinary.com/dke4ukd0z/image/upload/v1714070494/Songbee/star-one_ohfquo.png" alt="" />
                 <h3>{item.name1}</h3>
                 <p>{item.description1}</p>
               </div>
@@ -152,13 +152,13 @@ function TestimonialSection() {
               <div className="active-slide" key={item.name1}>
                 <div className="active-slideOne">
                   <img className="bee-one" src={item.image1} alt="" />
-                  <img className="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714070494/Songbee/star-one_ohfquo.png" src="/https://res.cloudinary.com/dke4ukd0z/image/upload/v1714070494/Songbee/star-one_ohfquo.png.png" alt="" />
+                  <img className="star-one" src="/https://res.cloudinary.com/dke4ukd0z/image/upload/v1714070494/Songbee/star-one_ohfquo.png" alt="" />
                   <h3>{item.name1}</h3>
                   <p>{item.description1}</p>
                 </div>
                 <div className="active-slideTwo">
                   <img className="bee-two" src={item.image2} alt="" />
-                  <img className="star-two" src="/https://res.cloudinary.com/dke4ukd0z/image/upload/v1714070494/Songbee/star-one_ohfquo.png.png" alt="" />
+                  <img className="star-two" src="/https://res.cloudinary.com/dke4ukd0z/image/upload/v1714070494/Songbee/star-one_ohfquo.png" alt="" />
                   <h3>{item.name2}</h3>
                   <p>{item.description2}</p>
                 </div>
