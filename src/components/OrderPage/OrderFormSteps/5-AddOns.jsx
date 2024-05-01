@@ -1,7 +1,5 @@
 import React from "react";
 
-import '../../SongRequestPage/SongRequestPage.css'
-
 import LoginRegisterForm from "../../LoginRegisterForm/LoginRegisterForm";
 
 import {
@@ -12,6 +10,8 @@ import {
   FormGroup,
   Modal
 } from "@mui/material";
+
+import '../../SongRequestPage/SongRequestPage.css'
 
 
 export default function AddOns({ handleInput, handleClose, open }) {
@@ -28,7 +28,6 @@ export default function AddOns({ handleInput, handleClose, open }) {
     boxShadow: 24,
     p: 4,
   };
-
 
   return (
     <div className="reqForm">

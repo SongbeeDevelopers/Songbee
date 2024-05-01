@@ -1,14 +1,14 @@
 import React from "react";
-import { useState } from "react";
 import { useSelector } from "react-redux";
 
-import '../../SongRequestPage/SongRequestPage.css'
-
 import ArtistDisplay from "./ArtistDisplay";
+
+import '../../SongRequestPage/SongRequestPage.css'
 
 
 export default function SelectYourArtist({ handleInput }) {
 
+  // reducers
   const artists = useSelector(store => store.allArtists);
   const requestData = useSelector((store) => store.requestData);
 
