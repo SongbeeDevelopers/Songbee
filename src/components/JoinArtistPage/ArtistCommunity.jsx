@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import AudioButton from './AudioButton';
 
-import FaqArtistPage from '../InfoPages/FaqArtistPage';
+// import FaqArtistPage from '../InfoPages/FaqArtistPage';
 
 
 
@@ -54,9 +54,9 @@ function ArtistCommunity() {
                ))}  
               </div>     
         </div>
-        <div className="faq-section">
+        {/* <div className="faq-section">
          <FaqArtistPage />
-        </div>
+        </div> */}
      
    </div>
     
