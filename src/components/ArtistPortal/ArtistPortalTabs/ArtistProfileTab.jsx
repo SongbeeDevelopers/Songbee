@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import ArtistBioPage from "../../ArtistBioPages/ArtistBioPage";
+import ArtistPortalBioPage from "./ArtistPortalBioPage";
 import EditArtistProfileDialog from "./EditArtistProfileDialog";
 
 import { Button, Dialog } from "@mui/material";
@@ -24,7 +24,7 @@ function ArtistProfileTab({artistProfile}) {
           <Button sx={{ color: "black" }} onClick={() => setOpenArtist(true)}>
             Edit Artist Profile Info
           </Button>
-          <ArtistBioPage />
+          <ArtistPortalBioPage />
         </>
       ) : (
         <p>You have no artist profile.</p>

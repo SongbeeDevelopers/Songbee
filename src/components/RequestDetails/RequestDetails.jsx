@@ -18,7 +18,7 @@ import {
 import { motion } from 'framer-motion';
 
 import './RequestDetails.css'
-import ArtistBioPage from '../ArtistBioPages/ArtistBioPage';
+import RequestDetailsArtistBio from './RequestDetailsArtistBio';
 
 
 // This function will display the user's song request with a player so they can review their song
@@ -28,11 +28,9 @@ function RequestDetails({ routeVariants, requestId }) {
   const dispatch = useDispatch();
   const ID = useParams();
 
-  // call to the store to the currentRequest reducer
-  const request = useSelector((store) => store.currentRequest);
-
   useEffect(() => {
-    console.log('expecting to get the id of song(s)', ID);
+    console.log('expecting to get the parmas id of song(s)', ID);
+    console.log('expecting to get the requestId of song(s)', requestId);
     { ID.id ?
     dispatch({
       type: 'FETCH_CURRENT_REQUEST',
@@ -45,6 +43,10 @@ function RequestDetails({ routeVariants, requestId }) {
     })
   }
   }, [ID.id])
+
+
+  // call to the store to the currentRequest reducer
+  const request = useSelector((store) => store.currentRequest);
 
   const [value, setValue] = useState(0);
 
@@ -122,7 +124,7 @@ function RequestDetails({ routeVariants, requestId }) {
           </CustomTabPanel>
 
           <CustomTabPanel value={value} index={2}>
-            <ArtistBioPage/>
+            <RequestDetailsArtistBio/>
           </CustomTabPanel>
 
         <Button variant="contained"
