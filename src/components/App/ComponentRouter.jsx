@@ -18,7 +18,7 @@ import LandingPage from "../LandingPage/LandingPage";
 // order process
 import OrderPage from "../OrderPage/OrderPage";
 import CreationPage from "../CreationPage/CreationPage";
-import FinalQuestions from "../OrderPage/FinalQuestions";
+import FinalQuestions from "../FinalQuestions/FinalQuestions";
 
 // user functionality
 import CustomerPortal from "../CustomerPortal/CustomerPortal";
@@ -55,9 +55,9 @@ import WhySongbee from "../WhySongbee/WhySongbee";
 import WhatsIncluded from "../WhatsIncludedSchoolsInspiration/WhatsIncluded";
 import DiveIntoBenefits from "../SiDiveInBenefits/DiveIntoBenefits";
 import ScrollToTop from "./ScrollToTop";
-import Header from "../Header/Header";
 import { Route } from "react-router-dom";
-import JrHeader from "../JrHeader/JrHeader";
+
+
 function ComponentRouter() {
 
   const location = useLocation();

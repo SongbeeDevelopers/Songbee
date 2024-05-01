@@ -1,101 +1,107 @@
 import * as React from "react";
-import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-// form steps
-import LetsGetStarted from "./OrderFormSteps/1-LetsGetStarted";
-import SongSpecifications from "./OrderFormSteps/2-SongSpecifications";
-import SelectYourArtist from "./OrderFormSteps/3-SelectYourArtist";
-import Delivery from "./OrderFormSteps/4-Delivery";
-import AddOns from "./OrderFormSteps/5-AddOns";
+// step components
+import TellUsMore from "./FinalQuestionsSteps/1-TellUsMore";
+import WhyIsItImportant from "./FinalQuestionsSteps/2-WhyIsItImportant";
+import MemoriesStoriesEtc from "./FinalQuestionsSteps/3-MemoriesStoriesEtc";
+import MemoriesCont from "./FinalQuestionsSteps/4-MemoriesCont";
+import AnythingElse from "./FinalQuestionsSteps/5-AnythingElse";
 
-// mui imports
+// mui components
 import {
   Box,
   Button,
   Step,
   StepButton,
   Stepper,
-  Typography
+  TextField,
+  Typography,
 } from "@mui/material"
 
-// style imports
+// styling components
 import { motion } from "framer-motion";
 import Swal from "sweetalert2";
 import '../SongRequestPage/SongRequestPage.css'
 
-// steps
+// steps for stepper
 const steps = [
-  "Let's Get Started!",
-  "Song Specfications",
-  "Select Your Artist",
-  "Delivery",
-  "Add-Ons",
+  "Tell us more!",
+  "Why's it important?",
+  "Memories, Stories, Etc.",
+  "Memories cont.",
+  "Anything else?",
 ];
 
 
-export default function OrderPage({ routeVariants }) {
+function FinalQuestions({ routeVariants }) {
 
   // hooks
   const dispatch = useDispatch();
   const history = useHistory();
+  const { id } = useParams();
 
-  // reducers
-  const requestData = useSelector((store) => store.requestData);
-  const user = useSelector((store) => store.user);
+  // reducer
+  const requestData = useSelector((store) => store.finalQuestions);
 
-  // modal logic
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  // fetch reducers on mount
-  useEffect(() => {
-    dispatch({ type: "FETCH_GENRES" })
-  }, []);
-  useEffect(() => {
-    dispatch({ type: "FETCH_ALL_ARTISTS" })
-  }, []);
-
+  // inputs directly affect reducer
   const handleInput = (key, value) => {
-    if (key === "artist" && value > 0) {
-      dispatch({
-        type: "FETCH_CURRENT_ARTIST",
-        payload: value
-      })
-    }
     dispatch({
-      type: "SET_REQUEST_DATA",
+      type: "SET_FINAL_QUESTIONS",
       payload: { ...requestData, [key]: value },
     });
   };
 
   function dispatchDetails() {
     dispatch({
-      type: "CREATE_SONG_REQUEST",
+      type: "FINISH_SONG_REQUEST",
       payload: {
+        id: id,
         history: history,
         data: requestData,
       },
     });
   }
 
-  // ----- FORM LOGIC -----
+  // local state for steps
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState({});
 
-  const totalSteps = () => { return steps.length };
-  const completedSteps = () => { return Object.keys(completed).length };
-  const isLastStep = () => { return activeStep === totalSteps() - 1 };
-  const allStepsCompleted = () => { return completedSteps() === totalSteps() };
+  // steps contained here
+  const formDetails = () => {
+    if (activeStep === 0) {
+      return <TellUsMore handleInput={handleInput} value={requestData.important_what} />
+    } else if (activeStep === 1) {
+      return <WhyIsItImportant handleInput={handleInput} value={requestData.important_why} />
+    } else if (activeStep === 2) {
+      return <MemoriesStoriesEtc handleInput={handleInput} value={requestData.story1} />
+    } else if (activeStep === 3) {
+      return <MemoriesCont handleInput={handleInput} value={requestData.story2} />
+    } else if (activeStep === 4) {
+      return <AnythingElse handleInput={handleInput} value={requestData.additional_info} />
+    }
+  };
+
+  const totalSteps = () => {
+    return steps.length;
+  };
+  const completedSteps = () => {
+    return Object.keys(completed).length;
+  };
+  const isLastStep = () => {
+    return activeStep === totalSteps() - 1;
+  };
+  const allStepsCompleted = () => {
+    return completedSteps() === totalSteps();
+  };
 
   const handleNext = () => {
     const newActiveStep =
       isLastStep() && !allStepsCompleted()
         ? // It's the last step, but not all steps have been completed,
-        // find the first step that has been completed
-        steps.findIndex((step, i) => !(i in completed))
+          // find the first step that has been completed
+          steps.findIndex((step, i) => !(i in completed))
         : activeStep + 1;
     setActiveStep(newActiveStep);
   };
@@ -108,25 +114,27 @@ export default function OrderPage({ routeVariants }) {
     setActiveStep(step);
   };
 
+  const handleReset = () => {
+    setActiveStep(0);
+    setCompleted({});
+  };
+
+  const handleButton = () => {
+    handleNext()
+    handleComplete()
+  }
+
   const handleComplete = (event) => {
     const newCompleted = completed;
     newCompleted[activeStep] = true;
     setCompleted(newCompleted);
     handleNext();
     if (
-      requestData.requester &&
-      requestData.recipient &&
-      requestData.recipient_relationship &&
-      requestData.occasion &&
-      requestData.vocal_type &&
-      requestData.vibe &&
-      requestData.tempo &&
-      requestData.inspiration &&
-      requestData.delivery_days &&
-      requestData.streaming &&
-      requestData.extra_verse &&
-      user.id &&
-      allStepsCompleted()
+      requestData.story1 &&
+      requestData.story2 &&
+      requestData.important_what &&
+      requestData.important_why &&
+      requestData.additional_info
     ) {
       Swal.fire({
         title: "Submit?",
@@ -139,7 +147,7 @@ export default function OrderPage({ routeVariants }) {
           dispatchDetails();
         }
       });
-    } else if (allStepsCompleted()) {
+    } else {
       Swal.fire({
         title: "Submit?",
         text: "You have left important details blank. Do you want to submit anyways?",
@@ -158,40 +166,6 @@ export default function OrderPage({ routeVariants }) {
     }
   };
 
-  const handleButton = () => {
-    handleNext()
-    handleComplete()
-  }
-
-  const handleReset = () => {
-    setActiveStep(0);
-    setCompleted({});
-  };
-
-  const formDetails = () => {
-    // step 1
-    if (activeStep === 0) {
-      return <LetsGetStarted />
-    }
-    // step 2
-    else if (activeStep === 1) {
-      return <SongSpecifications />
-    }
-    // step 3
-    else if (activeStep === 2) {
-      return <SelectYourArtist handleInput={handleInput} />
-    }
-    // step 4
-    else if (activeStep === 3) {
-      return <Delivery handleInput={handleInput} handleOpen={handleOpen} />
-    }
-    // step 5
-    else if (activeStep === 4) {
-      return <AddOns handleInput={handleInput} handleClose={handleClose} open={open} />
-    }
-  };
-  // ----- END FORM LOGIC -----
-
   return (
     <motion.div
       className="reqFormPage"
@@ -199,12 +173,12 @@ export default function OrderPage({ routeVariants }) {
       initial="initial"
       animate="final"
     >
-      <h1>Song Request Details</h1>
-      <p>Once you provide details we can begin creating your song!</p>
+      <h1>Final Song Details</h1>
 
+      <p>
+        Once you provide these final details we can begin creating your song!
+      </p>
       <Box sx={{ width: "100%" }}>
-
-        {/* progress bar */}
         <Stepper nonLinear activeStep={activeStep} sx={{ mb: 8 }}>
           {steps.map((label, index) => (
             <Step key={label} completed={completed[index]}>
@@ -214,11 +188,9 @@ export default function OrderPage({ routeVariants }) {
             </Step>
           ))}
         </Stepper>
-
-        {/* page including form */}
         <div>
           {allStepsCompleted() ? (
-            <>
+            <React.Fragment>
               <Typography sx={{ mt: 2, mb: 1 }}>
                 All steps completed - you&apos;re finished
               </Typography>
@@ -226,13 +198,10 @@ export default function OrderPage({ routeVariants }) {
                 <Box sx={{ flex: "1 1 auto" }} />
                 <Button onClick={handleReset}>Reset</Button>
               </Box>
-            </>
+            </React.Fragment>
           ) : (
-            <>
-              {/* form components */}
+            <React.Fragment>
               <form className="reqForm">{formDetails()}</form>
-
-              {/* buttons */}
               <Box sx={{ display: "flex", flexDirection: "row", mt: 8 }}>
                 <Button variant="contained"
                   onClick={handleBack}
@@ -252,10 +221,12 @@ export default function OrderPage({ routeVariants }) {
                   : ""
                 }
               </Box>
-            </>
+            </React.Fragment>
           )}
         </div>
       </Box>
     </motion.div>
   );
 }
+
+export default FinalQuestions;
