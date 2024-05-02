@@ -35,24 +35,36 @@ export default function AddOns({ handleInput, handleClose, open }) {
         <div className="reqFormInput">
           <label>Would you like any add-ons?</label>
 
+          <div className='requestDetailsaddon'>
+            <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/addstreaming_hng5cz.jpg"></img>
+          </div >
           <Button variant="contained"
             onClick={() => handleInput("streaming", true)}
             sx={{ height: 35, backgroundColor: "#feaf17", color: "black" }}
           > Add My Song to Streaming Services!
           </Button>
 
+          <div className='requestDetailsaddon'>
+            <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/extraverse_hmt8jd.jpg"></img>
+          </div >
           <Button variant="contained"
             onClick={() => handleInput("extra_verse", true)}
             sx={{ height: 35, backgroundColor: "#feaf17", color: "black" }}
           > Add an Additional Verse!
           </Button>
 
+          <div className='requestDetailsaddon'>
+            <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/commerciallicense_qkxiug.jpg"></img>
+          </div>
           <Button variant="contained"
             onClick={() => handleInput("license", true)}
             sx={{ height: 35, backgroundColor: "#feaf17", color: "black" }}
           > I Need a Commercial License for My Song!
           </Button>
 
+          <div  className='requestDetailsaddon'>
+            <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/backingtrack_m94vwk.jpg"></img>
+          </div>
           <Button variant="contained"
             onClick={() => handleInput("backing_track", true)}
             sx={{ height: 35, backgroundColor: "#feaf17", color: "black" }}
