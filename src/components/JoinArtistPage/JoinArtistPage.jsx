@@ -128,12 +128,10 @@ function JoinArtistPage({ routeVariants }) {
               <option value="1">Rap/Hip-Hop</option>
               <option value="2">Folk</option>
               <option value="3">Rock</option>
-              <option value="4">Christian</option>
-              <option value="5">R&B</option>
-              <option value="6">Country</option>
-              <option value="7">Singer Songwriter</option>
-              <option value="8">Acoustic Pop</option>
-              <option value="9">Spanish</option>
+              <option value="4">R&B</option>
+              <option value="5">Country</option>
+              <option value="6">Singer Songwriter</option>
+              <option value="7">Acoustic Pop</option>
             </select>
           </div>
         </div>
