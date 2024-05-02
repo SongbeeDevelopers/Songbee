@@ -80,7 +80,7 @@ const artistGenre = useSelector(store => store.fetchGenres);
                    </div>
                    <div className="genres">
                        {artist.genres.map((genre) => (
-                            <h3>{genre.genre}</h3>
+                            <h3 key={genre.id}>{genre.genre}</h3>
                        ))} 
                      </div>    
                    </div>

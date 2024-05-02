@@ -61,7 +61,9 @@ export default function AddOns({ handleInput, handleClose, open }) {
 
           <FormGroup
             sx={{ display: "flex", justifyContent: "center" }}>
-            <FormControlLabel required control={<Checkbox />} label="I Have Read and Agree to the Terms of Service" />
+            <h4>I Have Read and Agree to the <a href='/#/terms'>Terms and Conditions</a></h4>
+            <FormControlLabel required control={<Checkbox />} />
+            
           </FormGroup>
           <Modal
             open={open}
