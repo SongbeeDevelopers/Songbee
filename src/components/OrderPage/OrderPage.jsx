@@ -123,8 +123,6 @@ export default function OrderPage({ routeVariants }) {
       requestData.tempo &&
       requestData.inspiration &&
       requestData.delivery_days &&
-      requestData.streaming &&
-      requestData.extra_verse &&
       user.id &&
       allStepsCompleted()
     ) {
@@ -141,20 +139,21 @@ export default function OrderPage({ routeVariants }) {
       });
     } else if (allStepsCompleted()) {
       Swal.fire({
-        title: "Submit?",
-        text: "You have left important details blank. Do you want to submit anyways?",
+        title: "Cannot complete request!",
+        text: "You have left important details blank, please go back and make sure you have filled out all information",
         icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Submit",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire({
-            title: "Submitted!",
-            icon: "success",
-          });
-          dispatchDetails();
-        }
-      });
+        showCancelButton: false,
+        confirmButtonText: "Back",
+      })
+      // .then((result) => {
+      //   if (result.isConfirmed) {
+      //     Swal.fire({
+      //       title: "Submitted!",
+      //       icon: "success",
+      //     });
+      //     dispatchDetails();
+      //   }
+      // });
     }
   };
 
