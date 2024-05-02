@@ -118,6 +118,13 @@ export default function SongSpecifications() {
         </div>
       );
     }
+    if (activeStep === 4) {
+      return (
+          <div className="reqFormGroup">
+            <h3>Click Next</h3>
+          </div>
+      );
+    }
   };
 
   return (
@@ -133,9 +140,12 @@ export default function SongSpecifications() {
           <Button
             size="small"
             onClick={handleNext}
-            disabled={activeStep === 5}
-          >
-            Next
+            disabled={activeStep === 4}
+          >{ activeStep === 4 ?
+            "Finished"
+            :
+            `Step ${activeStep + 1}`
+          }
             {theme.direction === "rtl" ? (
               <KeyboardArrowLeft />
             ) : (

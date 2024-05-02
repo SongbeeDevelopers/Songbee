@@ -123,8 +123,15 @@ export default function LetsGetStarted() {
           </div>
       );
     }
+    if (activeStep === 5) {
+      return (
+          <div className="reqFormGroup">
+            <h3>Click Next</h3>
+          </div>
+      );
+    }
   };
-
+  
   return (
       <div className="startedBox">
         {startedSteps()}
@@ -139,8 +146,11 @@ export default function LetsGetStarted() {
               size="small"
               onClick={handleNext}
               disabled={activeStep === 5}
-            >
-              Next
+            >{ activeStep === 5 ?
+              "Finished"
+              :
+              `Step ${activeStep + 1}`
+            }
               {theme.direction === "rtl" ? (
                 <KeyboardArrowLeft />
               ) : (
