@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { useParams, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import AudioButton from "../JoinArtistPage/AudioButton";
@@ -11,6 +11,7 @@ function ArtistBioPage() {
 
 const { id } = useParams();
 const dispatch = useDispatch();
+const history = useHistory();
 
 useEffect(() => {
         dispatch({
@@ -19,13 +20,22 @@ useEffect(() => {
       }, [id])
 
 const artist = useSelector(store => store.currentArtist);
+const requestData = useSelector((store) => store.requestData);
 
 const artistGenre = useSelector(store => store.fetchGenres);
 console.log("id", id)
 
 console.log("artist", artist)
 
+const handleArtist =(e) => {
+  e.preventDefault();
+  history.push('/order');
 
+  dispatch({
+    type: "SET_REQUEST_DATA",
+    payload: { ...requestData, artist: artist.id},
+  });
+}
   
 
     return artist ?(
@@ -52,8 +62,8 @@ console.log("artist", artist)
                    <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714071878/Songbee/artist-website_s1wuuu.png" alt="Artist Website" />
                 </a>
                 </div>
-               <div className="community-button">
-                   <Link to="/artist-process">Start a song with me</Link>
+               <div onClick={handleArtist}>
+                 <button className="community-button"> Start a song with me</button>
                </div>
             </div> 
            </div>

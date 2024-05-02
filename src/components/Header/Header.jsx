@@ -69,6 +69,7 @@ function Header() {
           <Link to="/artists" className="nav-links">Artists</Link>
         </div>
 
+       
         <div className="nav-right">
         
           {!isMobile && user.id && user.class === 3 &&
@@ -84,8 +85,13 @@ function Header() {
           }
 
           {!isMobile &&
+            <> <Link to="/order" className="start-your-song">Start your song</Link> | </>
+          }
+
+          {!isMobile &&
             <> <Link to="/faq" className="nav-links">FAQ</Link> | </>
           }
+
 
           {/* login/logout */}
           <Link to="/login"
