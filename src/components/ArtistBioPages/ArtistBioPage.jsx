@@ -29,7 +29,7 @@ console.log("artist", artist)
 
 const handleArtist =(e) => {
   e.preventDefault();
-  history.push('/order')
+  history.push('/order');
 
   dispatch({
     type: "SET_REQUEST_DATA",
