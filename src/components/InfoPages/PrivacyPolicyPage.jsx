@@ -52,9 +52,7 @@ function PrivacyPolicyPage({ routeVariants }) {
           others. We do not collect any personal information about you unless you
           voluntarily provide it to us. However, you may be required to provide
           certain personal information to us when you elect to use certain
-          products or services.
-        </p>
-        <p>These may include:
+          products or services. These may include:
           <ul className="info-section-list">
             <li>Registering for an account</li>
             <li>Entering a sweepstakes or contest sponsored by us or one of our partners</li>
@@ -106,7 +104,7 @@ function PrivacyPolicyPage({ routeVariants }) {
         <h2 className="info-section-header">Automatically Collected Information</h2>
         <p>
           Information about your computer hardware and software may
-          be automatically collected by Songbee. This information can include
+          be automatically collected by Songbee. This information can include:
           <ul className="info-section-list">
             <li>IP address</li>
             <li>browser type</li>
