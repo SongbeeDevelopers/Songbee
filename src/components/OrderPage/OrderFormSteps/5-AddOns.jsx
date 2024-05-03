@@ -73,11 +73,12 @@ export default function AddOns({ handleInput, handleClose, open }) {
     <div className="addOnDisplay">
       <div className="reqFormGroup">
         <div className="reqFormInput">
-          <div className='requestDetailsaddon2'>
-          <Checkbox checked={requestData.streaming} sx={{mb: -10}} />
+          <div 
+            className='requestDetailsaddon2'
+            onClick={() => handleClick("streaming")}>
+          <Checkbox checked={requestData.streaming} sx={{mb: -10, ml: 2, backgroundColor: '#fff4df'}} />
             <img 
               src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/addstreaming_hng5cz.jpg"
-              onClick={() => handleClick("streaming")}
               ></img>
               
           </div >
@@ -87,11 +88,12 @@ export default function AddOns({ handleInput, handleClose, open }) {
           > Add My Song to Streaming Services!
           </Button>
 
-          <div className='requestDetailsaddon2'>
-          <Checkbox checked={requestData.extra_verse} sx={{mb: -10}} />
+          <div 
+            className='requestDetailsaddon2'
+            onClick={() => handleClick("verse")}>
+          <Checkbox checked={requestData.extra_verse} sx={{mb: -10, ml: 2, backgroundColor: '#fff4df'}} />
             <img 
               src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/extraverse_hmt8jd.jpg"
-              onClick={() => handleClick("verse")}
               ></img>
           </div >
           <Button variant="contained"
@@ -105,11 +107,12 @@ export default function AddOns({ handleInput, handleClose, open }) {
           <div className="reqFormGroup">
         <div className="reqFormInput">
 
-          <div className='requestDetailsaddon2'>
-          <Checkbox checked={requestData.license} sx={{mb: -10}} />
+          <div 
+            className='requestDetailsaddon2'
+            onClick={() => handleClick("license")}>
+          <Checkbox checked={requestData.license} sx={{mb: -10, ml: 2, backgroundColor: '#fff4df'}} />
             <img 
               src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/commerciallicense_qkxiug.jpg"
-              onClick={() => handleClick("license")}
               ></img>
           </div>
           <Button variant="contained"
@@ -118,11 +121,12 @@ export default function AddOns({ handleInput, handleClose, open }) {
           > I Need a Commercial License for My Song!
           </Button>
 
-          <div  className='requestDetailsaddon2'>
-          <Checkbox checked={requestData.backing_track} sx={{mb: -10}} />
+          <div  
+            className='requestDetailsaddon2'
+            onClick={() => handleClick("backing")}>
+          <Checkbox checked={requestData.backing_track} sx={{mb: -10, ml: 2, backgroundColor: '#fff4df'}} />
             <img 
               src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/backingtrack_m94vwk.jpg"
-              onClick={() => handleClick("backing")}
               ></img>
           </div>
           <Button variant="contained"
