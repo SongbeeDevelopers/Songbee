@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useSelector } from "react-redux";
 
 import LoginRegisterForm from "../../LoginRegisterForm/LoginRegisterForm";
 
@@ -17,27 +17,40 @@ import '../../SongRequestPage/SongRequestPage.css'
 
 export default function AddOns({ handleInput, handleClose, open }) {
 
-  const [streaming, setStreaming] = useState(false);
-  const [verse, setVerse] = useState(false);
-  const [license, setLicense] = useState(false);
-  const [backing, setBacking] = useState(false);
+  const requestData = useSelector((store) => store.requestData);
 
   const handleClick = (value) => {
     if (value === 'streaming'){
-      setStreaming(!streaming)
-      handleInput("streaming", streaming)
+      if (requestData.streaming === false){
+      handleInput("streaming", true)
+      }
+      else if (requestData.streaming === true){
+        handleInput("streaming", false)
+      }
     }
     if (value === 'verse'){
-      setVerse(!verse)
-      handleInput("extra_verse", verse)
+      if (requestData.extra_verse === false){
+        handleInput("extra_verse", true)
+        }
+        else if (requestData.extra_verse === true){
+          handleInput("extra_verse", false)
+        }
     }
     if (value === 'license'){
-      setLicense(!license)
-      handleInput("license", license)
+      if (requestData.license === false){
+        handleInput("license", true)
+        }
+        else if (requestData.license === true){
+          handleInput("license", false)
+        }
     }
     if (value === 'backing'){
-      setBacking(!backing)
-      handleInput("backing_track", backing)
+      if (requestData.backing_track === false){
+        handleInput("backing_track", true)
+        }
+        else if (requestData.backing_track === true){
+          handleInput("backing_track", false)
+        }
     }
   }
 
@@ -61,10 +74,12 @@ export default function AddOns({ handleInput, handleClose, open }) {
       <div className="reqFormGroup">
         <div className="reqFormInput">
           <div className='requestDetailsaddon2'>
+          <Checkbox checked={requestData.streaming} sx={{mb: -10}} />
             <img 
               src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/addstreaming_hng5cz.jpg"
               onClick={() => handleClick("streaming")}
               ></img>
+              
           </div >
           <Button variant="contained"
             onClick={() => handleClick("streaming")}
@@ -73,6 +88,7 @@ export default function AddOns({ handleInput, handleClose, open }) {
           </Button>
 
           <div className='requestDetailsaddon2'>
+          <Checkbox checked={requestData.extra_verse} sx={{mb: -10}} />
             <img 
               src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/extraverse_hmt8jd.jpg"
               onClick={() => handleClick("verse")}
@@ -90,6 +106,7 @@ export default function AddOns({ handleInput, handleClose, open }) {
         <div className="reqFormInput">
 
           <div className='requestDetailsaddon2'>
+          <Checkbox checked={requestData.license} sx={{mb: -10}} />
             <img 
               src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/commerciallicense_qkxiug.jpg"
               onClick={() => handleClick("license")}
@@ -102,6 +119,7 @@ export default function AddOns({ handleInput, handleClose, open }) {
           </Button>
 
           <div  className='requestDetailsaddon2'>
+          <Checkbox checked={requestData.backing_track} sx={{mb: -10}} />
             <img 
               src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/backingtrack_m94vwk.jpg"
               onClick={() => handleClick("backing")}
