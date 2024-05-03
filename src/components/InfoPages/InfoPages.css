@@ -161,7 +161,7 @@ FAQ Page
 }
 
 .openFaq {
-    height: fit-content;
+    max-height: fit-content;
     padding-bottom: 25px;
 }
 
@@ -171,7 +171,7 @@ FAQ Page
 
 .in {
     overflow: hidden;
-    transition: fit-content 1s ease-in 0s;
+    transition: max-height 0.4s ease-in;
 }
 
 .faq {
@@ -188,36 +188,4 @@ FAQ Page
     line-height: 130%;
     text-align: center;
     margin-top: 20px;
-    /* margin-left: 600px; */
 }
-
-/* --------------------------------------------------------------------------------
-Quality Guarantee Page
--------------------------------------------------------------------------------- */
-
-/* --------------------------------------------------------------------------------
-Privacy Policy Page
--------------------------------------------------------------------------------- */
-
-/* --------------------------------------------------------------------------------
-Terms and Conditions Page
--------------------------------------------------------------------------------- */
-
-.termsHeader {
-    color: var(--black-4);
-    text-align: center;
-    letter-spacing: -0.01em;
-    margin-top: 20px;
-    font-family: Oswald, sans-serif;
-    font-size: 4.6875rem;
-    font-weight: 300;
-    line-height: 4.6875rem;
-    position: relative;
-}
-
-.termsSubHeader {
-    color: #5b6b7b;
-    font-size: 15px;
-    margin-bottom: -12px;
-}
-

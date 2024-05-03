@@ -19,6 +19,7 @@ function OneFaq({ question, answer }) {
         <h4 className="panel-title">
           <p className="question">
             {question}
+            {/* dropdown icon */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
