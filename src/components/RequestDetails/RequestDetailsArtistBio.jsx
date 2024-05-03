@@ -8,108 +8,65 @@ import AudioButton from "../JoinArtistPage/AudioButton";
 
 function RequestDetailsArtistBio() {
 
-const { id } = useParams();
-const dispatch = useDispatch();
+  const { id } = useParams();
+  const dispatch = useDispatch();
 
-const request = useSelector((store) => store.currentRequest);
+  const request = useSelector((store) => store.currentRequest);
 
-useEffect(() => {
-            dispatch({
-                type: 'FETCH_CURRENT_ARTIST',
-                payload: request.artist_id})
-          }, [request])
+  useEffect(() => {
+    dispatch({
+      type: 'FETCH_CURRENT_ARTIST',
+      payload: request.artist_id
+    })
+  }, [request])
 
-const artist = useSelector(store => store.currentArtist);
+  const artist = useSelector(store => store.currentArtist);
 
-const artistGenre = useSelector(store => store.fetchGenres);
-console.log("id", id)
-console.log("request", request)
+  const artistGenre = useSelector(store => store.fetchGenres);
+  console.log("id", id)
+  console.log("request", request)
 
 
   console.log("artist", artist)
 
 
-  
 
-    return artist ?(
-        <>
-        <div className="imgBox">
-           <div className="content">
-            <img src={artist.photo} alt="Artists images" /> 
-           <div className="nameHeader">
-               <h2>{artist && artist.name}</h2>
-               <h4 className="location">{artist.location}</h4>
-               <div className="socialLinks">
-                <div className="instagram">
-                   <a href={artist.instagram_link} >
-                    <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714071882/Songbee/instagram-link_f6urma.png" alt="Artist Instagram" />
-                   </a>
-                </div>
-                <div className="spotify">
+
+  return artist ? (
+    <>
+      <div className="imgBox song-details-artist">
+        <div className="content">
+          <img src={artist.photo} alt="Artists images" />
+          <div className="nameHeader">
+            <h2>{artist && artist.name}</h2>
+            <h4 className="location">{artist.location}</h4>
+            <div className="socialLinks">
+              <div className="instagram">
+                <a href={artist.instagram_link} >
+                  <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714071882/Songbee/instagram-link_f6urma.png" alt="Artist Instagram" />
+                </a>
+              </div>
+              <div className="spotify">
                 <a href={artist.streaming_link}>
-                   <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714071890/Songbee/spotify-img_nlukbm.png" alt="Artist Spotify" />
+                  <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714071890/Songbee/spotify-img_nlukbm.png" alt="Artist Spotify" />
                 </a>
-                </div>
-                <div className="website">
+              </div>
+              <div className="website">
                 <a href={artist.website}>
-                   <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714071878/Songbee/artist-website_s1wuuu.png" alt="Artist Website" />
+                  <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714071878/Songbee/artist-website_s1wuuu.png" alt="Artist Website" />
                 </a>
-                </div>
-               <div className="community-button">
-                   <Link to="/artist-process">Start a song with me</Link>
-               </div>
-            </div> 
-           </div>
-           <h4 className="bio">{artist.bio}</h4>
-         </div>
+              </div>
+              <div className="community-button">
+                <Link to="/artist-process">Start a song with me</Link>
+              </div>
+            </div>
+          </div>
+          <h4 className="bio">{artist.bio}</h4>
         </div>
-        <div className="songListWrapper">
-           <div className="tableHeader">
-               <div className="headerItem"> 
-                   <div className="title">
-                      Title
-                       
-                   </div>
-               </div>
-               <div className="headerItem"> 
-                   <div className="genre">
-                       Genre
-                   </div>
-               </div>
-           </div>
-           
-           <div className="songList">
-               <div className="songItems">
-                 {[1, 2, 3].map((index) => {
-                    const sampleSong = artist[`sample_song_${index}`];
-                    const songTitle = artist[`song_title_${index}`];
-                  return sampleSong && (
+      </div>
+    </>
 
-                   <div className="audioFiles" key={index}> 
-                   <div className="songTitles">
-                    <h3>{songTitle}</h3>
-                      <div className="artistCommunityBtns">
-                        <AudioButton url={sampleSong} />
-                       {console.log('Logging sampleSong:', sampleSong)}
-                      </div>
-                   </div>
-                   <div className="genres">
-                       {artist.genres.map((genre) => (
-                            <h3>{genre.genre}</h3>
-                       ))} 
-                     </div>    
-                   </div>
-                   
-                       );
-                    })}
-                
-               </div>
-           </div>
-   </div>
-        
-     </>
-     
-    ) : null;
+  ) : null;
 }
 
 export default RequestDetailsArtistBio;
