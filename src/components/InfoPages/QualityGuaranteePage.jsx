@@ -23,12 +23,9 @@ function QualityGuarantee({ routeVariants }) {
           <p>{item}</p>
         ))}
 
-        <p>
-          Please contact our team at {" "}
-          <a className="mail-guarantee" href="mailto:hello@songbee.com">
-            hello@songbee.com
-          </a>
-          !
+        <br/>
+        <p className="info-contact">
+          Please contact our team at <a href="mailto:hello@songbee.com">hello@songbee.com</a>!
         </p>
       </div>
     </motion.div>
