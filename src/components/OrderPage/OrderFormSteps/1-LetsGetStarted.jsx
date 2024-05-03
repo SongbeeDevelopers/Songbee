@@ -140,7 +140,7 @@ export default function LetsGetStarted() {
           steps={5}
           position="static"
           activeStep={activeStep}
-          sx={{ m: "auto", maxWidth: 400, flexGrow: 1, mt: 6 }}
+          sx={{ m: "auto", maxWidth: 400, flexGrow: 1, mt: 6, backgroundColor: '#fff4df' }}
           nextButton={
             <Button
               size="small"
