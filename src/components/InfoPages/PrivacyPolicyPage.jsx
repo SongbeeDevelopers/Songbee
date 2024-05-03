@@ -31,7 +31,7 @@ function PrivacyPolicyPage({ routeVariants }) {
         </p>
 
         <h2 className="info-section-header">Collection of Your Personal Information</h2>
-        <p className="info-section-text">
+        <p>
           In order to better provide you with products and services offered
           <ul className="info-section-list">
             <li>First and Last Name</li>
@@ -69,7 +69,7 @@ function PrivacyPolicyPage({ routeVariants }) {
         </p>
 
         <h2 className="info-section-header">Use of your Personal Information</h2>
-        <p className="info-section-text">
+        <p>
           Songbee collects and uses your personal information to operate and
           deliver the services you have requested. Songbee may also use your
           personally identifiable information to inform you of other products or
@@ -77,7 +77,7 @@ function PrivacyPolicyPage({ routeVariants }) {
         </p>
 
         <h2 className="info-section-header">Sharing Information with Third Parties</h2>
-        <p className="info-section-text">
+        <p>
           Songbee does not sell, rent or lease its customer lists to third parties.
           Songbee may share data with trusted partners to help perform statistical
           analysis, send you email or postal mail, provide customer support,or
@@ -95,7 +95,7 @@ function PrivacyPolicyPage({ routeVariants }) {
         </p>
 
         <h2 className="info-section-header">Tracking User Behavior</h2>
-        <p className="info-section-text">
+        <p>
           Songbee may keep track of the websites and pages our users visit within
           Songbee, in order to determine what Songbee services are the
           most popular. This data is used to deliver customized content and
@@ -104,7 +104,7 @@ function PrivacyPolicyPage({ routeVariants }) {
         </p>
 
         <h2 className="info-section-header">Automatically Collected Information</h2>
-        <p className="info-section-text">
+        <p>
           Information about your computer hardware and software may
           be automatically collected by Songbee. This information can include
           <ul className="info-section-list">
@@ -119,7 +119,7 @@ function PrivacyPolicyPage({ routeVariants }) {
         </p>
 
         <h2 className="info-section-header">Right to Deletion</h2>
-        <p className="info-section-text">
+        <p>
           Subject to certain exceptions set out below, on receipt of a verifiable
           request from you, we will:
           <ul className="info-section-list">
@@ -178,7 +178,7 @@ function PrivacyPolicyPage({ routeVariants }) {
         </p>
 
         <h2 className="info-section-header">Children Under Thirteen</h2>
-        <p className="info-section-text">
+        <p>
           Songbee collects personally identifiable information fromchildren under
           the age of thirteen. Songbee collects this information for the following
           reason(s): We create learning songs for children and we collect the ages
@@ -191,7 +191,7 @@ function PrivacyPolicyPage({ routeVariants }) {
         </p>
 
         <h2 className="info-section-header">E-mail Communications</h2>
-        <p className="info-section-text">
+        <p>
           From time to time, Songbee may contact you via email for the purpose of
           providing announcements, promotional offers, alerts,
           confirmations, surveys, and/or other general communication. In order to
@@ -203,7 +203,7 @@ function PrivacyPolicyPage({ routeVariants }) {
         </p>
 
         <h2 className="info-section-header">Changes to this Statement</h2>
-        <p className="info-section-text">
+        <p>
           Songbee reserves the right to change this Privacy Policyfrom time to
           time. We will notify you about significant changes in the way wetreat
           personal information by sending a notice to the primary email
@@ -218,7 +218,7 @@ function PrivacyPolicyPage({ routeVariants }) {
         </p>
 
         <h2 className="info-section-header">Contact Information</h2>
-        <p className="info-section-text">
+        <p>
           Songbee welcomes your questions or comments regarding this Statement of 
           Privacy. If you believe that Songbee has not adhered to this Statement, 
           please contact Songbee at:
