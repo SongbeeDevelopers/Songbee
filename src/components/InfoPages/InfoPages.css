@@ -161,7 +161,7 @@ FAQ Page
 }
 
 .openFaq {
-    max-height: fit-content;
+    height: fit-content;
     padding-bottom: 25px;
 }
 
@@ -171,7 +171,7 @@ FAQ Page
 
 .in {
     overflow: hidden;
-    transition: max-height 0.4s ease-in;
+    transition: fit-content 0.4s ease-in;
 }
 
 .faq {
