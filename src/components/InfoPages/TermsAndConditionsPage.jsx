@@ -26,8 +26,8 @@ function TermsAndConditions({ routeVariants }) {
         ))}
 
         <h2 className='info-section-header'>Contact Us</h2>
-        <p>Songbee welcomes your questions or comments regarding the Terms:</p>
         <p className='info-contact'>
+        <p>Songbee welcomes your questions or comments regarding the Terms:</p>
           Songbee, LLC <br/>
           Virginia <br/>
           <a href="mailto:hello@songbee.com" className="mail-guarantee">hello@songbee.com</a> <br/><br/>
