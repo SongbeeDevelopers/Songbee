@@ -16,19 +16,21 @@ function QualityGuarantee({ routeVariants }) {
       initial="initial"
       animate="final"
     >
-      <h1 className="headerP">{qualityGuarantee.title}</h1>
+      <div className="info">
+        <h1 className="info-title">{qualityGuarantee.title}</h1>
 
-      {qualityGuarantee.details.map((item) => (
-        <p>{item}</p>
-      ))}
+        {qualityGuarantee.details.map((item) => (
+          <p>{item}</p>
+        ))}
 
-      <p>
-        Please contact our team at {" "}
-        <a className="mail-guarantee" href="mailto:hello@songbee.com">
-          hello@songbee.com
-        </a>
-        !
-      </p>
+        <p>
+          Please contact our team at {" "}
+          <a className="mail-guarantee" href="mailto:hello@songbee.com">
+            hello@songbee.com
+          </a>
+          !
+        </p>
+      </div>
     </motion.div>
 
   );
