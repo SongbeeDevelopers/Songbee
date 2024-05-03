@@ -21,7 +21,7 @@ function SelectArtistAudioButton({ url }) {
     return (
         <div>
             <audio ref={audioRef} src={url}></audio>
-            <button  className={isPlaying ? 'player-container pause' : 'player-container play'} onClick={playPause}></button>  
+            <button  className={isPlaying ? 'select-player-container pause' : 'select-player-container play'} onClick={playPause}></button>  
      </div>
     );
 }

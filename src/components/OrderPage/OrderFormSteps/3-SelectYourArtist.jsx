@@ -4,35 +4,76 @@ import { useSelector } from "react-redux";
 import ArtistDisplay from "./ArtistDisplay";
 import SelectArtistAudioButton from "./SelectArtistAudioButton";
 
-import '../../SongRequestPage/SongRequestPage.css'
+import { Button } from "@mui/material";
 
-
+import "../../SongRequestPage/SongRequestPage.css";
 
 export default function SelectYourArtist({ handleInput }) {
-
   // reducers
-  const artists = useSelector(store => store.allArtists);
+  const artists = useSelector((store) => store.allArtists);
   const requestData = useSelector((store) => store.requestData);
+  const genres = useSelector(store => store.genres)
+  let currentGenre
+  if (requestData.genre){
+    genres.map((genre) => {
+      if (genre.id === Number(requestData.genre)){
+        currentGenre = genre.name
+      }
+    })
+  }
 
   return (
     <>
+      <h3>Select Your Artist!</h3>
+      <h5>Click on an Artist to Select and See Their Bio</h5>
+      <h5>
+        {requestData.genre ?
+        `Showing All Artists who Specialize In ${currentGenre}`
+        :
+        ''
+      }
+      </h5>
       <div className="select-artist-container">
         <div className="select-artist-card">
-          {artists.map((artist, i) => (
-            <>
-              <img
-                className="select-artistSlide-img"
-                key={i}
-                src={artist.photo}
-                alt="Artist photos"
-              />
-                <SelectArtistAudioButton url={artist.sample_song_1} />
-           
-            </>
-          ))}
+          {artists.map((artist, i) => {
+            if (
+              artist.genres[0].id === Number(requestData.genre) ||
+              (artist.genres[1] &&
+                artist.genres[1].id === Number(requestData.genre)) ||
+              requestData.genre === ""
+            ) {
+              return (
+                <>
+                  <h4>{artist.artist_name}</h4>
+                  <img
+                    onClick={() => handleInput("artist", Number(artist.id))}
+                    className="select-artistSlide-img"
+                    key={i}
+                    src={artist.photo}
+                    alt="Artist photos"
+                  />
+                  <SelectArtistAudioButton url={artist.sample_song_1} />
+                </>
+              );
+            }
+          })}
         </div>
       </div>
-      <div className="reqFormGroup">
+      <Button
+        variant="contained"
+        onClick={() => handleInput("artist", "")}
+        sx={{
+          height: 35,
+          backgroundColor: "#feaf17",
+          color: "black",
+          width: 500,
+          ml: 20,
+        }}
+      >
+        Click Here if you Would Like the Artist Selected For You
+      </Button>
+      {requestData.artist !== "" ? <ArtistDisplay /> : ""}
+      {/* <div className="reqFormGroup">
         <div className="reqFormSelect">
           <label>Choose your Artist</label>
           <select
@@ -59,8 +100,7 @@ export default function SelectYourArtist({ handleInput }) {
             })}
           </select>
         </div>
-      </div>
-      {requestData.artist !== "" ? <ArtistDisplay /> : ""}
+      </div> */}
     </>
   );
 }

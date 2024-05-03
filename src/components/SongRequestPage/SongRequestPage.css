@@ -162,12 +162,10 @@ and dropdown in Songbee JR */
 
 .select-artist-container  {
     width: 600px;
-    height: 600px;
+    height: 250px;
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    margin-left: 100px;
   }
 
   .select-artist-card {
@@ -186,7 +184,7 @@ and dropdown in Songbee JR */
     object-fit: cover;
   }
 
-  .player-container  {
+  .select-player-container  {
     cursor: pointer;
     text-indent: -999999px;
     height: 50px;
@@ -198,8 +196,8 @@ and dropdown in Songbee JR */
       background-repeat: no-repeat!important;
       background-position: absolute;
       border-radius: 50%;
-      margin-top: 410px;
-      margin-left: -470px;
+      margin-top: 150px;
+      margin-left: -350px;
      
     background-repeat:no-repeat;
     background-position:center;
@@ -207,7 +205,7 @@ and dropdown in Songbee JR */
     background-color: rgba(238, 237, 235, 0.977);
   }
 
-  .player-container:hover {
+  .select-player-container:hover {
     background-color: orange;
   }
   .play {
