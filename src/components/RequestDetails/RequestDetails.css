@@ -48,17 +48,6 @@ audio::-webkit-media-controls-time-remaining-display {
   margin: 50px auto;
 }
 
-/* title decoration */
-.bee-deco {
-  width: 100px;
-  display: inline;
-}
-
-.song-underline {
-  width: 45%;
-  height: 70px;
-}
-
 /* tab container */
 .order-details-tab-container {
   margin: 50px auto;

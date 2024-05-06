@@ -58,6 +58,7 @@ export default function OrderPage({ routeVariants }) {
     dispatch({ type: "FETCH_ALL_ARTISTS" })
   }, []);
 
+  // inputs directly affect reducer
   const handleInput = (key, value) => {
     if (key === "artist" && value > 0) {
       dispatch({

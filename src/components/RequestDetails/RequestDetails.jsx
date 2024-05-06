@@ -95,14 +95,13 @@ function RequestDetails({ routeVariants, requestId }) {
       initial="initial"
       animate="final"
     >
+      {/* title */}
+      <h2>{request.title}</h2>
 
-      {/* decorated title */}
-      <img className='bee-deco' src='https://res.cloudinary.com/dke4ukd0z/image/upload/v1714070457/Songbee/bee-button_iwlxrg.png' />
-      <h1>{request.title}</h1>
-      <img className='bee-deco' src='https://res.cloudinary.com/dke4ukd0z/image/upload/v1714070455/Songbee/bee-button-reversed_faxbyx.png' />
-
-      {/* title underline */}
-      <img className='song-underline' src='https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076671/Songbee/underline_t5mfyz.png' />
+      {/* details */}
+      <p>For {request.recipient}</p>
+      {request.occasion && <p>{request.occasion}</p>}
+      <p>{request.genre}</p>
 
       {/* audio file */}
       <audio className='song-details-audio' controls src={request.url} />
@@ -118,8 +117,8 @@ function RequestDetails({ routeVariants, requestId }) {
             indicatorColor="primary"
           >
             <Tab label="Lyrics" {...a11yProps(0)} />
-            <Tab label="Details" {...a11yProps(1)} />
-            <Tab label="Artist" {...a11yProps(2)} />
+            {/* <Tab label="Details" {...a11yProps(1)} /> */}
+            <Tab label="Artist" {...a11yProps(1)} />
           </Tabs>
         </Box>
 
@@ -128,11 +127,11 @@ function RequestDetails({ routeVariants, requestId }) {
           <RequestLyricsTab request={request} />
         </CustomTabPanel>
 
-        <CustomTabPanel value={value} index={1}>
+        {/* <CustomTabPanel value={value} index={1}>
           <RequestDetailsTab request={request} />
-        </CustomTabPanel>
+        </CustomTabPanel> */}
 
-        <CustomTabPanel value={value} index={2}>
+        <CustomTabPanel value={value} index={1}>
           <RequestDetailsArtistBio />
         </CustomTabPanel>
       </div>
