@@ -535,3 +535,40 @@ Device Responsivity
     align-items: center;
   }
 }
+
+/* --------------------------------------------------------------------------------
+Newsletter
+-------------------------------------------------------------------------------- */
+
+.jr-newsletter {
+  width: 60%;
+  margin: auto;
+  padding-left: 10%;
+  margin-top: 50px;
+  margin-bottom: -80px;
+  padding-bottom: 50px;
+}
+.jr-newsletter h2 {
+  font-size: 36px;
+  margin-bottom: 0;
+}
+.jr-newsletter p {
+  margin-left: 25px;
+}
+.jr-newsletter input {
+  height: 30px;
+  width: 350px;
+  border-radius: 15px;
+  padding-left: 25px;
+  background-color: #f3f1eb;
+  border: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#jr-newsletter-btn {
+  width: 125px;
+  height: 40px;
+  font-size: medium;
+  display: inline;
+  margin-left: 25px;
+}
