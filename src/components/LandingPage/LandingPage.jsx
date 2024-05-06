@@ -9,6 +9,7 @@ import SampleSongsSection from "./LandingPageSections/4-SampleSongsSection";
 import GuaranteeSection from "./LandingPageSections/6-GuaranteeSection";
 
 import "./LandingPage.css";
+import SongsForEveryOccasion from "./LandingPageSections/5-SongsForEveryOccasion";
 
 
 function LandingPage({ routeVariants }) {
@@ -28,7 +29,7 @@ function LandingPage({ routeVariants }) {
       {/* <SampleSongsSection /> */}
 
       <div className="guarantee-container">
-
+        <SongsForEveryOccasion />
         <GuaranteeSection />
       </div>
 
