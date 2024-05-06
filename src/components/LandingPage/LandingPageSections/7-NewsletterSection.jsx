@@ -1,14 +1,16 @@
 import React from "react";
 
-function JrNewsletterSection() {
-    return (
-        <div className="jr-newsletter">
-            <h2>Easy as 1, 2, 3...</h2>
-            <p>Sign up for  15% off your first order!</p>
-            <input  placeholder="email address"></input>
-            <button id="jr-newsletter-btn" className="jr-landing-btn">Sign Up</button>
-        </div>
-    )
+function NewsletterSection() {
+  return (
+    <div className="main-newsletter">
+      <h2>Stay in the Loop!</h2>
+      <p>Sign up for  15% off your first order!</p>
+      <div className="main-newsletter-input">
+        <input placeholder="email address"></input>
+        <button id="main-newsletter-btn" className="main-landing-btn">Sign Up</button>
+      </div>
+    </div>
+  )
 }
 
-export default JrNewsletterSection
+export default NewsletterSection

@@ -540,23 +540,21 @@ Device Responsivity
 Newsletter
 -------------------------------------------------------------------------------- */
 
-.jr-newsletter {
+.main-newsletter {
   width: 60%;
   margin: auto;
-  padding-left: 10%;
+}
+.main-newsletter h2 {
   margin-top: 50px;
-  margin-bottom: -80px;
-  padding-bottom: 50px;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 600;
 }
-.jr-newsletter h2 {
-  font-size: 36px;
-  margin-bottom: 0;
+.main-newsletter p {
+  text-align: center;
 }
-.jr-newsletter p {
-  margin-left: 25px;
-}
-.jr-newsletter input {
-  height: 30px;
+.main-newsletter input {
+  height: 40px;
   width: 350px;
   border-radius: 15px;
   padding-left: 25px;
@@ -565,10 +563,37 @@ Newsletter
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-#jr-newsletter-btn {
-  width: 125px;
+#main-newsletter-btn {
+  width: 100px;
   height: 40px;
   font-size: medium;
   display: inline;
-  margin-left: 25px;
+}
+
+.main-landing-btn {
+  position: relative;
+  display: flex;
+  width: 5rem;
+  height: 3rem;
+  background-color: #feaf17;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  font-family: Poppins, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  transition: background-color 0.45s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border: 0;
+  outline: 0;
+  z-index: 2;
+}
+
+.main-newsletter-input {
+  margin-top: 25px;
+  gap: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
