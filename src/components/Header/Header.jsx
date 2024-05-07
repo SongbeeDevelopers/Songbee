@@ -11,9 +11,10 @@ import {
   Button,
   IconButton,
   Menu,
-  MenuIcon,
   MenuItem,
 } from "@mui/material"
+
+import MenuIcon from "@mui/icons-material/Menu";
 
 import Swal from "sweetalert2";
 
