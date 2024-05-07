@@ -54,10 +54,15 @@
      transition: background-color 0.45s;
      display: flex;
      justify-content: center;
+     align-items: center;
      color: var(--black\<deleted\|variable-f6301105\>);
      width: 10rem;
-     height: 1.6rem;
-     margin-left: -850px;
+     height: 2rem;
      margin-top: 2px;
-     padding-bottom: 10px;
+     padding-bottom: 2px;
+}
+
+.start-your-song:hover{
+  background-color: #fff4df;
+  /* background-color: #feaf17; */
 }

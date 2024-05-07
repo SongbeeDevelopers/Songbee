@@ -1,19 +1,23 @@
 import React from "react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useLocation, Link, useHistory } from "react-router-dom";
+import {  } from "react-router-dom/cjs/react-router-dom.min";
 import { useMediaQuery } from "react-responsive";
 
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import { useLocation } from "react-router-dom";
+import LearningPacksHeader from "./LearningPacksHeader";
+
+import {
+  Button,
+  IconButton,
+  Menu,
+  MenuIcon,
+  MenuItem,
+} from "@mui/material"
+
 import Swal from "sweetalert2";
 
 import "./Header.css";
-import LearningPacksHeader from "./LearningPacksHeader";
 
 function Header() {
   const location = useLocation();
@@ -71,10 +75,6 @@ function Header() {
 
        
         <div className="nav-right">
-
-          {!isMobile &&
-            <> <Link to="/order" className="start-your-song">Start your song</Link> | </>
-          }
         
           {!isMobile && user.id && user.class === 3 &&
             <> <Link to="/admin" className="nav-links">Admin</Link> | </>
@@ -115,6 +115,10 @@ function Header() {
           >
              {user?.id ? "Logout" : "Login"}
           </Link>
+
+          {!isMobile &&
+            <> <Link to="/order" className="start-your-song">Start your song</Link> </>
+          }
 
           {/* admin, profile, FAQ */}
 
