@@ -82,8 +82,8 @@ function FaqPage({ routeVariants }) {
           </div>
         </section>
 
-        <p className="info-subtitle">
-          If you have additional questions, please reach out at{" "} <span className="suii">hello@songbee.com!</span>
+        <p className="faq-subtitle">
+          For support contact{" "} <span className="suii">hello@songbee.com</span>
         </p>
 
       </div>
