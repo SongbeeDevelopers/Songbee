@@ -225,6 +225,7 @@ and dropdown in Songbee JR */
 .requestDetailsaddon2 {
     width: 300px;
     margin-top: 20px;
+    cursor: pointer;
   }
 
 .calendar-img {
@@ -238,6 +239,7 @@ and dropdown in Songbee JR */
     width: 150px; 
     height: 150px;
     margin-right: 20px;
+    cursor: pointer;
 }
 
 .calendar-txt {
