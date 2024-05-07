@@ -21,7 +21,7 @@ function LandingPage({ routeVariants }) {
       initial="initial"
       animate="final"
     >
-      <div className="container">
+      <div className="container" id="hero-container">
         <HeroSection />
         <HowSongBeeWorksSection />
       </div>

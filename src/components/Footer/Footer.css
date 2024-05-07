@@ -1,21 +1,22 @@
 footer {
-  margin-top: 40px;
+  margin-top: 75px;
   padding: 20px;
   text-align: center;
   background-color: #f3f1eb;
 }
 
-.footerIcon{
+.footerIcon {
   width: 9rem;
 }
 
-.flexContainer{
+.flexContainer {
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
   margin-bottom: 40px;
   display: flex;
   padding-left: 6%;
+  text-align: left;
 }
 
 .flexColumn {

@@ -2,6 +2,10 @@
 General
 -------------------------------------------------------------------------------- */
 
+#hero-container {
+  margin-top: 25px;
+}
+
 .guarantee-inner-bg h2,
 .works-section h2,
 .sample-songs h2,
