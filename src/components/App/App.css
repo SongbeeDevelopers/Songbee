@@ -7,7 +7,6 @@ body,
 #react-root {
   height: 100%;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
-  padding-top: .6rem;
 }
 
 * {
