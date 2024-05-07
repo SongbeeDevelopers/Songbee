@@ -20,8 +20,7 @@ const faqsMain = [
       How long does song delivery take?
     `,
     answer: `
-      We have a 6 day standard delivery as well as expedited delivery options (4 or 5 day)
-      for an additional fee.
+      Standard delivery is 6 days. There are expedited delivery options as well with an additional fee.
     `
   },
   {
