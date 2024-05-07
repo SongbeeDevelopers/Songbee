@@ -66,8 +66,8 @@ export default function AdminPortalTabs() {
   return (
     <div>
       <Tabs value={value} onChange={handleChange} centered>
-        <Tab label="Pending Requests" {...a11yProps(0)} />
-        <Tab label="Completed Requests" {...a11yProps(1)} />
+        <Tab label="Pending Orders" {...a11yProps(0)} />
+        <Tab label="Completed Orders" {...a11yProps(1)} />
         <Tab label="Users" {...a11yProps(2)} />
         <Tab label="Artist Applications" {...a11yProps(3)} />
         <Tab label="Artist Edits" {...a11yProps(4)} />
