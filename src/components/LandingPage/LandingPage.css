@@ -425,6 +425,61 @@ Guarantee Section
   font-weight: bold;
 }
 
+/* --------------------------------------------------------------------------------
+Newsletter
+-------------------------------------------------------------------------------- */
+
+.main-newsletter {
+  width: 60%;
+  margin: auto;
+}
+.main-newsletter h2 {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 600;
+}
+.main-newsletter p {
+  text-align: center;
+}
+.main-newsletter input {
+  height: 40px;
+  width: 350px;
+  border-radius: 15px;
+  padding-left: 20px;
+  background-color: white;
+  border: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.main-landing-btn {
+  position: relative;
+  display: flex;
+  width: 5rem;
+  height: 3rem;
+  background-color: #feaf17;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  font-family: Poppins, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  transition: background-color 0.45s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border: 0;
+  outline: 0;
+  z-index: 2;
+}
+
+.main-newsletter-input {
+  margin-top: 25px;
+  gap: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 
 /* --------------------------------------------------------------------------------
 Device Responsivity
@@ -538,66 +593,4 @@ Device Responsivity
     flex-direction: column;
     align-items: center;
   }
-}
-
-/* --------------------------------------------------------------------------------
-Newsletter
--------------------------------------------------------------------------------- */
-
-.main-newsletter {
-  width: 60%;
-  margin: auto;
-}
-.main-newsletter h2 {
-  margin-top: 50px;
-  text-align: center;
-  font-size: 3rem;
-  font-weight: 600;
-}
-.main-newsletter p {
-  text-align: center;
-}
-.main-newsletter input {
-  height: 40px;
-  width: 350px;
-  border-radius: 15px;
-  padding-left: 25px;
-  background-color: #f3f1eb;
-  border: 0;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-#main-newsletter-btn {
-  width: 100px;
-  height: 40px;
-  font-size: medium;
-  display: inline;
-}
-
-.main-landing-btn {
-  position: relative;
-  display: flex;
-  width: 5rem;
-  height: 3rem;
-  background-color: #feaf17;
-  border-radius: 10px;
-  justify-content: center;
-  align-items: center;
-  font-family: Poppins, sans-serif;
-  font-size: 1.4rem;
-  font-weight: 600;
-  transition: background-color 0.45s;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  border: 0;
-  outline: 0;
-  z-index: 2;
-}
-
-.main-newsletter-input {
-  margin-top: 25px;
-  gap: 15px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
 }

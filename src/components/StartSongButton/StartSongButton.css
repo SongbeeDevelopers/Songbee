@@ -22,11 +22,7 @@
     outline: 0;
     
   }
+
   .main-button:hover{
-    background-color: #fff4df;
-    /* background-color: #feaf17; */
-  }
-  .main-button:active{
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
+    background-color: #fed07b;
   }

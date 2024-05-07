@@ -2,10 +2,10 @@ import React from "react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation, Link, useHistory } from "react-router-dom";
-import {  } from "react-router-dom/cjs/react-router-dom.min";
 import { useMediaQuery } from "react-responsive";
 
 import LearningPacksHeader from "./LearningPacksHeader";
+import StartSongButton from "../StartSongButton/StartSongButton"
 
 import {
   Button,
