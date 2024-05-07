@@ -35,7 +35,7 @@ const requestData = (
         tempo: "",
         inspiration: "",
         artist: "",
-        delivery_days: false,
+        delivery_days: 6,
         streaming: false,
         extra_verse: false,
         license: false,

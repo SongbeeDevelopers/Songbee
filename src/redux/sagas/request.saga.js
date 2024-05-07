@@ -68,6 +68,22 @@ function* fetchCheckout (action) {
     }
 }
 
+function* fetchAddonCheckout (action) {
+    try {
+        const stripeResponse = yield axios({
+            method: "POST",
+            url: '/api/stripe/addon',
+            data: {
+                orderDetails: action.payload.data,
+                id: action.payload.id}
+        })
+        // console.log("stripeResponse:", stripeResponse)
+        yield window.location.href = stripeResponse.data
+    } catch (error) {
+        console.error('SAGA fetchAddonCheckout() failed:', error)
+    }
+}
+
 function* createSongRequest (action){
     try {
         const response = yield axios({
@@ -181,6 +197,7 @@ function* requestSaga() {
     yield takeLatest('JR_LOAD_EDIT_PAGE', jrLoadEditPage);
     yield takeLatest('LOAD_ADMIN_PAGE', loadAdminPage);
     yield takeLatest('FETCH_CHECKOUT', fetchCheckout);
+    yield takeLatest('FETCH_ADDON_CHECKOUT', fetchAddonCheckout);
     yield takeLatest('FINISH_SONG_REQUEST', finishSongRequest);
     yield takeLatest('SUBMIT_REQUEST_EDIT', submitRequestEdit);
     yield takeLatest('FETCH_ARTIST_REQUESTS', fetchArtistRequests);

@@ -226,4 +226,40 @@ and dropdown in Songbee JR */
 .requestDetailsaddon2 {
     width: 300px;
     margin-top: 20px;
+    cursor: pointer;
   }
+
+.calendar-img {
+    width: 150px;
+    height: 150px;
+}
+
+.calendar-img-div {
+    position: relative;
+    text-align: center;
+    width: 150px; 
+    height: 150px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.calendar-txt {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.reqFormDays {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+   
+}
+
+.reqFormGroup4 {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+}
