@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 /**
  * POST route template
  */
-router.post('/', async (req, res) => {
+router.post('/checkout', async (req, res) => {
       console.log('orderDetails:', req.body.orderDetails)
       const order = req.body.orderDetails
       let lineitemArray = [{

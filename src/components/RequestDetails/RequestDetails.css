@@ -139,6 +139,7 @@ Add-ons Section
 
 .request-details-addon-container {
   margin: 50px auto;
+  min-width: 800px;
   background-color: white;
   border-radius: 25px;
   padding: 25px 50px 50px;
@@ -148,7 +149,7 @@ Add-ons Section
   display: flex;
   flex-direction: row;
   gap: 15px;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .requestDetailsaddon {
