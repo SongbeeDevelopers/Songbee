@@ -13,7 +13,7 @@ import JrLearningPacksSection from "./JrLandingSections/6-JrLearningPacksSection
 import JrOfferSection from "./JrLandingSections/7-JrMoreThanMusic";
 import JrGuessworkSection from "./JrLandingSections/8-JrGuessworkSection";
 import JrReviewsSection from "./JrLandingSections/10-JrReviewsSection";
-import JrNewsletterSection from "./JrLandingSections/9-JrNewsletterSection";
+import JrNewsletterSection from "./JrLandingSections/9-JrNewsletterSection"
 import FaqPageSbJR from '../InfoPages/FaqPageSbJR'
 
 
