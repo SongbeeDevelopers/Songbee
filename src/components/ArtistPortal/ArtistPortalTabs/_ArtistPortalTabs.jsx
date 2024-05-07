@@ -74,10 +74,10 @@ export default function ArtistPortalTabs({artistProfile}) {
           centered
         >
           <Tab label="Artist Profile" {...a11yProps(0)}  />
-          <Tab label="Songbee Requests" {...a11yProps(1)} />
-          <Tab label="Junior Requests" {...a11yProps(2)} />
+          <Tab label="Main Orders" {...a11yProps(1)} />
+          <Tab label="Junior Orders" {...a11yProps(2)} />
           <Tab label="Documents" {...a11yProps(3)} />
-          <Tab label="Completed Requests" {...a11yProps(4)} />
+          <Tab label="Completed Orders" {...a11yProps(4)} />
         </Tabs>
       </Box>
 

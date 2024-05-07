@@ -137,7 +137,7 @@ function RequestDetails({ routeVariants, requestId }) {
       </div>
 
       <div className='request-details-addon-container'>
-        <h2>Expand On Your Song!</h2>
+        <h2>Purchase Add-Ons For Your Song</h2>
         <div className='requestdetailsaddons'>
           <div className='requestDetailsaddon'>
             <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/extraverse_hmt8jd.jpg"></img>
