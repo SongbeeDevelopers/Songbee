@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Button } from "@mui/material";
+
 function NewsletterSection() {
   return (
     <div className="main-newsletter">
@@ -7,7 +9,11 @@ function NewsletterSection() {
       <p>Sign up for  15% off your first order!</p>
       <div className="main-newsletter-input">
         <input placeholder="email address"></input>
-        <button id="main-newsletter-btn" className="main-landing-btn">Sign Up</button>
+        <Button 
+          variant="contained"
+          sx={{ height: 35, width: 90, backgroundColor: "#feaf17", color: "black" }}
+        > Sign Up
+        </Button>
       </div>
     </div>
   )
