@@ -13,7 +13,7 @@ function HowSongBeeWorks() {
   return (
     <div className="works-section">
 
-      <h2>How Songbee Works</h2>
+      <h2>How It Works</h2>
 
       <div className="works-arrows">
         <img className="arrows-one" src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714070452/Songbee/arrows_haoewn.png"/>
@@ -42,7 +42,9 @@ function HowSongBeeWorks() {
         <div className="img-three">
           {isMobile ? <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714070501/Songbee/works-mobile-3_qmanl5.png"/> : <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714070478/Songbee/img3_vrgagn.gif"/> } 
           <span>3</span>
-          <p>Enjoy your studio-quality song delivered in 7 days or less.</p>
+          <p>
+            Enjoy your studio-quality song delivered in less than a week
+          </p>
         </div>
       </div>
 
