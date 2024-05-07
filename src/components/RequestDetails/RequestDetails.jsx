@@ -157,48 +157,57 @@ function RequestDetails({ routeVariants, requestId }) {
       <div className='request-details-addon-container'>
         <h2>Purchase Add-Ons For Your Song</h2>
         <div className='requestdetailsaddons'>
-          <div className='requestDetailsaddon'>
-            <Checkbox
-              disableRipple
-              checked={addons.extra_verse}
-              onClick={() => handleCheckbox('extra_verse')}
-              sx={{ mb: -10, ml: 2, backgroundColor: '#fff4df' }} />
-            <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/extraverse_hmt8jd.jpg"></img>
-            <p>Add a Verse!</p>
-          </div>
 
-          <div className='requestDetailsaddon'>
-            <Checkbox
-              disableRipple
-              checked={addons.streaming}
-              onClick={() => handleCheckbox('streaming')}
-              sx={{ mb: -10, ml: 2, backgroundColor: '#fff4df' }} />
-            <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/addstreaming_hng5cz.jpg"></img>
-            <p>Add Streaming!</p>
-          </div>
+          {!request.extra_verse &&
+            <div className='requestDetailsaddon'>
+              <Checkbox
+                disableRipple
+                checked={addons.extra_verse}
+                onClick={() => handleCheckbox('extra_verse')}
+                sx={{position: 'absolute', mt: -2, ml: -2, backgroundColor: '#fff4df' }} />
+              <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/extraverse_hmt8jd.jpg"></img>
+              <p>Add a Verse!</p>
+            </div>
+          }
 
-          <div className='requestDetailsaddon'>
-            <Checkbox
-              disableRipple
-              checked={addons.backing_track}
-              onClick={() => handleCheckbox('backing_track')}
-              sx={{ mb: -10, ml: 2, backgroundColor: '#fff4df' }} />
-            <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/backingtrack_m94vwk.jpg"></img>
-            <p>Karaoke Version!</p>
-          </div>
+          {!request.streaming &&
+            <div className='requestDetailsaddon'>
+              <Checkbox
+                disableRipple
+                checked={addons.streaming}
+                onClick={() => handleCheckbox('streaming')}
+                sx={{position: 'absolute', mt: -2, ml: -2, backgroundColor: '#fff4df' }} />
+              <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/addstreaming_hng5cz.jpg"></img>
+              <p>Add Streaming!</p>
+            </div>
+          }
 
-          <div className='requestDetailsaddon'>
-            <Checkbox
-              disableRipple
-              checked={addons.license}
-              onClick={() => handleCheckbox('license')}
-              sx={{ mb: -10, ml: 2, backgroundColor: '#fff4df' }} />
-            <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/commerciallicense_qkxiug.jpg"></img>
-            <p>Add Licensing!</p>
-          </div>
+          {!request.backing_track &&
+            <div className='requestDetailsaddon'>
+              <Checkbox
+                disableRipple
+                checked={addons.backing_track}
+                onClick={() => handleCheckbox('backing_track')}
+                sx={{position: 'absolute', mt: -2, ml: -2, backgroundColor: '#fff4df' }} />
+              <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/backingtrack_m94vwk.jpg"></img>
+              <p>Karaoke Version!</p>
+            </div>
+          }
+
+          {!request.license &&
+            <div className='requestDetailsaddon'>
+              <Checkbox
+                disableRipple
+                checked={addons.license}
+                onClick={() => handleCheckbox('license')}
+                sx={{position: 'absolute', mt: -2, ml: -2, backgroundColor: '#fff4df' }} />
+              <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/commerciallicense_qkxiug.jpg"></img>
+              <p>Add Licensing!</p>
+            </div>
+          }
         </div>
 
-        { (addons.backing_track || addons.extra_verse || addons.license || addons.streaming) &&
+        {(addons.backing_track || addons.extra_verse || addons.license || addons.streaming) &&
           <Button variant="contained"
             onClick={purchaseAddons}
             sx={{ height: 35, width: 60, backgroundColor: "#feaf17", color: "black" }}

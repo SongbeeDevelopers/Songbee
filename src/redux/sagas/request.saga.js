@@ -56,7 +56,7 @@ function* fetchCheckout (action) {
     try {
         const stripeResponse = yield axios({
             method: "POST",
-            url: '/api/stripe',
+            url: '/api/stripe/checkout',
             data: {
                 orderDetails: action.payload.data,
                 id: action.payload.id}
