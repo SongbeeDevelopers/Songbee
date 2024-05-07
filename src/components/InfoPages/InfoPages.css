@@ -189,3 +189,10 @@ FAQ Page
     text-align: center;
     margin-top: 20px;
 }
+
+.faq-subtitle {
+    /* font-size: 0.8rem; */
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}

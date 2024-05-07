@@ -6,7 +6,7 @@ import LearningPackVideo from "./PacksVideo";
 import LearningMadeEasy from "./MadeEasy";
 import WhyFamiliesLoveUs from "./WhyFamsLoveUs";
 import FaqPage from "../InfoPages/FaqPageSbJR";
-import JrNewsletterSection from "../JrLandingPage/JrLandingSections/JrNewsletterSection";
+import JrNewsletterSection from "../JrLandingPage/JrLandingSections/9-JrNewsletterSection";
 import OtherPacks from "./OtherPacks";
 import JrFooter from "../JrFooter/JrFooter";
 

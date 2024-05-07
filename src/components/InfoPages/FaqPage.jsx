@@ -64,10 +64,6 @@ function FaqPage({ routeVariants }) {
       <div className='info'>
         <h2 className="info-title">Frequently Asked Questions</h2>
 
-        <p className="info-subtitle">
-          If you have additional questions, please reach out at{" "} <span className="suii">hello@songbee.com!</span>
-        </p>
-
         <section className="collapse-area">
           <div className="container">
             <div className="row">
@@ -85,6 +81,11 @@ function FaqPage({ routeVariants }) {
             </div>
           </div>
         </section>
+
+        <p className="faq-subtitle">
+          For support contact{" "} <span className="suii">hello@songbee.com</span>
+        </p>
+
       </div>
     </motion.div>
   );

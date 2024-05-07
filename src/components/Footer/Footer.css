@@ -3,7 +3,6 @@ footer {
   padding: 20px;
   text-align: center;
   background-color: #f3f1eb;
-  
 }
 
 .footerIcon{
@@ -16,13 +15,13 @@ footer {
   align-items: flex-start;
   margin-bottom: 40px;
   display: flex;
+  padding-left: 6%;
 }
 
 .flexColumn {
   width: 10rem;
   text-align: left;
   width: 10rem;
-  text-align: center;
   margin-left: 10px;
   margin-right: 10px;
   font-size: 14px;

@@ -1,20 +1,14 @@
 .banner {
     background-color: #feaf17;
     width: 100%;
-    margin-top: 8px;
-    height: 3.8rem;
- 
-}
-
-.banner p {
-    text-align: center;
-    padding-top: 32px;
-    padding-bottom: 14px;
-    margin: 0, 10px, 0;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.8rem;
 }
 
 .banner span {
     color: black;
     text-decoration: underline;
-   
 }
