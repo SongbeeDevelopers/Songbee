@@ -70,4 +70,45 @@ router.post('/', async (req, res) => {
       res.send(session.url);
 });
 
+router.post('/addon', async (req, res) => {
+  console.log('orderDetails:', req.body.orderDetails)
+  const order = req.body.orderDetails
+  let lineitemArray = [];
+  if (order.streaming === true){
+    lineitemArray.push({
+        price: 'price_1Ohf5YJoOrJf4ICWTcOS5hjJ',
+        quantity: 1,
+      })
+  }
+  if (order.extra_verse === true){
+    lineitemArray.push({
+        price: 'price_1P4PhlJoOrJf4ICWe3kmugcl',
+        quantity: 1,
+      })
+  }
+  if (order.license === true){
+    lineitemArray.push({
+        price: 'price_1P4PTrJoOrJf4ICWnYmIY3E7',
+        quantity: 1,
+      })
+  }
+  if (order.backing_track === true){
+    lineitemArray.push({
+        price: 'price_1P4PSZJoOrJf4ICW8C5NWDNW',
+        quantity: 1,
+      })
+  }
+  const session = await stripe.checkout.sessions.create({
+    line_items: lineitemArray,
+    mode: 'payment',
+    success_url: `https://songbee.com/#/user`,
+    cancel_url: `https://songbee.com/#/user`,
+    automatic_tax: {enabled: true},
+  });
+  console.log("sesion:", session)
+  console.log("lineItemArray:", lineitemArray);
+
+  res.send(session.url);
+});
+
 module.exports = router;
