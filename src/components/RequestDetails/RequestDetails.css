@@ -154,10 +154,7 @@ Add-ons Section
 .requestDetailsaddon {
   width: 200px;
 }
-.requestDetailsaddon img:hover {
-  transform: scale(1.2)
-}
+
 .requestDetailsaddon img {
   border-radius: 5px;
-  transition: transform 0.275s
 }

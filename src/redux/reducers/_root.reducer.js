@@ -22,6 +22,7 @@ import finalQuestions from './finalQuestions.reducer';
 import edit from './edit.reducer';
 import artistRequests from './artistRequests.reducer';
 import completedArtistRequests from './completedArtistRequests.reducer';
+import addons from './addons.reducer';
 
 
 // rootReducer is the primary reducer for our entire project
@@ -52,7 +53,8 @@ const rootReducer = combineReducers({
   finalQuestions,
   edit,
   artistRequests,
-  completedArtistRequests
+  completedArtistRequests,
+  addons,
 });
 
 export default rootReducer;

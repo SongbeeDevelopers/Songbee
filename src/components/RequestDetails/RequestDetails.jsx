@@ -10,6 +10,7 @@ import PropTypes from "prop-types";
 import {
   Box,
   Button,
+  Checkbox,
   Tab,
   Tabs,
   Typography
@@ -48,7 +49,24 @@ function RequestDetails({ routeVariants, requestId }) {
 
   // call to the store to the currentRequest reducer
   const request = useSelector((store) => store.currentRequest);
+  const addons = useSelector((store => store.addons))
 
+  // checkbox logic
+  const handleCheckbox = (key) => {
+    dispatch({
+      type: 'SET_ADDON_DATA',
+      payload: key
+    })
+  }
+  const purchaseAddons = () => {
+    dispatch({
+      type: 'FETCH_ADDON_CHECKOUT',
+      payload: {
+        data: addons,
+        id: request.id
+      }
+    })
+  }
 
   // tab structure
   const [value, setValue] = useState(0);
@@ -140,32 +158,59 @@ function RequestDetails({ routeVariants, requestId }) {
         <h2>Purchase Add-Ons For Your Song</h2>
         <div className='requestdetailsaddons'>
           <div className='requestDetailsaddon'>
+            <Checkbox
+              disableRipple
+              checked={addons.extra_verse}
+              onClick={() => handleCheckbox('extra_verse')}
+              sx={{ mb: -10, ml: 2, backgroundColor: '#fff4df' }} />
             <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/extraverse_hmt8jd.jpg"></img>
             <p>Add a Verse!</p>
           </div>
 
           <div className='requestDetailsaddon'>
+            <Checkbox
+              disableRipple
+              checked={addons.streaming}
+              onClick={() => handleCheckbox('streaming')}
+              sx={{ mb: -10, ml: 2, backgroundColor: '#fff4df' }} />
             <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/addstreaming_hng5cz.jpg"></img>
             <p>Add Streaming!</p>
           </div>
 
           <div className='requestDetailsaddon'>
+            <Checkbox
+              disableRipple
+              checked={addons.backing_track}
+              onClick={() => handleCheckbox('backing_track')}
+              sx={{ mb: -10, ml: 2, backgroundColor: '#fff4df' }} />
             <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/backingtrack_m94vwk.jpg"></img>
             <p>Karaoke Version!</p>
           </div>
 
           <div className='requestDetailsaddon'>
+            <Checkbox
+              disableRipple
+              checked={addons.license}
+              onClick={() => handleCheckbox('license')}
+              sx={{ mb: -10, ml: 2, backgroundColor: '#fff4df' }} />
             <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/commerciallicense_qkxiug.jpg"></img>
             <p>Add Licensing!</p>
           </div>
         </div>
+
+        { (addons.backing_track || addons.extra_verse || addons.license || addons.streaming) &&
+          <Button variant="contained"
+            onClick={purchaseAddons}
+            sx={{ height: 35, width: 60, backgroundColor: "#feaf17", color: "black" }}
+          > BUY
+          </Button>
+        }
       </div>
 
       <Button variant="contained"
         onClick={() => history.goBack()}
         sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
-      >
-        BACK
+      > BACK
       </Button>
 
     </motion.div>
