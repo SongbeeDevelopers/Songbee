@@ -186,7 +186,7 @@ export default function OrderPage({ routeVariants }) {
     }
     // step 5
     else if (activeStep === 4) {
-      return <AddOns handleInput={handleInput} handleClose={handleClose} open={open} />
+      return <AddOns handleInput={handleInput} handleOpen={handleOpen} handleClose={handleClose} open={open} />
     }
   };
   // ----- END FORM LOGIC -----
@@ -199,7 +199,7 @@ export default function OrderPage({ routeVariants }) {
       animate="final"
     >
       <h1>Song Request Details</h1>
-      <p>Once you provide details we can begin creating your song!</p>
+      <p>Let’s start! We will guide you through the process of creating your song so it will be seamless and perfect for you! Just fill out your information and we will begin creating your song.</p>
 
       <Box sx={{ width: "100%" }}>
 

@@ -6,7 +6,6 @@ import { Button, Checkbox } from "@mui/material";
 import "../../SongRequestPage/SongRequestPage.css";
 
 export default function Delivery({ handleInput, handleOpen }) {
-  const user = useSelector((store) => store.user);
   const requestData = useSelector((store) => store.requestData);
 
   // date logic
@@ -73,11 +72,6 @@ export default function Delivery({ handleInput, handleOpen }) {
           </div>
         </div>
       </div>
-      {!user.id && (
-        <button className="checkoutLogRegBtn" onClick={handleOpen}>
-          Login / Register
-        </button>
-      )}
     </form>
   );
 }

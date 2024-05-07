@@ -15,9 +15,10 @@ import {
 import '../../SongRequestPage/SongRequestPage.css'
 
 
-export default function AddOns({ handleInput, handleClose, open }) {
+export default function AddOns({ handleInput, handleOpen, handleClose, open }) {
 
   const requestData = useSelector((store) => store.requestData);
+  const user = useSelector((store) => store.user);
 
   const handleClick = (value) => {
     if (value === 'streaming'){
@@ -143,6 +144,11 @@ export default function AddOns({ handleInput, handleClose, open }) {
             <FormControlLabel required control={<Checkbox />} />
             
           </FormGroup>
+          {!user.id && (
+        <button className="checkoutLogRegBtn" onClick={handleOpen}>
+          Login / Register
+        </button>
+      )}
           <Modal
             open={open}
             onClose={handleClose}
