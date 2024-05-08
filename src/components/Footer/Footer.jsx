@@ -18,7 +18,6 @@ function Footer() {
         </div>
         <div className='flexColumn'>
           <p className='columnHeader'>Songs</p>
-          <a href='/#/order'>Start Your Song</a>
           <a href='/#/guarantee'>Songbee Guarantee</a>
           <a href='/#/privacy'>Privacy Policy</a>
           <a href='/#/terms'>Terms and Conditions</a>
