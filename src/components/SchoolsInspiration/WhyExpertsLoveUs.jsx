@@ -45,17 +45,6 @@ function WhyExpertsLoveUs() {
               </p>
           </div>
         </div>
-
-        <div className="expert-card">
-          <div className="card-contents">
-            <h3>Example Name</h3>
-            <span>Education Specialist</span>
-            <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714072113/Songbee/si-bottom-stars_f2asun.webp" alt="" />
-            <p>
-              "SongBee is the best! SongBee is the best! SongBee is the best!"{" "}
-              </p>
-          </div>
-        </div>
       </div>
       <img className="yellowLine" src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076677/Songbee/YellowLine_kbce6u.png" alt="" />
     </div>
