@@ -19,7 +19,7 @@ function BeeSmart() {
           <div className="bs-rightImage">
             <img src="public/junior/beeSmart/beeSmartHand.png" alt="" />
           </div>
-          <p>Motivates children to participate and engage. </p>
+          <p> Motiviates children to participate and engage. </p>
         </div>
 
         <div className="bs-rightCard">
