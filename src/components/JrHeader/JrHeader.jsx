@@ -69,10 +69,27 @@ function JrHeader() {
         <Link to="/songbeejr"><img className="jr-nav-title" src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076598/Songbee/jr-logo_f9dxxu.png" /></Link>
       </div>
       
+      <div className="nav-right">
+      {!isMobile && user.id && user.class === 3 &&
+            <> <Link to="/admin" className="nav-links">Admin</Link> | </>
+          }
+
+          {!isMobile && user.id && user.class > 1 &&
+            <> <Link to="/artist" className="nav-links">Artist</Link> | </>
+          }
+
+          {!isMobile && user.id && 
+            <> <Link to="/user" className="nav-links">Account</Link> | </>
+          }
+
+          {!isMobile &&
+            <> <Link to="/faq" className="nav-links">FAQ</Link> | </>
+          }
       <div className="jr-nav-right">
         <button className="jr-landing-btn">
           Get Started
         </button>
+        </div>
 
         {/* login/logout */}
         <Link to="/login"
