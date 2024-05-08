@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 import LearningPackVideo from "./PacksVideo";
 import LearningMadeEasy from "./MadeEasy";
 import WhyFamiliesLoveUs from "./WhyFamsLoveUs";
-import FaqPage from "../InfoPages/FaqPageSbJR";
 import JrNewsletterSection from "../JrLandingPage/JrLandingSections/JrNewsletterSection";
 import OtherPacks from "./OtherPacks";
 import JrFooter from "../JrFooter/JrFooter";
+import ViewFaq from "./ViewFaq";
 
 function LearningPackView({ routeVariants }) {
   const { slug } = useParams();
@@ -51,9 +51,8 @@ function LearningPackView({ routeVariants }) {
       <LearningPackVideo />
       <LearningMadeEasy/>
       <WhyFamiliesLoveUs/>
+      <ViewFaq/>
      <OtherPacks/>
-     <FaqPage/>
-     <JrNewsletterSection/>
      <JrFooter/>
     </motion.div>
   );

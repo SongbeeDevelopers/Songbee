@@ -8,7 +8,8 @@ import PlayToLearn from "./PlayToLearn";
 import FaqPage from "../InfoPages/FaqPageSbJR";
 import JrNewsletterSection from "../JrLandingPage/JrLandingSections/JrNewsletterSection";
 import JrFooter from "../JrFooter/JrFooter";
-
+import PacksFaq from "./PacksFaq";
+import LearningPackVideo from "../LearningPackView/PacksVideo";
 function LearningPacksPage({ routeVariants }) {
   return (
     <motion.div
@@ -48,8 +49,7 @@ function LearningPacksPage({ routeVariants }) {
 
       <Packs />
       <PlayToLearn/>
-      <FaqPage/>
-      <JrNewsletterSection/>
+     <PacksFaq/>
       <JrFooter/>
     </motion.div>
   );
