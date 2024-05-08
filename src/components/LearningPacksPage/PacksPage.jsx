@@ -5,11 +5,8 @@ import Packs from "./Packs";
 import LearningpacksHero from "./PacksHero";
 import { Link } from "react-router-dom";
 import PlayToLearn from "./PlayToLearn";
-import FaqPage from "../InfoPages/FaqPageSbJR";
-import JrNewsletterSection from "../JrLandingPage/JrLandingSections/9-JrNewsletterSection";
 import JrFooter from "../JrFooter/JrFooter";
 import PacksFaq from "./PacksFaq";
-import LearningPackVideo from "../LearningPackView/PacksVideo";
 function LearningPacksPage({ routeVariants }) {
   return (
     <motion.div

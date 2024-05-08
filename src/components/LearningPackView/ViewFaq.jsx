@@ -1,6 +1,5 @@
 import React from "react";
 import { Question } from "../JrFaq.jsx/JrFaq";
-import JrNewsletterSection from "../JrLandingPage/JrLandingSections/JrNewsletterSection";
 
 
 function ViewFaq() {

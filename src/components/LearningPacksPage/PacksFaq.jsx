@@ -1,6 +1,6 @@
 import React from "react";
 import { Question } from "../JrFaq.jsx/JrFaq";
-import JrNewsletterSection from "../JrLandingPage/JrLandingSections/JrNewsletterSection";
+import JrNewsletterSection from "../JrLandingPage/JrLandingSections/9-JrNewsletterSection";
 
 function PacksFaq() {
   const questions = [
