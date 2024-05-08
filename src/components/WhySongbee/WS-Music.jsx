@@ -5,19 +5,15 @@ function WsMusic() {
   return (
     <div className="ws-music">
       <div className="ws-left">
-        <h2>How do I use <span className="highlight">music</span> in everyday classes?</h2>
+        <h2>How do I use <span className="highlight">music</span> as a teaching tool?</h2>
         <button className="jr-landing-btn">Contact Us</button>
       </div>
       <div className="ws-right">
         <p>
-          Music is a tried and true learning tool that helps with memory
-          retention and entices children to participate and engage in class.
+        Music is a tried and true learning tool that helps with memory retention and entices children to participate and engage. 
         </p>
         <p>
-          Created with experts, we have music-based learning program that allows
-          teachers to use and teach through our learning songs. Students are
-          inspired to actively listen and engage as a supplemental tool in
-          academia, counseling sessions, after school programs, and much more.{" "}
+        Created with experts, our music-based learning programs aid teachers to better improve behavior and the learning process. Students are inspired to actively listen and engage as a supplemental tool in academia, counseling sessions, after school programs, and much more. 
         </p>
       </div>
     </div>

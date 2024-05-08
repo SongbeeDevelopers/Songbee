@@ -222,6 +222,7 @@ How Jr Works
   width: 30%;
   display: flex;
   flex-direction: column;
+
 }
 
 /* includes number and text for item */
@@ -231,7 +232,7 @@ How Jr Works
   align-items: top;
   gap: 10px;
 }
-.jr-works-item-header h3 {
+.-header h3 {
   margin-top: 10px;
   margin-bottom: 0px;
   width: 150px;
@@ -529,16 +530,21 @@ Newsletter
 -------------------------------------------------------------------------------- */
 
 .jr-newsletter {
-  width: 60%;
+  width: max-content;
   margin: auto;
-  padding-left: 10%;
+  padding-left: 0;
   margin-top: 50px;
-  margin-bottom: -80px;
+  margin-bottom: 80px !important;
   padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+
 }
 .jr-newsletter h2 {
   font-size: 36px;
   margin-bottom: 0;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 .jr-newsletter p {
   margin-left: 25px;
@@ -559,4 +565,10 @@ Newsletter
   font-size: medium;
   display: inline;
   margin-left: 25px;
+}
+
+.newsletter-input-button{
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
