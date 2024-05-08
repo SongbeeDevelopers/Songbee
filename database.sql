@@ -114,10 +114,12 @@ CREATE TABLE "jr_request" (
 
 CREATE TABLE "subscription" (
   "id" SERIAL PRIMARY KEY,
-  "artist_id" integer REFERENCES "artist",
-  "request_id" integer REFERENCES "jr_request",
-  "song_count" INT,
-  "is_complete" BOOLEAN DEFAULT FALSE
+  "pack_id" integer REFERENCES "learning-packs",
+  "age" TIMESTAMPTZ,
+  "name" VARCHAR,
+  "pronunciation" VARCHAR,
+  "is_active" BOOLEAN DEFAULT FALSE,
+  "created_at" TIMESTAMPTZ DEFAULT NOW(),
 );
 
 CREATE TABLE "subscription_song_details" (
@@ -275,5 +277,26 @@ CREATE TABLE "pendingartistedit" (
   "edited_vocal_type" VARCHAR(100),
   "edited_genre_id" INTEGER REFERENCES "genres"(id),
   "created_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE "learning_packs" (
+  "id" SERIAL PRIMARY KEY,
+  "title" VARCHAR (250),
+  "description" VARCHAR,
+  "min_age" integer,
+  "max_age" integer,
+  "song1" VARCHAR,
+  "song2" VARCHAR,
+  "song3" VARCHAR,
+  "song4" VARCHAR,
+  "song5" VARCHAR,
+  "song6" VARCHAR,
+  "song7" VARCHAR,
+  "song8" VARCHAR,
+  "song9" VARCHAR,
+  "song10" VARCHAR,
+  "song11" VARCHAR,
+  "song12" VARCHAR,
+  "song13" VARCHAR
 );
    
