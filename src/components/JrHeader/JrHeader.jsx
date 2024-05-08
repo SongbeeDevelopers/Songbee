@@ -58,15 +58,15 @@ function JrHeader() {
     <div className="jr-nav">
 
       <div className="jr-nav-left">
-        <Link to="/" className="jr-nav-links">Shop</Link>
+        <Link to="/learning-packsrt" className="jr-nav-links">Shop</Link>
         |
         <Link to="/" className="jr-nav-links">Gifting</Link>
         |
-        <Link to="/" className="jr-nav-links">Schools & Groups</Link>
+        <Link to="/schools-inspiration" className="jr-nav-links">Schools & Groups</Link>
       </div>
 
       <div className="jr-nav-center">
-        <Link to="/home"><img className="jr-nav-title" src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076598/Songbee/jr-logo_f9dxxu.png" /></Link>
+        <Link to="/songbeejr"><img className="jr-nav-title" src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076598/Songbee/jr-logo_f9dxxu.png" /></Link>
       </div>
       
       <div className="jr-nav-right">
