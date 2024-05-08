@@ -5,6 +5,7 @@ import Step from '@mui/material/Step';
 import StepButton from '@mui/material/StepButton';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { DateTimePicker } from '@mui/x-date-pickers';
 
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -56,6 +57,7 @@ export default function JrCheckoutPage({ routeVariants }) {
           <div className='reqFormInput'>
             <label>How old is your child?</label>
             <div className='reqFormGroup'>
+            <DateTimePicker label="Child's Birthday"/>
             <input 
               value={requestData.requester}
               className='reqFormInput'
