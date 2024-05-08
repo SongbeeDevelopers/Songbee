@@ -9,10 +9,12 @@
     font-weight: 600;
     font-size: 2rem;
     color: black;
+    margin: 20px;
 }
 
 .reqFormPage h2 {
     margin-bottom: 0;
+    margin-top: 0;
 }
 
 .reqFormPage h4 {
@@ -58,9 +60,9 @@ and dropdown in Songbee JR */
 .reqFormGroup3 {
     display: flex;
     gap: 30px;
-    justify-content: center;
-    
+    justify-content: center;   
 }
+
 .reqFormSelect2 {
     margin-left: 20px;
     margin-top: -90px;
@@ -72,6 +74,10 @@ and dropdown in Songbee JR */
 .reqFormGroup label {
     font-weight: 500;
     
+}
+.reqFormGroup3 label {
+    font-weight: 500;
+
 }
 
 .reqFormGroup input {
@@ -153,4 +159,107 @@ and dropdown in Songbee JR */
 
 #additionalDetailsHeader {
     margin-bottom: 20px;
+}
+
+.select-artist-container  {
+    width: 600px;
+    height: 250px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .select-artist-card {
+    display: flex;
+    flex-flow: row;
+    gap: 20px;
+    text-align: center;
+  }
+  
+  .select-artistSlide-img {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    /* display: inline-block; */
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .select-player-container  {
+    cursor: pointer;
+    text-indent: -999999px;
+    height: 50px;
+    width: 50px;
+    padding: 12px 18px;
+    z-index: 2;
+    
+      background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMiAyNHYtMjRsMjAgMTItMjAgMTJ6Ii8+PC9zdmc+);
+      background-repeat: no-repeat!important;
+      background-position: absolute;
+      border-radius: 50%;
+      margin-top: 150px;
+      margin-left: -350px;
+     
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size: 25px;
+    background-color: rgba(238, 237, 235, 0.977);
+  }
+
+  .select-player-container:hover {
+    background-color: orange;
+  }
+  .play {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMiAyNHYtMjRsMjAgMTItMjAgMTJ6Ii8+PC9zdmc+);
+    
+  }
+  .pause {
+     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTAgMjRoLTZ2LTI0aDZ2MjR6bTEwLTI0aC02djI0aDZ2LTI0eiIvPjwvc3ZnPg==)!important;
+  }
+
+  .addOnDisplay {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.requestDetailsaddon2 {
+    width: 300px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+
+.calendar-img {
+    width: 150px;
+    height: 150px;
+}
+
+.calendar-img-div {
+    position: relative;
+    text-align: center;
+    width: 150px; 
+    height: 150px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.calendar-txt {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.reqFormDays {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+   
+}
+
+.reqFormGroup4 {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
 }

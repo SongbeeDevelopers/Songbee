@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { useParams, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import AudioButton from "../JoinArtistPage/AudioButton";
@@ -11,30 +11,31 @@ function ArtistBioPage() {
 
 const { id } = useParams();
 const dispatch = useDispatch();
+const history = useHistory();
 
-let artist
-if (id){
-    artist = useSelector(store => store.currentArtist);
-}
-else {
-    artist = useSelector((store) => store.artistProfile);
-}
+useEffect(() => {
+        dispatch({
+            type: 'FETCH_CURRENT_ARTIST',
+            payload: id})
+      }, [id])
+
+const artist = useSelector(store => store.currentArtist);
+const requestData = useSelector((store) => store.requestData);
+
 const artistGenre = useSelector(store => store.fetchGenres);
 console.log("id", id)
 
+console.log("artist", artist)
 
+const handleArtist =(e) => {
+  e.preventDefault();
+  history.push('/order');
 
-if (id){
-useEffect(() => {
-    dispatch({
-        type: 'FETCH_CURRENT_ARTIST',
-        payload: id})
-  }, [id])
+  dispatch({
+    type: "SET_REQUEST_DATA",
+    payload: { ...requestData, artist: artist.id},
+  });
 }
-
-  console.log("artist", artist)
-
-
   
 
     return artist ?(
@@ -45,7 +46,6 @@ useEffect(() => {
            <div className="nameHeader">
                <h2>{artist && artist.name}</h2>
                <h4 className="location">{artist.location}</h4>
-               {/* <p className="subHeader">Pop, Hip hop</p>  */}
                <div className="socialLinks">
                 <div className="instagram">
                    <a href={artist.instagram_link} >
@@ -62,8 +62,8 @@ useEffect(() => {
                    <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714071878/Songbee/artist-website_s1wuuu.png" alt="Artist Website" />
                 </a>
                 </div>
-               <div className="community-button">
-                   <Link to="/artist-process">Start a song with me</Link>
+               <div onClick={handleArtist}>
+                 <button className="community-button"> Start a song with me</button>
                </div>
             </div> 
            </div>
@@ -71,7 +71,6 @@ useEffect(() => {
          </div>
         </div>
         <div className="songListWrapper">
-       <div className="songTable">
            <div className="tableHeader">
                <div className="headerItem"> 
                    <div className="title">
@@ -95,11 +94,11 @@ useEffect(() => {
 
                    <div className="audioFiles" key={index}> 
                    <div className="songTitles">
-                    <p>{songTitle}</p>
-                    
-                    <AudioButton url={sampleSong} />
+                    <h3>{songTitle}</h3>
+                      <div className="artistCommunityBtns">
+                        <AudioButton url={sampleSong} />
                        {console.log('Logging sampleSong:', sampleSong)}
-                    
+                      </div>
                    </div>
                    <div className="genres">
                        {artist.genres.map((genre) => (
@@ -113,7 +112,6 @@ useEffect(() => {
                 
                </div>
            </div>
-       </div>
    </div>
         
      </>

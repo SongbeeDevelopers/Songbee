@@ -1,12 +1,14 @@
 import * as React from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+// mui imports
+import { Button, MobileStepper} from "@mui/material"
 import { useTheme } from "@mui/material/styles";
-import MobileStepper from "@mui/material/MobileStepper";
-import Button from "@mui/material/Button";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 
-import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import '../../SongRequestPage/SongRequestPage.css'
+
 
 export default function LetsGetStarted() {
   const dispatch = useDispatch();
@@ -33,7 +35,6 @@ export default function LetsGetStarted() {
   const startedSteps = () => {
     if (activeStep === 0) {
       return (
-        <>
           <div className="reqFormGroup">
             <div className="reqFormInput">
               <label>Who is Creating the Song?</label>
@@ -45,12 +46,10 @@ export default function LetsGetStarted() {
               ></input>
             </div>
           </div>
-        </>
       );
     }
     if (activeStep === 1) {
       return (
-        <>
           <div className="reqFormGroup">
             <div className="reqFormInput">
               <label>Is this song for a Special Occasion?</label>
@@ -62,12 +61,10 @@ export default function LetsGetStarted() {
               ></input>
             </div>
           </div>
-        </>
       );
     }
     if (activeStep === 2) {
       return (
-        <>
           <div className="reqFormGroup">
             <div className="reqFormInput">
               <label>Who is this Song For?</label>
@@ -92,12 +89,10 @@ export default function LetsGetStarted() {
               </div>
             </div>
           </div>
-        </>
       );
     }
     if (activeStep === 3) {
       return (
-        <>
           <div className="reqFormGroup">
             <div className="reqFormInput">
               <label>What is your relationship with this person?</label>
@@ -111,12 +106,10 @@ export default function LetsGetStarted() {
               ></input>
             </div>
           </div>
-        </>
       );
     }
     if (activeStep === 4) {
       return (
-        <>
           <div className="reqFormGroup">
             <div className="reqFormInput">
               <label>What inspired your song?</label>
@@ -128,13 +121,18 @@ export default function LetsGetStarted() {
               ></input>
             </div>
           </div>
-        </>
+      );
+    }
+    if (activeStep === 5) {
+      return (
+          <div className="reqFormGroup">
+            <h3>Click Next</h3>
+          </div>
       );
     }
   };
-
+  
   return (
-    <>
       <div className="startedBox">
         {startedSteps()}
         <MobileStepper
@@ -142,14 +140,17 @@ export default function LetsGetStarted() {
           steps={5}
           position="static"
           activeStep={activeStep}
-          sx={{ m: "auto", maxWidth: 400, flexGrow: 1, mt: 6 }}
+          sx={{ m: "auto", maxWidth: 400, flexGrow: 1, mt: 6, backgroundColor: '#fff4df' }}
           nextButton={
             <Button
               size="small"
               onClick={handleNext}
               disabled={activeStep === 5}
-            >
-              Next
+            >{ activeStep === 5 ?
+              "Finished"
+              :
+              `Step ${activeStep + 1}`
+            }
               {theme.direction === "rtl" ? (
                 <KeyboardArrowLeft />
               ) : (
@@ -173,6 +174,5 @@ export default function LetsGetStarted() {
           }
         />
       </div>
-    </>
   );
 }

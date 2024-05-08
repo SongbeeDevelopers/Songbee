@@ -1,15 +1,15 @@
-footer {
+ .footer {
     margin-top: 80px;
     padding: 20px;
     text-align: center;
     background-color: #f3f1eb;
   }
   
-  .footerIcon{
+  .footerIcon {
     width: 9rem;
   }
   
-  .flexContainer{
+  .jrFlexContainer {
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
@@ -17,7 +17,7 @@ footer {
     display: flex;
   }
   
-  .flexColumn {
+  .jrFlexColumn {
     width: 10rem;
     text-align: center;
     margin-left: 10px;
@@ -26,7 +26,7 @@ footer {
     line-height: 20px;
   }
   
-  .columnHeader {
+  .jrColumnHeader {
     margin-bottom: 10px;
     font-family: Poppins, sans-serif;
     font-size: 1rem;
@@ -34,7 +34,7 @@ footer {
     color: #333;
   }
   
-  .flexColumn a {
+  .jrFlexColumn a {
     display: block;
     color: #feaf17;
     font-size: 14px;

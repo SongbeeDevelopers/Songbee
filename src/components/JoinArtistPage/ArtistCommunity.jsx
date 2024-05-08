@@ -4,9 +4,6 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import AudioButton from './AudioButton';
 
-import FaqArtistPage from '../InfoPages/FaqArtistPage';
-
-
 
 import "./JoinArtistPage.css";
 
@@ -32,10 +29,9 @@ function ArtistCommunity() {
 
 
   return (
-    
+   
     artistCommunity &&
-    <div className="artist-community">
-      <div className="artist-left">
+    <div className="communityPage">
         <div className="community-heading">
           <h2>Welcome to <span className="bee-color">Songbee</span></h2> <h3>Our Artist Community</h3>
         </div>
@@ -43,31 +39,19 @@ function ArtistCommunity() {
           Pick from one of our artists to record a custom made song just for you!
         </h3>
         <div className="artist-container">
-          <div className="artist-slider">
-            <div className="artist-slide">
               <div className="artist-card">
                {artistCommunity.map((artist, i) => (
                 <><img className="artistSlide-img" key={i} onClick={() => history.push(`/ArtistBioPage/${artist.id}`)}
-                   src={artist.photo} alt="Artist photos" />
-                   
+                   src={artist.photo} alt="Artist photos" />   
                    <div className="artistCommunityBtn">
-                   <AudioButton  url={artist.sample_song_1} /> 
+                     <AudioButton  url={artist.sample_song_1} /> 
                    </div>
-                   </>
-                  
+                   </>        
                              
                ))}  
-  
-                </div>
-          </div>
-         </div>
-  
-        </div>
-        <div className="faq-section">
-         <FaqArtistPage />
-        </div>
-      </div>
-    </div>  
+              </div>     
+        </div> 
+   </div>
     
     );
     

@@ -9,12 +9,12 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Typography from "@mui/material/Typography";
 
 
-function AdminDetailsDialog({ handleClose }) {
-
-  const song = useSelector(store => store.currentRequest);
+function AdminDetailsDialog({ setDetailsOpen }) {
+ 
+  const song = useSelector(store => store.edit);
 
   const cancelSubmission = () => {
-    handleClose(1)
+    setDetailsOpen(false)
   };
 
   return (

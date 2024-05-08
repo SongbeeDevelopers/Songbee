@@ -4,24 +4,28 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 // form steps
-import LetsGetStarted from "./OrderFormSteps/LetsGetStarted";
-import SongSpecifications from "./OrderFormSteps/SongSpecifications";
-import SelectYourArtist from "./OrderFormSteps/SelectYourArtist";
-import Delivery from "./OrderFormSteps/Delivery";
-import AddOns from "./OrderFormSteps/AddOns";
+import LetsGetStarted from "./OrderFormSteps/1-LetsGetStarted";
+import SongSpecifications from "./OrderFormSteps/2-SongSpecifications";
+import SelectYourArtist from "./OrderFormSteps/3-SelectYourArtist";
+import Delivery from "./OrderFormSteps/4-Delivery";
+import AddOns from "./OrderFormSteps/5-AddOns";
 
+// mui imports
+import {
+  Box,
+  Button,
+  Step,
+  StepButton,
+  Stepper,
+  Typography
+} from "@mui/material"
 
-import Box from "@mui/material/Box";
-import Stepper from "@mui/material/Stepper";
-import Step from "@mui/material/Step";
-import StepButton from "@mui/material/StepButton";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-
+// style imports
 import { motion } from "framer-motion";
 import Swal from "sweetalert2";
+import '../SongRequestPage/SongRequestPage.css'
 
-
+// steps
 const steps = [
   "Let's Get Started!",
   "Song Specfications",
@@ -36,13 +40,10 @@ export default function OrderPage({ routeVariants }) {
   // hooks
   const dispatch = useDispatch();
   const history = useHistory();
-  const { id } = useParams();
 
   // reducers
-  const genres = useSelector((store) => store.genres);
   const requestData = useSelector((store) => store.requestData);
   const user = useSelector((store) => store.user);
-  const newOrder = useSelector((store) => store.newOrder);
 
   // modal logic
   const [open, setOpen] = useState(false);
@@ -57,47 +58,13 @@ export default function OrderPage({ routeVariants }) {
     dispatch({ type: "FETCH_ALL_ARTISTS" })
   }, []);
 
-  // submit function
-  const submitOrder = (e) => {
-    e.preventDefault();
-    if (
-      newOrder.delivery_days &&
-      newOrder.streaming &&
-      newOrder.extra_verse &&
-      user.id
-    ) {
-      Swal.fire({
-        title: "Continue with selections?",
-        showCancelButton: true,
-        confirmButtonText: "Checkout",
-        icon: "question",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          dispatch({
-            type: "FETCH_CHECKOUT",
-            payload: { data: newOrder },
-          });
-        }
-      });
-    } else {
-      Swal.fire({
-        title: "Please Select All Three Options and log in.",
-        icon: "error",
-      });
-    }
-  };
-
-
-  let artistId
+  // inputs directly affect reducer
   const handleInput = (key, value) => {
-    event.preventDefault();
-    if (key === "artist") {
-      console.log("artistId before", artistId)
+    if (key === "artist" && value > 0) {
       dispatch({
         type: "FETCH_CURRENT_ARTIST",
         payload: value
       })
-      console.log("artistId after", artistId)
     }
     dispatch({
       type: "SET_REQUEST_DATA",
@@ -115,19 +82,13 @@ export default function OrderPage({ routeVariants }) {
     });
   }
 
-
-
   // ----- FORM LOGIC -----
-
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState({});
 
   const totalSteps = () => { return steps.length };
-
   const completedSteps = () => { return Object.keys(completed).length };
-
   const isLastStep = () => { return activeStep === totalSteps() - 1 };
-
   const allStepsCompleted = () => { return completedSteps() === totalSteps() };
 
   const handleNext = () => {
@@ -149,7 +110,6 @@ export default function OrderPage({ routeVariants }) {
   };
 
   const handleComplete = (event) => {
-    event.preventDefault();
     const newCompleted = completed;
     newCompleted[activeStep] = true;
     setCompleted(newCompleted);
@@ -164,8 +124,6 @@ export default function OrderPage({ routeVariants }) {
       requestData.tempo &&
       requestData.inspiration &&
       requestData.delivery_days &&
-      requestData.streaming &&
-      requestData.extra_verse &&
       user.id &&
       allStepsCompleted()
     ) {
@@ -182,20 +140,21 @@ export default function OrderPage({ routeVariants }) {
       });
     } else if (allStepsCompleted()) {
       Swal.fire({
-        title: "Submit?",
-        text: "You have left important details blank. Do you want to submit anyways?",
+        title: "Cannot complete request!",
+        text: "You have left important details blank, please go back and make sure you have filled out all information",
         icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Submit",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire({
-            title: "Submitted!",
-            icon: "success",
-          });
-          dispatchDetails();
-        }
-      });
+        showCancelButton: false,
+        confirmButtonText: "Back",
+      })
+      // .then((result) => {
+      //   if (result.isConfirmed) {
+      //     Swal.fire({
+      //       title: "Submitted!",
+      //       icon: "success",
+      //     });
+      //     dispatchDetails();
+      //   }
+      // });
     }
   };
 
@@ -228,7 +187,7 @@ export default function OrderPage({ routeVariants }) {
     }
     // step 5
     else if (activeStep === 4) {
-      return <AddOns handleInput={handleInput} handleClose={handleClose} open={open} />
+      return <AddOns handleInput={handleInput} handleOpen={handleOpen} handleClose={handleClose} open={open} />
     }
   };
   // ----- END FORM LOGIC -----
@@ -241,7 +200,7 @@ export default function OrderPage({ routeVariants }) {
       animate="final"
     >
       <h1>Song Request Details</h1>
-      <p>Once you provide details we can begin creating your song!</p>
+      <p>Let’s start! We will guide you through the process of creating your song so it will be seamless and perfect for you! Just fill out your information and we will begin creating your song.</p>
 
       <Box sx={{ width: "100%" }}>
 
@@ -287,9 +246,9 @@ export default function OrderPage({ routeVariants }) {
                 > NEXT
                 </Button>
                 {completedSteps() === totalSteps() - 1 ?
-                  <button onClick={handleComplete} className="user-portal-details-btn">
+                  <Button onClick={handleComplete} sx={{ ml: 2, height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}>
                     Finish
-                  </button>
+                  </Button>
                   : ""
                 }
               </Box>

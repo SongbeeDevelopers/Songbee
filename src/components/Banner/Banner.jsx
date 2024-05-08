@@ -9,7 +9,7 @@ function Banner() {
     return (
         <div className="banner">
             <p>
-                New! For educational materials, see <Link to="/songbeejr"><span>www.songbeejr.com</span></Link>
+                New! Learning Packs with <Link to="/songbeejr"><span>www.songbeejr.com</span></Link>
             </p>
         </div>
     )

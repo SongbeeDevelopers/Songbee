@@ -2,6 +2,10 @@
 General
 -------------------------------------------------------------------------------- */
 
+#hero-container {
+  margin-top: 25px;
+}
+
 .guarantee-inner-bg h2,
 .works-section h2,
 .sample-songs h2,
@@ -279,6 +283,74 @@ Sample Songs Section
 }
 
 /* --------------------------------------------------------------------------------
+Occasions Section
+-------------------------------------------------------------------------------- */
+
+.occasions {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 75px;
+  padding: 0px 30px 45px 30px;
+  border-radius: 25px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+}
+
+.occasions h2 {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.occasionSlides {
+  width: 100%;
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  margin-top: 30px;
+}
+
+.active-occasion {
+  min-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 0 7%;
+  scroll-snap-align: start;
+}
+
+.active-occasion-single {
+  min-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0 7%;
+  scroll-snap-align: start;
+}
+
+.active-occasion, .active-occasion-single h3 {
+  font-size: 25px;
+  text-align: center;
+}
+
+.active-occasionOne,
+.active-occasionTwo,
+.active-occasionThree {
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 33%;
+height: 100%;
+}
+
+.occasion-img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+/* --------------------------------------------------------------------------------
 Guarantee Section
 -------------------------------------------------------------------------------- */
 
@@ -351,6 +423,61 @@ Guarantee Section
 .guarantee-link {
   color: #feaf17;
   font-weight: bold;
+}
+
+/* --------------------------------------------------------------------------------
+Newsletter
+-------------------------------------------------------------------------------- */
+
+.main-newsletter {
+  width: 60%;
+  margin: auto;
+}
+.main-newsletter h2 {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 600;
+}
+.main-newsletter p {
+  text-align: center;
+}
+.main-newsletter input {
+  height: 40px;
+  width: 350px;
+  border-radius: 15px;
+  padding-left: 20px;
+  background-color: white;
+  border: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.main-landing-btn {
+  position: relative;
+  display: flex;
+  width: 5rem;
+  height: 3rem;
+  background-color: #feaf17;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  font-family: Poppins, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  transition: background-color 0.45s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border: 0;
+  outline: 0;
+  z-index: 2;
+}
+
+.main-newsletter-input {
+  margin-top: 25px;
+  gap: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 

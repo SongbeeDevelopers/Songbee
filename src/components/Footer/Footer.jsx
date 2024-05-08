@@ -25,9 +25,9 @@ function Footer() {
 
         <div className='flexColumn'>
           <p className='columnHeader'>For Artists</p>
-          <a href='/#/artist-community'>Artist Community</a>
+          <a href='/#/artist-process'>Artist Community</a>
           <a href='/#/join-artist'>Artist Application</a>
-          <a href='/#/artistaccount'>Artist Account</a>
+          <a href='/#/artist'>Artist Account</a>
         </div>
         
       </div>

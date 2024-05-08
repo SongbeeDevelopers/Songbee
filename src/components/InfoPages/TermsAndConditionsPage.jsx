@@ -14,25 +14,27 @@ function TermsAndConditions({ routeVariants }) {
       initial="initial"
       animate="final"
     >
-      <h1 className='termsHeader'>Terms and Conditions</h1>
+      <div className='info'>
 
-      {terms.map((item) => (
-        <div key={terms.indexOf(item)}>
-          <h2>{item.title}</h2>
-          <p>{item.details}</p>
-        </div>
-      ))}
+        <h1 className='info-title'>Terms and Conditions</h1>
 
-      <h2 className='termsSubHeader'>Contact Us </h2>
+        {terms.map((item) => (
+          <div key={terms.indexOf(item)}>
+            <h2 className='info-section-header'>{item.title}</h2>
+            <p>{item.details}</p>
+          </div>
+        ))}
 
-      <p className='termsText'>
-        Songbee welcomes your questions or comments regarding the Terms: <br/>
-        Songbee, LLC <br/>
-        Virginia <br/>
-        Email Address: hello@songbee.com<br/><br/>
-        Effective as of Aug 01, 2023 
-      </p>
+        <h2 className='info-section-header'>Contact Us</h2>
+        <p className='info-contact'>
+        <p>Songbee welcomes your questions or comments regarding the Terms:</p>
+          Songbee, LLC <br/>
+          Virginia <br/>
+          <a href="mailto:hello@songbee.com" className="mail-guarantee">hello@songbee.com</a> <br/><br/>
+          Effective as of Aug 01 2021
+        </p>
 
+      </div>
     </motion.div>
   );
 }

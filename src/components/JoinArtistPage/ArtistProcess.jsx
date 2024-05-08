@@ -1,13 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";  
 
+import FaqArtistPage from '../InfoPages/FaqArtistPage';
+
 import "./JoinArtistPage.css";
 
 function ArtistProcess() {
 
   return (
 
-    <div className="artist-process">
+    <><div className="artist-process">
       <div className="process-top">
         <h2>What is the process?</h2>
         <div className="process-cards">
@@ -56,12 +58,14 @@ function ArtistProcess() {
             starving artist days and put your artistry to work. Make a real
             income while you gain a fanbase and promote your music.
           </p>
-<div className="process-bottom-button">
-          <Link to="/join-artist">Apply Now</Link>
+          <div className="process-bottom-button">
+            <Link to="/join-artist">Apply Now</Link>
           </div>
         </div>
       </div>
-    </div>
+    </div><div className="faq-section">
+        <FaqArtistPage />
+      </div></>
   );
 }
 

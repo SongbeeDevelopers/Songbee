@@ -1,19 +1,24 @@
 import React from "react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useLocation, Link, useHistory } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 
-import IconButton from "@mui/material/IconButton";
+import LearningPacksHeader from "./LearningPacksHeader";
+import StartSongButton from "../StartSongButton/StartSongButton"
+
+import {
+  Button,
+  IconButton,
+  Menu,
+  MenuItem,
+} from "@mui/material"
+
 import MenuIcon from "@mui/icons-material/Menu";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import { useLocation } from "react-router-dom";
+
 import Swal from "sweetalert2";
 
 import "./Header.css";
-import LearningPacksHeader from "./LearningPacksHeader";
 
 function Header() {
   const location = useLocation();
@@ -69,6 +74,7 @@ function Header() {
           <Link to="/artists" className="nav-links">Artists</Link>
         </div>
 
+       
         <div className="nav-right">
         
           {!isMobile && user.id && user.class === 3 &&
@@ -86,6 +92,7 @@ function Header() {
           {!isMobile &&
             <> <Link to="/faq" className="nav-links">FAQ</Link> | </>
           }
+
 
           {/* login/logout */}
           <Link to="/login"
@@ -109,6 +116,10 @@ function Header() {
           >
              {user?.id ? "Logout" : "Login"}
           </Link>
+
+          {!isMobile &&
+            <> <Link to="/order" className="start-your-song">Start your song</Link> </>
+          }
 
           {/* admin, profile, FAQ */}
 

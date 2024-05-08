@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import FilterBar from '../../FilterBar/FilterBar';
 import AdminDetailsDialog from "../../ArtistRequests/AdminDetailsDialog";
 import AdminCompleteDialog from "../../AdminPortal/AdminPortalTabs/AdminPortalDialogs/AdminCompleteDialog";
+import RequestDetails from "../../RequestDetails/RequestDetails";
+import AcceptSelector from "./AcceptSelector";
 
 import {
   Button,
@@ -75,10 +77,10 @@ export default function ArtistSBRequestsTab({artistId}) {
             {/* table header */}
             <TableHead>
               <TableRow>
-                <TableCell>Creation Date</TableCell>
-                <TableCell align="center">Requester E-Mail</TableCell>
-                <TableCell align="center">Something</TableCell>
+                <TableCell >Accepted?</TableCell>
+                <TableCell align="center">Creation Date</TableCell>
                 <TableCell align="center">Due</TableCell>
+                <TableCell align="center">Requester E-Mail</TableCell>
                 <TableCell align="center">View Details</TableCell>
                 <TableCell align="center">Completion Form</TableCell>
               </TableRow>
@@ -89,24 +91,28 @@ export default function ArtistSBRequestsTab({artistId}) {
               {artistRequests.map((row) => (
                 <TableRow hover key={row.id}>
 
+                    {/* accepted */}
+                    <TableCell align="center">
+                    {row.accepted ? 
+                    "Accepted"
+                :
+                    <AcceptSelector request={row}/>
+                }
+                  </TableCell>
+
                   {/* creation date */}
                   <TableCell>
                     {new Date(row.created_at).toLocaleString('en-us')}
                   </TableCell>
 
+                {/* due */}
+                  <TableCell align="center">
+                    {getDueDate(row.created_at, row.delivery_days)}
+                  </TableCell>
+
                   {/* email */}
                   <TableCell align="center">
                     {row.email}
-                  </TableCell>
-
-                  {/* artist */}
-                  <TableCell align="center">
-                    {/* NEED TO FILL THIS */}
-                  </TableCell>
-
-                  {/* due */}
-                  <TableCell align="center">
-                    {getDueDate(row.created_at, row.delivery_days)}
                   </TableCell>
 
                   {/* details btn */}

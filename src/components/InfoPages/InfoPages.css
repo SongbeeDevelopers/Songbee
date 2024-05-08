@@ -2,48 +2,42 @@
 General
 -------------------------------------------------------------------------------- */
 
-.headerP {
-    color: var(--black-4);
+.info {
+    max-width: 50rem;
+    margin: auto;
+}
+
+.info p, li  {
+    color: #474546;
+}
+
+.info-title {
     text-align: center;
-    letter-spacing: -0.01em;
-    margin-top: 20px;
-    font-family: Oswald, sans-serif;
-    font-size: 4.6875rem;
-    font-weight: 300;
-    line-height: 4.6875rem;
-    position: relative;
-    font: 75px;
+    font-size: 3rem;
+    margin: 25px 0;
 }
 
-li {
-    color: gray;
-    margin-bottom: 8px;
+.info-subtitle {
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 25px;
 }
 
-.privacy-policy h2,
-.guaranteePage h2 {
-    color: #5b6b7b;
-    font-size: 15px;
-    margin-bottom: -12px;
+.info-section-header {
+    margin-top: 50px;
+    text-align: center;
 }
 
-.privacy-policy p,
-.guaranteePage p {
-    color: grey;
-    line-height: 1.5rem;
-    margin-bottom: 10px;
-    letter-spacing: 0.015em;
-    margin-bottom: 20px;
-    font-size: 0.9375rem;
-    font-weight: 400;
-    line-height: 1.5rem;
+.info-section-list {
+    margin-left: 2.5%;
 }
 
-.privacy-policy li:first-child {
-    margin-top: -16px;
+.info-contact {
+    text-align: center;
 }
 
-.mail-guarantee {
+.info-contact a {
     color: #feaf17;
 }
 
@@ -167,7 +161,8 @@ FAQ Page
 }
 
 .openFaq {
-    height: 275px;
+    height: fit-content;
+    padding-bottom: 25px;
 }
 
 .closeFaq {
@@ -176,31 +171,12 @@ FAQ Page
 
 .in {
     overflow: hidden;
-    transition: all 0.4s;
+    transition: fit-content 0.4s ease-in;
 }
 
 .faq {
     display: flex;
     flex-direction: column;
-}
-
-.faq-title {
-    color: var(--black-4);
-        text-align: center;
-        letter-spacing: -0.01em;
-        margin-top: 20px;
-        font-family: Oswald, sans-serif;
-        font-size: 4.6875rem;
-        font-weight: 300;
-        line-height: 4.6875rem;
-        position: relative;
-}
-
-.faq-below-title {
-    font-size: 0.8rem;
-    line-height: 130%;
-    text-align: center;
-    margin-top: -20px;
 }
 
 .suii {
@@ -212,46 +188,11 @@ FAQ Page
     line-height: 130%;
     text-align: center;
     margin-top: 20px;
-    /* margin-left: 600px; */
 }
 
-/* --------------------------------------------------------------------------------
-Quality Guarantee Page
--------------------------------------------------------------------------------- */
-
-/* --------------------------------------------------------------------------------
-Privacy Policy Page
--------------------------------------------------------------------------------- */
-
-/* --------------------------------------------------------------------------------
-Terms and Conditions Page
--------------------------------------------------------------------------------- */
-
-.termsHeader {
-    color: var(--black-4);
+.faq-subtitle {
+    /* font-size: 0.8rem; */
     text-align: center;
-    letter-spacing: -0.01em;
-    margin-top: 20px;
-    font-family: Oswald, sans-serif;
-    font-size: 4.6875rem;
-    font-weight: 300;
-    line-height: 4.6875rem;
-    position: relative;
-}
-
-.termsSubHeader {
-    color: #5b6b7b;
-    font-size: 15px;
-    margin-bottom: -12px;
-}
-
-.termsText {
-    color: grey;
-    line-height: 1.5rem;
-    margin-bottom: 10px;
-    letter-spacing: 0.015em;
-    margin-bottom: 20px;
-    font-size: 0.9375rem;
-    font-weight: 400;
-    line-height: 1.5rem;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
