@@ -18,6 +18,8 @@ import { motion } from "framer-motion";
 
 import Swal from "sweetalert2";
 
+import './JrRequestPage.css'
+
 const steps = [
   "Your Childs Birthday",
   "Name and Pronunciation",
@@ -59,10 +61,10 @@ export default function JrCheckoutPage({ routeVariants }) {
     if (activeStep === 0) {
       return (
         <>
-          <div className="reqFormGroup">
+          <div className="jrFormGroup">
             <div className="reqFormInput">
               <label>Enter Your Child's Birthday</label>
-              <div className="reqFormGroup">
+              <div className="jrFormGroup">
                 <DatePicker label="Your Child's Birthday" sx={{ width: 300 }} />
               </div>
             </div>
@@ -72,13 +74,13 @@ export default function JrCheckoutPage({ routeVariants }) {
     } else if (activeStep === 1) {
       return (
         <>
-          <div className="reqFormGroup">
-            <div className="reqFormInput">
+          <div className="jrFormGroup">
+            <div className="jrFormInput">
               <label>Enter Your Child's Name and Pronunciation</label>
-              <div className="reqFormGroup">
+              <div className="jrFormGroup">
                 <input
                   value={requestData.recipient}
-                  className="reqFormInput"
+                  className="jrFormInput"
                   id="reqFormNameInput"
                   placeholder="Name of child or Nickname"
                   onChange={(event) =>
@@ -88,7 +90,7 @@ export default function JrCheckoutPage({ routeVariants }) {
 
                 <input
                   value={requestData.pronunciation}
-                  className="reqFormInput"
+                  className="jrFormInput"
                   id="reqFormNameInput"
                   placeholder="Pronunciation"
                   onChange={(event) =>
@@ -103,70 +105,12 @@ export default function JrCheckoutPage({ routeVariants }) {
     } else if (activeStep === 2) {
       return (
         <>
-          <div className="reqFormGroup">
+          <div className="jrFormGroup">
             <div className="reqFormAdditionalDetails">
               <h2 id="additionalDetailsHeader">
-                What skills do you want your child to focus on?
+                Confirm your Subscription
               </h2>
-              <select
-                value={requestData.vibe}
-                onChange={() => handleInput("vibe", event.target.value)}
-              >
-                <option selected disabled>
-                  Select Skill
-                </option>
-                <option value="physical">Physical</option>
-                <option value="cognitive">Cognitive</option>
-                <option value="social and emotional">
-                  Social and Emotional
-                </option>
-                <option value="sensory and motor">Sensory and Motor</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-          </div>
-
-          <div className="reqFormGroup">
-            <div className="reqFormAdditionalDetails">
-              <h2 id="additionalDetailsHeader">
-                Describe your goal for the song, or any other details
-              </h2>
-              <input
-                value={requestData.additional_info}
-                placeholder="Additional Details"
-                onChange={(event) =>
-                  handleInput("additional_info", event.target.value)
-                }
-              ></input>
-            </div>
-          </div>
-          <div className="reqFormGroup">
-            <div className="reqFormAdditionalDetails">
-              <h2 id="additionalDetailsHeader">
-                Goal's for Your Child's Learning Song Subscription
-              </h2>
-              <p className="reqFormPrompts">
-                Please tell us what milestones or content you would like each
-                song in the subscription to address.
-              </p>
-              <h3 id="additionalDetailsHeader">Song 1</h3>
-              <input
-                value={requestData.song1_info}
-                placeholder="Milestones"
-                onChange={() => handleInput("song1_info", event.target.value)}
-              ></input>
-              <h3 id="additionalDetailsHeader">Song 2</h3>
-              <input
-                value={requestData.song2_info}
-                placeholder="Milestones"
-                onChange={() => handleInput("song2_info", event.target.value)}
-              ></input>
-              <h3 id="additionalDetailsHeader">Song 3</h3>
-              <input
-                value={requestData.song3_info}
-                placeholder="Milestones"
-                onChange={() => handleInput("song3_info", event.target.value)}
-              ></input>
+             
             </div>
           </div>
         </>
