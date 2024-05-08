@@ -154,6 +154,13 @@ function RequestDetails({ routeVariants, requestId }) {
         </CustomTabPanel>
       </div>
 
+      <Button variant="contained"
+        onClick={() => history.goBack()}
+        sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
+      > BACK
+      </Button>
+
+      {/* addons */}
       <div className='request-details-addon-container'>
         <h2>Purchase Add-Ons For Your Song</h2>
         <div className='requestdetailsaddons'>
@@ -216,11 +223,7 @@ function RequestDetails({ routeVariants, requestId }) {
         }
       </div>
 
-      <Button variant="contained"
-        onClick={() => history.goBack()}
-        sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
-      > BACK
-      </Button>
+
 
     </motion.div>
   )

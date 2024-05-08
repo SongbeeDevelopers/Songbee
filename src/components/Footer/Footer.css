@@ -28,6 +28,10 @@ footer {
   font-size: 14px;
   line-height: 20px;
 }
+.flexColumn img {
+  width: 20px;
+  display: inline;
+}
 
 .columnHeader {
   margin-bottom: 10px;
