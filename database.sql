@@ -136,6 +136,7 @@ CREATE TABLE "learning_packs" (
 
 CREATE TABLE "subscription" (
   "id" SERIAL PRIMARY KEY,
+  "user_id" integer REFERENCES "user" ON DELETE CASCADE,
   "pack_id" integer REFERENCES "learning_packs" ON DELETE CASCADE,
   "age" TIMESTAMPTZ,
   "name" VARCHAR,
