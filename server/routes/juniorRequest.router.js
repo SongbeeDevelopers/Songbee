@@ -158,4 +158,17 @@ router.put("/accept/:id", async (req, res) => {
   }
 });
 
+router.get('/learning-packs', (req, res) => {
+  const query = `
+    SELECT * from "learning_packs";
+  `
+  pool.query(query)
+  .then((response) => {
+    res.send(response.rows)
+  })
+  .catch((error) => {
+    console.error('juniorRequest GET learning packs route failed:', error)
+  })
+});
+
 module.exports = router;

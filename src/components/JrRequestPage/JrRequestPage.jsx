@@ -30,16 +30,20 @@ export default function JrCheckoutPage({ routeVariants }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const requestData = useSelector((store) => store.requestData);
+  const requestData = useSelector((store) => store.jrCheckoutData);
+  const learningPacks = useSelector(store => store.learningPacks)
   const { id } = useParams();
 
+  console.log('requestData', requestData);
+  console.log('learning packs', learningPacks);
+
   useEffect(() => {
-    dispatch({ type: "FETCH_GENRES" });
+    dispatch({ type: "FETCH_LEARNING_PACKS" });
   }, []);
 
   const handleInput = (key, value) => {
     dispatch({
-      type: "SET_REQUEST_DATA",
+      type: "SET_JR_CHECKOUT_DATA",
       payload: { ...requestData, [key]: value },
     });
   };
@@ -65,7 +69,13 @@ export default function JrCheckoutPage({ routeVariants }) {
             <div className="reqFormInput">
               <label>Enter Your Child's Birthday</label>
               <div className="jrFormGroup">
-                <DatePicker label="Your Child's Birthday" sx={{ width: 300 }} />
+                <DatePicker
+                  value={requestData.age}
+                  onChange={(newValue) =>
+                    handleInput("age", newValue)
+                  }
+                  label="Your Child's Birthday" 
+                  sx={{ width: 300 }} />
               </div>
             </div>
           </div>
@@ -152,12 +162,11 @@ export default function JrCheckoutPage({ routeVariants }) {
     setActiveStep(step);
   };
 
-  const handleComplete = (event) => {
+  const handleComplete = () => {
     const newCompleted = completed;
     newCompleted[activeStep] = true;
     setCompleted(newCompleted);
     handleNext();
-    event.preventDefault();
     if (
       requestData.requester &&
       requestData.recipient &&

@@ -1,7 +1,7 @@
 const jrCheckoutData = (
     state = {
       pack_id: "",
-      age: "",
+      age: null,
       name: "",
       pronunciation: "",
     },
@@ -13,7 +13,7 @@ const jrCheckoutData = (
       case "CLEAR_JR_CHECKOUT_DATA":
         return {
             pack_id: "",
-            age: "",
+            age: null,
             name: "",
             pronunciation: "",
           };
