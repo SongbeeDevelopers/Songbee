@@ -127,8 +127,7 @@ export default function JrCheckoutPage({ routeVariants }) {
     } else if (activeStep === 2) {
       return (
         <>
-          <div className="jrFormGroup">
-            <div className="reqFormAdditionalDetails">
+          <div className="jrFormGroup2">
               <h2 id="additionalDetailsHeader">
                 Confirm your Subscription
               </h2>
@@ -136,13 +135,13 @@ export default function JrCheckoutPage({ routeVariants }) {
                 if(monthDiff(start, end) >= pack.min_age && monthDiff(start, end) <= pack.max_age){
                   return (
                     <>
-                      <img src={pack.image} />
-                      <h3>{pack.title}</h3>
+                      <h3>Your child is in the age range for {pack.title} Learning Pack!</h3>
+                      <img className='pack-img' src={pack.image} />
+                      <p>{pack.description}</p>
                     </>
                   )
                 }
               })}
-            </div>
           </div>
         </>
       );
