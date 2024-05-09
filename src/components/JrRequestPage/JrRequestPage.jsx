@@ -131,17 +131,44 @@ export default function JrCheckoutPage({ routeVariants }) {
               <h2 id="additionalDetailsHeader">
                 Confirm your Subscription
               </h2>
-              {learningPacks.map((pack) => {
+              { requestData.pack_id === '' ?
+              learningPacks.map((pack) => {
                 if(monthDiff(start, end) >= pack.min_age && monthDiff(start, end) <= pack.max_age){
                   return (
                     <>
-                      <h3>Your child is in the age range for {pack.title} Learning Pack!</h3>
+                      <h3>Your child is in the recommended age range for {pack.title} Learning Pack!</h3>
                       <img className='pack-img' src={pack.image} />
                       <p>{pack.description}</p>
                     </>
                   )
                 }
-              })}
+              })
+            :
+            <>
+            <h3>You have selected {pack.title} Learning Pack!</h3>
+            <img className='pack-img' src={pack.image} />
+            <p>{pack.description}</p>
+          </>
+            }
+        <h4>Would you like to select a learning pack?</h4>
+        <div className="reqFormGroup">
+        <div className="reqFormSelect">
+          <label>Choose a Learning Pack</label>
+          <select
+            value={requestData.pack_id}
+            onChange={() => handleInput("pack_id", event.target.value)}
+          >
+            <option selected disabled>
+              Select Genre
+            </option>
+            {learningPacks.map((lpack) => (
+              <option key={lpack.id} value={lpack.id}>
+                {lpack.title} {lpack.min_age}-{lpack.max_age} Months
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
           </div>
         </>
       );
