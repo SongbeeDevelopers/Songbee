@@ -9,7 +9,8 @@ DROP TABLE IF EXISTS "songbeejr_details",
                      "genres",
                      "user",
                      "documents",
-                     "pendingartistedit";
+                     "pendingartistedit",
+                     "learning_packs";
 
 CREATE TABLE "user" (
   "id" SERIAL PRIMARY KEY,
@@ -112,19 +113,40 @@ CREATE TABLE "jr_request" (
   "accepted"  BOOLEAN DEFAULT FALSE
 );
 
+CREATE TABLE "learning_packs" (
+  "id" SERIAL PRIMARY KEY,
+  "title" VARCHAR (250),
+  "description" VARCHAR,
+  "min_age" integer,
+  "max_age" integer,
+  "song1" VARCHAR,
+  "song2" VARCHAR,
+  "song3" VARCHAR,
+  "song4" VARCHAR,
+  "song5" VARCHAR,
+  "song6" VARCHAR,
+  "song7" VARCHAR,
+  "song8" VARCHAR,
+  "song9" VARCHAR,
+  "song10" VARCHAR,
+  "song11" VARCHAR,
+  "song12" VARCHAR,
+  "song13" VARCHAR
+);
+
 CREATE TABLE "subscription" (
   "id" SERIAL PRIMARY KEY,
-  "pack_id" integer REFERENCES "learning-packs",
+  "pack_id" integer REFERENCES "learning_packs" ON DELETE CASCADE,
   "age" TIMESTAMPTZ,
   "name" VARCHAR,
   "pronunciation" VARCHAR,
   "is_active" BOOLEAN DEFAULT FALSE,
-  "created_at" TIMESTAMPTZ DEFAULT NOW(),
+  "created_at" TIMESTAMPTZ DEFAULT NOW()
 );
 
 CREATE TABLE "subscription_song_details" (
   "id" SERIAL PRIMARY KEY,
-  "subscription_id" integer REFERENCES "subscription",
+  "subscription_id" integer REFERENCES "subscription" ON DELETE CASCADE,
   "number" INT,
   "song_goals" VARCHAR,
   "url" VARCHAR,
@@ -155,7 +177,7 @@ VALUES
 
 INSERT INTO "genres"
 VALUES
-(1, 'Rap/Hip-Hop'), (2, 'Folk'), (3, 'Rock'), (4, 'R&B'), (5, 'Country'), (6, 'Singer Songwriter'), (7, 'Acoustic Pop'), (8, 'Pop');
+(1, 'Rap/Hip-Hop'), (2, 'Folk'), (3, 'Rock'), (4, 'R&B'), (5, 'Country'), (6, 'Singer Songwriter'), (7, 'Acoustic Pop');
 
 INSERT INTO "artist"
 ("artist_name", "name", "user_id", "vocal_type", "approved", "is_active", "website", "instagram_link", "sample_song_1", "song_title_1", "sample_song_2", "song_title_2", "sample_song_3", "song_title_3", "bio", "location", "photo", "streaming_link")
@@ -203,9 +225,9 @@ INSERT INTO "artist_genres"
 VALUES
 (1, 6),
 (2, 1),
-(2, 8),
+(2, 7),
 (3, 6),
-(3, 8);
+(3, 7);
 
 
 INSERT INTO "jr_request" (
@@ -279,24 +301,29 @@ CREATE TABLE "pendingartistedit" (
   "created_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE "learning_packs" (
-  "id" SERIAL PRIMARY KEY,
-  "title" VARCHAR (250),
-  "description" VARCHAR,
-  "min_age" integer,
-  "max_age" integer,
-  "song1" VARCHAR,
-  "song2" VARCHAR,
-  "song3" VARCHAR,
-  "song4" VARCHAR,
-  "song5" VARCHAR,
-  "song6" VARCHAR,
-  "song7" VARCHAR,
-  "song8" VARCHAR,
-  "song9" VARCHAR,
-  "song10" VARCHAR,
-  "song11" VARCHAR,
-  "song12" VARCHAR,
-  "song13" VARCHAR
-);
+INSERT INTO "learning_packs" 
+  ("title", "description", "min_age", "max_age")
+VALUES
+  ('The Bonder', 'With this learning pack, your baby will begin to adjust to sound and light. We start to stimulate the brain and start building neural connections with our thoughtfully developed music-based learning pack.', 0, 2),
+  ('The Feeler', 'With this learning pack, your baby will be developing their senses: sight, touch, and hearing. Listen and play with sensory based songs, to help your child develop and learn.', 3, 4),
+  ('The Detector', 'With this learning pack, help your baby develop fine motor skills and dive into the world of tactile fun.', 5, 6),
+  ('The Experimenter', 'With this learning pack, your baby is ready to dive into shapes, colors, start understanding object permanence, as well as lay the foundation for memory development.', 7, 8),
+  ('The Investigator', 'With this learning pack, your baby starts to work on coordination and balance alongside learning emotional intelligence.', 9, 10),
+  ('The Discoverer', 'With this learning pack, your child will expand their language skills, expand their pincer grip, as well as work on their problem solving skills.', 11, 12),
+  ('The Talker', 'With this learning pack,you will be helping your toddler learn cause and effect and build key skills like language, fine and gross motor skills as well as learn how to independently play.', 13, 15),
+  ('The Explorer', 'With this learning pack, your child is building their cognitive skills of reasoning and logical thinking. Puzzles, counting, and basic planning skills are key for this pack.', 16, 18),
+  ('The Pathfinder', 'With this learning pack, your toddler will develop their creativity, imagination, and understanding of the world around them.', 19, 21),
+  ('The Puzzler', 'With this learning pack, your child will learn spatial perception, sorting, basic emotions, and further their motor development.', 22, 24),
+  ('The Analyzer', 'With this learning pack, dive into the world of “real life” understandings with your toddler and help them understand schedules, develop problem solving skills, confidence and logical thinking.', 25, 27),
+  ('The Story Teller', 'With this learning pack, your toddler will dive into the world of playing pretend and build their language skills, expand on their motor functions, and build pre-writing skills.', 28, 30),
+  ('The Creator', 'With this learning pack, your toddler will start to learn emotional intelligence, social skills, and start to identify and navigate big feelings.', 31, 33),
+  ('The Adventurer', 'With this learning pack, your child will build their independence, curiosity, and further their motor and problem solving skills', 34, 36),
+  ('The Free Bird', 'With this learning pack, your child will take ownership of their day and take over planning, pretend to play, and explore the world around them.', 37, 39),
+  ('The Socializer', 'With this learning pack, help your child start learning letters, numbers, and expand upon their emotional intelligence.', 40, 42),
+  ('The Team Player', 'With this learning pack, your three year old will learn how to work well with others, understand basic manners, and improve on their hand-eye coordination.', 43, 45),
+  ('The Imaginator', 'With this learning pack, your child is becoming independent and developing a sense of “self” while furthering their curiosity and imagination.', 46, 48),
+  ('The Innovator', 'With this learning pack, help your child link the skills they have made so far and make new, creative choices, investigate, and problem solve.', 49, 51),
+  ('The Inspector', 'With this learning pack, your child will learn to willingly follow directions and improve on their language and phonetic skills.', 52, 54),
+  ('The Negotiator', 'With this learning pack, your child will further expand on their language skills, emotional learning, and social skills.', 55, 57),
+  ('The Predictor', 'With this learning pack, your child will begin to learn and expand on executive functioning skills like: planning and independent self care alongside taking responsibility and showing initiative.', 58, 60);
    
