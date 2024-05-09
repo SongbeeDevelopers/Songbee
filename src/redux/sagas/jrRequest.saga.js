@@ -71,6 +71,18 @@ catch (error) {
 }
 }
 
+function* fetchCurrentPack(action) {
+  try {
+    const response = yield axios.get(`/api/jr-request/current-pack/${action.payload}`)
+    yield put({
+      type: "SET_CURRENT_PACK",
+      payload: response.data
+    })
+  } catch (error) {
+    console.error("SAGA fetchCurrentArtist failed:", error)
+  }
+}
+
 function* juniorRequestSaga() {
   yield takeLatest("FETCH_USER_REQUESTS", fetchUserRequests);
   yield takeLatest("FETCH_CURRENT_REQUEST", fetchCurrentRequest);
@@ -78,6 +90,7 @@ function* juniorRequestSaga() {
   yield takeLatest("ACCEPT_SONG_REQUEST", acceptSongRequest);
   yield takeLatest("COMPLETE_SONG_REQUEST", completeSongRequest);
   yield takeLatest("FETCH_LEARNING_PACKS", fetchLearningPacks);
+  yield takeLatest("FETCH_CURRENT_PACK", fetchCurrentPack);
 
 }
 

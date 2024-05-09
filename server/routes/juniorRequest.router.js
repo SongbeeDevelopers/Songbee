@@ -171,4 +171,18 @@ router.get('/learning-packs', (req, res) => {
   })
 });
 
+router.get('/current-pack/:id', (req, res) => {
+  const query = `
+    SELECT * from "learning_packs"
+    WHERE "id"=$1;
+  `
+  pool.query(query, [req.params.id])
+  .then((response) => {
+    res.send(response.rows[0])
+  })
+  .catch((error) => {
+    console.error('juniorRequest GET current pack route failed:', error)
+  })
+});
+
 module.exports = router;
