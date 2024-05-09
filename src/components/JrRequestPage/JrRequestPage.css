@@ -20,3 +20,20 @@
     padding-left: 15px;
     box-shadow: 0 2px 3px rgba(0, 0, 0, .2);
 }
+
+.pack-img {
+    max-width: 500px;
+}
+
+.jrFormGroup2 {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.wide-display {
+    width: 600px;
+}

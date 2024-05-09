@@ -29,17 +29,41 @@ const steps = [
 export default function JrCheckoutPage({ routeVariants }) {
   const dispatch = useDispatch();
   const history = useHistory();
+  const now = new Date();
 
-  const requestData = useSelector((store) => store.requestData);
+  const requestData = useSelector((store) => store.jrCheckoutData);
+  const learningPacks = useSelector(store => store.learningPacks);
+  const currentPack = useSelector(store => store.currentPack);
   const { id } = useParams();
 
+  const monthDiff = (d1, d2) => {
+    let months;
+    months = (d2.getFullYear() - d1.getFullYear()) * 12;
+    months -= d1.getMonth();
+    months += d2.getMonth();
+    return months <= 0 ? 0 : months;
+  }
+  const start = new Date(requestData.age)
+  const end = new Date()
+  console.log(monthDiff(start, end))
+
+  console.log('requestData', requestData);
+  console.log('learning packs', learningPacks);
+  console.log('current pack', currentPack)
+
   useEffect(() => {
-    dispatch({ type: "FETCH_GENRES" });
+    dispatch({ type: "FETCH_LEARNING_PACKS" });
   }, []);
 
   const handleInput = (key, value) => {
+    if (key === "pack_id"){
+      dispatch({
+        type: "FETCH_CURRENT_PACK",
+        payload: value
+      })
+    }
     dispatch({
-      type: "SET_REQUEST_DATA",
+      type: "SET_JR_CHECKOUT_DATA",
       payload: { ...requestData, [key]: value },
     });
   };
@@ -65,7 +89,13 @@ export default function JrCheckoutPage({ routeVariants }) {
             <div className="reqFormInput">
               <label>Enter Your Child's Birthday</label>
               <div className="jrFormGroup">
-                <DatePicker label="Your Child's Birthday" sx={{ width: 300 }} />
+                <DatePicker
+                  value={requestData.age}
+                  onChange={(newValue) =>
+                    handleInput("age", newValue)
+                  }
+                  label="Your Child's Birthday" 
+                  sx={{ width: 300 }} />
               </div>
             </div>
           </div>
@@ -105,13 +135,52 @@ export default function JrCheckoutPage({ routeVariants }) {
     } else if (activeStep === 2) {
       return (
         <>
-          <div className="jrFormGroup">
-            <div className="reqFormAdditionalDetails">
+          <div className="jrFormGroup2">
               <h2 id="additionalDetailsHeader">
                 Confirm your Subscription
               </h2>
-             
-            </div>
+              { requestData.pack_id === '' ?
+              learningPacks.map((pack) => {
+                if(monthDiff(start, end) >= pack.min_age && monthDiff(start, end) <= pack.max_age){
+                  return (
+                    <>
+                      <h3>Your child is in the recommended age range for {pack.title} Learning Pack!</h3>
+                      <img className='pack-img' src={pack.image} />
+                      <p>{pack.description}</p>
+                      <Button
+                        sx={{ height: 50, width: 250, backgroundColor: "#feaf17", color: "black" }}
+                        onClick={() => handleInput("pack_id", pack.id)}
+                      >Would you like to select this pack?</Button>
+                    </>
+                  )
+                }
+              })
+            :
+            <>
+            <h3>You have selected {currentPack.title} Learning Pack!</h3>
+            <img className='pack-img' src={currentPack.image} />
+            <p>{currentPack.description}</p>
+          </>
+            }
+        <h4>Would you like to select a learning pack?</h4>
+        <div className="reqFormGroup">
+        <div className="reqFormSelect">
+          <label className="wide-display">Choose a Learning Pack</label>
+          <select
+            value={requestData.pack_id}
+            onChange={() => handleInput("pack_id", event.target.value)}
+          >
+            <option selected disabled>
+              Select Genre
+            </option>
+            {learningPacks.map((lpack) => (
+              <option key={lpack.id} value={lpack.id}>
+                {lpack.title} {lpack.min_age}-{lpack.max_age} Months
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
           </div>
         </>
       );
@@ -152,12 +221,11 @@ export default function JrCheckoutPage({ routeVariants }) {
     setActiveStep(step);
   };
 
-  const handleComplete = (event) => {
+  const handleComplete = () => {
     const newCompleted = completed;
     newCompleted[activeStep] = true;
     setCompleted(newCompleted);
     handleNext();
-    event.preventDefault();
     if (
       requestData.requester &&
       requestData.recipient &&

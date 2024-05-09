@@ -61,12 +61,36 @@ function* updateSongRequest(action) {
   }
 }
 
+function* fetchLearningPacks(){
+  try {
+    const response = yield axios.get('/api/jr-request/learning-packs')
+    yield put({ type: 'SET_LEARNING_PACKS', payload: response.data})
+}
+catch (error) {
+    console.error('fetchLearningPacks() failed:', error)
+}
+}
+
+function* fetchCurrentPack(action) {
+  try {
+    const response = yield axios.get(`/api/jr-request/current-pack/${action.payload}`)
+    yield put({
+      type: "SET_CURRENT_PACK",
+      payload: response.data
+    })
+  } catch (error) {
+    console.error("SAGA fetchCurrentArtist failed:", error)
+  }
+}
+
 function* juniorRequestSaga() {
   yield takeLatest("FETCH_USER_REQUESTS", fetchUserRequests);
   yield takeLatest("FETCH_CURRENT_REQUEST", fetchCurrentRequest);
   yield takeLatest("UPDATE_JR_SONG_REQUEST", updateSongRequest);
   yield takeLatest("ACCEPT_SONG_REQUEST", acceptSongRequest);
   yield takeLatest("COMPLETE_SONG_REQUEST", completeSongRequest);
+  yield takeLatest("FETCH_LEARNING_PACKS", fetchLearningPacks);
+  yield takeLatest("FETCH_CURRENT_PACK", fetchCurrentPack);
 
 }
 

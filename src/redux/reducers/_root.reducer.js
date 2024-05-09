@@ -23,7 +23,9 @@ import edit from './edit.reducer';
 import artistRequests from './artistRequests.reducer';
 import completedArtistRequests from './completedArtistRequests.reducer';
 import addons from './addons.reducer';
-
+import jrCheckoutData from './jrCheckoutData.reducer';
+import learningPacks from './learningPacks.reducer';
+import currentPack from './currentPack.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -55,6 +57,11 @@ const rootReducer = combineReducers({
   artistRequests,
   completedArtistRequests,
   addons,
+  jrCheckoutData,
+  learningPacks,
+  currentPack,
+  
+
 });
 
 export default rootReducer;
