@@ -45,12 +45,12 @@ audio::-webkit-media-controls-time-remaining-display {
 }
 .songDetails audio {
   display: block;
-  margin: 50px auto;
+  margin: 0 auto;
 }
 
 /* tab container */
 .order-details-tab-container {
-  margin: 50px auto;
+  margin: 0 auto;
 }
 
 /* --------------------------------------------------------------------------------
@@ -146,7 +146,9 @@ Add-ons Section
   margin-bottom: -75px;
 }
 
-
+.request-details-addon-container h2 {
+  margin-bottom: 50px;
+}
 
 .requestdetailsaddons {
   display: flex;

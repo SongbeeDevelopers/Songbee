@@ -21,6 +21,13 @@ import { motion } from 'framer-motion';
 import './RequestDetails.css'
 import RequestDetailsArtistBio from './RequestDetailsArtistBio';
 
+const prices = {
+  extra_verse: 74.99,
+  streaming: 49.99,
+  backing_track: 29.99,
+  license: 199.99
+}
+
 
 // This function will display the user's song request with a player so they can review their song
 function RequestDetails({ routeVariants, requestId }) {
@@ -218,11 +225,14 @@ function RequestDetails({ routeVariants, requestId }) {
         </div>
 
         {(addons.backing_track || addons.extra_verse || addons.license || addons.streaming) &&
+        <>
+          <p>{totalPrice}</p>
           <Button variant="contained"
             onClick={purchaseAddons}
             sx={{ height: 35, width: 60, backgroundColor: "#feaf17", color: "black" }}
           > BUY
           </Button>
+        </>
         }
       </div>
     </>
