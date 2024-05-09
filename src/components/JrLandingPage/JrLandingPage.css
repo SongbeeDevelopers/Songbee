@@ -98,76 +98,50 @@ Hero
   height: 80px;
 }
 
-/* Styling for the every age, every stage box  */
+
+/* --------------------------------------------------------------------------------
+Every Age Box
+-------------------------------------------------------------------------------- */
+
 .every-age-every-stage {
-  background-image: url('https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076581/Songbee/every-age-every-stage_tuktms.png');
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-color: white;
+  border: 3px solid #474546;
   display: block;
   margin: -100px auto 0;
-  align-items: baseline;
+  padding: 20px;
   width: 450px;
   height: 225px;
-  padding-top: 105px;
   position: relative;
   z-index: 2;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+.every-age-every-stage h2 {
+  margin-top: 0;
+  font-weight: 1000;
+  font-size: 2rem;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, .2);
+}
+.every-age-every-stage img {
+  width: 50px;
+  position: absolute
+}
+
+.everyagesinglenote {
+  left: 2rem;
+  bottom: 3rem;
+}
+.everyagenotegroup {
+  top: 4rem;
+  right: 4rem;
+}
+.everyagelooparrow {
+  top: 5rem;
+  right: 1rem;
 }
 
 #explore {
-  margin-top: 40px
-}
-
-/* --------------------------------------------------------------------------------
-Join Section (cut)
--------------------------------------------------------------------------------- */
-
-/* custom learning songs section */
-.hero-try-section {
-  margin-top: -235px;
-  background-image: url('https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076621/Songbee/polygon-bg_ebq3yh.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-  width: 100%;
-  padding-top: 49.37%;
-  position: relative;
-  z-index: auto;
-}
-
-.hero-try-contents {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 80%;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 130px;
-}
-
-.hero-try-text {
-  margin-left: 55px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 45%;
-}
-
-.baby-maracas {
-  display: block;
-  margin: auto;
-  width: 30%
-}
-
-.try-bee {
-  width: 150px;
-  position: absolute;
-  left: -10px;
-  bottom: -32px;
-  transform: rotate(60deg)
+  margin-top: 50px;
 }
 
 /* --------------------------------------------------------------------------------

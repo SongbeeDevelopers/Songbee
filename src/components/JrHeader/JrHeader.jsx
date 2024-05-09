@@ -58,7 +58,7 @@ function JrHeader() {
     <div className="jr-nav">
 
       <div className="jr-nav-left">
-        <Link to="/learning-packs" className="jr-nav-links">Shop</Link>
+        <Link to="/learning-packs" className="jr-nav-links">Learning Packs</Link>
         |
         <Link to="/" className="jr-nav-links">Gifting</Link>
         |

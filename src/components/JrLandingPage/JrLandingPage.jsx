@@ -2,10 +2,8 @@ import React from "react";
 
 import { motion } from "framer-motion";
 
-import "./JrLandingPage.css";
-
 import JrHeroSection from "./JrLandingSections/1-JrHeroSection";
-import JrJoinSection from "./JrLandingSections/2-JrJoinSection";
+import EveryAgeSection from "./JrLandingSections/2-EveryAgeSection";
 import JrWorksSection from "./JrLandingSections/4-JrWorksSection";
 import JrBenefitsSection from "./JrLandingSections/3-JrBenefitsSection";
 import WhyJuniorSection from "./JrLandingSections/5-JrWhySection"
@@ -15,6 +13,8 @@ import JrGuessworkSection from "./JrLandingSections/8-JrGuessworkSection";
 import JrReviewsSection from "./JrLandingSections/10-JrReviewsSection";
 import JrNewsletterSection from "./JrLandingSections/9-JrNewsletterSection"
 import FaqPageSbJR from '../InfoPages/FaqPageSbJR'
+
+import "./JrLandingPage.css";
 
 
 function SBjrLandingPage({ routeVariants }) {
@@ -27,7 +27,7 @@ function SBjrLandingPage({ routeVariants }) {
       className="junior"
     >
       <JrHeroSection />
-      {/* <JrJoinSection /> */}
+      <EveryAgeSection />
       <JrBenefitsSection />
       <JrWorksSection />
       <WhyJuniorSection />
