@@ -70,7 +70,7 @@ function JrHeader() {
       </div>
       
       <div className="jr-nav-right">
-        <button className="jr-landing-btn">
+        <button className="jr-landing-btn" onClick={() => history.push('/learning-packs')}>
           Get Started
         </button>
 

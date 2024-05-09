@@ -1,14 +1,17 @@
 import React from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 import "../JrLandingPage.css";
 
 
 function BenefitsSection() {
 
+  const history = useHistory()
+
   return (
     <>
       <div className="every-age-every-stage">
-        <button id="explore" className="jr-landing-btn">
+        <button id="explore" className="jr-landing-btn" onClick={() => history.push('/learning-packs')}>
           Explore!
         </button>
       </div>

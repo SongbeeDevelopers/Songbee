@@ -1,17 +1,23 @@
 import React from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 
 function JrGuessworkSection() {
 
+  const history = useHistory()
+
   return (
     <div className="guesswork-bg">
+
       <div className="guesswork-text-container">
         <h2>Take all of the <br/> guess work out <br/> of playtime</h2>
 
         <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076666/Songbee/underline-white_q22rqi.png"/>
 
-        <button id="guesswork-btn" className="jr-landing-btn">
-          Get Started!
+        <button
+          id="guesswork-btn"
+          className="jr-landing-btn"
+        > Get Started!
         </button>
       </div>
 

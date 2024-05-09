@@ -1,9 +1,13 @@
 import React from "react"
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 import "../JrLandingPage.css";
 
 
 function HowSongbeeJrWorks() {
+
+  const history = useHistory()
+
   return (
     <div className="how-jr-works-box">
 
@@ -60,7 +64,7 @@ function HowSongbeeJrWorks() {
         <p>Enjoy your new teaching tools! Check out our provided learning and play guides. </p>
       </div>
       <br/>
-      <button className="jr-landing-btn">
+      <button className="jr-landing-btn" onClick={() => history.push('/learning-packs')}>
         Get Started!
       </button>
 
