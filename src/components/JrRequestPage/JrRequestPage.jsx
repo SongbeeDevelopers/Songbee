@@ -29,10 +29,22 @@ const steps = [
 export default function JrCheckoutPage({ routeVariants }) {
   const dispatch = useDispatch();
   const history = useHistory();
+  const now = new Date();
 
   const requestData = useSelector((store) => store.jrCheckoutData);
   const learningPacks = useSelector(store => store.learningPacks)
   const { id } = useParams();
+
+  const monthDiff = (d1, d2) => {
+    let months;
+    months = (d2.getFullYear() - d1.getFullYear()) * 12;
+    months -= d1.getMonth();
+    months += d2.getMonth();
+    return months <= 0 ? 0 : months;
+  }
+  const start = new Date(requestData.age)
+  const end = new Date()
+  console.log(monthDiff(start, end))
 
   console.log('requestData', requestData);
   console.log('learning packs', learningPacks);
@@ -120,7 +132,16 @@ export default function JrCheckoutPage({ routeVariants }) {
               <h2 id="additionalDetailsHeader">
                 Confirm your Subscription
               </h2>
-             
+              {learningPacks.map((pack) => {
+                if(monthDiff(start, end) >= pack.min_age && monthDiff(start, end) <= pack.max_age){
+                  return (
+                    <>
+                      <img src={pack.image} />
+                      <h3>{pack.title}</h3>
+                    </>
+                  )
+                }
+              })}
             </div>
           </div>
         </>
