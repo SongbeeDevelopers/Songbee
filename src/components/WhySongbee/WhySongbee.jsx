@@ -43,7 +43,6 @@ function WhySongbee() {
         <img className="whysong-Bee" src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076528/Songbee/Bee_e8eelp.png" alt="" />
       </div>
       <JrFaq/>
-      <JrFooter/>
     </div>
 
   );

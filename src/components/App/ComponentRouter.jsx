@@ -47,15 +47,12 @@ import JrLandingPage from "../JrLandingPage/JrLandingPage";
 import JrEditRequestPage from "../EditRequestPage/JrEditRequest";
 import JrCheckoutPage from "../JrRequestPage/JrRequestPage";
 import LearningPacksPage from "../LearningPacksPage/PacksPage";
-import LearningPacksHeader from "../Header/LearningPacksHeader";
 import LearningPackView from "../LearningPackView/PackView";
-import SchoolsInspirationHeader from "../Header/SchoolsInspirationHeader";
 import SchoolsInspiration from "../SchoolsInspiration/SchoolsInspiration";
 import WhySongbee from "../WhySongbee/WhySongbee";
 import WhatsIncluded from "../WhatsIncludedSchoolsInspiration/WhatsIncluded";
-import DiveIntoBenefits from "../SiDiveInBenefits/DiveIntoBenefits";
+import DiveIntoBenefits from "../JrBenefits/JrBenefits";
 import ScrollToTop from "./ScrollToTop";
-import { Route } from "react-router-dom";
 
 
 function ComponentRouter() {
@@ -91,26 +88,20 @@ function ComponentRouter() {
 
   return (
     <>
-    
+      {/* banner only appears on main homepage */}
       {location.pathname === "/home"  && <Banner />}
 
-      {/* shows main header on main routes */}
-     
-
-      {/* shows jr header on jr routes */}
-     
+      {/* causes every route to start at top of page */}
       <ScrollToTop />
 
 
+      {/* all routes below */}
       <Switch location={location} key={location.key}>
-
 
         {/* ~~~~~~~~~~ MAIN ROUTES ~~~~~~~~~~~ */}
 
 
-        {/* home page */}
         <Redirect exact from="/" to="/home" />
-
         <MainRoute exact path="/home">
           <LandingPage routeVariants={landingVariants} />
         </MainRoute>
@@ -128,13 +119,10 @@ function ComponentRouter() {
         </MainRoute>
 
 
-        <Route exact path="/whatsIncluded">
-          <WhatsIncluded routeVariants={routeVariants} />
-        </Route>
-
-        <Route exact path="/join-artist">
+        <MainRoute exact path="/join-artist">
           <JoinArtistPage routeVariants={routeVariants} />
-        </Route>
+        </MainRoute>
+
 
         <MainRoute exact path="/register">
           {user.id ? (
@@ -145,7 +133,6 @@ function ComponentRouter() {
             <RegisterPage routeVariants={routeVariants} />
           )}
         </MainRoute>
-
 
 
         {/* account pages */}
@@ -205,13 +192,6 @@ function ComponentRouter() {
           <ArtistCommunity routeVariants={routeVariants} />
         </MainRoute>
 
-
-
-        <Route exact path="/si-benefits">
-          <DiveIntoBenefits routeVariants={routeVariants} />
-        </Route>
-       
-
         <MainRoute exact path="/ArtistBioPage/:id">
           <ArtistBioPage routeVariants={routeVariants} />
         </MainRoute>
@@ -234,6 +214,9 @@ function ComponentRouter() {
 
         {/* ~~~~~~~~~~ JUNIOR ROUTES ~~~~~~~~~~~ */}
 
+        <JrRoute exact path="/benefits">
+          <DiveIntoBenefits routeVariants={routeVariants} />
+        </JrRoute>
 
         <JrRoute exact path="/songbeejr">
           <JrLandingPage routeVariants={routeVariants} />
@@ -244,12 +227,12 @@ function ComponentRouter() {
         </JrRoute>
 
         <JrRoute exact path="/schools">
-          <SchoolsInspiration routeVariants={routeVariants} ></SchoolsInspiration>
+          <SchoolsInspiration routeVariants={routeVariants} />
         </JrRoute>
 
-        <Route exact path="/why-songbee">
+        <JrRoute exact path="/why-songbee">
           <WhySongbee routeVariants={routeVariants} />
-        </Route>
+        </JrRoute>
 
         <ProtectedRoute exact path="/jr-request/edit/:id" allowedUserClasses={[1, 2, 3]}>
           <JrRoute>
@@ -265,12 +248,13 @@ function ComponentRouter() {
           <LearningPacksPage routeVariants={routeVariants} />
         </JrRoute>
 
-        <Route exact path="/learning-packs/:slug">
-          <LearningPacksHeader />
+        <JrRoute exact path="/learning-packs/:slug">
           <LearningPackView routeVariants={routeVariants} />
-        </Route>
+        </JrRoute>
 
-
+        <JrRoute exact path="/whatsIncluded">
+          <WhatsIncluded routeVariants={routeVariants} />
+        </JrRoute>
 
         {/* If none of the other routes matched, we will show a 404. */}
         <MainRoute>

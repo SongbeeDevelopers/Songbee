@@ -1,9 +1,12 @@
 import React from "react";
-import "./SiBenefits.css";
 
-function BenefitsEmotional() {
+import "../JrBenefits.css";
+
+
+export default function BenefitsEmotional() {
   return (
     <div className="beEmotional">
+
       <div className="be-left">
         <h2>Emotional</h2>
 
@@ -19,23 +22,20 @@ function BenefitsEmotional() {
             plethora of unwanted behaviors from drug use to chronic depression.
             With music based learning, a child is taught the right, kind, and
             productive way to navigate their feelings and in turn the best way
-            to understand others’ as well.{" "}
+            to understand others' as well.{" "}
           </p>
         </div>
-        <a
-        className="be-link jr-landing-btn"
-          target="_blank"
+
+        <a className="be-link jr-landing-btn" target="_blank"
           href="https://nnpa.org/education/2022/08/04/how-music-education-benefits-early-childhood-mental-health-learning/"
-        >
-          References
+        > References
         </a>
       </div>
 
       <div className="be-right">
         <img src="/junior/SI-final/first-pic.png" alt="" />
       </div>
+      
     </div>
   );
 }
-
-export default BenefitsEmotional;
