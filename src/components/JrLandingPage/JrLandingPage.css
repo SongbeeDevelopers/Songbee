@@ -27,6 +27,10 @@ Button
   z-index: 2;
 }
 
+.jr-landing-btn:hover {
+  background-color: #fed07b;
+}
+
 /* --------------------------------------------------------------------------------
 Hero
 -------------------------------------------------------------------------------- */
@@ -94,76 +98,50 @@ Hero
   height: 80px;
 }
 
-/* Styling for the every age, every stage box  */
+
+/* --------------------------------------------------------------------------------
+Every Age Box
+-------------------------------------------------------------------------------- */
+
 .every-age-every-stage {
-  background-image: url('https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076581/Songbee/every-age-every-stage_tuktms.png');
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-color: white;
+  border: 3px solid #474546;
   display: block;
   margin: -100px auto 0;
-  align-items: baseline;
+  padding: 20px;
   width: 450px;
   height: 225px;
-  padding-top: 105px;
   position: relative;
   z-index: 2;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+.every-age-every-stage h2 {
+  margin-top: 0;
+  font-weight: 1000;
+  font-size: 2rem;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, .2);
+}
+.every-age-every-stage img {
+  width: 50px;
+  position: absolute
+}
+
+.everyagesinglenote {
+  left: 2rem;
+  bottom: 3rem;
+}
+.everyagenotegroup {
+  top: 4rem;
+  right: 4rem;
+}
+.everyagelooparrow {
+  top: 5rem;
+  right: 1rem;
 }
 
 #explore {
-  margin-top: 40px
-}
-
-/* --------------------------------------------------------------------------------
-Join Section (cut)
--------------------------------------------------------------------------------- */
-
-/* custom learning songs section */
-.hero-try-section {
-  margin-top: -235px;
-  background-image: url('https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076621/Songbee/polygon-bg_ebq3yh.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-  width: 100%;
-  padding-top: 49.37%;
-  position: relative;
-  z-index: auto;
-}
-
-.hero-try-contents {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 80%;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 130px;
-}
-
-.hero-try-text {
-  margin-left: 55px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 45%;
-}
-
-.baby-maracas {
-  display: block;
-  margin: auto;
-  width: 30%
-}
-
-.try-bee {
-  width: 150px;
-  position: absolute;
-  left: -10px;
-  bottom: -32px;
-  transform: rotate(60deg)
+  margin-top: 50px;
 }
 
 /* --------------------------------------------------------------------------------
@@ -198,11 +176,11 @@ How Jr Works
   text-align: center;
 }
 .jr-works-header h2 {
-  margin-bottom: 0;
+  margin: 0 auto 0;
+  font-size: 36px;
 }
-.jr-works-header h5 {
+.jr-works-header h4 {
   margin-top: 0;
-  margin-bottom: 0;
 }
 
 /* 1 2 3 section */
@@ -213,8 +191,8 @@ How Jr Works
   padding-left: 5%;
 }
 .jr-works p {
-  font-size: small;
-  width: 30%;
+
+  padding-left: 60px;
 }
 
 /* container for each numbered item */
@@ -302,22 +280,48 @@ Benefits
   font-size: 36px;
 }
 .jr-benefits img {
-  width: 75%;
+  width: 85%;
   margin: auto;
-  padding-left: 15px;
+  padding-left: 8rem;
   display: block;
 }
+
+.jr-benefit-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 65%;
+  padding-left: 15px;
+  margin: auto;
+}
+
+.jr-benefit-item {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+.jr-benefit-item h3 {
+  margin: 15px 0 0
+}
+.jr-benefit-item p {
+  margin: 0
+}
+
 
 /* --------------------------------------------------------------------------------
 Learning Packs
 -------------------------------------------------------------------------------- */
 
 .jr-learning-packs-bg {
+  position: relative;
+  border-bottom: 5px solid #474546;
   background-image: url('https://res.cloudinary.com/dke4ukd0z/image/upload/v1713363089/Songbee/honeycomb-fill_lbnvzh.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: bottom;
   padding-bottom: 50px;
+  z-index: 1;
 }
 
 .jr-learning-packs-title {
@@ -335,7 +339,13 @@ Learning Packs
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  padding: 0 100px
+  padding: 0 100px;
+}
+
+.age-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .age-item-contents {
@@ -344,22 +354,23 @@ Learning Packs
   align-items: center;
 }
 .age-item-contents img {
-  width: 150px
+  width: 250px
 }
-.age-item-contents h4 {
+.age-item-contents h3 {
   text-shadow: 1px 1px #FEAF17;
+  font-size: 20px;
 }
 .age-item-contents p {
   text-align: center;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .age-item {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   background-color: white;
   border: 1px solid #474546;
-  padding: 0 20px 20px 20px;
-  width: 20%;
+  padding: 0 2rem 20px;
+  width: 25%;
 }
 
 .jr-learn-more-btn {
@@ -444,23 +455,32 @@ Guesswork
 .guesswork-bg {
   background-image: linear-gradient(to right, #FEAF17, #FFDEB0);
   position: relative;
-  height: 600px;
-  margin-top: -300px;
+  height: 375px;
   z-index: 0;
-  padding-top: 250px;
 }
 
-.guesswork-text-container {
-  padding-top: 40px;
-  margin: auto;
-  width: 20%;
+.guesswork-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 2rem;
+  width: fit-content;
+  padding-top: 5rem;
+  padding-left: 15%;
 }
+
+.guesswork-btn {
+  margin: 0 0 40px;
+}
+
 .guesswork-text-container h2 {
+  font-size: 2.2rem;
   margin-bottom: 0;
   text-shadow: 1px 1px white;
 }
 .guesswork-text-container img {
   margin-bottom: 10px;
+  width: 20rem;
 }
 
 .guesswork-baby-saxophone {
@@ -479,6 +499,9 @@ Guesswork
 
 #guesswork-btn {
   background-color: white;
+}
+#guesswork-btn:hover {
+  background-color: #fed07b;
 }
 
 /* --------------------------------------------------------------------------------
@@ -534,11 +557,12 @@ Newsletter
   margin: auto;
   padding-left: 0;
   margin-top: 50px;
-  margin-bottom: 80px !important;
+  /* margin-bottom: -80px; */
+  padding-bottom: 20px;
+/*   margin-bottom: 80px !important;
   padding-bottom: 50px;
   display: flex;
-  flex-direction: column;
-
+  flex-direction: column; */
 }
 .jr-newsletter h2 {
   font-size: 36px;
@@ -557,6 +581,11 @@ Newsletter
   background-color: #f3f1eb;
   border: 0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.jrhomefaq {
+  padding: 0px 75px 75px 75px;
+  margin-top: 0;
 }
 
 #jr-newsletter-btn {

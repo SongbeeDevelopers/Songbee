@@ -21,6 +21,13 @@ import { motion } from 'framer-motion';
 import './RequestDetails.css'
 import RequestDetailsArtistBio from './RequestDetailsArtistBio';
 
+const prices = {
+  extra_verse: 74.99,
+  streaming: 49.99,
+  backing_track: 29.99,
+  license: 199.99
+}
+
 
 // This function will display the user's song request with a player so they can review their song
 function RequestDetails({ routeVariants, requestId }) {
@@ -107,53 +114,63 @@ function RequestDetails({ routeVariants, requestId }) {
   // End of tab structure
 
   return (
-    <motion.div
-      className='container songDetails'
-      variants={routeVariants}
-      initial="initial"
-      animate="final"
-    >
-      {/* title */}
-      <h2>{request.title}</h2>
+    <>
+      <motion.div
+        className='container songDetails'
+        variants={routeVariants}
+        initial="initial"
+        animate="final"
+      >
+        {/* title */}
+        <h2>{request.title}</h2>
 
-      {/* details */}
-      <p>For {request.recipient}</p>
-      {request.occasion && <p>{request.occasion}</p>}
-      <p>{request.genre}</p>
+        {/* details */}
+        <p>For {request.recipient}</p>
+        {request.occasion && <p>{request.occasion}</p>}
+        <p>{request.genre}</p>
 
-      {/* audio file */}
-      <audio className='song-details-audio' controls src={request.url} />
+        {/* audio file */}
+        <audio className='song-details-audio' controls src={request.url} />
 
-      <div className='order-details-tab-container'>
-        {/* tab header */}
-        <Box sx={{ height: "80%" }}>
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            centered
-            textColor="primary"
-            indicatorColor="primary"
-          >
-            <Tab label="Lyrics" {...a11yProps(0)} />
-            {/* <Tab label="Details" {...a11yProps(1)} /> */}
-            <Tab label="Artist" {...a11yProps(1)} />
-          </Tabs>
-        </Box>
+        <div className='order-details-tab-container'>
+          {/* tab header */}
+          <Box sx={{ height: "80%" }}>
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              centered
+              textColor="primary"
+              indicatorColor="primary"
+            >
+              <Tab label="Lyrics" {...a11yProps(0)} />
+              {/* <Tab label="Details" {...a11yProps(1)} /> */}
+              <Tab label="Artist" {...a11yProps(1)} />
+            </Tabs>
+          </Box>
 
-        {/* tabs */}
-        <CustomTabPanel value={value} index={0}>
-          <RequestLyricsTab request={request} />
-        </CustomTabPanel>
+          {/* tabs */}
+          <CustomTabPanel value={value} index={0}>
+            <RequestLyricsTab request={request} />
+          </CustomTabPanel>
 
-        {/* <CustomTabPanel value={value} index={1}>
+          {/* <CustomTabPanel value={value} index={1}>
           <RequestDetailsTab request={request} />
         </CustomTabPanel> */}
 
-        <CustomTabPanel value={value} index={1}>
-          <RequestDetailsArtistBio />
-        </CustomTabPanel>
-      </div>
+          <CustomTabPanel value={value} index={1}>
+            <RequestDetailsArtistBio />
+          </CustomTabPanel>
+        </div>
 
+        <Button variant="contained"
+          onClick={() => history.goBack()}
+          sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
+        > BACK
+        </Button>
+
+      </motion.div>
+      
+      {/* addons */}
       <div className='request-details-addon-container'>
         <h2>Purchase Add-Ons For Your Song</h2>
         <div className='requestdetailsaddons'>
@@ -164,7 +181,7 @@ function RequestDetails({ routeVariants, requestId }) {
                 disableRipple
                 checked={addons.extra_verse}
                 onClick={() => handleCheckbox('extra_verse')}
-                sx={{position: 'absolute', mt: -2, ml: -2, backgroundColor: '#fff4df' }} />
+                sx={{ position: 'absolute', mt: -2, ml: -2, backgroundColor: '#fff4df' }} />
               <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/extraverse_hmt8jd.jpg"></img>
               <p>Add a Verse!</p>
             </div>
@@ -176,7 +193,7 @@ function RequestDetails({ routeVariants, requestId }) {
                 disableRipple
                 checked={addons.streaming}
                 onClick={() => handleCheckbox('streaming')}
-                sx={{position: 'absolute', mt: -2, ml: -2, backgroundColor: '#fff4df' }} />
+                sx={{ position: 'absolute', mt: -2, ml: -2, backgroundColor: '#fff4df' }} />
               <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/addstreaming_hng5cz.jpg"></img>
               <p>Add Streaming!</p>
             </div>
@@ -188,7 +205,7 @@ function RequestDetails({ routeVariants, requestId }) {
                 disableRipple
                 checked={addons.backing_track}
                 onClick={() => handleCheckbox('backing_track')}
-                sx={{position: 'absolute', mt: -2, ml: -2, backgroundColor: '#fff4df' }} />
+                sx={{ position: 'absolute', mt: -2, ml: -2, backgroundColor: '#fff4df' }} />
               <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/backingtrack_m94vwk.jpg"></img>
               <p>Karaoke Version!</p>
             </div>
@@ -200,7 +217,7 @@ function RequestDetails({ routeVariants, requestId }) {
                 disableRipple
                 checked={addons.license}
                 onClick={() => handleCheckbox('license')}
-                sx={{position: 'absolute', mt: -2, ml: -2, backgroundColor: '#fff4df' }} />
+                sx={{ position: 'absolute', mt: -2, ml: -2, backgroundColor: '#fff4df' }} />
               <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/commerciallicense_qkxiug.jpg"></img>
               <p>Add Licensing!</p>
             </div>
@@ -208,21 +225,17 @@ function RequestDetails({ routeVariants, requestId }) {
         </div>
 
         {(addons.backing_track || addons.extra_verse || addons.license || addons.streaming) &&
+        <>
+          <p>{totalPrice}</p>
           <Button variant="contained"
             onClick={purchaseAddons}
             sx={{ height: 35, width: 60, backgroundColor: "#feaf17", color: "black" }}
           > BUY
           </Button>
+        </>
         }
       </div>
-
-      <Button variant="contained"
-        onClick={() => history.goBack()}
-        sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
-      > BACK
-      </Button>
-
-    </motion.div>
+    </>
   )
 }
 

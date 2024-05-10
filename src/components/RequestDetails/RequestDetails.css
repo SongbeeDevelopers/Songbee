@@ -45,12 +45,12 @@ audio::-webkit-media-controls-time-remaining-display {
 }
 .songDetails audio {
   display: block;
-  margin: 50px auto;
+  margin: 0 auto;
 }
 
 /* tab container */
 .order-details-tab-container {
-  margin: 50px auto;
+  margin: 0 auto;
 }
 
 /* --------------------------------------------------------------------------------
@@ -139,17 +139,22 @@ Add-ons Section
 
 .request-details-addon-container {
   margin: 50px auto;
-  min-width: 800px;
+  min-width: 100%;
   background-color: white;
-  border-radius: 25px;
-  padding: 25px 50px 50px;
+  padding: 25px 0 50px;
+  text-align: center;
+  margin-bottom: -75px;
+}
+
+.request-details-addon-container h2 {
+  margin-bottom: 50px;
 }
 
 .requestdetailsaddons {
   display: flex;
   flex-direction: row;
-  gap: 15px;
-  justify-content: space-around;
+  gap: 50px;
+  justify-content: center;
 }
 
 .requestDetailsaddon {

@@ -212,8 +212,6 @@ function ComponentRouter() {
         </Route>
        
 
-       
-        {/* 👆 redundant 👇 */}
         <MainRoute exact path="/ArtistBioPage/:id">
           <ArtistBioPage routeVariants={routeVariants} />
         </MainRoute>
@@ -245,10 +243,9 @@ function ComponentRouter() {
           <JrCheckoutPage routeVariants={routeVariants} />
         </JrRoute>
 
-        <Route exact path="/schools-inspiration">
-          <SchoolsInspirationHeader />
+        <JrRoute exact path="/schools">
           <SchoolsInspiration routeVariants={routeVariants} ></SchoolsInspiration>
-        </Route>
+        </JrRoute>
 
         <Route exact path="/why-songbee">
           <WhySongbee routeVariants={routeVariants} />
@@ -264,10 +261,9 @@ function ComponentRouter() {
           <FaqPageSbJR routeVariants={routeVariants} />
         </JrRoute>
 
-        <Route exact path="/learning-packs">
-          <LearningPacksHeader />
+        <JrRoute exact path="/learning-packs">
           <LearningPacksPage routeVariants={routeVariants} />
-        </Route>
+        </JrRoute>
 
         <Route exact path="/learning-packs/:slug">
           <LearningPacksHeader />
