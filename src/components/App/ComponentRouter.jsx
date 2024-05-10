@@ -50,7 +50,7 @@ import LearningPacksPage from "../LearningPacksPage/PacksPage";
 import LearningPackView from "../LearningPackView/PackView";
 import SchoolsInspiration from "../SchoolsAndGroups/SchoolsAndGroups";
 import WhySongbee from "../WhySongbee/WhySongbee";
-import WhatsIncluded from "../WhatsIncludedSchoolsInspiration/WhatsIncluded";
+import WhatsIncluded from "../WhatsIncludedSchools/WhatsIncluded";
 import DiveIntoBenefits from "../JrBenefits/JrBenefits";
 import ScrollToTop from "./ScrollToTop";
 
@@ -116,11 +116,6 @@ function ComponentRouter() {
             // Otherwise, show the login page
             <LoginPage routeVariants={routeVariants} />
           )}
-        </MainRoute>
-
-
-        <MainRoute exact path="/join-artist">
-          <JoinArtistPage routeVariants={routeVariants} />
         </MainRoute>
 
 
@@ -195,6 +190,10 @@ function ComponentRouter() {
         <MainRoute exact path="/ArtistBioPage/:id">
           <ArtistBioPage routeVariants={routeVariants} />
         </MainRoute>
+        
+        <MainRoute exact path="/join-artist">
+          <JoinArtistPage routeVariants={routeVariants} />
+        </MainRoute>
 
 
         {/* order process */}
@@ -240,7 +239,7 @@ function ComponentRouter() {
           </JrRoute>
         </ProtectedRoute>
 
-        <JrRoute exact path="/faqSbJR">
+        <JrRoute exact path="/jr-faq">
           <FaqPageSbJR routeVariants={routeVariants} />
         </JrRoute>
 
@@ -252,7 +251,7 @@ function ComponentRouter() {
           <LearningPackView routeVariants={routeVariants} />
         </JrRoute>
 
-        <JrRoute exact path="/whatsIncluded">
+        <JrRoute exact path="/whats-included">
           <WhatsIncluded routeVariants={routeVariants} />
         </JrRoute>
 

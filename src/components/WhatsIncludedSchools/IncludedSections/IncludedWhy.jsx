@@ -1,10 +1,11 @@
 import React from "react";
-import "./WI.css";
+import "../WhatsIncluded.css";
 
 function WhatsIncludedWhySongbee() {
   return (
     <div className="wsb">
       <h2>Why Songbee?</h2>
+
       <p>
         Meet with one of our experts to learn more about <br /> why Songbee is right
         for you.
