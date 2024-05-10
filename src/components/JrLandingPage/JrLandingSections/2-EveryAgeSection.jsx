@@ -1,7 +1,10 @@
 import React from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 
 function EveryAgeSection() {
+
+  const history = useHistory()
 
   return (
     <div className="every-age-every-stage">

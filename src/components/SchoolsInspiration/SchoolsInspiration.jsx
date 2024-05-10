@@ -76,7 +76,6 @@ function SchoolsInspiration() {
       <ForAllAges/>
       <WhyExpertsLoveUs/>
       <JrFaq/>
-      <JrFooter/>
     </div>
   );
 }

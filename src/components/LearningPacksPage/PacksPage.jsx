@@ -7,7 +7,12 @@ import { Link } from "react-router-dom";
 import PlayToLearn from "./PlayToLearn";
 import JrFooter from "../JrFooter/JrFooter";
 import PacksFaq from "./PacksFaq";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+
 function LearningPacksPage({ routeVariants }) {
+
+  const history = useHistory()
+
   return (
     <motion.div
       className="learning-packs"
@@ -25,7 +30,7 @@ function LearningPacksPage({ routeVariants }) {
           <div className="lp-hero-text">
             <h1>Learning Packs</h1>
             <p>Support Your Child’s Development</p>
-            <button className="jr-landing-btn">Get Started</button>
+            <button className="jr-landing-btn" onClick={() => history.push('/jrcheckout')}>Get Started</button>
           </div>
         </div>
 
