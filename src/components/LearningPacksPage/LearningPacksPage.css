@@ -3,6 +3,8 @@
   flex-direction: column;
   background-color: white;
   padding-bottom: 100px;
+  padding-top: 50px;
+
 }
 
 .lp-hero {
@@ -10,6 +12,15 @@
   flex-direction: column;
   width: 100%;
   position: relative;
+}
+
+.packs-header-bg h2{
+text-shadow: 1px 1px 2px black;
+}
+.packs-header-bg{
+  width: max-content;
+  margin: 0 auto;
+
 }
 
 .lp-cta {
@@ -91,15 +102,16 @@
   display: flex;
   flex-direction: column;
   width: max-content;
-  padding-top: 100px;
+  padding-top: 155px;
   padding-left: 60px;
   gap: 20px;
   position: relative;
   z-index: 20;
+
 }
 
 .lp-hero-text p {
-  font-size: 25px;
+  font-size: 30px;
   margin: 0;
   padding: 0;
 }
@@ -112,6 +124,9 @@
   padding: 0;
   margin: 0;
   font-weight: 500;
+  font-size: 3rem;
+  text-align: left;
+  margin-bottom: -25px;
 }
 
 .lp-hero-steps {
@@ -221,7 +236,7 @@
 .lp-dots {
   width: 400px;
   height: 0;
-  border-bottom: 2px dashed #feaf17;
+  border-bottom: 2px solid #feaf17;
   position: absolute;
   left: 0;
   bottom: -25px;
@@ -392,24 +407,24 @@
 .video-colorMusicNotes {
   position: absolute;
   height: auto;
-  width: 100px;
-  bottom: 100px;
-  left: 100px;
+  width: 125px;
+  bottom: 10px;
+  left: 46px;
 }
 .video-blackMusicNotes {
   position: absolute;
   height: auto;
-  width: 50px;
-  top: 30%;
-  left: 30px;
+  width: 65px;
+  top: 40%;
+  left: 185px;
 }
 
 .video-colorFlowers {
   position: absolute;
   height: auto;
-  width: 100px;
-  top: 50px;
-  right: 50px;
+  width: 125px;
+  top: 250px;
+  right: 100px;
 }
 
 .video-bee {
@@ -431,7 +446,7 @@
   z-index: 50;
 }
 
-.learningMadeEasy {
+.MadeEasy {
   background-color: #feaf17;
 }
 
@@ -443,12 +458,14 @@
 .lp-otherBee {
   top: -120px !important;
   z-index: 60;
+  left: 40px !important;
+  width: 90% !important;
 }
 
 .other-beehives {
   width: 100px;
   position: absolute;
-  right: 10px;
+  right: 1px;
   top: -80px;
   z-index: 40;
 }
@@ -456,6 +473,10 @@
 .other-yellowLine {
   position: relative;
   z-index: 50;
+  left: 30px !important;
+  right: 8px !important;
+  margin: 0 auto !important;
+  width: 96% !important;
 }
 
 .lp-packsOther {
@@ -517,4 +538,94 @@ right: -60px;
   width: 50px;
   bottom: 0;
   left: -20px;
+}
+
+.w-cards{
+display: flex;
+justify-content: center;
+gap: 20px;
+padding-bottom: 100px;
+padding-top: 50px;
+}
+
+.w-card{
+display: flex;
+gap: 20px;
+
+}
+
+.w-card span{
+  display: flex;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #FFDEB0;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.5rem;
+flex-shrink: 0;
+
+}
+
+.w-card-content{
+  display: flex;
+  flex-direction: column;
+}
+
+.w-card-content h3{
+  margin: 0;
+  padding: 0;
+}
+
+.w-card-content p{
+  margin: 0;
+  padding: 0;
+}
+
+.packs-faq{
+  justify-content: flex-start !important;
+align-items: center !important;
+position: relative !important;
+height: max-content !important;
+}
+
+.packs-faq h2{
+  font-size: 3rem;
+
+}
+
+.packs-faqQuestions{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.packs-faq-yellowLine{
+bottom: 0 !important;
+top: unset !important;
+position: absolute !important;
+}
+
+
+.packs-faq-bee{
+bottom: -55px !important;
+top: unset !important;
+
+}
+
+.faq-beehive{
+  bottom: 0 !important;
+top: unset !important;
+}
+
+.faq-line{
+  width: 400px;
+  height: 2px;
+  background-color: #feaf17;
+  margin: 0 auto;
+  min-height: 2px;
+  margin-top: 6rem;
+margin-bottom: -1rem;
 }

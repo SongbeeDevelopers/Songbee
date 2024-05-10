@@ -4,6 +4,8 @@ import { HashRouter as Router } from 'react-router-dom';
 
 import ComponentRouter from './ComponentRouter.jsx';
 import LocationProvider from './LocationProvider.jsx';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Poppins from "../../../public/Poppins.ttf"
@@ -49,7 +51,9 @@ function App() {
     <Router>
           <LocationProvider>
             <ThemeProvider theme={theme}>
-              <ComponentRouter />
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <ComponentRouter />
+              </LocalizationProvider>
             </ThemeProvider>
           </LocationProvider>
     </Router>

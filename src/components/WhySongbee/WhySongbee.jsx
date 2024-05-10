@@ -5,6 +5,7 @@ import WsMusic from "./WS-Music";
 import WsHowItWorks from "./WS-HowItWorks";
 import JrFaq from "../JrFaq.jsx/JrFaq";
 import JrFooter from "../JrFooter/JrFooter";
+import JoinTheHive from "./JoinTheHive";
 
 function WhySongbee() {
   return (
@@ -21,10 +22,12 @@ function WhySongbee() {
         alt=""
         className="yellowLine ws-yellowLine"
       />
-      <WsFeatures />
+      {/* <WsFeatures /> */}
+      <JoinTheHive/>
       <WsMusic />
       <WsHowItWorks />
       <div className="bottom-howitworks">
+        <img className="top-quote" src="/junior/hive-imgs/hive-quotes.webp" alt="" />
         <p>
           As an educator, I love working with Songbee. The learning and clinical
           applications of the songs written for our Lower School are extremely
@@ -33,6 +36,7 @@ function WhySongbee() {
           school divisions that promotes a positive developmental trajectory and
           that enhances individual well-being. - Amrit Daryanani, PHD
         </p>
+        <img className="bottom-quote" src="/junior/hive-imgs/hive-quotes.webp" alt="" />
       </div>
       <div className="ws-yellowLine">
         <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076677/Songbee/YellowLine_kbce6u.png" alt="" className="yellowLine" />{" "}

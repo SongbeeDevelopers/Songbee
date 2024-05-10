@@ -8,13 +8,16 @@
 }
 
 .si-hero img {
-  height: 700px;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
 }
 
 .si-hero h1 {
   margin: 0;
   padding: 0;
-  font-size: 50px;
+  font-size: 35px;
   text-align: left;
   margin-bottom: -20px;
 }
@@ -32,11 +35,11 @@
 
 .si-heroContents {
   position: absolute;
-  bottom: 50px;
+  bottom: 20px;
   left: 30px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
 }
 
 .si-yellowLine {
@@ -73,6 +76,9 @@
   background-size: cover;
   position: relative;
   z-index: 30;
+  object-fit: cover;
+  object-position: center;
+
 }
 
 .si-types-1-text {
@@ -184,7 +190,7 @@
   transform: rotate(-10deg);
   width: 85%;
   gap: 100px;
-  font-family: papyrus;
+  font-family: "PacificNorthwestRough-NormalMed";
   font-weight: bolder;
   font-size: 18px;
 }
@@ -210,7 +216,8 @@
   gap: 5px;
   padding: 0;
   margin: 0;
-  font-size: 18px;
+  font-size: 22px;
+  font-weight: 300;
 }
 
 .bookList {

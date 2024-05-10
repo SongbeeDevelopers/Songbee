@@ -40,9 +40,6 @@ const artistGenre = useSelector(store => store.fetchGenres);
                    <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714071878/Songbee/artist-website_s1wuuu.png" alt="Artist Website" />
                 </a>
                 </div>
-               <div className="community-button">
-                   <Link to="/artist-process">Start a song with me</Link>
-               </div>
             </div> 
            </div>
            <h4 className="bio">{artist.bio}</h4>
