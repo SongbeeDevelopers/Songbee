@@ -36,14 +36,13 @@ const faqsMain = [
       What if I am not happy with my song?
     `,
     answer: `
-      With the Songbee Quality Guarantee, you can be rest assured that if your 1st draft 
-      was not what you were looking for, you can provide edits to make your song perfect for you.
-      Send us an email hello@songbee.com: title your email with "order number, lyric revisions", 
-      requested lyric edits, write notes to your artist, and improve your song your way at no additional cost.
-      All song deliveries will be locked in and unable to change after 7 days of 
-      your 1st draft song delivery (regardless of additional requests or fees).
-      NOTE: All requested edits must be submitted within 48 hours of song delivery or
-      additional fees will be applied and delivery time will vary due to artist availability.
+    With the Songbee Quality Guarantee, you can be rest assured that if your 1st draft was not 
+    what you were looking for, you can provide edits to make your song perfect for you. Send us a 
+    message via our customer portal to request your lyric edits, write a note to your artist, and 
+    improve your song your way at no additional cost. All song deliveries will be locked in and unable 
+    to change after 7 days of your 1st draft song delivery (regardless of additional requests or fees). 
+    NOTE: All requested edits must be submitted within 48 hours of song delivery or additional fees will 
+    be applied and delivery time will vary due to artist availability.
     `
   },
 ];

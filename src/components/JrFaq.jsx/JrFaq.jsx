@@ -5,51 +5,38 @@ function JrFaq() {
     {
       id: 0,
       question: "What are the BEE programs?",
-      answer:
-        "Our BEE programs are designed to enhance and supplement learning with music-guided play and maximize development, create a well rounded learning environment, and create the next generation of innovative adults.",
+      answer:`
+      Our BEE programs are designed to enhance and supplement learning with 
+      music-guided play and maximize development, create a well rounded 
+      learning environment, and create the next generation of innovative adults.
+      `
     },
     {
       id: 1,
       question: "How much are the BEE programs?",
-      answer:
-        "Song PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong Page.",
+      answer:`
+      Each program is customized and designed for your needs. Contact us to request 
+      a quote and consult an expert to help design your program. 
+      `
     },
     {
       id: 2,
-      question: "What is SongBee?",
-      answer:
-        "Each program is customized and designed for your needs. Contact us to request a quote and consult an expert to help design your program.",
-    },
-    {
-      id: 0,
       question: "How are they delivered?",
-      answer:
-        "They are delivered via your customer portal. Delivery time will vary depending on the package you designed with your expert. Your Songbee expert will let you know the delivery schedule for your custom BEE program.",
+      answer: `
+      They are delivered via your customer portal. Delivery time will vary depending 
+      on the package you designed with your expert. Your Songbee expert will let you 
+      know the delivery schedule for your custom BEE program.
+      `
     },
     {
       id: 3,
       question: "How do I contact Songbee for support? ",
-      answer:
-        "You can message us on your customer/school portal anytime or send us an email for support at hello@songbee.com. We will respond to your support request as soon as possible. We are committed to creating healthy brains and happy children one song at a time!",
+      answer: `
+      You can message us on your customer/school portal anytime or send us an email for 
+      support at hello@songbee.com. We will respond to your support request as soon as possible. 
+      We are committed to creating healthy brains and happy children one song at a time!
+      `
     },
-    {
-      id: 4,
-      question: "What is SongBee?",
-      answer:
-        "Song PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong Page.",
-    },
-    // {
-    //   id: 5,
-    //   question: "What is SongBee?",
-    //   answer:
-    //     "Song PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong Page.",
-    // },
-    // {
-    //     id: 5,
-    //     question: "What is SongBee?",
-    //     answer:
-    //       "Song PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong PageSong Page.",
-    //   },
   ];
   return (
     <div className="jr-faq">

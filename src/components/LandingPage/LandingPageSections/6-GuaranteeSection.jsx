@@ -18,7 +18,7 @@ function Guarantee() {
 
 
         <h2>
-          Song Guarantee
+          The Songbee Guarantee
         </h2>
 
         <div className="guarantee-text-container">
@@ -28,7 +28,7 @@ function Guarantee() {
             with your artist at no additional fee.
           </p>
           <p>
-            Notify us via email of any edit requests or notes to your artist.
+            Message us in the customer portal for any edit requests or notes to your artist.
           </p>
           <p>Contact us at hello@songbee.com</p>
         </div>
