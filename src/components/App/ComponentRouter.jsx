@@ -56,6 +56,10 @@ import WhatsIncluded from "../WhatsIncludedSchoolsInspiration/WhatsIncluded";
 import DiveIntoBenefits from "../SiDiveInBenefits/DiveIntoBenefits";
 import ScrollToTop from "./ScrollToTop";
 import { Route } from "react-router-dom";
+import SocketHome from "../SocketComponents/SocketHome";
+import ChatPage from "../SocketComponents/ChatPage";
+import socketIO from 'socket.io-client';
+
 
 
 function ComponentRouter() {
@@ -63,6 +67,8 @@ function ComponentRouter() {
   const location = useLocation();
 
   const user = useSelector((store) => store.user);
+
+  const socket = socketIO.connect('http://localhost:5173');
 
   // styling for route fade-ins
   const routeVariants = {
@@ -135,6 +141,9 @@ function ComponentRouter() {
         <Route exact path="/join-artist">
           <JoinArtistPage routeVariants={routeVariants} />
         </Route>
+
+        <Route path="/chathome" element={<SocketHome socket={socket} />}></Route>
+          <Route path="/chatpage" element={<ChatPage socket={socket} />}></Route>
 
         <MainRoute exact path="/register">
           {user.id ? (

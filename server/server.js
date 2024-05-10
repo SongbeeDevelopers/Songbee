@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 require('dotenv').config();
 const PORT = process.env.PORT || 5001;
+const http = require('http').Server(app);
+const cors = require('cors');
 
 // Middleware Includes
 const sessionMiddleware = require('./modules/session-middleware');
@@ -15,13 +17,15 @@ const requestRouter = require('./routes/request.router');
 const searchRouter = require('./routes/search.router');
 const artistRouter = require('./routes/artist.router');
 const stripeRouter = require('./routes/stripe.router');
-const mailchimpRouter = require('./routes/mailchimp.router')
-const jrRequestRouter = require('./routes/juniorRequest.router')
+const mailchimpRouter = require('./routes/mailchimp.router');
+const jrRequestRouter = require('./routes/juniorRequest.router');
+const socket = require('./routes/socket.router');
 
 // Express Middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('build'));
+app.use(cors());
 
 // Passport Session Configuration
 app.use(sessionMiddleware);
@@ -39,9 +43,10 @@ app.use('/api/jr-request', jrRequestRouter);
 app.use('/api/search', searchRouter);
 app.use('/api/artist', artistRouter);
 app.use('/api/stripe', stripeRouter);
-app.use('/api/mailchimp', mailchimpRouter)
+app.use('/api/mailchimp', mailchimpRouter);
+app.use('/api/socket', socket);
 
 // Listen Server & Port
-app.listen(PORT, () => {
+http.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
 });

@@ -1,9 +1,9 @@
 import React from "react";
-import SocketComponent from "../SocketComponents/SocketComponent";
+// import SocketComponent from "../SocketComponents/SocketComponent";
 
 function CreationPage() {
 
-  return <SocketComponent />;
+  return
 }
 
 export default CreationPage;
