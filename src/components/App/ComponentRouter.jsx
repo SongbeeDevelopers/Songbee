@@ -226,7 +226,7 @@ function ComponentRouter() {
           <FinalQuestions routeVariants={routeVariants} />
         </MainRoute>
 
-        <MainRoute exact path="/created/:delivery_days/:extra_verse/:streaming">
+        <MainRoute exact path="/created/">
           <CreationPage routeVariants={routeVariants} />
         </MainRoute>
 
