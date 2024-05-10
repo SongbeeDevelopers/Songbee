@@ -169,7 +169,7 @@ function RequestDetails({ routeVariants, requestId }) {
         </Button>
 
       </motion.div>
-      
+
       {/* addons */}
       <div className='request-details-addon-container'>
         <h2>Purchase Add-Ons For Your Song</h2>
@@ -225,14 +225,14 @@ function RequestDetails({ routeVariants, requestId }) {
         </div>
 
         {(addons.backing_track || addons.extra_verse || addons.license || addons.streaming) &&
-        <>
-          <p>{totalPrice}</p>
-          <Button variant="contained"
-            onClick={purchaseAddons}
-            sx={{ height: 35, width: 60, backgroundColor: "#feaf17", color: "black" }}
-          > BUY
-          </Button>
-        </>
+          <>
+            <p>{totalPrice}</p>
+            <Button variant="contained"
+              onClick={purchaseAddons}
+              sx={{ height: 35, width: 60, backgroundColor: "#feaf17", color: "black" }}
+            > BUY
+            </Button>
+          </>
         }
       </div>
     </>
