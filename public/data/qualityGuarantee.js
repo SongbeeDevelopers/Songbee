@@ -1,7 +1,7 @@
 // QUALITY GUARANTEE
 
 const qualityGuarantee = {
-  title: `Quality Guarantee`,
+  title: `The Songbee Guarantee`,
   details: [
     `
       At Songbee we stand behind our Custom Songs! We understand that your
