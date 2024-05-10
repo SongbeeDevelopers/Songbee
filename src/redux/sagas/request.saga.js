@@ -68,6 +68,18 @@ function* fetchCheckout (action) {
     }
 }
 
+function* fetchTipCheckout () {
+    try {
+        const stripeResponse = yield axios({
+            method: "POST",
+            url: '/api/stripe/tip',
+        })
+        yield window.location.href = stripeResponse.data
+    } catch (error) {
+        console.error('SAGA fetchTipCheckout() failed:', error)
+    }
+}
+
 function* fetchAddonCheckout (action) {
     try {
         const stripeResponse = yield axios({
@@ -197,6 +209,7 @@ function* requestSaga() {
     yield takeLatest('JR_LOAD_EDIT_PAGE', jrLoadEditPage);
     yield takeLatest('LOAD_ADMIN_PAGE', loadAdminPage);
     yield takeLatest('FETCH_CHECKOUT', fetchCheckout);
+    yield takeLatest('FETCH_TIP_CHECKOUT', fetchTipCheckout)
     yield takeLatest('FETCH_ADDON_CHECKOUT', fetchAddonCheckout);
     yield takeLatest('FINISH_SONG_REQUEST', finishSongRequest);
     yield takeLatest('SUBMIT_REQUEST_EDIT', submitRequestEdit);
