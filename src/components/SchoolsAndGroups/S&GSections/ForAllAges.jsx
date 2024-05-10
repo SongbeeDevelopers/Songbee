@@ -1,5 +1,6 @@
 import React from "react";
-import "./SI.css";
+import "../SchoolsAndGroups.css";
+
 import { Link } from "react-router-dom";
 function ForAllAges() {
   return (
