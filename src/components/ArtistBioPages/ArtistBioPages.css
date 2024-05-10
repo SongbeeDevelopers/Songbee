@@ -1,40 +1,39 @@
 
 
 .imgBox {
-  display: flex;
-  flex-direction: column;
+  position: static;
+  display: grid;
   justify-content: center;
-  align-items: center;
   background-color: white;
-  padding: 20px;
+  padding: 10px;
+  padding-left: 150px;
+  padding-right: 150px;
   margin-top: 50px;
-  width: 100%;
+  align-content: space-evenly;
+  width: 80%;
+  min-height: auto;
+  margin-left: 150px;
   height: auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
+
 
 .content {
     display: flex;
     align-items: center;
-    margin-left: 40px;
+    margin-left: 200px;
+    max-width: 90%;
 }
+
 
 
 .content img {
     border-radius: 50%;
-    width: 300px;
-    height: auto;
+    width: 350px;
+    
 }
 
 
-
-.nameHeader h2{
-    font-family: Poppins, sans-serif;
-    text-align: center;
-    margin-bottom: 20px;
-    margin-left: 20px;
-    display: flex;
-    flex-direction: column;
-}
 
 .location  {
   position: relative;
@@ -51,7 +50,8 @@
     line-height: 50px;
     font-weight: 800;
     letter-spacing: 0px;
-    
+    margin-top: -10px;
+    margin-left: 20px;
  }
 
 
@@ -89,12 +89,13 @@
   .bio {
     
     font-family: Poppins, sans-serif;
-    font-size: 18px;
+    font-size: 15px;
     line-height: 24px;
     font-weight: 300;
-    letter-spacing: 0px;
-    
+    letter-spacing: 0px; 
   }
+
+  
 
   .socialLinks {
     display: flex;
@@ -103,7 +104,7 @@
     position: relative;
     left: 50px;
     width: 300px;
-    margin-top: -10px;
+    margin-top: 40px;
   }
 
   .instagram {
@@ -165,7 +166,7 @@
    
   }
 
-  .title, .genre {
+  /* .title, .genre {
     font-family: Poppins, sans-serif;
     text-align: center;
     font-size: 15px;
@@ -173,21 +174,21 @@
     font-weight: 500;
     letter-spacing: .25px; 
     padding: 20px;
-  }
+  } */
 
-  .genre {
+  /* .genre {
     margin-left: 170px;
    
-  }
+  } */
 
-  .title {
+  /* .title {
     margin-right: 170px;
    
-  }
+  } */
 
   .songList {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
    
   }
   
@@ -195,7 +196,7 @@
   .songItems {
     width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
     padding-bottom: 50px;
     margin-bottom: 50px;
@@ -208,6 +209,7 @@
 
   .audioFiles {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     border-bottom: 2px solid  #e1ded6;
@@ -216,16 +218,19 @@
   }
   
 
-  .audioFiles div{
+  .audioFiles  div{
     margin-bottom: 1px;
-    margin-top: -150px;
+    margin-top: -100px;
     gap: 100px;
-    
+    margin-left: auto;
+    flex: 1;
+   
   }
 
   .songTitles {
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 60%;
     padding-top: 10px;
   }
@@ -236,7 +241,7 @@
   .songTitles h3{
     margin-right: 20px;
     margin-bottom: 0;
-    width: 60%;
+    width: 100%;
   }
 
   .genres {
@@ -245,9 +250,9 @@
   }
 
 
-  .genres h3 {
+  /* .genres h3 {
     margin-left: 20px;
-  }
+  } */
   
   .headerItem {
     display: inline-block;
@@ -257,13 +262,18 @@
 }
 
 .artistCommunityBtns {
-  height: auto;
-  max-width: 100%;
-  margin-right: 20px;
-  padding: 50px 20px 120px;
+
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  /* height: auto; */
+  /* max-width: 100%; */
+  /* margin-right: 20px; */
+  /* padding: 60px 20px 100px; */
 }
 
-  
- 
+  .artistCommunityBtns button {
+    margin-left: -40px; 
+  }
 
   

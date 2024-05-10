@@ -67,11 +67,12 @@ const handleArtist =(e) => {
                </div>
             </div> 
            </div>
-           <h4 className="bio">{artist.bio}</h4>
          </div>
+         <h2>Bio:</h2>
+         <h4 className="bio">{artist.bio}</h4>
         </div>
         <div className="songListWrapper">
-           <div className="tableHeader">
+           {/* <div className="tableHeader">
                <div className="headerItem"> 
                    <div className="title">
                       Title
@@ -83,7 +84,7 @@ const handleArtist =(e) => {
                        Genre
                    </div>
                </div>
-           </div>
+           </div> */}
            
            <div className="songList">
                <div className="songItems">
@@ -97,8 +98,8 @@ const handleArtist =(e) => {
                     <h3>{songTitle}</h3>
                       <div className="artistCommunityBtns">
                         <AudioButton url={sampleSong} />
-                       {console.log('Logging sampleSong:', sampleSong)}
                       </div>
+                      {console.log('sampleSong', sampleSong)}
                    </div>
                    <div className="genres">
                        {artist.genres.map((genre) => (

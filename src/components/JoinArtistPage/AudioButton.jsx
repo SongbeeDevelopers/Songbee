@@ -3,7 +3,7 @@ import { useState, useRef } from "react";
 
 import './JoinArtistPage.css';
 
-function AudioButton({ url }) {
+function AudioButton({ url, popup, setShowPopUp, setSelectedSong, artist }) {
     const [isPlaying, setIsPlaying] = useState(false);
     const audioRef = useRef(null);
 
@@ -16,12 +16,22 @@ function AudioButton({ url }) {
             audioElement.play();
         }
         setIsPlaying(!isPlaying);
+
+        if (popup === true) {
+            setShowPopUp(true)
+            setSelectedSong(artist)
+        }
+
     };
+
+    
+
+
 
     return (
         <div>
             <audio ref={audioRef} src={url}></audio>
-            <button  className={isPlaying ? 'player-container pause' : 'player-container play'} onClick={playPause}></button>  
+            <button  className={isPlaying ? 'player-container pause' : 'player-container play'} onClick={playPause}></button> 
      </div>
     );
 }
