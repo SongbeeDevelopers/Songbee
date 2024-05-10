@@ -32,14 +32,14 @@ function JrLearningPacksSection() {
         Help your child excel in school or at home with musical learning.
       `
     },
-    {
-      age: '5 years & up!',
-      img: 'https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076182/Songbee/5up_qme8dk.png',
-      description: `
-        Develop a more mature and logical way of thinking. 
-        Further your child's social, physical, cognitive,  motor, and language development.
-      `
-    },
+    // {
+    //   age: '5 years & up!',
+    //   img: 'https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076182/Songbee/5up_qme8dk.png',
+    //   description: `
+    //     Develop a more mature and logical way of thinking. 
+    //     Further your child's social, physical, cognitive,  motor, and language development.
+    //   `
+    // },
   ]
 
   const LearnMoreButton = () => {
@@ -59,13 +59,14 @@ function JrLearningPacksSection() {
 
       <div className="age-container">
         {packs.map((pack) => (
-          <div className="age-item" >
+          <div className="age-item">
+
             <div className="age-item-contents">
-              <h4>{pack.age}</h4>
+              <h3>{pack.age}</h3>
               <img src={pack.img} />
               <p>{pack.description}</p>
-              <LearnMoreButton />
             </div>
+              <LearnMoreButton />
           </div>
         ))}
       </div>

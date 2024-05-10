@@ -5,7 +5,7 @@ import './JrFooter.css'
 function JrFooter() {
   
   return (
-    <footer>
+    <footer className="jr-footer">
       <img className='footerIcon' src='https://res.cloudinary.com/dke4ukd0z/image/upload/v1714070470/Songbee/header-icon_gzi9s3.png'></img>
 
       <div className='jrFlexContainer'>

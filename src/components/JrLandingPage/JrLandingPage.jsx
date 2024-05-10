@@ -32,11 +32,11 @@ function SBjrLandingPage({ routeVariants }) {
       <JrWorksSection />
       <WhyJuniorSection />
       <JrLearningPacksSection />
-      <JrOfferSection />
+      {/* <JrOfferSection /> */}
       <JrGuessworkSection />
       <JrReviewsSection />
-      <FaqPageSbJR />
       <JrNewsletterSection />
+      <FaqPageSbJR />
     </motion.div>
    )
     

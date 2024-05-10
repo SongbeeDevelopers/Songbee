@@ -59,14 +59,14 @@ function FaqPage({ routeVariants }) {
       initial="initial"
       animate="final"
     >
-      <h2 className="faq-title">Frequently Asked Questions</h2>
+      <h2 className="info-title">Frequently Asked Questions</h2>
 
-      <p className="faq-below-title">
+      <p className="info-subtitle">
         If you have additional questions, please reach out at{" "} <span className="suii">hello@songbee.com!</span>
       </p>
 
       <section className="collapse-area">
-        <div className="container">
+        <div className="jrhomefaq">
           <div className="row">
             <div className="collapse-tab col-xs-12">
               <div className="panel-group" id="accordion">
