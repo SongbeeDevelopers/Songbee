@@ -83,10 +83,10 @@ function JrHeader() {
           }
 
           {!isMobile &&
-            <> <Link to="/faq" className="nav-links">FAQ</Link> | </>
+            <> <Link to="/faq" className="nav-links">FAQ</Link> </>
           }
       <div className="jr-nav-right">
-        <button className="jr-landing-btn" onClick={() => history.push('/learning-packs')}>
+        <button id="jr-header-btn" className="jr-landing-btn" onClick={() => history.push('/learning-packs')}>
           Get Started
         </button>
         </div>
