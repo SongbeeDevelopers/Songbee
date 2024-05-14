@@ -37,7 +37,7 @@ function JrReviewsSection() {
   return (
     <div className="jr-reviews-bg">
       <div className="jr-reviews">
-        <h2 className="jr-reviews-header">Why families love us!</h2>
+        <h2 className="jr-reviews-header">Specialists love us!</h2>
 
         <div className="jr-review-item-container">
           {reviews.map((review) => (
@@ -51,7 +51,7 @@ function JrReviewsSection() {
         </div>
 
         <button id="guesswork-btn" className="jr-landing-btn" onClick={() => history.push('/why-songbee')}>
-          Why Us?
+          Why Songbee?
         </button>
       </div>
     </div>
