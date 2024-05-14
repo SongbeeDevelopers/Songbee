@@ -1,3 +1,9 @@
+/* creates margin of same height as header */
+/* located in App/MainRoute.jsx */
+.header-spacing {
+  margin-top: 3.5rem;
+}
+
 .nav {
   display: flex;
   position: fixed;
@@ -5,7 +11,7 @@
   z-index: 100;
   justify-content: space-between;
   align-items: center;
-  height: 2.8rem;
+  height: 3.5rem;
   width: 100%;
   padding-top: 1rem;
   padding-bottom: 14px;

@@ -89,7 +89,7 @@ function ComponentRouter() {
   return (
     <>
       {/* banner only appears on main homepage */}
-      {location.pathname === "/home"  && <Banner />}
+      {/* {location.pathname === "/home"  && <Banner />} */}
 
       {/* causes every route to start at top of page */}
       <ScrollToTop />
