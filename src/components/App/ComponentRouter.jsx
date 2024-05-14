@@ -51,6 +51,10 @@ import WhySongbee from "../WhySongbee/WhySongbee";
 import WhatsIncluded from "../WhatsIncludedSchools/WhatsIncluded";
 import DiveIntoBenefits from "../JrBenefits/JrBenefits";
 import ScrollToTop from "./ScrollToTop";
+import { Route } from "react-router-dom";
+import SocketHome from "../SocketComponents/SocketHome";
+import ChatPage from "../SocketComponents/ChatPage";
+import socketIO from 'socket.io-client';
 
 
 function ComponentRouter() {
@@ -58,6 +62,8 @@ function ComponentRouter() {
   const location = useLocation();
 
   const user = useSelector((store) => store.user);
+
+  const socket = socketIO.connect("https://www.songbee.com");
 
   // styling for route fade-ins
   const routeVariants = {
@@ -114,6 +120,20 @@ function ComponentRouter() {
           )}
         </MainRoute>
 
+        <Route exact path="/whatsIncluded">
+          <WhatsIncluded routeVariants={routeVariants} />
+        </Route>
+
+        <Route exact path="/join-artist">
+          <JoinArtistPage routeVariants={routeVariants} />
+        </Route>
+
+        <Route path="/chathome">
+          <SocketHome socket={socket} />
+        </Route>
+        <Route path="/chatpage">
+          <ChatPage socket={socket} />
+        </Route>
 
         <MainRoute exact path="/register">
           {user.id ? (
@@ -201,7 +221,7 @@ function ComponentRouter() {
           <FinalQuestions routeVariants={routeVariants} />
         </MainRoute>
 
-        <MainRoute exact path="/created/:delivery_days/:extra_verse/:streaming">
+        <MainRoute exact path="/created/">
           <CreationPage routeVariants={routeVariants} />
         </MainRoute>
 
