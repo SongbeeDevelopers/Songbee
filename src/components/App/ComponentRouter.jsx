@@ -6,8 +6,6 @@ import ProtectedRoute from "./ProtectedRoute";
 import MainRoute from "./MainRoute"
 import JrRoute from "./JrRoute";
 
-import Banner from "../Banner/Banner";
-
 // login/reg
 import LoginPage from "../LoginPage/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
@@ -88,8 +86,6 @@ function ComponentRouter() {
 
   return (
     <>
-      {/* banner only appears on main homepage */}
-      {/* {location.pathname === "/home"  && <Banner />} */}
 
       {/* causes every route to start at top of page */}
       <ScrollToTop />
