@@ -29,7 +29,8 @@ app.use(cors());
 
 const socketIO = require('socket.io')(http, {
   cors: {
-      origin: "https://www.songbee.com"
+      origin: "*",
+      credentials: true,
   }
 });
 

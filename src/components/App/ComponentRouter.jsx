@@ -68,7 +68,7 @@ function ComponentRouter() {
 
   const user = useSelector((store) => store.user);
 
-  const socket = socketIO.connect('https://www.songbee.com');
+  const socket = socketIO.connect("https://www.songbee.com");
 
   // styling for route fade-ins
   const routeVariants = {
