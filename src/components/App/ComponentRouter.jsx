@@ -68,7 +68,7 @@ function ComponentRouter() {
 
   const user = useSelector((store) => store.user);
 
-  const socket = socketIO.connect("https://www.songbee.com");
+  // const socket = socketIO.connect("https://www.songbee.com");
 
   // styling for route fade-ins
   const routeVariants = {
@@ -142,12 +142,12 @@ function ComponentRouter() {
           <JoinArtistPage routeVariants={routeVariants} />
         </Route>
 
-        <Route path="/chathome">
+        {/* <Route path="/chathome">
           <SocketHome socket={socket} />
         </Route>
         <Route path="/chatpage">
           <ChatPage socket={socket} />
-        </Route>
+        </Route> */}
 
         <MainRoute exact path="/register">
           {user.id ? (
