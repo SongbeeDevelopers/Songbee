@@ -49,13 +49,13 @@ function App() {
 
   return (
     <Router>
-          <LocationProvider>
-            <ThemeProvider theme={theme}>
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <ComponentRouter />
-              </LocalizationProvider>
-            </ThemeProvider>
-          </LocationProvider>
+      <LocationProvider>
+        <ThemeProvider theme={theme}>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <ComponentRouter />
+          </LocalizationProvider>
+        </ThemeProvider>
+      </LocationProvider>
     </Router>
   );
 }
