@@ -1,11 +1,14 @@
 import React from "react";
-import "./SI.css";
-import WhatsTheBuzz from "./TheBuzz";
-import BeeSmart from "./BeeSmart";
-import ForAllAges from "./ForAllAges";
-import WhyExpertsLoveUs from "./WhyExpertsLoveUs";
+
+import WhatsTheBuzz from "./S&GSections/TheBuzz";
+import BeeSmart from "./S&GSections/BeeSmart";
+import ForAllAges from "./S&GSections/ForAllAges";
+import WhyExpertsLoveUs from "./S&GSections/WhyExpertsLoveUs";
 import JrFaq from "../JrFaq.jsx/JrFaq";
-import JrFooter from "../JrFooter/JrFooter";
+
+import "./SchoolsAndGroups.css";
+
+
 function SchoolsInspiration() {
   const siTypes = [
     {
@@ -76,7 +79,6 @@ function SchoolsInspiration() {
       <ForAllAges/>
       <WhyExpertsLoveUs/>
       <JrFaq/>
-      <JrFooter/>
     </div>
   );
 }

@@ -1,4 +1,12 @@
+/* creates margin of same height as header */
+/* located in App/JrRoute.jsx */
+.jr-header-spacing {
+  margin-top: 4.68rem;
+}
+
 .jr-nav {
+    position: fixed;
+    top: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -8,6 +16,7 @@
     padding-right: 1.3rem;
     background-color: white;
     border-bottom: 1px solid black;
+    z-index: 1000;
   }
   
   .jr-nav-links{

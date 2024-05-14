@@ -12,6 +12,8 @@ export default function JrRoute({ children, ...props }) {
   return (
     <Route {...props}>
       <JrHeader />
+      {/* spaces page with sticky header properly */}
+      <div className="jr-header-spacing"></div>
       <JrComponent {...props} />
       <JrFooter />
     </Route>

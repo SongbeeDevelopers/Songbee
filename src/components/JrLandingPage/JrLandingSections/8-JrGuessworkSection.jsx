@@ -1,7 +1,10 @@
 import React from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 
 function JrGuessworkSection() {
+
+  const history = useHistory()
 
   return (
     <div className="guesswork-bg">
@@ -15,6 +18,7 @@ function JrGuessworkSection() {
         <button
           id="guesswork-btn"
           className="jr-landing-btn guesswork-btn"
+          onClick={() => history.push('/learning-packs')}
         > Get Started!
         </button>
       </div>

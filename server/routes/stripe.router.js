@@ -111,4 +111,15 @@ router.post('/addon', async (req, res) => {
   res.send(session.url);
 });
 
+router.post('/tip', async (req, res) => {
+  const session = await stripe.checkout.sessions.create({
+    line_items: [{price: 'price_1PEw3kJoOrJf4ICWniRn0wre', quantity: 1}],
+    mode: 'payment',
+    success_url: `https://songbee.com/#/user`,
+    cancel_url: `https://songbee.com/#/user`,
+    automatic_tax: {enabled: true},
+  });
+  res.send(session.url);
+});
+
 module.exports = router;

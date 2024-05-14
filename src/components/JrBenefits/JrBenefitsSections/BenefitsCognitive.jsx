@@ -1,19 +1,20 @@
 import React from "react";
-import "./SiBenefits.css";
 
-function BenefitsCognitive() {
+import "../JrBenefits.css";
+
+
+export default function BenefitsCognitive() {
   return (
     <div className="beEmotional bcCognitive">
+
       <div className="be-right bc-right">
         <h2>Cognitive</h2>
 
         <img src="/junior/3years/SI-final/cognitive-be.png" alt="" />
-        <a
-          className="be-link jr-landing-btn"
-          target="_blank"
+
+        <a className="be-link jr-landing-btn" target="_blank"
           href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5618809/"
-        >
-          References
+        > References
         </a>
       </div>
 
@@ -27,11 +28,10 @@ function BenefitsCognitive() {
             management, and organization.
           </p>
         </div>
+
         <button className="jr-landing-btn">Contact Us</button>
       </div>
+
     </div>
   );
 }
-
-export default BenefitsCognitive;
-// public / junior / SI - final / big - yellow - blob.png;

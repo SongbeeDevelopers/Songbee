@@ -1,6 +1,10 @@
 import React from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function PlayToLearn() {
+
+  const history = useHistory()
+
   const text = [
     {
       id: 0,
@@ -23,6 +27,7 @@ function PlayToLearn() {
         "Feel supported with our play & learning guides to make the most out of your play time!",
     },
   ];
+
   return (
     <div className="lp-playtolearn">
       <h2>Play To Learn!</h2>
@@ -38,7 +43,7 @@ function PlayToLearn() {
           </div>
         ))}
       </div>
-      <button className="jr-landing-btn">Get Started</button>
+      <button className="jr-landing-btn" onClick={() => history.push('/jrcheckout')}>Get Started</button>
     </div>
   );
 }

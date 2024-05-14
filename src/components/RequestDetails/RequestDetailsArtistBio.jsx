@@ -8,7 +8,6 @@ import AudioButton from "../JoinArtistPage/AudioButton";
 
 function RequestDetailsArtistBio() {
 
-  const { id } = useParams();
   const dispatch = useDispatch();
 
   const request = useSelector((store) => store.currentRequest);
@@ -18,19 +17,9 @@ function RequestDetailsArtistBio() {
       type: 'FETCH_CURRENT_ARTIST',
       payload: request.artist_id
     })
-  }, [request])
+  }, [])
 
   const artist = useSelector(store => store.currentArtist);
-
-  const artistGenre = useSelector(store => store.fetchGenres);
-  console.log("id", id)
-  console.log("request", request)
-
-
-  console.log("artist", artist)
-
-
-
 
   return artist ? (
     <>

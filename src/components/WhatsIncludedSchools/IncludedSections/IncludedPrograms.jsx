@@ -1,18 +1,25 @@
 import React from "react";
-import "./WI.css";
+
+import "../WhatsIncluded.css";
+
 
 function TopRatedPrograms() {
   return (
     <div className="trp">
+
       <div className="trp-top">
         <h2>Top Rated Programs</h2>
         <p>Actively listen, learn, and even song write through Songbee’s <span className="highlight underline">BEE</span>  programs. <br /> Innovate and teach the next generation with our streamlined approach.</p>
       </div>
+
       <div className="trp-bottom">
         <div className="trp-card">
           <img src="/junior/0-12/babyOne.jpg" alt="" />
+
           <h3>Montessori Milestones</h3>
+
           <p>Birth-Pre K | Skill Building & Development</p>
+
           <div className="trp-card-labels">
             <span>Motor Skills</span>
             <span>Language</span>
@@ -31,8 +38,11 @@ function TopRatedPrograms() {
 
         <div className="trp-card">
           <img src="/junior/0-12/babyOne.jpg" alt="" />
+
           <h3>Little Worker Bee </h3>
+
           <p>Grades 1-3 | </p>
+
           <div className="trp-card-labels">
             <span>Behavioral</span>
             <span>Cognitive</span>
@@ -51,10 +61,12 @@ function TopRatedPrograms() {
 
         <div className="trp-card">
           <img src="/junior/0-12/babyOne.jpg" alt="" />
+
           <h3>Emotional Navigator</h3>
+
           <p>Grades 4-5 | </p>
+
           <div className="trp-card-labels">
-           
             <span>Social</span>
             <span>Behavioral</span>
             <span>Cognitive</span>
@@ -69,8 +81,11 @@ function TopRatedPrograms() {
 
         <div className="trp-card">
           <img src="/junior/0-12/babyOne.jpg" alt="" />
+
           <h3>Counseling</h3>
+
           <p>Grades 6-8 | </p>
+
           <div className="trp-card-labels">
             <span>Coping Skills</span>
             <span>Behavioral</span>
@@ -88,8 +103,11 @@ function TopRatedPrograms() {
 
         <div className="trp-card">
           <img src="/junior/0-12/babyOne.jpg" alt="" />
+
           <h3>Hit Songwriter</h3>
+
           <p>Grades 9-12</p>
+
           <div className="trp-card-labels">
             <span>Social</span>
             <span>Behavioral</span>

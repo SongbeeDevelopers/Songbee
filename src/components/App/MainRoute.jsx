@@ -11,8 +11,12 @@ export default function MainRoute({ children, ...props }) {
 
   return (
     <Route {...props}>
-      <Header />
-      <MainComponent {...props} />
+      <div className="contents">
+        <Header />
+        {/* spaces page with sticky header properly */}
+        <div className="header-spacing"></div>
+        <MainComponent {...props} />
+      </div>
       <Footer />
     </Route>
   )

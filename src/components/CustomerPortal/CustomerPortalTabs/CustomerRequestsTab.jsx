@@ -107,10 +107,10 @@ function CustomerRequests() {
           </TableBody>
         </Table>
         :
-        <>
+        <div className='portal-no-data'>
           <p>You have no orders!</p>
           <StartSongButton />
-        </>
+        </div>
       }
     </div>
   )

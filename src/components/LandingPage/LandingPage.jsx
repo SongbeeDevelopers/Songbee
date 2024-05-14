@@ -9,6 +9,7 @@ import SampleSongsSection from "./LandingPageSections/4-SampleSongsSection";
 import GuaranteeSection from "./LandingPageSections/6-GuaranteeSection";
 import SongsForEveryOccasion from "./LandingPageSections/5-EveryOccasionSection";
 import NewsletterSection from "./LandingPageSections/7-NewsletterSection";
+import Banner from "../Banner/Banner"
 
 import "./LandingPage.css";
 
@@ -21,6 +22,7 @@ function LandingPage({ routeVariants }) {
       initial="initial"
       animate="final"
     >
+      <Banner />
       <div className="container" id="hero-container">
         <HeroSection />
         <HowSongBeeWorksSection />

@@ -6,8 +6,6 @@ import ProtectedRoute from "./ProtectedRoute";
 import MainRoute from "./MainRoute"
 import JrRoute from "./JrRoute";
 
-import Banner from "../Banner/Banner";
-
 // login/reg
 import LoginPage from "../LoginPage/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
@@ -47,19 +45,16 @@ import JrLandingPage from "../JrLandingPage/JrLandingPage";
 import JrEditRequestPage from "../EditRequestPage/JrEditRequest";
 import JrCheckoutPage from "../JrRequestPage/JrRequestPage";
 import LearningPacksPage from "../LearningPacksPage/PacksPage";
-import LearningPacksHeader from "../Header/LearningPacksHeader";
 import LearningPackView from "../LearningPackView/PackView";
-import SchoolsInspirationHeader from "../Header/SchoolsInspirationHeader";
-import SchoolsInspiration from "../SchoolsInspiration/SchoolsInspiration";
+import SchoolsInspiration from "../SchoolsAndGroups/SchoolsAndGroups";
 import WhySongbee from "../WhySongbee/WhySongbee";
-import WhatsIncluded from "../WhatsIncludedSchoolsInspiration/WhatsIncluded";
-import DiveIntoBenefits from "../SiDiveInBenefits/DiveIntoBenefits";
+import WhatsIncluded from "../WhatsIncludedSchools/WhatsIncluded";
+import DiveIntoBenefits from "../JrBenefits/JrBenefits";
 import ScrollToTop from "./ScrollToTop";
 import { Route } from "react-router-dom";
 import SocketHome from "../SocketComponents/SocketHome";
 import ChatPage from "../SocketComponents/ChatPage";
 import socketIO from 'socket.io-client';
-
 
 
 function ComponentRouter() {
@@ -97,26 +92,18 @@ function ComponentRouter() {
 
   return (
     <>
-    
-      {location.pathname === "/home"  && <Banner />}
 
-      {/* shows main header on main routes */}
-     
-
-      {/* shows jr header on jr routes */}
-     
+      {/* causes every route to start at top of page */}
       <ScrollToTop />
 
 
+      {/* all routes below */}
       <Switch location={location} key={location.key}>
-
 
         {/* ~~~~~~~~~~ MAIN ROUTES ~~~~~~~~~~~ */}
 
 
-        {/* home page */}
         <Redirect exact from="/" to="/home" />
-
         <MainRoute exact path="/home">
           <LandingPage routeVariants={landingVariants} />
         </MainRoute>
@@ -132,7 +119,6 @@ function ComponentRouter() {
             <LoginPage routeVariants={routeVariants} />
           )}
         </MainRoute>
-
 
         <Route exact path="/whatsIncluded">
           <WhatsIncluded routeVariants={routeVariants} />
@@ -158,7 +144,6 @@ function ComponentRouter() {
             <RegisterPage routeVariants={routeVariants} />
           )}
         </MainRoute>
-
 
 
         {/* account pages */}
@@ -218,15 +203,12 @@ function ComponentRouter() {
           <ArtistCommunity routeVariants={routeVariants} />
         </MainRoute>
 
-
-
-        <Route exact path="/si-benefits">
-          <DiveIntoBenefits routeVariants={routeVariants} />
-        </Route>
-       
-
         <MainRoute exact path="/ArtistBioPage/:id">
           <ArtistBioPage routeVariants={routeVariants} />
+        </MainRoute>
+        
+        <MainRoute exact path="/join-artist">
+          <JoinArtistPage routeVariants={routeVariants} />
         </MainRoute>
 
 
@@ -247,6 +229,9 @@ function ComponentRouter() {
 
         {/* ~~~~~~~~~~ JUNIOR ROUTES ~~~~~~~~~~~ */}
 
+        <JrRoute exact path="/benefits">
+          <DiveIntoBenefits routeVariants={routeVariants} />
+        </JrRoute>
 
         <JrRoute exact path="/songbeejr">
           <JrLandingPage routeVariants={routeVariants} />
@@ -257,12 +242,12 @@ function ComponentRouter() {
         </JrRoute>
 
         <JrRoute exact path="/schools">
-          <SchoolsInspiration routeVariants={routeVariants} ></SchoolsInspiration>
+          <SchoolsInspiration routeVariants={routeVariants} />
         </JrRoute>
 
-        <Route exact path="/why-songbee">
+        <JrRoute exact path="/why-songbee">
           <WhySongbee routeVariants={routeVariants} />
-        </Route>
+        </JrRoute>
 
         <ProtectedRoute exact path="/jr-request/edit/:id" allowedUserClasses={[1, 2, 3]}>
           <JrRoute>
@@ -270,7 +255,7 @@ function ComponentRouter() {
           </JrRoute>
         </ProtectedRoute>
 
-        <JrRoute exact path="/faqSbJR">
+        <JrRoute exact path="/jr-faq">
           <FaqPageSbJR routeVariants={routeVariants} />
         </JrRoute>
 
@@ -278,12 +263,13 @@ function ComponentRouter() {
           <LearningPacksPage routeVariants={routeVariants} />
         </JrRoute>
 
-        <Route exact path="/learning-packs/:slug">
-          <LearningPacksHeader />
+        <JrRoute exact path="/learning-packs/:slug">
           <LearningPackView routeVariants={routeVariants} />
-        </Route>
+        </JrRoute>
 
-
+        <JrRoute exact path="/whats-included">
+          <WhatsIncluded routeVariants={routeVariants} />
+        </JrRoute>
 
         {/* If none of the other routes matched, we will show a 404. */}
         <MainRoute>

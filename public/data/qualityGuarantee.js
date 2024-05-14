@@ -1,7 +1,7 @@
 // QUALITY GUARANTEE
 
 const qualityGuarantee = {
-  title: `Quality Guarantee`,
+  title: `The Songbee Guarantee`,
   details: [
     `
       At Songbee we stand behind our Custom Songs! We understand that your
@@ -12,10 +12,11 @@ const qualityGuarantee = {
     `
       Every song purchased with Songbee includes a lyrical revision at no
       additional cost. All lyric revisions are to be submitted within 48 hours
-      of song delivery time. Request any/all revisions via email at hello@songbee.com
-      : title your email with "order number, lyric revisions" , requested
-      lyric edits, write notes to your artist, and improve your song your way
-      at no additional cost.
+      of song delivery time. Request any/all revisions via the messaging in your 
+      customer portal. Write your requested edits, add a note to your artist, 
+      and improve your song your way at no additional cost. All song edit submissions 
+      will be submitted according to artist availability - typically 7 days - and will be 
+      locked in and unable to change (regardless of additional requests or fees).
     `,
     `
       All song edits will be submitted within 7 days of 1st draft and locked

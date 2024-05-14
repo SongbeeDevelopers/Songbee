@@ -1,10 +1,12 @@
 import React from "react";
-import "./WI.css";
-import WiHero from "./WI-Hero";
-import TopRatedPrograms from "./TopRatedPrograms";
-import WhatsIncludedWhySongbee from "./WI-WhySongbee";
+
+import WiHero from "./IncludedSections/IncludedHero";
+import TopRatedPrograms from "./IncludedSections/IncludedPrograms";
+import WhatsIncludedWhySongbee from "./IncludedSections/IncludedWhy";
 import JrFaq from "../JrFaq.jsx/JrFaq";
-import JrFooter from "../JrFooter/JrFooter";
+
+import "./WhatsIncluded.css";
+
 
 function WhatsIncluded() {
   return (
@@ -33,7 +35,6 @@ function WhatsIncluded() {
         <img className="whysong-Bee" src="/junior/Bee.png" alt="" />
       </div>
       <JrFaq />
-      <JrFooter />
     </div>
   );
 }
