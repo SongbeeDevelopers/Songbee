@@ -27,25 +27,26 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static('build'));
 app.use(cors());
 
-// const socketIO = require('socket.io')(http, {
-//   cors: {
-//       origin: "*",
-//       credentials: true,
-//   }
-// });
+const socketIO = require('socket.io')(http, {
+  cors: {
+      origin: ['https://www.songbee.com', 'http://localhost:5173'],
+      allowedHeaders: ["songbee-message"],
+      credentials: true,
+  }
+});
 
-// socketIO.on('connection', (socket) => {
-//   console.log(`⚡: ${socket.id} user just connected!`);
+socketIO.on('connection', (socket) => {
+  console.log(`⚡: ${socket.id} user just connected!`);
 
-//   //sends the message to all the users on the server
-//   socket.on('message', (data) => {
-//     socketIO.emit('messageResponse', data);
-//   });
+  //sends the message to all the users on the server
+  socket.on('message', (data) => {
+    socketIO.emit('messageResponse', data);
+  });
 
-//   socket.on('disconnect', () => {
-//     console.log('🔥: A user disconnected');
-//   });
-// });
+  socket.on('disconnect', () => {
+    console.log('🔥: A user disconnected');
+  });
+});
 
 // Passport Session Configuration
 app.use(sessionMiddleware);

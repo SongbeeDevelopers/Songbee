@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import socketIO from 'socket.io-client';
 import './Socket.css'
 
 const SocketHome = () => {
+  const socket = socketIO.connect("http://localhost:5001");
   const history = useHistory()
   const [userName, setUserName] = useState('');
 
