@@ -47,6 +47,10 @@ function BenefitsSection() {
             ))}
           </div>
 
+          <button className="jr-landing-btn" onClick={() => history.push('/benefits')}>
+            Explore Benefits
+          </button>
+
         </div>
       </div>
     </>

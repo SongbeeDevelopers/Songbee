@@ -1,7 +1,10 @@
 import React from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 
 function JrReviewsSection() {
+
+  const history = useHistory()
 
   return (
     <div className="jr-reviews-bg">
@@ -31,6 +34,10 @@ function JrReviewsSection() {
             </p>
           </div>
         </div>
+
+        <button id="guesswork-btn" className="jr-landing-btn" onClick={() => history.push('/why-songbee')}>
+          Why Us?
+        </button>
       </div>
     </div>
   )
