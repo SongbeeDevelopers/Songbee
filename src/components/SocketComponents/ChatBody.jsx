@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import './Socket.css'
 
-const ChatBody = ({messages}) => {
+const ChatBody = ({messages, lastMessageRef}) => {
   const history = useHistory();
 
   const handleLeaveChat = () => {
@@ -38,10 +38,7 @@ const ChatBody = ({messages}) => {
             </div>
           )
         )}
-
-        <div className="message__status">
-          <p>Someone is typing...</p>
-        </div>
+        <div ref={lastMessageRef} />
       </div>
     </>
   );
