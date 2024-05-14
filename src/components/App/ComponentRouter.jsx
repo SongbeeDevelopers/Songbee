@@ -54,7 +54,6 @@ import ScrollToTop from "./ScrollToTop";
 import { Route } from "react-router-dom";
 import SocketHome from "../SocketComponents/SocketHome";
 import ChatPage from "../SocketComponents/ChatPage";
-import socketIO from 'socket.io-client';
 
 
 function ComponentRouter() {
@@ -62,8 +61,6 @@ function ComponentRouter() {
   const location = useLocation();
 
   const user = useSelector((store) => store.user);
-
-  // const socket = socketIO.connect("https://www.songbee.com");
 
   // styling for route fade-ins
   const routeVariants = {
@@ -128,12 +125,12 @@ function ComponentRouter() {
           <JoinArtistPage routeVariants={routeVariants} />
         </Route>
 
-        {/* <Route path="/chathome">
-          <SocketHome socket={socket} />
+        <Route path="/chathome">
+          <SocketHome />
         </Route>
         <Route path="/chatpage">
-          <ChatPage socket={socket} />
-        </Route> */}
+          <ChatPage />
+        </Route>
 
         <MainRoute exact path="/register">
           {user.id ? (

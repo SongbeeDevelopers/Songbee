@@ -1,14 +1,24 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { io } from "socket.io-client";
 import './Socket.css'
 
 const SocketHome = () => {
+    const socket = io(undefined, {
+        withCredentials: true,
+        extraHeaders: {
+            "songbee-message": "abcd"
+        }
+    });
+  const user = useSelector(store => store.user)
   const history = useHistory()
   const [userName, setUserName] = useState('');
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    localStorage.setItem('userName', userName);
+    localStorage.setItem('userName', user.email);
+    //sends the username and socket ID to the Node.js server
+    socket.emit('newUser', { userName: user.email, socketID: socket.id });
     history.push('/chatpage');
   };
   return (
