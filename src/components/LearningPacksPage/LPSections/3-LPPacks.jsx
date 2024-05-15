@@ -10,11 +10,11 @@ function Packs() {
       <div className="lp-title">
         <h2>The Learning Packs</h2>
         <div className="lp-links">
-          <Link href="/learning-packs#0_12_months">0-12 months</Link>
-          <Link href="/learning-packs#1_year">1 Year</Link>
-          <Link href="/learning-packs#2_year">2 Year</Link>
-          <Link href="/learning-packs#3_year">3 Year</Link>
-          <Link href="/learning-packs#4_year">4 Year</Link>
+          <Link to="/learning-packs#0_12_months">0-12 months</Link>
+          <Link to="/learning-packs#1_year">1 Year</Link>
+          <Link to="/learning-packs#2_year">2 Year</Link>
+          <Link to="/learning-packs#3_year">3 Year</Link>
+          <Link to="/learning-packs#4_year">4 Year</Link>
         </div>
       </div>
       <div className="packList">
