@@ -4,7 +4,7 @@ Hero
 
 .lp-hero-background {
   height: 600px;
-  background-position: center;
+  background-position: left;
   background-size: cover;
   width: 100%;
 }
@@ -24,8 +24,8 @@ Hero
 .lp-hero-text {
   display: flex;
   flex-direction: column;
-  width: max-content;
-  padding-top: 155px;
+  width: 30rem;
+  padding-top: 60px;
   padding-left: 60px;
   gap: 20px;
   position: relative;
@@ -56,15 +56,15 @@ Works
 
 .lp-hero-bee {
   position: absolute;
-  top: -130px;
-  left: -40px;
+  top: -120px;
+  left: -50px;
   width: 95% !important;
 }
 
 .lp-try-bee {
   position: absolute;
-  left: -20px;
-  width: 20rem;
+  left: -10px;
+  width: 25%;
 }
 
 .lp-honeycomb-topright {
@@ -72,13 +72,15 @@ Works
   top: -50px;
   right: -50px;
   width: 200px;
+  transform: scaleX(-1);
 }
 
 .lp-honeycomb-bottomleft {
   position: absolute;
-  bottom: -100px;
+  bottom: -60px;
   left: -50px;
   width: 200px;
+  transform: scaleY(-1);
 }
 
 .packs-header-bg {
@@ -161,8 +163,8 @@ Packs
   display: flex;
   flex-direction: column;
   gap: 50px;
-  padding: 0 50px;
-  margin-top: 100px;
+  padding: 0 100px;
+  margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -240,6 +242,7 @@ Play to Learn
   gap: 50px;
   justify-content: center;
   align-items: center;
+  margin-bottom: 25px;
 }
 
 .lp-playtolearnCards {
@@ -250,7 +253,7 @@ Play to Learn
   /* background-size: contain; */
   background-position: center;
   width: 100%;
-  padding: 100px;
+  padding: 60px 100px;
   background-size: 100% 100%;
 }
 
@@ -281,8 +284,7 @@ FAQ
   display: flex;
   flex-direction: column;
   background-color: white;
-  padding-bottom: 100px;
-
+  padding-bottom: 40px;
 }
 
 .lp-hero {
@@ -342,10 +344,9 @@ FAQ
 .lp-playtolearn h2 {
   background-image: url("https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076661/Songbee/text-backer-white_gnaiwk.png");
   background-repeat: no-repeat;
-
   background-position: center;
   width: max-content;
-  padding: 50px 150px;
+  padding: 20px 100px;
   background-size: 100% 100%;
 }
 
@@ -490,10 +491,7 @@ FAQ
 }
 
 .lp-video h2 {
-  background-image: url("https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076661/Songbee/text-backer-white_gnaiwk.png");
-  background-repeat: no-repeat;
   margin-top: -15px;
-  background-position: center;
   width: max-content;
   padding: 50px 150px;
   background-size: 100% 100%;
