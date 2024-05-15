@@ -5,7 +5,7 @@ function LearningpacksHero() {
     <div className="how-jr-works-box lp-hero-steps">
       <img
         className="lp-hero-bee"
-        src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076557/Songbee/dancingBeee_zsnlif.png"
+        src='https://res.cloudinary.com/dke4ukd0z/image/upload/v1715715123/Songbee/bee-trail_qfhgh0.png'
         alt=""
       />
       <img

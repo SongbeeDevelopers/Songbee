@@ -47,6 +47,14 @@ Hero
   background-repeat: no-repeat;
   background-size: contain;
   margin-bottom: 2%;
+  z-index: 2;
+}
+
+.bee-animation {
+  background-image: url('https://res.cloudinary.com/dke4ukd0z/image/upload/v1715714146/Songbee/bee-animate_yu6k2e.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 1;
 }
 
 .hero-header {
@@ -335,6 +343,7 @@ Learning Packs
   color: white;
   text-align: center;
   padding-top: 10px;
+  margin-bottom: 25px;
   background-image: url('https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076655/Songbee/text-backer-gray_bpu0tv.png');
   background-repeat: no-repeat;
   background-size: contain;
@@ -548,7 +557,7 @@ Reviews
   background-color: white;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   text-align: center;
-  padding: 0 15px
+  padding: 10px 15px
 }
 .jr-review-item img {
   width: 120px
