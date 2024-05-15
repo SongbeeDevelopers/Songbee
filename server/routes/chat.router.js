@@ -57,6 +57,43 @@ router.get('/user-chat/:id', (req, res) => {
     })
   });
 
+  router.post('/new-chat', (req, res) => {
+    const user1 = req.user.id;
+    const user2 = req.body.user2;
+    const query = `
+      INSERT INTO "chat"
+        ("user1_id", "user2_id")
+      VALUES
+        ($1, $2)
+      RETURNING "id";
+    `
+    pool.query(query, [user1, user2])
+    .then((response) => {
+      res.send(response.rows[0])
+    })
+    .catch((error) => {
+      console.error('Genres GET router failed:', error)
+    })
+  });
+
+  router.post('/message/:id', (req, res) => {
+    const user = req.user.id;
+    const chatId = req.body.chat_id;
+    const text = req.body.text;
+    const query = `
+      INSERT INTO "messages"
+        ("chat_id", "user_id", "text")
+      VALUES
+        ($1, $2, $3);
+    `
+    pool.query(query, [user, chatId, text])
+    .then((response) => {
+      res.sendStatus(201)
+    })
+    .catch((error) => {
+      console.error('Genres GET router failed:', error)
+    })
+  });
 /**
  * POST route template
  */
