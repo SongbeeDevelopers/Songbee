@@ -15,7 +15,6 @@ function ScrollToAnchor () {
     if (location.hash.length > 0) {
       lastHash.current = location.hash.slice(1)
     }
-
     if ((lastHash.current.length > 0) && (document.getElementById(lastHash.current) != null)) {
       setTimeout(() => {
         //  s
@@ -31,6 +30,8 @@ function ScrollToAnchor () {
         }
         // s
       }, 100)
+    } else {
+      // lastHash = useRef('')
     }
   }, [location])
 
