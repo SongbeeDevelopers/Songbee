@@ -7,7 +7,7 @@ import ChatFooter from './ChatFooter';
 import './Socket.css'
 
 const ChatPage = () => {
-    const socket = io('http://localhost:5001', {
+    const socket = io('https://www.songbee.com', {
         withCredentials: true,
         extraHeaders: {
             "songbee-message": "abcd"
