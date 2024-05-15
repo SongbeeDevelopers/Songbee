@@ -20,6 +20,7 @@ const stripeRouter = require('./routes/stripe.router');
 const mailchimpRouter = require('./routes/mailchimp.router');
 const jrRequestRouter = require('./routes/juniorRequest.router');
 const socket = require('./routes/socket.router');
+const chat = require('./routes/chat.router');
 
 // Express Middleware
 app.use(express.json());
@@ -81,6 +82,7 @@ app.use('/api/artist', artistRouter);
 app.use('/api/stripe', stripeRouter);
 app.use('/api/mailchimp', mailchimpRouter);
 app.use('/api/socket', socket);
+app.use('/api/chat', chat);
 
 // Listen Server & Port
 http.listen(PORT, () => {
