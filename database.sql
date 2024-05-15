@@ -156,9 +156,18 @@ CREATE TABLE "subscription_song_details" (
   "lyrics" VARCHAR
 );
 
-CREATE TABLE "documents" (
+CREATE TABLE "chat" (
   "id" SERIAL PRIMARY KEY,
-  "url" VARCHAR
+  "user1_id" integer REFERENCES "user" ON DELETE CASCADE,
+  "user2_id" integer REFERENCES "user" ON DELETE CASCADE
+);
+
+CREATE TABLE "messages" (
+  "id" SERIAL PRIMARY KEY,
+  "chat_id" integer REFERENCES "chat" ON DELETE CASCADE,
+  "user_id" integer REFERENCES "user" ON DELETE CASCADE,
+  "text" VARCHAR,
+  "created_at" TIMESTAMPTZ DEFAULT NOW()
 );
 
 INSERT INTO "user"
