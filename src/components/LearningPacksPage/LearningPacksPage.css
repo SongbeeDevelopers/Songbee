@@ -242,7 +242,7 @@ Play to Learn
   gap: 25px;
   justify-content: center;
   align-items: center;
-  margin-bottom: 25px;
+  margin: 25px 0 25px;
 }
 
 .lp-playtolearnCards {

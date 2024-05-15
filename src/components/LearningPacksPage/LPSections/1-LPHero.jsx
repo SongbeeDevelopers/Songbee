@@ -1,4 +1,9 @@
+import { useHistory } from "react-router-dom"
+
 export default function PacksHero() {
+
+  const history = useHistory()
+
   return (
     <>
       <div
