@@ -156,9 +156,18 @@ CREATE TABLE "subscription_song_details" (
   "lyrics" VARCHAR
 );
 
-CREATE TABLE "documents" (
+CREATE TABLE "chat" (
   "id" SERIAL PRIMARY KEY,
-  "url" VARCHAR
+  "user1_id" integer REFERENCES "user" ON DELETE CASCADE,
+  "user2_id" integer REFERENCES "user" ON DELETE CASCADE
+);
+
+CREATE TABLE "messages" (
+  "id" SERIAL PRIMARY KEY,
+  "chat_id" integer REFERENCES "chat" ON DELETE CASCADE,
+  "user_id" integer REFERENCES "user" ON DELETE CASCADE,
+  "text" VARCHAR,
+  "created_at" TIMESTAMPTZ DEFAULT NOW()
 );
 
 INSERT INTO "user"
@@ -329,3 +338,20 @@ VALUES
   ('The Negotiator', 'With this learning pack, your child will further expand on their language skills, emotional learning, and social skills.', 55, 57, 'https://res.cloudinary.com/dke4ukd0z/image/upload/v1714073747/Songbee/babyThree_xxputr.jpg'),
   ('The Predictor', 'With this learning pack, your child will begin to learn and expand on executive functioning skills like: planning and independent self care alongside taking responsibility and showing initiative.', 58, 60, 'https://res.cloudinary.com/dke4ukd0z/image/upload/v1714073738/Songbee/babyFour_xlknjs.jpg');
    
+INSERT INTO "chat"
+  ("user1_id", "user2_id")
+VALUES
+  (1, 2),
+  (1, 5),
+  (1, 10),
+  (10, 2),
+  (10, 5);
+
+INSERT INTO "messages"
+  ("chat_id", "user_id", "text")
+VALUES
+  (1, 1, 'Hey there'),
+  (1, 1, 'whats up'),
+  (1, 2, 'Not much'),
+  (3, 10, 'Just checking in'),
+  (3, 1, 'hah thats cool');

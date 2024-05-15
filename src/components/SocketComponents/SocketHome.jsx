@@ -5,7 +5,7 @@ import { io } from "socket.io-client";
 import './Socket.css'
 
 const SocketHome = () => {
-    const socket = io(undefined, {
+  const socket = io('https://www.songbee.com', {
         withCredentials: true,
         extraHeaders: {
             "songbee-message": "abcd"
