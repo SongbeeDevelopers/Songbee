@@ -1,6 +1,4 @@
-import React from "react";
-import { Question } from "../JrFaq.jsx/JrFaq";
-import JrNewsletterSection from "../JrLandingPage/JrLandingSections/9-JrNewsletterSection";
+import { Question } from "../../JrFaq.jsx/JrFaq";
 
 function PacksFaq() {
   const questions = [
@@ -79,7 +77,6 @@ function PacksFaq() {
       <div className="faq-line">
 
       </div>
-      <JrNewsletterSection/>
     </div>
   );
 }

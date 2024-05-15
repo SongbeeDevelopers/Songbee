@@ -44,7 +44,7 @@ import NotFound from "../NotFoundPage/NotFoundPage";
 import JrLandingPage from "../JrLandingPage/JrLandingPage";
 import JrEditRequestPage from "../EditRequestPage/JrEditRequest";
 import JrCheckoutPage from "../JrRequestPage/JrRequestPage";
-import LearningPacksPage from "../LearningPacksPage/PacksPage";
+import LearningPacksPage from "../LearningPacksPage/LearningPacksPage";
 import LearningPackView from "../LearningPackView/PackView";
 import SchoolsInspiration from "../SchoolsAndGroups/SchoolsAndGroups";
 import WhySongbee from "../WhySongbee/WhySongbee";

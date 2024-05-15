@@ -1,32 +1,160 @@
-.learning-packs {
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-  padding-bottom: 100px;
+/* --------------------------------------------------------------------------------
+Hero
+-------------------------------------------------------------------------------- */
 
-}
-
-.lp-hero {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  position: relative;
-}
-
-.packs-header-bg h2{
-text-shadow: 1px 1px 2px black;
-}
-.packs-header-bg{
-  width: max-content;
-  margin: 0 auto;
-
-}
-
-.lp-cta {
+.lp-hero-background {
   height: 600px;
   background-position: center;
   background-size: cover;
   width: 100%;
+}
+
+.lp-white-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50%;
+  background: linear-gradient(to right,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0));
+  height: 100%;
+  z-index: 10;
+}
+
+.lp-hero-text {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  padding-top: 155px;
+  padding-left: 60px;
+  gap: 20px;
+  position: relative;
+  z-index: 20;
+}
+
+.lp-orange-overlay {
+  background-color: #ffdeb0;
+  height: 400px;
+  width: 100%;
+  margin-top: -110px;
+}
+
+/* --------------------------------------------------------------------------------
+Works
+-------------------------------------------------------------------------------- */
+
+.lp-hero-steps {
+  width: auto;
+  margin: 0 50px;
+  /* position: absolute;
+  left: 0;
+  right: 0; */
+  margin-top: -250px;
+  position: relative;
+  z-index: 30;
+}
+
+.lp-hero-bee {
+  position: absolute;
+  top: -130px;
+  left: -40px;
+  width: 95% !important;
+}
+
+.lp-try-bee {
+  position: absolute;
+  left: -20px;
+  width: 20rem;
+}
+
+.lp-honeycomb-topright {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+}
+
+.lp-honeycomb-bottomleft {
+  position: absolute;
+  bottom: -100px;
+  left: -50px;
+  width: 200px;
+}
+
+.packs-header-bg {
+  width: max-content;
+  margin: 0 auto;
+}
+
+.packs-header-bg h2 {
+  text-shadow: 1px 1px 2px black;
+}
+
+.w-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding-bottom: 100px;
+  padding-top: 50px;
+}
+
+.w-card {
+  display: flex;
+  gap: 20px;
+}
+
+.w-card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.w-card-content h3 {
+  margin: 0;
+  padding: 0;
+}
+
+.w-card-content p {
+  margin: 0;
+  padding: 0;
+}
+
+.w-card span {
+  display: flex;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #FFDEB0;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------------
+Packs
+-------------------------------------------------------------------------------- */
+
+.lp-title {
+  width: 100%;
+  text-align: center;
+  margin-top: 50px;
+}
+.lp-title h2 {
+  font-size: 35px;
+  padding: 0;
+  margin: 0;
+}
+
+.lp-links {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
+}
+.lp-links a {
+  text-decoration: underline;
+  color: black;
 }
 
 .packList {
@@ -46,14 +174,12 @@ text-shadow: 1px 1px 2px black;
   justify-content: flex-start;
   align-items: flex-start;
 }
+.onePack h2 {
+  padding: 0;
+  margin: 0;
+}
 .onePack:last-child {
   margin-bottom: 50px;
-}
-
-.packItems {
-  width: 100%;
-  gap: 50px;
-  display: grid;
 }
 
 .onePackItem {
@@ -64,10 +190,8 @@ text-shadow: 1px 1px 2px black;
   gap: 0;
   color: black;
 }
-
 .onePackItem img {
   width: 100%;
-  /* height: 250px; */
   margin-bottom: 15px;
   background-position: top;
   background-size: cover;
@@ -75,161 +199,24 @@ text-shadow: 1px 1px 2px black;
   object-fit: cover;
   border-radius: 0 !important;
 }
-
-.onePack h2 {
-  padding: 0;
-  margin: 0;
-}
-
-.onePack span {
-  text-decoration: underline;
-  margin-bottom: 15px;
-}
-
 .onePackItem h3 {
   font-weight: 500;
   padding: 0;
   margin: 0;
 }
-
 .onePackItem p {
   margin: 0;
   padding: 0;
 }
-
-.lp-hero-text {
-  display: flex;
-  flex-direction: column;
-  width: max-content;
-  padding-top: 155px;
-  padding-left: 60px;
-  gap: 20px;
-  position: relative;
-  z-index: 20;
-
-}
-
-.lp-hero-text p {
-  font-size: 30px;
-  margin: 0;
-  padding: 0;
-}
-
-.lp-hero-text button {
-  margin-left: 0;
-}
-
-.lp-hero-text h1 {
-  padding: 0;
-  margin: 0;
-  font-weight: 500;
-  font-size: 3rem;
-  text-align: left;
-  margin-bottom: -25px;
-}
-
-.lp-hero-steps {
-  width: auto;
-  margin: 0 50px;
-  /* position: absolute;
-  left: 0;
-  right: 0; */
-  margin-top: -250px;
-  position: relative;
-  z-index: 30;
-}
-
-.lp-pricing {
-  position: absolute;
-  right: 0;
-  top: 30px;
-}
-.lp-pricing p {
-  font-weight: 600;
-  padding: 0;
-  margin: 0;
-}
-
-.lp-orange-overlay {
-  background-color: #ffdeb0;
-  height: 400px;
-  width: 100%;
-  margin-top: -110px;
-}
-
-.lp-hero-bee {
-  position: absolute;
-  top: -175px;
-  left: -40px;
-  width: 95% !important;
-}
-
-.lp-white-overlay {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 50%;
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 1),
-    rgba(255, 255, 255, 0)
-  );
-  height: 100%;
-  z-index: 10;
-}
-
-.lp-try-bee {
-  position: absolute;
-  top: -20px;
-  left: -60px;
-}
-
-.lp-honeycomb-topright {
-  position: absolute;
-  top: -50px;
-  right: -50px;
-  width: 200px;
-}
-
-.lp-honeycomb-bottomleft {
-  position: absolute;
-  bottom: -100px;
-  left: -50px;
-  width: 200px;
-}
-
-.lp-title {
-  width: 100%;
-  text-align: center;
-  margin-top: 50px;
-}
-
-.lp-title h2 {
-  font-size: 35px;
-  padding: 0;
-  margin: 0;
-}
-
-.lp-links {
-  display: flex;
-  gap: 10px;
-  width: 100%;
-  justify-content: center;
-}
-
-.lp-links a {
+.onePack span {
   text-decoration: underline;
-  color: black;
+  margin-bottom: 15px;
 }
 
-.lp-header {
-  background-color: white !important;
-}
-
-.onePack p {
-  text-align: left !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
+.packItems {
+  width: 100%;
+  gap: 50px;
+  display: grid;
 }
 
 .lp-dots {
@@ -240,6 +227,10 @@ text-shadow: 1px 1px 2px black;
   left: 0;
   bottom: -25px;
 }
+
+/* --------------------------------------------------------------------------------
+Play to Learn
+-------------------------------------------------------------------------------- */
 
 .lp-playtolearn {
   background-color: #ffdeb0;
@@ -273,21 +264,79 @@ text-shadow: 1px 1px 2px black;
   flex-direction: column;
   gap: 5px;
 }
+.lp-cardRight h3 {
+  margin: 0;
+  padding: 0;
+}
+.lp-cardRight p {
+  margin: 0 !important;
+  padding: 0;
+}
+
+/* --------------------------------------------------------------------------------
+FAQ
+-------------------------------------------------------------------------------- */
+
+.learning-packs {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding-bottom: 100px;
+
+}
+
+.lp-hero {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+}
+
+.lp-hero-text p {
+  font-size: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.lp-hero-text button {
+  margin-left: 0;
+}
+
+.lp-hero-text h1 {
+  padding: 0;
+  margin: 0;
+  font-weight: 500;
+  font-size: 3rem;
+  text-align: left;
+  margin-bottom: -25px;
+}
+
+.lp-pricing {
+  position: absolute;
+  right: 0;
+  top: 30px;
+}
+
+.lp-pricing p {
+  font-weight: 600;
+  padding: 0;
+  margin: 0;
+}
+
+.lp-header {
+  background-color: white !important;
+}
+
+.onePack p {
+  text-align: left !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
 
 .lp-music-notes {
   height: 70px;
   width: auto;
   background-size: contain;
-}
-
-.lp-cardRight h3 {
-  margin: 0;
-  padding: 0;
-}
-
-.lp-cardRight p {
-  margin: 0 !important;
-  padding: 0;
 }
 
 .lp-playtolearn h2 {
@@ -299,6 +348,7 @@ text-shadow: 1px 1px 2px black;
   padding: 50px 150px;
   background-size: 100% 100%;
 }
+
 .pack-view-dots {
   position: static !important;
   margin: 20px 0;
@@ -330,16 +380,19 @@ text-shadow: 1px 1px 2px black;
   border-radius: 0 !important;
   margin: auto;
 }
+
 .pack-view-content {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
+
 .pack-view-content h1,
 .pack-view-content p {
   margin: 0 !important;
   padding: 0;
 }
+
 .yellowLine {
   width: 100%;
   height: 40px;
@@ -361,6 +414,7 @@ text-shadow: 1px 1px 2px black;
 .pv-delivery {
   text-decoration: underline;
 }
+
 .pv-button {
   border: 0 !important;
   margin-left: 0 !important;
@@ -410,6 +464,7 @@ text-shadow: 1px 1px 2px black;
   bottom: 10px;
   left: 46px;
 }
+
 .video-blackMusicNotes {
   position: absolute;
   height: auto;
@@ -504,6 +559,7 @@ text-shadow: 1px 1px 2px black;
   padding: 0;
   font-size: 45px;
 }
+
 .lp-otherLinks a {
   color: black;
   text-decoration: underline;
@@ -516,22 +572,22 @@ text-shadow: 1px 1px 2px black;
 }
 
 
-.lp-otherImages{
-width: 500px;
-position: relative;
-margin-top: 50px;
+.lp-otherImages {
+  width: 500px;
+  position: relative;
+  margin-top: 50px;
 }
 
 
-.other-music{
-position: absolute;
-height: auto;
-width: 100px;
-top: -40px;
-right: -60px;
+.other-music {
+  position: absolute;
+  height: auto;
+  width: 100px;
+  top: -40px;
+  right: -60px;
 }
 
-.other-honey{
+.other-honey {
   position: absolute;
   height: auto;
   width: 50px;
@@ -539,92 +595,52 @@ right: -60px;
   left: -20px;
 }
 
-.w-cards{
-display: flex;
-justify-content: center;
-gap: 20px;
-padding-bottom: 100px;
-padding-top: 50px;
-}
 
-.w-card{
-display: flex;
-gap: 20px;
 
-}
-
-.w-card span{
-  display: flex;
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
-  background-color: #FFDEB0;
-  justify-content: center;
-  align-items: center;
-  font-weight: 700;
-  font-size: 1.5rem;
-flex-shrink: 0;
-
-}
-
-.w-card-content{
-  display: flex;
-  flex-direction: column;
-}
-
-.w-card-content h3{
-  margin: 0;
-  padding: 0;
-}
-
-.w-card-content p{
-  margin: 0;
-  padding: 0;
-}
-
-.packs-faq{
+.packs-faq {
   justify-content: flex-start !important;
-align-items: center !important;
-position: relative !important;
-height: max-content !important;
+  align-items: center !important;
+  position: relative !important;
+  height: max-content !important;
 }
 
-.packs-faq h2{
+.packs-faq h2 {
   font-size: 3rem;
 
 }
 
-.packs-faqQuestions{
+.packs-faqQuestions {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
 }
-.packs-faq-yellowLine{
-bottom: 0 !important;
-top: unset !important;
-position: absolute !important;
-}
 
-
-.packs-faq-bee{
-bottom: -55px !important;
-top: unset !important;
-
-}
-
-.faq-beehive{
+.packs-faq-yellowLine {
   bottom: 0 !important;
-top: unset !important;
+  top: unset !important;
+  position: absolute !important;
 }
 
-.faq-line{
+
+.packs-faq-bee {
+  bottom: -55px !important;
+  top: unset !important;
+
+}
+
+.faq-beehive {
+  bottom: 0 !important;
+  top: unset !important;
+}
+
+.faq-line {
   width: 400px;
   height: 2px;
   background-color: #feaf17;
   margin: 0 auto;
   min-height: 2px;
   margin-top: 6rem;
-margin-bottom: -1rem;
+  margin-bottom: -1rem;
 }
