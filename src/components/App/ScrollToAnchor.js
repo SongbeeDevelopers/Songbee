@@ -1,31 +1,40 @@
-import { useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+/********** 
+ * SOURCED FROM: 
+ * https://dev.to/mindactuate/scroll-to-anchor-element-with-react-router-v6-38op
+*********/
 
-function ScrollToAnchor() {
-  const location = useLocation();
-  const lastHash = useRef('');
+import { useEffect, useRef } from 'react'
+import { useLocation } from 'react-router-dom'
 
-  // listen to location change using useEffect with location as dependency
-  // https://jasonwatmore.com/react-router-v6-listen-to-location-route-change-without-history-listen
+function ScrollToAnchor () {
+  const location = useLocation()
+  const lastHash = useRef('')
+  const navbarHeight = 100
+  console.log(location, lastHash)
   useEffect(() => {
-    if (location.hash) {
-      lastHash.current = location.hash.slice(1); // safe hash for further use after navigation
+    if (location.hash.length > 0) {
+      lastHash.current = location.hash.slice(1)
     }
 
-    if (lastHash.current && document.getElementById(lastHash.current)) {
+    if ((lastHash.current.length > 0) && (document.getElementById(lastHash.current) != null)) {
       setTimeout(() => {
-        document
+        //  s
+        const element = document
           .getElementById(lastHash.current)
-          ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        lastHash.current = '';
-      }, 100);
+        // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+        if (element) {
+          const elementPosition = element.getBoundingClientRect().top + window.scrollY
+          window.scrollTo({
+            top: elementPosition - navbarHeight,
+            behavior: 'smooth'
+          })
+        }
+        // s
+      }, 100)
     }
-  }, [location]);
+  }, [location])
 
-  return null;
+  return null
 }
 
-export default ScrollToAnchor;
-
-
-///////// sourced from https://dev.to/mindactuate/scroll-to-anchor-element-with-react-router-v6-38op
+export default ScrollToAnchor
