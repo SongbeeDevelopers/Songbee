@@ -23,7 +23,7 @@ router.get('/user-chats', (req, res) => {
     OR
     t3."id" = $1;
   `
-  pool.query(query, [10])
+  pool.query(query, [req.user.id])
   .then((response) => {
     res.send(response.rows)
   })
