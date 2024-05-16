@@ -6,6 +6,7 @@ import {
 import { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import AudioButton from "./AudioButton";
+import FilterBar from "../FilterBar/FilterBar";
 
 import "./JoinArtistPage.css";
 
@@ -104,6 +105,7 @@ function ArtistCommunity() {
           Pick from one of our artists to record a custom made song just for
           you!
         </h3>
+        <FilterBar type ="artist" />
         <div className="artist-container">
           <div className="artist-card">
             {artistCommunity.map((artist, i) => (
