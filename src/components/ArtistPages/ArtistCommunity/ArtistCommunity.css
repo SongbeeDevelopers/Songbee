@@ -1,0 +1,134 @@
+.communityPage {
+    height: auto
+}
+
+.community-heading {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin: 0px;
+    padding: 0px;
+    color: rgb(76, 72, 72);
+}
+
+.sub-heading {
+    text-align: center;
+  }
+
+.community-button {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    position: relative;
+    left: 45%;
+}
+
+
+/*--------For the artists photos------------ */
+
+
+.artist-card {
+    display: flex;
+    flex-flow: row;
+    gap: 50px;
+    margin-left: 40px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.artistSlide-img {
+    width: 400px;
+    height: 400px;
+    display: flex;
+    display: inline-block;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+.audio-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.audio {
+    width: 50%;
+    margin: 0px;
+    margin-top: 0%;
+    margin-left: -1%;
+
+}
+
+/*-------End Artist Photos----- */
+
+
+/* ---------Style for the play button------- */
+.player-container {
+    cursor: pointer;
+    text-indent: -999999px;
+    height: 50px;
+    width: 50px;
+    padding: 12px 18px;
+    z-index: 2;
+
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMiAyNHYtMjRsMjAgMTItMjAgMTJ6Ii8+PC9zdmc+);
+    background-repeat: no-repeat !important;
+    background-position: absolute;
+    border-radius: 50%;
+    margin-top: 370px;
+    margin-left: -510px;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25px;
+    background-color: orange;
+}
+
+
+
+.player-container:hover {
+    background-color: rgb(240, 212, 161);
+}
+
+.play {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMiAyNHYtMjRsMjAgMTItMjAgMTJ6Ii8+PC9zdmc+);
+
+}
+
+.pause {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTAgMjRoLTZ2LTI0aDZ2MjR6bTEwLTI0aC02djI0aDZ2LTI0eiIvPjwvc3ZnPg==) !important;
+}
+
+/* ----------End style for play button------- */
+
+
+
+
+
+/*---------- Styling for the pop ups--------- */
+
+.popup {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 160px;
+    border-radius: 5px;
+    background-color: orange;
+    padding: 0;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+}
+
+.popup p {
+    margin: 0;
+    height: 20px;
+}
+
+.pop-up-content {
+    text-align: center;
+    margin-top: auto;
+}
+
+/* ----------End of pop up styling------- */

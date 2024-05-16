@@ -5,10 +5,10 @@ import {
 } from "react-router-dom/cjs/react-router-dom.min";
 import { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import AudioButton from "./AudioButton";
-import FilterBar from "../FilterBar/FilterBar";
+import AudioButton from "../../JoinArtistPage/AudioButton";
+import FilterBar from "../../FilterBar/FilterBar";
 
-import "./JoinArtistPage.css";
+import './ArtistCommunity.css'
 
 function ArtistCommunity() {
 

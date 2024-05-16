@@ -21,8 +21,8 @@ import CreationPage from "../CreationPage/CreationPage";
 import FinalQuestions from "../FinalQuestions/FinalQuestions";
 
 // user functionality
-import CustomerPortal from "../CustomerPortal/CustomerPortal";
-import AdminPortal from "../AdminPortal/AdminPortal";
+import CustomerPortal from "../UserPortals/CustomerPortal/CustomerPortal";
+import AdminPortal from "../UserPortals/AdminPortal/AdminPortal";
 import RequestDetails from "../RequestDetails/RequestDetails"
 
 // information pages
@@ -33,11 +33,11 @@ import QualityGuaranteePage from "../InfoPages/QualityGuaranteePage";
 import TermsAndConditionsPage from "../InfoPages/TermsAndConditionsPage";
 
 // artist pages
-import ArtistPortal from "../ArtistPortal/ArtistPortal"
+import ArtistPortal from "../UserPortals/ArtistPortal/ArtistPortal"
 import JoinArtistPage from "../JoinArtistPage/JoinArtistPage";
-import ArtistCommunity from "../JoinArtistPage/ArtistCommunity";
+import ArtistCommunity from "../ArtistPages/ArtistCommunity/ArtistCommunity";
 import ArtistProcess from "../JoinArtistPage/ArtistProcess";
-import ArtistBioPage from '../ArtistBioPages/ArtistBioPage';
+import ArtistBioPage from '../ArtistPages/ArtistBioPages/ArtistBioPage';
 
 // 404
 import NotFound from "../NotFoundPage/NotFoundPage";

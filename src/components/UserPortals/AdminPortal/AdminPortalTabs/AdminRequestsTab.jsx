@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import AdminCompleteDialog from './AdminPortalDialogs/AdminCompleteDialog';
 import AdminDetailsDialog from './AdminPortalDialogs/AdminDetailsDialog'
-import FilterBar from '../../FilterBar/FilterBar';
+import FilterBar from '../../../FilterBar/FilterBar';
 
 import {
   Button,
