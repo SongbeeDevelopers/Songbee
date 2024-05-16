@@ -5,7 +5,7 @@ function* fetchResults(action) {
   try {
     const response = yield axios({
       method: "GET",
-      url: `/api/search/?type=${action.payload.type}&q=${action.payload.query}&class=${action.payload.classQuery}`
+      url: `/api/search/?type=${action.payload.type}&q=${action.payload.query}&class=${action.payload.classQuery}&genre=${action.payload.genreQuery}`
     })
     // sets reducer depending on pending or completed search
     switch (action.payload.type) {
