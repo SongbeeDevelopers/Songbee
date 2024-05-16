@@ -241,6 +241,45 @@
 
 /* ----------End of pop up styling------- */
 
+/* ----------Styling for the audio button inside of popup-------*/
+
+.audio-controls {
+
+  cursor: pointer;
+  text-indent: -999999px;
+  height: 50px;
+  width: 50px;
+  padding: 12px 18px;
+  z-index: 2;
+
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMiAyNHYtMjRsMjAgMTItMjAgMTJ6Ii8+PC9zdmc+);
+  background-repeat: no-repeat!important;
+  background-position: absolute;
+  border-radius: 50%;
+  margin-left: 180px;
+
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size: 25px;
+  background-color: lightgray;
+  border-radius: 50%;
+
+}
+
+.audio-controls:hover {
+  background-color: rgb(240, 212, 161);
+}
+
+/* .playing {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMiAyNHYtMjRsMjAgMTItMjAgMTJ6Ii8+PC9zdmc+);
+  
+} */
+.paused {
+   background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTAgMjRoLTZ2LTI0aDZ2MjR6bTEwLTI0aC02djI0aDZ2LTI0eiIvPjwvc3ZnPg==)!important;
+}
+
+/* -----------End of styling for audio button inside of popup------*/
+
 
 .communityPage {
   height: auto
