@@ -134,7 +134,7 @@ router.post('/jrcheckout', async (req, res) => {
   }
   const session = await stripe.checkout.sessions.create({
     line_items: lineitemArray,
-    mode: 'payment',
+    mode: 'subscription',
     success_url: `https://www.songbee.com/#/user`,
     cancel_url: `https://www.songbee.com/#/jrcancel/${req.body.id}`,
     automatic_tax: {enabled: true},

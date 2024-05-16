@@ -113,7 +113,7 @@ export default function JrCheckoutPage({ routeVariants }) {
                   id="reqFormNameInput"
                   placeholder="Name of child or Nickname"
                   onChange={(event) =>
-                    handleInput("recipient", event.target.value)
+                    handleInput("name", event.target.value)
                   }
                 ></input>
 
@@ -243,7 +243,7 @@ export default function JrCheckoutPage({ routeVariants }) {
           dispatchDetails();
         }
       });
-    } else {
+    } else if (allStepsCompleted()){
       Swal.fire({
         title: "Cannot complete request!",
         text: "You have left important details blank, please go back and make sure you have filled out all information",
