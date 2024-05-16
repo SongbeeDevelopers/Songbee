@@ -51,7 +51,7 @@ function* sendMessage (action){
         })
     }
     catch (error) {
-        console.error('createChat() failed:', error)
+        console.error('sendMessage() failed:', error)
     }
 }
 
