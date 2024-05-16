@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import AudioButton from "../../JoinArtistPage/AudioButton";
 
-import "./ArtistBioPages.css";
+import "./ArtistBioPage.css";
 
 function ArtistBioPage() {
 
