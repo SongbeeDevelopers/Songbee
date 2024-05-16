@@ -155,7 +155,9 @@ router.get('/', async (req, res) => {
     else if (req.query.type === 'artist') {
       let artistQuery
       let artistValues
-      if (req.query.q) {
+
+      // finds artists matching query if no genre selected
+      if (req.query.q && !req.query.genre) {
         artistQuery = `
             SELECT *
             FROM "artist"
@@ -164,7 +166,35 @@ router.get('/', async (req, res) => {
         artistValues = [`%${req.query.q}%`]
         const artistResponse = await pool.query(artistQuery, artistValues)
         res.send(artistResponse.rows)
-      } else {
+      }
+      
+      // finds users matching genre if no query made
+      else if (!req.query.q && req.query.genre) {
+        artistQuery = `
+            SELECT *
+            FROM "artist"
+            JOIN "artist_genres" ON "artist"."id" = "artist_genres"."artist_id"
+            WHERE "artist_genres"."genre_id" = $1;
+          `
+        artistValues = [`${req.query.genre}`]
+        const artistResponse = await pool.query(artistQuery, artistValues)
+        res.send(artistResponse.rows)
+      }
+
+      // finds artists matching both query and genre
+      else if (req.query.q && req.query.genre) {
+        artistQuery = `
+            SELECT *
+            FROM "artist"
+            JOIN "artist_genres" ON "artist"."id" = "artist_genres"."artist_id"
+            WHERE "artist_name" ILIKE $1 AND "artist_genres"."genre_id" = $2;
+          `
+        artistValues = [`%${req.query.q}%`, `${req.query.genre}`]
+        const artistResponse = await pool.query(userQuery, userValues)
+        res.send(artistResponse.rows)
+      }
+      
+      else {
         const artistResponse = await pool.query(`SELECT * FROM "artist";`)
         res.send(artistResponse.rows)
       }
