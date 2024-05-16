@@ -5,9 +5,11 @@ import './Socket.css'
 const ChatBody = ({messages, lastMessageRef}) => {
   const history = useHistory();
 
+  console.log('messages', messages);
+
   const handleLeaveChat = () => {
     localStorage.removeItem('userName');
-    history.push('/chathome');
+    history.push('/');
     window.location.reload();
   };
 

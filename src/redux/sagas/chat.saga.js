@@ -42,12 +42,12 @@ function* sendMessage (action){
     try {
         const response = yield axios({
             method: "POST",
-            url: `/api/chat/message/${action.payload.id}`,
-            data: action.payload.data
+            url: `/api/chat/message`,
+            data: action.payload
         })
         yield put ({
             type: "FETCH_CURRENT_CHAT",
-            payload: response.data.id
+            payload: action.payload.chat_id
         })
     }
     catch (error) {
