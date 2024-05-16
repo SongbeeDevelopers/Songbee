@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
  * POST route template
  */
 router.post('/checkout', async (req, res) => {
-      console.log('orderDetails:', req.body.orderDetails)
+      
       const order = req.body.orderDetails
       let lineitemArray = [{
         // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
@@ -71,7 +71,6 @@ router.post('/checkout', async (req, res) => {
 });
 
 router.post('/addon', async (req, res) => {
-  console.log('orderDetails:', req.body.orderDetails)
   const order = req.body.orderDetails
   let lineitemArray = [];
   if (order.streaming === true){
@@ -105,8 +104,6 @@ router.post('/addon', async (req, res) => {
     cancel_url: `https://songbee.com/#/user`,
     automatic_tax: {enabled: true},
   });
-  console.log("sesion:", session)
-  console.log("lineItemArray:", lineitemArray);
 
   res.send(session.url);
 });
