@@ -55,6 +55,7 @@ import DiveIntoBenefits from "../JrBenefits/JrBenefits";
 import { Route } from "react-router-dom";
 import SocketHome from "../SocketComponents/SocketHome";
 import ChatPage from "../SocketComponents/ChatPage";
+import CancelPage from "../CancelPage/CancelPage";
 
 
 function ComponentRouter() {
@@ -167,6 +168,12 @@ function ComponentRouter() {
         <ProtectedRoute exact path="/details/:id" allowedUserClasses={[1, 2, 3]}>
           <MainRoute>
             <RequestDetails routeVariants={routeVariants} />
+          </MainRoute>
+        </ProtectedRoute>
+
+        <ProtectedRoute exact path="/cancel/:id" allowedUserClasses={[1, 2, 3]}>
+          <MainRoute>
+            <CancelPage routeVariants={routeVariants} />
           </MainRoute>
         </ProtectedRoute>
 
