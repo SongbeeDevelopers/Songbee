@@ -118,7 +118,7 @@ function Header() {
           </Link>
 
           {!isMobile &&
-            <> <Link to="/order" className="start-your-song">Start your song</Link> </>
+            <Link to="/order" className="start-your-song">Start your song</Link>
           }
 
           {/* admin, profile, FAQ */}
