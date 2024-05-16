@@ -116,4 +116,31 @@ router.post('/tip', async (req, res) => {
   res.send(session.url);
 });
 
+router.post('/jrcheckout', async (req, res) => {
+  const order = req.body.orderDetails
+  let lineitemArray = [];
+
+  if (order.pack_id > 0 && order.pack_id < 7){
+    lineitemArray.push({
+        price: 'price_1P6GpBJoOrJf4ICWW7Yeg9Nq',
+        quantity: 1,
+      })
+  }
+  else if (order.pack_id >= 7){
+    lineitemArray.push({
+        price: 'price_1P6GqGJoOrJf4ICWYIuezcxo',
+        quantity: 1,
+      })
+  }
+  const session = await stripe.checkout.sessions.create({
+    line_items: lineitemArray,
+    mode: 'payment',
+    success_url: `https://www.songbee.com/#/user`,
+    cancel_url: `https://www.songbee.com/#/jrcancel/${req.body.id}`,
+    automatic_tax: {enabled: true},
+  });
+
+  res.send(session.url);
+});
+
 module.exports = router;
