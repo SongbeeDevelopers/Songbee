@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Button, Select, MenuItem, InputLabel, FormControl } from "@mui/material";
 import TextField from "@mui/material/TextField";
@@ -14,6 +14,9 @@ function FilterBar({ type }) {
 
   const [searchQuery, setSearchQuery] = useState('');
   const [classQuery, setClassQuery] = useState('');
+  const [genreQuery, setGenreQuery] = useState('');
+
+  const artistGenres = useSelector((store) => store.genres)
   
 
   const submitSearch = () => {
@@ -77,6 +80,29 @@ function FilterBar({ type }) {
           </FormControl>
         </div>
       }
+
+      {/* Filter by genres for each artist */}
+    {type === 'artist' &&
+        <div className="userFilter">
+          <Typography gutterBottom variant="overline" display="block" mt={1}>
+            Filter by user genre:
+          </Typography>
+          <FormControl>
+            <InputLabel>Genre</InputLabel>
+            <Select
+              value={genreQuery}
+              label="User Class"
+              onChange={(event) => setGenreQuery(event.target.value)}
+              sx={{ width: 125, mr: 4 }}
+            >
+              <MenuItem></MenuItem>
+              {artistGenres.map((genre) => (
+                <MenuItem value={genre.id}>{genre.name}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </div>
+      } 
 
       <Button
         variant="contained"
