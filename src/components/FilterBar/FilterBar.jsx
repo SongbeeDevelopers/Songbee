@@ -27,7 +27,8 @@ function FilterBar({ type }) {
         payload: {
           type,
           query: searchQuery,
-          classQuery
+          classQuery,
+          genreQuery
         }
       })
       :
@@ -40,6 +41,18 @@ function FilterBar({ type }) {
         }
       });
   };
+
+  const clearFilters = () => {
+    dispatch({
+      type: 'FETCH_ALL_ARTISTS'
+    })
+    dispatch({
+      type: 'FETCH_ALL_REQUESTS'
+    })
+    dispatch({
+      type: 'FETCH_ALL_USERS'
+    })
+  }
 
 
   return (
@@ -110,6 +123,14 @@ function FilterBar({ type }) {
         sx={{ height: 40, mt: 6.5, backgroundColor: "#feaf17", color: "black" }}
       >
         FILTER
+      </Button>
+
+      <Button
+        variant="contained"
+        onClick={clearFilters}
+        sx={{ height: 40, mt: 6.5, ml: 2, backgroundColor: "#feaf17", color: "black" }}
+      >
+        CLEAR
       </Button>
 
     </div>
