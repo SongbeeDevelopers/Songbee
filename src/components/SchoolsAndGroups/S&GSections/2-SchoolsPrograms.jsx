@@ -106,12 +106,6 @@ function WhatsTheBuzz() {
                 Encourages community
               </p>
               <div className="theBook-learn">
-                <div className="buzz-arrows">
-                  <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074383/Songbee/buzzArrows_giu747.webp" />
-                </div>
-                <p>
-                  Click <br /> Here
-                </p>
 
                 <Link to="/why-songbee">Learn More</Link>
               </div>
