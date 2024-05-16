@@ -30,7 +30,13 @@ function ArtistCommunity() {
       type: "FETCH_ALL_ARTISTS",
       payload: id,
     });
+
+    dispatch({
+      type: 'FETCH_GENRES'
+    })
   }, [id]);
+
+
   const artistCommunity = useSelector((store) => store.allArtists);
   console.log(artistCommunity);
 
