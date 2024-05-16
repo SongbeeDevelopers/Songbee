@@ -162,7 +162,7 @@ router.get('/', async (req, res) => {
             WHERE "artist_name" ILIKE $1;
           `
         artistValues = [`%${req.query.q}%`]
-        const artistResponse = await pool.query(userQuery, userValues)
+        const artistResponse = await pool.query(artistQuery, artistValues)
         res.send(artistResponse.rows)
       } else {
         const artistResponse = await pool.query(`SELECT * FROM "artist";`)
