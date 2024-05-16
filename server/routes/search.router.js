@@ -190,7 +190,7 @@ router.get('/', async (req, res) => {
             WHERE "artist_name" ILIKE $1 AND "artist_genres"."genre_id" = $2;
           `
         artistValues = [`%${req.query.q}%`, `${req.query.genre}`]
-        const artistResponse = await pool.query(userQuery, userValues)
+        const artistResponse = await pool.query(artistQuery, artistValues)
         res.send(artistResponse.rows)
       }
       
