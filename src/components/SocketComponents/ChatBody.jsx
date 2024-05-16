@@ -1,9 +1,11 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import './Socket.css'
 
 const ChatBody = ({messages, lastMessageRef}) => {
   const history = useHistory();
+  const user = useSelector(store => store.user)
 
   console.log('messages', messages);
 
@@ -16,7 +18,7 @@ const ChatBody = ({messages, lastMessageRef}) => {
   return (
     <>
       <header className="chat__mainHeader">
-        <p>Hangout with Colleagues</p>
+        <p>Direct Chat</p>
         <button className="leaveChat__btn" onClick={handleLeaveChat}>
           LEAVE CHAT
         </button>
@@ -24,7 +26,7 @@ const ChatBody = ({messages, lastMessageRef}) => {
 
       <div className="message__container">
         {messages.map((message) =>
-          message.name === localStorage.getItem('userName') ? (
+          message.email === user.email ? (
             <div className="message__chats" key={message.id}>
               <p className="sender__name">You</p>
               <div className="message__sender">
@@ -33,7 +35,7 @@ const ChatBody = ({messages, lastMessageRef}) => {
             </div>
           ) : (
             <div className="message__chats" key={message.id}>
-              <p>{message.name}</p>
+              <p>{message.email}</p>
               <div className="message__recipient">
                 <p>{message.text}</p>
               </div>
