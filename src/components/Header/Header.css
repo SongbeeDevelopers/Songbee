@@ -20,7 +20,7 @@
   background-color: #fff4df;
 }
 
-.nav-links{
+.nav-links {
   font-size: .82rem;
   font-weight: 600;
   color: #474546;
@@ -38,7 +38,7 @@
   margin-top: 7px;
 }
 
-.nav-right{
+.nav-right {
   display: flex;
   align-items: center;
   justify-content: end;
@@ -50,24 +50,24 @@
   margin: auto;
 }
 
-.start-your-song  {
-     background-color: #feaf17;
-     border-radius: 20px;
-     text-align: center;
-     margin-bottom: 5px;
-     font-family: Poppins, sans-serif;
-     font-weight: 600;
-     transition: background-color 0.45s;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     color: var(--black\<deleted\|variable-f6301105\>);
-     width: 10rem;
-     height: 2rem;
-     margin-top: 3px;
-     padding-bottom: 2px;
+.start-your-song {
+  background-color: #feaf17;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 5px;
+  font-family: Poppins, sans-serif;
+  font-weight: 600;
+  transition: background-color 0.45s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--black\<deleted\|variable-f6301105\>);
+  width: 10rem;
+  height: 2rem;
+  margin-top: 3px;
+  padding-bottom: 2px;
 }
 
-.start-your-song:hover{
+.start-your-song:hover {
   background-color: #fed07b;
 }
