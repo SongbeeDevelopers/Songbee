@@ -166,25 +166,11 @@
    
   }
 
-  /* .title, .genre {
-    font-family: Poppins, sans-serif;
-    text-align: center;
-    font-size: 15px;
-    line-height: 20px;
-    font-weight: 500;
-    letter-spacing: .25px; 
-    padding: 20px;
-  } */
+  .title {
+    margin-bottom: -40px;
+    padding-top: 50px;
+  }
 
-  /* .genre {
-    margin-left: 170px;
-   
-  } */
-
-  /* .title {
-    margin-right: 170px;
-   
-  } */
 
   .songList {
     display: flex;
@@ -194,17 +180,20 @@
   
 
   .songItems {
-    width: 100%;
+    max-width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding-bottom: 50px;
     margin-bottom: 50px;
     margin-top: 8px;
+    margin-left: -40px;
   }
 
   .songItems p {
-    margin-top: 40px;
+    margin-top: 250px;
+    margin-left: -40px;
+    margin-right: 50px;
   }
 
   .audioFiles {
@@ -245,18 +234,19 @@
   }
 
   .genres {
-    margin-left: auto;
-    padding-top: 20px;
+    margin-left: -10px;
+    padding-top: -20px;
   }
 
 
-  /* .genres h3 {
-    margin-left: 20px;
-  } */
+  .genres p {
+    margin-left: 50px;
+  }
   
   .headerItem {
-    display: inline-block;
+    display: flex;
     flex: 1;
+    margin-left: -150px;
     border-bottom: 2px solid #e1ded6;
    
 }
@@ -265,15 +255,16 @@
 
   display: flex;
   flex-direction: row;
-  /* align-items: center; */
-  /* height: auto; */
-  /* max-width: 100%; */
-  /* margin-right: 20px; */
-  /* padding: 60px 20px 100px; */
+  align-items: center;
+  height: auto;
+  max-width: 100%;
+  margin-right: -10px;
+  padding: 0px 20px 10px;
 }
 
   .artistCommunityBtns button {
-    margin-left: -40px; 
+    margin-left: -50px; 
+   
   }
 
   

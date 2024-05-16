@@ -17,9 +17,11 @@ function AudioButton({ url, popup, setShowPopUp, setSelectedSong, artist }) {
         }
         setIsPlaying(!isPlaying);
 
-        if (popup === true) {
+
+        if (popup === true && setShowPopUp && setSelectedSong) {
             setShowPopUp(true)
             setSelectedSong(artist)
+           
         }
 
     };
@@ -31,7 +33,7 @@ function AudioButton({ url, popup, setShowPopUp, setSelectedSong, artist }) {
     return (
         <div>
             <audio ref={audioRef} src={url}></audio>
-            <button  className={isPlaying ? 'player-container pause' : 'player-container play'} onClick={playPause}></button> 
+            <button  className={isPlaying ? 'player-container pause' : 'player-container play'} onClick={playPause}>{isPlaying ? 'pause' : 'play'}</button> 
      </div>
     );
 }
