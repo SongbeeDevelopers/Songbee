@@ -19,6 +19,11 @@ function ArtistCommunity() {
   const [showPopUp, setShowPopUp] = useState(false);
   const [selectedSong, setSelectedSong] = useState(null);
 
+  // This is for the audio player in the popup
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const audioRef = useRef(null);
+
   useEffect(() => {
     dispatch({
       type: "FETCH_ALL_ARTISTS",
@@ -32,8 +37,34 @@ function ArtistCommunity() {
     console.log('sup')
     // const {song_title_1, artist_name, genres} = artist;
     setShowPopUp(!showPopUp);
+    // setShowPopUp(true)
     setSelectedSong(artist);
   };
+
+  const closePopUp = () => {
+    setShowPopUp(false);
+  };
+
+  const playBtn = () => {
+    if (audioRef.current.paused) {
+      audioRef.current.play();
+      setIsPlaying(true)
+    } else {
+      audioRef.current.pause();
+      setIsPlaying(false)
+    }
+    // setIsPlaying(!isPlaying)
+  }
+  {console.log('playBtn:', playBtn)}
+
+  function formatTime(time) {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+
+    return `${minutes}:${seconds <10 ? '0' : ""}${seconds}`
+  }
+
+
 
   const SongDisplay = () => {
     if (showPopUp === true) {
@@ -44,18 +75,24 @@ function ArtistCommunity() {
           <h3>{selectedSong.song_title_1}</h3>
           <p>Artist: {selectedSong.artist_name}</p>
           <p>Genre: {selectedSong.genres[0].genre}</p>
+          <audio ref={audioRef} src={selectedSong.sample_song_1} />
+          <div className="audio-controls">
+            <button onClick={playBtn}>play/pause</button>
+          </div>
+          {isPlaying ? "playing" : "paused"} - 
+          {audioRef.current && audioRef.current.duration ? `Duration: ${formatTime(audioRef.current.duration)}`: ""}
+          <progress value={audioRef.current ? audioRef.current.currentTime : 0} max={audioRef.current ? audioRef.current.duration : 0}></progress>
           <button onClick={closePopUp}>Close</button>
+          {console.log('audioRef:', audioRef)}
           </div>
         </div>
       );
     } else {
-      return false;
+      return null;
     }
   };
 
-  const closePopUp = () => {
-    setShowPopUp(false);
-  };
+  
 
   return (
     artistCommunity && (
@@ -84,7 +121,10 @@ function ArtistCommunity() {
                     popup={true}
                     setShowPopUp={setShowPopUp}
                     setSelectedSong={setSelectedSong}
-                    artist={artist} /> 
+                    artist={artist} 
+                    isPlaying={isPlaying}
+                    setIsPlaying={setIsPlaying}
+                    /> 
                 </div>
               </>
             ))}

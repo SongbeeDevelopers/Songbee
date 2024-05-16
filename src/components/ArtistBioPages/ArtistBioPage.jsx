@@ -24,6 +24,7 @@ const requestData = useSelector((store) => store.requestData);
 
 const artistGenre = useSelector(store => store.fetchGenres);
 console.log("id", id)
+// console.log('artistGenre', artistGenre);
 
 console.log("artist", artist)
 
@@ -72,49 +73,46 @@ const handleArtist =(e) => {
          <h4 className="bio">{artist.bio}</h4>
         </div>
         <div className="songListWrapper">
-           {/* <div className="tableHeader">
+           <div className="tableHeader">
                <div className="headerItem"> 
-                   <div className="title">
+                   {/* <div className="title">
                       Title
                        
-                   </div>
+                   </div> */}
                </div>
                <div className="headerItem"> 
-                   <div className="genre">
-                       Genre
-                   </div>
+                   <h3>Genres:</h3>
+                    {artist && artist.genres && (
+                   <div className="genres">
+                       {artist && artist.genres.map((genre) => (
+                          <p>{genre.genre}</p>
+                       ))} 
+                    </div>
+                    )}
                </div>
-           </div> */}
-           
+           </div>
+           <h3 className="title">Sample Songs</h3>
+          
            <div className="songList">
                <div className="songItems">
                  {[1, 2, 3].map((index) => {
                     const sampleSong = artist[`sample_song_${index}`];
                     const songTitle = artist[`song_title_${index}`];
+                
                   return sampleSong && (
-
-                   <div className="audioFiles" key={index}> 
-                   <div className="songTitles">
-                    <h3>{songTitle}</h3>
-                      <div className="artistCommunityBtns">
+                    <div className="audioFiles">
+                        <div className="artistCommunityBtns">
                         <AudioButton url={sampleSong} />
-                      </div>
-                      {console.log('sampleSong', sampleSong)}
-                   </div>
-                   <div className="genres">
-                       {artist.genres.map((genre) => (
-                            <h3>{genre.genre}</h3>
-                       ))} 
-                     </div>    
-                   </div>
+                          <p className="songTitles" key={index}>{songTitle}</p>
+                          {console.log('sampleSong', sampleSong)}
+                        </div>
+                  </div>
                    
                        );
-                    })}
-                
+                    })}     
                </div>
            </div>
-   </div>
-        
+     </div>   
      </>
      
     ) : null;
