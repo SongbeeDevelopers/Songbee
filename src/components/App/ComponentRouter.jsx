@@ -5,6 +5,8 @@ import { Redirect, Switch, useLocation } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import MainRoute from "./MainRoute"
 import JrRoute from "./JrRoute";
+import ScrollToTop from "./ScrollToTop";
+import ScrollToAnchor from "./ScrollToAnchor"
 
 // login/reg
 import LoginPage from "../LoginPage/LoginPage";
@@ -44,13 +46,12 @@ import NotFound from "../NotFoundPage/NotFoundPage";
 import JrLandingPage from "../JrLandingPage/JrLandingPage";
 import JrEditRequestPage from "../EditRequestPage/JrEditRequest";
 import JrCheckoutPage from "../JrRequestPage/JrRequestPage";
-import LearningPacksPage from "../LearningPacksPage/PacksPage";
+import LearningPacksPage from "../LearningPacksPage/LearningPacksPage";
 import LearningPackView from "../LearningPackView/PackView";
 import SchoolsInspiration from "../SchoolsAndGroups/SchoolsAndGroups";
 import WhySongbee from "../WhySongbee/WhySongbee";
 import WhatsIncluded from "../WhatsIncludedSchools/WhatsIncluded";
 import DiveIntoBenefits from "../JrBenefits/JrBenefits";
-import ScrollToTop from "./ScrollToTop";
 import { Route } from "react-router-dom";
 import SocketHome from "../SocketComponents/SocketHome";
 import ChatPage from "../SocketComponents/ChatPage";
@@ -92,6 +93,7 @@ function ComponentRouter() {
 
       {/* causes every route to start at top of page */}
       <ScrollToTop />
+      <ScrollToAnchor />
 
 
       {/* all routes below */}

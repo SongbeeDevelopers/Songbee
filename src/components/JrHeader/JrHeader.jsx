@@ -60,7 +60,7 @@ function JrHeader() {
       <div className="jr-nav-left">
         <Link to="/learning-packs" className="jr-nav-links">Learning Packs</Link>
         |
-        <Link to="/" className="jr-nav-links">Gifting</Link>
+        <Link to="/gifting" className="jr-nav-links">Gifting</Link>
         |
         <Link to="/schools" className="jr-nav-links">Schools & Groups</Link>
       </div>
@@ -86,7 +86,7 @@ function JrHeader() {
             <> <Link to="/faq" className="nav-links">FAQ</Link> </>
           }
       <div className="jr-nav-right">
-        <button id="jr-header-btn" className="jr-landing-btn" onClick={() => history.push('/learning-packs')}>
+        <button id="jr-header-btn" className="jr-landing-btn" onClick={() => history.push('/jrcheckout')}>
           Get Started
         </button>
         </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { Learningpacks } from "../LearningPacksPage/Data";
+import { Learningpacks } from "../LearningPacksPage/LearningPacksData";
 import { motion } from "framer-motion";
 import LearningPackVideo from "./PacksVideo";
 import LearningMadeEasy from "./MadeEasy";

@@ -1,12 +1,9 @@
-import React from "react";
-
 function LearningpacksHero() {
   return (
     <div className="how-jr-works-box lp-hero-steps">
       <img
         className="lp-hero-bee"
         src='https://res.cloudinary.com/dke4ukd0z/image/upload/v1715715123/Songbee/bee-trail_qfhgh0.png'
-        alt=""
       />
       <img
         className="try-bee lp-try-bee"
@@ -20,7 +17,6 @@ function LearningpacksHero() {
         className="guesswork-honeycomb lp-honeycomb-bottomleft"
         src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076569/Songbee/empty-honecomb-yellow_hlw8xg.png"
       />
-
       <div className="works-header packs-header-bg">
         <h2>How it works</h2>
         <p>
@@ -68,6 +64,7 @@ function LearningpacksHero() {
         src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076534/Songbee/beehive_lzsfmu.png"
       />
     </div>
+
   );
 }
 

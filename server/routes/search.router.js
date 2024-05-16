@@ -8,7 +8,8 @@ const router = express.Router();
 /* GET route search */
 router.get('/', async (req, res) => {
   try {
-    // search for pending requests
+
+    /***** search for pending requests *****/
     if (req.query.type === 'pending') {
       const pendingQuery = `
         SELECT DISTINCT
@@ -53,7 +54,8 @@ router.get('/', async (req, res) => {
       const pendingResponse = await pool.query(pendingQuery, [`%${req.query.q}%`])
       res.send(pendingResponse.rows)
     }
-    // search for completed queries
+
+    /***** search for completed queries *****/
     else if (req.query.type === 'completed') {
       const completedQuery = `
         SELECT DISTINCT
@@ -100,10 +102,12 @@ router.get('/', async (req, res) => {
       const completedResponse = await pool.query(completedQuery, [`%${req.query.q}%`])
       res.send(completedResponse.rows)
     }
-    // search for users
+
+    /***** search for users *****/
     else if (req.query.type === 'user') {
       let userQuery
       let userValues
+
       // finds users matching query if no class selected
       if (req.query.q && !req.query.class) {
         userQuery = `
@@ -115,6 +119,7 @@ router.get('/', async (req, res) => {
         const userResponse = await pool.query(userQuery, userValues)
         res.send(userResponse.rows)
       }
+
       // finds users matching class if no query made
       else if (!req.query.q && req.query.class) {
         userQuery = `
@@ -126,6 +131,7 @@ router.get('/', async (req, res) => {
         const userResponse = await pool.query(userQuery, userValues)
         res.send(userResponse.rows)
       }
+
       // finds users matching both query and class
       else if (req.query.q && req.query.class) {
         userQuery = `
@@ -137,10 +143,30 @@ router.get('/', async (req, res) => {
         const userResponse = await pool.query(userQuery, userValues)
         res.send(userResponse.rows)
       }
+
       // returns all users if no selections
       else {
         const userResponse = await pool.query(`SELECT * FROM "user";`)
         res.send(userResponse.rows)
+      }
+    }
+
+    /***** search for artists *****/
+    else if (req.query.type === 'artist') {
+      let artistQuery
+      let artistValues
+      if (req.query.q) {
+        artistQuery = `
+            SELECT *
+            FROM "artist"
+            WHERE "artist_name" ILIKE $1;
+          `
+        artistValues = [`%${req.query.q}%`]
+        const artistResponse = await pool.query(userQuery, userValues)
+        res.send(artistResponse.rows)
+      } else {
+        const artistResponse = await pool.query(`SELECT * FROM "artist";`)
+        res.send(artistResponse.rows)
       }
     }
   } catch (error) {

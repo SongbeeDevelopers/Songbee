@@ -17,6 +17,9 @@ function* fetchResults(action) {
         break;
       case 'user':
         yield put({ type: 'SET_ALL_USERS', payload: response.data })
+        break;
+      case 'artist':
+        yield put({ type: 'SET_ALL_ARTISTS', payload: response.data})
     }
   }
   catch (error) {
