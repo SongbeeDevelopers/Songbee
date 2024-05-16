@@ -216,4 +216,21 @@ router.post('/create', async (req, res) => {
   }
 });
 
+router.delete("/:id", rejectUnauthenticated, (req, res) => {
+  const requestId = req.params.id;
+  const query = `
+        DELETE FROM "subscription"
+          WHERE "id"=$1;
+    `;
+  pool
+    .query(query, [requestId])
+    .then((result) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log("Error in junior request router delete subscription", err);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;

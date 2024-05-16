@@ -115,6 +115,15 @@ function* fetchJrCheckout (action) {
   }
 }
 
+function* deleteJrRequest (action){
+  try {
+      const response = yield axios.delete(`/api/jr-request/${action.payload}`)
+      yield put({type: "FETCH_ALL_REQUESTS"});
+  } catch (error) {
+      console.error('SAGA deleteJrRequest() failed:', error)
+  }
+}
+
 function* juniorRequestSaga() {
   yield takeLatest("FETCH_USER_REQUESTS", fetchUserRequests);
   yield takeLatest("FETCH_CURRENT_REQUEST", fetchCurrentRequest);
@@ -125,6 +134,7 @@ function* juniorRequestSaga() {
   yield takeLatest("FETCH_CURRENT_PACK", fetchCurrentPack);
   yield takeLatest("CREATE_JR_REQUEST", createJrRequest);
   yield takeLatest("FETCH_JR_CHECKOUT", fetchJrCheckout);
+  yield takeLatest("DELETE_JR_REQUEST", deleteJrRequest)
 
 }
 
