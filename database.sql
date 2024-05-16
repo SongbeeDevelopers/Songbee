@@ -354,4 +354,4 @@ VALUES
   (1, 1, 'whats up'),
   (1, 2, 'Not much'),
   (3, 10, 'Just checking in'),
-  (3, 1, 'hah thats cool');m,
+  (3, 1, 'hah thats cool');
