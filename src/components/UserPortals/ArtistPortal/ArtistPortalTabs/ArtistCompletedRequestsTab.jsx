@@ -2,11 +2,9 @@ import React from "react";
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import FilterBar from '../../FilterBar/FilterBar';
-import AdminDetailsDialog from "../../ArtistRequests/AdminDetailsDialog";
+import FilterBar from '../../../FilterBar/FilterBar';
+import AdminDetailsDialog from "../../../ArtistRequests/AdminDetailsDialog";
 import AdminCompleteDialog from "../../AdminPortal/AdminPortalTabs/AdminPortalDialogs/AdminCompleteDialog";
-import RequestDetails from "../../RequestDetails/RequestDetails";
-import AcceptSelector from "./AcceptSelector";
 
 import {
   Button,
@@ -20,14 +18,14 @@ import {
 
 import '../ArtistPortal.css'
 
-export default function ArtistSBRequestsTab({artistId}) {
+export default function ArtistCompletedRequestsTab({artistId}) {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch({ type: "FETCH_ARTIST_REQUESTS",
+        dispatch({ type: "FETCH_COMPLETED_ARTIST_REQUESTS",
                     payload: artistId});
       }, [])
-    const artistRequests = useSelector(store => store.artistRequests)
+    const artistRequests = useSelector(store => store.completedArtistRequests)
     console.log("artist requests:", artistRequests)
     const genres = useSelector(store => store.genres)
 
@@ -77,10 +75,10 @@ export default function ArtistSBRequestsTab({artistId}) {
             {/* table header */}
             <TableHead>
               <TableRow>
-                <TableCell >Accepted?</TableCell>
-                <TableCell align="center">Creation Date</TableCell>
-                <TableCell align="center">Due</TableCell>
+                <TableCell>Creation Date</TableCell>
                 <TableCell align="center">Requester E-Mail</TableCell>
+                <TableCell align="center">Something</TableCell>
+                <TableCell align="center">Due</TableCell>
                 <TableCell align="center">View Details</TableCell>
                 <TableCell align="center">Completion Form</TableCell>
               </TableRow>
@@ -91,28 +89,24 @@ export default function ArtistSBRequestsTab({artistId}) {
               {artistRequests.map((row) => (
                 <TableRow hover key={row.id}>
 
-                    {/* accepted */}
-                    <TableCell align="center">
-                    {row.accepted ? 
-                    "Accepted"
-                :
-                    <AcceptSelector request={row}/>
-                }
-                  </TableCell>
-
                   {/* creation date */}
                   <TableCell>
                     {new Date(row.created_at).toLocaleString('en-us')}
                   </TableCell>
 
-                {/* due */}
-                  <TableCell align="center">
-                    {getDueDate(row.created_at, row.delivery_days)}
-                  </TableCell>
-
                   {/* email */}
                   <TableCell align="center">
                     {row.email}
+                  </TableCell>
+
+                  {/* artist */}
+                  <TableCell align="center">
+                    {/* NEED TO FILL THIS */}
+                  </TableCell>
+
+                  {/* due */}
+                  <TableCell align="center">
+                    {getDueDate(row.created_at, row.delivery_days)}
                   </TableCell>
 
                   {/* details btn */}
