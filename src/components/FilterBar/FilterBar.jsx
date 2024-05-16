@@ -14,10 +14,11 @@ function FilterBar({ type }) {
 
   const [searchQuery, setSearchQuery] = useState('');
   const [classQuery, setClassQuery] = useState('');
+  
 
   const submitSearch = () => {
     // submits user search
-    type === 'user' ?
+    type === 'user' || type === 'artist' ?
       dispatch({
         type: 'FETCH_RESULTS',
         payload: {
