@@ -130,7 +130,7 @@ function ComponentRouter() {
         <Route path="/chathome">
           <SocketHome />
         </Route>
-        <Route path="/chatpage">
+        <Route path="/chatpage/:id">
           <ChatPage />
         </Route>
 

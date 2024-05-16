@@ -28,6 +28,7 @@ import learningPacks from './learningPacks.reducer';
 import currentPack from './currentPack.reducer';
 import userChats from './userChats.reducer';
 import currentChat from './currentChat.reducer';
+import message from './message.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -64,6 +65,7 @@ const rootReducer = combineReducers({
   currentPack,
   userChats,
   currentChat,
+  message,
   
 });
 

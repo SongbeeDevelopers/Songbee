@@ -46,7 +46,8 @@ router.get('/user-chat/:id', (req, res) => {
       JOIN "chat"
       ON "messages"."chat_id" = "chat"."id"
       WHERE 
-      "chat"."id" = $1;
+      "chat"."id" = $1
+      ORDER BY "messages"."created_at";
     `
     pool.query(query, [req.params.id])
     .then((response) => {
@@ -76,7 +77,8 @@ router.get('/user-chat/:id', (req, res) => {
     })
   });
 
-  router.post('/message/:id', (req, res) => {
+  router.post('/message', (req, res) => {
+    console.log("req.body", req.body);
     const user = req.user.id;
     const chatId = req.body.chat_id;
     const text = req.body.text;
@@ -86,7 +88,7 @@ router.get('/user-chat/:id', (req, res) => {
       VALUES
         ($1, $2, $3);
     `
-    pool.query(query, [user, chatId, text])
+    pool.query(query, [chatId, user, text])
     .then((response) => {
       res.sendStatus(201)
     })
