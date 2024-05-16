@@ -86,7 +86,7 @@ function* createJrRequest (action){
   try {
       const response = yield axios({
           method: "POST",
-          url: "/api/request/create",
+          url: "/api/jr-request/create",
           data: action.payload.data
       })
       yield put ({
@@ -94,8 +94,6 @@ function* createJrRequest (action){
           payload: { data: action.payload.data, 
                       id: response.data.id }
       })
-      
-      yield put ({ type: 'ADD_ORDER_ID', payload: response.data.id })
   } catch (error) {
       console.error('SAGA createSongRequest() failed:', error)
   }
@@ -106,7 +104,7 @@ function* fetchJrCheckout (action) {
   try {
       const stripeResponse = yield axios({
           method: "POST",
-          url: '/api/stripe/checkout',
+          url: '/api/stripe/jrcheckout',
           data: {
               orderDetails: action.payload.data,
               id: action.payload.id}

@@ -31,10 +31,10 @@ export default function JrCheckoutPage({ routeVariants }) {
   const history = useHistory();
   const now = new Date();
 
+  const user = useSelector(store => store.user)
   const requestData = useSelector((store) => store.jrCheckoutData);
   const learningPacks = useSelector(store => store.learningPacks);
   const currentPack = useSelector(store => store.currentPack);
-  const { id } = useParams();
 
   const monthDiff = (d1, d2) => {
     let months;
@@ -70,9 +70,8 @@ export default function JrCheckoutPage({ routeVariants }) {
 
   function dispatchDetails() {
     dispatch({
-      type: "UPDATE_SONG_REQUEST",
+      type: "CREATE_JR_REQUEST",
       payload: {
-        id: id,
         history: history,
         data: requestData,
       },
@@ -227,20 +226,11 @@ export default function JrCheckoutPage({ routeVariants }) {
     setCompleted(newCompleted);
     handleNext();
     if (
-      requestData.requester &&
-      requestData.recipient &&
-      requestData.recipient_relationship &&
-      requestData.occasion &&
-      requestData.vocal_type &&
-      requestData.vocal_type &&
-      requestData.vibe &&
-      requestData.vibe &&
-      requestData.tempo &&
-      requestData.inspiration &&
-      requestData.story1 &&
-      requestData.story2 &&
-      requestData.important_what &&
-      requestData.important_why
+      requestData.pack_id &&
+      requestData.age &&
+      requestData.name &&
+      user.id &&
+      allStepsCompleted()
     ) {
       Swal.fire({
         title: "Submit?",
@@ -255,20 +245,12 @@ export default function JrCheckoutPage({ routeVariants }) {
       });
     } else {
       Swal.fire({
-        title: "Submit?",
-        text: "You have left important details blank. Do you want to submit anyways?",
+        title: "Cannot complete request!",
+        text: "You have left important details blank, please go back and make sure you have filled out all information",
         icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Submit",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire({
-            title: "Submitted!",
-            icon: "success",
-          });
-          dispatchDetails();
-        }
-      });
+        showCancelButton: false,
+        confirmButtonText: "Back",
+      })
     }
   };
 
