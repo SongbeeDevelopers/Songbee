@@ -20,14 +20,28 @@ function CustomerMessagesTab() {
   const user = useSelector(store => store.user)
 
   console.log("chats", chats)
+  const startChat = () => {
+    dispatch({
+        type: "CREATE_CHAT",
+        payload: {
+            id: 1, history
+        }
+    })
+  }
 
 
   return (
     <div className="tab-body">
       <div className="user-credit-tab">
         <div className="user-portal-inputs">
-            <h4>Your Chats:</h4>
-            {chats.map((chat) => {
+   { chats.length === 0 ? 
+    <>
+    <h4 onClick={startChat}>Click here to start a chat with Songbee</h4>
+    </>
+    :
+    <>
+    <h4>Your Chats:</h4>  
+   {chats.map((chat) => {
                 if(chat.user1_email === user.email){
                     return (
                         <>
@@ -43,6 +57,8 @@ function CustomerMessagesTab() {
                     )
                 }
             })}
+            </> 
+            }
 
         </div>
       </div>
