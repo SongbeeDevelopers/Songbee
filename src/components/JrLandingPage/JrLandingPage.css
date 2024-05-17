@@ -252,8 +252,9 @@ Why Junior
 .why-junior {
   display: flex;
   flex-direction: row;
+  gap: 25px;
   width: 75%;
-  margin: 35px auto;
+  margin: 55px auto 25px;
 }
 
 
@@ -264,6 +265,13 @@ Why Junior
 
 .why-junior-text p {
   margin: 20px auto 25px;
+}
+
+.why-junior-video iframe {
+  width: 506px;
+  height: 285px;
+  border: none;
+  border-radius: 10px;
 }
 
 #try-it {
