@@ -38,6 +38,7 @@ export default function AdminArtistsPendingEdits({ data }) {
         <>
           <FilterBar type="artist" />
 
+          <div className="admin-tabs-contents">
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
             <TableHead>
               <TableRow>
@@ -92,6 +93,7 @@ export default function AdminArtistsPendingEdits({ data }) {
               })}
             </TableBody>
           </Table>
+          </div>
         </>
         :
         <p className='admin-empty-msg'>There are currently no pending edits.</p>

@@ -65,78 +65,80 @@ export default function AdminArtistTable({ data }) {
         <>
           <FilterBar type="artist" />
 
-          <Table sx={{ minWidth: 700 }}>
+          <div className="admin-tabs-contents">
+            <Table sx={{ minWidth: 700 }}>
 
-            <TableHead>
-              <TableRow>
-                <TableCell>Artist Name</TableCell>
-                <TableCell align="center">Vocal Type</TableCell>
-                <TableCell align="center">Website</TableCell>
-                <TableCell align="center">Details</TableCell>
-                <TableCell align="center">Approve</TableCell>
-                <TableCell align="center">Deny</TableCell>
-              </TableRow>
-            </TableHead>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Artist Name</TableCell>
+                  <TableCell align="center">Vocal Type</TableCell>
+                  <TableCell align="center">Website</TableCell>
+                  <TableCell align="center">Details</TableCell>
+                  <TableCell align="center">Approve</TableCell>
+                  <TableCell align="center">Deny</TableCell>
+                </TableRow>
+              </TableHead>
 
-            <TableBody>
-              {data.map((artist) => {
-                return (
-                  <TableRow hover key={artist.id}>
-                    {/* artist name */}
-                    <TableCell>
-                      {artist.artist_name}
-                    </TableCell>
+              <TableBody>
+                {data.map((artist) => {
+                  return (
+                    <TableRow hover key={artist.id}>
+                      {/* artist name */}
+                      <TableCell>
+                        {artist.artist_name}
+                      </TableCell>
 
-                    {/* vocal type */}
-                    <TableCell align="center">
-                      {artist.vocal_type}
-                    </TableCell>
+                      {/* vocal type */}
+                      <TableCell align="center">
+                        {artist.vocal_type}
+                      </TableCell>
 
-                    {/* website */}
-                    <TableCell align="center">
-                      {artist.website}
-                    </TableCell>
+                      {/* website */}
+                      <TableCell align="center">
+                        {artist.website}
+                      </TableCell>
 
-                    <TableCell align="center">
-                      <Button variant="contained"
-                        onClick={() => setOpenApp(true)}
-                        sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
-                      >
-                        Details
-                      </Button>
+                      <TableCell align="center">
+                        <Button variant="contained"
+                          onClick={() => setOpenApp(true)}
+                          sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
+                        >
+                          Details
+                        </Button>
 
-                      <Dialog keepMounted fullWidth maxWidth="md"
-                        open={openApp}
-                        onClose={() => setOpenApp(false)}
-                      >
-                        <ArtistAppDetailsDialog artist={artist} setOpenApp={setOpenApp} />
-                      </Dialog>
-                    </TableCell>
+                        <Dialog keepMounted fullWidth maxWidth="md"
+                          open={openApp}
+                          onClose={() => setOpenApp(false)}
+                        >
+                          <ArtistAppDetailsDialog artist={artist} setOpenApp={setOpenApp} />
+                        </Dialog>
+                      </TableCell>
 
-                    {/* approve button */}
-                    <TableCell align="center">
-                      <Button variant="contained"
-                        onClick={() => approveArtist(artist.id, artist.user_id)}
-                        sx={{ height: 35, width: 90, backgroundColor: "#feaf17", color: "black" }}
-                      >
-                        APPROVE
-                      </Button>
-                    </TableCell>
+                      {/* approve button */}
+                      <TableCell align="center">
+                        <Button variant="contained"
+                          onClick={() => approveArtist(artist.id, artist.user_id)}
+                          sx={{ height: 35, width: 90, backgroundColor: "#feaf17", color: "black" }}
+                        >
+                          APPROVE
+                        </Button>
+                      </TableCell>
 
-                    {/* deny button */}
-                    <TableCell align="center">
-                      <Button variant="contained"
-                        onClick={() => denyArtist(artist.id)}
-                        sx={{ height: 35, width: 65, backgroundColor: "#feaf17", color: "black" }}
-                      >
-                        DENY
-                      </Button>
-                    </TableCell>
-                  </TableRow>
-                );
-              })}
-            </TableBody>
-          </Table>
+                      {/* deny button */}
+                      <TableCell align="center">
+                        <Button variant="contained"
+                          onClick={() => denyArtist(artist.id)}
+                          sx={{ height: 35, width: 65, backgroundColor: "#feaf17", color: "black" }}
+                        >
+                          DENY
+                        </Button>
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
+            </Table>
+          </div>
         </>
         :
         <p className='admin-empty-msg'>There are currently no artist applications.</p>

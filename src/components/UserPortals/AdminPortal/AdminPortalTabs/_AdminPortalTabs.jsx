@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { useMediaQuery } from "react-responsive";
 
 import AdminRequestsTab from './AdminRequestsTab';
 import AdminArtistApplicationsTab from './AdminArtistApplicationsTab';
@@ -13,10 +14,14 @@ import Typography from '@mui/material/Typography';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 
+
+
 import '../AdminPortal.css'
 
 
 export default function AdminPortalTabs() {
+
+  const isMobile = useMediaQuery({ query: `(max-width: 850px)` });
 
   const [value, setValue] = useState(0);
 
@@ -61,10 +66,10 @@ export default function AdminPortalTabs() {
     };
   }
   // end of tab structure
-  
+
 
   return (
-    <div>
+    <div className="admin-tabs-container">
       <Tabs value={value} onChange={handleChange} centered>
         <Tab label="Pending Orders" {...a11yProps(0)} />
         <Tab label="Completed Orders" {...a11yProps(1)} />

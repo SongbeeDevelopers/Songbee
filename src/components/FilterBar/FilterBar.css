@@ -1,8 +1,31 @@
 .filters {
     display: flex;
     justify-content: center;
+    overflow: scroll;
 }
 
 .filter-bar {
     margin-bottom: 40px;
+}
+
+.mobile-filters-row {
+    display: flex;
+    flex-direction: row;
+}
+
+@media (max-width: 655px) {
+    .filters {
+        flex-direction: column;
+    }
+    .filter-bar {
+        margin-bottom: 0;
+    }
+    .mobile-filters-row {
+        justify-content: left;
+        margin-bottom: 20px;
+    }
+    .mobile-filters-row2 {
+        margin-top: -50px;
+        gap: 10px;
+    }
 }
