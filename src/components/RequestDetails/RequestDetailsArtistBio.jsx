@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import AudioButton from "../JoinArtistPage/AudioButton";
+// import AudioButton from "../../ArtistPages/AudioButton";
 
 
 function RequestDetailsArtistBio() {

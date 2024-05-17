@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import StartSongButton from '../../StartSongButton/StartSongButton'
+import StartSongButton from '../../../StartSongButton/StartSongButton'
 
 import {
   Button,

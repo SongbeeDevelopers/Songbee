@@ -1,16 +1,44 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { useParams, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import AudioButton from "../../../JoinArtistPage/AudioButton";
+import AudioButton from "../AudioButton";
 
-function ArtistBioPage({ artist }) {
+import "./ArtistBioPage.css";
+
+function ArtistBioPage() {
 
 const { id } = useParams();
 const dispatch = useDispatch();
+const history = useHistory();
+
+useEffect(() => {
+        dispatch({
+            type: 'FETCH_CURRENT_ARTIST',
+            payload: id})
+      }, [id])
+
+const artist = useSelector(store => store.currentArtist);
+const requestData = useSelector((store) => store.requestData);
+
 const artistGenre = useSelector(store => store.fetchGenres);
+console.log("id", id)
+// console.log('artistGenre', artistGenre);
+
+console.log("artist", artist)
+
+const handleArtist =(e) => {
+  e.preventDefault();
+  history.push('/order');
+
+  dispatch({
+    type: "SET_REQUEST_DATA",
+    payload: { ...requestData, artist: artist.id},
+  });
+}
   
+
     return artist ?(
         <>
         <div className="imgBox">
@@ -19,7 +47,6 @@ const artistGenre = useSelector(store => store.fetchGenres);
            <div className="nameHeader">
                <h2>{artist && artist.name}</h2>
                <h4 className="location">{artist.location}</h4>
-               {/* <p className="subHeader">Pop, Hip hop</p>  */}
                <div className="socialLinks">
                 <div className="instagram">
                    <a href={artist.instagram_link} >
@@ -36,54 +63,52 @@ const artistGenre = useSelector(store => store.fetchGenres);
                    <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714071878/Songbee/artist-website_s1wuuu.png" alt="Artist Website" />
                 </a>
                 </div>
-               <div className="community-button">
+               <div onClick={handleArtist}>
+                 <button className="community-button"> Start a song with me</button>
                </div>
             </div> 
            </div>
-           {/* <h2>Bio</h2> */}
-           <h4 className="bio">{artist.bio}</h4>
          </div>
+         <h2>Bio:</h2>
+         <h4 className="bio">{artist.bio}</h4>
         </div>
         <div className="songListWrapper">
-       <div className="songTable">
            <div className="tableHeader">
                <div className="headerItem"> 
-                   <div className="title">
-                      Title
-                       
-                   </div>
                </div>
-               <div class="headerItem"> 
-                   <div className="genre">
-                       Genre
-                   </div>
+               <div className="headerItem"> 
+                   <h3>Genres:</h3>
+                    {artist && artist.genres && (
+                   <div className="genres">
+                       {artist && artist.genres.map((genre) => (
+                          <p>{genre.genre}</p>
+                       ))} 
+                    </div>
+                    )}
                </div>
            </div>
-           
+           <h3 className="title">Sample Songs</h3>
+          
            <div className="songList">
-               {/* <div className="songItems">
+               <div className="songItems">
                  {[1, 2, 3].map((index) => {
                     const sampleSong = artist[`sample_song_${index}`];
-                  return sampleSong && (
-
-                   <div className="audioFiles" key={index}>  
-                        <AudioButton url={sampleSong} />
-                       {console.log('Logging sampleSong:', sampleSong)}
+                    const songTitle = artist[`song_title_${index}`];
                 
-                       {artist.genres.map((genre) => (
-                            <p>{genre.genre}</p>
-                       ))}
-                      
-                   </div>
+                  return sampleSong && (
+                    <div className="audioFiles">
+                        <div className="artistCommunityBtns">
+                        <AudioButton url={sampleSong} />
+                          <p className="songTitles" key={index}>{songTitle}</p>
+                          {console.log('sampleSong', sampleSong)}
+                        </div>
+                  </div>
                    
                        );
-                    })}
-                   
-               </div> */}
+                    })}     
+               </div>
            </div>
-       </div>
-   </div>
-        
+     </div>   
      </>
      
     ) : null;

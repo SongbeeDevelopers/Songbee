@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import UserClassSelector from './UserClassSelector';
-import FilterBar from '../../FilterBar/FilterBar';
+import FilterBar from '../../../FilterBar/FilterBar';
 
 import {
   Table,

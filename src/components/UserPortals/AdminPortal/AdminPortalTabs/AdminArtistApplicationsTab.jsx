@@ -2,7 +2,7 @@ import * as React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import FilterBar from "../../FilterBar/FilterBar";
+import FilterBar from "../../../FilterBar/FilterBar";
 import ArtistAppDetailsDialog from "./AdminPortalDialogs/ArtistAppDetailsDialog"
 
 import {
