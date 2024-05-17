@@ -44,7 +44,7 @@ const terms = [
     `
   },
   {
-    title: `Cancellation/RefundPolicy`,
+    title: `Cancellation / RefundPolicy`,
     details: `
       You may cancel your subscription at any time. Any cancellations of subscriptions made within 14 days of monthly 
       delivery will not be eligible for a refund. There are no refunds available for song orders that have been purchased
@@ -53,7 +53,7 @@ const terms = [
     `
   },
   {
-    title: `Links to Third PartySites/Third Party Services`,
+    title: `Links to Third PartySites / Third Party Services`,
     details: `
       www.songbee.com may contain links to other websites("Linked Sites"). The Linked Sites are not under the control of
       Songbee and Songbee is not responsible for the contents of any Linked Site, including without limitation any link
@@ -67,7 +67,7 @@ const terms = [
     `
   },
   {
-    title: `No Unlawful orProhibited Use/Intellectual Property`,
+    title: `No Unlawful orProhibited Use / Intellectual Property`,
     details: `
       You are granted a non-exclusive, non-transferable, revocable license to access and use www.songbee.com strictly in
       accordance with these terms of use. As a condition of your use of the Site, you warrant to Songbee that you will not
@@ -217,7 +217,7 @@ const terms = [
     `
   },
   {
-    title: `Termination/AccessRestriction`,
+    title: `Termination / Access Restriction`,
     details: `
       Songbee reserves the right, in its sole discretion, to terminate your access to the Site and the related services 
       or any portion thereof at any time, without notice. To the maximum extent permitted by law, this agreement is 

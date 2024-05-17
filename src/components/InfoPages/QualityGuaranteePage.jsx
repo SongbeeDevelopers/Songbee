@@ -20,7 +20,10 @@ function QualityGuarantee({ routeVariants }) {
         <h1 className="info-title">{qualityGuarantee.title}</h1>
 
         {qualityGuarantee.details.map((item) => (
+          <>
           <p>{item}</p>
+          <br/>
+          </>
         ))}
 
         <br/>
