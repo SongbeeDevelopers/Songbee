@@ -14,6 +14,7 @@ function UserPage({ routeVariants }) {
   useEffect(() => {
     dispatch({
         type: 'GET_ARTIST_PROFILE'})
+    dispatch({ type: "FETCH_USER_CHATS"});
   }, [])
   
   const artistProfile = useSelector((store) => store.artistProfile);
