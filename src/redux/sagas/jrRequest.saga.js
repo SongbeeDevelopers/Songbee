@@ -3,7 +3,6 @@ import { takeLatest, put } from "redux-saga/effects";
 
 function* fetchUserRequests() {
   try {
-    console.log("LLOOOOOOP");
     const response = yield axios.get("/api/jr-request/user");
     console.log("imm data",response.data);
     yield put({ type: "SET_JUNIOR_USER_REQUESTS", payload: response.data });
@@ -83,6 +82,48 @@ function* fetchCurrentPack(action) {
   }
 }
 
+function* createJrRequest (action){
+  try {
+      const response = yield axios({
+          method: "POST",
+          url: "/api/jr-request/create",
+          data: action.payload.data
+      })
+      yield put ({
+          type: "FETCH_JR_CHECKOUT",
+          payload: { data: action.payload.data, 
+                      id: response.data.id }
+      })
+  } catch (error) {
+      console.error('SAGA createSongRequest() failed:', error)
+  }
+}
+
+
+function* fetchJrCheckout (action) {
+  try {
+      const stripeResponse = yield axios({
+          method: "POST",
+          url: '/api/stripe/jrcheckout',
+          data: {
+              orderDetails: action.payload.data,
+              id: action.payload.id}
+      })
+      yield window.location.href = stripeResponse.data
+  } catch (error) {
+      console.error('SAGA fetchCheckout() failed:', error)
+  }
+}
+
+function* deleteJrRequest (action){
+  try {
+      const response = yield axios.delete(`/api/jr-request/${action.payload}`)
+      yield put({type: "FETCH_ALL_REQUESTS"});
+  } catch (error) {
+      console.error('SAGA deleteJrRequest() failed:', error)
+  }
+}
+
 function* juniorRequestSaga() {
   yield takeLatest("FETCH_USER_REQUESTS", fetchUserRequests);
   yield takeLatest("FETCH_CURRENT_REQUEST", fetchCurrentRequest);
@@ -91,6 +132,9 @@ function* juniorRequestSaga() {
   yield takeLatest("COMPLETE_SONG_REQUEST", completeSongRequest);
   yield takeLatest("FETCH_LEARNING_PACKS", fetchLearningPacks);
   yield takeLatest("FETCH_CURRENT_PACK", fetchCurrentPack);
+  yield takeLatest("CREATE_JR_REQUEST", createJrRequest);
+  yield takeLatest("FETCH_JR_CHECKOUT", fetchJrCheckout);
+  yield takeLatest("DELETE_JR_REQUEST", deleteJrRequest)
 
 }
 
