@@ -26,7 +26,7 @@ function* createChat (action){
         const response = yield axios({
             method: "POST",
             url: '/api/chat/new-chat',
-            data: action.payload.id
+            data: {user2: action.payload.id}
         })
         yield put ({
             type: "FETCH_CURRENT_CHAT",
