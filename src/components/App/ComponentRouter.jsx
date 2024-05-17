@@ -122,9 +122,7 @@ function ComponentRouter() {
           )}
         </MainRoute>
 
-        <Route exact path="/whatsIncluded">
-          <WhatsIncluded routeVariants={routeVariants} />
-        </Route>
+
 
         <Route exact path="/join-artist">
           <JoinArtistPage routeVariants={routeVariants} />
