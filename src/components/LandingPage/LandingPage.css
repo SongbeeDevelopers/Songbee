@@ -612,12 +612,6 @@ Device Responsivity
   .guarantee-inner-bg p {
     font-size: small;
   }
-  footer {
-    margin-top: 50px;
-  }
-  .flexContainer {
-    flex-direction: column;
-    align-items: center;
-  }
+
 
 }

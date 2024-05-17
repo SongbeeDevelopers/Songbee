@@ -20,6 +20,11 @@
     display: block;
     border-radius: 7px;
 }
+@media (max-width: 575px) {
+    .loginForm {
+        width: 60%
+    }
+  }
 
 .loginInputLabel {
     font-family: Poppins, sans-serif;
