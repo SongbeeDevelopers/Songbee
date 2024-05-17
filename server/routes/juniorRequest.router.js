@@ -185,4 +185,52 @@ router.get('/current-pack/:id', (req, res) => {
   })
 });
 
+router.post('/create', async (req, res) => {
+  let connection
+  try {
+  connection = await pool.connect();
+
+  connection.query("BEGIN;");
+  const userId = req.user.id;
+  const packId = req.body.pack_id;
+  const age = req.body.age;
+  const name = req.body.name;
+  const pronunciation = req.body.pronunciation;
+  const requestQuery = `
+  INSERT INTO "subscription"
+    ("user_id", "pack_id", "age", "name", "pronunciation", "is_active")
+    VALUES
+    ($1, $2, $3, $4, $5, TRUE)
+    RETURNING "id";
+  `
+  const response = await connection.query(requestQuery, [userId, packId, age, name, pronunciation])
+ 
+  connection.query("COMMIT;");
+  connection.release();
+  res.send({id: response.rows[0].id})
+  } catch (error) {
+      console.error("Error in juniorRequest router POST create request", error);
+      connection.query("ROLLBACK;");
+      connection.release();
+      res.sendStatus(500);
+  }
+});
+
+router.delete("/:id", rejectUnauthenticated, (req, res) => {
+  const requestId = req.params.id;
+  const query = `
+        DELETE FROM "subscription"
+          WHERE "id"=$1;
+    `;
+  pool
+    .query(query, [requestId])
+    .then((result) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log("Error in junior request router delete subscription", err);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;

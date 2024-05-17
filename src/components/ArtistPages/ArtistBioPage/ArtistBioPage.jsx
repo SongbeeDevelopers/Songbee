@@ -75,10 +75,6 @@ const handleArtist =(e) => {
         <div className="songListWrapper">
            <div className="tableHeader">
                <div className="headerItem"> 
-                   {/* <div className="title">
-                      Title
-                       
-                   </div> */}
                </div>
                <div className="headerItem"> 
                    <h3>Genres:</h3>

@@ -61,7 +61,6 @@ function* fetchCheckout (action) {
                 orderDetails: action.payload.data,
                 id: action.payload.id}
         })
-        // console.log("stripeResponse:", stripeResponse)
         yield window.location.href = stripeResponse.data
     } catch (error) {
         console.error('SAGA fetchCheckout() failed:', error)

@@ -14,7 +14,6 @@ router.get('/', (req, res) => {
  * POST route template
  */
 router.post('/checkout', async (req, res) => {
-      console.log('orderDetails:', req.body.orderDetails)
       const order = req.body.orderDetails
       let lineitemArray = [{
         // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
@@ -60,18 +59,15 @@ router.post('/checkout', async (req, res) => {
       const session = await stripe.checkout.sessions.create({
         line_items: lineitemArray,
         mode: 'payment',
-        success_url: `https://songbee.com/#/finalquestions/${req.body.id}`,
-        cancel_url: `https://songbee.com/#/order`,
+        success_url: `https://www.songbee.com/#/finalquestions/${req.body.id}`,
+        cancel_url: `https://www.songbee.com/#/cancel/${req.body.id}`,
         automatic_tax: {enabled: true},
       });
-      console.log("sesion:", session)
-      console.log("lineItemArray:", lineitemArray);
     
       res.send(session.url);
 });
 
 router.post('/addon', async (req, res) => {
-  console.log('orderDetails:', req.body.orderDetails)
   const order = req.body.orderDetails
   let lineitemArray = [];
   if (order.streaming === true){
@@ -101,12 +97,10 @@ router.post('/addon', async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     line_items: lineitemArray,
     mode: 'payment',
-    success_url: `https://songbee.com/#/user`,
-    cancel_url: `https://songbee.com/#/user`,
+    success_url: `https://www.songbee.com/#/user`,
+    cancel_url: `https://www.songbee.com/#/user`,
     automatic_tax: {enabled: true},
   });
-  console.log("sesion:", session)
-  console.log("lineItemArray:", lineitemArray);
 
   res.send(session.url);
 });
@@ -115,10 +109,37 @@ router.post('/tip', async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     line_items: [{price: 'price_1PEw3kJoOrJf4ICWniRn0wre', quantity: 1}],
     mode: 'payment',
-    success_url: `https://songbee.com/#/user`,
-    cancel_url: `https://songbee.com/#/user`,
+    success_url: `https://www.songbee.com/#/user`,
+    cancel_url: `https://www.songbee.com/#/user`,
     automatic_tax: {enabled: true},
   });
+  res.send(session.url);
+});
+
+router.post('/jrcheckout', async (req, res) => {
+  const order = req.body.orderDetails
+  let lineitemArray = [];
+
+  if (order.pack_id > 0 && order.pack_id < 7){
+    lineitemArray.push({
+        price: 'price_1P6GpBJoOrJf4ICWW7Yeg9Nq',
+        quantity: 1,
+      })
+  }
+  else if (order.pack_id >= 7){
+    lineitemArray.push({
+        price: 'price_1P6GqGJoOrJf4ICWYIuezcxo',
+        quantity: 1,
+      })
+  }
+  const session = await stripe.checkout.sessions.create({
+    line_items: lineitemArray,
+    mode: 'subscription',
+    success_url: `https://www.songbee.com/#/user`,
+    cancel_url: `https://www.songbee.com/#/jrcancel/${req.body.id}`,
+    automatic_tax: {enabled: true},
+  });
+
   res.send(session.url);
 });
 
