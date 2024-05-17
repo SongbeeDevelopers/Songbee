@@ -7,12 +7,9 @@ const ChatBody = ({messages, lastMessageRef}) => {
   const history = useHistory();
   const user = useSelector(store => store.user)
 
-  console.log('messages', messages);
-
   const handleLeaveChat = () => {
     localStorage.removeItem('userName');
-    history.push('/');
-    window.location.reload();
+    history.goBack();
   };
 
   return (
@@ -20,7 +17,7 @@ const ChatBody = ({messages, lastMessageRef}) => {
       <header className="chat__mainHeader">
         <p>Direct Chat</p>
         <button className="leaveChat__btn" onClick={handleLeaveChat}>
-          LEAVE CHAT
+          GO BACK
         </button>
       </header>
 

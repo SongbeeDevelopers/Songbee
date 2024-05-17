@@ -41,7 +41,6 @@ const ChatPage = () => {
   
     return (
       <div className="chat">
-        <ChatBar />
         <div className="chat__main">
           <ChatBody messages={messages} lastMessageRef={lastMessageRef} />
           <ChatFooter id={id} />

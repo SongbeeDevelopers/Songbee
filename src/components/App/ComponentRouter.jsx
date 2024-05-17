@@ -129,12 +129,12 @@ function ComponentRouter() {
           <JoinArtistPage routeVariants={routeVariants} />
         </Route>
 
-        <Route path="/chathome">
+        <MainRoute path="/chathome">
           <SocketHome />
-        </Route>
-        <Route path="/chatpage/:id">
+        </MainRoute>
+        <MainRoute path="/chatpage/:id">
           <ChatPage />
-        </Route>
+        </MainRoute>
 
         <MainRoute exact path="/register">
           {user.id ? (
