@@ -40,6 +40,8 @@
   height: 10%;
   display: flex;
   align-items: center;
+  margin-left: 200px;
+  
 }
 .chat__sidebar {
   height: 100%;
@@ -51,6 +53,7 @@
 .chat__main {
   height: 75%;
   flex: 0.8;
+  align-self: center;
 }
 .chat__header {
   margin: 30px 0 20px 0;
