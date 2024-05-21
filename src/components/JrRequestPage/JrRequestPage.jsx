@@ -266,7 +266,7 @@ export default function JrCheckoutPage({ routeVariants }) {
 
   return (
     <motion.div
-      className="reqFormPage"
+      className="reqFormPage jrReqForm"
       variants={routeVariants}
       initial="initial"
       animate="final"

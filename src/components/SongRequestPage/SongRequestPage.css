@@ -253,8 +253,8 @@ and dropdown in Songbee JR */
 .reqFormDays {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     gap: 5px;
-   
 }
 
 .reqFormGroup4 {
@@ -262,4 +262,19 @@ and dropdown in Songbee JR */
     flex-direction: column;
     gap: 30px;
     justify-content: center;
+}
+.reqFormGroup4 label {
+    text-align: center;
+}
+.add-ons-checkout label {
+    display: block;
+    width: fit-content;
+    margin: auto;
+}
+
+@media (max-width: 550px) {
+    .reqFormDays {
+        flex-direction: column;
+        align-items: center;
+    }
 }

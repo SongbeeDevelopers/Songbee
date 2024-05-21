@@ -58,6 +58,7 @@ function FilterBar({ type }) {
   return (
     <div className="filters">
 
+    <div className="mobile-filters-row">
       <div className="filter-bar">
         <Typography gutterBottom variant="overline" display="block" mt={1}>
           Filter by keyword:
@@ -67,7 +68,7 @@ function FilterBar({ type }) {
           type="search"
           onChange={(event) => setSearchQuery(event.target.value)}
           value={searchQuery}
-          sx={{ mr: 4 }}
+          sx={{ mr: 4, width: 125 }}
         />
       </div>
 
@@ -116,6 +117,10 @@ function FilterBar({ type }) {
           </FormControl>
         </div>
       } 
+    </div>
+
+    
+    <div className="mobile-filters-row mobile-filters-row2">
 
       <Button
         variant="contained"
@@ -132,6 +137,7 @@ function FilterBar({ type }) {
       >
         CLEAR
       </Button>
+      </div>
 
     </div>
   )

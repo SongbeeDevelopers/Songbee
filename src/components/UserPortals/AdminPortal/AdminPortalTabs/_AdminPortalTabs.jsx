@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { useMediaQuery } from "react-responsive";
 
 import AdminRequestsTab from './AdminRequestsTab';
 import AdminArtistApplicationsTab from './AdminArtistApplicationsTab';
@@ -13,10 +14,14 @@ import Typography from '@mui/material/Typography';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 
+
+
 import '../AdminPortal.css'
 
 
 export default function AdminPortalTabs() {
+
+  const isMobile = useMediaQuery({ query: `(max-width: 850px)` });
 
   const [value, setValue] = useState(0);
 
@@ -61,17 +66,19 @@ export default function AdminPortalTabs() {
     };
   }
   // end of tab structure
-  
+
 
   return (
-    <div>
-      <Tabs value={value} onChange={handleChange} centered>
-        <Tab label="Pending Orders" {...a11yProps(0)} />
-        <Tab label="Completed Orders" {...a11yProps(1)} />
-        <Tab label="Users" {...a11yProps(2)} />
-        <Tab label="Artist Applications" {...a11yProps(3)} />
-        <Tab label="Artist Edits" {...a11yProps(4)} />
-      </Tabs>
+    <div className="admin-tabs-container">
+      <Box display="flex" justifyContent="center" width="100%">
+        <Tabs value={value} onChange={handleChange} variant="scrollable" centered>
+          <Tab label="Pending Orders" {...a11yProps(0)} />
+          <Tab label="Completed Orders" {...a11yProps(1)} />
+          <Tab label="Users" {...a11yProps(2)} />
+          <Tab label="Artist Applications" {...a11yProps(3)} />
+          <Tab label="Artist Edits" {...a11yProps(4)} />
+        </Tabs>
+      </Box>
 
       <CustomTabPanel value={value} index={0}>
         <AdminRequestsTab num={0} data={pendingRequests} />

@@ -23,3 +23,9 @@
     font-weight: 600;
     padding: 9px 15px;
 }
+
+@media (max-width: 575px) {
+    .regLoginButton {
+        width: 10rem;
+    }
+  }

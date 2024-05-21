@@ -370,7 +370,7 @@ Guarantee Section
   background-size: 80rem;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  padding: 7.5rem 12rem;
+  padding: 7.5rem 15%;
   border-radius: 25px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
 }
@@ -485,12 +485,21 @@ Newsletter
 Device Responsivity
 -------------------------------------------------------------------------------- */
 
+/* large mobile */
 @media (max-width: 1000px) {
   .active-slide {
     padding: 0 50px;
   }
+  .guarantee-img {
+    width: 150px
+  }
+  .guarantee-img-bee {
+    top: 110px;
+    left: 40px;
+  }
 }
 
+/* med mobile */
 @media (max-width: 815px) {
   /* --- LANDING PAGE --- */
   /* layout */
@@ -512,12 +521,19 @@ Device Responsivity
   audio {
     width: 275px
   }
+  .guarantee-inner-bg h2, .occasions h2, .works-section h2, .sample-songs h2, .testimonials h2, .main-newsletter h2 {
+    font-size: 2rem;
+  }
+  .guarantee-inner-bg h2 {
+    padding: 0 25px;
+  }
   h2, .sample-songs h2 {
   font-size: 2rem;
   }
   .hero h1 {
-    font-size: 30px;
+    font-size: 3rem;
     line-height: 3.5rem;
+    margin-top: 25px;
   }
   .hero p {
     font-size: medium;
@@ -554,13 +570,23 @@ Device Responsivity
   }
   .guarantee-sky-bg {
     padding-top: 75px;
-    padding-bottom: 75px
+    padding-bottom: 75px;
+    padding-left: 5%;
+    padding-right: 5%;
   }
   .guarantee-inner-bg {
     padding: 25px 50px
   }
+  .guarantee-img {
+    display: none;
+  }
+  .guarantee-img-bee {
+    top: 0px;
+    left: -10px;
+  }
 }
 
+/* small mobile */
 @media (max-width: 575px) {
   .hero h1 {
     font-size: 44px;
@@ -586,11 +612,6 @@ Device Responsivity
   .guarantee-inner-bg p {
     font-size: small;
   }
-  footer {
-    margin-top: 50px;
-  }
-  .flexContainer {
-    flex-direction: column;
-    align-items: center;
-  }
+
+
 }
