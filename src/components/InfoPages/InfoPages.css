@@ -208,4 +208,7 @@ FAQ Page
     .info-section-header {
         font-size: 1.3rem;
     }
+    .info p, li  {
+        font-size: 14px;
+    }
 }

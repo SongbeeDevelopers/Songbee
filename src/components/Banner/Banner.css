@@ -12,3 +12,9 @@
     color: black;
     text-decoration: underline;
 }
+
+@media (max-width: 430px) {
+    .banner p {
+        font-size: 12px;
+    }
+}
