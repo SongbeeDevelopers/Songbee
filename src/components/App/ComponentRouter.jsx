@@ -122,12 +122,6 @@ function ComponentRouter() {
           )}
         </MainRoute>
 
-
-
-        <Route exact path="/join-artist">
-          <JoinArtistPage routeVariants={routeVariants} />
-        </Route>
-
         <Route path="/chathome">
           <SocketHome />
         </Route>
@@ -218,11 +212,6 @@ function ComponentRouter() {
         <MainRoute exact path="/ArtistBioPage/:id">
           <ArtistBioPage routeVariants={routeVariants} />
         </MainRoute>
-        
-        <MainRoute exact path="/join-artist">
-          <JoinArtistPage routeVariants={routeVariants} />
-        </MainRoute>
-
 
         {/* order process */}
         <MainRoute exact path="/order">

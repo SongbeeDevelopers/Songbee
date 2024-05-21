@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .explore-artist a {
   text-decoration: underline;
   font-size: 2rem;
@@ -70,6 +71,7 @@
   border: 0;
   box-shadow: 0 2px 3px rgba(0, 0, 0, .2);
 }
+
 .group-input input:focus {
   outline: 0;
   border: 0;
@@ -140,8 +142,8 @@
 }
 
 .faq-section {
-  margin-top: 10px;
-  
+  margin-top: 100px;
+
 }
 
 
@@ -158,104 +160,118 @@
   height: 90vh;
 
 }
+
 .process-top {
   display: flex;
   flex-direction: column;
   background-color: white;
   padding-bottom: 25px;
+  min-width: 100vw;
 }
 
 .process-cards {
   display: flex;
   justify-content: space-around;
-
 }
+
 .process-card {
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
   gap: 10px;
-
-
 }
 
-.process-card img{
+.process-card img {
   width: auto;
   height: 80px;
 }
 
-.artist-process h2{
+.artist-process h2 {
   text-align: center;
   font-size: 2.5rem;
 }
 
-.process-card p{
+.process-card p {
   max-width: 300px;
   text-align: center;
   font-size: 14px;
 }
 
-.process-card h3{
+.process-card h3 {
   margin: 0;
   padding: 0;
 }
 
 
-.process-card-image{
+.process-card-image {
   height: 100px;
 }
 
-.process-bottom{
+.process-bottom {
   display: flex;
-gap: 100px;
-padding: 25px 100px;
-align-items: center;
+  gap: 100px;
+  padding: 25px 5%;
+  align-items: center;
 }
 
-.process-bottom img{
+.process-bottom img {
   height: 300px;
   border-radius: 30px;
 }
 
-.process-bottom-content h3{
+.process-bottom-content h3 {
   font-size: 2.5rem;
-
 }
 
-.process-bottom-content a{
+.process-bottom-content a {
   margin: 0 auto;
   z-index: 100;
-  width: 16rem;
+  width: 12rem;
   height: 3rem;
   color: var(--black\<deleted\|variable-f6301105\>);
   background-color: #feaf17;
   border-radius: 20px;
   justify-content: center;
   align-items: center;
-  margin-bottom: 3px;
   font-family: Poppins, sans-serif;
   font-size: 1.4rem;
   font-weight: 600;
   transition: background-color 0.45s;
   display: flex;
-  position: static;
-  top: 99px;
-  left: 219px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   border: 0;
   outline: 0;
-  margin-bottom: 30px;
   cursor: pointer;
-  position: absolute;
-  left: 0;
-  top: 0;
   border: 1px solid black;
-
 }
 
-.process-bottom-button{
+.process-bottom-button {
   position: relative;
   width: 100%;
   display: flex;
+}
+
+@media (max-width: 1000px) {
+  .process-bottom {
+    flex-direction: column;
+    gap: 25px;
+  }
+  .faq-section {
+    margin-top: 300px
+  }
+}
+
+@media (max-width: 570px) {
+  .process-cards {
+    flex-direction: column
+  }
+  .faq-section {
+    margin-top: 750px;
+  }
+}
+@media (max-width: 430px) {
+  .faq-section {
+    margin-top: 900px
+  }
 }

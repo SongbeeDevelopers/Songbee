@@ -52,7 +52,7 @@ function JoinArtistPage({ routeVariants }) {
   
   return (
     <motion.div
-      className="join-as-artist"
+      className="join-as-artist container"
       variants={routeVariants}
       initial='initial'
       animate='final'
