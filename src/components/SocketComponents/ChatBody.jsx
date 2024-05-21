@@ -3,24 +3,22 @@ import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './Socket.css'
 
-const ChatBody = ({messages, lastMessageRef}) => {
+const ChatBody = ({messages, lastMessageRef, user2}) => {
   const history = useHistory();
   const user = useSelector(store => store.user)
-
-  console.log('messages', messages);
+  console.log("messages", messages)
 
   const handleLeaveChat = () => {
     localStorage.removeItem('userName');
-    history.push('/');
-    window.location.reload();
+    history.goBack();
   };
 
   return (
     <>
       <header className="chat__mainHeader">
-        <p>Direct Chat</p>
+        <p>Messaging with {user2}</p>
         <button className="leaveChat__btn" onClick={handleLeaveChat}>
-          LEAVE CHAT
+          GO BACK
         </button>
       </header>
 

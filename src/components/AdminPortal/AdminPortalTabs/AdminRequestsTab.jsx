@@ -1,11 +1,11 @@
-import React from "react";
-import { useState, useEffect } from 'react';
+import * as React from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import FilterBar from '../../../FilterBar/FilterBar';
-import AdminDetailsDialog from "../../../ArtistRequests/AdminDetailsDialog";
-import AdminCompleteDialog from "../../AdminPortal/AdminPortalTabs/AdminPortalDialogs/AdminCompleteDialog";
-import MessageUserButton from "../../AdminPortal/AdminPortalTabs/MessageUserButton";
+import AdminCompleteDialog from './AdminPortalDialogs/AdminCompleteDialog';
+import AdminDetailsDialog from './AdminPortalDialogs/AdminDetailsDialog'
+import FilterBar from '../../FilterBar/FilterBar';
+import MessageUserButton from './MessageUserButton';
 
 import {
   Button,
@@ -17,59 +17,58 @@ import {
   TableRow,
 } from '@mui/material';
 
-import '../ArtistPortal.css'
 
-export default function ArtistCompletedRequestsTab({artistId}) {
-    const dispatch = useDispatch()
+export default function AdminRequestsTab({ num, data }) {
 
-    useEffect(() => {
-        dispatch({ type: "FETCH_COMPLETED_ARTIST_REQUESTS",
-                    payload: artistId});
-      }, [])
-    const artistRequests = useSelector(store => store.completedArtistRequests)
-    console.log("artist requests:", artistRequests)
-    const genres = useSelector(store => store.genres)
+  const dispatch = useDispatch()
 
-    // modal state
-    const [detailsOpen, setDetailsOpen] = useState(false);
-    const [completeOpen, setCompleteOpen] = useState(false)
+  const genres = useSelector(store => store.genres)
+  const artists = useSelector(store => store.allArtists)
 
-    function getDueDate(requestDay, deliveryDays) {
-        const msPerDay = 24 * 60 * 60 * 1000;
-        const due = new Date(requestDay).getTime() + msPerDay * deliveryDays
-        return new Date(due).toLocaleString('en-us')
+  // modal state
+  const [detailsOpen, setDetailsOpen] = useState(false);
+  const [completeOpen, setCompleteOpen] = useState(false)
+
+  // date/time
+  function getDueDate(requestDay, deliveryDays) {
+    const msPerDay = 24 * 60 * 60 * 1000;
+    const due = new Date(requestDay).getTime() + msPerDay * deliveryDays
+    return new Date(due).toLocaleString('en-us')
+  }
+
+  // details modal logic
+  const openDetails = (row) => {
+    // grabs genre id from genre in reducer
+    for (let genre of genres) {
+      if (row.genre === genre.name) {
+        row.genre = genre.id
       }
+    }
+    // sets edit reducer with request data
+    dispatch({ type: 'SET_EDIT_DATA', payload: row })
+    setDetailsOpen(true)
+  }
+  const closeDetails = () => {
+    // clears reducer on close
+    dispatch({ type: 'CLEAR_EDIT_DATA'})
+    setDetailsOpen(false)
+  }
 
-      const openDetails = (row) => {
-        // grabs genre id from genre in reducer
-        for (let genre of genres) {
-          if (row.genre === genre.name) {
-            row.genre = genre.id
-          }
-        }
-        dispatch({ type: 'SET_EDIT_DATA', payload: row })
-        setDetailsOpen(true)
-      }
-      const closeDetails = () => {
-        dispatch({ type: 'CLEAR_EDIT_DATA'})
-        setDetailsOpen(false)
-      }
-    
-      // complete modal logic
-      const openComplete = () => {
-    
-      }
-      const closeComplete = () => {
-        dispatch({ type: 'CLEAR_EDIT_DATA'})
-        setCompleteOpen(false)
-      }
+  // same as above, logic for complete dialog
+  const openComplete = (row) => {
+    dispatch({ type: 'SET_EDIT_DATA', payload: row})
+    setCompleteOpen(true)
+  }
+  const closeComplete = () => {
+    dispatch({ type: 'CLEAR_EDIT_DATA'})
+    setCompleteOpen(false)
+  }
 
-
-    return (
-        <div className="tab-body">
-             {artistRequests.length > 0 ?
+  return (
+    <div>
+      {data.length > 0 ?
         <>
-          <FilterBar />
+          <FilterBar type={num === 0 ? 'pending' : 'completed'} />
 
           <Table sx={{ minWidth: 700 }}>
 
@@ -78,7 +77,7 @@ export default function ArtistCompletedRequestsTab({artistId}) {
               <TableRow>
                 <TableCell>Creation Date</TableCell>
                 <TableCell align="center">Requester E-Mail</TableCell>
-                <TableCell align="center">Something</TableCell>
+                <TableCell align="center">Artist</TableCell>
                 <TableCell align="center">Due</TableCell>
                 <TableCell align="center">View Details</TableCell>
                 <TableCell align="center">Completion Form</TableCell>
@@ -88,7 +87,7 @@ export default function ArtistCompletedRequestsTab({artistId}) {
 
             {/* table body */}
             <TableBody>
-              {artistRequests.map((row) => (
+              {data.map((row) => (
                 <TableRow hover key={row.id}>
 
                   {/* creation date */}
@@ -103,7 +102,15 @@ export default function ArtistCompletedRequestsTab({artistId}) {
 
                   {/* artist */}
                   <TableCell align="center">
-                    {/* NEED TO FILL THIS */}
+                    {row.artist_id ?
+                      artists.map((artist) => {
+                        if (artist.id === row.artist_id) {
+                          return artist.artist_name
+                        }
+                      })
+                      :
+                      'Unassigned'
+                    }
                   </TableCell>
 
                   {/* due */}
@@ -132,7 +139,7 @@ export default function ArtistCompletedRequestsTab({artistId}) {
                   {/* complete button */}
                   <TableCell align="center">
                     <Button variant="contained"
-                      onClick={() => setCompleteOpen(true)}
+                      onClick={() => openComplete(row)}
                       sx={{ height: 35, width: 95, backgroundColor: "#feaf17", color: "black" }}
                     >
                       COMPLETE
@@ -143,12 +150,12 @@ export default function ArtistCompletedRequestsTab({artistId}) {
                       open={completeOpen}
                       onClose={closeComplete}
                     >
-                      <AdminCompleteDialog request={row} />
+                      <AdminCompleteDialog setCompleteOpen={setCompleteOpen} />
                     </Dialog>
                   </TableCell>
 
-                  <TableCell align="center">
-                    <MessageUserButton userId={row.user_id}/>
+                  <TableCell align='center'>
+                    <MessageUserButton userId={row.user_id} />
                   </TableCell>
 
                 </TableRow>
@@ -159,6 +166,6 @@ export default function ArtistCompletedRequestsTab({artistId}) {
         :
         <p className='admin-empty-msg'>There are currently no requests.</p>
       }
-        </div>
-    )
+    </div>
+  );
 }

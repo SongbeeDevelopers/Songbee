@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import UserClassSelector from './UserClassSelector';
 import FilterBar from '../../../FilterBar/FilterBar';
+import MessageUserButton from './MessageUserButton';
 
 import {
   Table,
@@ -30,6 +31,7 @@ export default function AdminUsersTab({ data }) {
                   <TableCell align="center">Credit</TableCell>
                   <TableCell align="center">Created At</TableCell>
                   <TableCell align="center">User Class</TableCell>
+                  <TableCell align="center">Message</TableCell>
                 </TableRow>
               </TableHead>
 
@@ -55,6 +57,11 @@ export default function AdminUsersTab({ data }) {
                     <TableCell align="center">
                       <UserClassSelector user={user} />
                     </TableCell>
+
+                    {/* messaging */}
+                  <TableCell align="center">
+                    <MessageUserButton userId={user.id} />
+                  </TableCell>
                   </TableRow>
                 ))}
               </TableBody>

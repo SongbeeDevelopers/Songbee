@@ -164,3 +164,28 @@ Add-ons Section
 .requestDetailsaddon img {
   border-radius: 5px;
 }
+
+.tip-button-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tip-button-button {
+  margin: 0 auto;
+  background-color: #feaf17;
+  border-radius: 20px;
+  text-align: center;
+  margin-bottom: 3px;
+  font-family: Poppins, sans-serif;
+  font-weight: 600;
+  transition: background-color 0.45s;
+  display: flex;
+  justify-content: center;
+  color: var(--black\<deleted\|variable-f6301105\>);
+  width: 14rem;
+  height: 1.5rem;
+  margin-top: 20px;
+  cursor: pointer;
+}

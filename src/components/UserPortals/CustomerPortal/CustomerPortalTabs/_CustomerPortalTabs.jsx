@@ -4,6 +4,7 @@ import { useState } from "react";
 import CustomerRequestsTab from "./CustomerRequestsTab";
 import CustomerProfileTab from "./CustomerProfileTab";
 import CustomerCreditTab from "./CustomerCreditTab";
+import CustomerMessagesTab from "./CustomerMessagesTab";
 
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
@@ -72,6 +73,7 @@ export default function CustomerPortalTabs() {
           <Tab label="Orders" {...a11yProps(0)} />
           <Tab label="Profile" {...a11yProps(1)} />
           <Tab label="Refer a Friend" {...a11yProps(2)} />
+          <Tab label="Messages" {...a11yProps(3)} />
         </Tabs>
       </Box>
 
@@ -87,6 +89,10 @@ export default function CustomerPortalTabs() {
 
       <CustomTabPanel value={value} index={2}>
         <CustomerCreditTab />
+      </CustomTabPanel>
+
+      <CustomTabPanel value={value} index={3}>
+        <CustomerMessagesTab />
       </CustomTabPanel>
     </>
   );
