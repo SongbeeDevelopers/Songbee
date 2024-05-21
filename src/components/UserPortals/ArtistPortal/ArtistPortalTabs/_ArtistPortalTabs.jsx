@@ -66,12 +66,13 @@ export default function ArtistPortalTabs({artistProfile}) {
   return (
     <>
       {/* tab selector */}
-      <Box sx={{ height: "80%"}}>
+      <Box display="flex" justifyContent="center" width="100%">
+
         <Tabs
           className="tabHeader"
           value={value}
           onChange={handleChange}
-          centered
+          variant="scrollable"
         >
           <Tab label="Artist Profile" {...a11yProps(0)}  />
           <Tab label="Main Orders" {...a11yProps(1)} />

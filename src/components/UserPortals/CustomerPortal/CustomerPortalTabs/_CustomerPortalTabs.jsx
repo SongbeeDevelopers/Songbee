@@ -61,11 +61,11 @@ export default function CustomerPortalTabs() {
   return (
     <>
       {/* tab selector */}
-      <Box sx={{ height: "80%" }}>
+      <Box display="flex" justifyContent="center" width="100%">
         <Tabs
           value={value}
           onChange={handleChange}
-          centered
+          variant="scrollable"
           textColor="primary"
           indicatorColor="primary"
         >

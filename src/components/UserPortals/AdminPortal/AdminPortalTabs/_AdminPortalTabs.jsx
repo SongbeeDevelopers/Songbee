@@ -70,13 +70,15 @@ export default function AdminPortalTabs() {
 
   return (
     <div className="admin-tabs-container">
-      <Tabs value={value} onChange={handleChange} centered>
-        <Tab label="Pending Orders" {...a11yProps(0)} />
-        <Tab label="Completed Orders" {...a11yProps(1)} />
-        <Tab label="Users" {...a11yProps(2)} />
-        <Tab label="Artist Applications" {...a11yProps(3)} />
-        <Tab label="Artist Edits" {...a11yProps(4)} />
-      </Tabs>
+      <Box display="flex" justifyContent="center" width="100%">
+        <Tabs value={value} onChange={handleChange} variant="scrollable" centered>
+          <Tab label="Pending Orders" {...a11yProps(0)} />
+          <Tab label="Completed Orders" {...a11yProps(1)} />
+          <Tab label="Users" {...a11yProps(2)} />
+          <Tab label="Artist Applications" {...a11yProps(3)} />
+          <Tab label="Artist Edits" {...a11yProps(4)} />
+        </Tabs>
+      </Box>
 
       <CustomTabPanel value={value} index={0}>
         <AdminRequestsTab num={0} data={pendingRequests} />
