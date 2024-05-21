@@ -25,14 +25,31 @@ const ChatPage = () => {
     //   socket.on('messageResponse', (data) => setMessages([...messages, data]));
     // }, [socket, messages]);
 
-        useEffect(() => {
+    useEffect(() => {
             dispatch({
                 type: "FETCH_CURRENT_CHAT",
                 payload: id
             })
     }, [id]);
-
+    useEffect(() => {
+      dispatch({type: "FETCH_USER_CHATS"})
+    }, []);
+    const chats = useSelector(store => store.userChats);
     const messages = useSelector(store => store.currentChat);
+    const user = useSelector(store => store.user)
+
+    
+    let user2
+    chats.map((chat) => {
+      if (chat.id === Number(id)){
+        if(user.id === chat.user1_id){
+          user2 = chat.user2_email
+        }
+        else if (user.id === chat.user2_id){
+          user2 = chat.user1_email
+        }
+      }
+    })
 
     useEffect(() => {
         // 👇️ scroll to bottom every time messages change
@@ -42,7 +59,7 @@ const ChatPage = () => {
     return (
       <div className="chat">
         <div className="chat__main">
-          <ChatBody messages={messages} lastMessageRef={lastMessageRef} />
+          <ChatBody messages={messages} lastMessageRef={lastMessageRef} user2={user2}/>
           <ChatFooter id={id} />
         </div>
       </div>
