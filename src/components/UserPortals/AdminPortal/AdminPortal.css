@@ -67,3 +67,9 @@
   flex-direction: column;
   gap: 10px;
 }
+
+@media (max-width: 790px) {
+  .admin-complete-dialog {
+    padding: 25px 30px
+  }
+}
