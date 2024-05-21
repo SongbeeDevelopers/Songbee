@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import AudioButton from "../JoinArtistPage/AudioButton";
 
 import "../ArtistBioPages/ArtistBioPages.css";
+import "./RequestDetails.css"
 
 
 function RequestDetailsArtistBio() {
@@ -26,15 +27,15 @@ function RequestDetailsArtistBio() {
     });
   }
   const handleTip = () => {
-
+    dispatch({ type: "FETCH_TIP_CHECKOUT"})
   }
 
   return artist ?(
     <>
-    <div className="imgBox">
-    <div className="content" onClick={handleTip}>
-      <button className="community-button">Click Here to Tip Your Artist!</button>
+    <div className="tip-button-div" onClick={handleTip}>
+      <button className="tip-button-button">Click Here to Tip Your Artist!</button>
     </div>
+    <div className="imgBox">
        <div className="content">
         <img src={artist.photo} alt="Artists images" /> 
        <div className="nameHeader">
