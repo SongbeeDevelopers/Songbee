@@ -21,13 +21,6 @@ import { motion } from 'framer-motion';
 import './RequestDetails.css'
 import RequestDetailsArtistBio from './RequestDetailsArtistBio';
 
-const prices = {
-  extra_verse: 74.99,
-  streaming: 49.99,
-  backing_track: 29.99,
-  license: 199.99
-}
-
 
 // This function will display the user's song request with a player so they can review their song
 function RequestDetails({ routeVariants, requestId }) {
@@ -65,6 +58,57 @@ function RequestDetails({ routeVariants, requestId }) {
       payload: key
     })
   }
+  const prices = {
+    extra_verse: 74.99,
+    streaming: 49.99,
+    backing_track: 29.99,
+    license: 199.99
+  }
+  const [totalPrice, setTotalPrice] = useState(0)
+  const handleClick = (value) => {
+    if (value === 'streaming'){
+      if (addons.streaming === false){
+        handleCheckbox("streaming")
+        setTotalPrice(totalPrice + prices.streaming)
+      }
+      else if (addons.streaming === true){
+        handleCheckbox("streaming")
+        setTotalPrice(totalPrice - prices.streaming)
+      }
+    }
+    if (value === 'verse'){
+      if (addons.extra_verse === false){
+        handleCheckbox("extra_verse")
+        setTotalPrice(totalPrice + prices.extra_verse)
+        }
+        else if (addons.extra_verse === true){
+          handleCheckbox("extra_verse")
+          setTotalPrice(totalPrice - prices.extra_verse)
+        }
+    }
+    if (value === 'license'){
+      if (addons.license === false){
+        handleCheckbox("license")
+        setTotalPrice(totalPrice + prices.license)
+        }
+        else if (addons.license === true){
+          handleCheckbox("license")
+          setTotalPrice(totalPrice - prices.license)
+        }
+    }
+    if (value === 'backing_track'){
+      if (addons.backing_track === false){
+        handleCheckbox("backing_track")
+        setTotalPrice(totalPrice + prices.backing_track)
+        }
+        else if (addons.backing_track === true){
+          handleCheckbox("backing_track")
+          setTotalPrice(totalPrice - prices.backing_track)
+        }
+    }
+  }
+  console.log("addons", addons)
+  console.log("totalPrice", totalPrice)
   const purchaseAddons = () => {
     dispatch({
       type: 'FETCH_ADDON_CHECKOUT',
@@ -180,7 +224,7 @@ function RequestDetails({ routeVariants, requestId }) {
               <Checkbox
                 disableRipple
                 checked={addons.extra_verse}
-                onClick={() => handleCheckbox('extra_verse')}
+                onClick={() => handleClick('extra_verse')}
                 sx={{ position: 'absolute', mt: -2, ml: -2, backgroundColor: '#fff4df' }} />
               <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/extraverse_hmt8jd.jpg"></img>
               <p>Add a Verse!</p>
@@ -192,7 +236,7 @@ function RequestDetails({ routeVariants, requestId }) {
               <Checkbox
                 disableRipple
                 checked={addons.streaming}
-                onClick={() => handleCheckbox('streaming')}
+                onClick={() => handleClick('streaming')}
                 sx={{ position: 'absolute', mt: -2, ml: -2, backgroundColor: '#fff4df' }} />
               <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/addstreaming_hng5cz.jpg"></img>
               <p>Add Streaming!</p>
@@ -204,7 +248,7 @@ function RequestDetails({ routeVariants, requestId }) {
               <Checkbox
                 disableRipple
                 checked={addons.backing_track}
-                onClick={() => handleCheckbox('backing_track')}
+                onClick={() => handleClick('backing_track')}
                 sx={{ position: 'absolute', mt: -2, ml: -2, backgroundColor: '#fff4df' }} />
               <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/backingtrack_m94vwk.jpg"></img>
               <p>Karaoke Version!</p>
@@ -216,7 +260,7 @@ function RequestDetails({ routeVariants, requestId }) {
               <Checkbox
                 disableRipple
                 checked={addons.license}
-                onClick={() => handleCheckbox('license')}
+                onClick={() => handleClick('license')}
                 sx={{ position: 'absolute', mt: -2, ml: -2, backgroundColor: '#fff4df' }} />
               <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/commerciallicense_qkxiug.jpg"></img>
               <p>Add Licensing!</p>
@@ -226,7 +270,7 @@ function RequestDetails({ routeVariants, requestId }) {
 
         {(addons.backing_track || addons.extra_verse || addons.license || addons.streaming) &&
           <>
-            <p>{totalPrice}</p>
+            <p>Your Total: ${totalPrice.toFixed(2)}</p>
             <Button variant="contained"
               onClick={purchaseAddons}
               sx={{ height: 35, width: 60, backgroundColor: "#feaf17", color: "black" }}
