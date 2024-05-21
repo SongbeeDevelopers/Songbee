@@ -2,8 +2,8 @@ import React from "react";
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import FilterBar from '../../FilterBar/FilterBar';
-import AdminDetailsDialog from "../../ArtistRequests/AdminDetailsDialog";
+import FilterBar from '../../../FilterBar/FilterBar';
+import AdminDetailsDialog from "../../../ArtistRequests/AdminDetailsDialog";
 import AdminCompleteDialog from "../../AdminPortal/AdminPortalTabs/AdminPortalDialogs/AdminCompleteDialog";
 import MessageUserButton from "../../AdminPortal/AdminPortalTabs/MessageUserButton";
 

@@ -118,7 +118,7 @@ function RegisterForm() {
           required
         ></input>
         <label for="agreeToTerms">
-          By creating an account, I agree to this website's privacy policy and terms of service
+          {` `} By creating an account, I agree to this website's privacy policy and terms of service
         </label>
       </div>
 
@@ -131,7 +131,7 @@ function RegisterForm() {
           name='newsletterOptIn'
         ></input>
         <label for="newsletterOptIn">
-          I consent to receive marketing emails.
+          {` `}I consent to receive marketing emails.
         </label>
       </div>
 

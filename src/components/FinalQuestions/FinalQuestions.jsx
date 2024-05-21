@@ -178,7 +178,8 @@ function FinalQuestions({ routeVariants }) {
       <p>
         Once you provide these final details we can begin creating your song!
       </p>
-      <Box sx={{ width: "100%" }}>
+      <Box sx={{ width: "100%"}}>
+      <Box sx={{ width: "100%", overflow: 'scroll' }}>
         <Stepper nonLinear activeStep={activeStep} sx={{ mb: 8 }}>
           {steps.map((label, index) => (
             <Step key={label} completed={completed[index]}>
@@ -188,6 +189,7 @@ function FinalQuestions({ routeVariants }) {
             </Step>
           ))}
         </Stepper>
+          </Box>
         <div>
           {allStepsCompleted() ? (
             <React.Fragment>

@@ -1,13 +1,10 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 
-import ArtistProfileTab from "./ArtistProfileTab";
-import ArtistSBRequestsTab from "./ArtistSBRequestsTab";
-import ArtistSBjrRequestsTab from "./ArtistSBjrRequestsTab";
-import ArtistDocuments from "./ArtistDocuments";
-import ArtistCompletedRequestsTab from "./ArtistCompletedRequestsTab";
-
+import CustomerRequestsTab from "./CustomerRequestsTab";
+import CustomerProfileTab from "./CustomerProfileTab";
+import CustomerCreditTab from "./CustomerCreditTab";
+import CustomerMessagesTab from "./CustomerMessagesTab";
 
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
@@ -15,17 +12,16 @@ import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import Typography from "@mui/material/Typography";
 
-import '../ArtistPortal.css'
+import { useTheme } from '@mui/material/styles';
+import '../CustomerPortal.css'
 
 
-export default function ArtistPortalTabs({artistProfile}) {
+export default function CustomerPortalTabs() {
 
-  const dispatch = useDispatch();
-
+  const theme = useTheme()
+  
   const [value, setValue] = useState(0);
 
-  // grabs artist on mount
-  // const artistProfile = useSelector((store) => store.artistProfile);
   // tab structure
   const handleChange = (event, newValue) => {
     event.preventDefault();
@@ -66,42 +62,38 @@ export default function ArtistPortalTabs({artistProfile}) {
   return (
     <>
       {/* tab selector */}
-      <Box sx={{ height: "80%"}}>
+      <Box display="flex" justifyContent="center" width="100%">
         <Tabs
-          className="tabHeader"
           value={value}
           onChange={handleChange}
-          centered
+          variant="scrollable"
+          textColor="primary"
+          indicatorColor="primary"
         >
-          <Tab label="Artist Profile" {...a11yProps(0)}  />
-          <Tab label="Main Orders" {...a11yProps(1)} />
-          <Tab label="Junior Orders" {...a11yProps(2)} />
-          <Tab label="Documents" {...a11yProps(3)} />
-          <Tab label="Completed Orders" {...a11yProps(4)} />
+          <Tab label="Orders" {...a11yProps(0)} />
+          <Tab label="Profile" {...a11yProps(1)} />
+          <Tab label="Refer a Friend" {...a11yProps(2)} />
+          <Tab label="Messages" {...a11yProps(3)} />
         </Tabs>
       </Box>
 
-      {/* tabs */}
+      {/* order history tab */}
       <CustomTabPanel value={value} index={0}>
-        <ArtistProfileTab artistProfile={artistProfile}/>
+        <CustomerRequestsTab />
       </CustomTabPanel>
 
+      {/* personal info tab */}
       <CustomTabPanel value={value} index={1}>
-        <ArtistSBRequestsTab artistId={artistProfile && artistProfile.id}/>
+        <CustomerProfileTab />
       </CustomTabPanel>
 
       <CustomTabPanel value={value} index={2}>
-        <ArtistSBjrRequestsTab />
+        <CustomerCreditTab />
       </CustomTabPanel>
 
       <CustomTabPanel value={value} index={3}>
-        <ArtistDocuments />
+        <CustomerMessagesTab />
       </CustomTabPanel>
-
-      <CustomTabPanel value={value} index={4}>
-        <ArtistCompletedRequestsTab artistId={artistProfile && artistProfile.id}/>
-      </CustomTabPanel>
- 
     </>
   );
 }

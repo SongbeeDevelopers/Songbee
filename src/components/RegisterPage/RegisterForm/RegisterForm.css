@@ -6,6 +6,12 @@
     margin-right: auto;
 }
 
+@media (max-width: 575px) {
+    .registerForm {
+        width: 60%
+    }
+}
+
 .registerInput {
     width: 100%;
     height: 38px;

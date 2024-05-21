@@ -1,8 +1,6 @@
 import React from "react";
 import { useState, useRef } from "react";
 
-import './JoinArtistPage.css';
-
 function AudioButton({ url, popup, setShowPopUp, setSelectedSong, artist }) {
     const [isPlaying, setIsPlaying] = useState(false);
     const audioRef = useRef(null);

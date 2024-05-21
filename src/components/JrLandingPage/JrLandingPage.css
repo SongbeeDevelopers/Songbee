@@ -13,7 +13,7 @@ Button
   width: 14rem;
   height: 3rem;
   background-color: #feaf17;
-  border-radius: 10px;
+  border-radius: 15px;
   justify-content: center;
   align-items: center;
   margin-bottom: 3px;
@@ -252,8 +252,9 @@ Why Junior
 .why-junior {
   display: flex;
   flex-direction: row;
+  gap: 25px;
   width: 75%;
-  margin: 35px auto;
+  margin: 55px auto 25px;
 }
 
 
@@ -264,6 +265,13 @@ Why Junior
 
 .why-junior-text p {
   margin: 20px auto 25px;
+}
+
+.why-junior-video iframe {
+  width: 506px;
+  height: 285px;
+  border: none;
+  border-radius: 10px;
 }
 
 #try-it {

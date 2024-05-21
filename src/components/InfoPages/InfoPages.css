@@ -14,7 +14,7 @@ General
 .info-title {
     text-align: center;
     font-size: 3rem;
-    margin: 25px 0;
+    margin: 0 0 25px;
 }
 
 .info-subtitle {
@@ -190,9 +190,29 @@ FAQ Page
     margin-top: 20px;
 }
 
+.faq-title {
+    text-align: center;
+}
+
 .faq-subtitle {
     /* font-size: 0.8rem; */
     text-align: center;
     margin-top: 50px;
     margin-bottom: 50px;
+}
+
+@media (max-width: 815px) {
+    .info {
+        width: 80%;
+    }
+    .info-title {
+        font-size: 2rem;
+        line-height: normal;
+    }
+    .info-section-header {
+        font-size: 1.3rem;
+    }
+    .info p, li  {
+        font-size: 14px;
+    }
 }

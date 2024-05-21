@@ -10,20 +10,18 @@ function WhyJunior() {
     <div className="why-junior">
       <div className="why-junior-text">
         <h2>Play to Learn</h2>
-
         <p>
           Join the world of music based learning and engage both sides of your child's brain promote development, and have a happy child.
-          <br/><br/>
+          <br /><br />
           Our learning packs help develop your child's cognitive, language, motor, and social skills with play.
         </p>
-
         <button id="try-it" className="jr-landing-btn" onClick={() => history.push('/learning-packs')}>
           Try It!
         </button>
       </div>
+
       <div className="why-junior-video">
-        {/* video goes here */}
-        <img src=""/>
+        <iframe src="https://drive.google.com/file/d/1OxSXi_Oa2PAV8IBjLJsQ9CINUUL87xfv/preview?" allow="start"></iframe>
       </div>
     </div>
   )

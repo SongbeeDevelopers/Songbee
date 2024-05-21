@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Redirect, Switch, useLocation } from "react-router-dom";
 
+// utility
 import ProtectedRoute from "./ProtectedRoute";
 import MainRoute from "./MainRoute"
 import JrRoute from "./JrRoute";
@@ -21,8 +22,9 @@ import CreationPage from "../CreationPage/CreationPage";
 import FinalQuestions from "../FinalQuestions/FinalQuestions";
 
 // user functionality
-import CustomerPortal from "../CustomerPortal/CustomerPortal";
-import AdminPortal from "../AdminPortal/AdminPortal";
+import CustomerPortal from "../UserPortals/CustomerPortal/CustomerPortal";
+import AdminPortal from "../UserPortals/AdminPortal/AdminPortal";
+import ArtistPortal from "../UserPortals/ArtistPortal/ArtistPortal"
 import RequestDetails from "../RequestDetails/RequestDetails"
 
 // information pages
@@ -33,11 +35,10 @@ import QualityGuaranteePage from "../InfoPages/QualityGuaranteePage";
 import TermsAndConditionsPage from "../InfoPages/TermsAndConditionsPage";
 
 // artist pages
-import ArtistPortal from "../ArtistPortal/ArtistPortal"
+import ArtistCommunity from "../ArtistPages/ArtistCommunity/ArtistCommunity";
+import ArtistBioPage from '../ArtistPages/ArtistBioPage/ArtistBioPage';
 import JoinArtistPage from "../JoinArtistPage/JoinArtistPage";
-import ArtistCommunity from "../JoinArtistPage/ArtistCommunity";
 import ArtistProcess from "../JoinArtistPage/ArtistProcess";
-import ArtistBioPage from '../ArtistBioPages/ArtistBioPage';
 
 // 404
 import NotFound from "../NotFoundPage/NotFoundPage";
@@ -219,11 +220,6 @@ function ComponentRouter() {
         <MainRoute exact path="/ArtistBioPage/:id">
           <ArtistBioPage routeVariants={routeVariants} />
         </MainRoute>
-        
-        <MainRoute exact path="/join-artist">
-          <JoinArtistPage routeVariants={routeVariants} />
-        </MainRoute>
-
 
         {/* order process */}
         <MainRoute exact path="/order">

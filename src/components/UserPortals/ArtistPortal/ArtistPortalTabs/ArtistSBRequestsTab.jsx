@@ -2,10 +2,10 @@ import React from "react";
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import FilterBar from '../../FilterBar/FilterBar';
-import AdminDetailsDialog from "../../ArtistRequests/AdminDetailsDialog";
+import FilterBar from '../../../FilterBar/FilterBar';
+import AdminDetailsDialog from "../../../ArtistRequests/AdminDetailsDialog";
 import AdminCompleteDialog from "../../AdminPortal/AdminPortalTabs/AdminPortalDialogs/AdminCompleteDialog";
-import RequestDetails from "../../RequestDetails/RequestDetails";
+import RequestDetails from "../../../RequestDetails/RequestDetails";
 import AcceptSelector from "./AcceptSelector";
 import MessageUserButton from "../../AdminPortal/AdminPortalTabs/MessageUserButton";
 

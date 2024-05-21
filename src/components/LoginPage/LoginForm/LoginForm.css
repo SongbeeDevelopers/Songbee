@@ -6,6 +6,12 @@
     margin-right: auto;
 }
 
+@media (max-width: 575px) {
+    .loginForm {
+        width: 60%
+    }
+}
+
 .loginInput {
     width: 100%;
     height: 38px;
@@ -21,6 +27,7 @@
     border-radius: 7px;
 }
 
+
 .loginInputLabel {
     font-family: Poppins, sans-serif;
     margin-bottom: 5px;
@@ -31,7 +38,7 @@
     line-height: 20px;
 }
 
-.loginButton{
+.loginButton {
     display: inline-block;
     margin-top: 20px;
     margin-bottom: 20px;

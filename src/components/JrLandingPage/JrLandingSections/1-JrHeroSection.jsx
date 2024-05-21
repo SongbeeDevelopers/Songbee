@@ -27,9 +27,6 @@ function HeroSectionJR() {
           </div>
         </div>
 
-        {/* get started box */}
-
-
       </div>
     </>
   )
