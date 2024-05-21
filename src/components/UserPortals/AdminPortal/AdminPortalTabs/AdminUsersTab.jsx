@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import UserClassSelector from './UserClassSelector';
 import FilterBar from '../../../FilterBar/FilterBar';
-import MessageUserButton from './MessageUserButton';
+import MessageUserButton from '../../../AdminPortal/AdminPortalTabs/MessageUserButton';
 
 import {
   Table,

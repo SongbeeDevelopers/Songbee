@@ -7,7 +7,7 @@ import AdminDetailsDialog from "../../../ArtistRequests/AdminDetailsDialog";
 import AdminCompleteDialog from "../../AdminPortal/AdminPortalTabs/AdminPortalDialogs/AdminCompleteDialog";
 import RequestDetails from "../../../RequestDetails/RequestDetails";
 import AcceptSelector from "./AcceptSelector";
-import MessageUserButton from "../../AdminPortal/AdminPortalTabs/MessageUserButton";
+import MessageUserButton from "../../../AdminPortal/AdminPortalTabs/MessageUserButton";
 
 import {
   Button,

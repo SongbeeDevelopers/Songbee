@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { useParams, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import AudioButton from "../../ArtistPages/AudioButton";
+import AudioButton from "../ArtistPages/AudioButton";
 
-import "../ArtistBioPages/ArtistBioPages.css";
+import "../ArtistPages/ArtistBioPage/ArtistBioPage.css";
 import "./RequestDetails.css"
 
 
