@@ -83,7 +83,7 @@ function RequestDetails({ routeVariants, requestId }) {
         setTotalPrice(totalPrice - prices.streaming)
       }
     }
-    if (value === 'verse'){
+    if (value === 'extra_verse'){
       if (addons.extra_verse === false){
         handleCheckbox("extra_verse")
         setTotalPrice(totalPrice + prices.extra_verse)

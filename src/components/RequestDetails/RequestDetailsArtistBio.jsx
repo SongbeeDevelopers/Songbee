@@ -25,10 +25,16 @@ function RequestDetailsArtistBio() {
       payload: { ...requestData, artist: artist.id},
     });
   }
+  const handleTip = () => {
+
+  }
 
   return artist ?(
     <>
     <div className="imgBox">
+    <div className="content" onClick={handleTip}>
+      <button className="community-button">Click Here to Tip Your Artist!</button>
+    </div>
        <div className="content">
         <img src={artist.photo} alt="Artists images" /> 
        <div className="nameHeader">
