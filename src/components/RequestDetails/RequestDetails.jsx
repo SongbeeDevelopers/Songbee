@@ -51,6 +51,13 @@ function RequestDetails({ routeVariants, requestId }) {
   const request = useSelector((store) => store.currentRequest);
   const addons = useSelector((store => store.addons))
 
+  useEffect(() => {
+    dispatch({
+      type: 'FETCH_CURRENT_ARTIST',
+      payload: request.artist_id
+    })
+  }, [])
+
   // checkbox logic
   const handleCheckbox = (key) => {
     dispatch({
@@ -107,8 +114,7 @@ function RequestDetails({ routeVariants, requestId }) {
         }
     }
   }
-  console.log("addons", addons)
-  console.log("totalPrice", totalPrice)
+ 
   const purchaseAddons = () => {
     dispatch({
       type: 'FETCH_ADDON_CHECKOUT',
