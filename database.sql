@@ -8,9 +8,10 @@ DROP TABLE IF EXISTS "songbeejr_details",
                      "song_request",
                      "genres",
                      "user",
-                     "documents",
                      "pendingartistedit",
-                     "learning_packs";
+                     "learning_packs",
+                     "chat",
+                     "messages";
 
 CREATE TABLE "user" (
   "id" SERIAL PRIMARY KEY,
@@ -143,7 +144,8 @@ CREATE TABLE "subscription" (
   "name" VARCHAR,
   "pronunciation" VARCHAR,
   "is_active" BOOLEAN DEFAULT FALSE,
-  "created_at" TIMESTAMPTZ DEFAULT NOW()
+  "created_at" TIMESTAMPTZ DEFAULT NOW(),
+  "last_delivery" TIMESTAMPTZ DEFAULT NOW()
 );
 
 CREATE TABLE "subscription_song_details" (

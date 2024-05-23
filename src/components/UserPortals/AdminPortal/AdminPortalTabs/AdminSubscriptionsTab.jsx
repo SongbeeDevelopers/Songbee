@@ -2,14 +2,10 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import AdminCompleteDialog from './AdminPortalDialogs/AdminCompleteDialog';
-import AdminDetailsDialog from './AdminPortalDialogs/AdminDetailsDialog'
 import FilterBar from '../../../FilterBar/FilterBar';
 import MessageUserButton from '../../../AdminPortal/AdminPortalTabs/MessageUserButton';
 
 import {
-  Button,
-  Dialog,
   Table,
   TableBody,
   TableCell,
@@ -22,12 +18,6 @@ export default function AdminSubscriptionsTab({ num, data }) {
 
   const dispatch = useDispatch()
 
-  console.log("data:", data)
-
-  // modal state
-  const [detailsOpen, setDetailsOpen] = useState(false);
-  const [completeOpen, setCompleteOpen] = useState(false)
-
   // date/time
   const monthDiff = (d1, d2) => {
     let months;
@@ -38,34 +28,6 @@ export default function AdminSubscriptionsTab({ num, data }) {
   }
   
   const end = new Date()
-
-  // details modal logic
-//   const openDetails = (row) => {
-//     // grabs genre id from genre in reducer
-//     for (let genre of genres) {
-//       if (row.genre === genre.name) {
-//         row.genre = genre.id
-//       }
-//     }
-//     // sets edit reducer with request data
-//     dispatch({ type: 'SET_EDIT_DATA', payload: row })
-//     setDetailsOpen(true)
-//   }
-//   const closeDetails = () => {
-//     // clears reducer on close
-//     dispatch({ type: 'CLEAR_EDIT_DATA' })
-//     setDetailsOpen(false)
-//   }
-
-  // same as above, logic for complete dialog
-  const openComplete = (row) => {
-    dispatch({ type: 'SET_EDIT_DATA', payload: row })
-    setCompleteOpen(true)
-  }
-  const closeComplete = () => {
-    dispatch({ type: 'CLEAR_EDIT_DATA' })
-    setCompleteOpen(false)
-  }
 
   return (
     <div>
