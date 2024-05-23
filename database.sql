@@ -355,3 +355,10 @@ VALUES
   (1, 2, 'Not much'),
   (3, 10, 'Just checking in'),
   (3, 1, 'hah thats cool');
+
+INSERT INTO "subscription"
+  ("user_id", "pack_id", "age", "name", "is_active")
+VALUES
+  (2, 4, '2022-11-10 00:00:00-06', 'Dogma', TRUE),
+  (2, 6, '2023-03-10 00:00:00-06', 'Greenbear', TRUE),
+  (10, 9, '2022-02-10 00:00:00-06', 'Johnnycake', FALSE);
