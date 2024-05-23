@@ -233,4 +233,60 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
     });
 });
 
+router.get('/all', rejectUnauthenticated, async (req, res) => {
+  let connection
+  try {
+  connection = await pool.connect();
+  connection.query("BEGIN;");
+  const activeSubscriptionQuery = `
+  SELECT 
+  "subscription"."id" AS "id",
+  "subscription"."user_id",
+  "subscription"."pack_id",
+  "subscription"."age",
+  "subscription"."is_active",
+  "subscription"."created_at",
+  "learning_packs"."title",
+  "learning_packs"."min_age",
+  "learning_packs"."max_age",
+  "user"."email"
+  FROM "subscription"
+  JOIN "learning_packs"
+  ON "subscription"."pack_id"="learning_packs"."id"
+  JOIN "user"
+  ON "subscription"."user_id"="user"."id"
+  WHERE "subscription"."is_active"=TRUE;
+  `
+  const pendingResult = await connection.query(activeSubscriptionQuery);
+  const pausedSubscriptionQuery = `
+  SELECT 
+  "subscription"."id" AS "id",
+  "subscription"."user_id",
+  "subscription"."pack_id",
+  "subscription"."age",
+  "subscription"."is_active",
+  "subscription"."created_at",
+  "learning_packs"."title",
+  "learning_packs"."min_age",
+  "learning_packs"."max_age",
+  "user"."email"
+  FROM "subscription"
+  JOIN "learning_packs"
+  ON "subscription"."pack_id"="learning_packs"."id"
+  JOIN "user"
+  ON "subscription"."user_id"="user"."id"
+  WHERE "subscription"."is_active"=FALSE;
+  `
+  const completedResult = await connection.query(pausedSubscriptionQuery);
+  connection.query("COMMIT;");
+  connection.release();
+  res.send([pendingResult.rows, completedResult.rows])
+  } catch (error) {
+      console.log("Error in junior request router GET all subscriptions:", error);
+      connection.query("ROLLBACK;");
+      connection.release();
+      res.sendStatus(500);
+  }
+});
+
 module.exports = router;
