@@ -75,10 +75,9 @@ export default function ArtistPortalTabs({artistProfile}) {
           variant="scrollable"
         >
           <Tab label="Artist Profile" {...a11yProps(0)}  />
-          <Tab label="Main Orders" {...a11yProps(1)} />
-          <Tab label="Junior Orders" {...a11yProps(2)} />
-          <Tab label="Documents" {...a11yProps(3)} />
-          <Tab label="Completed Orders" {...a11yProps(4)} />
+          <Tab label="Incoming Orders" {...a11yProps(1)} />
+          <Tab label="Documents" {...a11yProps(2)} />
+          <Tab label="Completed Orders" {...a11yProps(3)} />
         </Tabs>
       </Box>
 
@@ -92,14 +91,10 @@ export default function ArtistPortalTabs({artistProfile}) {
       </CustomTabPanel>
 
       <CustomTabPanel value={value} index={2}>
-        <ArtistSBjrRequestsTab />
-      </CustomTabPanel>
-
-      <CustomTabPanel value={value} index={3}>
         <ArtistDocuments />
       </CustomTabPanel>
 
-      <CustomTabPanel value={value} index={4}>
+      <CustomTabPanel value={value} index={3}>
         <ArtistCompletedRequestsTab artistId={artistProfile && artistProfile.id}/>
       </CustomTabPanel>
  

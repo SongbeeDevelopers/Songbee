@@ -5,6 +5,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import AudioButton from "../../../ArtistPages/AudioButton";
 
 
+import "../../../ArtistPages/ArtistBioPage/ArtistBioPage.css";
+
+
 function ArtistPortalBioPage() {
 
 const dispatch = useDispatch();

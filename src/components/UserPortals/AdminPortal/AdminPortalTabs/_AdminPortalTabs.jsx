@@ -74,9 +74,12 @@ export default function AdminPortalTabs() {
         <Tabs value={value} onChange={handleChange} variant="scrollable" centered>
           <Tab label="Pending Orders" {...a11yProps(0)} />
           <Tab label="Completed Orders" {...a11yProps(1)} />
-          <Tab label="Users" {...a11yProps(2)} />
-          <Tab label="Artist Applications" {...a11yProps(3)} />
-          <Tab label="Artist Edits" {...a11yProps(4)} />
+          <Tab label="Ongoing Subscriptions" {...a11yProps(2)} />
+          <Tab label="Paused Subscriptions" {...a11yProps(3)} />
+          <Tab label="Users" {...a11yProps(4)} />
+          <Tab label="Artist Applications" {...a11yProps(5)} />
+          <Tab label="Artist Edits" {...a11yProps(6)} />
+          <Tab label="Learning Packs" {...a11yProps(7)} />
         </Tabs>
       </Box>
 
@@ -88,15 +91,15 @@ export default function AdminPortalTabs() {
         <AdminRequestsTab num={1} data={completedRequests} />
       </CustomTabPanel>
 
-      <CustomTabPanel value={value} index={2}>
+      <CustomTabPanel value={value} index={4}>
         <AdminUsersTab data={users} />
       </CustomTabPanel>
 
-      <CustomTabPanel value={value} index={3}>
+      <CustomTabPanel value={value} index={5}>
         <AdminArtistApplicationsTab data={artistApplications} />
       </CustomTabPanel>
 
-      <CustomTabPanel value={value} index={4}>
+      <CustomTabPanel value={value} index={6}>
         <AdminArtistEdits data={artistEdits} />
       </CustomTabPanel>
     </div>
