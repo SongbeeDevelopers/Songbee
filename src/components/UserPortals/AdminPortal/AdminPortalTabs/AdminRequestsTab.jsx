@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import AdminCompleteDialog from './AdminPortalDialogs/AdminCompleteDialog';
 import AdminDetailsDialog from './AdminPortalDialogs/AdminDetailsDialog'
 import FilterBar from '../../../FilterBar/FilterBar';
+import MessageUserButton from '../../../AdminPortal/AdminPortalTabs/MessageUserButton';
 
 import {
   Button,
@@ -81,6 +82,7 @@ export default function AdminRequestsTab({ num, data }) {
                   <TableCell align="center">Due</TableCell>
                   <TableCell align="center">View Details</TableCell>
                   <TableCell align="center">Completion Form</TableCell>
+                  <TableCell align="center">Message</TableCell>
                 </TableRow>
               </TableHead>
 
@@ -152,6 +154,11 @@ export default function AdminRequestsTab({ num, data }) {
                         <AdminCompleteDialog setCompleteOpen={setCompleteOpen} />
                       </Dialog>
                     </TableCell>
+
+                    <TableCell align='center'>
+                    <MessageUserButton userId={row.user_id} />
+                  </TableCell>
+
 
                   </TableRow>
                 ))}

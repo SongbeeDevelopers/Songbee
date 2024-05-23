@@ -122,12 +122,20 @@ function ComponentRouter() {
           )}
         </MainRoute>
 
-        <Route path="/chathome">
+        <Route exact path="/whatsIncluded">
+          <WhatsIncluded routeVariants={routeVariants} />
+        </Route>
+
+        <Route exact path="/join-artist">
+          <JoinArtistPage routeVariants={routeVariants} />
+        </Route>
+
+        <MainRoute path="/chathome">
           <SocketHome />
-        </Route>
-        <Route path="/chatpage/:id">
+        </MainRoute>
+        <MainRoute path="/chatpage/:id">
           <ChatPage />
-        </Route>
+        </MainRoute>
 
         <MainRoute exact path="/register">
           {user.id ? (

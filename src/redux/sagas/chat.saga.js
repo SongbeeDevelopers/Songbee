@@ -26,12 +26,13 @@ function* createChat (action){
         const response = yield axios({
             method: "POST",
             url: '/api/chat/new-chat',
-            data: action.payload
+            data: {user2: action.payload.id}
         })
         yield put ({
             type: "FETCH_CURRENT_CHAT",
             payload: response.data.id
         })
+        yield action.payload.history.push(`/chatpage/${response.data.id}`)
     }
     catch (error) {
         console.error('createChat() failed:', error)

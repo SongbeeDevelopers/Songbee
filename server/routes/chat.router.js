@@ -59,6 +59,7 @@ router.get('/user-chat/:id', (req, res) => {
   });
 
   router.post('/new-chat', (req, res) => {
+    console.log("req.body:", req.body)
     const user1 = req.user.id;
     const user2 = req.body.user2;
     const query = `
