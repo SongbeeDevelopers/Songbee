@@ -22,34 +22,40 @@ export default function AdminSubscriptionsTab({ num, data }) {
 
   const dispatch = useDispatch()
 
+  console.log("data:", data)
+
   // modal state
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [completeOpen, setCompleteOpen] = useState(false)
 
   // date/time
-  function getDueDate(requestDay, deliveryDays) {
-    const msPerDay = 24 * 60 * 60 * 1000;
-    const due = new Date(requestDay).getTime() + msPerDay * deliveryDays
-    return new Date(due).toLocaleString('en-us')
+  const monthDiff = (d1, d2) => {
+    let months;
+    months = (d2.getFullYear() - d1.getFullYear()) * 12;
+    months -= d1.getMonth();
+    months += d2.getMonth();
+    return months <= 0 ? 0 : months;
   }
+  
+  const end = new Date()
 
   // details modal logic
-  const openDetails = (row) => {
-    // grabs genre id from genre in reducer
-    for (let genre of genres) {
-      if (row.genre === genre.name) {
-        row.genre = genre.id
-      }
-    }
-    // sets edit reducer with request data
-    dispatch({ type: 'SET_EDIT_DATA', payload: row })
-    setDetailsOpen(true)
-  }
-  const closeDetails = () => {
-    // clears reducer on close
-    dispatch({ type: 'CLEAR_EDIT_DATA' })
-    setDetailsOpen(false)
-  }
+//   const openDetails = (row) => {
+//     // grabs genre id from genre in reducer
+//     for (let genre of genres) {
+//       if (row.genre === genre.name) {
+//         row.genre = genre.id
+//       }
+//     }
+//     // sets edit reducer with request data
+//     dispatch({ type: 'SET_EDIT_DATA', payload: row })
+//     setDetailsOpen(true)
+//   }
+//   const closeDetails = () => {
+//     // clears reducer on close
+//     dispatch({ type: 'CLEAR_EDIT_DATA' })
+//     setDetailsOpen(false)
+//   }
 
   // same as above, logic for complete dialog
   const openComplete = (row) => {
@@ -75,10 +81,9 @@ export default function AdminSubscriptionsTab({ num, data }) {
                 <TableRow>
                   <TableCell>Creation Date</TableCell>
                   <TableCell align="center">Requester E-Mail</TableCell>
-                  <TableCell align="center">Artist</TableCell>
-                  <TableCell align="center">Due</TableCell>
-                  <TableCell align="center">View Details</TableCell>
-                  <TableCell align="center">Completion Form</TableCell>
+                  <TableCell align="center">Child's Age</TableCell>
+                  <TableCell align="center">Current Pack</TableCell>
+                  <TableCell align="center">Next Pack Delivered</TableCell>
                   <TableCell align="center">Message</TableCell>
                 </TableRow>
               </TableHead>
@@ -98,58 +103,19 @@ export default function AdminSubscriptionsTab({ num, data }) {
                       {row.email}
                     </TableCell>
 
-                    {/* artist */}
+                    {/* age */}
                     <TableCell align="center">
-                      {row.artist_id ?
-                        artists.map((artist) => {
-                          if (artist.id === row.artist_id) {
-                            return artist.artist_name
-                          }
-                        })
-                        :
-                        'Unassigned'
-                      }
+                      {monthDiff(new Date(row.age), end)} Months
+                    </TableCell>
+
+                    {/* current pack */}
+                    <TableCell align="center">
+                      {row.title}
                     </TableCell>
 
                     {/* due */}
                     <TableCell align="center">
-                      {getDueDate(row.created_at, row.delivery_days)}
-                    </TableCell>
-
-                    {/* details btn */}
-                    <TableCell align="center">
-                      <Button variant="contained"
-                        onClick={() => openDetails(row)}
-                        sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
-                      >
-                        DETAILS
-                      </Button>
-
-                      {/* details dialog */}
-                      <Dialog keepMounted fullWidth maxWidth="md"
-                        open={detailsOpen}
-                        onClose={closeDetails}
-                      >
-                        <AdminDetailsDialog setDetailsOpen={setDetailsOpen} />
-                      </Dialog>
-                    </TableCell>
-
-                    {/* complete button */}
-                    <TableCell align="center">
-                      <Button variant="contained"
-                        onClick={() => openComplete(row)}
-                        sx={{ height: 35, width: 95, backgroundColor: "#feaf17", color: "black" }}
-                      >
-                        COMPLETE
-                      </Button>
-
-                      {/* complete dialog */}
-                      <Dialog keepMounted fullWidth maxWidth="md"
-                        open={completeOpen}
-                        onClose={closeComplete}
-                      >
-                        <AdminCompleteDialog setCompleteOpen={setCompleteOpen} />
-                      </Dialog>
+                      {3 - monthDiff(new Date(row.created_at), end)} Months
                     </TableCell>
 
                     <TableCell align='center'>
@@ -165,7 +131,7 @@ export default function AdminSubscriptionsTab({ num, data }) {
 
         </>
         :
-        <p className='admin-empty-msg'>There are currently no requests.</p>
+        <p className='admin-empty-msg'>There are currently no active subscriptions.</p>
       }
     </div>
   );

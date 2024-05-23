@@ -21,6 +21,7 @@ export default function AdminPortal({ routeVariants }) {
     dispatch({ type: "GET_ARTIST_PENDING" });
     dispatch({ type: 'FETCH_GENRES' });
     dispatch({ type: "FETCH_USER_CHATS"});
+    dispatch({ type: "FETCH_ALL_SUBSCRIPTIONS"});
   }, [])
 
   return (

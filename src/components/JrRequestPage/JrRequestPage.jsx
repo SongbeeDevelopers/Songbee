@@ -47,9 +47,6 @@ export default function JrCheckoutPage({ routeVariants }) {
   const end = new Date()
   console.log(monthDiff(start, end))
 
-  console.log('requestData', requestData);
-  console.log('learning packs', learningPacks);
-  console.log('current pack', currentPack)
 
   useEffect(() => {
     dispatch({ type: "FETCH_LEARNING_PACKS" });

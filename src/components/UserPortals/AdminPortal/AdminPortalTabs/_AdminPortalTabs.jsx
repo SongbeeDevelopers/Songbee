@@ -7,6 +7,7 @@ import AdminRequestsTab from './AdminRequestsTab';
 import AdminArtistApplicationsTab from './AdminArtistApplicationsTab';
 import AdminUsersTab from './AdminUsersTab';
 import AdminArtistEdits from './AdminArtistEdits';
+import AdminSubscriptionsTab from "./AdminSubscriptionsTab";
 
 import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
@@ -30,6 +31,8 @@ export default function AdminPortalTabs() {
   const users = useSelector(store => store.allUsers)
   const artistApplications = useSelector((store) => store.pendingArtists);
   const artistEdits = useSelector((store) => store.pendingEdits);
+  const activeSubscriptions = useSelector(store => store.activeSubscriptions);
+  const pausedSubscriptions = useSelector(store => store.pausedSubscriptions)
 
   // MUI tab structure
   const handleChange = (event, newValue) => {
@@ -89,6 +92,15 @@ export default function AdminPortalTabs() {
 
       <CustomTabPanel value={value} index={1}>
         <AdminRequestsTab num={1} data={completedRequests} />
+      </CustomTabPanel>
+
+
+      <CustomTabPanel value={value} index={2}>
+        <AdminSubscriptionsTab num={0} data={activeSubscriptions} />
+      </CustomTabPanel>
+
+      <CustomTabPanel value={value} index={3}>
+        <AdminSubscriptionsTab num={1} data={pausedSubscriptions} />
       </CustomTabPanel>
 
       <CustomTabPanel value={value} index={4}>
