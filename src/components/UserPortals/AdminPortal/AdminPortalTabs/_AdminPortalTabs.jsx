@@ -8,6 +8,7 @@ import AdminArtistApplicationsTab from './AdminArtistApplicationsTab';
 import AdminUsersTab from './AdminUsersTab';
 import AdminArtistEdits from './AdminArtistEdits';
 import AdminSubscriptionsTab from "./AdminSubscriptionsTab";
+import AdminLearningPacksTab from "./AdminLearningPacksTab";
 
 import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
@@ -32,7 +33,8 @@ export default function AdminPortalTabs() {
   const artistApplications = useSelector((store) => store.pendingArtists);
   const artistEdits = useSelector((store) => store.pendingEdits);
   const activeSubscriptions = useSelector(store => store.activeSubscriptions);
-  const pausedSubscriptions = useSelector(store => store.pausedSubscriptions)
+  const pausedSubscriptions = useSelector(store => store.pausedSubscriptions);
+  const learningPacks = useSelector(store => store.learningPacks);
 
   // MUI tab structure
   const handleChange = (event, newValue) => {
@@ -113,6 +115,10 @@ export default function AdminPortalTabs() {
 
       <CustomTabPanel value={value} index={6}>
         <AdminArtistEdits data={artistEdits} />
+      </CustomTabPanel>
+
+      <CustomTabPanel value={value} index={7}>
+        <AdminLearningPacksTab data={learningPacks} />
       </CustomTabPanel>
     </div>
   )
