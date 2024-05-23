@@ -29,6 +29,8 @@ import currentPack from './currentPack.reducer';
 import userChats from './userChats.reducer';
 import currentChat from './currentChat.reducer';
 import message from './message.reducer';
+import activeSubscriptions from './activeSubscriptions.reducer';
+import pausedSubscriptions from './pausedSubscriptions.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -66,6 +68,9 @@ const rootReducer = combineReducers({
   userChats,
   currentChat,
   message,
+  activeSubscriptions,
+  pausedSubscriptions,
+  
   
 });
 

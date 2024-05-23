@@ -124,6 +124,17 @@ function* deleteJrRequest (action){
   }
 }
 
+function* fetchAllSubscriptions () {
+  try {
+      const response = yield axios.get('/api/jr-request/all')
+      yield put({ type: 'SET_ACTIVE_SUBSCRIPTIONS', payload: response.data[0]})
+      yield put({ type: 'SET_PAUSED_SUBSCRIPTIONS', payload: response.data[1]})
+  }
+  catch (error) {
+      console.error('SAGA fetchAllSubscriptions() failed:', error)
+  }
+}
+
 function* juniorRequestSaga() {
   yield takeLatest("FETCH_USER_REQUESTS", fetchUserRequests);
   yield takeLatest("FETCH_CURRENT_REQUEST", fetchCurrentRequest);
@@ -135,6 +146,7 @@ function* juniorRequestSaga() {
   yield takeLatest("CREATE_JR_REQUEST", createJrRequest);
   yield takeLatest("FETCH_JR_CHECKOUT", fetchJrCheckout);
   yield takeLatest("DELETE_JR_REQUEST", deleteJrRequest)
+  yield takeLatest("FETCH_ALL_SUBSCRIPTIONS", fetchAllSubscriptions);
 
 }
 
