@@ -42,6 +42,7 @@ export default function AdminSubscriptionsTab({ num, data }) {
               <TableHead>
                 <TableRow>
                   <TableCell>Creation Date</TableCell>
+                  <TableCell align="center">Last Delivery</TableCell>
                   <TableCell align="center">Requester E-Mail</TableCell>
                   <TableCell align="center">Child's Age</TableCell>
                   <TableCell align="center">Current Pack</TableCell>
@@ -58,6 +59,11 @@ export default function AdminSubscriptionsTab({ num, data }) {
                     {/* creation date */}
                     <TableCell>
                       {new Date(row.created_at).toLocaleString('en-us')}
+                    </TableCell>
+
+                    {/* last delivery */}
+                    <TableCell>
+                      {new Date(row.last_delivery).toLocaleString('en-us')}
                     </TableCell>
 
                     {/* email */}
@@ -77,7 +83,7 @@ export default function AdminSubscriptionsTab({ num, data }) {
 
                     {/* due */}
                     <TableCell align="center">
-                      {3 - monthDiff(new Date(row.created_at), end)} Months
+                      {3 - monthDiff(new Date(row.last_delivery), end)} Months
                     </TableCell>
 
                     <TableCell align='center'>
