@@ -521,14 +521,11 @@ Device Responsivity
   audio {
     width: 275px
   }
-  .guarantee-inner-bg h2, .occasions h2, .works-section h2, .sample-songs h2, .testimonials h2, .main-newsletter h2 {
+  .guarantee-inner-bg h2, .occasions h2, .works-section h2, .sample-songs h2, .testimonials h2, .main-newsletter h2, .sample-songs h2  {
     font-size: 2rem;
   }
   .guarantee-inner-bg h2 {
     padding: 0 25px;
-  }
-  h2, .sample-songs h2 {
-  font-size: 2rem;
   }
   .hero h1 {
     font-size: 3rem;

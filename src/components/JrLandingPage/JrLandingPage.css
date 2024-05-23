@@ -2,6 +2,16 @@
   background-color: white;
 }
 
+@media (max-width: 1050px) {
+  .junior p {
+    font-size: 14px;
+  }
+  .junior button {
+    width: 125px;
+    font-size: 15px;
+  }
+}
+
 /* --------------------------------------------------------------------------------
 Button
 -------------------------------------------------------------------------------- */
@@ -107,6 +117,57 @@ Hero
   height: 80px;
 }
 
+@media (max-width: 1050px) {
+  .header-text-music,
+  .header-text-forEvery {
+    font-size: 40px;
+  }
+  .hero-header {
+    padding-top: 8%;
+    padding-bottom: 15%;
+    padding-left: 100px;
+  }
+  .header-flex img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 17px;
+  }
+}
+@media (max-width: 720px) {
+  .header-text-music,
+  .header-text-forEvery {
+    font-size: 30px;
+    line-height: 40px;
+  }
+  .hero-header {
+    padding-top: 8%;
+    padding-bottom: 15%;
+    padding-left: 25px;
+    margin-bottom: 15%;
+  }
+  .header-flex img {
+    width: 75px;
+    height: auto;
+    margin-bottom: 5px;
+  }
+  .hero-header {
+    width: 50% 
+  }
+}
+@media (max-width: 400px) {
+  .header-text-music,
+  .header-text-forEvery {
+    font-size: 20px;
+    line-height: 40px;
+  }
+  .header-flex img {
+    width: 50px;
+    height: auto;
+    margin-bottom: 5px;
+  }
+
+}
+
 
 /* --------------------------------------------------------------------------------
 Every Age Box
@@ -125,12 +186,14 @@ Every Age Box
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
+
 .every-age-every-stage h2 {
   margin-top: 0;
   font-weight: 1000;
   font-size: 2rem;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, .2);
 }
+
 .every-age-every-stage img {
   width: 50px;
   position: absolute
@@ -140,10 +203,12 @@ Every Age Box
   left: 2rem;
   bottom: 3rem;
 }
+
 .everyagenotegroup {
   top: 4rem;
   right: 4rem;
 }
+
 .everyagelooparrow {
   top: 5rem;
   right: 1rem;
@@ -151,6 +216,23 @@ Every Age Box
 
 #explore {
   margin-top: 50px;
+}
+
+@media (max-width: 830px) {
+  .every-age-every-stage {
+    width: 300px;
+    height: 175px;
+  }
+  .every-age-every-stage h2 {
+    font-size: 25px;
+  }
+  #explore {
+    margin: 10px auto;
+  }
+  .every-age-every-stage img {
+    width: 35px;
+    position: absolute
+  }
 }
 
 /* --------------------------------------------------------------------------------
@@ -175,6 +257,7 @@ How Jr Works
   flex-direction: row;
   justify-content: space-evenly;
 }
+
 .jr-works-arrows-and-bees img {
   width: 75px;
   margin-left: -40px;
@@ -184,10 +267,12 @@ How Jr Works
 .jr-works-header {
   text-align: center;
 }
+
 .jr-works-header h2 {
   margin: 0 auto 0;
   font-size: 36px;
 }
+
 .jr-works-header h4 {
   margin-top: 0;
 }
@@ -198,15 +283,14 @@ How Jr Works
   flex-direction: row;
   justify-content: space-between;
   padding-left: 5%;
+  margin-bottom: 15px
 }
-.jr-works p {
 
-  padding-left: 60px;
+.jr-works p {
 }
 
 /* container for each numbered item */
 .jr-works-item {
-  width: 30%;
   display: flex;
   flex-direction: column;
 
@@ -219,6 +303,7 @@ How Jr Works
   align-items: top;
   gap: 10px;
 }
+
 .-header h3 {
   margin-top: 10px;
   margin-bottom: 0px;
@@ -232,10 +317,12 @@ How Jr Works
   border-radius: 25px;
   background-color: #FFDEB0;
 }
+
 .jr-works-number h2 {
   text-align: center;
   padding-top: 7px;
   margin-top: 0;
+  width: 50px;
 }
 
 .jr-works-beehive {
@@ -245,6 +332,25 @@ How Jr Works
   width: 100px;
 }
 
+@media (max-width: 830px) {
+  .how-jr-works-box {
+    width: 85%;
+    padding: 25px 0;
+  }
+  .jr-works {
+    flex-direction: column;
+    gap: 10px;
+    width: 80%;
+    margin: 15px auto;
+  }
+  .jr-works-header h2 {
+    font-size: 25px;
+  }
+  .jr-works-arrows-and-bees {
+    display: none;
+  }
+}
+
 /* --------------------------------------------------------------------------------
 Why Junior
 -------------------------------------------------------------------------------- */
@@ -252,6 +358,7 @@ Why Junior
 .why-junior {
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 25px;
   width: 75%;
   margin: 55px auto 25px;
@@ -267,6 +374,10 @@ Why Junior
   margin: 20px auto 25px;
 }
 
+.why-junior-video {
+  align-items: center;
+}
+
 .why-junior-video iframe {
   width: 506px;
   height: 285px;
@@ -276,6 +387,27 @@ Why Junior
 
 #try-it {
   margin-left: 0;
+}
+
+@media (max-width: 1050px) {
+  .why-junior-video iframe {
+    width: 358px;
+    height: 201px;
+  }
+}
+@media (max-width: 830px) {
+  .why-junior-text h2 {
+    font-size: 25px;
+  }
+  .why-junior {
+    flex-direction: column;
+  }
+  .why-junior-text {
+    width: 358px;
+  }
+  #try-it {
+    margin: auto;
+  }
 }
 
 /* --------------------------------------------------------------------------------
@@ -294,13 +426,16 @@ Benefits
   margin-bottom: -150px;
   z-index: 1;
 }
+
 .jr-benefits {
   margin: 25px auto 15px;
 }
+
 .jr-benefits h2 {
   text-align: center;
   font-size: 36px;
 }
+
 .jr-benefits img {
   width: 85%;
   margin: auto;
@@ -323,11 +458,33 @@ Benefits
   flex-direction: column;
   width: 30%;
 }
+
 .jr-benefit-item h3 {
   margin: 15px 0 0
 }
+
 .jr-benefit-item p {
   margin: 0
+}
+
+@media (max-width: 830px) {
+  .jr-benefits img {
+    width: 95%;
+    padding-left: 70px;
+  }
+  .jr-benefits h2 {
+    font-size: 25px;
+  }
+}
+@media (max-width: 600px) {
+  .jr-benefit-container {
+    width: 85%;
+    flex-direction: column;
+    align-items: center;
+  }
+  .jr-benefit-item {
+    width: 80%
+  }
 }
 
 
@@ -376,13 +533,16 @@ Learning Packs
   flex-direction: column;
   align-items: center;
 }
+
 .age-item-contents img {
   width: 250px
 }
+
 .age-item-contents h3 {
   text-shadow: 1px 1px #FEAF17;
   font-size: 20px;
 }
+
 .age-item-contents p {
   text-align: center;
   font-size: 16px;
@@ -393,11 +553,29 @@ Learning Packs
   background-color: white;
   border: 1px solid #474546;
   padding: 0 2rem 20px;
-  width: 25%;
+  width: 30%;
 }
 
 .jr-learn-more-btn {
   width: 10rem;
+}
+
+@media (max-width: 830px) {
+  .age-container {
+    padding: 0 50px;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+  .age-item-contents img {
+    width: 150px;
+  }
+  .age-item {
+    width: 75%
+  }
+  .jr-learning-packs-title {
+    font-size: 20px;
+  }
 }
 
 /* --------------------------------------------------------------------------------
@@ -422,6 +600,7 @@ More than just music
   border: 8px solid #474546;
   margin: 0 100px;
 }
+
 .jr-mtjm h2 {
   text-align: center;
   margin-bottom: 5px;
@@ -452,14 +631,17 @@ More than just music
   flex-direction: row;
   width: 35%;
 }
+
 .jr-mtjm-item h3 {
   margin-top: 0;
   margin-bottom: 0
 }
+
 .jr-mtjm-item p {
   margin-top: 0;
   margin-bottom: 0
 }
+
 .jr-mtjm-item img {
   margin: 25px 10px 0 0;
   width: 50px;
@@ -501,6 +683,7 @@ Guesswork
   margin-bottom: 0;
   text-shadow: 1px 1px white;
 }
+
 .guesswork-text-container img {
   margin-bottom: 10px;
   width: 20rem;
@@ -523,8 +706,44 @@ Guesswork
 #guesswork-btn {
   background-color: white;
 }
+
 #guesswork-btn:hover {
   background-color: #fed07b;
+}
+
+@media (max-width: 1100px) {
+  .guesswork-honeycomb {
+    display: none;
+  }
+  .guesswork-baby-saxophone {
+    right: 10%
+  }
+}
+@media (max-width: 900px) {
+  #guesswork-btn {
+    margin: 0;
+    position: absolute;
+    bottom: 50px;
+    left: 20%
+  }
+  .guesswork-text-container h2 {
+    font-size: 25px;
+  }
+  .guesswork-text-container img {
+    width: 200px
+  }
+  .guesswork-flex {
+    padding-left: 15%;
+  }
+}
+@media (max-width: 550px) {
+  .guesswork-baby-saxophone {
+    width: 150px;
+    right: 15px;
+  }
+  .guesswork-flex {
+    padding-left: 10%;
+  }
 }
 
 /* --------------------------------------------------------------------------------
@@ -561,17 +780,40 @@ Reviews
 }
 
 .jr-review-item {
-  width: 22%;
+  width: 30%;
   background-color: white;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   text-align: center;
   padding: 10px 15px
 }
+
 .jr-review-item img {
   width: 120px
 }
+
 .jr-review-item p {
   margin-top: 0;
+}
+#reviews-why-btn {
+  background-color: #fff;
+}
+
+@media (max-width: 830px) {
+  .jr-reviews-bg {
+    padding: 60px 0;
+  }
+  .jr-review-item p {
+    font-size: 12px;
+  }
+}
+@media (max-width: 660px) {
+  .jr-review-item-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .jr-review-item {
+    width: 100%;
+  }
 }
 
 /* --------------------------------------------------------------------------------
@@ -585,15 +827,18 @@ Newsletter
   margin: 75px auto 25px;
   padding-bottom: 20px;
 }
+
 .jr-newsletter h2 {
   font-size: 36px;
   margin-bottom: 0;
   margin: 0 !important;
   padding: 0 !important;
 }
+
 .jr-newsletter p {
   margin-left: 25px;
 }
+
 .jr-newsletter input {
   height: 30px;
   width: 350px;
@@ -617,8 +862,23 @@ Newsletter
   margin-left: 25px;
 }
 
-.newsletter-input-button{
+.newsletter-input-button {
   display: flex;
   gap: 20px;
   align-items: center;
+}
+
+@media (max-width: 600px) {
+  .newsletter-input-button {
+    flex-direction: column;
+  }
+  #jr-newsletter-btn {
+    margin: auto
+  }
+  .jr-newsletter h2 {
+    font-size: 30px;
+  }
+  .jr-newsletter input {
+    width: 250px
+  }
 }
