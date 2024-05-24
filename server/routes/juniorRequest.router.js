@@ -291,4 +291,50 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
   }
 });
 
+router.put("/learning-pack/:id", rejectUnauthenticated, cloudinaryUpload.single("file"), async (req, res) => {
+  let connection
+  try {
+  connection = await pool.connect();
+
+  connection.query("BEGIN;");
+    let audioUrl
+    if(req.file){
+    audioUrl = req.file.path;
+    console.log(audioUrl);
+    } else {
+      audioUrl = req.body.url
+      console.log(audioUrl);
+    }
+    const lyrics = req.body.lyrics;
+    const title = req.body.title;
+    const artist = req.body.artist_id;
+    const streaming_link = req.body.streaming_link;
+    const songRequestId = req.params.id;
+
+    const detailsQuery = `
+    UPDATE "song_details"
+    SET  
+      "url" = $1, 
+      "lyrics" = $2, 
+      "title" = $3, 
+      "artist_id" = $4, 
+      "streaming_link" = $5
+    WHERE "song_request_id" = $6;
+    `;
+    const detailsValues = [
+      audioUrl, lyrics, title, artist, streaming_link, songRequestId,
+    ];
+    console.log("detailsValues:", detailsValues)
+    const detailsResult = await connection.query(detailsQuery, detailsValues);
+    connection.query("COMMIT;");
+    connection.release();
+    res.sendStatus(201);
+  } catch (error) {
+    console.log("Error in details router PUT:", error);
+    connection.query("ROLLBACK;");
+    connection.release();
+    res.sendStatus(500);
+  }
+});
+
 module.exports = router;

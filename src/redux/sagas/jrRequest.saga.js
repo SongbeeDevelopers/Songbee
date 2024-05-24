@@ -135,6 +135,31 @@ function* fetchAllSubscriptions () {
   }
 }
 
+function* updateLearningPack (action){
+  const headers = {
+    'content-type': 'multipart/form-data'
+  }
+  try {
+    const response = yield axios({
+      method: "PUT",
+      url: `/api/jr-request/learning-pack/${action.payload.id}`,
+      headers: headers,
+      data: action.payload.data
+  });
+  yield put ({ type: "FETCH_LEARNING_PACKS"})
+  } catch (error) {
+    console.error('Saga updateLearningPack failed:', error)
+  }
+}
+
+function* activateLearningPack (action){
+  try {
+
+  } catch (error) {
+    console.error("Saga activateLearningPack failed:", error)
+  }
+}
+
 function* juniorRequestSaga() {
   yield takeLatest("FETCH_USER_REQUESTS", fetchUserRequests);
   yield takeLatest("FETCH_CURRENT_REQUEST", fetchCurrentRequest);
@@ -147,6 +172,8 @@ function* juniorRequestSaga() {
   yield takeLatest("FETCH_JR_CHECKOUT", fetchJrCheckout);
   yield takeLatest("DELETE_JR_REQUEST", deleteJrRequest)
   yield takeLatest("FETCH_ALL_SUBSCRIPTIONS", fetchAllSubscriptions);
+  yield takeLatest("UPDATE_LEARNING_PACK", updateLearningPack);
+  yield takeLatest("ACTIVATE_PACK", activateLearningPack);
 
 }
 

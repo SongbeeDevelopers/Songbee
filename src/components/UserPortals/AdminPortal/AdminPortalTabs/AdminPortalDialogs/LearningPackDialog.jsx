@@ -27,6 +27,7 @@ export default function LearningPackDialog({ setDetailsOpen }) {
   const [songFile11, setSongFile11] = useState('')
   const [songFile12, setSongFile12] = useState('')
   const [songFile13, setSongFile13] = useState('')
+  const [playGuide, setPlayGuide] = useState('')
 
   const detailsForm = new FormData();
 
@@ -47,6 +48,11 @@ export default function LearningPackDialog({ setDetailsOpen }) {
       if (result.isConfirmed) {
         Swal.fire("Saved!", "", "success");
         // if confirmed, updates db with edit reducer data
+        if (songFile1 === '' || null) {
+            detailsForm.append("url", edit.song1)
+          } else {
+            detailsForm.append("file", songFile1)
+          }
         dispatch({
           type: 'SUBMIT_REQUEST_EDIT',
           payload: edit
@@ -444,6 +450,25 @@ export default function LearningPackDialog({ setDetailsOpen }) {
                 className="form-control-file"
                 name="uploaded_file"
                 onChange={(evt) => setSongFile13(evt.target.files[0])}
+                fullWidth={true}
+              />
+        </div>
+        <div className='admin-details-edit-row'>
+          <Typography 
+            gutterBottom 
+            variant="overline"
+            sx={{mt: 4}}
+            >
+                Play Guide PDF:
+              </Typography>
+
+              <TextField
+                sx={{mt: 2}}
+                required
+                type="file"
+                className="form-control-file"
+                name="uploaded_file"
+                onChange={(evt) => setPlayGuide(evt.target.files[0])}
                 fullWidth={true}
               />
         </div>
