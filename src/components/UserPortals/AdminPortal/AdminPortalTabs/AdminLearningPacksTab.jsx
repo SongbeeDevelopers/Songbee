@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import FilterBar from '../../../FilterBar/FilterBar';
+import LearningPackDialog from './AdminPortalDialogs/LearningPackDialog';
 
 import {
   Button,
@@ -90,7 +91,7 @@ export default function AdminLearningPacksTab({ num, data }) {
                         open={detailsOpen}
                         onClose={closeDetails}
                       >
-                        {/* <AdminDetailsDialog setDetailsOpen={setDetailsOpen} /> */}
+                        <LearningPackDialog setDetailsOpen={setDetailsOpen} />
                       </Dialog>
                     </TableCell>
 

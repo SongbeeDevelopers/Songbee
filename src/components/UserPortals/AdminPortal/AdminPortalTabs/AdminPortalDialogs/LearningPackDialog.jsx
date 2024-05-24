@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { Button } from "@mui/material"
+import { Button, Typography, TextField } from "@mui/material"
 import Swal from 'sweetalert2';
 
 import '../../AdminPortal.css'
@@ -14,7 +14,19 @@ export default function LearningPackDialog({ setDetailsOpen }) {
   
   const edit = useSelector(store => store.edit)
 
-  const [songFile, setSongFile] = useState('')
+  const [songFile1, setSongFile1] = useState('')
+  const [songFile2, setSongFile2] = useState('')
+  const [songFile3, setSongFile3] = useState('')
+  const [songFile4, setSongFile4] = useState('')
+  const [songFile5, setSongFile5] = useState('')
+  const [songFile6, setSongFile6] = useState('')
+  const [songFile7, setSongFile7] = useState('')
+  const [songFile8, setSongFile8] = useState('')
+  const [songFile9, setSongFile9] = useState('')
+  const [songFile10, setSongFile10] = useState('')
+  const [songFile11, setSongFile11] = useState('')
+  const [songFile12, setSongFile12] = useState('')
+  const [songFile13, setSongFile13] = useState('')
 
   const detailsForm = new FormData();
 
@@ -72,145 +84,369 @@ export default function LearningPackDialog({ setDetailsOpen }) {
         </div>
 
         <div className='admin-details-edit-row'>
-          <label> Occasion
+          <label> Song 1 Title
             <input
-              value={edit.occasion}
+              value={edit.song1_name}
               className='admin-portal-inputs'
-              placeholder='Type the Occasion Here'
-              onChange={() => handleInput('occasion', event.target.value)}
+              placeholder='Song 1 Title'
+              onChange={() => handleInput('song1_name', event.target.value)}
             ></input>
           </label>
 
-          <label> Pronunciation
+          <Typography 
+            gutterBottom 
+            variant="overline"
+            sx={{mt: 4}}
+            >
+                Song1:
+              </Typography>
+
+              <TextField
+                sx={{mt: 2}}
+                required
+                type="file"
+                className="form-control-file"
+                name="uploaded_file"
+                onChange={(evt) => setSongFile1(evt.target.files[0])}
+                fullWidth={true}
+              />
+        </div>
+        <div className='admin-details-edit-row'>
+          <label> Song 2 Title
             <input
-              value={edit.pronunciation}
+              value={edit.song2_name}
               className='admin-portal-inputs'
-              placeholder='Pronunciation'
-              onChange={() => handleInput('pronunciation', event.target.value)}
+              placeholder='Song 2 Title'
+              onChange={() => handleInput('song2_name', event.target.value)}
             ></input>
           </label>
-        </div>
 
+          <Typography 
+            gutterBottom 
+            variant="overline"
+            sx={{mt: 4}}
+            >
+                Song2:
+              </Typography>
+
+              <TextField
+                sx={{mt: 2}}
+                required
+                type="file"
+                className="form-control-file"
+                name="uploaded_file"
+                onChange={(evt) => setSongFile2(evt.target.files[0])}
+                fullWidth={true}
+              />
+        </div>
         <div className='admin-details-edit-row'>
-          <label> Inspiration
+          <label> Song 3 Title
             <input
-              value={edit.inspiration}
+              value={edit.song3_name}
               className='admin-portal-inputs'
-              placeholder='Inspiration'
-              onChange={() => handleInput('inspiration', event.target.value)}
+              placeholder='Song 2 Title'
+              onChange={() => handleInput('song3_name', event.target.value)}
             ></input>
           </label>
 
-          <label> Relationship
+          <Typography 
+            gutterBottom 
+            variant="overline"
+            sx={{mt: 4}}
+            >
+                Song3:
+              </Typography>
+
+              <TextField
+                sx={{mt: 2}}
+                required
+                type="file"
+                className="form-control-file"
+                name="uploaded_file"
+                onChange={(evt) => setSongFile3(evt.target.files[0])}
+                fullWidth={true}
+              />
+        </div>
+        <div className='admin-details-edit-row'>
+          <label> Song 4 Title
             <input
-              value={edit.recipient_relationship}
+              value={edit.song4_name}
               className='admin-portal-inputs'
-              placeholder='Relationship'
-              onChange={() => handleInput('recipient_relationship', event.target.value)}
+              placeholder='Song 4 Title'
+              onChange={() => handleInput('song4_name', event.target.value)}
             ></input>
           </label>
-        </div>
 
-        <div className='admin-details-edit-row'>
-          <label> Genre
-            <select className='admin-portal-inputs'
-              value={edit.genre}
-              onChange={() => handleInput('genre', Number(event.target.value))}
+          <Typography 
+            gutterBottom 
+            variant="overline"
+            sx={{mt: 4}}
             >
-              <option selected disabled>Select Genre</option>
-              {
-                genres.map((genre) => (
-                  <option key={genre.id} value={genre.id}>{genre.name}</option>
-                ))
-              }
-            </select>
-          </label>
+                Song4:
+              </Typography>
 
-          <label> Vocal Style
-            <select className='admin-portal-inputs'
-              value={edit.vocal_type}
-              onChange={() => handleInput('vocal_type', event.target.value)}
-            >
-              <option selected disabled>Select Style</option>
-              <option value="female">Female</option>
-              <option value="male">Male</option>
-            </select>
-          </label>
+              <TextField
+                sx={{mt: 2}}
+                required
+                type="file"
+                className="form-control-file"
+                name="uploaded_file"
+                onChange={(evt) => setSongFile4(evt.target.files[0])}
+                fullWidth={true}
+              />
         </div>
-
         <div className='admin-details-edit-row'>
-          <label> Vibe
-            <select className='admin-portal-inputs'
-              value={edit.vibe}
-              onChange={() => handleInput('vibe', event.target.value)}
+          <label> Song 5 Title
+            <input
+              value={edit.song5_name}
+              className='admin-portal-inputs'
+              placeholder='Song 5 Title'
+              onChange={() => handleInput('song5_name', event.target.value)}
+            ></input>
+          </label>
+
+          <Typography 
+            gutterBottom 
+            variant="overline"
+            sx={{mt: 4}}
             >
-              <option selected disabled>Select Vibe</option>
-              <option value="happy">Happy</option>
-              <option value="lighthearted">Lighthearted</option>
-              <option value="heartfelt">Heartfelt</option>
-              <option value="romantic">Romantic</option>
-              <option value="reflective">Reflective</option>
-              <option value="somber">Somber</option>
-            </select>
+                Song5:
+              </Typography>
+
+              <TextField
+                sx={{mt: 2}}
+                required
+                type="file"
+                className="form-control-file"
+                name="uploaded_file"
+                onChange={(evt) => setSongFile5(evt.target.files[0])}
+                fullWidth={true}
+              />
+        </div>
+        <div className='admin-details-edit-row'>
+          <label> Song 6 Title
+            <input
+              value={edit.song6_name}
+              className='admin-portal-inputs'
+              placeholder='Song 6 Title'
+              onChange={() => handleInput('song6_name', event.target.value)}
+            ></input>
           </label>
 
-          <label> Tempo
-            <select className='admin-portal-inputs'
-              value={edit.tempo}
-              onChange={() => handleInput('tempo', event.target.value)}
+          <Typography 
+            gutterBottom 
+            variant="overline"
+            sx={{mt: 4}}
             >
-              <option selected disabled>Select Tempo</option>
-              <option value="slow">Slow</option>
-              <option value="medium">Medium</option>
-              <option value="fast">Up-Tempo</option>
-            </select>
-          </label>
-        </div>
+                Song6:
+              </Typography>
 
+              <TextField
+                sx={{mt: 2}}
+                required
+                type="file"
+                className="form-control-file"
+                name="uploaded_file"
+                onChange={(evt) => setSongFile6(evt.target.files[0])}
+                fullWidth={true}
+              />
+        </div>
         <div className='admin-details-edit-row'>
-          <label> Most important
-            <textarea
-              value={edit.important_what}
-              className='admin-portal-textarea'
-              placeholder='What?'
-              onChange={() => handleInput('important_what', event.target.value)}
-            ></textarea>
+          <label> Song 7 Title
+            <input
+              value={edit.song7_name}
+              className='admin-portal-inputs'
+              placeholder='Song 7 Title'
+              onChange={() => handleInput('song7_name', event.target.value)}
+            ></input>
           </label>
 
-          <label> Why it's important
-            <textarea
-              value={edit.important_why}
-              className='admin-portal-textarea'
-              placeholder='Why?'
-              onChange={() => handleInput('important_why', event.target.value)}
-            ></textarea>
-          </label>
+          <Typography 
+            gutterBottom 
+            variant="overline"
+            sx={{mt: 4}}
+            >
+                Song7:
+              </Typography>
+
+              <TextField
+                sx={{mt: 2}}
+                required
+                type="file"
+                className="form-control-file"
+                name="uploaded_file"
+                onChange={(evt) => setSongFile7(evt.target.files[0])}
+                fullWidth={true}
+              />
         </div>
-
-        <label>Prompt Answers</label>
         <div className='admin-details-edit-row'>
-          <textarea
-            value={edit.story1}
-            className='admin-portal-textarea'
-            placeholder='Prompt 1'
-            onChange={() => handleInput('story1', event.target.value)}
-          ></textarea>
-          <textarea
-            value={edit.story2}
-            className='admin-portal-textarea'
-            placeholder='Prompt 2'
-            onChange={() => handleInput('story2', event.target.value)}
-          ></textarea>
-        </div>
+          <label> Song 8 Title
+            <input
+              value={edit.song8_name}
+              className='admin-portal-inputs'
+              placeholder='Song 8 Title'
+              onChange={() => handleInput('song8_name', event.target.value)}
+            ></input>
+          </label>
 
-        <label> Additional info
-          <textarea
-            className='admin-portal-textarea'
-            value={edit.additional_info}
-            placeholder='Additional Details'
-            onChange={() => handleInput('additional_info', event.target.value)}
-          ></textarea>
-        </label>
+          <Typography 
+            gutterBottom 
+            variant="overline"
+            sx={{mt: 4}}
+            >
+                Song8:
+              </Typography>
+
+              <TextField
+                sx={{mt: 2}}
+                required
+                type="file"
+                className="form-control-file"
+                name="uploaded_file"
+                onChange={(evt) => setSongFile8(evt.target.files[0])}
+                fullWidth={true}
+              />
+        </div>
+        <div className='admin-details-edit-row'>
+          <label> Song 9 Title
+            <input
+              value={edit.song9_name}
+              className='admin-portal-inputs'
+              placeholder='Song 9 Title'
+              onChange={() => handleInput('song9_name', event.target.value)}
+            ></input>
+          </label>
+
+          <Typography 
+            gutterBottom 
+            variant="overline"
+            sx={{mt: 4}}
+            >
+                Song9:
+              </Typography>
+
+              <TextField
+                sx={{mt: 2}}
+                required
+                type="file"
+                className="form-control-file"
+                name="uploaded_file"
+                onChange={(evt) => setSongFile9(evt.target.files[0])}
+                fullWidth={true}
+              />
+        </div>
+        <div className='admin-details-edit-row'>
+          <label> Song 10 Title
+            <input
+              value={edit.song10_name}
+              className='admin-portal-inputs'
+              placeholder='Song 10 Title'
+              onChange={() => handleInput('song10_name', event.target.value)}
+            ></input>
+          </label>
+
+          <Typography 
+            gutterBottom 
+            variant="overline"
+            sx={{mt: 4}}
+            >
+                Song10:
+              </Typography>
+
+              <TextField
+                sx={{mt: 2}}
+                required
+                type="file"
+                className="form-control-file"
+                name="uploaded_file"
+                onChange={(evt) => setSongFile10(evt.target.files[0])}
+                fullWidth={true}
+              />
+        </div>
+        <div className='admin-details-edit-row'>
+          <label> Song 11 Title
+            <input
+              value={edit.song11_name}
+              className='admin-portal-inputs'
+              placeholder='Song 11 Title'
+              onChange={() => handleInput('song11_name', event.target.value)}
+            ></input>
+          </label>
+
+          <Typography 
+            gutterBottom 
+            variant="overline"
+            sx={{mt: 4}}
+            >
+                Song11:
+              </Typography>
+
+              <TextField
+                sx={{mt: 2}}
+                required
+                type="file"
+                className="form-control-file"
+                name="uploaded_file"
+                onChange={(evt) => setSongFile11(evt.target.files[0])}
+                fullWidth={true}
+              />
+        </div>
+        <div className='admin-details-edit-row'>
+          <label> Song 12 Title
+            <input
+              value={edit.song12_name}
+              className='admin-portal-inputs'
+              placeholder='Song 12 Title'
+              onChange={() => handleInput('song12_name', event.target.value)}
+            ></input>
+          </label>
+
+          <Typography 
+            gutterBottom 
+            variant="overline"
+            sx={{mt: 4}}
+            >
+                Song12:
+              </Typography>
+
+              <TextField
+                sx={{mt: 2}}
+                required
+                type="file"
+                className="form-control-file"
+                name="uploaded_file"
+                onChange={(evt) => setSongFile12(evt.target.files[0])}
+                fullWidth={true}
+              />
+        </div>
+        <div className='admin-details-edit-row'>
+          <label> Song 13 Title
+            <input
+              value={edit.song13_name}
+              className='admin-portal-inputs'
+              placeholder='Song 13 Title'
+              onChange={() => handleInput('song13_name', event.target.value)}
+            ></input>
+          </label>
+
+          <Typography 
+            gutterBottom 
+            variant="overline"
+            sx={{mt: 4}}
+            >
+                Song13:
+              </Typography>
+
+              <TextField
+                sx={{mt: 2}}
+                required
+                type="file"
+                className="form-control-file"
+                name="uploaded_file"
+                onChange={(evt) => setSongFile13(evt.target.files[0])}
+                fullWidth={true}
+              />
+        </div>
 
         <Button variant="contained"
           onClick={submitPack}
