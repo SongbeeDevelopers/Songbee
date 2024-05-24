@@ -1,10 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { useMediaQuery } from "react-responsive";
+
 import { Learningpacks } from "../LearningPacksData";
 import "../LearningPacksPage.css";
 
 function Packs() {
+
   return (
     <>
       <div className="lp-title">
