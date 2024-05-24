@@ -1,8 +1,6 @@
 
 
 .imgBox {
-  position: static;
-  display: grid;
   justify-content: center;
   background-color: white;
   padding: 10px;
@@ -37,8 +35,8 @@
 
 .location  {
   position: relative;
-  left: 95px;
-  top: -8px;
+  left: 25px;
+  top: 10px;
   
 }
 
@@ -65,6 +63,57 @@
     margin-left: 100px;
  }
 
+ .socialLinks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  left: 0;
+  width: 300px;
+  margin-top: 40px;
+}
+
+.instagram {
+  max-width: 10%;
+  height: 100px;
+  margin-right: 20px;
+}
+
+.spotify {
+  max-width: 10%;
+  height: 100px;
+}
+
+.website {
+  max-width: 10%;
+  height: 100px;
+  margin-left: 20px;
+}
+
+.socialLinks::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 105px;
+  top: 12px;
+  width: 1px;
+  height: 20px;
+  transform: translateY(-50%);
+  background-color: #e1ded6;
+}
+
+.website::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 155px;
+  top: 12px;
+  width: 1px;
+  height: 20px;
+  transform: translateY(-50%);
+  background-color: #e1ded6;
+}
+
  
  .community-button {
      margin: 0 auto;
@@ -73,83 +122,32 @@
      text-align: center;
      margin-bottom: 3px;
      font-family: Poppins, sans-serif;
-     font-weight: 600;
+     font-weight: 700;
      transition: background-color 0.45s;
      display: flex;
      justify-content: center;
      color: var(--black\<deleted\|variable-f6301105\>);
-     width: 14rem;
-     height: 1.5rem;
-     margin-left: -140px;
-     left: -30px;
-     margin-top: 20px;
-     
+     width: 13rem;
+     height: 1.6rem;
+     margin-left: -170px;
+     margin-top: 10px;
+     padding-top: 2px;
+     cursor: pointer;
+  }
+
+  .community-button:hover {
+    background-color: #fed07b;
   }
 
   .bio {
-    
     font-family: Poppins, sans-serif;
     font-size: 15px;
     line-height: 24px;
     font-weight: 300;
     letter-spacing: 0px; 
+    padding-bottom: 30px;
+    padding-top: 10px;
   }
-
-  
-
-  .socialLinks {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    left: 50px;
-    width: 300px;
-    margin-top: 40px;
-  }
-
-  .instagram {
-    max-width: 10%;
-    height: 100px;
-    margin-right: 20px;
-  }
-
-  .spotify {
-    max-width: 10%;
-    height: 100px;
-  }
-
-  .website {
-    max-width: 10%;
-    height: 100px;
-    margin-left: 20px;
-  }
-
-
-  .socialLinks::before {
-    content: "";
-    display: block;
-    position: absolute;
-    left: 80px;
-    top: 12px;
-    width: 1px;
-    height: 20px;
-    transform: translateY(-50%);
-    background-color: #e1ded6;
-  }
-
-  .website::after {
-    content: "";
-    display: block;
-    position: absolute;
-    left: 130px;
-    top: 12px;
-    width: 1px;
-    height: 20px;
-    transform: translateY(-50%);
-    background-color: #e1ded6;
-  }
-
- 
 
   .songListWrapper {
     max-width: 700px;
@@ -169,12 +167,14 @@
   .title {
     margin-bottom: -40px;
     padding-top: 50px;
+    text-decoration: underline;
   }
 
 
   .songList {
     display: flex;
     flex-direction: row;
+    height: 100%;
    
   }
   
@@ -186,52 +186,40 @@
     justify-content: space-between;
     padding-bottom: 50px;
     margin-bottom: 50px;
-    margin-top: 8px;
+    margin-top: 4px;
     margin-left: -40px;
   }
 
   .songItems p {
-    margin-top: 250px;
-    margin-left: -40px;
-    margin-right: 50px;
+    margin-top: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
+   
   }
 
   .audioFiles {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
     border-bottom: 2px solid  #e1ded6;
-    margin-bottom: 20px;
-    
+    margin-bottom: 10px;
+   
   }
   
 
   .audioFiles  div{
     margin-bottom: 1px;
-    margin-top: -100px;
-    gap: 100px;
+    margin-top: 50px;
     margin-left: auto;
-    flex: 1;
+    max-width: 100%;
+  }
+
+  .songTitles  {
+    width: 100%;
+    padding-top: 40px;
    
   }
 
-  .songTitles {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 60%;
-    padding-top: 10px;
-  }
-
-  
-
-
-  .songTitles h3{
-    margin-right: 20px;
-    margin-bottom: 0;
-    width: 100%;
-  }
 
   .genres {
     margin-left: -10px;

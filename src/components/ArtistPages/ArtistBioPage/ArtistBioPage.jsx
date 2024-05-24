@@ -87,7 +87,7 @@ const handleArtist =(e) => {
                     )}
                </div>
            </div>
-           <h3 className="title">Sample Songs</h3>
+           <h3 className="title">Song Portfolio:</h3>
           
            <div className="songList">
                <div className="songItems">
@@ -99,7 +99,7 @@ const handleArtist =(e) => {
                     <div className="audioFiles">
                         <div className="artistCommunityBtns">
                         <AudioButton url={sampleSong} />
-                          <p className="songTitles" key={index}>{songTitle}</p>
+                        <p className="songTitles" key={index}>{songTitle}</p>
                           {console.log('sampleSong', sampleSong)}
                         </div>
                   </div>

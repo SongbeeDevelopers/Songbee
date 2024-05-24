@@ -41,9 +41,7 @@ function ArtistCommunity() {
 
   const handleSong = (artist) => {
     console.log('sup')
-    // const {song_title_1, artist_name, genres} = artist;
     setShowPopUp(!showPopUp);
-    // setShowPopUp(true)
     setSelectedSong(artist);
   };
 
@@ -59,32 +57,25 @@ function ArtistCommunity() {
       audioRef.current.pause();
       setIsPlaying(false)
     }
-    // setIsPlaying(!isPlaying)
+    
   }
 
-  function formatTime(time) {
-    const minutes = Math.floor(time / 60);
-    const seconds = Math.floor(time % 60);
-    return `${minutes}:${seconds < 10 ? '0' : ""}${seconds}`
-  }
-
+  
   // song player popup
   const SongDisplay = () => {
     if (showPopUp === true) {
       return (
         <div className="popup">
           <div className="pop-up-content">
-            <h3>{selectedSong.song_title_1}</h3>
-            <p>Artist: {selectedSong.artist_name}</p>
-            <p>Genre: {selectedSong.genres[0].genre}</p>
-            <audio ref={audioRef} src={selectedSong.sample_song_1} />
-            <div className="audio-controls">
-              <button onClick={playBtn}>play/pause</button>
+            <h3>{selectedSong.artist_name}</h3>
+            <div className="song-title">
+               <p>{selectedSong.song_title_1}</p>
             </div>
-            {isPlaying ? "playing" : "paused"} -
-            {audioRef.current && audioRef.current.duration ? `Duration: ${formatTime(audioRef.current.duration)}` : ""}
-            <progress value={audioRef.current ? audioRef.current.currentTime : 0} max={audioRef.current ? audioRef.current.duration : 0}></progress>
-            <button onClick={closePopUp}>Close</button>
+            <p className="genre">Genre: {selectedSong.genres[0].genre}</p>
+            <audio className="audio-btn" controls ref={audioRef} src={selectedSong.sample_song_1} />
+            <div className="close-btn">
+               <button onClick={closePopUp}>X</button>
+            </div>
             {console.log('audioRef:', audioRef)}
           </div>
         </div>
@@ -112,6 +103,7 @@ function ArtistCommunity() {
         <div className="artist-container">
           {artistCommunity.map((artist, i) => (
             <div className="artist-card" key={i}>
+              <h3>{artist.artist_name}</h3>
               <img
                 className="artistSlide-img"
                 onClick={() => history.push(`/ArtistBioPage/${artist.id}`)}
