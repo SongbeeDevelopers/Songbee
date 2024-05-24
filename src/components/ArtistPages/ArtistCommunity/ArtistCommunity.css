@@ -65,7 +65,7 @@
 }
 
 .player-container:hover {
-  background-color: rgb(240, 212, 161);
+  background-color: #fed07b;
 }
 
 .play {
@@ -77,28 +77,78 @@
   background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTAgMjRoLTZ2LTI0aDZ2MjR6bTEwLTI0aC02djI0aDZ2LTI0eiIvPjwvc3ZnPg==) !important;
 }
 
-/*---------- Styling for the pop ups--------- */
+.artistCommunityBtn {
+  margin-top: -30px;
+}
+
+/*---------- Styling for the pop up--------- */
 
 .popup {
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 160px;
+  height: 110px;
   border-radius: 5px;
-  background-color: orange;
+  background-color: #fed07b;
   padding: 0;
+  padding-left: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   z-index: 999;
 }
 
-.popup p {
-  margin: 0;
-  height: 20px;
+.popup {
+  margin: 5px;
+  height: 100px;
+ 
+}
+
+.song-title {
+  position: absolute;
+  margin: 20px;
+  height: 0px;
+  margin-left: -4px;
+  margin-top: 40px;
+}
+
+.genre {
+ position: absolute;
+ margin-top: 80px;
+ margin-left: -5px;
+
+}
+
+.popup h3 {
+  text-decoration: underline;
 }
 
 .pop-up-content {
-  text-align: center;
+  display: flex;
+  align-items: center;
   margin-top: auto;
+  
+}
+
+.audio-btn {
+  height: 60px;
+  padding-top: 20px;
+  margin-top: 5px;
+  margin-right: 150px;
+  margin-left: 270px;
+  width: 40%;
+}
+
+.close-btn button{
+  margin-top: 20px;
+  border-radius: 50%;
+  font-family: Poppins, sans-serif;
+  font-weight: bold;
+  width: 40px;
+  cursor: pointer;
+  background-color: #B8D5E0;
+}
+
+.close-btn button:hover {
+  background-color: #fed07b;
 }
 
 /* ----------End of pop up styling------- */
