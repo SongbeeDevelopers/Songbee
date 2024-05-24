@@ -79,7 +79,7 @@ export default function AdminPortalTabs() {
         <Tabs value={value} onChange={handleChange} variant="scrollable" centered>
           <Tab label="Pending Orders" {...a11yProps(0)} />
           <Tab label="Completed Orders" {...a11yProps(1)} />
-          <Tab label="Ongoing Subscriptions" {...a11yProps(2)} />
+          <Tab label="Active Subscriptions" {...a11yProps(2)} />
           <Tab label="Paused Subscriptions" {...a11yProps(3)} />
           <Tab label="Users" {...a11yProps(4)} />
           <Tab label="Artist Applications" {...a11yProps(5)} />
