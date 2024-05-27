@@ -21,7 +21,9 @@ function ArtistProfileTab({artistProfile}) {
     <div className="tab-body">
       {artistProfile ? (
         <>
-          <Button sx={{ color: "black" }} onClick={() => setOpenArtist(true)}>
+          <Button 
+            sx={{m: 'auto', mt: 2, height: 35, width: 350, backgroundColor: "#feaf17", color: "black" }}
+            onClick={() => setOpenArtist(true)}>
             Edit Artist Profile Info
           </Button>
           <ArtistPortalBioPage />

@@ -1,6 +1,7 @@
 const express = require("express");
 const pool = require("../modules/pool");
 const router = express.Router();
+const cloudinaryUpload = require("../modules/cloudinary.config");
 const {
   rejectUnauthenticated,
 } = require("../modules/authentication-middleware");
@@ -231,6 +232,108 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
       console.log("Error in junior request router delete subscription", err);
       res.sendStatus(500);
     });
+});
+
+router.get('/all', rejectUnauthenticated, async (req, res) => {
+  let connection
+  try {
+  connection = await pool.connect();
+  connection.query("BEGIN;");
+  const activeSubscriptionQuery = `
+  SELECT 
+  "subscription"."id" AS "id",
+  "subscription"."user_id",
+  "subscription"."pack_id",
+  "subscription"."age",
+  "subscription"."is_active",
+  "subscription"."created_at",
+  "subscription"."last_delivery",
+  "learning_packs"."title",
+  "learning_packs"."min_age",
+  "learning_packs"."max_age",
+  "user"."email"
+  FROM "subscription"
+  JOIN "learning_packs"
+  ON "subscription"."pack_id"="learning_packs"."id"
+  JOIN "user"
+  ON "subscription"."user_id"="user"."id"
+  WHERE "subscription"."is_active"=TRUE;
+  `
+  const pendingResult = await connection.query(activeSubscriptionQuery);
+  const pausedSubscriptionQuery = `
+  SELECT 
+  "subscription"."id" AS "id",
+  "subscription"."user_id",
+  "subscription"."pack_id",
+  "subscription"."age",
+  "subscription"."is_active",
+  "subscription"."created_at",
+  "subscription"."last_delivery",
+  "learning_packs"."title",
+  "learning_packs"."min_age",
+  "learning_packs"."max_age",
+  "user"."email"
+  FROM "subscription"
+  JOIN "learning_packs"
+  ON "subscription"."pack_id"="learning_packs"."id"
+  JOIN "user"
+  ON "subscription"."user_id"="user"."id"
+  WHERE "subscription"."is_active"=FALSE;
+  `
+  const completedResult = await connection.query(pausedSubscriptionQuery);
+  connection.query("COMMIT;");
+  connection.release();
+  res.send([pendingResult.rows, completedResult.rows])
+  } catch (error) {
+      console.log("Error in junior request router GET all subscriptions:", error);
+      connection.query("ROLLBACK;");
+      connection.release();
+      res.sendStatus(500);
+  }
+});
+
+router.put("/learning-pack/:id", rejectUnauthenticated, cloudinaryUpload.array("files"), async (req, res) => {
+  let connection
+  try {
+  connection = await pool.connect();
+
+  connection.query("BEGIN;");
+  console.log("req.files?", req.files);
+    let audioUrl
+    // if(req.file){
+    // audioUrl = req.file.path;
+    // console.log(audioUrl);
+    // } else {
+    //   audioUrl = req.body.url
+    //   console.log(audioUrl);
+    // }
+    const lyrics = req.body.lyrics;
+    const title = req.body.title;
+    const artist = req.body.artist_id;
+    const streaming_link = req.body.streaming_link;
+    const songRequestId = req.params.id;
+
+    const detailsQuery = `
+    UPDATE "learning_packs"
+    SET  
+      "title" = $1, 
+      "description" = $2, 
+      "title" = $3, 
+      "artist_id" = $4, 
+      "streaming_link" = $5
+    WHERE "id" = $6;
+    `;
+    const detailsValues = [];
+    const detailsResult = await connection.query(detailsQuery, detailsValues);
+    connection.query("COMMIT;");
+    connection.release();
+    res.sendStatus(201);
+  } catch (error) {
+    console.log("Error in details router PUT:", error);
+    connection.query("ROLLBACK;");
+    connection.release();
+    res.sendStatus(500);
+  }
 });
 
 module.exports = router;

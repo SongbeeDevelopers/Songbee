@@ -7,6 +7,8 @@ import AdminRequestsTab from './AdminRequestsTab';
 import AdminArtistApplicationsTab from './AdminArtistApplicationsTab';
 import AdminUsersTab from './AdminUsersTab';
 import AdminArtistEdits from './AdminArtistEdits';
+import AdminSubscriptionsTab from "./AdminSubscriptionsTab";
+import AdminLearningPacksTab from "./AdminLearningPacksTab";
 
 import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
@@ -30,6 +32,9 @@ export default function AdminPortalTabs() {
   const users = useSelector(store => store.allUsers)
   const artistApplications = useSelector((store) => store.pendingArtists);
   const artistEdits = useSelector((store) => store.pendingEdits);
+  const activeSubscriptions = useSelector(store => store.activeSubscriptions);
+  const pausedSubscriptions = useSelector(store => store.pausedSubscriptions);
+  const learningPacks = useSelector(store => store.learningPacks);
 
   // MUI tab structure
   const handleChange = (event, newValue) => {
@@ -74,9 +79,12 @@ export default function AdminPortalTabs() {
         <Tabs value={value} onChange={handleChange} variant="scrollable" centered>
           <Tab label="Pending Orders" {...a11yProps(0)} />
           <Tab label="Completed Orders" {...a11yProps(1)} />
-          <Tab label="Users" {...a11yProps(2)} />
-          <Tab label="Artist Applications" {...a11yProps(3)} />
-          <Tab label="Artist Edits" {...a11yProps(4)} />
+          <Tab label="Active Subscriptions" {...a11yProps(2)} />
+          <Tab label="Paused Subscriptions" {...a11yProps(3)} />
+          <Tab label="Users" {...a11yProps(4)} />
+          <Tab label="Artist Applications" {...a11yProps(5)} />
+          <Tab label="Artist Edits" {...a11yProps(6)} />
+          <Tab label="Learning Packs" {...a11yProps(7)} />
         </Tabs>
       </Box>
 
@@ -88,16 +96,29 @@ export default function AdminPortalTabs() {
         <AdminRequestsTab num={1} data={completedRequests} />
       </CustomTabPanel>
 
+
       <CustomTabPanel value={value} index={2}>
-        <AdminUsersTab data={users} />
+        <AdminSubscriptionsTab num={0} data={activeSubscriptions} />
       </CustomTabPanel>
 
       <CustomTabPanel value={value} index={3}>
-        <AdminArtistApplicationsTab data={artistApplications} />
+        <AdminSubscriptionsTab num={1} data={pausedSubscriptions} />
       </CustomTabPanel>
 
       <CustomTabPanel value={value} index={4}>
+        <AdminUsersTab data={users} />
+      </CustomTabPanel>
+
+      <CustomTabPanel value={value} index={5}>
+        <AdminArtistApplicationsTab data={artistApplications} />
+      </CustomTabPanel>
+
+      <CustomTabPanel value={value} index={6}>
         <AdminArtistEdits data={artistEdits} />
+      </CustomTabPanel>
+
+      <CustomTabPanel value={value} index={7}>
+        <AdminLearningPacksTab data={learningPacks} />
       </CustomTabPanel>
     </div>
   )
