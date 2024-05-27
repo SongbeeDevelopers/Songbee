@@ -87,7 +87,7 @@ export default function AdminLearningPacksTab({ num, data }) {
                         UPDATE
                       </Button>
                       {/* details dialog */}
-                      <Dialog keepMounted fullWidth maxWidth="md"
+                      <Dialog maxWidth="md"
                         open={detailsOpen}
                         onClose={closeDetails}
                       >

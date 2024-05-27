@@ -38,6 +38,7 @@ export default function LearningPackDialog({ setDetailsOpen }) {
 
   const submitPack = (event) => {
     event.preventDefault()
+    let files = []
     // confirmation message
     Swal.fire({
       icon: "question",
@@ -49,13 +50,25 @@ export default function LearningPackDialog({ setDetailsOpen }) {
         Swal.fire("Saved!", "", "success");
         // if confirmed, updates db with edit reducer data
         if (songFile1 === '' || null) {
-            detailsForm.append("url", edit.song1)
+            detailsForm.append("url1", edit.song1)
           } else {
-            detailsForm.append("file", songFile1)
+            files.push(songFile1)
           }
+          if (songFile2 === '' || null) {
+            detailsForm.append("url2", edit.song2)
+          } else {
+            files.push(songFile2)
+          }
+          if (songFile3 === '' || null) {
+            detailsForm.append("url3", edit.song3)
+          } else {
+            files.push(songFile3)
+          }
+          detailsForm.append("files", files)
+          console.log("files", files)
         dispatch({
-          type: 'SUBMIT_REQUEST_EDIT',
-          payload: edit
+          type: 'UPDATE_LEARNING_PACK',
+          payload: {id: edit.id, data: detailsForm}
         })
         setDetailsOpen(false)
       }
@@ -67,7 +80,7 @@ export default function LearningPackDialog({ setDetailsOpen }) {
     <div className='admin-req-details-edit'>
       <h3>Edit Learning Pack Details</h3>
 
-      <form>
+   
 
         <div className='admin-details-edit-row'>
           <label> Learning Pack Name
@@ -99,23 +112,13 @@ export default function LearningPackDialog({ setDetailsOpen }) {
             ></input>
           </label>
 
-          <Typography 
-            gutterBottom 
-            variant="overline"
-            sx={{mt: 4}}
-            >
-                Song1:
-              </Typography>
-
-              <TextField
-                sx={{mt: 2}}
-                required
+         <label> Song 1:
+              <input
+                className='admin-portal-inputs'
                 type="file"
-                className="form-control-file"
-                name="uploaded_file"
                 onChange={(evt) => setSongFile1(evt.target.files[0])}
-                fullWidth={true}
-              />
+              ></input>
+              </label>
         </div>
         <div className='admin-details-edit-row'>
           <label> Song 2 Title
@@ -127,23 +130,13 @@ export default function LearningPackDialog({ setDetailsOpen }) {
             ></input>
           </label>
 
-          <Typography 
-            gutterBottom 
-            variant="overline"
-            sx={{mt: 4}}
-            >
-                Song2:
-              </Typography>
-
-              <TextField
-                sx={{mt: 2}}
-                required
+          <label> Song 2:
+              <input
+                className='admin-portal-inputs'
                 type="file"
-                className="form-control-file"
-                name="uploaded_file"
                 onChange={(evt) => setSongFile2(evt.target.files[0])}
-                fullWidth={true}
-              />
+              ></input>
+              </label>
         </div>
         <div className='admin-details-edit-row'>
           <label> Song 3 Title
@@ -155,23 +148,13 @@ export default function LearningPackDialog({ setDetailsOpen }) {
             ></input>
           </label>
 
-          <Typography 
-            gutterBottom 
-            variant="overline"
-            sx={{mt: 4}}
-            >
-                Song3:
-              </Typography>
-
-              <TextField
-                sx={{mt: 2}}
-                required
+          <label> Song 3:
+              <input
+                className='admin-portal-inputs'
                 type="file"
-                className="form-control-file"
-                name="uploaded_file"
                 onChange={(evt) => setSongFile3(evt.target.files[0])}
-                fullWidth={true}
-              />
+              ></input>
+              </label>
         </div>
         <div className='admin-details-edit-row'>
           <label> Song 4 Title
@@ -183,23 +166,13 @@ export default function LearningPackDialog({ setDetailsOpen }) {
             ></input>
           </label>
 
-          <Typography 
-            gutterBottom 
-            variant="overline"
-            sx={{mt: 4}}
-            >
-                Song4:
-              </Typography>
-
-              <TextField
-                sx={{mt: 2}}
-                required
+          <label> Song 4:
+              <input
+                className='admin-portal-inputs'
                 type="file"
-                className="form-control-file"
-                name="uploaded_file"
                 onChange={(evt) => setSongFile4(evt.target.files[0])}
-                fullWidth={true}
-              />
+              ></input>
+              </label>
         </div>
         <div className='admin-details-edit-row'>
           <label> Song 5 Title
@@ -211,23 +184,13 @@ export default function LearningPackDialog({ setDetailsOpen }) {
             ></input>
           </label>
 
-          <Typography 
-            gutterBottom 
-            variant="overline"
-            sx={{mt: 4}}
-            >
-                Song5:
-              </Typography>
-
-              <TextField
-                sx={{mt: 2}}
-                required
+          <label> Song 5:
+              <input
+                className='admin-portal-inputs'
                 type="file"
-                className="form-control-file"
-                name="uploaded_file"
                 onChange={(evt) => setSongFile5(evt.target.files[0])}
-                fullWidth={true}
-              />
+              ></input>
+              </label>
         </div>
         <div className='admin-details-edit-row'>
           <label> Song 6 Title
@@ -239,23 +202,13 @@ export default function LearningPackDialog({ setDetailsOpen }) {
             ></input>
           </label>
 
-          <Typography 
-            gutterBottom 
-            variant="overline"
-            sx={{mt: 4}}
-            >
-                Song6:
-              </Typography>
-
-              <TextField
-                sx={{mt: 2}}
-                required
+          <label> Song 6:
+              <input
+                className='admin-portal-inputs'
                 type="file"
-                className="form-control-file"
-                name="uploaded_file"
                 onChange={(evt) => setSongFile6(evt.target.files[0])}
-                fullWidth={true}
-              />
+              ></input>
+              </label>
         </div>
         <div className='admin-details-edit-row'>
           <label> Song 7 Title
@@ -267,23 +220,13 @@ export default function LearningPackDialog({ setDetailsOpen }) {
             ></input>
           </label>
 
-          <Typography 
-            gutterBottom 
-            variant="overline"
-            sx={{mt: 4}}
-            >
-                Song7:
-              </Typography>
-
-              <TextField
-                sx={{mt: 2}}
-                required
+          <label> Song 7:
+              <input
+                className='admin-portal-inputs'
                 type="file"
-                className="form-control-file"
-                name="uploaded_file"
                 onChange={(evt) => setSongFile7(evt.target.files[0])}
-                fullWidth={true}
-              />
+              ></input>
+              </label>
         </div>
         <div className='admin-details-edit-row'>
           <label> Song 8 Title
@@ -295,23 +238,13 @@ export default function LearningPackDialog({ setDetailsOpen }) {
             ></input>
           </label>
 
-          <Typography 
-            gutterBottom 
-            variant="overline"
-            sx={{mt: 4}}
-            >
-                Song8:
-              </Typography>
-
-              <TextField
-                sx={{mt: 2}}
-                required
+          <label> Song 8:
+              <input
+                className='admin-portal-inputs'
                 type="file"
-                className="form-control-file"
-                name="uploaded_file"
                 onChange={(evt) => setSongFile8(evt.target.files[0])}
-                fullWidth={true}
-              />
+              ></input>
+              </label>
         </div>
         <div className='admin-details-edit-row'>
           <label> Song 9 Title
@@ -323,23 +256,13 @@ export default function LearningPackDialog({ setDetailsOpen }) {
             ></input>
           </label>
 
-          <Typography 
-            gutterBottom 
-            variant="overline"
-            sx={{mt: 4}}
-            >
-                Song9:
-              </Typography>
-
-              <TextField
-                sx={{mt: 2}}
-                required
+          <label> Song 9:
+              <input
+                className='admin-portal-inputs'
                 type="file"
-                className="form-control-file"
-                name="uploaded_file"
                 onChange={(evt) => setSongFile9(evt.target.files[0])}
-                fullWidth={true}
-              />
+              ></input>
+              </label>
         </div>
         <div className='admin-details-edit-row'>
           <label> Song 10 Title
@@ -351,23 +274,13 @@ export default function LearningPackDialog({ setDetailsOpen }) {
             ></input>
           </label>
 
-          <Typography 
-            gutterBottom 
-            variant="overline"
-            sx={{mt: 4}}
-            >
-                Song10:
-              </Typography>
-
-              <TextField
-                sx={{mt: 2}}
-                required
+          <label> Song 10:
+              <input
+                className='admin-portal-inputs'
                 type="file"
-                className="form-control-file"
-                name="uploaded_file"
                 onChange={(evt) => setSongFile10(evt.target.files[0])}
-                fullWidth={true}
-              />
+              ></input>
+              </label>
         </div>
         <div className='admin-details-edit-row'>
           <label> Song 11 Title
@@ -379,23 +292,13 @@ export default function LearningPackDialog({ setDetailsOpen }) {
             ></input>
           </label>
 
-          <Typography 
-            gutterBottom 
-            variant="overline"
-            sx={{mt: 4}}
-            >
-                Song11:
-              </Typography>
-
-              <TextField
-                sx={{mt: 2}}
-                required
+          <label> Song 11:
+              <input
+                className='admin-portal-inputs'
                 type="file"
-                className="form-control-file"
-                name="uploaded_file"
                 onChange={(evt) => setSongFile11(evt.target.files[0])}
-                fullWidth={true}
-              />
+              ></input>
+              </label>
         </div>
         <div className='admin-details-edit-row'>
           <label> Song 12 Title
@@ -407,23 +310,13 @@ export default function LearningPackDialog({ setDetailsOpen }) {
             ></input>
           </label>
 
-          <Typography 
-            gutterBottom 
-            variant="overline"
-            sx={{mt: 4}}
-            >
-                Song12:
-              </Typography>
-
-              <TextField
-                sx={{mt: 2}}
-                required
+          <label> Song 12:
+              <input
+                className='admin-portal-inputs'
                 type="file"
-                className="form-control-file"
-                name="uploaded_file"
                 onChange={(evt) => setSongFile12(evt.target.files[0])}
-                fullWidth={true}
-              />
+              ></input>
+              </label>
         </div>
         <div className='admin-details-edit-row'>
           <label> Song 13 Title
@@ -435,43 +328,22 @@ export default function LearningPackDialog({ setDetailsOpen }) {
             ></input>
           </label>
 
-          <Typography 
-            gutterBottom 
-            variant="overline"
-            sx={{mt: 4}}
-            >
-                Song13:
-              </Typography>
-
-              <TextField
-                sx={{mt: 2}}
-                required
+          <label> Song 13:
+              <input
+                className='admin-portal-inputs'
                 type="file"
-                className="form-control-file"
-                name="uploaded_file"
                 onChange={(evt) => setSongFile13(evt.target.files[0])}
-                fullWidth={true}
-              />
+              ></input>
+              </label>
         </div>
         <div className='admin-details-edit-row'>
-          <Typography 
-            gutterBottom 
-            variant="overline"
-            sx={{mt: 4}}
-            >
-                Play Guide PDF:
-              </Typography>
-
-              <TextField
-                sx={{mt: 2}}
-                required
+        <label> Play Guide PDF:
+              <input
+                className='admin-portal-inputs'
                 type="file"
-                className="form-control-file"
-                name="uploaded_file"
                 onChange={(evt) => setPlayGuide(evt.target.files[0])}
-                fullWidth={true}
-              />
-        </div>
+              ></input>
+              </label>
 
         <Button variant="contained"
           onClick={submitPack}
@@ -479,8 +351,8 @@ export default function LearningPackDialog({ setDetailsOpen }) {
         >
           SAVE
         </Button>
+        </div>
 
-      </form>
     </div>
   );
 }

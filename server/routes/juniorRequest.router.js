@@ -1,6 +1,7 @@
 const express = require("express");
 const pool = require("../modules/pool");
 const router = express.Router();
+const cloudinaryUpload = require("../modules/cloudinary.config");
 const {
   rejectUnauthenticated,
 } = require("../modules/authentication-middleware");
@@ -291,20 +292,21 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
   }
 });
 
-router.put("/learning-pack/:id", rejectUnauthenticated, cloudinaryUpload.single("file"), async (req, res) => {
+router.put("/learning-pack/:id", rejectUnauthenticated, cloudinaryUpload.array("files"), async (req, res) => {
   let connection
   try {
   connection = await pool.connect();
 
   connection.query("BEGIN;");
+  console.log("req.files?", req.files);
     let audioUrl
-    if(req.file){
-    audioUrl = req.file.path;
-    console.log(audioUrl);
-    } else {
-      audioUrl = req.body.url
-      console.log(audioUrl);
-    }
+    // if(req.file){
+    // audioUrl = req.file.path;
+    // console.log(audioUrl);
+    // } else {
+    //   audioUrl = req.body.url
+    //   console.log(audioUrl);
+    // }
     const lyrics = req.body.lyrics;
     const title = req.body.title;
     const artist = req.body.artist_id;
@@ -312,19 +314,16 @@ router.put("/learning-pack/:id", rejectUnauthenticated, cloudinaryUpload.single(
     const songRequestId = req.params.id;
 
     const detailsQuery = `
-    UPDATE "song_details"
+    UPDATE "learning_packs"
     SET  
-      "url" = $1, 
-      "lyrics" = $2, 
+      "title" = $1, 
+      "description" = $2, 
       "title" = $3, 
       "artist_id" = $4, 
       "streaming_link" = $5
-    WHERE "song_request_id" = $6;
+    WHERE "id" = $6;
     `;
-    const detailsValues = [
-      audioUrl, lyrics, title, artist, streaming_link, songRequestId,
-    ];
-    console.log("detailsValues:", detailsValues)
+    const detailsValues = [];
     const detailsResult = await connection.query(detailsQuery, detailsValues);
     connection.query("COMMIT;");
     connection.release();
