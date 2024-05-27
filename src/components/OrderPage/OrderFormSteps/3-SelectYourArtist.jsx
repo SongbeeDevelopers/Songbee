@@ -43,7 +43,7 @@ export default function SelectYourArtist({ handleInput }) {
               requestData.genre === ""
             ) {
               return (
-                <>
+                <div className="select-artist-artist">
                   <h4>{artist.artist_name}</h4>
                   <img
                     onClick={() => handleInput("artist", Number(artist.id))}
@@ -53,7 +53,7 @@ export default function SelectYourArtist({ handleInput }) {
                     alt="Artist photos"
                   />
                   <SelectArtistAudioButton url={artist.sample_song_1} />
-                </>
+                </div>
               );
             }
           })}
