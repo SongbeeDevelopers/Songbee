@@ -23,9 +23,8 @@ export default function SelectYourArtist({ handleInput }) {
   }
 
   return (
-    <>
-      <h3>Select Your Artist!</h3>
-      <h5>Click on an Artist to Select and See Their Bio</h5>
+    <div className="main-checkout-select-artist">
+      <h2>Select Your Artist!</h2>
       <h5>
         {requestData.genre ?
         `Showing All Artists who Specialize In ${currentGenre}`
@@ -101,6 +100,6 @@ export default function SelectYourArtist({ handleInput }) {
           </select>
         </div>
       </div> */}
-    </>
+    </div>
   );
 }

@@ -163,10 +163,11 @@ and dropdown in Songbee JR */
 
 .select-artist-container  {
     width: 100%;
-    height: 250px;
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
+    margin-bottom: 50px
+
   }
 
   .select-artist-card {
@@ -176,7 +177,7 @@ and dropdown in Songbee JR */
     gap: 20px;
     text-align: center;
     align-items: center;
-    width: 100%
+    width: 100%;
   }
   
   .select-artistSlide-img {
@@ -281,6 +282,11 @@ and dropdown in Songbee JR */
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.main-checkout-select-artist h2 {
+    text-align: center;
+    margin-bottom: 25px;
 }
 
 @media (max-width: 550px) {
