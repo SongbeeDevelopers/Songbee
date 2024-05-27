@@ -732,6 +732,9 @@ FAQ
   .w-card {
     width: 80%
   }
+  .packList {
+    padding: 0 50px
+  }
 }
 
 @media (max-width: 600px) {
