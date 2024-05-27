@@ -1,10 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { useMediaQuery } from "react-responsive";
+
 import { Learningpacks } from "../LearningPacksData";
 import "../LearningPacksPage.css";
 
 function Packs() {
+
+  const isMobile = useMediaQuery( { query: `(max-width: 750px)`} )
+
   return (
     <>
       <div className="lp-title">
@@ -30,7 +35,7 @@ function Packs() {
             <div
               className="packItems"
               style={{
-                gridTemplateColumns: `repeat(${pack.gridItems},minmax(0,1fr))`,
+                gridTemplateColumns: isMobile ? `1fr` : `repeat(${pack.gridItems},minmax(0,1fr))`,
               }}
             >
               {pack.items.map((item) => (
@@ -38,8 +43,8 @@ function Packs() {
                   <img
                     src={item.imageUrl}
                     alt=""
-                    height={pack.gridItems === 3 ? 250 : 350}
-                    style={{ maxHeight: pack.gridItems === 3 ? 250 : 350 }}
+                    height={isMobile ? 600 : pack.gridItems === 3 ? 250 : 350}
+                    style={{ maxHeight: isMobile ? 350 : pack.gridItems === 3 ? 250 : 350 }}
                   />
                   <h3>{item.name}</h3>
                   <p>{item.age}</p>

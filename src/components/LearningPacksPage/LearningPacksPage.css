@@ -39,6 +39,32 @@ Hero
   margin-top: -110px;
 }
 
+@media (max-width: 600px) {
+  .lp-hero-background {
+    background-position: center;
+  }
+
+  .lp-hero-text {
+    padding-top: 5px;
+    padding-left: 20px;
+    gap: 5px;
+    width: fit-content
+  }
+
+  .lp-hero-text h1 {
+    font-size: 30px !important;
+  }
+
+  .lp-hero-text p {
+    font-size: 15px !important;
+  }
+
+  .jr-landing-btn {
+    width: 150px;
+    font-size: 15px;
+  }
+}
+
 /* --------------------------------------------------------------------------------
 Works
 -------------------------------------------------------------------------------- */
@@ -64,7 +90,7 @@ Works
 .lp-try-bee {
   position: absolute;
   left: -10px;
-  width: 25%;
+  width: 15rem;
 }
 
 .lp-honeycomb-topright {
@@ -133,6 +159,17 @@ Works
   flex-shrink: 0;
 }
 
+@media (max-width: 830px) {
+  .w-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .w-card {
+    width: 500px;
+  }
+}
+
 /* --------------------------------------------------------------------------------
 Packs
 -------------------------------------------------------------------------------- */
@@ -142,6 +179,7 @@ Packs
   text-align: center;
   margin-top: 50px;
 }
+
 .lp-title h2 {
   font-size: 35px;
   padding: 0;
@@ -154,6 +192,7 @@ Packs
   width: 100%;
   justify-content: center;
 }
+
 .lp-links a {
   text-decoration: underline;
   color: black;
@@ -176,10 +215,12 @@ Packs
   justify-content: flex-start;
   align-items: flex-start;
 }
+
 .onePack h2 {
   padding: 0;
   margin: 0;
 }
+
 .onePack:last-child {
   margin-bottom: 50px;
 }
@@ -192,6 +233,7 @@ Packs
   gap: 0;
   color: black;
 }
+
 .onePackItem img {
   width: 100%;
   margin-bottom: 15px;
@@ -201,15 +243,18 @@ Packs
   object-fit: cover;
   border-radius: 0 !important;
 }
+
 .onePackItem h3 {
   font-weight: 500;
   padding: 0;
   margin: 0;
 }
+
 .onePackItem p {
   margin: 0;
   padding: 0;
 }
+
 .onePack span {
   text-decoration: underline;
   margin-bottom: 15px;
@@ -267,10 +312,12 @@ Play to Learn
   flex-direction: column;
   gap: 5px;
 }
+
 .lp-cardRight h3 {
   margin: 0;
   padding: 0;
 }
+
 .lp-cardRight p {
   margin: 0 !important;
   padding: 0;
@@ -323,6 +370,14 @@ FAQ
   font-weight: 600;
   padding: 0;
   margin: 0;
+}
+
+@media (max-width: 820px) {
+  .lp-pricing {
+    position: relative;
+    margin-top: -40px;
+    margin-bottom: 40px;
+  }
 }
 
 .lp-header {
@@ -453,6 +508,7 @@ FAQ
   position: relative;
   flex-direction: column;
 }
+
 .lp-video video {
   height: auto;
   width: 1000px;
@@ -493,7 +549,7 @@ FAQ
 .lp-video h2 {
   margin-top: -15px;
   width: max-content;
-  padding: 50px 150px;
+  padding: 50px 0px;
   background-size: 100% 100%;
   z-index: 50;
 }
@@ -604,7 +660,6 @@ FAQ
 
 .packs-faq h2 {
   font-size: 3rem;
-
 }
 
 .packs-faqQuestions {
@@ -641,4 +696,102 @@ FAQ
   min-height: 2px;
   margin-top: 6rem;
   margin-bottom: -1rem;
+}
+
+@media (max-width: 1000px) {
+  .packs-faq h2 {
+    font-size: 35px;
+  }
+
+  .lp-playtolearnCards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .lp-playtolearnCard {
+    width: 500px;
+  }
+
+  .lp-try-bee {
+    width: 10em;
+  }
+  .video-blackMusicNotes {
+    left: 50px
+  }
+  .video-colorFlowers {
+    right: 25px
+  }
+}
+
+@media (max-width: 750px) {
+  .lp-try-bee {
+    display: none
+  }
+
+  .w-card {
+    width: 80%
+  }
+  .packList {
+    padding: 0 50px
+  }
+}
+
+@media (max-width: 600px) {
+  .works-header h2 {
+    font-size: 25px !important;
+    margin-bottom: 0px !important;
+  }
+
+  .works-header p {
+    margin-bottom: 10px;
+    font-size: 15px !important;
+  }
+
+  .w-cards {
+    padding-top: 15px;
+    padding-bottom: 25px;
+  }
+
+  .faq-line {
+    width: 200px;
+  }
+
+  .lp-music-notes {
+    width: 40px;
+    height: 40px;
+  }
+  .lp-cardRight p {
+    width: 300px;
+  }
+  .lp-playtolearnCard {
+    justify-content: center;
+  }
+  .video-blackMusicNotes {
+    width: 35px;
+  }
+  .video-colorFlowers {
+    width: 40px
+  }
+  .video-colorMusicNotes {
+    width: 70px
+  }
+}
+
+@media (max-width: 560px) {
+  .packs-faq h2 {
+    font-size: 22px;
+  }
+
+  .lp-title h2 {
+    font-size: 25px;
+  }
+
+  .onePack h2 {
+    font-size: 20px;
+  }
+
+  .lp-dots {
+    width: 150px
+  }
 }
