@@ -4,9 +4,15 @@
   margin-top: 4.68rem;
 }
 
+.jr-nav-container {
+  position: fixed;
+  top: 0;
+  height: 4.6875rem;
+  width: 100%;
+  z-index: 1000;
+}
+
 .jr-nav {
-    position: fixed;
-    top: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,6 +23,13 @@
     background-color: white;
     border-bottom: 1px solid black;
     z-index: 1000;
+  }
+
+  .jr-nav-center {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    z-index: 1001;
   }
 
   #jr-header-btn {
