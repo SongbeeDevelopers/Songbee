@@ -753,6 +753,10 @@ FAQ
     padding-bottom: 25px;
   }
 
+  .faq-line {
+    width: 200px;
+  }
+
   .lp-music-notes {
     width: 40px;
     height: 40px;
