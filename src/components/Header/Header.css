@@ -25,6 +25,7 @@
   font-weight: 600;
   color: #474546;
   cursor: pointer;
+  z-index: 2000
 }
 
 .nav-left {

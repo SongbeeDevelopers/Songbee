@@ -29,6 +29,7 @@ function JrHeader() {
   const open = Boolean(anchorEl);
 
   const handleMenu = (event) => {
+    console.log('hello')
     setAnchorEl(event.currentTarget);
   };
   const handleClose = (num) => {
@@ -119,7 +120,7 @@ function JrHeader() {
 
           {/* dropdown menu for mobile users */}
           {isMobile &&
-            <>
+            <div>
               <IconButton
                 size="large"
                 edge="start"
@@ -159,7 +160,7 @@ function JrHeader() {
                 <MenuItem onClick={() => handleClose(3)}>FAQ</MenuItem>
                 <MenuItem onClick={() => handleClose(4)}><a href="mailto:hello@songbee.com">Contact Us</a></MenuItem>
               </Menu>
-            </>
+            </div>
           }
         </div>
       </div>
