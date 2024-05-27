@@ -139,10 +139,9 @@ export default function AddOns({ handleInput, handleOpen, handleClose, open }) {
         </div>
       </div>
       <FormGroup
-        sx={{ display: "flex", justifyContent: "center" }}>
-        <h4>I Have Read and Agree to the <a href='/#/terms'>Terms and Conditions</a></h4>
-        <FormControlLabel required control={<Checkbox />} />
-
+        sx={{ mt: 5, display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center" }}>
+        <h4 className="agree">I Have Read and Agree to the <a href='/#/terms'>Terms and Conditions</a></h4>
+        <FormControlLabel required control={<Checkbox sx={{mb: -7}} />} />
       </FormGroup>
       {!user.id && (
         <button className="checkoutLogRegBtn" onClick={handleOpen}>
