@@ -126,7 +126,7 @@ function JrHeader() {
                 edge="start"
                 color="black"
                 aria-label="menu"
-                sx={{ mr: -2 }}
+                sx={{ mr: -2, zIndex: 2000 }}
                 id="basic-button"
                 aria-controls={open ? "basic-menu" : undefined}
                 aria-haspopup="true"
