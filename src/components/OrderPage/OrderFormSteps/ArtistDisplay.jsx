@@ -16,7 +16,7 @@ function ArtistDisplay() {
   const artist = useSelector((store) => store.currentArtist);
 
   return (
-    <Box sx={{ minWidth: 800 }}>
+    <Box sx={{ minWidth: 800, mt: 5 }}>
       <Card>
         <CardContent className="cardContainer" sx={{ p: "5%" }}>
           <div className="songDetails">

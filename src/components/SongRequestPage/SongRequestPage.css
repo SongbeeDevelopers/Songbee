@@ -25,6 +25,15 @@
     margin-top: 0;
 }
 
+.selectforme {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    margin-left: -45px;
+}
+
 .reqFormPage p {
     text-align: center;
     font-weight: 500;
@@ -286,7 +295,7 @@ and dropdown in Songbee JR */
 
 .main-checkout-select-artist h2 {
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 50px;
 }
 
 @media (max-width: 550px) {
