@@ -117,7 +117,6 @@ router.put('/admin/:id', rejectUnauthenticated, (req, res) => {
     SET "class" = $1
     WHERE "id"=$2;
   `
-  console.log("req.body:", req.body)
   pool.query(query, [req.body.data, req.params.id])
   .then((response) => {
     res.sendStatus(201);
