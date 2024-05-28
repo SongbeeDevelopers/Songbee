@@ -154,7 +154,10 @@ function* updateLearningPack (action){
 
 function* activateLearningPack (action){
   try {
-
+    yield axios.put(`/api/jr-request/active/${action.payload}`)
+    yield put({
+      type: "FETCH_LEARNING_PACKS"
+    })
   } catch (error) {
     console.error("Saga activateLearningPack failed:", error)
   }
