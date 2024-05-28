@@ -81,7 +81,7 @@ function Header() {
             <> <Link to="/admin" className="nav-links">Admin</Link> | </>
           }
 
-          {!isMobile && user.id && user.class > 1 &&
+          {!isMobile && user.id && user.class === 2 &&
             <> <Link to="/artist" className="nav-links">Artist</Link> | </>
           }
 

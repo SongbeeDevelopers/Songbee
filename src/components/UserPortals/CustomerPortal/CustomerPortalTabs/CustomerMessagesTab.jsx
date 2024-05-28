@@ -28,6 +28,15 @@ function CustomerMessagesTab() {
         }
     })
   }
+  const handleChat = (chat) => {
+    if(user.id !== chat.latest_sender){
+      dispatch({
+        type: "READ_MESSAGE",
+        payload: chat.id
+      })
+      history.push(`/chatpage/${chat.id}`)
+  }
+}
 
 
   return (
@@ -45,14 +54,32 @@ function CustomerMessagesTab() {
                 if(chat.user1_email === user.email){
                     return (
                         <>
-                            <p onClick={() => history.push(`/chatpage/${chat.id}`)}>Your Chat with {chat.user2_email}</p>
+                            <Button 
+                              sx={{m: 'auto', mt: 2, height: 35, width: 500, backgroundColor: "#feaf17", color: "black" }}
+                              onClick={() => handleChat(chat)}>
+                                Your Chat with {chat.user2_email}
+                            </Button>
+                            {chat.latest_sender !== user.id && chat.unread_messages !== 0?
+                            <p>You have {chat.unread_messages} unread messages</p>
+                            :
+                            ''
+                            }
                         </>
                     )
                 }
                 else {
                     return (
                         <>
-                            <p onClick={() => history.push(`/chatpage/${chat.id}`)}>Your Chat with {chat.user1_email}</p>
+                            <Button 
+                              sx={{m: 'auto', mt: 2, height: 35, width: 500, backgroundColor: "#feaf17", color: "black" }}
+                              onClick={() => handleChat(chat)}>
+                                Your Chat with {chat.user1_email}
+                            </Button>
+                            {chat.latest_sender !== user.id && chat.unread_messages !== 0 ?
+                            <p>You have {chat.unread_messages} unread messages</p>
+                            :
+                            ''
+                            }
                         </>
                     )
                 }

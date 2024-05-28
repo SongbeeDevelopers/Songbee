@@ -36,15 +36,12 @@ export default function AdminLearningPacksTab({ num, data }) {
     setDetailsOpen(false)
   }
 
-  // same as above, logic for complete dialog
-  const openComplete = (row) => {
-    dispatch({ type: 'SET_EDIT_DATA', payload: row })
-    setCompleteOpen(true)
-  }
-  const closeComplete = () => {
-    dispatch({ type: 'CLEAR_EDIT_DATA' })
-    setCompleteOpen(false)
-  }
+const handleActive = (id) => {
+    dispatch({
+        type: "ACTIVATE_PACK",
+        payload: id
+    })
+}
 
 
   return (
@@ -98,10 +95,10 @@ export default function AdminLearningPacksTab({ num, data }) {
                     {/* activate button */}
                     <TableCell align="center">
                     <Button variant="contained"
-
-                        sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
+                        onClick={() => handleActive(row.id)}
+                        sx={{ height: 35, width: 100, backgroundColor: "#feaf17", color: "black" }}
                       >
-                        ACTIVE
+                        {row.is_active ? 'DEACTIVATE' : 'ACTIVATE'}
                       </Button>
                     </TableCell>
 

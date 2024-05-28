@@ -47,6 +47,10 @@ function* sendMessage (action){
             data: action.payload
         })
         yield put ({
+            type: "NEW_MESSAGE",
+            payload: action.payload.chat_id
+        })
+        yield put ({
             type: "FETCH_CURRENT_CHAT",
             payload: action.payload.chat_id
         })
@@ -56,11 +60,41 @@ function* sendMessage (action){
     }
 }
 
+function* newMessage (action){
+    try {
+        const response = yield axios({
+            method: "PUT",
+            url: `/api/chat/new-message/${action.payload}`
+        })
+    }
+    catch (error) {
+        console.error('newMessage() failed:', error)
+    }
+}
+
+function* readMessage (action){
+    try {
+        const response = yield axios({
+            method: "PUT",
+            url: `/api/chat/read-message/${action.payload}`
+        })
+        yield put ({
+            type: "FETCH_CURRENT_CHAT",
+            payload: action.payload
+        })
+    }
+    catch (error) {
+        console.error('readMessage() failed:', error)
+    }
+}
+
 function* chatSaga() {
     yield takeLatest("FETCH_USER_CHATS", fetchUserChats);
     yield takeLatest("FETCH_CURRENT_CHAT", fetchCurrentChat);
     yield takeLatest("CREATE_CHAT", createChat);
     yield takeLatest("SEND_MESSAGE", sendMessage);
+    yield takeLatest("NEW_MESSAGE", newMessage);
+    yield takeLatest("READ_MESSAGE", readMessage);
 }
 
 export default chatSaga

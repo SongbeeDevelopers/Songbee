@@ -161,7 +161,8 @@ router.put("/accept/:id", async (req, res) => {
 
 router.get('/learning-packs', (req, res) => {
   const query = `
-    SELECT * from "learning_packs";
+    SELECT * from "learning_packs"
+    ORDER BY "min_age";
   `
   pool.query(query)
   .then((response) => {
@@ -292,7 +293,7 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
   }
 });
 
-router.put("/learning-pack/:id", rejectUnauthenticated, cloudinaryUpload.array("files"), async (req, res) => {
+router.put("/learning-pack/:id", rejectUnauthenticated, cloudinaryUpload.single("file"), async (req, res) => {
   let connection
   try {
   connection = await pool.connect();
@@ -335,5 +336,29 @@ router.put("/learning-pack/:id", rejectUnauthenticated, cloudinaryUpload.array("
     res.sendStatus(500);
   }
 });
+
+router.put('/active/:id', async (req, res) => {
+  let connection
+  try {
+  connection = await pool.connect();
+
+  connection.query("BEGIN;");
+  const approvalQuery = `
+  UPDATE "learning_packs"
+  SET "is_active"=NOT "is_active"
+  WHERE id=$1;
+  `
+  // console.log('req.params.id:', req.params.id)
+  await connection.query(approvalQuery, [req.params.id])
+  connection.query("COMMIT;");
+  connection.release();
+  res.sendStatus(200);
+  } catch (error) {
+      console.error("JR request router update active pack failed:", error)
+      connection.query("ROLLBACK;");
+      connection.release();
+      res.sendStatus(500)
+  }
+})
 
 module.exports = router;
