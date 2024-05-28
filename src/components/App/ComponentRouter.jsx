@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Redirect, Switch, useLocation } from "react-router-dom";
+import { Redirect, Route, Switch, useLocation } from "react-router-dom";
 
 // utility
 import ProtectedRoute from "./ProtectedRoute";
@@ -53,7 +53,6 @@ import SchoolsInspiration from "../SchoolsAndGroups/SchoolsAndGroups";
 import WhySongbee from "../WhySongbee/WhySongbee";
 import WhatsIncluded from "../WhatsIncludedSchools/WhatsIncluded";
 import DiveIntoBenefits from "../JrBenefits/JrBenefits";
-import { Route } from "react-router-dom";
 import SocketHome from "../SocketComponents/SocketHome";
 import ChatPage from "../SocketComponents/ChatPage";
 import CancelPage from "../CancelPage/CancelPage";
@@ -272,7 +271,7 @@ function ComponentRouter() {
           <LearningPacksPage routeVariants={routeVariants} />
         </JrRoute>
 
-        <JrRoute exact path="/learning-packs/:slug">
+        <JrRoute exact path="/learning-packs/:id">
           <LearningPackView routeVariants={routeVariants} />
         </JrRoute>
 
