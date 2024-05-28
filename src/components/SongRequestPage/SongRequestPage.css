@@ -25,6 +25,17 @@
     margin-top: 0;
 }
 
+
+
+.selectforme {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    margin-left: -45px;
+}
+
 .reqFormPage p {
     text-align: center;
     font-weight: 500;
@@ -162,18 +173,22 @@ and dropdown in Songbee JR */
 }
 
 .select-artist-container  {
-    width: 600px;
-    height: 250px;
+    width: 100%;
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
+    margin-bottom: 50px
+
   }
 
   .select-artist-card {
     display: flex;
     flex-flow: row;
+    justify-content: center;
     gap: 20px;
     text-align: center;
+    align-items: center;
+    width: 100%;
   }
   
   .select-artistSlide-img {
@@ -187,6 +202,7 @@ and dropdown in Songbee JR */
 
   .select-player-container  {
     cursor: pointer;
+    border: none;
     text-indent: -999999px;
     height: 50px;
     width: 50px;
@@ -197,13 +213,13 @@ and dropdown in Songbee JR */
       background-repeat: no-repeat!important;
       background-position: absolute;
       border-radius: 50%;
-      margin-top: 150px;
-      margin-left: -350px;
+      margin-top: -25px;
      
     background-repeat:no-repeat;
     background-position:center;
     background-size: 25px;
     background-color: rgba(238, 237, 235, 0.977);
+    box-shadow: 1px 1px 5px rgb(105, 105, 105);
   }
 
   .select-player-container:hover {
@@ -270,6 +286,18 @@ and dropdown in Songbee JR */
     display: block;
     width: fit-content;
     margin: auto;
+}
+
+.select-artist-artist {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-checkout-select-artist h2 {
+    text-align: center;
+    margin-bottom: 50px;
 }
 
 @media (max-width: 550px) {
