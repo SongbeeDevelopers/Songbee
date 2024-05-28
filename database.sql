@@ -176,7 +176,9 @@ CREATE TABLE "subscription_song_details" (
 CREATE TABLE "chat" (
   "id" SERIAL PRIMARY KEY,
   "user1_id" integer REFERENCES "user" ON DELETE CASCADE,
-  "user2_id" integer REFERENCES "user" ON DELETE CASCADE
+  "user2_id" integer REFERENCES "user" ON DELETE CASCADE,
+  "unread_messages" integer DEFAULT 0,
+  "latest_sender" integer DEFAULT NULL
 );
 
 CREATE TABLE "messages" (

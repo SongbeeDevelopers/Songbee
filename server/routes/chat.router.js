@@ -96,6 +96,43 @@ router.get('/user-chat/:id', (req, res) => {
       console.error('Genres GET router failed:', error)
     })
   });
+
+  router.put(`/new-message/:id`, (req, res) => {
+    const user = req.user.id;
+    const chatId = req.params.id;
+    const query = `
+      UPDATE "chat"
+      SET
+        "unread_messages" = "unread_messages" + 1,
+        "latest_sender" = $1
+      WHERE "id"=$2;
+    `
+    pool.query(query, [user, chatId])
+    .then((response) => {
+      res.sendStatus(201)
+    })
+    .catch((error) => {
+      console.error('Chat Router update new message failed:', error)
+    })
+  });
+
+  router.put(`/read-message/:id`, (req, res) => {
+    const chatId = req.params.id;
+    const query = `
+      UPDATE "chat"
+      SET
+        "unread_messages" = 0,
+        "latest_sender" = NULL
+      WHERE "id"=$1;
+    `
+    pool.query(query, [chatId])
+    .then((response) => {
+      res.sendStatus(201)
+    })
+    .catch((error) => {
+      console.error('Chat Router mark read message failed:', error)
+    })
+  });
 /**
  * POST route template
  */

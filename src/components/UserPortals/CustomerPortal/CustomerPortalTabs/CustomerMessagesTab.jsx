@@ -45,14 +45,22 @@ function CustomerMessagesTab() {
                 if(chat.user1_email === user.email){
                     return (
                         <>
-                            <p onClick={() => history.push(`/chatpage/${chat.id}`)}>Your Chat with {chat.user2_email}</p>
+                            <Button 
+                              sx={{m: 'auto', mt: 2, height: 35, width: 500, backgroundColor: "#feaf17", color: "black" }}
+                              onClick={() => history.push(`/chatpage/${chat.id}`)}>
+                                Your Chat with {chat.user2_email}
+                            </Button>
                         </>
                     )
                 }
                 else {
                     return (
                         <>
-                            <p onClick={() => history.push(`/chatpage/${chat.id}`)}>Your Chat with {chat.user1_email}</p>
+                            <Button 
+                              sx={{m: 'auto', mt: 2, height: 35, width: 500, backgroundColor: "#feaf17", color: "black" }}
+                              onClick={() => history.push(`/chatpage/${chat.id}`)}>
+                                Your Chat with {chat.user1_email}
+                            </Button>
                         </>
                     )
                 }

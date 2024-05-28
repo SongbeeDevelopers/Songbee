@@ -54,7 +54,6 @@ import WhySongbee from "../WhySongbee/WhySongbee";
 import WhatsIncluded from "../WhatsIncludedSchools/WhatsIncluded";
 import DiveIntoBenefits from "../JrBenefits/JrBenefits";
 import { Route } from "react-router-dom";
-import SocketHome from "../SocketComponents/SocketHome";
 import ChatPage from "../SocketComponents/ChatPage";
 import CancelPage from "../CancelPage/CancelPage";
 import JrCancelPage from "../CancelPage/JrCancelPage";
@@ -130,9 +129,6 @@ function ComponentRouter() {
           <JoinArtistPage routeVariants={routeVariants} />
         </Route>
 
-        <MainRoute path="/chathome">
-          <SocketHome />
-        </MainRoute>
         <MainRoute path="/chatpage/:id">
           <ChatPage />
         </MainRoute>
