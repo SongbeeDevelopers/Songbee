@@ -1,5 +1,6 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import LPPacks from "./LPSections/3-LPPacks";
 import LPWorks from "./LPSections/2-LPWorks";
@@ -13,7 +14,11 @@ import "./LearningPacksPage.css";
 
 function LearningPacksPage({ routeVariants }) {
 
-  const history = useHistory()
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch({type: 'FETCH_LEARNING_PACKS'})
+  }, []);
 
   return (
     <motion.div
