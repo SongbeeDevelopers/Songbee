@@ -90,7 +90,7 @@ function CustomerRequests() {
 
                 {/* status */}
                 <TableCell align="center">
-                  {request.is_complete ? `Complete!` : `In Progress`}
+                  {request.accepted ? request.isComplete ? `In Progress` : `Complete!` : `Pending Artist Acceptance`}
                 </TableCell>
 
                 {/* details */}
