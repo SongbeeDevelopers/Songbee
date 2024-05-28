@@ -54,7 +54,7 @@ import WhySongbee from "../WhySongbee/WhySongbee";
 import WhatsIncluded from "../WhatsIncludedSchools/WhatsIncluded";
 import DiveIntoBenefits from "../JrBenefits/JrBenefits";
 import { Route } from "react-router-dom";
-import ChatPage from "../SocketComponents/ChatPage";
+import ChatPage from "../ChatComponents/ChatPage";
 import CancelPage from "../CancelPage/CancelPage";
 import JrCancelPage from "../CancelPage/JrCancelPage";
 
