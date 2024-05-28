@@ -108,7 +108,7 @@ export default function JrCheckoutPage({ routeVariants }) {
                   value={requestData.recipient}
                   className="jrFormInput"
                   id="reqFormNameInput"
-                  placeholder="Name of child or Nickname"
+                  placeholder="Name of Child"
                   onChange={(event) =>
                     handleInput("name", event.target.value)
                   }
@@ -132,9 +132,11 @@ export default function JrCheckoutPage({ routeVariants }) {
       return (
         <>
           <div className="jrFormGroup2">
-              <h2 id="additionalDetailsHeader">
+            <div className="jrFormInput">
+
+              <label>
                 Confirm your Subscription
-              </h2>
+              </label>
               { requestData.pack_id === '' ?
               learningPacks.map((pack) => {
                 if(monthDiff(start, end) >= pack.min_age && monthDiff(start, end) <= pack.max_age){
@@ -151,14 +153,14 @@ export default function JrCheckoutPage({ routeVariants }) {
                   )
                 }
               })
-            :
-            <>
+              :
+              <>
             <h3>You have selected {currentPack.title} Learning Pack!</h3>
             <img className='pack-img' src={currentPack.image} />
-            <p>{currentPack.description}</p>
+            <p className="jr-order-descr">{currentPack.description}</p>
           </>
             }
-        <h4>Would you like to select a learning pack?</h4>
+            </div>
         <div className="reqFormGroup">
         <div className="reqFormSelect">
           <label className="wide-display">Choose a Learning Pack</label>
@@ -268,6 +270,9 @@ export default function JrCheckoutPage({ routeVariants }) {
       initial="initial"
       animate="final"
     >
+      <img className="jr-checkout-flowers" src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076551/Songbee/colorflowers_wesazl.png"/>
+      <img className="jr-checkout-notes" src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076545/Songbee/color-music-notes_ouootu.png"/>
+
       <h1>Details for Your Child's Song</h1>
 
       <p>Once you provide details we can begin your child's journey!</p>
@@ -295,7 +300,7 @@ export default function JrCheckoutPage({ routeVariants }) {
           ) : (
             <React.Fragment>
            
-              <form className="reqForm">{formDetails()}</form>
+              <form className="reqForm reqFormHeight">{formDetails()}</form>
               <Box sx={{ display: "flex", flexDirection: "row", mt: 8 }}>
                 <Button variant="contained"
                   onClick={handleBack}

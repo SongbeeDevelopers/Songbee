@@ -37,6 +37,8 @@
   height: 2.2rem;
   font-size: 1rem;
   border-radius: 10px;
+  z-index: 2000;
+  cursor: pointer;
 }
 
 .jr-nav-links {
