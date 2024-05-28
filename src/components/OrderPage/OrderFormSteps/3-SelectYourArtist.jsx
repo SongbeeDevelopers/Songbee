@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import ArtistDisplay from "./ArtistDisplay";
 import SelectArtistAudioButton from "./SelectArtistAudioButton";
 
-import { Button } from "@mui/material";
+import { Box, Button, Checkbox, ToggleButton } from "@mui/material";
 
 import "../../SongRequestPage/SongRequestPage.css";
 
@@ -14,24 +14,23 @@ export default function SelectYourArtist({ handleInput }) {
   const requestData = useSelector((store) => store.requestData);
   const genres = useSelector(store => store.genres)
   let currentGenre
-  if (requestData.genre){
+  if (requestData.genre) {
     genres.map((genre) => {
-      if (genre.id === Number(requestData.genre)){
+      if (genre.id === Number(requestData.genre)) {
         currentGenre = genre.name
       }
     })
   }
 
   return (
-    <>
-      <h3>Select Your Artist!</h3>
-      <h5>Click on an Artist to Select and See Their Bio</h5>
+    <div className="main-checkout-select-artist">
+      <h2>Select Your Artist!</h2>
       <h5>
         {requestData.genre ?
-        `Showing All Artists who Specialize In ${currentGenre}`
-        :
-        ''
-      }
+          `Showing All Artists who Specialize In ${currentGenre}`
+          :
+          ''
+        }
       </h5>
       <div className="select-artist-container">
         <div className="select-artist-card">
@@ -43,7 +42,12 @@ export default function SelectYourArtist({ handleInput }) {
               requestData.genre === ""
             ) {
               return (
-                <>
+                <div className="select-artist-artist">
+                  <Checkbox
+                    checked={requestData.artist === artist.id}
+                    sx={{ mb: -10, ml: -10, mr: 8, backgroundColor: "#fff4df", border: 1 }}
+                    onClick={() => handleInput("artist", Number(artist.id))}
+                  />
                   <h4>{artist.artist_name}</h4>
                   <img
                     onClick={() => handleInput("artist", Number(artist.id))}
@@ -53,25 +57,30 @@ export default function SelectYourArtist({ handleInput }) {
                     alt="Artist photos"
                   />
                   <SelectArtistAudioButton url={artist.sample_song_1} />
-                </>
+                </div>
               );
             }
           })}
         </div>
       </div>
-      <Button
-        variant="contained"
-        onClick={() => handleInput("artist", "")}
-        sx={{
-          height: 35,
-          backgroundColor: "#feaf17",
-          color: "black",
-          width: 500,
-          ml: 20,
-        }}
-      >
-        Click Here if you Would Like the Artist Selected For You
-      </Button>
+      <div className="selectforme">
+      <Checkbox
+            checked={requestData.artist === ''}
+            sx={{width: '45px', backgroundColor: "#fff4df", border: 1 }}
+            onClick={() => handleInput("artist", '')}
+          />
+          <Button
+            variant="contained"
+            onClick={() => handleInput("artist", "")}
+            sx={{
+              height: 35,
+              backgroundColor: "#feaf17",
+              color: "black",
+            }}
+          >
+            Click Here if you Would Like the Artist Selected For You
+          </Button>
+      </div>
       {requestData.artist !== "" ? <ArtistDisplay /> : ""}
       {/* <div className="reqFormGroup">
         <div className="reqFormSelect">
@@ -101,6 +110,6 @@ export default function SelectYourArtist({ handleInput }) {
           </select>
         </div>
       </div> */}
-    </>
+    </div>
   );
 }
