@@ -61,3 +61,7 @@
     top: 325px;
     right: 7%;
 }
+
+.jrcheckoutagree {
+    flex-direction: column;
+}

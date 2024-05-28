@@ -1,21 +1,25 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
-import Stepper from "@mui/material/Stepper";
-import Step from "@mui/material/Step";
-import StepButton from "@mui/material/StepButton";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import { DatePicker } from "@mui/x-date-pickers";
-
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   useParams,
   useHistory,
+  Link,
 } from "react-router-dom/cjs/react-router-dom.min";
 
-import { motion } from "framer-motion";
+import {
+  Box,
+  Button,
+  Checkbox,
+  FormControlLabel,
+  Step,
+  Stepper,
+  StepButton,
+  Typography
+} from '@mui/material'
+import { DatePicker } from "@mui/x-date-pickers";
 
+import { motion } from "framer-motion";
 import Swal from "sweetalert2";
 
 import './JrRequestPage.css'
@@ -36,6 +40,10 @@ export default function JrCheckoutPage({ routeVariants }) {
   const learningPacks = useSelector(store => store.learningPacks);
   const currentPack = useSelector(store => store.currentPack);
 
+  const [agreeTerms, setAgreeTerms] = useState(false)
+  const [agreeEUA, setAgreeEUA] = useState(false)
+
+
   const monthDiff = (d1, d2) => {
     let months;
     months = (d2.getFullYear() - d1.getFullYear()) * 12;
@@ -53,7 +61,7 @@ export default function JrCheckoutPage({ routeVariants }) {
   }, []);
 
   const handleInput = (key, value) => {
-    if (key === "pack_id"){
+    if (key === "pack_id") {
       dispatch({
         type: "FETCH_CURRENT_PACK",
         payload: value
@@ -90,7 +98,7 @@ export default function JrCheckoutPage({ routeVariants }) {
                   onChange={(newValue) =>
                     handleInput("age", newValue)
                   }
-                  label="Your Child's Birthday" 
+                  label="Your Child's Birthday"
                   sx={{ width: 300 }} />
               </div>
             </div>
@@ -133,52 +141,61 @@ export default function JrCheckoutPage({ routeVariants }) {
         <>
           <div className="jrFormGroup2">
             <div className="jrFormInput">
-
               <label>
                 Confirm your Subscription
               </label>
-              { requestData.pack_id === '' ?
-              learningPacks.map((pack) => {
-                if(monthDiff(start, end) >= pack.min_age && monthDiff(start, end) <= pack.max_age){
-                  return (
-                    <>
-                      <h3>Your child is in the recommended age range for {pack.title} Learning Pack!</h3>
-                      <img className='pack-img' src={pack.image} />
-                      <p>{pack.description}</p>
-                      <Button
-                        sx={{ height: 50, width: 250, backgroundColor: "#feaf17", color: "black" }}
-                        onClick={() => handleInput("pack_id", pack.id)}
-                      >Would you like to select this pack?</Button>
-                    </>
-                  )
-                }
-              })
-              :
-              <>
-            <h3>You have selected {currentPack.title} Learning Pack!</h3>
-            <img className='pack-img' src={currentPack.image} />
-            <p className="jr-order-descr">{currentPack.description}</p>
-          </>
-            }
+              {requestData.pack_id === '' ?
+                learningPacks.map((pack) => {
+                  if (monthDiff(start, end) >= pack.min_age && monthDiff(start, end) <= pack.max_age) {
+                    return (
+                      <>
+                        <h3>Your child is in the recommended age range for {pack.title} Learning Pack!</h3>
+                        <img className='pack-img' src={pack.image} />
+                        <p>{pack.description}</p>
+                        <Button
+                          sx={{ height: 50, width: 250, backgroundColor: "#feaf17", color: "black" }}
+                          onClick={() => handleInput("pack_id", pack.id)}
+                        >Would you like to select this pack?</Button>
+                      </>
+                    )
+                  }
+                })
+                :
+                <>
+                  <h3>You have selected {currentPack.title} Learning Pack!</h3>
+                  <img className='pack-img' src={currentPack.image} />
+                  <p className="jr-order-descr">{currentPack.description}</p>
+                </>
+              }
             </div>
-        <div className="reqFormGroup">
-        <div className="reqFormSelect">
-          <label className="wide-display">Choose a Learning Pack</label>
-          <select
-            value={requestData.pack_id}
-            onChange={() => handleInput("pack_id", event.target.value)}
-          >
-            <option selected disabled>
-              Select Genre
-            </option>
-            {learningPacks.map((lpack) => (
-              <option key={lpack.id} value={lpack.id}>
-                {lpack.title} {lpack.min_age}-{lpack.max_age} Months
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
+            <div className="reqFormGroup">
+              <div className="reqFormSelect">
+                <label className="wide-display">Choose a Learning Pack</label>
+                <select
+                  value={requestData.pack_id}
+                  onChange={() => handleInput("pack_id", event.target.value)}
+                >
+                  <option selected disabled>
+                    Select Genre
+                  </option>
+                  {learningPacks.map((lpack) => (
+                    <option key={lpack.id} value={lpack.id}>
+                      {lpack.title} {lpack.min_age}-{lpack.max_age} Months
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            <div className="reqFormGroup jrcheckoutagree">
+                <FormControlLabel
+                  control={<Checkbox required value={agreeTerms} onClick={() => setAgreeTerms(!agreeTerms)}/>}
+                  label={<span>I have read and agree to the <Link to="/terms" target="_blank">terms and conditions</Link></span>}
+                />
+                <FormControlLabel
+                  control={<Checkbox required value={agreeEUA} onClick={() => setAgreeEUA(!setAgreeEUA)}/>}
+                  label={<span>I have read and agree to the <a  href="https://drive.google.com/file/d/1BCASC9xwt8lwTnW5OcJYAGAS5NsPnfX6/view?usp=sharing" target="_blank">end user agreement</a></span>}
+                />
+            </div>
           </div>
         </>
       );
@@ -205,8 +222,8 @@ export default function JrCheckoutPage({ routeVariants }) {
     const newActiveStep =
       isLastStep() && !allStepsCompleted()
         ? // It's the last step, but not all steps have been completed,
-          // find the first step that has been completed
-          steps.findIndex((step, i) => !(i in completed))
+        // find the first step that has been completed
+        steps.findIndex((step, i) => !(i in completed))
         : activeStep + 1;
     setActiveStep(newActiveStep);
   };
@@ -229,6 +246,8 @@ export default function JrCheckoutPage({ routeVariants }) {
       requestData.age &&
       requestData.name &&
       user.id &&
+      agreeTerms &&
+      agreeEUA &&
       allStepsCompleted()
     ) {
       Swal.fire({
@@ -242,7 +261,7 @@ export default function JrCheckoutPage({ routeVariants }) {
           dispatchDetails();
         }
       });
-    } else if (allStepsCompleted()){
+    } else if (allStepsCompleted()) {
       Swal.fire({
         title: "Cannot complete request!",
         text: "You have left important details blank, please go back and make sure you have filled out all information",
@@ -270,8 +289,8 @@ export default function JrCheckoutPage({ routeVariants }) {
       initial="initial"
       animate="final"
     >
-      <img className="jr-checkout-flowers" src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076551/Songbee/colorflowers_wesazl.png"/>
-      <img className="jr-checkout-notes" src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076545/Songbee/color-music-notes_ouootu.png"/>
+      <img className="jr-checkout-flowers" src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076551/Songbee/colorflowers_wesazl.png" />
+      <img className="jr-checkout-notes" src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076545/Songbee/color-music-notes_ouootu.png" />
 
       <h1>Details for Your Child's Song</h1>
 
@@ -299,7 +318,7 @@ export default function JrCheckoutPage({ routeVariants }) {
             </React.Fragment>
           ) : (
             <React.Fragment>
-           
+
               <form className="reqForm reqFormHeight">{formDetails()}</form>
               <Box sx={{ display: "flex", flexDirection: "row", mt: 8 }}>
                 <Button variant="contained"
