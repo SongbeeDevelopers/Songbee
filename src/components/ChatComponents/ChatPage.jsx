@@ -41,7 +41,7 @@ const ChatPage = () => {
     useEffect(() => {
       dispatch({type: "FETCH_USER_CHATS"})
       const intervalId = setInterval(
-        intervalFunction, 10000
+        intervalFunction, 7000
       )
       return () => {
         clearInterval(intervalId)
