@@ -80,7 +80,7 @@ function* readMessage (action){
         })
         yield put ({
             type: "FETCH_CURRENT_CHAT",
-            payload: action.payload.chat_id
+            payload: action.payload
         })
     }
     catch (error) {

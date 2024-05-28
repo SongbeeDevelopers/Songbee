@@ -20,19 +20,32 @@ const ChatPage = () => {
     const lastMessageRef = useRef(null);
 
     const { id } = useParams();
+
+    const intervalFunction = () => {
+      dispatch({
+        type: "FETCH_CURRENT_CHAT",
+        payload: id
+    })
+    }
   
     // useEffect(() => {
     //   socket.on('messageResponse', (data) => setMessages([...messages, data]));
     // }, [socket, messages]);
-
     useEffect(() => {
             dispatch({
                 type: "FETCH_CURRENT_CHAT",
                 payload: id
             })
     }, [id]);
+
     useEffect(() => {
       dispatch({type: "FETCH_USER_CHATS"})
+      const intervalId = setInterval(
+        intervalFunction, 10000
+      )
+      return () => {
+        clearInterval(intervalId)
+      };
     }, []);
     const chats = useSelector(store => store.userChats);
     const messages = useSelector(store => store.currentChat);

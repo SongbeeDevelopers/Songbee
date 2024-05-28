@@ -11,6 +11,8 @@ router.get('/user-chats', (req, res) => {
     t1."id" AS "id",
     t1."user1_id",
     t1."user2_id",
+    t1."unread_messages",
+    t1."latest_sender",
     t2."email" AS "user1_email",
     t3."email" AS "user2_email"
     FROM "chat" t1
