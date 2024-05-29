@@ -101,14 +101,13 @@ const handleArtist =(e) => {
                 
                   return sampleSong && (
                     <div className="audioFiles">
-                        <div className="artistCommunityBtns">
+                     <div className="artistCommunityBtns">
                         <AudioButton url={sampleSong} />
                         <p className="songTitles" key={index}>{songTitle}</p>
                           {console.log('sampleSong', sampleSong)}
-                        </div>
-                  </div>
-                   
-                       );
+                     </div>
+                  </div>  
+                     );
                     })}     
                </div>
            </div>
