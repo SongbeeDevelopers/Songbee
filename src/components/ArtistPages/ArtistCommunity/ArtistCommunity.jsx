@@ -83,6 +83,14 @@ function ArtistCommunity() {
     }
   };
 
+  const seeArtist = (id) => {
+    dispatch({
+      type: 'FETCH_CURRENT_ARTIST',
+      payload: id
+    })
+    history.push(`/ArtistBioPage/${id}`)
+  }
+
 
   return (
     artistCommunity && (
@@ -106,7 +114,7 @@ function ArtistCommunity() {
               <h3>{artist.artist_name}</h3>
               <img
                 className="artistSlide-img"
-                onClick={() => history.push(`/ArtistBioPage/${artist.id}`)}
+                onClick={() => seeArtist(artist.id)}
                 src={artist.photo}
                 alt="Artist photos"
               />
