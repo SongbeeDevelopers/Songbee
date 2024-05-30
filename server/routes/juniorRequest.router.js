@@ -304,7 +304,19 @@ router.put("/learning-pack/:id", rejectUnauthenticated, cloudinaryUpload.single(
       audioUrl = req.body.url
     }
     const packId = req.params.id;
-    if(req.body.song1_name){
+    if(req.body.title){
+      const detailsQuery = `
+      UPDATE "learning_packs"
+      SET  
+        "title" = $1, 
+        "description" = $2,
+        "play_guide" = $3
+      WHERE "id" = $4;
+      `;
+      const detailsValues = [req.body.title, req.body.description, audioUrl, packId];
+      const detailsResult = await connection.query(detailsQuery, detailsValues);
+    }
+    else if(req.body.song1_name){
     const detailsQuery = `
     UPDATE "learning_packs"
     SET  

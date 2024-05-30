@@ -169,8 +169,7 @@ export default function LearningPackDialog({ setDetailsOpen }) {
     }
   }
 
-  const submitPack = (event) => {
-    event.preventDefault()
+  const submitPackDetails = () => {
     // confirmation message
     Swal.fire({
       icon: "question",
@@ -181,28 +180,23 @@ export default function LearningPackDialog({ setDetailsOpen }) {
       if (result.isConfirmed) {
         Swal.fire("Saved!", "", "success");
         // if confirmed, updates db with edit reducer data
-        if (songFile1 === '' || null) {
-            detailsForm.append("url1", edit.song1)
-          } else {
-            files.push(songFile1)
-          }
-          if (songFile2 === '' || null) {
-            detailsForm.append("url2", edit.song2)
-          } else {
-            files.push(songFile2)
-          }
-          if (songFile3 === '' || null) {
-            detailsForm.append("url3", edit.song3)
-          } else {
-            files.push(songFile3)
-          }
-          detailsForm.append("files", files)
-          console.log("files", files)
+        if(playGuide !== '' || null){
+        detailsForm.append("file", playGuide)
+        }
+        else{
+        detailsForm.append("play_guide", edit.play_guide)
+        }
+        detailsForm.append("title", edit.title);
+        detailsForm.append("description", edit.description);
         dispatch({
           type: 'UPDATE_LEARNING_PACK',
           payload: {id: edit.id, data: detailsForm}
         })
         setDetailsOpen(false)
+        detailsForm.delete("play_guide")
+        detailsForm.delete("file")
+        detailsForm.delete("title")
+        detailsForm.delete("description")
       }
     })
   }
@@ -232,6 +226,23 @@ export default function LearningPackDialog({ setDetailsOpen }) {
             onChange={() => handleInput('description', event.target.value)}
           ></textarea>
           </label>
+        </div>
+        <div className='admin-details-edit-row'>
+        <label> Play Guide PDF:
+              <input
+                className='admin-portal-inputs'
+                type="file"
+                onChange={(evt) => setPlayGuide(evt.target.files[0])}
+              ></input>
+              </label>
+        </div>
+        <div className='admin-details-edit-row'>
+        <Button variant="contained"
+          onClick={submitPackDetails}
+          sx={{m: 'auto', mt: 2, height: 35, width: 200, backgroundColor: "#feaf17", color: "black" }}
+        >
+          UPDATE PACK DETAILS
+        </Button>
         </div>
 
         <div className='admin-details-edit-row'>
@@ -572,23 +583,6 @@ export default function LearningPackDialog({ setDetailsOpen }) {
           Upload Song 13
         </Button>
         </div>
-        <div className='admin-details-edit-row'>
-        <label> Play Guide PDF:
-              <input
-                className='admin-portal-inputs'
-                type="file"
-                onChange={(evt) => setPlayGuide(evt.target.files[0])}
-              ></input>
-              </label>
-
-        <Button variant="contained"
-          onClick={submitPack}
-          sx={{m: 'auto', mt: 2, height: 35, width: 75, backgroundColor: "#feaf17", color: "black" }}
-        >
-          SAVE
-        </Button>
-        </div>
-
     </div>
   );
 }

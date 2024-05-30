@@ -84,7 +84,7 @@ const handleActive = (id) => {
                         UPDATE
                       </Button>
                       {/* details dialog */}
-                      <Dialog 
+                      <Dialog keepMounted fullWidth maxWidth="md"
                         open={detailsOpen}
                         onClose={closeDetails}
                       >
