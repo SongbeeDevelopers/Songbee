@@ -120,10 +120,6 @@ function ComponentRouter() {
           )}
         </MainRoute>
 
-        <Route exact path="/join-artist">
-          <JoinArtistPage routeVariants={routeVariants} />
-        </Route>
-
         <MainRoute path="/chatpage/:id">
           <ChatPage />
         </MainRoute>
