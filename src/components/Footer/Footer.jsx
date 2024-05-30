@@ -11,7 +11,7 @@ function Footer() {
       <div className='flexContainer'>
 
         <div className='flexColumn'>
-          <p className='columnHeader'>Company</p>
+          <p className='columnHeader'>About Us</p>
             <a href="mailto:hello@songbee.com">hello@songbee.com</a>
             <a href="https://www.instagram.com/songbee_official/">Songbee Instagram</a>
             <a href="https://www.tiktok.com/@songbee_official">Songbee Tiktok</a>
