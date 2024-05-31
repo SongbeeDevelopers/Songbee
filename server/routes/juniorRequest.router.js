@@ -14,6 +14,7 @@ router.get("/user", rejectUnauthenticated, (req, res) => {
   SELECT 
   "subscription"."id",
   "subscription"."user_id",
+  "subscription"."pack_id",
   "subscription"."age",
   "subscription"."name",
   "subscription"."is_active",
@@ -74,6 +75,7 @@ router.get("/current/:id", (req, res) => {
   const query = `
     SELECT 
     "subscription"."user_id",
+    "subscription"."pack_id",
     "subscription"."age",
     "subscription"."name",
     "subscription"."is_active",

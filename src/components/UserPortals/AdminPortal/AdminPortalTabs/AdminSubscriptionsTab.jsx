@@ -17,6 +17,7 @@ import {
 export default function AdminSubscriptionsTab({ num, data }) {
 
   const dispatch = useDispatch()
+  console.log("data", data)
 
   // date/time
   const monthDiff = (d1, d2) => {
@@ -28,6 +29,19 @@ export default function AdminSubscriptionsTab({ num, data }) {
   }
   
   const end = new Date()
+
+  const calculateDelivery = (last_delivery, packId) => {
+    let subLength
+    if(packId <= 6){
+      subLength = 2
+    }
+    else {
+      subLength = 3
+    }
+    const lastDelivery = new Date(last_delivery);
+    lastDelivery.setMonth(lastDelivery.getMonth() + subLength)
+    return (lastDelivery.toLocaleString('en-us').split(','))[0]
+  }
 
   return (
     <div>
@@ -58,12 +72,12 @@ export default function AdminSubscriptionsTab({ num, data }) {
 
                     {/* creation date */}
                     <TableCell>
-                      {new Date(row.created_at).toLocaleString('en-us')}
+                      {(new Date(row.created_at).toLocaleString('en-us').split(','))[0]}
                     </TableCell>
 
                     {/* last delivery */}
                     <TableCell>
-                      {new Date(row.last_delivery).toLocaleString('en-us')}
+                      {(new Date(row.last_delivery).toLocaleString('en-us').split(','))[0]}
                     </TableCell>
 
                     {/* email */}
@@ -83,7 +97,7 @@ export default function AdminSubscriptionsTab({ num, data }) {
 
                     {/* due */}
                     <TableCell align="center">
-                      {3 - monthDiff(new Date(row.last_delivery), end)} Months
+                    {calculateDelivery(row.last_delivery, row.pack_id)}
                     </TableCell>
 
                     <TableCell align='center'>
