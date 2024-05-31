@@ -1,10 +1,12 @@
 import * as React from "react";
 import { useState } from "react";
+import { useSelector } from "react-redux"
 
 import CustomerRequestsTab from "./CustomerRequestsTab";
 import CustomerProfileTab from "./CustomerProfileTab";
 import CustomerCreditTab from "./CustomerCreditTab";
 import CustomerMessagesTab from "./CustomerMessagesTab";
+import CustomerJrTab from "./CustomerJrTab";
 
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
@@ -19,6 +21,8 @@ import '../CustomerPortal.css'
 export default function CustomerPortalTabs() {
 
   const theme = useTheme()
+
+  const userSubscriptions = useSelector(store => store.userSubscriptions)
   
   const [value, setValue] = useState(0);
 
@@ -71,9 +75,10 @@ export default function CustomerPortalTabs() {
           indicatorColor="primary"
         >
           <Tab label="Orders" {...a11yProps(0)} />
-          <Tab label="Profile" {...a11yProps(1)} />
-          <Tab label="Refer a Friend" {...a11yProps(2)} />
-          <Tab label="Messages" {...a11yProps(3)} />
+          {userSubscriptions.length > 0 && <Tab label="Jr Subscriptions" {...a11yProps(1)} />}
+          <Tab label="Profile" {...a11yProps(2)} />
+          <Tab label="Refer a Friend" {...a11yProps(3)} />
+          <Tab label="Messages" {...a11yProps(4)} />
         </Tabs>
       </Box>
 
@@ -82,16 +87,22 @@ export default function CustomerPortalTabs() {
         <CustomerRequestsTab />
       </CustomTabPanel>
 
-      {/* personal info tab */}
+      {userSubscriptions.length > 0 &&
       <CustomTabPanel value={value} index={1}>
+        <CustomerJrTab />
+      </CustomTabPanel>
+      } 
+
+      {/* personal info tab */}
+      <CustomTabPanel value={value} index={2}>
         <CustomerProfileTab />
       </CustomTabPanel>
 
-      <CustomTabPanel value={value} index={2}>
+      <CustomTabPanel value={value} index={3}>
         <CustomerCreditTab />
       </CustomTabPanel>
 
-      <CustomTabPanel value={value} index={3}>
+      <CustomTabPanel value={value} index={4}>
         <CustomerMessagesTab />
       </CustomTabPanel>
     </>

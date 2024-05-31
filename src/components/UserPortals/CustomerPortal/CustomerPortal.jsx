@@ -1,4 +1,6 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import CustomerPortalTabs from './CustomerPortalTabs/_CustomerPortalTabs';
 
@@ -7,6 +9,12 @@ import './CustomerPortal.css';
 
 
 function CustomerPortal({ routeVariants }) {
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch({type: 'FETCH_USER_SUBSCRIPTIONS'})
+  }, [])
   
   return (
     <motion.div
