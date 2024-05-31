@@ -51,7 +51,8 @@ CREATE TABLE "song_request" (
   "extra_verse" BOOLEAN,
   "license" BOOLEAN,
   "backing_track" BOOLEAN,
-  "is_complete" BOOLEAN DEFAULT FALSE
+  "is_complete" BOOLEAN DEFAULT FALSE,
+  "is_paid" BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE "artist" (
@@ -94,24 +95,6 @@ CREATE TABLE "artist_genres" (
   "id" SERIAL PRIMARY KEY,
   "artist_id" integer REFERENCES "artist" ON DELETE CASCADE,
   "genre_id" integer REFERENCES "genres"
-);
-
-CREATE TABLE "jr_request" (
-  "id" SERIAL PRIMARY KEY,
-  "user_id" integer REFERENCES "user",
-  "requester" VARCHAR,
-  "child" VARCHAR,
-  "pronunciation" VARCHAR,
-  "age" INT,
-  "skill" VARCHAR,
-  "emotion" VARCHAR,
-  "tempo" VARCHAR,
-  "vocal_type" VARCHAR,
-  "description" VARCHAR,
-  "goals" VARCHAR,
-  "created_at" TIMESTAMPTZ DEFAULT NOW(),
-  "is_complete" BOOLEAN DEFAULT FALSE,
-  "accepted"  BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE "learning_packs" (
@@ -160,17 +143,8 @@ CREATE TABLE "subscription" (
   "pronunciation" VARCHAR,
   "is_active" BOOLEAN DEFAULT FALSE,
   "created_at" TIMESTAMPTZ DEFAULT NOW(),
-  "last_delivery" TIMESTAMPTZ DEFAULT NOW()
-);
-
-CREATE TABLE "subscription_song_details" (
-  "id" SERIAL PRIMARY KEY,
-  "subscription_id" integer REFERENCES "subscription" ON DELETE CASCADE,
-  "number" INT,
-  "song_goals" VARCHAR,
-  "url" VARCHAR,
-  "title" VARCHAR,
-  "lyrics" VARCHAR
+  "last_delivery" TIMESTAMPTZ DEFAULT NOW(),
+  "is_paid" BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE "chat" (
@@ -235,13 +209,13 @@ VALUES
 
 
 INSERT INTO "song_request"
-("user_id", "genre_id", "requester", "recipient", "pronunciation", "recipient_relationship", "occasion", "vocal_type", "vibe", "tempo", "inspiration", "story1", "story2", "important_what", "important_why", "additional_info", "created_at", "delivery_days", "streaming", "extra_verse", "is_complete")
+("user_id", "genre_id", "requester", "recipient", "pronunciation", "recipient_relationship", "occasion", "vocal_type", "vibe", "tempo", "inspiration", "story1", "story2", "important_what", "important_why", "additional_info", "created_at", "delivery_days", "streaming", "extra_verse", "is_complete", "is_paid")
 VALUES
-(1, 3, 'Charles', 'Charlito', 'Shar-Lee-Toe', 'Best Friend', null, 'Female', 'Light-hearted', 'Fast', 'God', 'We used to beat eachother up', 'We were married as a joke once', 'They smell bad', 'It''s how we met', 'Her favorite color is invisible', '2024-01-29T15:58:20.453Z', 7, false, false, true), 
-(1, 4, 'Charles', 'Jenny', 'Jeh-Knee', 'Daughter', null, 'Female', 'Mean-spirited', 'Slow', 'I need to prank my daughter', 'My daughter thinks Johnny Rotten is attractive', 'My daughter and I used to do the shaving cream and feather sleeping prank on eachother', 'My daughter lives in Tempe, AZ', 'Theres a lot of material to work with there', 'The final lyric should be Surprise!', '2024-01-28T15:58:20.453Z', 7, false, true, false),
-(3, 1, 'The Springfield Office', 'Our Boss Jeffery', 'Jeff-Rey', 'Boss', null, 'Male', 'Spooktacular', 'Fast', 'Boss cant stop talking about Frank Sinatra', 'Our boss is very old and grew up listening to vocal crooners', 'Our boss always forgets his coffee mug in the conference room', 'He hates Gene Pitney', 'If it sounds too much like Gene Pitney it will go over poorly', 'Gene Pitney was his ex-wife''s favorite artist', '2024-01-22T15:58:20.453Z', 7, false, false, true),
-(4, 3, 'Brimly', 'Gregor', 'Greh-ger', 'Crush', 'Valentines Day', 'Female', 'Light-hearted', 'Fast', 'Want to tell her how I feel', 'We had math class together', 'We love sin/cos/tan', 'She only wears orange', 'Its my favorite color', 'We eat Blimpie sandwiches at lunch together', '2024-02-12T15:58:20.453Z', 7, false, false, false), 
-(7, 6, 'Sandy', 'Shimnar', 'Shim-Nahr', 'Husband', 'Anniversary', 'Female', 'Light-hearted', 'up-tempo', 'Want to tell her how I feel', 'We had math class together', 'We love sin/cos/tan', 'She only wears orange', 'Its my favorite color', 'We eat Blimpie sandwiches at lunch together', '2024-02-10T15:58:20.453Z', 7, false, false, false);
+(1, 3, 'Charles', 'Charlito', 'Shar-Lee-Toe', 'Best Friend', null, 'Female', 'Light-hearted', 'Fast', 'God', 'We used to beat eachother up', 'We were married as a joke once', 'They smell bad', 'It''s how we met', 'Her favorite color is invisible', '2024-01-29T15:58:20.453Z', 7, false, false, true, true), 
+(1, 4, 'Charles', 'Jenny', 'Jeh-Knee', 'Daughter', null, 'Female', 'Mean-spirited', 'Slow', 'I need to prank my daughter', 'My daughter thinks Johnny Rotten is attractive', 'My daughter and I used to do the shaving cream and feather sleeping prank on eachother', 'My daughter lives in Tempe, AZ', 'Theres a lot of material to work with there', 'The final lyric should be Surprise!', '2024-01-28T15:58:20.453Z', 7, false, true, false, true),
+(3, 1, 'The Springfield Office', 'Our Boss Jeffery', 'Jeff-Rey', 'Boss', null, 'Male', 'Spooktacular', 'Fast', 'Boss cant stop talking about Frank Sinatra', 'Our boss is very old and grew up listening to vocal crooners', 'Our boss always forgets his coffee mug in the conference room', 'He hates Gene Pitney', 'If it sounds too much like Gene Pitney it will go over poorly', 'Gene Pitney was his ex-wife''s favorite artist', '2024-01-22T15:58:20.453Z', 7, false, false, true, true),
+(4, 3, 'Brimly', 'Gregor', 'Greh-ger', 'Crush', 'Valentines Day', 'Female', 'Light-hearted', 'Fast', 'Want to tell her how I feel', 'We had math class together', 'We love sin/cos/tan', 'She only wears orange', 'Its my favorite color', 'We eat Blimpie sandwiches at lunch together', '2024-02-12T15:58:20.453Z', 7, false, false, false, true), 
+(7, 6, 'Sandy', 'Shimnar', 'Shim-Nahr', 'Husband', 'Anniversary', 'Female', 'Light-hearted', 'up-tempo', 'Want to tell her how I feel', 'We had math class together', 'We love sin/cos/tan', 'She only wears orange', 'Its my favorite color', 'We eat Blimpie sandwiches at lunch together', '2024-02-10T15:58:20.453Z', 7, false, false, false, true);
 
 INSERT INTO "song_details"
 ("song_request_id", "url", "lyrics", "title", "artist_id", "streaming_link")
@@ -258,66 +232,6 @@ VALUES
 (2, 7),
 (3, 6),
 (3, 7);
-
-
-INSERT INTO "jr_request" (
-  "user_id",
-  "requester",
-  "child",
-  "pronunciation",
-  "age",
-  "skill",
-  "emotion",
-  "tempo",
-  "vocal_type",
-  "description",
-  "goals"
-) VALUES (
-  9, -- Replace with the actual user_id
-  'John Doe', -- Replace with the actual requester
-  'Samantha', -- Replace with the actual child
-  'Sam-an-tha', -- Replace with the actual pronunciation
-  8, -- Replace with the actual age
-  'Singing', -- Replace with the actual skill
-  'Happy', -- Replace with the actual emotion
-  'Moderate', -- Replace with the actual tempo
-  'Soprano', -- Replace with the actual vocal_type
-  'A song request for Samantha', -- Replace with the actual description
-  'Improve singing skills' -- Replace with the actual goals
-);
-
-INSERT INTO "jr_request" (
-  "user_id",
-  "requester",
-  "child",
-  "pronunciation",
-  "age",
-  "skill",
-  "emotion",
-  "tempo",
-  "vocal_type",
-  "description",
-  "goals",
-  "is_complete",
-  "accepted"
-  
-) VALUES
-(1, 'John Doe', 'Samantha', 'Sam-an-tha', 8, 'Singing', 'Happy', 'Moderate', 'Soprano', 'A song request for Samantha', 'Improve singing skills', TRUE, TRUE),
-(1 ,'Jane Smith', 'Michael', 'Mi-kel', 10, 'Piano', 'Calm', 'Slow', 'Alto', 'Piano lessons for Michael', 'Learn to play the piano', FALSE, TRUE),
-(1, 'Bob Johnson', 'Emily', 'Em-i-ly', 12, 'Dancing', 'Energetic', 'Fast', 'Mezzo-Soprano', 'Choreography for Emily', 'Win a dance competition', FALSE, TRUE),
-(1, 'Alice Brown', 'Daniel', 'Dan-yel', 9, 'Drawing', 'Focused', 'Steady', 'Tenor', 'Drawing lessons for Daniel', 'Develop artistic skills', FALSE, FALSE);
-
-CREATE TABLE "songbeejr_details" (
-  "id" SERIAL PRIMARY KEY,
-  "jr_request_id" integer REFERENCES "public"."jr_request"("id") ON DELETE CASCADE,
-  "url" VARCHAR (500),
-  "lyrics" VARCHAR,
-  "title" VARCHAR (250),
-  "artist_id" integer REFERENCES "artist",
-  "streaming_link" VARCHAR
-);
-
-INSERT INTO "songbeejr_details" ("jr_request_id") VALUES (1);
    
 CREATE TABLE "pendingartistedit" (
   "id" SERIAL PRIMARY KEY,
@@ -376,8 +290,8 @@ VALUES
   (3, 1, 'hah thats cool');
 
 INSERT INTO "subscription"
-  ("user_id", "pack_id", "age", "name", "is_active")
+  ("user_id", "pack_id", "age", "name", "is_active", "is_paid")
 VALUES
-  (2, 4, '2022-11-10 00:00:00-06', 'Dogma', TRUE),
-  (2, 6, '2023-03-10 00:00:00-06', 'Greenbear', TRUE),
-  (10, 9, '2022-02-10 00:00:00-06', 'Johnnycake', FALSE);
+  (2, 4, '2022-11-10 00:00:00-06', 'Dogma', TRUE, true),
+  (2, 6, '2023-03-10 00:00:00-06', 'Greenbear', TRUE, true),
+  (10, 9, '2022-02-10 00:00:00-06', 'Johnnycake', FALSE, true);
