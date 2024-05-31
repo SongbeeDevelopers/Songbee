@@ -1,9 +1,10 @@
 import React from "react";
-// import SocketComponent from "../SocketComponents/SocketComponent";
 
 function CreationPage() {
 
-  return
+  return (
+    <h2>Loading...</h2>
+  )
 }
 
 export default CreationPage;
