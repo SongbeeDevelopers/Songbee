@@ -40,7 +40,7 @@ export default function AdminSubscriptionsTab({ num, data }) {
     }
     const lastDelivery = new Date(last_delivery);
     lastDelivery.setMonth(lastDelivery.getMonth() + subLength)
-    return (lastDelivery.toLocaleString('en-us').split(','))[0]
+    return lastDelivery
   }
 
   return (
@@ -67,7 +67,14 @@ export default function AdminSubscriptionsTab({ num, data }) {
 
               {/* table body */}
               <TableBody>
-                {data.map((row) => (
+                {data.map((row) => {
+                if (end >= calculateDelivery(row.last_delivery, row.pack_id)){
+                    dispatch({
+                        type: "UPDATE_SUBSCRIPTION_PACK",
+                        payload: {id: row.id, pack: row.pack_id}
+                    })
+                }
+                 return (
                   <TableRow hover key={row.id}>
 
                     {/* creation date */}
@@ -97,7 +104,7 @@ export default function AdminSubscriptionsTab({ num, data }) {
 
                     {/* due */}
                     <TableCell align="center">
-                    {calculateDelivery(row.last_delivery, row.pack_id)}
+                    {(calculateDelivery(row.last_delivery, row.pack_id).toLocaleString('en-us').split(','))[0]}
                     </TableCell>
 
                     <TableCell align='center'>
@@ -106,7 +113,7 @@ export default function AdminSubscriptionsTab({ num, data }) {
 
 
                   </TableRow>
-                ))}
+                )})}
               </TableBody>
             </Table>
           </div>

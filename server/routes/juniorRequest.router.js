@@ -545,4 +545,31 @@ router.put('/active/:id', async (req, res) => {
   }
 })
 
+router.put('/pack-update/:id', async (req, res) => {
+  const packId = req.body.pack + 1
+  console.log("packId", packId)
+  let connection
+  try {
+    connection = await pool.connect();
+
+    connection.query("BEGIN;");
+    const updateQuery = `
+  UPDATE "subscription"
+  SET 
+    "pack_id" = $1,
+    "last_delivery" = NOW()
+  WHERE id=$2;
+  `
+    await connection.query(updateQuery, [packId, req.params.id])
+    connection.query("COMMIT;");
+    connection.release();
+    res.sendStatus(200);
+  } catch (error) {
+    console.error("JR request router update subscription failed:", error)
+    connection.query("ROLLBACK;");
+    connection.release();
+    res.sendStatus(500)
+  }
+})
+
 module.exports = router;

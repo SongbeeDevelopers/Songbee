@@ -163,6 +163,21 @@ function* activateLearningPack (action){
   }
 }
 
+function* updateSubscriptionPack (action){
+  try {
+    yield axios({
+      method: "PUT",
+      url: `/api/jr-request/pack-update/${action.payload.id}`,
+      data: {pack: action.payload.pack}
+    })
+    yield put({
+      type: "FETCH_LEARNING_PACKS"
+    })
+  }catch (error) {
+    console.error("Saga updateSubscriptionPack failed:", error)
+  }
+}
+
 function* juniorRequestSaga() {
   yield takeLatest("FETCH_USER_SUBSCRIPTIONS", fetchUserSubscriptions);
   yield takeLatest("FETCH_CURRENT_SUBSCRIPTION", fetchCurrentSubscription);
@@ -177,6 +192,7 @@ function* juniorRequestSaga() {
   yield takeLatest("FETCH_ALL_SUBSCRIPTIONS", fetchAllSubscriptions);
   yield takeLatest("UPDATE_LEARNING_PACK", updateLearningPack);
   yield takeLatest("ACTIVATE_PACK", activateLearningPack);
+  yield takeLatest("UPDATE_SUBSCRIPTION_PACK", updateSubscriptionPack)
 
 }
 
