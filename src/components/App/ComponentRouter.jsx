@@ -56,6 +56,7 @@ import DiveIntoBenefits from "../JrBenefits/JrBenefits";
 import ChatPage from "../ChatComponents/ChatPage";
 import CancelPage from "../CancelPage/CancelPage";
 import JrCancelPage from "../CancelPage/JrCancelPage";
+import SubscriptionDetails from "../SubscriptionDetails/SubscriptionDetails"
 
 
 function ComponentRouter() {
@@ -265,6 +266,10 @@ function ComponentRouter() {
 
         <JrRoute exact path="/whats-included">
           <WhatsIncluded routeVariants={routeVariants} />
+        </JrRoute>
+
+        <JrRoute exact path="/subscription/:id">
+          <SubscriptionDetails routeVariants={routeVariants} />
         </JrRoute>
 
         {/* If none of the other routes matched, we will show a 404. */}

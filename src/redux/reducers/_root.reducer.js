@@ -13,7 +13,7 @@ import allUsers from './allUsers.reducer';
 import filterResults from './filterResults.reducer';
 import pendingArtists from './pendingArtists.reducer';
 import allArtists from './allArtists.reducer';
-import juniorRequests from './juniorRequest.reducer';
+import userSubscriptions from './userSubscriptions.reducer';
 import jrRequestData from './jrRequestData.reducer';
 import artistProfile from "./artistProfile.reducer";
 import pendingEdits from "./pendingEdits.reducer";
@@ -31,6 +31,7 @@ import currentChat from './currentChat.reducer';
 import message from './message.reducer';
 import activeSubscriptions from './activeSubscriptions.reducer';
 import pausedSubscriptions from './pausedSubscriptions.reducer';
+import currentSubscription from './currentSubscription.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -52,7 +53,7 @@ const rootReducer = combineReducers({
   filterResults,
   pendingArtists,
   allArtists,
-  juniorRequests,
+  userSubscriptions,
   jrRequestData,
   artistProfile,
   pendingEdits,
@@ -70,8 +71,7 @@ const rootReducer = combineReducers({
   message,
   activeSubscriptions,
   pausedSubscriptions,
-  
-  
+  currentSubscription
 });
 
 export default rootReducer;

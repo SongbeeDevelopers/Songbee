@@ -12,33 +12,57 @@ router.get("/user", rejectUnauthenticated, (req, res) => {
   const userId = req.user.id;
   const requestQuery = `
   SELECT 
-  "id" AS "id",
-  "user_id",
-  "requester",
-  "pronunciation",
-  "vocal_type",
-  "tempo",
-  "created_at",
-  "goals",
-  "description",
-  "emotion",
-  "skill",
-  "child",
-  "age",
-  "is_complete",
-  "accepted"
-  FROM "jr_request"
-  WHERE "user_id"=$1;
+  "subscription"."id",
+  "subscription"."user_id",
+  "subscription"."age",
+  "subscription"."name",
+  "subscription"."is_active",
+  "subscription"."created_at",
+  "subscription"."last_delivery",
+  "learning_packs"."title",
+  "learning_packs"."description",
+  "learning_packs"."image",
+  "learning_packs"."song1",
+  "learning_packs"."song1_name",
+  "learning_packs"."song2",
+  "learning_packs"."song2_name",
+  "learning_packs"."song3",
+  "learning_packs"."song3_name",
+  "learning_packs"."song4",
+  "learning_packs"."song4_name",
+  "learning_packs"."song5",
+  "learning_packs"."song5_name",
+  "learning_packs"."song6",
+  "learning_packs"."song6_name",
+  "learning_packs"."song7",
+  "learning_packs"."song7_name",
+  "learning_packs"."song8",
+  "learning_packs"."song8_name",
+  "learning_packs"."song9",
+  "learning_packs"."song9_name",
+  "learning_packs"."song10",
+  "learning_packs"."song10_name",
+  "learning_packs"."song11",
+  "learning_packs"."song11_name",
+  "learning_packs"."song12",
+  "learning_packs"."song12_name",
+  "learning_packs"."song13",
+  "learning_packs"."song13_name",
+  "learning_packs"."play_guide",
+  "learning_packs"."is_active"
+  FROM "subscription"
+  JOIN "learning_packs"
+    ON "subscription"."pack_id" = "learning_packs"."id"
+  WHERE "subscription"."user_id"=$1;
   `;
   pool
     .query(requestQuery, [userId])
     .then((result) => {
       res.send(result.rows);
-      // console.log("Request router GET all user requests", result.rows)
     })
     .catch((error) => {
       console.error(
-        "Error in request router GET all user requestsAAAAA",
+        "Error in request router GET jr subs",
         error
       );
       res.sendStatus(500);
@@ -46,30 +70,55 @@ router.get("/user", rejectUnauthenticated, (req, res) => {
 });
 
 router.get("/current/:id", (req, res) => {
+  console.log('REQ:', req.params.id)
   const query = `
     SELECT 
-    "jr_request"."id" AS "id",
-    "jr_request"."user_id",
-    "jr_request"."requester",
-    "jr_request"."pronunciation",
-    "jr_request"."vocal_type",
-    "jr_request"."tempo",
-    "jr_request"."created_at",
-    "jr_request"."goals",
-    "jr_request"."description",
-    "jr_request"."emotion",
-    "jr_request"."skill",
-    "jr_request"."child",
-    "jr_request"."age",
-    "jr_request"."is_complete",
-    "jr_request"."accepted"
-    FROM "jr_request"
-    WHERE "jr_request"."id"=$1;
+    "subscription"."user_id",
+    "subscription"."age",
+    "subscription"."name",
+    "subscription"."is_active",
+    "subscription"."created_at",
+    "subscription"."last_delivery",
+    "learning_packs"."title",
+    "learning_packs"."description",
+    "learning_packs"."image",
+    "learning_packs"."song1",
+    "learning_packs"."song1_name",
+    "learning_packs"."song2",
+    "learning_packs"."song2_name",
+    "learning_packs"."song3",
+    "learning_packs"."song3_name",
+    "learning_packs"."song4",
+    "learning_packs"."song4_name",
+    "learning_packs"."song5",
+    "learning_packs"."song5_name",
+    "learning_packs"."song6",
+    "learning_packs"."song6_name",
+    "learning_packs"."song7",
+    "learning_packs"."song7_name",
+    "learning_packs"."song8",
+    "learning_packs"."song8_name",
+    "learning_packs"."song9",
+    "learning_packs"."song9_name",
+    "learning_packs"."song10",
+    "learning_packs"."song10_name",
+    "learning_packs"."song11",
+    "learning_packs"."song11_name",
+    "learning_packs"."song12",
+    "learning_packs"."song12_name",
+    "learning_packs"."song13",
+    "learning_packs"."song13_name",
+    "learning_packs"."play_guide",
+    "learning_packs"."is_active"
+    FROM "subscription"
+    JOIN "learning_packs"
+    ON "subscription"."pack_id" = "learning_packs"."id"
+    WHERE "subscription"."id"=$1;
     `;
   pool
     .query(query, [req.params.id])
     .then((result) => {
-      res.send(result.rows);
+      res.send(result.rows[0]);
     })
     .catch((error) => {
       console.error("Error in request router GET current request:", error);
@@ -163,12 +212,12 @@ router.get('/learning-packs', (req, res) => {
     ORDER BY "min_age";
   `
   pool.query(query)
-  .then((response) => {
-    res.send(response.rows)
-  })
-  .catch((error) => {
-    console.error('juniorRequest GET learning packs route failed:', error)
-  })
+    .then((response) => {
+      res.send(response.rows)
+    })
+    .catch((error) => {
+      console.error('juniorRequest GET learning packs route failed:', error)
+    })
 });
 
 router.get('/current-pack/:id', (req, res) => {
@@ -177,42 +226,42 @@ router.get('/current-pack/:id', (req, res) => {
     WHERE "id"=$1;
   `
   pool.query(query, [req.params.id])
-  .then((response) => {
-    res.send(response.rows[0])
-  })
-  .catch((error) => {
-    console.error('juniorRequest GET current pack route failed:', error)
-  })
+    .then((response) => {
+      res.send(response.rows[0])
+    })
+    .catch((error) => {
+      console.error('juniorRequest GET current pack route failed:', error)
+    })
 });
 
 router.post('/create', async (req, res) => {
   let connection
   try {
-  connection = await pool.connect();
+    connection = await pool.connect();
 
-  connection.query("BEGIN;");
-  const userId = req.user.id;
-  const packId = req.body.pack_id;
-  const age = req.body.age;
-  const name = req.body.name;
-  const pronunciation = req.body.pronunciation;
-  const requestQuery = `
+    connection.query("BEGIN;");
+    const userId = req.user.id;
+    const packId = req.body.pack_id;
+    const age = req.body.age;
+    const name = req.body.name;
+    const pronunciation = req.body.pronunciation;
+    const requestQuery = `
   INSERT INTO "subscription"
     ("user_id", "pack_id", "age", "name", "pronunciation", "is_active")
     VALUES
     ($1, $2, $3, $4, $5, TRUE)
     RETURNING "id";
   `
-  const response = await connection.query(requestQuery, [userId, packId, age, name, pronunciation])
- 
-  connection.query("COMMIT;");
-  connection.release();
-  res.send({id: response.rows[0].id})
+    const response = await connection.query(requestQuery, [userId, packId, age, name, pronunciation])
+
+    connection.query("COMMIT;");
+    connection.release();
+    res.send({ id: response.rows[0].id })
   } catch (error) {
-      console.error("Error in juniorRequest router POST create request", error);
-      connection.query("ROLLBACK;");
-      connection.release();
-      res.sendStatus(500);
+    console.error("Error in juniorRequest router POST create request", error);
+    connection.query("ROLLBACK;");
+    connection.release();
+    res.sendStatus(500);
   }
 });
 
@@ -236,9 +285,9 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
 router.get('/all', rejectUnauthenticated, async (req, res) => {
   let connection
   try {
-  connection = await pool.connect();
-  connection.query("BEGIN;");
-  const activeSubscriptionQuery = `
+    connection = await pool.connect();
+    connection.query("BEGIN;");
+    const activeSubscriptionQuery = `
   SELECT 
   "subscription"."id" AS "id",
   "subscription"."user_id",
@@ -258,8 +307,8 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
   ON "subscription"."user_id"="user"."id"
   WHERE "subscription"."is_active"=TRUE;
   `
-  const pendingResult = await connection.query(activeSubscriptionQuery);
-  const pausedSubscriptionQuery = `
+    const pendingResult = await connection.query(activeSubscriptionQuery);
+    const pausedSubscriptionQuery = `
   SELECT 
   "subscription"."id" AS "id",
   "subscription"."user_id",
@@ -279,22 +328,22 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
   ON "subscription"."user_id"="user"."id"
   WHERE "subscription"."is_active"=FALSE;
   `
-  const completedResult = await connection.query(pausedSubscriptionQuery);
-  connection.query("COMMIT;");
-  connection.release();
-  res.send([pendingResult.rows, completedResult.rows])
+    const completedResult = await connection.query(pausedSubscriptionQuery);
+    connection.query("COMMIT;");
+    connection.release();
+    res.send([pendingResult.rows, completedResult.rows])
   } catch (error) {
-      console.log("Error in junior request router GET all subscriptions:", error);
-      connection.query("ROLLBACK;");
-      connection.release();
-      res.sendStatus(500);
+    console.log("Error in junior request router GET all subscriptions:", error);
+    connection.query("ROLLBACK;");
+    connection.release();
+    res.sendStatus(500);
   }
 });
 
 router.put("/learning-pack/:id", rejectUnauthenticated, cloudinaryUpload.single("file"), async (req, res) => {
   let connection
   try {
-  connection = await pool.connect();
+    connection = await pool.connect();
 
   connection.query("BEGIN;");
     let audioUrl
@@ -337,24 +386,24 @@ router.put("/learning-pack/:id", rejectUnauthenticated, cloudinaryUpload.single(
 router.put('/active/:id', async (req, res) => {
   let connection
   try {
-  connection = await pool.connect();
+    connection = await pool.connect();
 
-  connection.query("BEGIN;");
-  const approvalQuery = `
+    connection.query("BEGIN;");
+    const approvalQuery = `
   UPDATE "learning_packs"
   SET "is_active"=NOT "is_active"
   WHERE id=$1;
   `
-  // console.log('req.params.id:', req.params.id)
-  await connection.query(approvalQuery, [req.params.id])
-  connection.query("COMMIT;");
-  connection.release();
-  res.sendStatus(200);
+    // console.log('req.params.id:', req.params.id)
+    await connection.query(approvalQuery, [req.params.id])
+    connection.query("COMMIT;");
+    connection.release();
+    res.sendStatus(200);
   } catch (error) {
-      console.error("JR request router update active pack failed:", error)
-      connection.query("ROLLBACK;");
-      connection.release();
-      res.sendStatus(500)
+    console.error("JR request router update active pack failed:", error)
+    connection.query("ROLLBACK;");
+    connection.release();
+    res.sendStatus(500)
   }
 })
 

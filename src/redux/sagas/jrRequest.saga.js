@@ -1,23 +1,23 @@
 import axios from "axios";
 import { takeLatest, put } from "redux-saga/effects";
 
-function* fetchUserRequests() {
+function* fetchUserSubscriptions () {
   try {
     const response = yield axios.get("/api/jr-request/user");
-    console.log("imm data",response.data);
-    yield put({ type: "SET_JUNIOR_USER_REQUESTS", payload: response.data });
+    yield put({ type: "SET_USER_SUBSCRIPTIONS", payload: response.data });
   } catch (error) {
-    console.error("SAGA fetchUserRequests() failed:", error);
+    console.error("SAGA fetchUserSubscriptions() failed:", error);
   }
 }
 
-function* fetchCurrentRequest(action) {
+function* fetchCurrentSubscription (action) {
   try {
     const response = yield axios.get(
       `/api/jr-request/current/${action.payload}`
     );
+    yield put({ type: "SET_CURRENT_SUBSCRIPTION", payload: response.data})
   } catch (error) {
-    console.error("SAGA fetchCurrentRequest() failed:", error);
+    console.error("SAGA fetchCurrentSubscription failed:", error);
   }
 }
 
@@ -164,8 +164,8 @@ function* activateLearningPack (action){
 }
 
 function* juniorRequestSaga() {
-  yield takeLatest("FETCH_USER_REQUESTS", fetchUserRequests);
-  yield takeLatest("FETCH_CURRENT_REQUEST", fetchCurrentRequest);
+  yield takeLatest("FETCH_USER_SUBSCRIPTIONS", fetchUserSubscriptions);
+  yield takeLatest("FETCH_CURRENT_SUBSCRIPTION", fetchCurrentSubscription);
   yield takeLatest("UPDATE_JR_SONG_REQUEST", updateSongRequest);
   yield takeLatest("ACCEPT_SONG_REQUEST", acceptSongRequest);
   yield takeLatest("COMPLETE_SONG_REQUEST", completeSongRequest);
