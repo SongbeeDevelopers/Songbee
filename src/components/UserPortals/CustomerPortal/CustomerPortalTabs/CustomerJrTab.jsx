@@ -28,7 +28,7 @@ export default function JuniorRequests() {
   };
 
   const calculateDelivery = (last_delivery) => {
-    return 'fuckoff'
+    return 'delivery logic needed here'
   }
 
   return (
