@@ -286,9 +286,6 @@ How Jr Works
   margin-bottom: 15px
 }
 
-.jr-works p {
-}
-
 /* container for each numbered item */
 .jr-works-item {
   display: flex;
