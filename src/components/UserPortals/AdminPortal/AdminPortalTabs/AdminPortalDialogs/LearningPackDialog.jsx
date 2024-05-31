@@ -204,8 +204,6 @@ export default function LearningPackDialog({ setDetailsOpen }) {
 
   return (
     <Box>
-    <DialogContent>
-    <DialogActions>
     <div className='admin-req-details-edit'>
       <h3>Edit Learning Pack Details</h3>
 
@@ -585,8 +583,6 @@ export default function LearningPackDialog({ setDetailsOpen }) {
         </Button>
         </div>
     </div>
-    </DialogActions>
-    </DialogContent>
     </Box>
   );
 }

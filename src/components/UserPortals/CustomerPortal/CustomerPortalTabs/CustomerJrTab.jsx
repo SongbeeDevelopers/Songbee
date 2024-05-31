@@ -22,14 +22,24 @@ export default function JuniorRequests() {
   const history = useHistory();
 
   const userSubscriptions = useSelector((store) => store.userSubscriptions);
-
+  console.log(userSubscriptions)
   const viewDetails = (reqId) => {
     history.push(`/subscription/${reqId}`);
   };
 
-  const calculateDelivery = (last_delivery) => {
-    return 'delivery logic needed here'
+  const calculateDelivery = (last_delivery, packId) => {
+    let subLength
+    if(packId <= 6){
+      subLength = 2
+    }
+    else {
+      subLength = 3
+    }
+    const lastDelivery = new Date(last_delivery);
+    lastDelivery.setMonth(lastDelivery.getMonth() + subLength)
+    return lastDelivery
   }
+  const end = new Date()
 
   return (
     <div className='tab-body'>
@@ -44,7 +54,14 @@ export default function JuniorRequests() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {userSubscriptions.map((sub, i) => (
+            {userSubscriptions.map((sub, i) => {
+              if (end >= calculateDelivery(sub.last_delivery, sub.pack_id)){
+                dispatch({
+                  type: "UPDATE_SUBSCRIPTION_PACK",
+                  payload: {id: sub.id, pack: sub.pack_id}
+                })
+              }
+              return (
               <TableRow key={i}>
                 {/* req date */}
                 <TableCell>
@@ -61,7 +78,7 @@ export default function JuniorRequests() {
                 </TableCell>
 
                 <TableCell align="center">
-                  {calculateDelivery(sub.last_delivery)}
+                {(calculateDelivery(sub.last_delivery, sub.pack_id).toLocaleString('en-us').split(','))[0]}
                 </TableCell>
 
                 {/* details */}
@@ -74,7 +91,7 @@ export default function JuniorRequests() {
                   </Button>
                 </TableCell>
               </TableRow>
-            ))}
+            )})}
           </TableBody>
         </Table>
     </div>

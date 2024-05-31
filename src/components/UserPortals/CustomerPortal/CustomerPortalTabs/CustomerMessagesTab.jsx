@@ -34,8 +34,8 @@ function CustomerMessagesTab() {
         type: "READ_MESSAGE",
         payload: chat.id
       })
-      history.push(`/chatpage/${chat.id}`)
   }
+  history.push(`/chatpage/${chat.id}`)
 }
 
 

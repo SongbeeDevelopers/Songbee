@@ -75,10 +75,10 @@ export default function CustomerPortalTabs() {
           indicatorColor="primary"
         >
           <Tab label="Orders" {...a11yProps(0)} />
-          {userSubscriptions.length > 0 && <Tab label="Jr Subscriptions" {...a11yProps(1)} />}
-          <Tab label="Profile" {...a11yProps(2)} />
-          <Tab label="Refer a Friend" {...a11yProps(3)} />
-          <Tab label="Messages" {...a11yProps(4)} />
+          <Tab label="Profile" {...a11yProps(1)} />
+          <Tab label="Refer a Friend" {...a11yProps(2)} />
+          <Tab label="Messages" {...a11yProps(3)} />
+          {userSubscriptions.length > 0 && <Tab label="Jr Subscriptions" {...a11yProps(4)} />}
         </Tabs>
       </Box>
 
@@ -87,24 +87,24 @@ export default function CustomerPortalTabs() {
         <CustomerRequestsTab />
       </CustomTabPanel>
 
-      {userSubscriptions.length > 0 &&
-      <CustomTabPanel value={value} index={1}>
-        <CustomerJrTab />
-      </CustomTabPanel>
-      } 
-
       {/* personal info tab */}
-      <CustomTabPanel value={value} index={2}>
+      <CustomTabPanel value={value} index={1}>
         <CustomerProfileTab />
       </CustomTabPanel>
 
-      <CustomTabPanel value={value} index={3}>
+      <CustomTabPanel value={value} index={2}>
         <CustomerCreditTab />
       </CustomTabPanel>
 
-      <CustomTabPanel value={value} index={4}>
+      <CustomTabPanel value={value} index={3}>
         <CustomerMessagesTab />
       </CustomTabPanel>
+
+      {userSubscriptions.length > 0 &&
+      <CustomTabPanel value={value} index={4}>
+        <CustomerJrTab />
+      </CustomTabPanel>
+      } 
     </>
   );
 }
