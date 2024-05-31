@@ -58,7 +58,6 @@ router.get("/user", rejectUnauthenticated, (req, res) => {
   pool
     .query(requestQuery, [userId])
     .then((result) => {
-      console.log('JUNIOR REQUEST GET', result.rows)
       res.send(result.rows);
     })
     .catch((error) => {
@@ -194,7 +193,6 @@ router.put("/accept/:id", async (req, res) => {
   SET "accepted"=TRUE
   WHERE id=$1;
   `;
-    console.log("req.params.id:", req.params.id);
     await connection.query(approvalQuery, [req.params.id]);
 
     connection.query("COMMIT;");
@@ -347,8 +345,7 @@ router.put("/learning-pack/:id", rejectUnauthenticated, cloudinaryUpload.single(
   try {
     connection = await pool.connect();
 
-    connection.query("BEGIN;");
-    console.log("req.files?", req.files);
+  connection.query("BEGIN;");
     let audioUrl
     // if(req.file){
     // audioUrl = req.file.path;

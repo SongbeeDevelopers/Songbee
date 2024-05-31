@@ -17,7 +17,7 @@ export default function SongSpecifications() {
   const genres = useSelector(store => store.genres)
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
-
+  
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -43,7 +43,7 @@ export default function SongSpecifications() {
               value={requestData.genre}
               onChange={() => handleInput("genre", event.target.value)}
             >
-              <option selected disabled>
+              <option value="" disabled>
                 Select Genre
               </option>
               {genres.map((genre) => (

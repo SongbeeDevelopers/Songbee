@@ -42,10 +42,8 @@ router.put("/:id", rejectUnauthenticated, cloudinaryUpload.single("file"), async
       let audioUrl
       if(req.file){
       audioUrl = req.file.path;
-      console.log(audioUrl);
       } else {
         audioUrl = req.body.url
-        console.log(audioUrl);
       }
       const lyrics = req.body.lyrics;
       const title = req.body.title;
@@ -66,7 +64,6 @@ router.put("/:id", rejectUnauthenticated, cloudinaryUpload.single("file"), async
       const detailsValues = [
         audioUrl, lyrics, title, artist, streaming_link, songRequestId,
       ];
-      console.log("detailsValues:", detailsValues)
       const detailsResult = await connection.query(detailsQuery, detailsValues);
       const completeQuery = `
       UPDATE "song_request"
@@ -96,10 +93,8 @@ router.put("/:id", rejectUnauthenticated, cloudinaryUpload.single("file"), async
       let audioUrl
       if(req.file){
       audioUrl = req.file.path;
-      console.log(audioUrl);
       } else {
         audioUrl = req.body.url
-        console.log(audioUrl);
       }
       const lyrics = req.body.lyrics;
       const title = req.body.title;
@@ -120,7 +115,6 @@ router.put("/:id", rejectUnauthenticated, cloudinaryUpload.single("file"), async
       const detailsValues = [
         audioUrl, lyrics, title, artist, streaming_link, songRequestId,
       ];
-      console.log("detailsValues:", detailsValues)
       const detailsResult = await connection.query(detailsQuery, detailsValues);
       const completeQuery = `
       UPDATE "jr_request"

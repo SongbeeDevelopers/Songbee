@@ -97,7 +97,7 @@ router.post("/", rejectUnauthenticated, (req, res) => {
       newArtist.vocal_type
     ])
     .then((result) => {
-      console.log(result.rows);
+    
       // after creating artist we take artist id and create genre
       pool
         .query(queryGenre, [
@@ -105,7 +105,7 @@ router.post("/", rejectUnauthenticated, (req, res) => {
           newArtist.genre_id,
         ])
         .then((result) => {
-          console.log(result.rows);
+       
           res.sendStatus(201);
         })
         .catch((err) => {
@@ -128,7 +128,7 @@ router.post("/edit", rejectUnauthenticated, async (req, res) => {
     ($1, $2, $3, $4, $5, $6);
   `;
     const artistId = await getArtistIdByUserId(req.user.id)
-console.log(artistId);
+
   pool
     .query(queryText, [
       artistId,

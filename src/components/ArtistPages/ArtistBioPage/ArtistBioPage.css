@@ -18,8 +18,8 @@
 
 .content {
     display: flex;
-    align-items: center;
-    margin-left: 200px;
+    align-items: flex-start;
+    justify-content: center;
     max-width: 90%;
 }
 
@@ -28,14 +28,12 @@
 .content img {
     border-radius: 50%;
     width: 350px;
-    
 }
-
 
 
 .location  {
   position: relative;
-  left: 25px;
+  left: 50px;
   top: 10px;
   
 }
@@ -48,20 +46,10 @@
     line-height: 50px;
     font-weight: 800;
     letter-spacing: 0px;
-    margin-top: -10px;
-    margin-left: 20px;
+    margin-top: 10px;
+    margin-left: 50px;
  }
 
-
- .subHeader {
-    font-size: 20px;
-    opacity: 0.5;
-    font-family: Poppins, sans-serif;
-    margin: 0px;
-    margin-top: -30px;
-    margin-bottom: 40px;
-    margin-left: 100px;
- }
 
  .socialLinks {
   display: flex;
@@ -94,7 +82,7 @@
   content: "";
   display: block;
   position: absolute;
-  left: 105px;
+  left: 125px;
   top: 12px;
   width: 1px;
   height: 20px;
@@ -106,7 +94,7 @@
   content: "";
   display: block;
   position: absolute;
-  left: 155px;
+  left: 175px;
   top: 12px;
   width: 1px;
   height: 20px;
@@ -117,10 +105,10 @@
  
  .community-button {
      margin: 0 auto;
+     margin-left: 60px;
      background-color: #feaf17;
      border-radius: 20px;
      text-align: center;
-     margin-bottom: 3px;
      font-family: Poppins, sans-serif;
      font-weight: 700;
      transition: background-color 0.45s;
@@ -129,9 +117,7 @@
      color: var(--black\<deleted\|variable-f6301105\>);
      width: 13rem;
      height: 1.6rem;
-     margin-left: -170px;
-     margin-top: 10px;
-     padding-top: 2px;
+     margin-top: -20px;
      cursor: pointer;
   }
 
@@ -139,14 +125,23 @@
     background-color: #fed07b;
   }
 
-  .bio {
+  
+  .bio h4{
     font-family: Poppins, sans-serif;
     font-size: 15px;
+    font-weight: 400;
     line-height: 24px;
-    font-weight: 300;
     letter-spacing: 0px; 
     padding-bottom: 30px;
-    padding-top: 10px;
+    margin-left: 50px;
+    
+  }
+
+  .bio h2 {
+    font-weight: 600;
+    font-family: Poppins, sans-serif;
+    margin-left: 50px;
+    padding-top: 20px;
   }
 
   .songListWrapper {
