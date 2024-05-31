@@ -386,7 +386,7 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
         res.sendStatus(200);
       })
       .catch((err) => {
-        console.log("Error in event router DELETE attendance", err);
+        console.log("Error in request router DELETE request", err);
         res.sendStatus(500);
       });
   });
