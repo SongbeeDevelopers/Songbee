@@ -28,9 +28,6 @@
   text-shadow: 1px 1px 2px black;
 }
 
-.ws-hero button {
-}
-
 .ws-heroContents {
   position: absolute;
   top: 60%;
@@ -196,7 +193,6 @@
 .bottom-howitworks {
   background-color: white;
   width: auto;
-  margin: 0 -70px;
   padding: 50px;
   display: flex;
   justify-content: center;
@@ -237,11 +233,8 @@
 }
 
 .left-hive img {
-  position: absolute;
-  left: 50px;
-  top: -100px;
   width: 200px;
-  height: auto;
+  height: 175px;
 }
 
 .left-hive h2 {
@@ -287,4 +280,55 @@
   bottom: 50px;
   right: 350px;
   transform: rotate(180deg);
+}
+
+@media (max-width: 1400px) {
+  .works-cards {
+    flex-direction: column;
+  }
+  .join-the-hive {
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 0;
+  }
+  .left-hive {
+    justify-content: center;
+  }
+  .left-hive img {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 175px;
+  }
+  .right-hive {
+    gap: 50px 15%;
+    width: 75%;
+    justify-content: center;
+  }
+}
+@media (max-width: 1000px) {
+  .ws-music {
+    flex-direction: column;
+    align-items: center;
+  }
+  .ws-right {
+    width: 100%;
+  }
+  .ws-left {
+    width: 100%;
+  }
+}
+@media (max-width: 700px) {
+  .right-hive {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .ws-hero h1 {
+    font-size: 25px;;
+  }
+  .left-hive h2 {
+    font-size: 20px;
+  }
 }

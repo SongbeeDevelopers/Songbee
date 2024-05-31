@@ -65,3 +65,21 @@
 .jrcheckoutagree {
     flex-direction: column;
 }
+
+@media (max-width: 825px) {
+    .reqFormPage h1 {
+        line-height: normal;
+    }
+    .reqFormPage {
+        padding: 0 5% 50px;
+    }
+    .jr-checkout-flowers {
+        width: 50px;
+        left: 20px;
+    }
+    .jr-checkout-notes {
+        width: 100px;
+        right: 25px;
+        top: 350px;
+    }
+}
