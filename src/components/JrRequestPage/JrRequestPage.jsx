@@ -6,6 +6,7 @@ import {
   useHistory,
   Link,
 } from "react-router-dom/cjs/react-router-dom.min";
+import { useMediaQuery } from "react-responsive";
 
 import {
   Box,
@@ -34,6 +35,7 @@ export default function JrCheckoutPage({ routeVariants }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const now = new Date();
+  const isMobile = useMediaQuery({ query: `(max-width: 825px)`} )
 
   const user = useSelector(store => store.user)
   const requestData = useSelector((store) => store.jrCheckoutData);
@@ -296,7 +298,7 @@ export default function JrCheckoutPage({ routeVariants }) {
 
       <p>Once you provide details we can begin your child's journey!</p>
       <Box sx={{ width: "100%" }}>
-        <Stepper nonLinear activeStep={activeStep}>
+        <Stepper nonLinear activeStep={activeStep} orientation={isMobile ? 'vertical' : 'horizontal'} sx={{alignItems: 'center'}} >
           {steps.map((label, index) => (
             <Step key={label} completed={completed[index]}>
               <StepButton color="inherit" onClick={handleStep(index)}>
