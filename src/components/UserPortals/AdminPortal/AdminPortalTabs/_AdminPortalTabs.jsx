@@ -70,10 +70,10 @@ export default function AdminPortalTabs() {
         <Tabs value={value} onChange={handleChange} variant="scrollable" centered>
           <Tab label="Main" {...a11yProps(0)} />
           <Tab label="Junior" {...a11yProps(1)} />
-          <Tab label="Users" {...a11yProps(3)} />
-          <Tab label="Artist Applications" {...a11yProps(4)} />
-          <Tab label="Artist Edits" {...a11yProps(5)} />
-          <Tab label="Learning Packs" {...a11yProps(6)} />
+          <Tab label="Users" {...a11yProps(2)} />
+          <Tab label="Artist Applications" {...a11yProps(3)} />
+          <Tab label="Artist Edits" {...a11yProps(4)} />
+          <Tab label="Learning Packs" {...a11yProps(5)} />
         </Tabs>
       </Box>
 
