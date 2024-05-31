@@ -171,7 +171,10 @@ function* updateSubscriptionPack (action){
       data: {pack: action.payload.pack}
     })
     yield put({
-      type: "FETCH_LEARNING_PACKS"
+      type: "FETCH_ALL_SUBSCRIPTIONS"
+    })
+    yield put({
+      type: "FETCH_USER_SUBSCRIPTIONS"
     })
   }catch (error) {
     console.error("Saga updateSubscriptionPack failed:", error)
