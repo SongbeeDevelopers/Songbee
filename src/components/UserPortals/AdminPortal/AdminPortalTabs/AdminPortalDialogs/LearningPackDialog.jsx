@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { Button, Typography, TextField, Box } from "@mui/material"
+import { Button, Typography, TextField, Box, DialogContent, DialogActions } from "@mui/material"
 import Swal from 'sweetalert2';
 
 import '../../AdminPortal.css'
@@ -203,9 +203,12 @@ export default function LearningPackDialog({ setDetailsOpen }) {
 
 
   return (
+    <Box>
+    <DialogContent>
+    <DialogActions>
     <div className='admin-req-details-edit'>
       <h3>Edit Learning Pack Details</h3>
-<Box>
+
         <div className='admin-details-edit-row'>
           <label> Learning Pack Name
             <input
@@ -581,7 +584,9 @@ export default function LearningPackDialog({ setDetailsOpen }) {
           Upload Song 13
         </Button>
         </div>
-        </Box>
     </div>
+    </DialogActions>
+    </DialogContent>
+    </Box>
   );
 }
