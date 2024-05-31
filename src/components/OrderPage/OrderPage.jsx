@@ -205,7 +205,7 @@ export default function OrderPage({ routeVariants }) {
       <Box sx={{ width: "100%" }}>
 
         {/* progress bar */}
-        <Stepper nonLinear activeStep={activeStep} sx={{ mb: 8, overflowX: 'scroll', overflowY: 'hidden' }}>
+        <Stepper nonLinear activeStep={activeStep} sx={{ mb: 8 }}>
           {steps.map((label, index) => (
             <Step key={label} completed={completed[index]}>
               <StepButton color="inherit" onClick={handleStep(index)}>

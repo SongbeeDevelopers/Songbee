@@ -16,8 +16,9 @@ import {
 
 export default function AdminSubscriptionsTab({ num, data }) {
 
+  console.log('DATA', data)
+
   const dispatch = useDispatch()
-  console.log("data", data)
 
   // date/time
   const monthDiff = (d1, d2) => {
