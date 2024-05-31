@@ -54,7 +54,7 @@ function OneFaq({ question, answer }) {
 function FaqPage({ routeVariants }) {
   return (
     <motion.div
-      className="container, faq"
+      className="container, faq, faqpage-jr"
       variants={routeVariants}
       initial="initial"
       animate="final"

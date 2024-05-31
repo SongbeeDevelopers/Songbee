@@ -7,6 +7,11 @@ General
     margin: auto;
 }
 
+.faqpage-jr {
+    background-color: white;
+    padding-top: 40px
+}
+
 .info p, li  {
     color: #474546;
 }
