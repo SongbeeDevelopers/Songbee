@@ -13,6 +13,7 @@ import {
   TableCell,
   TableHead,
   TableRow,
+  Modal
 } from '@mui/material';
 
 
@@ -84,7 +85,7 @@ const handleActive = (id) => {
                         UPDATE
                       </Button>
                       {/* details dialog */}
-                      <Dialog 
+                      <Dialog fullWidth maxWidth="md"
                         open={detailsOpen}
                         onClose={closeDetails}
                       >

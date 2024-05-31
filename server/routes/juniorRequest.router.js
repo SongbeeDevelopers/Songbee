@@ -347,31 +347,167 @@ router.put("/learning-pack/:id", rejectUnauthenticated, cloudinaryUpload.single(
 
   connection.query("BEGIN;");
     let audioUrl
-    // if(req.file){
-    // audioUrl = req.file.path;
-    // console.log(audioUrl);
-    // } else {
-    //   audioUrl = req.body.url
-    //   console.log(audioUrl);
-    // }
-    const lyrics = req.body.lyrics;
-    const title = req.body.title;
-    const artist = req.body.artist_id;
-    const streaming_link = req.body.streaming_link;
-    const songRequestId = req.params.id;
-
+    if(req.file){
+    audioUrl = req.file.path;
+    } else {
+      audioUrl = req.body.url
+    }
+    const packId = req.params.id;
+    if(req.body.title){
+      const detailsQuery = `
+      UPDATE "learning_packs"
+      SET  
+        "title" = $1, 
+        "description" = $2,
+        "play_guide" = $3
+      WHERE "id" = $4;
+      `;
+      const detailsValues = [req.body.title, req.body.description, audioUrl, packId];
+      const detailsResult = await connection.query(detailsQuery, detailsValues);
+    }
+    else if(req.body.song1_name){
     const detailsQuery = `
     UPDATE "learning_packs"
     SET  
-      "title" = $1, 
-      "description" = $2, 
-      "title" = $3, 
-      "artist_id" = $4, 
-      "streaming_link" = $5
-    WHERE "id" = $6;
+      "song1_name" = $1, 
+      "song1" = $2
+    WHERE "id" = $3;
     `;
-    const detailsValues = [];
+    const detailsValues = [req.body.song1_name, audioUrl, packId];
     const detailsResult = await connection.query(detailsQuery, detailsValues);
+    }
+    else if(req.body.song2_name){
+      const detailsQuery = `
+      UPDATE "learning_packs"
+      SET  
+        "song2_name" = $1, 
+        "song2" = $2
+      WHERE "id" = $3;
+      `;
+      const detailsValues = [req.body.song2_name, audioUrl, packId];
+      const detailsResult = await connection.query(detailsQuery, detailsValues);
+      }
+    else if(req.body.song3_name){
+    const detailsQuery = `
+    UPDATE "learning_packs"
+    SET  
+      "song3_name" = $1, 
+      "song3" = $2
+    WHERE "id" = $3;
+    `;
+    const detailsValues = [req.body.song3_name, audioUrl, packId];
+    const detailsResult = await connection.query(detailsQuery, detailsValues);
+    }
+    else if(req.body.song4_name){
+      const detailsQuery = `
+      UPDATE "learning_packs"
+      SET  
+        "song4_name" = $1, 
+        "song4" = $2
+      WHERE "id" = $3;
+      `;
+      const detailsValues = [req.body.song4_name, audioUrl, packId];
+      const detailsResult = await connection.query(detailsQuery, detailsValues);
+      }
+    else if(req.body.song5_name){
+    const detailsQuery = `
+    UPDATE "learning_packs"
+    SET  
+      "song5_name" = $1, 
+      "song5" = $2
+    WHERE "id" = $3;
+    `;
+    const detailsValues = [req.body.song5_name, audioUrl, packId];
+    const detailsResult = await connection.query(detailsQuery, detailsValues);
+    }
+    else if(req.body.song6_name){
+    const detailsQuery = `
+    UPDATE "learning_packs"
+    SET  
+      "song6_name" = $1, 
+      "song6" = $2
+    WHERE "id" = $3;
+    `;
+    const detailsValues = [req.body.song6_name, audioUrl, packId];
+    const detailsResult = await connection.query(detailsQuery, detailsValues);
+    }
+    else if(req.body.song7_name){
+    const detailsQuery = `
+    UPDATE "learning_packs"
+    SET  
+      "song7_name" = $1, 
+      "song7" = $2
+    WHERE "id" = $3;
+    `;
+    const detailsValues = [req.body.song7_name, audioUrl, packId];
+    const detailsResult = await connection.query(detailsQuery, detailsValues);
+    }
+    else if(req.body.song8_name){
+    const detailsQuery = `
+    UPDATE "learning_packs"
+    SET  
+      "song8_name" = $1, 
+      "song8" = $2
+    WHERE "id" = $3;
+    `;
+    const detailsValues = [req.body.song8_name, audioUrl, packId];
+    const detailsResult = await connection.query(detailsQuery, detailsValues);
+    }
+    else if(req.body.song9_name){
+    const detailsQuery = `
+    UPDATE "learning_packs"
+    SET  
+      "song9_name" = $1, 
+      "song9" = $2
+    WHERE "id" = $3;
+    `;
+    const detailsValues = [req.body.song9_name, audioUrl, packId];
+    const detailsResult = await connection.query(detailsQuery, detailsValues);
+    }
+    else if(req.body.song10_name){
+      const detailsQuery = `
+      UPDATE "learning_packs"
+      SET  
+        "song10_name" = $1, 
+        "song10" = $2
+      WHERE "id" = $3;
+      `;
+      const detailsValues = [req.body.song10_name, audioUrl, packId];
+      const detailsResult = await connection.query(detailsQuery, detailsValues);
+      }
+    else if(req.body.song11_name){
+    const detailsQuery = `
+    UPDATE "learning_packs"
+    SET  
+      "song11_name" = $1, 
+      "song11" = $2
+    WHERE "id" = $3;
+    `;
+    const detailsValues = [req.body.song11_name, audioUrl, packId];
+    const detailsResult = await connection.query(detailsQuery, detailsValues);
+    }
+    else if(req.body.song12_name){
+    const detailsQuery = `
+    UPDATE "learning_packs"
+    SET  
+      "song12_name" = $1, 
+      "song12" = $2
+    WHERE "id" = $3;
+    `;
+    const detailsValues = [req.body.song12_name, audioUrl, packId];
+    const detailsResult = await connection.query(detailsQuery, detailsValues);
+    }
+    else if(req.body.song13_name){
+      const detailsQuery = `
+      UPDATE "learning_packs"
+      SET  
+        "song13_name" = $1, 
+        "song13" = $2
+      WHERE "id" = $3;
+      `;
+      const detailsValues = [req.body.song13_name, audioUrl, packId];
+      const detailsResult = await connection.query(detailsQuery, detailsValues);
+      }
     connection.query("COMMIT;");
     connection.release();
     res.sendStatus(201);
