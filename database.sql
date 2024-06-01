@@ -74,7 +74,6 @@ CREATE TABLE "artist" (
   "photo" VARCHAR,
   "streaming_link" VARCHAR,
   "approved" BOOLEAN DEFAULT FALSE,
-  "jr_approved" BOOLEAN DEFAULT FALSE,
   "w9" VARCHAR,
   "paypal" VARCHAR
 );
