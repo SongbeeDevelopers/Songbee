@@ -116,6 +116,7 @@ function* deleteArtist(action) {
   try {
     yield axios.delete(`/api/artist/${action.payload}`);
     yield put({ type: "FETCH_PENDING_ARTISTS" });
+    yield put({type: 'FETCH_ALL_ARTISTS'})
   } catch (error) {
     console.error("SAGA deleteArtist() failed:", error);
   }
