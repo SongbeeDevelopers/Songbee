@@ -50,6 +50,32 @@ function* approveArtist(action) {
   }
 }
 
+function* deactivateArtist(action) {
+  try {
+    yield axios({
+      method: 'PUT',
+      url: '/api/artist/deactivate',
+      data: action.payload
+    })
+    yield put({type: 'FETCH_ALL_ARTISTS'})
+  } catch (error) {
+    console.error('SAGA deactivateArtist() failed:', error)
+  }
+}
+
+function* activateArtist(action) {
+  try {
+    yield axios({
+      method: 'PUT',
+      url: '/api/artist/activate',
+      data: action.payload
+    })
+    yield put({type: 'FETCH_ALL_ARTISTS'})
+  } catch (error) {
+    console.error('SAGA activateArtist() failed:', error)
+  }
+}
+
 function* getArtistDetails() {
   try {
     const response = yield axios.get(`/api/artist/get`);
@@ -138,9 +164,10 @@ function* artistSaga() {
   yield takeLatest('APPROVE_ARTIST', approveArtist);
   yield takeLatest('DELETE_ARTIST', deleteArtist);
   yield takeLatest('FETCH_ALL_ARTISTS', fetchAllArtists);
-  
 
-  yield takeLatest("FETCH_PENDING_ARTISTS", fetchPendingArtist);
+  yield takeLatest('DEACTIVATE_ARTIST', deactivateArtist);
+  yield takeLatest('ACTIVATE_ARTIST', activateArtist);
+  
   yield takeLatest("APPROVE_ARTIST", approveArtist);
   yield takeLatest("DELETE_ARTIST", deleteArtist);
   yield takeLatest("FETCH_ALL_ARTISTS", fetchAllArtists);
