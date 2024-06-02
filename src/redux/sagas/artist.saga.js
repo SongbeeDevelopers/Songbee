@@ -112,6 +112,19 @@ function* denyEditArtistInfo(action) {
     }
   }
 
+function* submitArtistEdit(action) {
+  try {
+    yield axios({
+      method: 'PUT',
+      url: '/api/artist/adminedit',
+      data: action.payload
+    })
+    yield put({type: 'FETCH_ALL_ARTISTS'})
+  } catch (error) {
+    console.error('SAGA submitArtistEdit() failed:', error)
+  }
+}
+
 function* deleteArtist(action) {
   try {
     yield axios.delete(`/api/artist/${action.payload}`);
@@ -160,6 +173,7 @@ function* updateActiveArtist(action) {
 
 function* artistSaga() {
   yield takeLatest("CREATE_ARTIST", createNewArtist);
+  yield takeLatest("SUBMIT_ARTIST_EDIT", submitArtistEdit)
 
   yield takeLatest('FETCH_PENDING_ARTISTS', fetchPendingArtist);
   yield takeLatest('APPROVE_ARTIST', approveArtist);

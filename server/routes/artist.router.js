@@ -272,7 +272,58 @@ router.delete('/:id', (req, res) => {
     })
 })
 
-router.put('/:id', async (req, res) => {
+router.put('/adminedit', rejectUnauthenticated, (req, res) => {
+  console.log(req.body)
+    const editQuery = `
+    UPDATE "artist"
+      SET "artist_name" = $1,
+      "name" = $2,
+      "vocal_type" = $3,
+      "website" = $4,
+      "instagram_link" = $5,
+      "sample_song_1" = $6,
+      "song_title_1" = $7,
+      "sample_song_2" = $8,
+      "song_title_2" = $9,
+      "sample_song_3" = $10,
+      "song_title_3" = $11,
+      "bio" = $12,
+      "location" = $13,
+      "streaming_link" = $14,
+      "w9" = $15,
+      "paypal" = $16
+    WHERE "artist"."id" = $17;
+    `
+    const editValues = [
+      req.body.artist_name,    // $1
+      req.body.name,           // $2
+      req.body.vocal_type,     // $3
+      req.body.website,        // $4
+      req.body.instagram_link, // $5
+      req.body.sample_song_1,  // $6
+      req.body.song_title_1,   // $7
+      req.body.sample_song_2,  // $8
+      req.body.song_title_2,   // $9
+      req.body.sample_song_3,  // $10
+      req.body.song_title_3,   // $11
+      req.body.bio,            // $12
+      req.body.location,       // $13
+      req.body.streaming_link, // $14
+      req.body.w9,             // $15
+      req.body.paypal,         // $16
+      req.body.id              // $17
+    ]
+    pool.query(editQuery, editValues)
+      .then(() => {
+        res.sendStatus(200)
+      })
+      .catch((error) => {
+        console.error('route adminedit failed:', error)
+        res.sendStatus(500)
+      })
+})
+
+router.put('/artist/:id', async (req, res) => {
   let connection
   try {
     connection = await pool.connect();
@@ -302,6 +353,8 @@ router.put('/:id', async (req, res) => {
     res.sendStatus(500)
   }
 })
+
+
 
 router.get('/all', async (req, res) => {
   let connection
