@@ -185,7 +185,7 @@ function* confirmJrPayment (action) {
   try {
     yield axios({
       method: "PUT",
-      url: ``
+      url: `/api/jr-request/confirm/${action.payload}`
     })
     yield put({
       type: "FETCH_ALL_SUBSCRIPTIONS"
@@ -212,7 +212,8 @@ function* juniorRequestSaga() {
   yield takeLatest("FETCH_ALL_SUBSCRIPTIONS", fetchAllSubscriptions);
   yield takeLatest("UPDATE_LEARNING_PACK", updateLearningPack);
   yield takeLatest("ACTIVATE_PACK", activateLearningPack);
-  yield takeLatest("UPDATE_SUBSCRIPTION_PACK", updateSubscriptionPack)
+  yield takeLatest("UPDATE_SUBSCRIPTION_PACK", updateSubscriptionPack);
+  yield takeLatest("CONFIRM_JR_PAYMENT", confirmJrPayment);
 
 }
 

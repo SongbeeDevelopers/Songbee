@@ -201,7 +201,7 @@ function* confirmRequestPayment (action) {
     try {
       yield axios({
         method: "PUT",
-        url: ``
+        url: `/api/request/confirm/${action.payload}`
       })
       yield put({
         type: "FETCH_ALL_REQUESTS"
@@ -231,6 +231,7 @@ function* requestSaga() {
     yield takeLatest('SUBMIT_REQUEST_EDIT', submitRequestEdit);
     yield takeLatest('FETCH_ARTIST_REQUESTS', fetchArtistRequests);
     yield takeLatest('FETCH_COMPLETED_ARTIST_REQUESTS', fetchCompletedArtistRequests);
+    yield takeLatest('CONFIRM_REQUEST_PAYMENT', confirmRequestPayment);
 }
 
 export default requestSaga;
