@@ -547,7 +547,6 @@ router.put('/active/:id', async (req, res) => {
 
 router.put('/pack-update/:id', async (req, res) => {
   const packId = req.body.pack + 1
-  console.log("packId", packId)
   let connection
   try {
     connection = await pool.connect();
@@ -566,6 +565,30 @@ router.put('/pack-update/:id', async (req, res) => {
     res.sendStatus(200);
   } catch (error) {
     console.error("JR request router update subscription failed:", error)
+    connection.query("ROLLBACK;");
+    connection.release();
+    res.sendStatus(500)
+  }
+})
+
+router.put('/confirm/:id', async (req, res) => {
+  let connection
+  try {
+    connection = await pool.connect();
+
+    connection.query("BEGIN;");
+    const updateQuery = `
+  UPDATE "subscription"
+  SET 
+    "is_paid" = TRUE
+  WHERE id=$1;
+  `
+    await connection.query(updateQuery, [req.params.id])
+    connection.query("COMMIT;");
+    connection.release();
+    res.sendStatus(200);
+  } catch (error) {
+    console.error("JR request router confirm payment failed:", error)
     connection.query("ROLLBACK;");
     connection.release();
     res.sendStatus(500)

@@ -181,6 +181,23 @@ function* updateSubscriptionPack (action){
   }
 }
 
+function* confirmJrPayment (action) {
+  try {
+    yield axios({
+      method: "PUT",
+      url: ``
+    })
+    yield put({
+      type: "FETCH_ALL_SUBSCRIPTIONS"
+    })
+    yield put({
+      type: "FETCH_USER_SUBSCRIPTIONS"
+    })
+  } catch (error) {
+    console.error("Saga confirm JR payment failed:", error)
+  }
+}
+
 function* juniorRequestSaga() {
   yield takeLatest("FETCH_USER_SUBSCRIPTIONS", fetchUserSubscriptions);
   yield takeLatest("FETCH_CURRENT_SUBSCRIPTION", fetchCurrentSubscription);

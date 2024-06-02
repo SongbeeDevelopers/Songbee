@@ -197,6 +197,23 @@ function* submitRequestEdit (action) {
     }
 }
 
+function* confirmRequestPayment (action) {
+    try {
+      yield axios({
+        method: "PUT",
+        url: ``
+      })
+      yield put({
+        type: "FETCH_ALL_REQUESTS"
+      })
+      yield put({
+        type: "FETCH_USER_REQUESTS"
+      })
+    } catch (error) {
+      console.error("Saga confirm request payment failed:", error)
+    }
+  }
+
 function* requestSaga() {
     yield takeLatest('FETCH_ALL_REQUESTS', fetchAllRequests);
     yield takeLatest('FETCH_USER_REQUESTS', fetchUserRequests);

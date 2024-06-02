@@ -498,4 +498,28 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
     })
   });
 
+  router.put('/confirm/:id', async (req, res) => {
+    let connection
+    try {
+      connection = await pool.connect();
+  
+      connection.query("BEGIN;");
+      const updateQuery = `
+    UPDATE "song_request"
+    SET 
+      "is_paid" = TRUE
+    WHERE id=$1;
+    `
+      await connection.query(updateQuery, [req.params.id])
+      connection.query("COMMIT;");
+      connection.release();
+      res.sendStatus(200);
+    } catch (error) {
+      console.error("Request router confirm payment failed:", error)
+      connection.query("ROLLBACK;");
+      connection.release();
+      res.sendStatus(500)
+    }
+  })
+
 module.exports = router;
