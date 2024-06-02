@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 
 import AdminSubscriptionsTab from "./AdminSubscriptionsTab";
+import AdminLearningPacksTab from "./AdminLearningPacksTab";
 
 import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
@@ -63,6 +64,7 @@ export default function AdminPortalTabs() {
                 <Tabs value={value} onChange={handleChange} variant="scrollable" centered>
                     <Tab label="Active Subscriptions" {...a11yProps(0)} />
                     <Tab label="Paused Subscriptions" {...a11yProps(1)} />
+                    <Tab label="Learning Packs" {...a11yProps(2)} />
                 </Tabs>
             </Box>
 
@@ -74,6 +76,9 @@ export default function AdminPortalTabs() {
                 <AdminSubscriptionsTab num={1} data={pausedSubscriptions} />
             </CustomTabPanel>
 
+            <CustomTabPanel value={value} index={2}>
+                <AdminLearningPacksTab />
+            </CustomTabPanel>
         </div>
     )
 }

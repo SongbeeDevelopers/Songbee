@@ -1,116 +1,83 @@
-import * as React from 'react';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React from "react";
+import { useState } from "react";
 
-import UserClassSelector from './UserClassSelector';
-import FilterBar from '../../../FilterBar/FilterBar';
-import MessageUserButton from '../../../AdminPortal/AdminPortalTabs/MessageUserButton';
-import AdminArtistDetailsDialog from './AdminPortalDialogs/AdminArtistDetailsDialog'
+import AdminArtistListTab from "./AdminArtistListTab";
+import AdminArtistApplicationsTab from "./AdminArtistApplicationsTab"
+import AdminArtistsPendingEdits from "./AdminArtistEdits";
 
 import {
-  Button,
-  Dialog,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-} from "@mui/material"
+    Box,
+    Tab,
+    Tabs,
+    Typography,
+} from '@mui/material'
+import PropTypes from 'prop-types';
+
+import '../AdminPortal.css'
 
 
-export default function AdminArtistsTab({ data }) {
+export default function AdminMainTab() {
 
-  const dispatch = useDispatch()
+    const [value, setValue] = useState(0);
 
-  const [detailsOpen, setDetailsOpen] = useState(false)
+    // MUI tab structure
+    const handleChange = (event, newValue) => {
+        event.preventDefault();
+        setValue(newValue);
+    };
+    const CustomTabPanel = (props) => {
+        const { children, value, index, ...other } = props;
+        return (
+            <div
+                role="tabpanel"
+                hidden={value !== index}
+                id={`simple-tabpanel-${index}`}
+                aria-labelledby={`simple-tab-${index}`}
+                {...other}
+            >
+                {value === index && (
+                    <Box sx={{ p: 3 }}>
+                        <Typography>{children}</Typography>
+                    </Box>
+                )}
+            </div>
+        );
+    }
+    CustomTabPanel.propTypes = {
+        children: PropTypes.node,
+        index: PropTypes.number.isRequired,
+        value: PropTypes.number.isRequired,
+    };
+    const a11yProps = (index) => {
+        return {
+            id: `simple-tab-${index}`,
+            'aria-controls': `simple-tabpanel-${index}`,
+        };
+    }
+    // end of tab structure
 
-  const openDetails = (artist) => {
-    dispatch({ type: 'SET_EDIT_DATA', payload: artist })
-    setDetailsOpen(true)
-  }
-  const closeDetails = () => {
-    dispatch({ type: 'CLEAR_EDIT_DATA' })
-    setDetailsOpen(false)
-  }
 
-  return (
-    <div>
-      {data.length > 0 ?
-        <>
-          <FilterBar type='user' />
-          <div className="admin-tabs-contents">
-            <Table sx={{ minWidth: 700 }} aria-label="customized table">
+    return (
+        <div className="admin-tabs-container">
+            <Box display="flex" justifyContent="center" width="100%">
+                <Tabs value={value} onChange={handleChange} variant="scrollable" centered>
+                    <Tab label="Artist List" {...a11yProps(0)} />
+                    <Tab label="Artist Applications" {...a11yProps(1)} />
+                    <Tab label="Artist Edits" {...a11yProps(2)} />
+                </Tabs>
+            </Box>
 
-              <TableHead>
-                <TableRow>
-                  <TableCell>Name</TableCell>
-                  <TableCell align="center">Vocal Type</TableCell>
-                  <TableCell align="center">Active?</TableCell>
-                  <TableCell align="center">Details</TableCell>
-                  <TableCell align="center">Message</TableCell>
-                </TableRow>
-              </TableHead>
+            <CustomTabPanel value={value} index={0}>
+                <AdminArtistListTab />
+            </CustomTabPanel>
 
-              <TableBody>
-                {data.map((artist) => (
-                  <TableRow hover key={artist.id}>
-                    <TableCell component="th" scope="row">
-                      {artist.name}
-                    </TableCell>
+            <CustomTabPanel value={value} index={1}>
+                <AdminArtistApplicationsTab />
+            </CustomTabPanel>
 
-                    <TableCell align="center">
-                      {artist.vocal_type}
-                    </TableCell>
-
-                    <TableCell align="center">
-                      {artist.is_active ?
-                        <Button className='admin-portal-inputs' variant="contained"
-                          onClick={() => dispatch({type: 'DEACTIVATE_ARTIST', payload: {id: artist.id}})}
-                          sx={{ m: 'auto', height: 35, width: 120, backgroundColor: "#feaf17", color: "black" }}
-                        >
-                          DEACTIVATE
-                        </Button>
-                        :
-                        <Button className='admin-portal-inputs' variant="contained"
-                          onClick={() => dispatch({type: 'ACTIVATE_ARTIST', payload: {id: artist.id}})}
-
-                          sx={{ height: 35, width: 90, backgroundColor: "#feaf17", color: "black" }}
-                        >
-                          ACTIVATE
-                        </Button>
-                      }
-                    </TableCell>
-
-                    <TableCell align="center">
-                      <Button variant="contained"
-                        onClick={() => openDetails(artist)}
-                        sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
-                      >
-                        DETAILS
-                      </Button>
-                      <Dialog keepMounted fullWidth maxWidth="md"
-                        open={detailsOpen}
-                        onClose={closeDetails}
-                      >
-                        <AdminArtistDetailsDialog setDetailsOpen={setDetailsOpen} />
-                      </Dialog>
-                    </TableCell>
-
-                    <TableCell align="center">
-                      <MessageUserButton userId={artist.user_id} />
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-
-            </Table>
-          </div>
-
-        </>
-        :
-        <p className='admin-empty-msg'>There are currently no Artists.</p>
-      }
-    </div>
-
-  );
+            <CustomTabPanel value={value} index={2}>
+                <AdminArtistsPendingEdits />
+            </CustomTabPanel>
+        </div>
+    )
 }

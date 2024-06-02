@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import FilterBar from "../../../FilterBar/FilterBar";
 
@@ -13,7 +13,9 @@ import {
 } from "@mui/material"
 
 
-export default function AdminArtistsPendingEdits({ data }) {
+export default function AdminArtistsPendingEdits() {
+
+  const data = useSelector(store => store.pendingEdits)
 
   const dispatch = useDispatch();
 

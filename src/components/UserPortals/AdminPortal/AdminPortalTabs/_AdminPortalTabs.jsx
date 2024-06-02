@@ -5,9 +5,7 @@ import { useSelector } from "react-redux";
 import AdminMainTab from "./AdminMainTab";
 import AdminJuniorTab from "./AdminJuniorTab";
 import AdminArtistsTab from "./AdminArtistsTab";
-import AdminArtistApplicationsTab from './AdminArtistApplicationsTab';
 import AdminUsersTab from './AdminUsersTab';
-import AdminArtistEdits from './AdminArtistEdits';
 import AdminLearningPacksTab from "./AdminLearningPacksTab";
 
 import Box from '@mui/material/Box';
@@ -22,12 +20,6 @@ import '../AdminPortal.css'
 export default function AdminPortalTabs() {
 
   const [value, setValue] = useState(0);
-
-  const artists = useSelector(store => store.allArtists)
-  const users = useSelector(store => store.allUsers)
-  const artistApplications = useSelector((store) => store.pendingArtists);
-  const artistEdits = useSelector((store) => store.pendingEdits);
-  const learningPacks = useSelector(store => store.learningPacks);
 
   // MUI tab structure
   const handleChange = (event, newValue) => {
@@ -75,9 +67,6 @@ export default function AdminPortalTabs() {
           <Tab label="Junior" {...a11yProps(1)} />
           <Tab label="Artists" {...a11yProps(2)} />
           <Tab label="Users" {...a11yProps(3)} />
-          <Tab label="Artist Applications" {...a11yProps(4)} />
-          <Tab label="Artist Edits" {...a11yProps(5)} />
-          <Tab label="Learning Packs" {...a11yProps(6)} />
         </Tabs>
       </Box>
 
@@ -90,25 +79,12 @@ export default function AdminPortalTabs() {
       </CustomTabPanel>
 
       <CustomTabPanel value={value} index={2}>
-        <AdminArtistsTab data={artists} />
+        <AdminArtistsTab />
       </CustomTabPanel>
 
       <CustomTabPanel value={value} index={3}>
-        <AdminUsersTab data={users} />
+        <AdminUsersTab />
       </CustomTabPanel>
-
-      <CustomTabPanel value={value} index={4}>
-        <AdminArtistApplicationsTab data={artistApplications} />
-      </CustomTabPanel>
-
-      <CustomTabPanel value={value} index={5}>
-        <AdminArtistEdits data={artistEdits} />
-      </CustomTabPanel>
-
-      <CustomTabPanel value={value} index={6}>
-        <AdminLearningPacksTab data={learningPacks} />
-      </CustomTabPanel>
-
     </div>
   )
 }
