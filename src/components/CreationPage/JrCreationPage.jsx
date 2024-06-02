@@ -10,7 +10,7 @@ function JrCreationPage() {
     const {id} = useParams();
     useEffect(() => {
       dispatch({
-          type: "",
+          type: "CONFIRM_JR_PAYMENT",
           payload: id
       })
   }, [id]);

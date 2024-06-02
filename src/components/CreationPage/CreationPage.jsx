@@ -9,11 +9,11 @@ function CreationPage() {
   const {id} = useParams();
   useEffect(() => {
     dispatch({
-        type: "",
+        type: "CONFIRM_REQUEST_PAYMENT",
         payload: id
     })
 }, [id]);
-  history.push('/user');
+  history.push(`/finalquestions/${id}`);
   return (
     <h2>Loading...</h2>
   )

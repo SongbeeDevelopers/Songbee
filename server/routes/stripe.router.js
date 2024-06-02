@@ -60,7 +60,7 @@ router.post('/checkout', async (req, res) => {
         line_items: lineitemArray,
         mode: 'payment',
         allow_promotion_codes: true,
-        success_url: `https://www.songbee.com/#/finalquestions/${req.body.id}`,
+        success_url: `https://www.songbee.com/#/create/${req.body.id}`,
         cancel_url: `https://www.songbee.com/#/cancel/${req.body.id}`,
         automatic_tax: {enabled: true},
       });
@@ -138,7 +138,7 @@ router.post('/jrcheckout', async (req, res) => {
     line_items: lineitemArray,
     mode: 'subscription',
     allow_promotion_codes: true,
-    success_url: `https://www.songbee.com/#/user`,
+    success_url: `https://www.songbee.com/#/jrcreate/${req.body.id}`,
     cancel_url: `https://www.songbee.com/#/jrcancel/${req.body.id}`,
     automatic_tax: {enabled: true},
   });
