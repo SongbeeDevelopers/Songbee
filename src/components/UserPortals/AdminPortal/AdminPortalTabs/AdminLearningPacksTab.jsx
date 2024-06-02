@@ -99,7 +99,6 @@ const style = {
                         onClose={closeDetails}
                         disableAutoFocus={true}
                         hideBackdrop={true}
-                        keepMounted={true}
                       >
                         <LearningPackDialog setDetailsOpen={setDetailsOpen} />
                       </Dialog>
