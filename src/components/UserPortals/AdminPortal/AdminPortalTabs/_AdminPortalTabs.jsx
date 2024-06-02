@@ -2,10 +2,10 @@ import React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-import AdminMainTab from "./AdminMainTab";
-import AdminJuniorTab from "./AdminJuniorTab";
-import AdminArtistsTab from "./AdminArtistsTab";
-import AdminUsersTab from './AdminUsersTab';
+import AdminMainTab from "./_AdminMainTab";
+import AdminJuniorTab from "./_AdminJuniorTab";
+import AdminArtistsTab from "./_AdminArtistsTab";
+import AdminUsersTab from './_AdminUsersTab';
 import AdminLearningPacksTab from "./AdminLearningPacksTab";
 
 import Box from '@mui/material/Box';
