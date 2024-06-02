@@ -19,6 +19,7 @@ import LandingPage from "../LandingPage/LandingPage";
 // order process
 import OrderPage from "../OrderPage/OrderPage";
 import CreationPage from "../CreationPage/CreationPage";
+import JrCreationPage from "../CreationPage/JrCreationPage";
 import FinalQuestions from "../FinalQuestions/FinalQuestions";
 
 // user functionality
@@ -161,6 +162,18 @@ function ComponentRouter() {
           </MainRoute>
         </ProtectedRoute>
 
+        <ProtectedRoute exact path="/create/:id" allowedUserClasses={[1, 2, 3]}>
+          <MainRoute>
+            <CreationPage routeVariants={routeVariants} />
+          </MainRoute>
+        </ProtectedRoute>
+
+        <ProtectedRoute exact path="/jrcreate/:id" allowedUserClasses={[1, 2, 3]}>
+          <JrRoute>
+            <JrCreationPage routeVariants={routeVariants} />
+          </JrRoute>
+        </ProtectedRoute>
+
         <ProtectedRoute exact path="/cancel/:id" allowedUserClasses={[1, 2, 3]}>
           <MainRoute>
             <CancelPage routeVariants={routeVariants} />
@@ -168,9 +181,9 @@ function ComponentRouter() {
         </ProtectedRoute>
 
         <ProtectedRoute exact path="/jrcancel/:id" allowedUserClasses={[1, 2, 3]}>
-          <MainRoute>
+          <JrRoute>
             <JrCancelPage routeVariants={routeVariants} />
-          </MainRoute>
+          </JrRoute>
         </ProtectedRoute>
 
 

@@ -59,7 +59,8 @@ router.post('/checkout', async (req, res) => {
       const session = await stripe.checkout.sessions.create({
         line_items: lineitemArray,
         mode: 'payment',
-        success_url: `https://www.songbee.com/#/finalquestions/${req.body.id}`,
+        allow_promotion_codes: true,
+        success_url: `https://www.songbee.com/#/create/${req.body.id}`,
         cancel_url: `https://www.songbee.com/#/cancel/${req.body.id}`,
         automatic_tax: {enabled: true},
       });
@@ -97,6 +98,7 @@ router.post('/addon', async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     line_items: lineitemArray,
     mode: 'payment',
+    allow_promotion_codes: true,
     success_url: `https://www.songbee.com/#/user`,
     cancel_url: `https://www.songbee.com/#/user`,
     automatic_tax: {enabled: true},
@@ -135,7 +137,8 @@ router.post('/jrcheckout', async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     line_items: lineitemArray,
     mode: 'subscription',
-    success_url: `https://www.songbee.com/#/user`,
+    allow_promotion_codes: true,
+    success_url: `https://www.songbee.com/#/jrcreate/${req.body.id}`,
     cancel_url: `https://www.songbee.com/#/jrcancel/${req.body.id}`,
     automatic_tax: {enabled: true},
   });

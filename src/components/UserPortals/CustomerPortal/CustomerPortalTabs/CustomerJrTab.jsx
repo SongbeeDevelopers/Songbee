@@ -61,6 +61,12 @@ export default function JuniorRequests() {
                   payload: {id: sub.id, pack: sub.pack_id}
                 })
               }
+              if (!sub.is_paid){
+                dispatch({
+                    type: "DELETE_JR_REQUEST",
+                    payload: row.id
+                })
+            }
               return (
               <TableRow key={i}>
                 {/* req date */}

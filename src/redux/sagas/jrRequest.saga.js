@@ -181,6 +181,23 @@ function* updateSubscriptionPack (action){
   }
 }
 
+function* confirmJrPayment (action) {
+  try {
+    yield axios({
+      method: "PUT",
+      url: `/api/jr-request/confirm/${action.payload}`
+    })
+    yield put({
+      type: "FETCH_ALL_SUBSCRIPTIONS"
+    })
+    yield put({
+      type: "FETCH_USER_SUBSCRIPTIONS"
+    })
+  } catch (error) {
+    console.error("Saga confirm JR payment failed:", error)
+  }
+}
+
 function* juniorRequestSaga() {
   yield takeLatest("FETCH_USER_SUBSCRIPTIONS", fetchUserSubscriptions);
   yield takeLatest("FETCH_CURRENT_SUBSCRIPTION", fetchCurrentSubscription);
@@ -195,7 +212,8 @@ function* juniorRequestSaga() {
   yield takeLatest("FETCH_ALL_SUBSCRIPTIONS", fetchAllSubscriptions);
   yield takeLatest("UPDATE_LEARNING_PACK", updateLearningPack);
   yield takeLatest("ACTIVATE_PACK", activateLearningPack);
-  yield takeLatest("UPDATE_SUBSCRIPTION_PACK", updateSubscriptionPack)
+  yield takeLatest("UPDATE_SUBSCRIPTION_PACK", updateSubscriptionPack);
+  yield takeLatest("CONFIRM_JR_PAYMENT", confirmJrPayment);
 
 }
 

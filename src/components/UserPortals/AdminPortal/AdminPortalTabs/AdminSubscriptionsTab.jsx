@@ -74,6 +74,12 @@ export default function AdminSubscriptionsTab({ num, data }) {
                         payload: {id: row.id, pack: row.pack_id}
                     })
                 }
+                if (!row.is_paid){
+                    dispatch({
+                        type: "DELETE_JR_REQUEST",
+                        payload: row.id
+                    })
+                }
                  return (
                   <TableRow hover key={row.id}>
 
