@@ -134,7 +134,8 @@ function FinalQuestions({ routeVariants }) {
       requestData.story2 &&
       requestData.important_what &&
       requestData.important_why &&
-      requestData.additional_info
+      requestData.additional_info &&
+      allStepsCompleted()
     ) {
       Swal.fire({
         title: "Submit?",
@@ -147,7 +148,7 @@ function FinalQuestions({ routeVariants }) {
           dispatchDetails();
         }
       });
-    } else {
+    } else if (allStepsCompleted()) {
       Swal.fire({
         title: "Submit?",
         text: "You have left important details blank. Do you want to submit anyways?",
