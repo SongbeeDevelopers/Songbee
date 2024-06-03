@@ -192,6 +192,7 @@ function* submitRequestEdit (action) {
             url: `/api/request/update/${action.payload.id}`,
             data: action.payload
         })
+        yield put({ type: 'FETCH_ALL_REQUESTS'})
     } catch (error) {
         console.error('SAGA submitRequestEdit failed:', error)
     }
