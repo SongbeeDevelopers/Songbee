@@ -16,8 +16,9 @@ import {
 
 export default function AdminSubscriptionsTab({ num, data }) {
 
+  console.log('DATA', data)
+
   const dispatch = useDispatch()
-  console.log("data", data)
 
   // date/time
   const monthDiff = (d1, d2) => {
@@ -116,7 +117,6 @@ export default function AdminSubscriptionsTab({ num, data }) {
                     <TableCell align='center'>
                     <MessageUserButton userId={row.user_id} />
                   </TableCell>
-
 
                   </TableRow>
                 )})}

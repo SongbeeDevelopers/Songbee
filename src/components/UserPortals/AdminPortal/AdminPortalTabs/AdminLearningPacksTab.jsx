@@ -17,7 +17,9 @@ import {
 } from '@mui/material';
 
 
-export default function AdminLearningPacksTab({ num, data }) {
+export default function AdminLearningPacksTab({ num }) {
+
+  const data = useSelector(store => store.learningPacks)
 
   const dispatch = useDispatch()
 

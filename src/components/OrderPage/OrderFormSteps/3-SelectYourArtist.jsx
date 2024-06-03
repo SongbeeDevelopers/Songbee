@@ -44,8 +44,9 @@ export default function SelectYourArtist({ handleInput }) {
               return (
                 <div className="select-artist-artist">
                   <Checkbox
+                    disableRipple
                     checked={requestData.artist === artist.id}
-                    sx={{ mb: -10, ml: -10, mr: 8, backgroundColor: "#fff4df", border: 1 }}
+                    sx={{mt: 10, mb: -10, ml: -10, mr: 8, backgroundColor: "#fff4df", border: 1 }}
                     onClick={() => handleInput("artist", Number(artist.id))}
                   />
                   <h4>{artist.artist_name}</h4>

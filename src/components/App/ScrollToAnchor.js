@@ -10,7 +10,6 @@ function ScrollToAnchor () {
   const location = useLocation()
   const lastHash = useRef('')
   const navbarHeight = 100
-  console.log(location, lastHash)
   useEffect(() => {
     if (location.hash.length > 0) {
       lastHash.current = location.hash.slice(1)

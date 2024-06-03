@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useSelector } from 'react-redux';
 
 import UserClassSelector from './UserClassSelector';
 import FilterBar from '../../../FilterBar/FilterBar';
@@ -13,8 +14,9 @@ import {
 } from "@mui/material"
 
 
-export default function AdminUsersTab({ data }) {
+export default function AdminUsersTab() {
 
+  const data = useSelector(store => store.allUsers)
 
   return (
     <div>

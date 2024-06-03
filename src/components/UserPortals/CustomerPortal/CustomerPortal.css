@@ -17,6 +17,10 @@ General
 .portal-no-data {
     margin-bottom: auto;
 }
+.portal-no-data p {
+    text-align: center;
+    margin-bottom: 40px;
+}
 
 /* --------------------------------------------------------------------------------
 Requests Tab

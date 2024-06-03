@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import FilterBar from "../../../FilterBar/FilterBar";
 import ArtistAppDetailsDialog from "./AdminPortalDialogs/ArtistAppDetailsDialog"
@@ -17,7 +17,9 @@ import {
 import Swal from "sweetalert2";
 
 
-export default function AdminArtistTable({ data }) {
+export default function AdminArtistTable() {
+
+  const data = useSelector(store => store.pendingArtists)
 
   const dispatch = useDispatch();
 

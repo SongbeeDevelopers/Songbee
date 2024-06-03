@@ -92,8 +92,8 @@ function CustomerProfileTab() {
         </div>
 
         <Button variant="contained"
-          onClick={() => onClick = { handleEdit }}
-          sx={{ height: 35, width: 80, m: 'auto', backgroundColor: "#feaf17", color: "black" }}
+          onClick={handleEdit}
+          sx={{ mb: 2, height: 35, width: 80, m: 'auto', backgroundColor: "#feaf17", color: "black" }}
         >
           SAVE
         </Button>

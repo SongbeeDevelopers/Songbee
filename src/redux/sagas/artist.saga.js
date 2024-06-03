@@ -50,6 +50,32 @@ function* approveArtist(action) {
   }
 }
 
+function* deactivateArtist(action) {
+  try {
+    yield axios({
+      method: 'PUT',
+      url: '/api/artist/deactivate',
+      data: action.payload
+    })
+    yield put({type: 'FETCH_ALL_ARTISTS'})
+  } catch (error) {
+    console.error('SAGA deactivateArtist() failed:', error)
+  }
+}
+
+function* activateArtist(action) {
+  try {
+    yield axios({
+      method: 'PUT',
+      url: '/api/artist/activate',
+      data: action.payload
+    })
+    yield put({type: 'FETCH_ALL_ARTISTS'})
+  } catch (error) {
+    console.error('SAGA activateArtist() failed:', error)
+  }
+}
+
 function* getArtistDetails() {
   try {
     const response = yield axios.get(`/api/artist/get`);
@@ -86,10 +112,24 @@ function* denyEditArtistInfo(action) {
     }
   }
 
+function* submitArtistEdit(action) {
+  try {
+    yield axios({
+      method: 'PUT',
+      url: '/api/artist/adminedit',
+      data: action.payload
+    })
+    yield put({type: 'FETCH_ALL_ARTISTS'})
+  } catch (error) {
+    console.error('SAGA submitArtistEdit() failed:', error)
+  }
+}
+
 function* deleteArtist(action) {
   try {
     yield axios.delete(`/api/artist/${action.payload}`);
     yield put({ type: "FETCH_PENDING_ARTISTS" });
+    yield put({type: 'FETCH_ALL_ARTISTS'})
   } catch (error) {
     console.error("SAGA deleteArtist() failed:", error);
   }
@@ -133,14 +173,16 @@ function* updateActiveArtist(action) {
 
 function* artistSaga() {
   yield takeLatest("CREATE_ARTIST", createNewArtist);
+  yield takeLatest("SUBMIT_ARTIST_EDIT", submitArtistEdit)
 
   yield takeLatest('FETCH_PENDING_ARTISTS', fetchPendingArtist);
   yield takeLatest('APPROVE_ARTIST', approveArtist);
   yield takeLatest('DELETE_ARTIST', deleteArtist);
   yield takeLatest('FETCH_ALL_ARTISTS', fetchAllArtists);
-  
 
-  yield takeLatest("FETCH_PENDING_ARTISTS", fetchPendingArtist);
+  yield takeLatest('DEACTIVATE_ARTIST', deactivateArtist);
+  yield takeLatest('ACTIVATE_ARTIST', activateArtist);
+  
   yield takeLatest("APPROVE_ARTIST", approveArtist);
   yield takeLatest("DELETE_ARTIST", deleteArtist);
   yield takeLatest("FETCH_ALL_ARTISTS", fetchAllArtists);
