@@ -71,7 +71,6 @@ router.get("/user", rejectUnauthenticated, (req, res) => {
 });
 
 router.get("/current/:id", (req, res) => {
-  console.log('REQ:', req.params.id)
   const query = `
     SELECT 
     "subscription"."user_id",

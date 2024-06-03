@@ -34,7 +34,6 @@ router.get("/get", async (req, res) => {
 
     connection.query("BEGIN;");
     const artistId = await getArtistIdByUserId(req.user.id)
-    // console.log("artist id", artistId);
     const query = `
   SELECT * FROM "artist"
   WHERE "id"=$1;
@@ -54,8 +53,6 @@ router.get("/get", async (req, res) => {
     connection.query("COMMIT;");
     connection.release();
     artistResponse.rows[0].genres = genreResponse.rows
-    // console.log("artistResponse", artistResponse.rows[0]);
-    // console.log("genreResponse", genreResponse.rows);
     res.send(artistResponse.rows[0]);
   } catch (error) {
     console.log('get artist profile failed:', error)
@@ -247,7 +244,6 @@ router.get('/pending', (req, res) => {
     SELECT * FROM "artist"
     WHERE "approved"=FALSE;
     `
-  // console.log("Inside pending artist GET route");
   pool.query(query)
     .then((response) => {
       res.send(response.rows)
@@ -273,7 +269,6 @@ router.delete('/:id', (req, res) => {
 })
 
 router.put('/adminedit', rejectUnauthenticated, (req, res) => {
-  console.log(req.body)
     const editQuery = `
     UPDATE "artist"
       SET "artist_name" = $1,
@@ -334,7 +329,6 @@ router.put('/artist/:id', async (req, res) => {
     SET "approved"=TRUE
     WHERE id=$1;
     `
-    // console.log('req.params.id:', req.params.id)
     await connection.query(approvalQuery, [req.params.id])
     const classQuery = `
     UPDATE "user"

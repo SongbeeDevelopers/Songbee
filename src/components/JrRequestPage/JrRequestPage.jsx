@@ -55,7 +55,6 @@ export default function JrCheckoutPage({ routeVariants }) {
   }
   const start = new Date(requestData.age)
   const end = new Date()
-  console.log(monthDiff(start, end))
 
 
   useEffect(() => {

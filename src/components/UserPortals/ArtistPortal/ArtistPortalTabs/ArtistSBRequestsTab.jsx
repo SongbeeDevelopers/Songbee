@@ -29,7 +29,6 @@ export default function ArtistSBRequestsTab({artistId}) {
                     payload: artistId});
       }, [])
     const artistRequests = useSelector(store => store.artistRequests)
-    console.log("artist requests:", artistRequests)
     const genres = useSelector(store => store.genres)
 
     // modal state

@@ -12,8 +12,6 @@ import "../ArtistPortal.css";
 function ArtistProfileTab({artistProfile}) {
   const dispatch = useDispatch();
 
-  console.log("artistProfile", artistProfile);
-
   // dialog logic
   const [openArtist, setOpenArtist] = useState(false);
 

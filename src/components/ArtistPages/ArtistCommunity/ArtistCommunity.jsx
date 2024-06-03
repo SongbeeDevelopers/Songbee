@@ -41,7 +41,6 @@ function ArtistCommunity() {
   }, [id]);
 
   const handleSong = (artist) => {
-    console.log('sup')
     setShowPopUp(!showPopUp);
     setSelectedSong(artist);
   };
@@ -77,7 +76,6 @@ function ArtistCommunity() {
             <div className="close-btn">
                <button onClick={closePopUp}>X</button>
             </div>
-            {console.log('audioRef:', audioRef)}
           </div>
         </div>
       );
