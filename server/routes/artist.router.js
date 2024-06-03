@@ -268,8 +268,11 @@ router.delete('/:id', (req, res) => {
     })
 })
 
-router.put('/adminedit', rejectUnauthenticated, (req, res) => {
-    const editQuery = `
+router.put('/adminedit', rejectUnauthenticated, async (req, res) => {
+  let connection
+  try {
+    connection = await pool.connect();
+    const artistQuery = `
     UPDATE "artist"
       SET "artist_name" = $1,
       "name" = $2,
@@ -289,7 +292,7 @@ router.put('/adminedit', rejectUnauthenticated, (req, res) => {
       "paypal" = $16
     WHERE "artist"."id" = $17;
     `
-    const editValues = [
+    const artistValues = [
       req.body.artist_name,    // $1
       req.body.name,           // $2
       req.body.vocal_type,     // $3
@@ -308,14 +311,28 @@ router.put('/adminedit', rejectUnauthenticated, (req, res) => {
       req.body.paypal,         // $16
       req.body.id              // $17
     ]
-    pool.query(editQuery, editValues)
-      .then(() => {
-        res.sendStatus(200)
-      })
-      .catch((error) => {
-        console.error('route adminedit failed:', error)
-        res.sendStatus(500)
-      })
+    await connection.query(artistQuery, artistValues)
+    await connection.query(
+      `DELETE FROM "artist_genres" WHERE "artist_id" = $1`,
+      [req.body.id]
+    )
+    for (let genre of req.body.genres) {
+      const genreQuery = `
+        INSERT INTO "artist_genres" ("artist_id", "genre_id")
+        VALUES ($1, $2);
+      `
+      const genreValues = [req.body.id, genre]
+      await connection.query(genreQuery, genreValues)
+    }
+    connection.query("COMMIT;");
+    connection.release();
+    res.sendStatus(200);
+  } catch (error) {
+    console.error("adminedit router failed:", error)
+    connection.query("ROLLBACK;");
+    connection.release();
+    res.sendStatus(500)
+  }
 })
 
 router.put('/artist/:id', async (req, res) => {

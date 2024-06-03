@@ -2,6 +2,8 @@
   overflow: scroll;
 }
 
+
+
 .admin-empty-msg {
   margin-top: 25px;
   text-align: center;
@@ -10,9 +12,11 @@
 .admin-req-details-edit {
   padding: 25px 50px;
 }
+
 .admin-req-details-edit h3 {
   text-align: center;
 }
+
 .admin-req-details-edit form {
   width: fit-content;
   margin: auto;
@@ -41,9 +45,20 @@
   border-radius: 5px;
 }
 
+.admin-select-multiple {
+  height: 150px
+}
+
+.admin-bio-input {
+  height: 175px
+}
+
+.admin-btn-center {
+  margin-left: 30%;
+}
+
 .admin-portal-textarea {
   width: 300px;
-  height: 80px;
   color: #333;
   background-color: #fff;
   border: 1px solid #ccc;
@@ -58,11 +73,12 @@
 .admin-complete-dialog {
   padding: 25px 100px;
 }
+
 .admin-complete-dialog h3 {
   text-align: center;
 }
 
-.completeDialogueContent{
+.completeDialogueContent {
   display: flex;
   flex-direction: column;
   gap: 10px;

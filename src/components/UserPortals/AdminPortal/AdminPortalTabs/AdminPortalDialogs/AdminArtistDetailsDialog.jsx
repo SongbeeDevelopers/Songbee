@@ -25,6 +25,10 @@ export default function AdminArtistDetaisDialog({ setDetailsOpen }) {
       dispatch({ type: 'EDIT_INPUT', payload: { key, value } })
     }
   }
+  const clearGenres = () => {
+    event.preventDefault()
+    dispatch({ type: 'CLEAR_ARTIST_GENRES' })
+  }
 
   const submitEdit = (event) => {
     event.preventDefault()
@@ -119,7 +123,6 @@ export default function AdminArtistDetaisDialog({ setDetailsOpen }) {
         <div className='admin-details-edit-row'>
           <label> Photo
             <TextField
-              required
               type="file"
               className="form-control-file"
               name="uploaded_file"
@@ -142,14 +145,14 @@ export default function AdminArtistDetaisDialog({ setDetailsOpen }) {
           <label> Bio
             <textarea
               value={edit.bio}
-              className='admin-portal-textarea'
+              className='admin-portal-textarea admin-bio-input'
               placeholder='What?'
               onChange={() => handleInput('bio', event.target.value)}
             ></textarea>
           </label>
 
           <label> Genres:
-            <select className='admin-portal-inputs'
+            <select className='admin-portal-inputs admin-select-multiple'
               multiple
               value={edit.genres}
               onChange={() => handleInput('genres', event.target.value)}
@@ -158,6 +161,7 @@ export default function AdminArtistDetaisDialog({ setDetailsOpen }) {
                 <option value={genre.id}>{genre.name}</option>
               ))}
             </select>
+            <button className='admin-btn-center' onClick={() => clearGenres()}>Clear selections</button>
           </label>
         </div>
 
