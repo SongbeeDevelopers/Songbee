@@ -26,9 +26,15 @@ export default function AdminArtistListTab() {
   const [detailsOpen, setDetailsOpen] = useState(false)
 
   const openDetails = (artist) => {
-    dispatch({ type: 'SET_EDIT_DATA', payload: artist })
+    // change genres from an array of objects to an array of genre ids
+    const genresSimple = []
+    for (let genre of artist.genres) {
+      genresSimple.push(genre.id)
+    }
+    dispatch({ type: 'SET_EDIT_DATA', payload: {...artist, genres: genresSimple} })
     setDetailsOpen(true)
   }
+  
   const closeDetails = () => {
     dispatch({ type: 'CLEAR_EDIT_DATA' })
     setDetailsOpen(false)

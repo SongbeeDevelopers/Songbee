@@ -19,12 +19,11 @@ export default function AdminArtistDetaisDialog({ setDetailsOpen }) {
 
   // stores changes in edit reducer
   const handleInput = (key, value) => {
-    dispatch({ type: 'EDIT_INPUT', payload: { key, value } })
-  }
-
-  const removeGenre = () => {
-    event.preventDefault()
-    console.log('hi')
+    if (key === 'genres') {
+      dispatch ({ type: 'EDIT_ARTIST_GENRES', payload: value })
+    } else {
+      dispatch({ type: 'EDIT_INPUT', payload: { key, value } })
+    }
   }
 
   const submitEdit = (event) => {
@@ -150,18 +149,13 @@ export default function AdminArtistDetaisDialog({ setDetailsOpen }) {
           </label>
 
           <label> Genres:
-            {/* <ul>
-              {edit.genres.map((genre) => (
-                <><li key={genre.id} style={{display:'inline'}}>{genre.genre}</li> <button onClick={removeGenre}>Remove</button> <br/></>
-              ))}
-            </ul> */}
             <select className='admin-portal-inputs'
-              value={edit.vocal_type}
-              onChange={() => handleInput('genres', Number(event.target.value))}
+              multiple
+              value={edit.genres}
+              onChange={() => handleInput('genres', event.target.value)}
             >
-              <option selected disabled>Add Genre</option>
-              {genres.map((genre) => (
-                <option disabled={edit.genres.includes({[genre.id]: genre.name}) ? true : false}>{genre.name}</option>
+              {genres && genres.map((genre) => (
+                <option value={genre.id}>{genre.name}</option>
               ))}
             </select>
           </label>
@@ -265,6 +259,7 @@ export default function AdminArtistDetaisDialog({ setDetailsOpen }) {
           > DELETE
           </Button>
         </div>
+
       </form>
     </div>
   );

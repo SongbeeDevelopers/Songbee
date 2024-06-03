@@ -131,7 +131,7 @@ function ComponentRouter() {
             <Redirect to="/user" />
           ) : (
             // Otherwise, show the registration page
-            <RegisterPage routeVariants={routeVariants} />
+              <RegisterPage routeVariants={routeVariants} />
           )}
         </MainRoute>
 
