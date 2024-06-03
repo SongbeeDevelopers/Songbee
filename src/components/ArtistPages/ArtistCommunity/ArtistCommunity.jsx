@@ -35,7 +35,8 @@ function ArtistCommunity() {
       payload: id,
     });
     dispatch({
-      type: 'FETCH_GENRES'
+      type: 'FETCH_GENRES',
+      // payload: id,
     })
   }, [id]);
 
