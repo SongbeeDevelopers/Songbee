@@ -28,7 +28,6 @@ function CustomerCreditTab() {
         >
           Refer!
         </Button>
-        <br />
         <p>Questions?<br />Please contact<br /><a href="mailto:hello@songbee.com">hello@songbee.com</a></p>
 
         </div>

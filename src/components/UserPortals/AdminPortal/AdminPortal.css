@@ -68,6 +68,11 @@
   gap: 10px;
 }
 
+#admin-details-button-row {
+  width: 100%;
+  justify-content: center;
+}
+
 @media (max-width: 790px) {
   .admin-complete-dialog {
     padding: 25px 30px

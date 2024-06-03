@@ -17,7 +17,9 @@ import {
 } from '@mui/material';
 
 
-export default function AdminLearningPacksTab({ num, data }) {
+export default function AdminLearningPacksTab({ num }) {
+
+  const data = useSelector(store => store.learningPacks)
 
   const dispatch = useDispatch()
 
@@ -43,6 +45,14 @@ const handleActive = (id) => {
         payload: id
     })
 }
+
+const style = {
+    position:'absolute',
+    height:'100%',
+    maxHeight: 5000,
+    display:'block',
+    width: 1000
+  };
 
 
   return (
@@ -85,9 +95,12 @@ const handleActive = (id) => {
                         UPDATE
                       </Button>
                       {/* details dialog */}
-                      <Dialog fullWidth maxWidth="md"
+                      <Dialog 
+                        sx={ style }
                         open={detailsOpen}
                         onClose={closeDetails}
+                        disableAutoFocus={true}
+                        hideBackdrop={true}
                       >
                         <LearningPackDialog setDetailsOpen={setDetailsOpen} />
                       </Dialog>

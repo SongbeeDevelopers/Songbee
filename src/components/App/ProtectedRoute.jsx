@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { Route } from "react-router-dom";
 
 import LoginPage from "../LoginPage/LoginPage";
+import MainRoute from "./MainRoute";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 // A Custom Wrapper Component -- This will keep our code DRY.
@@ -38,7 +39,9 @@ function ProtectedRoute({ component, children, allowedUserClasses=[1,2,3], ...pr
           <Redirect to="/404" />
         )
       ) : (
-        <LoginPage />
+        <MainRoute>
+          <LoginPage />
+        </MainRoute>
       )}
     </Route>
   );
