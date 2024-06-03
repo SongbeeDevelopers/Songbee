@@ -2,6 +2,11 @@ import React from "react";
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
 
+import { Button, TextField, Dialog } from "@mui/material"
+import Swal from 'sweetalert2';
+
+import UploadArtistDetailsDialog from "../../AdminPortal/AdminPortalTabs/AdminPortalDialogs/UploadArtistDetailsDialog";
+
 import Box from "@mui/material/Box";
 
 function EditArtistProfileDialog({ artistProfile, openArtist, setOpenArtist}) {

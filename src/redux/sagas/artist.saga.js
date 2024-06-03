@@ -170,6 +170,24 @@ function* updateActiveArtist(action) {
   }
 }
 
+function* updateArtistFile (action) {
+  const headers = {
+  'content-type': 'multipart/form-data'
+  }
+  try {
+  const response = yield axios({
+      method: "PUT",
+      url: `/api/artist/uploads/${action.payload.id}`,
+      headers: headers,
+      data: action.payload.data
+  });
+  yield put ({ type: "FETCH_ALL_ARTISTS"})
+  }
+  catch (error) {
+      console.error('Saga updateSongDetails() failed:', error)
+  }
+}
+
 function* artistSaga() {
   yield takeLatest("CREATE_ARTIST", createNewArtist);
   yield takeLatest("SUBMIT_ARTIST_EDIT", submitArtistEdit)
@@ -184,7 +202,6 @@ function* artistSaga() {
   
   yield takeLatest("APPROVE_ARTIST", approveArtist);
   yield takeLatest("DELETE_ARTIST", deleteArtist);
-  yield takeLatest("FETCH_ALL_ARTISTS", fetchAllArtists);
   yield takeLatest("APPROVE_EDIT_ARTIST", approveEditArtistInfo);
   yield takeLatest("REQUEST_ARTIST_EDIT", requestArtistEdit);
   yield takeLatest("GET_ARTIST_PROFILE", getArtistDetails);
@@ -193,6 +210,7 @@ function* artistSaga() {
   yield takeLatest("FETCH_CURRENT_ARTIST", fetchCurrentArtist);
   
   yield takeLatest("UPDATE_ACTIVE_ARTIST", updateActiveArtist);
+  yield takeLatest("UPDATE_ARTIST_FILE", updateArtistFile);
 }
 
 export default artistSaga;

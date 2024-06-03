@@ -88,7 +88,14 @@ export default function AdminRequestsTab({ num, data }) {
 
               {/* table body */}
               <TableBody>
-                {data.map((row) => (
+                {data.map((row) => {
+                if (row.is_paid === false){
+                  dispatch({
+                      type: "DELETE_SONG_REQUEST",
+                      payload: row.id
+                  })
+              }
+                  return (
                   <TableRow hover key={row.id}>
 
                     {/* creation date */}
@@ -161,7 +168,7 @@ export default function AdminRequestsTab({ num, data }) {
 
 
                   </TableRow>
-                ))}
+                )})}
               </TableBody>
             </Table>
           </div>

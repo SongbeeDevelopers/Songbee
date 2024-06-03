@@ -2,8 +2,10 @@ import React from 'react';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { Button, TextField } from "@mui/material"
+import { Button, TextField, Dialog } from "@mui/material"
 import Swal from 'sweetalert2';
+
+import UploadArtistDetailsDialog from './UploadArtistDetailsDialog';
 
 import '../../AdminPortal.css'
 
@@ -16,6 +18,12 @@ export default function AdminArtistDetaisDialog({ setDetailsOpen }) {
   const genres = useSelector(store => store.genres)
 
   const [songFile, setSongFile] = useState('')
+
+  const [details1Open, setDetails1Open] = useState(false);
+  const [details2Open, setDetails2Open] = useState(false);
+  const [details3Open, setDetails3Open] = useState(false);
+  const [details4Open, setDetails4Open] = useState(false);
+  const [details5Open, setDetails5Open] = useState(false);
 
   // stores changes in edit reducer
   const handleInput = (key, value) => {
@@ -140,6 +148,23 @@ export default function AdminArtistDetaisDialog({ setDetailsOpen }) {
             ></input>
           </label>
         </div>
+        <Button variant="contained"
+            onClick={() => setDetails1Open(true)}
+            sx={{ height: 35, width: 250, backgroundColor: "#feaf17", color: "black" }}
+          >
+            CLICK TO UPLOAD PHOTO
+          </Button>
+
+            {/* upload dialog */}
+          <Dialog keepMounted fullWidth maxWidth="md"
+            open={details1Open}
+            onClose={() => setDetails1Open(false)}
+          >
+            <UploadArtistDetailsDialog 
+              setDetailsOpen={setDetails1Open}
+              num={4}
+              artist={edit.id} />
+          </Dialog>
 
         <div className='admin-details-edit-row'>
           <label> Bio
@@ -168,53 +193,104 @@ export default function AdminArtistDetaisDialog({ setDetailsOpen }) {
         <div className='admin-details-edit-row'>
           <label> Song 1 Title
             <input
-              value={edit.song1_title}
+              value={edit.song_title_1}
               className='admin-portal-inputs'
               onChange={() => handleInput('song_title_1', event.target.value)}
             ></input>
           </label>
           <label> Song 1
             <input
-              value={edit.song1}
+              value={edit.sample_song_1}
               className='admin-portal-inputs'
               onChange={() => handleInput('sample_song_1', event.target.value)}
             ></input>
           </label>
         </div>
+        <Button variant="contained"
+            onClick={() => setDetails2Open(true)}
+            sx={{ height: 35, width: 250, backgroundColor: "#feaf17", color: "black" }}
+          >
+            CLICK TO UPLOAD SONG 1
+          </Button>
+
+            {/* upload dialog */}
+          <Dialog keepMounted fullWidth maxWidth="md"
+            open={details2Open}
+            onClose={() => setDetails2Open(false)}
+          >
+            <UploadArtistDetailsDialog 
+              setDetailsOpen={setDetails2Open}
+              num={1}
+              artist={edit.id} />
+          </Dialog>
 
         <div className='admin-details-edit-row'>
           <label> Song 2 Title
             <input
-              value={edit.song2_title}
+              value={edit.song_title_2}
               className='admin-portal-inputs'
               onChange={() => handleInput('song_title_2', event.target.value)}
             ></input>
           </label>
           <label> Song 2
             <input
-              value={edit.song2}
+              value={edit.sample_song_2}
               className='admin-portal-inputs'
               onChange={() => handleInput('sample_song_2', event.target.value)}
             ></input>
           </label>
         </div>
+        <Button variant="contained"
+            onClick={() => setDetails3Open(true)}
+            sx={{ height: 35, width: 250, backgroundColor: "#feaf17", color: "black" }}
+          >
+            CLICK TO UPLOAD SONG 2
+          </Button>
+
+            {/* upload dialog */}
+          <Dialog keepMounted fullWidth maxWidth="md"
+            open={details3Open}
+            onClose={() => setDetails3Open(false)}
+          >
+            <UploadArtistDetailsDialog 
+              setDetailsOpen={setDetails3Open}
+              num={2}
+              artist={edit.id} />
+          </Dialog>
 
         <div className='admin-details-edit-row'>
           <label> Song 3 Title
             <input
-              value={edit.song3_title}
+              value={edit.song_title_3}
               className='admin-portal-inputs'
               onChange={() => handleInput('song_title_3', event.target.value)}
             ></input>
           </label>
           <label> Song 3
             <input
-              value={edit.song3}
+              value={edit.sample_song_3}
               className='admin-portal-inputs'
               onChange={() => handleInput('sample_song_3', event.target.value)}
             ></input>
           </label>
         </div>
+        <Button variant="contained"
+            onClick={() => setDetails2Open(true)}
+            sx={{ height: 35, width: 250, backgroundColor: "#feaf17", color: "black" }}
+          >
+            CLICK TO UPLOAD SONG 3
+          </Button>
+
+            {/* upload dialog */}
+          <Dialog keepMounted fullWidth maxWidth="md"
+            open={details4Open}
+            onClose={() => setDetails4Open(false)}
+          >
+            <UploadArtistDetailsDialog 
+              setDetailsOpen={setDetails4Open}
+              num={3}
+              artist={edit.id} />
+          </Dialog>
 
         <div className='admin-details-edit-row'>
           <label> Website
@@ -249,6 +325,23 @@ export default function AdminArtistDetaisDialog({ setDetailsOpen }) {
             ></input>
           </label>
         </div>
+        <Button variant="contained"
+            onClick={() => setDetails5Open(true)}
+            sx={{ height: 35, width: 250, backgroundColor: "#feaf17", color: "black" }}
+          >
+            CLICK TO UPLOAD W9
+          </Button>
+
+            {/* upload dialog */}
+          <Dialog keepMounted fullWidth maxWidth="md"
+            open={details5Open}
+            onClose={() => setDetails5Open(false)}
+          >
+            <UploadArtistDetailsDialog 
+              setDetailsOpen={setDetails5Open}
+              num={5}
+              artist={edit.id} />
+          </Dialog>
 
         <div id='admin-details-button-row' className='admin-details-edit-row'>
           <Button variant="contained"

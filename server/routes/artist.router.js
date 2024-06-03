@@ -1,6 +1,7 @@
 const express = require("express");
 const pool = require("../modules/pool");
 const router = express.Router();
+const cloudinaryUpload = require("../modules/cloudinary.config");
 
 const {
   rejectUnauthenticated,
@@ -463,6 +464,53 @@ router.put('/active/:id', async (req, res) => {
     connection.release();
     res.sendStatus(500)
   }
+})
+
+router.put('/uploads/:id', rejectUnauthenticated, cloudinaryUpload.single("file"), (req, res) => {
+  let editQuery
+  if (req.params.id === '1'){
+    editQuery = `
+    UPDATE "artist"
+      SET "sample_song_1" = $1
+    WHERE "artist"."id" = $2;
+    `
+  }
+  else if (req.params.id === '2'){
+    editQuery = `
+    UPDATE "artist"
+      SET "sample_song_2" = $1
+    WHERE "artist"."id" = $2;
+    `
+  }
+  else if (req.params.id === '3'){
+    editQuery = `
+    UPDATE "artist"
+      SET "sample_song_3" = $1
+    WHERE "artist"."id" = $2;
+    `
+  }
+  else if (req.params.id === '4'){
+    editQuery = `
+    UPDATE "artist"
+      SET "photo" = $1
+    WHERE "artist"."id" = $2;
+    `
+  }
+  else if (req.params.id === '5'){
+    editQuery = `
+    UPDATE "artist"
+      SET "w9" = $1
+    WHERE "artist"."id" = $2;
+    `
+  }
+    pool.query(editQuery, [req.file.path, req.body.artist])
+      .then(() => {
+        res.sendStatus(200)
+      })
+      .catch((error) => {
+        console.error('route adminedit failed:', error)
+        res.sendStatus(500)
+      })
 })
 
 module.exports = router;
