@@ -62,8 +62,11 @@ Documents Tab
 }
 
 .w9-input {
-    margin: 10px;
-    margin-left: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
 }
 
 

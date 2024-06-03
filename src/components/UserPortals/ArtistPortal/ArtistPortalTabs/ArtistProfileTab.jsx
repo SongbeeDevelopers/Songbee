@@ -11,9 +11,18 @@ import "../ArtistPortal.css";
 
 function ArtistProfileTab({artistProfile}) {
   const dispatch = useDispatch();
+  console.log("artistprofile", artistProfile)
 
   // dialog logic
   const [openArtist, setOpenArtist] = useState(false);
+  const handleOpen = () => {
+    const genresSimple = []
+    for (let genre of artistProfile.genres) {
+      genresSimple.push(genre.id)
+    }
+    dispatch({ type: 'SET_EDIT_DATA', payload: {...artistProfile, genres: genresSimple} })
+    setOpenArtist(true)
+  }
 
   return (
     <div className="tab-body">
@@ -21,7 +30,7 @@ function ArtistProfileTab({artistProfile}) {
         <>
           <Button 
             sx={{m: 'auto', mt: 2, height: 35, width: 350, backgroundColor: "#feaf17", color: "black" }}
-            onClick={() => setOpenArtist(true)}>
+            onClick={handleOpen}>
             Edit Artist Profile Info
           </Button>
           <ArtistPortalBioPage />
@@ -35,11 +44,12 @@ function ArtistProfileTab({artistProfile}) {
         onClose={() => setOpenArtist(false)}
         aria-describedby="alert-dialog-slide-description"
         sx={{
-          width: "100%",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
         }}
+        fullWidth 
+        maxWidth="md"
       >
         <EditArtistProfileDialog
           artistProfile={artistProfile}

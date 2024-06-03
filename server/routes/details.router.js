@@ -26,6 +26,13 @@ router.post("/:id", rejectUnauthenticated, cloudinaryUpload.single("file"), asyn
     ];
 
     const detailsResult = await pool.query(detailsQuery, detailsValues);
+    const completeQuery = `
+    UPDATE "song_request"
+    SET
+      "is_complete"=TRUE
+    WHERE "id"=$1;
+    `
+    const completeResult = await connection.query(completeQuery, [songRequestId])
     res.sendStatus(201);
   } catch (error) {
     console.log("Error in details router POST:", error);
