@@ -164,14 +164,14 @@ export default function AdminArtistDetaisDialog({ setDetailsOpen }) {
         <div className='admin-details-edit-row'>
           <label> Song 1 Title
             <input
-              value={edit.song1_title}
+              value={edit.song_title_1}
               className='admin-portal-inputs'
               onChange={() => handleInput('song_title_1', event.target.value)}
             ></input>
           </label>
           <label> Song 1
             <input
-              value={edit.song1}
+              value={edit.sample_song_1}
               className='admin-portal-inputs'
               onChange={() => handleInput('sample_song_1', event.target.value)}
             ></input>
@@ -181,14 +181,14 @@ export default function AdminArtistDetaisDialog({ setDetailsOpen }) {
         <div className='admin-details-edit-row'>
           <label> Song 2 Title
             <input
-              value={edit.song2_title}
+              value={edit.song_title_2}
               className='admin-portal-inputs'
               onChange={() => handleInput('song_title_2', event.target.value)}
             ></input>
           </label>
           <label> Song 2
             <input
-              value={edit.song2}
+              value={edit.sample_song_2}
               className='admin-portal-inputs'
               onChange={() => handleInput('sample_song_2', event.target.value)}
             ></input>
@@ -198,14 +198,14 @@ export default function AdminArtistDetaisDialog({ setDetailsOpen }) {
         <div className='admin-details-edit-row'>
           <label> Song 3 Title
             <input
-              value={edit.song3_title}
+              value={edit.song_title_3}
               className='admin-portal-inputs'
               onChange={() => handleInput('song_title_3', event.target.value)}
             ></input>
           </label>
           <label> Song 3
             <input
-              value={edit.song3}
+              value={edit.sample_song_3}
               className='admin-portal-inputs'
               onChange={() => handleInput('sample_song_3', event.target.value)}
             ></input>
