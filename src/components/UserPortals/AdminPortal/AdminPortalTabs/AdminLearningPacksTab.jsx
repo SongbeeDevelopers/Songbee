@@ -46,6 +46,14 @@ const handleActive = (id) => {
     })
 }
 
+const style = {
+    position:'absolute',
+    height:'100%',
+    maxHeight: 5000,
+    display:'block',
+    width: 1000
+  };
+
 
   return (
     <div>
@@ -87,9 +95,12 @@ const handleActive = (id) => {
                         UPDATE
                       </Button>
                       {/* details dialog */}
-                      <Dialog fullWidth maxWidth="md"
+                      <Dialog 
+                        sx={ style }
                         open={detailsOpen}
                         onClose={closeDetails}
+                        disableAutoFocus={true}
+                        hideBackdrop={true}
                       >
                         <LearningPackDialog setDetailsOpen={setDetailsOpen} />
                       </Dialog>
