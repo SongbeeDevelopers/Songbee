@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
+  Box,
   Button,
   DialogActions,
   DialogContent,
@@ -15,7 +16,7 @@ import {
 import Swal from 'sweetalert2';
 
 
-export default function AdminCompleteDialog({ setCompleteOpen, request }) {
+export default function AdminCompleteDialog({ setCompleteOpen }) {
 
   const dispatch = useDispatch();
 
@@ -27,9 +28,6 @@ export default function AdminCompleteDialog({ setCompleteOpen, request }) {
   const [songFile, setSongFile] = useState('')
 
   const detailsForm = new FormData();
-
-
-  console.log("edit", edit);
 
   // stores changes
   const handleInput = (key, value) => {
@@ -52,10 +50,11 @@ export default function AdminCompleteDialog({ setCompleteOpen, request }) {
           detailsForm.append("file", songFile)
         }
         detailsForm.append("title", edit.title)
-        {user.class === 3 ?
-        detailsForm.append("artist_id", edit.artist_id)
-        :
-        detailsForm.append("artist_id", artistProfile.id)
+        {
+          user.class === 3 ?
+            detailsForm.append("artist_id", edit.artist_id)
+            :
+            detailsForm.append("artist_id", artistProfile.id)
         }
         detailsForm.append("lyrics", edit.lyrics)
         detailsForm.append("streaming_link", edit.streaming_link)
@@ -76,6 +75,7 @@ export default function AdminCompleteDialog({ setCompleteOpen, request }) {
             }
           });
         }
+        dispatch({ type: 'CLEAR_EDIT_DATA' })
         setCompleteOpen(false)
       }
     })
@@ -109,103 +109,109 @@ export default function AdminCompleteDialog({ setCompleteOpen, request }) {
       <DialogContent>
         <DialogContentText>
           <div className='completeDialogueContent'>
-            <div>
-              <Typography gutterBottom variant="overline" display="block" align='left'>
-                Upload Song File:
-              </Typography>
+              <div>
+                <Typography gutterBottom variant="overline" display="block" align='left'>
+                  Upload Song File:
+                </Typography>
 
-              <TextField
-                required
-                type="file"
-                className="form-control-file"
-                name="uploaded_file"
-                onChange={(evt) => setSongFile(evt.target.files[0])}
-                fullWidth={true}
-              />
-            </div>
+                <TextField
+                  required
+                  type="file"
+                  className="form-control-file"
+                  name="uploaded_file"
+                  onChange={(evt) => setSongFile(evt.target.files[0])}
+                  fullWidth={true}
+                />
+              </div>
 
-            <div>
-              <Typography gutterBottom variant="overline" display="block" align='left'>
-                Song Title:
-              </Typography>
+              <div>
+                <Typography gutterBottom variant="overline" display="block" align='left'>
+                  Song Title:
+                </Typography>
 
-              <TextField
-                required
-                placeholder="Song Title"
-                multiline
-                maxRows={4}
-                value={edit.title}
-                onChange={(event) => handleInput("title", event.target.value)}
-                fullWidth={true}
-              />
-            </div>
+                <TextField
+                  required
+                  placeholder="Song Title"
+                  multiline
+                  maxRows={4}
+                  value={edit.title}
+                  onChange={(event) => handleInput("title", event.target.value)}
+                  fullWidth={true}
+                />
+              </div>
 
-            <div>
-              { user.class === 3 ?
-              <>
-              <Typography gutterBottom variant="overline" display="block" align='left'>
-                Select Artist:
-              </Typography>
-              <Select
+              <div>
+                {user.class === 3 ?
+                  <>
+                    <Typography gutterBottom variant="overline" display="block" align='left'>
+                      Select Artist:
+                    </Typography>
+                    <Select
+                      value={edit.artist_id}
+                      onChange={(event) => handleInput('artist_id', event.target.value)}
+                      fullWidth={true}
+                    >
+                      {artists.map((artist) => (
+                        <MenuItem value={artist.id} key={artist.id}>{artist.artist_name}</MenuItem>
+                      ))}
+                    </Select>
+                  </>
+                  :
+                  <p>
+                    {artistProfile.artist_name}
+                  </p>
+                }
+              </div>
 
-                value={edit.artist_id}
-                onChange={(event) => handleInput('artist_id', event.target.value)}
-                fullWidth={true}
-              >
-                {artists.map((artist) => (
-                  <MenuItem value={artist.id} key={artist.id}>{artist.artist_name}</MenuItem>
-                ))}
-              </Select>
-              </>
-              :
-              <p>
-                {artistProfile.artist_name}
-              </p>
-              }
-            </div>
+              <div>
+                <Typography gutterBottom variant="overline" display="block" align='left'>
+                  Lyrics:
+                </Typography>
 
-            <div>
-              <Typography gutterBottom variant="overline" display="block" align='left'>
-                Lyrics:
-              </Typography>
+                <TextField
+                  placeholder="Lyrics"
+                  multiline
+                  rows={6}
+                  value={edit.lyrics}
+                  onChange={(event) => handleInput("lyrics", event.target.value)}
+                  fullWidth={true}
+                />
+              </div>
 
-              <TextField
-                placeholder="Lyrics"
-                multiline
-                rows={6}
-                value={edit.lyrics}
-                onChange={(event) => handleInput("lyrics", event.target.value)}
-                fullWidth={true}
-              />
-            </div>
-
-            <div>
-              <Typography gutterBottom variant="overline" display="block" align='left'>
-                Streaming Link:
-              </Typography>
-              <TextField
-                placeholder="Streaming Link"
-                multiline
-                rows={2}
-                value={edit.streaming_link}
-                onChange={(event) => handleInput("streaming_link", event.target.value)}
-                fullWidth={true}
-              />
-            </div>
+              <div>
+                <Typography gutterBottom variant="overline" display="block" align='left'>
+                  Streaming Link:
+                </Typography>
+                <TextField
+                  placeholder="Streaming Link"
+                  multiline
+                  rows={2}
+                  value={edit.streaming_link}
+                  onChange={(event) => handleInput("streaming_link", event.target.value)}
+                  fullWidth={true}
+                />
+              </div>
           </div>
         </DialogContentText>
       </DialogContent>
 
       <DialogActions sx={{ justifyContent: 'center' }}>
-        <Button variant="contained" onClick={submitDetails}>
-          Submit
+        <Button variant="contained" onClick={
+          // if already complete, no file required
+          edit.is_complete ?
+          submitDetails
+          :
+          // if not already complete, file required
+          songFile ? submitDetails : () => Swal.fire({icon: 'error', title: 'Please upload a file.'})
+          }
+        > Submit
         </Button>
-        { user.class === 3 ?
-        <Button variant="contained" color="error" onClick={deleteRequest}>
-          Delete
-        </Button>
-        :
-        ''
+        {user.class === 3 ?
+          <Button variant="contained" color="error" onClick={deleteRequest}>
+            Delete
+          </Button>
+          :
+          ''
         }
       </DialogActions>
     </div>
