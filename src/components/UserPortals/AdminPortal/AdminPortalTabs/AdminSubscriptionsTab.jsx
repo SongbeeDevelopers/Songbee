@@ -112,7 +112,6 @@ export default function AdminSubscriptionsTab({ num, data }) {
                     <MessageUserButton userId={row.user_id} />
                   </TableCell>
 
-
                   </TableRow>
                 )})}
               </TableBody>
