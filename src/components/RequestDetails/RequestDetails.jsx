@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 
 import RequestLyricsTab from './RequestDetailsTabs/RequestLyricsTab';
-import RequestDetailsTab from './RequestDetailsTabs/RequestDetailsTab';
+// import RequestDetailsTab from './RequestDetailsTabs/RequestDetailsTab';
+import RequestDetailsArtistBio from './RequestDetailsArtistBio';
 
 import PropTypes from "prop-types";
 import {
@@ -19,7 +20,7 @@ import {
 import { motion } from 'framer-motion';
 
 import './RequestDetails.css'
-import RequestDetailsArtistBio from './RequestDetailsArtistBio';
+
 
 
 // This function will display the user's song request with a player so they can review their song
@@ -171,20 +172,27 @@ function RequestDetails({ routeVariants, requestId }) {
         initial="initial"
         animate="final"
       >
+        {/* Artist image */}
+       
+         <img className='artist-photo' src={request.photo} alt="Artists images" /> 
+        
+
+        {/* audio file */}
+        <audio className='song-details-audio' controls src={request.url} />
+       
+
         {/* title */}
         <h2>{request.title}</h2>
+
+        <div className='order-details-tab-container'>
+          {/* tab header */}
+          <Box sx={{ height: "80%" }}>
 
         {/* details */}
         <p>For {request.recipient}</p>
         {request.occasion && <p>{request.occasion}</p>}
         <p>{request.genre}</p>
 
-        {/* audio file */}
-        <audio className='song-details-audio' controls src={request.url} />
-
-        <div className='order-details-tab-container'>
-          {/* tab header */}
-          <Box sx={{ height: "80%" }}>
             <Tabs
               value={value}
               onChange={handleChange}
@@ -192,9 +200,25 @@ function RequestDetails({ routeVariants, requestId }) {
               textColor="primary"
               indicatorColor="primary"
             >
-              <Tab label="Lyrics" {...a11yProps(0)} />
+              <Tab sx={{minWidth: 100,
+                        margin: 3,
+                        mb: 3,
+                        padding: 2,
+                        borderRadius: 2, 
+                        boxShadow: 1, 
+                        bgcolor: 'black',
+                        color: ' rgb(229, 173, 99)'}}
+                        label="Lyrics" {...a11yProps(0)} />
               {/* <Tab label="Details" {...a11yProps(1)} /> */}
-              <Tab label="Artist" {...a11yProps(1)} />
+              <Tab  sx={{minWidth: 100, 
+                         margin: 3,
+                         mb: 3, 
+                         padding: 2,
+                         borderRadius: 2,
+                         boxShadow: 1,
+                         bgcolor: 'black',
+                         color: ' rgb(229, 173, 99)'}}
+                         label="Artist" {...a11yProps(1)} />
             </Tabs>
           </Box>
 

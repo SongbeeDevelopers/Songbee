@@ -336,7 +336,7 @@ router.get('/current/:id', async (req, res) => {
   FROM "genres"
   LEFT JOIN "artist_genres"
   ON "genres"."id"="artist_genres"."genre_id"
-  WHERE "artist_genres"."artist_id"=$1
+  WHERE "artist_genres"."artist_id"=$1;
   `
   const genreResponse = await connection.query(genreQuery, [req.params.id])
   connection.query("COMMIT;");

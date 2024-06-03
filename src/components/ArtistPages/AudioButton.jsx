@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useRef } from "react";
 
-function AudioButton({ url, popup, setShowPopUp, setSelectedSong, artist }) {
+function AudioButton({ url, popup, setShowPopUp, setSelectedSong, artist}) {
     const [isPlaying, setIsPlaying] = useState(false);
     const audioRef = useRef(null);
 
@@ -19,6 +19,7 @@ function AudioButton({ url, popup, setShowPopUp, setSelectedSong, artist }) {
         if (popup === true && setShowPopUp && setSelectedSong) {
             setShowPopUp(true)
             setSelectedSong(artist)
+            
            
         }
 
