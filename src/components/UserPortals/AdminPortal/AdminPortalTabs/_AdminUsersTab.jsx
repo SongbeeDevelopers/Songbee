@@ -61,9 +61,9 @@ export default function AdminUsersTab() {
                     </TableCell>
 
                     {/* messaging */}
-                  <TableCell align="center">
-                    <MessageUserButton userId={user.id} />
-                  </TableCell>
+                    <TableCell align="center">
+                      <MessageUserButton userId={user.id} />
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -73,7 +73,10 @@ export default function AdminUsersTab() {
 
         </>
         :
-        <p className='admin-empty-msg'>There are currently no users.</p>
+        <>
+          <FilterBar type='user' />
+          <p className='admin-empty-msg'>There are currently no users.</p>
+        </>
       }
     </div>
 
