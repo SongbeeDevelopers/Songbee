@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { Button, TextField, Dialog } from "@mui/material"
 import Swal from 'sweetalert2';
 
-import UploadArtistDetailsDialog from './UploadArtistDetailsDialog';
+import UploadArtistDetailsDialog from "../../AdminPortal/AdminPortalTabs/AdminPortalDialogs/UploadArtistDetailsDialog";
 
 import Box from "@mui/material/Box";
 
