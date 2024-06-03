@@ -13,18 +13,25 @@ import {
 import Swal from 'sweetalert2';
 
 
-export default function UploadArtistDetailsDialog({ setCompleteOpen, request }) {
+export default function UploadArtistDetailsDialog({ setDetailsOpen, num, artist }) {
 
   const dispatch = useDispatch();
 
-  const [songFile, setSongFile] = useState('')
+  const [file, setFile] = useState('')
 
   const detailsForm = new FormData()
 
   // submission logic
   const submitDetails = () => {
-    
-    setCompleteOpen(false)
+    detailsForm.append("file", file);
+    detailsForm.append("artist", artist)
+    dispatch({
+        type: "UPDATE_ARTIST_FILE",
+        payload: {id: num,
+                data: detailsForm
+        }
+    })
+    setDetailsOpen(false);
   }
 
 
@@ -45,7 +52,7 @@ export default function UploadArtistDetailsDialog({ setCompleteOpen, request }) 
                 type="file"
                 className="form-control-file"
                 name="uploaded_file"
-                onChange={(evt) => setSongFile(evt.target.files[0])}
+                onChange={(evt) => setFile(evt.target.files[0])}
                 fullWidth={true}
               />
             </div>

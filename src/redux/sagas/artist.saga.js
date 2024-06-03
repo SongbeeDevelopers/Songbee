@@ -178,7 +178,7 @@ function* updateArtistFile (action) {
   try {
   const response = yield axios({
       method: "PUT",
-      url: `/api/artist/upload/${action.payload.id}`,
+      url: `/api/artist/uploads/${action.payload.id}`,
       headers: headers,
       data: action.payload.data
   });

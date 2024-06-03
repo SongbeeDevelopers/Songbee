@@ -456,47 +456,43 @@ router.put('/active/:id', async (req, res) => {
 })
 
 router.put('/uploads/:id', rejectUnauthenticated, cloudinaryUpload.single("file"), (req, res) => {
-  console.log(req.body)
-    const editQuery = `
+  let editQuery
+  if (req.params.id === '1'){
+    editQuery = `
     UPDATE "artist"
-      SET "artist_name" = $1,
-      "name" = $2,
-      "vocal_type" = $3,
-      "website" = $4,
-      "instagram_link" = $5,
-      "sample_song_1" = $6,
-      "song_title_1" = $7,
-      "sample_song_2" = $8,
-      "song_title_2" = $9,
-      "sample_song_3" = $10,
-      "song_title_3" = $11,
-      "bio" = $12,
-      "location" = $13,
-      "streaming_link" = $14,
-      "w9" = $15,
-      "paypal" = $16
-    WHERE "artist"."id" = $17;
+      SET "sample_song_1" = $1
+    WHERE "artist"."id" = $2;
     `
-    const editValues = [
-      req.body.artist_name,    // $1
-      req.body.name,           // $2
-      req.body.vocal_type,     // $3
-      req.body.website,        // $4
-      req.body.instagram_link, // $5
-      req.body.sample_song_1,  // $6
-      req.body.song_title_1,   // $7
-      req.body.sample_song_2,  // $8
-      req.body.song_title_2,   // $9
-      req.body.sample_song_3,  // $10
-      req.body.song_title_3,   // $11
-      req.body.bio,            // $12
-      req.body.location,       // $13
-      req.body.streaming_link, // $14
-      req.body.w9,             // $15
-      req.body.paypal,         // $16
-      req.body.id              // $17
-    ]
-    pool.query(editQuery, editValues)
+  }
+  else if (req.params.id === '2'){
+    editQuery = `
+    UPDATE "artist"
+      SET "sample_song_2" = $1
+    WHERE "artist"."id" = $2;
+    `
+  }
+  else if (req.params.id === '3'){
+    editQuery = `
+    UPDATE "artist"
+      SET "sample_song_3" = $1
+    WHERE "artist"."id" = $2;
+    `
+  }
+  else if (req.params.id === '4'){
+    editQuery = `
+    UPDATE "artist"
+      SET "photo" = $1
+    WHERE "artist"."id" = $2;
+    `
+  }
+  else if (req.params.id === '5'){
+    editQuery = `
+    UPDATE "artist"
+      SET "w9" = $1
+    WHERE "artist"."id" = $2;
+    `
+  }
+    pool.query(editQuery, [req.file.path, req.body.artist])
       .then(() => {
         res.sendStatus(200)
       })
