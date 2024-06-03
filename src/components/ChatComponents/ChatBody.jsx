@@ -6,7 +6,6 @@ import './Socket.css'
 const ChatBody = ({messages, lastMessageRef, user2}) => {
   const history = useHistory();
   const user = useSelector(store => store.user)
-  console.log("messages", messages)
 
   const handleLeaveChat = () => {
     localStorage.removeItem('userName');

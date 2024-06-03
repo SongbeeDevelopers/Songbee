@@ -29,7 +29,6 @@ function JrHeader() {
   const open = Boolean(anchorEl);
 
   const handleMenu = (event) => {
-    console.log('hello')
     setAnchorEl(event.currentTarget);
   };
   const handleClose = (num) => {

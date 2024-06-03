@@ -25,7 +25,6 @@ router.get('/', async (req, res) => {
 
 // add new email
 router.post('/', async (req, res) => {
-    console.log('req.body:', req.body)
     const response = await mailchimp.lists.addListMember(list_id, {
         email_address: req.body.email_address,
         status: "subscribed",

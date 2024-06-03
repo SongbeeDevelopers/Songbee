@@ -16,8 +16,6 @@ import {
 
 export default function AdminSubscriptionsTab({ num, data }) {
 
-  console.log('DATA', data)
-
   const dispatch = useDispatch()
 
   // date/time

@@ -28,9 +28,6 @@ export default function AdminCompleteDialog({ setCompleteOpen, request }) {
 
   const detailsForm = new FormData();
 
-
-  console.log("edit", edit);
-
   // stores changes
   const handleInput = (key, value) => {
     dispatch({ type: 'EDIT_INPUT', payload: { key, value } })

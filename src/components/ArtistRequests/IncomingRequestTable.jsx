@@ -39,8 +39,6 @@ function IncomingRequestTable({ num }) {
   const now = new Date();
   const msPerDay = 24 * 60 * 60 * 1000;
 
-  console.log("incoming REquests?!!", incomingRequests);
-
   // --- modal logic ---
   const handleClickOpen = (id, x) => {
     dispatch({

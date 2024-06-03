@@ -20,7 +20,6 @@ function* createNewArtist(action) {
       url: "/api/artist",
       data: action.payload,
     });
-    console.log(response.data);
   } catch (error) {
     console.error("SAGA createNewArtist() failed:", error);
   }
