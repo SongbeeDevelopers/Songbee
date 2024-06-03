@@ -15,7 +15,22 @@ function ArtistDocuments() {
                 Click to View Lyric Guidelines</a>
                 </p>
                 </div>
-                </>
+        <div className="reqFormGroup">
+            <p><a href="https://www.irs.gov/pub/irs-pdf/fw9.pdf">
+                Click to View W9 form</a>
+                </p>
+        </div>
+        <div className="w9-input">
+         <label> 
+                Click here to upload your w9
+                <br></br>
+            <input
+            type="file"
+            >
+            </input>
+         </label>
+        </div>
+        </>
         
     )
 }
