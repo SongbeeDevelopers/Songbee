@@ -32,8 +32,18 @@ function CustomerRequests() {
   const userRequests = useSelector((store) => store.userRequests);
   const artists = useSelector((store => store.allArtists))
 
-  const viewDetails = (reqId) => {
-    history.push(`/details/${reqId}`);
+  const viewDetails = (req) => {
+    dispatch({
+      type: 'FETCH_CURRENT_ARTIST',
+      payload:  req.artist_id
+    })
+    dispatch({
+      type: 'FETCH_CURRENT_REQUEST',
+          payload: req.id
+    })
+   
+
+    history.push(`/details/${req.id}`);
   };
 
   const startSong = () => {
@@ -96,7 +106,7 @@ function CustomerRequests() {
                 {/* details */}
                 <TableCell align="center">
                   <Button variant="contained"
-                    onClick={() => viewDetails(request.id)}
+                    onClick={() => viewDetails(request)}
                     sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
                   >
                     DETAILS
