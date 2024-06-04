@@ -184,7 +184,25 @@ function* updateArtistFile (action) {
   yield put ({ type: "FETCH_ALL_ARTISTS"})
   }
   catch (error) {
-      console.error('Saga updateSongDetails() failed:', error)
+      console.error('Saga updateArtistFile() failed:', error)
+  }
+}
+
+function* applicationArtistFile (action) {
+  const headers = {
+  'content-type': 'multipart/form-data'
+  }
+  try {
+  const response = yield axios({
+      method: "PUT",
+      url: `/api/artist/application-uploads/${action.payload.id}`,
+      headers: headers,
+      data: action.payload.data
+  });
+  yield put ({ type: 'EDIT_INPUT', payload: response.data})
+  }
+  catch (error) {
+      console.error('Saga applicationArtistFile() failed:', error)
   }
 }
 
@@ -211,6 +229,7 @@ function* artistSaga() {
   
   yield takeLatest("UPDATE_ACTIVE_ARTIST", updateActiveArtist);
   yield takeLatest("UPDATE_ARTIST_FILE", updateArtistFile);
+  yield takeLatest("APPLICATION_ARTIST_FILE", applicationArtistFile)
 }
 
 export default artistSaga;

@@ -513,4 +513,19 @@ router.put('/uploads/:id', rejectUnauthenticated, cloudinaryUpload.single("file"
       })
 })
 
+router.put('/application-uploads/:id', rejectUnauthenticated, cloudinaryUpload.single("file"), (req, res) => {
+  if (req.params.id === '1'){
+    res.send({sample_song_1: req.file.path})
+  }
+  else if (req.params.id === '2'){
+    res.send({sample_song_2: req.file.path})
+  }
+  else if (req.params.id === '3'){
+    res.send({sample_song_3: req.file.path})
+  }
+  else if (req.params.id === '4'){
+    res.send({photo: req.file.path})
+  }
+})
+
 module.exports = router;

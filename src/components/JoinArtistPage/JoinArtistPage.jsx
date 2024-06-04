@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { Button, TextField, Dialog, Box } from "@mui/material"
 import Swal from 'sweetalert2';
 
-import UploadArtistDetailsDialog from "../UserPortals/AdminPortal/AdminPortalTabs/AdminPortalDialogs/UploadArtistDetailsDialog";
+import ApplicationUploadDialog from "./ApplicationUploadDialog";
 
 import '../UserPortals/AdminPortal/AdminPortal.css'
 
@@ -18,6 +18,9 @@ function JoinArtistPage({ routeVariants }) {
 
   const history = useHistory();
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch({ type: 'FETCH_GENRES' });
+  }, [])
 
 const edit = useSelector(store => store.edit)
 const genres = useSelector(store => store.genres)
@@ -28,7 +31,6 @@ const [details1Open, setDetails1Open] = useState(false);
 const [details2Open, setDetails2Open] = useState(false);
 const [details3Open, setDetails3Open] = useState(false);
 const [details4Open, setDetails4Open] = useState(false);
-const [details5Open, setDetails5Open] = useState(false);
 
 // stores changes in edit reducer
 const handleInput = (key, value) => {
@@ -133,7 +135,7 @@ const submitEdit = (event) => {
             open={details1Open}
             onClose={() => setDetails1Open(false)}
           >
-            <UploadArtistDetailsDialog 
+            <ApplicationUploadDialog 
               setDetailsOpen={setDetails1Open}
               num={4}
               artist={edit.id} />
@@ -201,7 +203,7 @@ const submitEdit = (event) => {
             open={details2Open}
             onClose={() => setDetails2Open(false)}
           >
-            <UploadArtistDetailsDialog 
+            <ApplicationUploadDialog 
               setDetailsOpen={setDetails2Open}
               num={1}
               artist={edit.id} />
@@ -235,7 +237,7 @@ const submitEdit = (event) => {
             open={details3Open}
             onClose={() => setDetails3Open(false)}
           >
-            <UploadArtistDetailsDialog 
+            <ApplicationUploadDialog 
               setDetailsOpen={setDetails3Open}
               num={2}
               artist={edit.id} />
@@ -269,7 +271,7 @@ const submitEdit = (event) => {
             open={details4Open}
             onClose={() => setDetails4Open(false)}
           >
-            <UploadArtistDetailsDialog 
+            <ApplicationUploadDialog  
               setDetailsOpen={setDetails4Open}
               num={3}
               artist={edit.id} />
@@ -300,32 +302,8 @@ const submitEdit = (event) => {
               onChange={() => handleInput('paypal', event.target.value)}
             ></input>
           </label>
-          <label> W9
-            <input
-              value={edit.w9}
-              className='admin-portal-inputs'
-              onChange={() => handleInput('w9', event.target.value)}
-            ></input>
-          </label>
+         
         </div>
-        <Button variant="contained"
-            onClick={() => setDetails5Open(true)}
-            sx={{ height: 35, width: 250, backgroundColor: "#feaf17", color: "black" }}
-          >
-            CLICK TO UPLOAD W9
-          </Button>
-
-            {/* upload dialog */}
-          <Dialog keepMounted fullWidth maxWidth="md"
-            open={details5Open}
-            onClose={() => setDetails5Open(false)}
-          >
-            <UploadArtistDetailsDialog 
-              setDetailsOpen={setDetails5Open}
-              num={5}
-              artist={edit.id} />
-          </Dialog>
-
         <div id='admin-details-button-row' className='admin-details-edit-row'>
           <Button variant="contained"
             onClick={submitEdit}
