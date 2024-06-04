@@ -18,8 +18,6 @@ export default function AdminPortalTabs() {
 
     const [value, setValue] = useState(0);
 
-    const activeSubscriptions = useSelector(store => store.activeSubscriptions);
-    const pausedSubscriptions = useSelector(store => store.pausedSubscriptions);
 
     // MUI tab structure
     const handleChange = (event, newValue) => {
@@ -69,11 +67,11 @@ export default function AdminPortalTabs() {
             </Box>
 
             <CustomTabPanel value={value} index={0}>
-                <AdminSubscriptionsTab num={0} data={activeSubscriptions} />
+                <AdminSubscriptionsTab num={0} />
             </CustomTabPanel>
 
             <CustomTabPanel value={value} index={1}>
-                <AdminSubscriptionsTab num={1} data={pausedSubscriptions} />
+                <AdminSubscriptionsTab num={1} />
             </CustomTabPanel>
 
             <CustomTabPanel value={value} index={2}>
