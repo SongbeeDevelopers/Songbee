@@ -32,12 +32,12 @@ export default function AdminSubscriptionsTab({ num }) {
     months += d2.getMonth();
     return months <= 0 ? 0 : months;
   }
-  
+
   const end = new Date()
 
   const calculateDelivery = (last_delivery, packId) => {
     let subLength
-    if(packId <= 6){
+    if (packId <= 6) {
       subLength = 2
     }
     else {
@@ -52,7 +52,7 @@ export default function AdminSubscriptionsTab({ num }) {
     <div>
       {data.length > 0 ?
         <>
-          <FilterBar type={num === 0 ? 'pending' : 'completed'} />
+          <FilterBar type={num === 0 ? 'active' : 'paused'} />
 
           <div className="admin-tabs-contents">
             <Table sx={{ minWidth: 700 }}>
@@ -74,62 +74,63 @@ export default function AdminSubscriptionsTab({ num }) {
               {/* table body */}
               <TableBody>
                 {data.map((row) => {
-                if (end >= calculateDelivery(row.last_delivery, row.pack_id)){
+                  if (end >= calculateDelivery(row.last_delivery, row.pack_id)) {
                     dispatch({
-                        type: "UPDATE_SUBSCRIPTION_PACK",
-                        payload: {id: row.id, pack: row.pack_id}
+                      type: "UPDATE_SUBSCRIPTION_PACK",
+                      payload: { id: row.id, pack: row.pack_id }
                     })
-                }
-                if (row.is_paid === false){
+                  }
+                  if (row.is_paid === false) {
                     dispatch({
-                        type: "DELETE_JR_REQUEST",
-                        payload: row.id
+                      type: "DELETE_JR_REQUEST",
+                      payload: row.id
                     })
-                }
-                 return (
-                  <TableRow hover key={row.id}>
+                  }
+                  return (
+                    <TableRow hover key={row.id}>
 
-                    {/* creation date */}
-                    <TableCell>
-                      {(new Date(row.created_at).toLocaleString('en-us').split(','))[0]}
-                    </TableCell>
+                      {/* creation date */}
+                      <TableCell>
+                        {(new Date(row.created_at).toLocaleString('en-us').split(','))[0]}
+                      </TableCell>
 
-                    {/* email */}
-                    <TableCell align="center">
-                      {row.email}
-                    </TableCell>
+                      {/* email */}
+                      <TableCell align="center">
+                        {row.email}
+                      </TableCell>
 
-                    {/* name */}
-                    <TableCell align="center">
-                      {row.name}
-                    </TableCell>
+                      {/* name */}
+                      <TableCell align="center">
+                        {row.name}
+                      </TableCell>
 
-                    {/* age */}
-                    <TableCell align="center">
-                      {monthDiff(new Date(row.age), end)} Months
-                    </TableCell>
+                      {/* age */}
+                      <TableCell align="center">
+                        {monthDiff(new Date(row.age), end)} Months
+                      </TableCell>
 
-                    {/* current pack */}
-                    <TableCell align="center">
-                      {row.title}
-                    </TableCell>
+                      {/* current pack */}
+                      <TableCell align="center">
+                        {row.title}
+                      </TableCell>
 
-                    {/* last delivery */}
-                    <TableCell>
-                      {(new Date(row.last_delivery).toLocaleString('en-us').split(','))[0]}
-                    </TableCell>
+                      {/* last delivery */}
+                      <TableCell>
+                        {(new Date(row.last_delivery).toLocaleString('en-us').split(','))[0]}
+                      </TableCell>
 
-                    {/* due */}
-                    <TableCell align="center">
-                    {(calculateDelivery(row.last_delivery, row.pack_id).toLocaleString('en-us').split(','))[0]}
-                    </TableCell>
+                      {/* due */}
+                      <TableCell align="center">
+                        {(calculateDelivery(row.last_delivery, row.pack_id).toLocaleString('en-us').split(','))[0]}
+                      </TableCell>
 
-                    <TableCell align='center'>
-                    <MessageUserButton userId={row.user_id} />
-                  </TableCell>
+                      <TableCell align='center'>
+                        <MessageUserButton userId={row.user_id} />
+                      </TableCell>
 
-                  </TableRow>
-                )})}
+                    </TableRow>
+                  )
+                })}
               </TableBody>
             </Table>
           </div>
@@ -137,9 +138,15 @@ export default function AdminSubscriptionsTab({ num }) {
         </>
         :
         num === 0 ?
-          <p className='admin-empty-msg'>There are currently no active subscriptions.</p>
+          <>
+            <FilterBar type={num === 0 ? 'active' : 'paused'} />
+            <p className='admin-empty-msg'>There are currently no active subscriptions.</p>
+          </>
           :
-          <p className='admin-empty-msg'>There are currently no paused subscriptions.</p>
+          <>
+            <FilterBar type={num === 0 ? 'active' : 'paused'} />
+            <p className='admin-empty-msg'>There are currently no paused subscriptions.</p>
+          </>
       }
     </div>
   );

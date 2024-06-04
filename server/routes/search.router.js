@@ -111,6 +111,72 @@ router.get('/', async (req, res) => {
       res.send(completedResponse.rows)
     }
 
+    // ***** search for active subscriptions *****
+    else if (req.query.type === 'active') {
+      const activeQuery = `
+      SELECT DISTINCT
+      "subscription"."id" AS "id",
+      "subscription"."user_id",
+      "subscription"."age",
+      "subscription"."created_at",
+      "subscription"."is_active",
+      "subscription"."last_delivery",
+      "subscription"."name",
+      "subscription"."pack_id",
+      "user"."email",
+      "learning_packs"."max_age",
+      "learning_packs"."min_age",
+      "learning_packs"."title"
+      FROM "subscription"
+      LEFT JOIN "user"
+      ON "user"."id" = "subscription"."user_id"
+      LEFT JOIN "learning_packs"
+      ON "learning_packs"."id" = "subscription"."pack_id"
+      WHERE "subscription"."is_active" = TRUE
+      AND
+      ("user"."email" ILIKE $1
+      OR
+      "subscription"."name" ILIKE $1
+      OR
+      "learning_packs"."title" ILIKE $1);
+      `
+      const activeResponse = await pool.query(activeQuery, [`%${req.query.q}%`])
+      res.send(activeResponse.rows)
+    }
+
+    // ***** search for paused subscriptions *****
+    else if (req.query.type === 'paused') {
+      const pausedQuery = `
+      SELECT DISTINCT
+      "subscription"."id" AS "id",
+      "subscription"."user_id",
+      "subscription"."age",
+      "subscription"."created_at",
+      "subscription"."is_active",
+      "subscription"."last_delivery",
+      "subscription"."name",
+      "subscription"."pack_id",
+      "user"."email",
+      "learning_packs"."max_age",
+      "learning_packs"."min_age",
+      "learning_packs"."title"
+      FROM "subscription"
+      LEFT JOIN "user"
+      ON "user"."id" = "subscription"."user_id"
+      LEFT JOIN "learning_packs"
+      ON "learning_packs"."id" = "subscription"."pack_id"
+      WHERE "subscription"."is_active" = FALSE
+      AND
+      ("user"."email" ILIKE $1
+      OR
+      "subscription"."name" ILIKE $1
+      OR
+      "learning_packs"."title" ILIKE $1);
+      `
+      const pausedResponse = await pool.query(pausedQuery, [`%${req.query.q}%`])
+      res.send(pausedResponse.rows)
+    }
+
     /***** search for users *****/
     else if (req.query.type === 'user') {
       let userQuery
@@ -175,7 +241,7 @@ router.get('/', async (req, res) => {
         const artistResponse = await pool.query(artistQuery, artistValues)
         res.send(artistResponse.rows)
       }
-      
+
       // finds users matching genre if no query made
       else if (!req.query.q && req.query.genre) {
         artistQuery = `
@@ -201,7 +267,7 @@ router.get('/', async (req, res) => {
         const artistResponse = await pool.query(artistQuery, artistValues)
         res.send(artistResponse.rows)
       }
-      
+
       else {
         const artistResponse = await pool.query(`SELECT * FROM "artist";`)
         res.send(artistResponse.rows)

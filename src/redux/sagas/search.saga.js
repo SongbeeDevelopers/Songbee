@@ -15,6 +15,12 @@ function* fetchResults(action) {
       case 'completed':
         yield put({ type: 'SET_COMPLETED_REQUESTS', payload: response.data })
         break;
+      case 'active':
+        yield put({ type: 'SET_ACTIVE_SUBSCRIPTIONS', payload: response.data})
+        break;
+      case 'paused':
+        yield put({ type: 'SET_PAUSED_SUBSCRIPTIONS', payload: response.data})
+        break;
       case 'user':
         yield put({ type: 'SET_ALL_USERS', payload: response.data })
         break;
