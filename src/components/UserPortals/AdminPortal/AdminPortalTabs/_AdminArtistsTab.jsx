@@ -63,7 +63,7 @@ export default function AdminMainTab() {
                 <Tabs value={value} onChange={handleChange} variant="scrollable" centered>
                     <Tab label="Artist List" {...a11yProps(0)} />
                     <Tab label="Artist Applications" {...a11yProps(1)} />
-                    <Tab label="Artist Edits" {...a11yProps(2)} />
+                    {/* <Tab label="Artist Edits" {...a11yProps(2)} /> */}
                 </Tabs>
             </Box>
 
@@ -75,9 +75,9 @@ export default function AdminMainTab() {
                 <AdminArtistApplicationsTab />
             </CustomTabPanel>
 
-            <CustomTabPanel value={value} index={2}>
+            {/* <CustomTabPanel value={value} index={2}>
                 <AdminArtistsPendingEdits />
-            </CustomTabPanel>
+            </CustomTabPanel> */}
         </div>
     )
 }
