@@ -25,6 +25,7 @@ export default function Delivery({ handleInput, handleOpen }) {
             onClick={() => handleInput("delivery_days", 3)}
           >
             <Checkbox
+              disableRipple
               checked={requestData.delivery_days === 3}
               sx={{ mb: -10, ml: -5, mr: 8, backgroundColor: "#fff4df" }}
             />
@@ -42,6 +43,7 @@ export default function Delivery({ handleInput, handleOpen }) {
             className="calendar-img-div"
             onClick={() => handleInput("delivery_days", 5)}>
           <Checkbox
+              disableRipple
               checked={requestData.delivery_days === 5}
               sx={{ mb: -10, ml: -5, mr: 8, backgroundColor: "#fff4df" }}
             />
@@ -59,6 +61,7 @@ export default function Delivery({ handleInput, handleOpen }) {
             className="calendar-img-div"
             onClick={() => handleInput("delivery_days", 6)}>
           <Checkbox
+              disableRipple
               checked={requestData.delivery_days === 6}
               sx={{ mb: -10, ml: -5, mr: 8, backgroundColor: "#fff4df" }}
             />

@@ -77,7 +77,7 @@ export default function AddOns({ handleInput, handleOpen, handleClose, open }) {
             <div
               className='requestDetailsaddon2'
               onClick={() => handleClick("streaming")}>
-              <Checkbox checked={requestData.streaming} sx={{ mb: -10, ml: 2, backgroundColor: '#fff4df' }} />
+              <Checkbox disableRipple checked={requestData.streaming} sx={{ mb: -10, ml: 2, backgroundColor: '#fff4df' }} />
               <img
                 src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/addstreaming_hng5cz.jpg"
               ></img>
@@ -92,7 +92,7 @@ export default function AddOns({ handleInput, handleOpen, handleClose, open }) {
             <div
               className='requestDetailsaddon2'
               onClick={() => handleClick("verse")}>
-              <Checkbox checked={requestData.extra_verse} sx={{ mb: -10, ml: 2, backgroundColor: '#fff4df' }} />
+              <Checkbox disableRipple checked={requestData.extra_verse} sx={{ mb: -10, ml: 2, backgroundColor: '#fff4df' }} />
               <img
                 src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/extraverse_hmt8jd.jpg"
               ></img>
@@ -111,7 +111,7 @@ export default function AddOns({ handleInput, handleOpen, handleClose, open }) {
             <div
               className='requestDetailsaddon2'
               onClick={() => handleClick("license")}>
-              <Checkbox checked={requestData.license} sx={{ mb: -10, ml: 2, backgroundColor: '#fff4df' }} />
+              <Checkbox disableRipple checked={requestData.license} sx={{ mb: -10, ml: 2, backgroundColor: '#fff4df' }} />
               <img
                 src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/commerciallicense_qkxiug.jpg"
               ></img>
@@ -125,7 +125,7 @@ export default function AddOns({ handleInput, handleOpen, handleClose, open }) {
             <div
               className='requestDetailsaddon2'
               onClick={() => handleClick("backing")}>
-              <Checkbox checked={requestData.backing_track} sx={{ mb: -10, ml: 2, backgroundColor: '#fff4df' }} />
+              <Checkbox disableRipple checked={requestData.backing_track} sx={{ mb: -10, ml: 2, backgroundColor: '#fff4df' }} />
               <img
                 src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/backingtrack_m94vwk.jpg"
               ></img>
