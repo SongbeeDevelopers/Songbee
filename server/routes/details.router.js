@@ -7,7 +7,6 @@ const router = express.Router();
 const cloudinaryUpload = require("../modules/cloudinary.config");
 
 router.post("/:id", rejectUnauthenticated, cloudinaryUpload.single("file"), async (req, res) => {
-  console.log(req.body)
   let connection
   try {
     connection = await pool.connect();
