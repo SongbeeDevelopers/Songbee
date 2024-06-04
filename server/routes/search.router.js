@@ -32,10 +32,16 @@ router.get('/', async (req, res) => {
         "song_request"."created_at",
         "song_request"."delivery_days",
         "song_request"."is_complete",
+        "song_request"."streaming",
+        "song_request"."backing_track",
+        "song_request"."license",
+        "song_request"."extra_verse",
         "song_details"."url",
         "song_details"."lyrics",
         "song_details"."title",
+        "song_details"."artist_id",
         "song_details"."streaming_link",
+        "song_details"."accepted",
         "genres"."name" AS "genre",
         "user"."email" AS "email"
         FROM "song_request"
@@ -49,7 +55,9 @@ router.get('/', async (req, res) => {
         AND
         ("requester" ILIKE $1
         OR
-        "recipient" ILIKE $1);
+        "recipient" ILIKE $1
+        OR
+        "user"."email" ILIKE $1)
         `
       const pendingResponse = await pool.query(pendingQuery, [`%${req.query.q}%`])
       res.send(pendingResponse.rows)
