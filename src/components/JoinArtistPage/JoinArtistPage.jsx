@@ -175,6 +175,9 @@ const submitEdit = (event) => {
             <button className='admin-btn-center' onClick={() => clearGenres()}>Clear selections</button>
           </label>
         </div>
+        <p>
+          When uploading songs, make sure you have a sample song that represents each genre you specialize in
+        </p>
 
         <div className='admin-details-edit-row'>
           <label> Song 1 Title
