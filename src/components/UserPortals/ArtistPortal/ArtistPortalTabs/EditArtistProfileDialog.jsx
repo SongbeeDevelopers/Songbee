@@ -55,7 +55,7 @@ function EditArtistProfileDialog({ artistProfile, openArtist, setOpenArtist}) {
           payload: edit
         })
         // closes dialog
-        setDetailsOpen(false)
+        setOpenArtist(false)
       }
     })
   }
