@@ -71,7 +71,7 @@ router.get("/get", async (req, res) => {
 
 // This endpoint is used when an artist is applying to join 
 // We receive the artist information and the genre.
-router.post("/", rejectUnauthenticated, (req, res) => {
+router.post("/", rejectUnauthenticated, async (req, res) => {
   const newArtist = req.body;
   // this query is creating the artist 
   const queryText = `INSERT INTO "artist"
@@ -115,6 +115,71 @@ router.post("/", rejectUnauthenticated, (req, res) => {
       console.log("Artist registration failed: ", err);
       res.sendStatus(500);
     });
+    let connection
+  try {
+    connection = await pool.connect();
+    const artistQuery = 
+    `INSERT INTO "artist"
+    (
+    "artist_name",
+    "name", 
+    "user_id", 
+    "vocal_type",
+    "website",
+    "instagram_link",
+    "sample_song_1",
+    "song_title_1",
+    "sample_song_2",
+    "song_title_2",
+    "sample_song_3",
+    "song_title_3"
+    "bio",
+    "location",
+    "photo",
+    "streaming_link",
+    "paypal"
+    )
+     VALUES
+     ($1, $2, $3, $4, $5, $6) returning "id"; `;
+    
+    const artistValues = [
+      req.body.artist_name,    // $1
+      req.body.name,           // $2
+      req.body.vocal_type,     // $3
+      req.body.website,        // $4
+      req.body.instagram_link, // $5
+      req.body.sample_song_1,  // $6
+      req.body.song_title_1,   // $7
+      req.body.sample_song_2,  // $8
+      req.body.song_title_2,   // $9
+      req.body.sample_song_3,  // $10
+      req.body.song_title_3,   // $11
+      req.body.bio,            // $12
+      req.body.location,       // $13
+      req.body.streaming_link, // $14
+      req.body.w9,             // $15
+      req.body.paypal,         // $16
+      req.body.id              // $17
+    ]
+    await connection.query(artistQuery, artistValues)
+
+    for (let genre of req.body.genres) {
+      const genreQuery = `
+        INSERT INTO "artist_genres" ("artist_id", "genre_id")
+        VALUES ($1, $2);
+      `
+      const genreValues = [req.body.id, genre]
+      await connection.query(genreQuery, genreValues)
+    }
+    connection.query("COMMIT;");
+    connection.release();
+    res.sendStatus(200);
+  } catch (error) {
+    console.error("adminedit router failed:", error)
+    connection.query("ROLLBACK;");
+    connection.release();
+    res.sendStatus(500)
+  }
 });
 
 router.post("/edit", rejectUnauthenticated, async (req, res) => {

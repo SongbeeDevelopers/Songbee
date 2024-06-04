@@ -184,14 +184,7 @@ const submitEdit = (event) => {
             ></input>
           </label>
           <label> Song 1
-            <input
-              value={edit.sample_song_1}
-              className='admin-portal-inputs'
-              onChange={() => handleInput('sample_song_1', event.target.value)}
-            ></input>
-          </label>
-        </div>
-        <Button variant="contained"
+          <Button variant="contained"
             onClick={() => setDetails2Open(true)}
             sx={{ height: 35, width: 250, backgroundColor: "#feaf17", color: "black" }}
           >
@@ -208,6 +201,8 @@ const submitEdit = (event) => {
               num={1}
               artist={edit.id} />
           </Dialog>
+          </label>
+        </div>
 
         <div className='admin-details-edit-row'>
           <label> Song 2 Title
@@ -218,14 +213,7 @@ const submitEdit = (event) => {
             ></input>
           </label>
           <label> Song 2
-            <input
-              value={edit.sample_song_2}
-              className='admin-portal-inputs'
-              onChange={() => handleInput('sample_song_2', event.target.value)}
-            ></input>
-          </label>
-        </div>
-        <Button variant="contained"
+          <Button variant="contained"
             onClick={() => setDetails3Open(true)}
             sx={{ height: 35, width: 250, backgroundColor: "#feaf17", color: "black" }}
           >
@@ -242,6 +230,9 @@ const submitEdit = (event) => {
               num={2}
               artist={edit.id} />
           </Dialog>
+          </label>
+        </div>
+
 
         <div className='admin-details-edit-row'>
           <label> Song 3 Title
@@ -252,14 +243,7 @@ const submitEdit = (event) => {
             ></input>
           </label>
           <label> Song 3
-            <input
-              value={edit.sample_song_3}
-              className='admin-portal-inputs'
-              onChange={() => handleInput('sample_song_3', event.target.value)}
-            ></input>
-          </label>
-        </div>
-        <Button variant="contained"
+          <Button variant="contained"
             onClick={() => setDetails2Open(true)}
             sx={{ height: 35, width: 250, backgroundColor: "#feaf17", color: "black" }}
           >
@@ -276,6 +260,8 @@ const submitEdit = (event) => {
               num={3}
               artist={edit.id} />
           </Dialog>
+          </label>
+        </div>
 
         <div className='admin-details-edit-row'>
           <label> Website
