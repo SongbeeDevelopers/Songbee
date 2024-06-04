@@ -63,10 +63,10 @@ export default function AdminPortalTabs() {
 
       <Box display="flex" justifyContent="center" width="100%">
         <Tabs value={value} onChange={handleChange} variant="scrollable" centered>
-          <Tab label="Main" {...a11yProps(0)} />
-          <Tab label="Junior" {...a11yProps(1)} />
+          <Tab label="Songbee" {...a11yProps(0)} />
+          <Tab label="SB Junior" {...a11yProps(1)} />
           <Tab label="Artists" {...a11yProps(2)} />
-          <Tab label="Users" {...a11yProps(3)} />
+          <Tab label="Accounts" {...a11yProps(3)} />
         </Tabs>
       </Box>
 

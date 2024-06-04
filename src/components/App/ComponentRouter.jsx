@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Redirect, Route, Switch, useLocation } from "react-router-dom";
+import { Redirect, Switch, useLocation } from "react-router-dom";
 
 // utility
 import ProtectedRoute from "./ProtectedRoute";
@@ -46,7 +46,6 @@ import NotFound from "../NotFoundPage/NotFoundPage";
 
 // jr pages
 import JrLandingPage from "../JrLandingPage/JrLandingPage";
-import JrEditRequestPage from "../EditRequestPage/JrEditRequest";
 import JrCheckoutPage from "../JrRequestPage/JrRequestPage";
 import LearningPacksPage from "../LearningPacksPage/LearningPacksPage";
 import LearningPackView from "../LearningPackView/PackView";
@@ -93,23 +92,17 @@ function ComponentRouter() {
 
   return (
     <>
-
       {/* causes every route to start at top of page */}
       <ScrollToTop />
       <ScrollToAnchor />
 
-
-      {/* all routes below */}
       <Switch location={location} key={location.key}>
 
         {/* ~~~~~~~~~~ MAIN ROUTES ~~~~~~~~~~~ */}
-
-
         <Redirect exact from="/" to="/home" />
         <MainRoute exact path="/home">
           <LandingPage routeVariants={landingVariants} />
         </MainRoute>
-
 
         {/* login/reg */}
         <MainRoute exact path="/login">
@@ -135,7 +128,6 @@ function ComponentRouter() {
               <RegisterPage routeVariants={routeVariants} />
           )}
         </MainRoute>
-
 
         {/* account pages */}
         <ProtectedRoute exact path="/user" allowedUserClasses={[1, 2, 3]}>
@@ -186,7 +178,6 @@ function ComponentRouter() {
           </JrRoute>
         </ProtectedRoute>
 
-
         {/* info pages */}
         <MainRoute exact path="/faq">
           <FaqPage routeVariants={routeVariants} />
@@ -203,7 +194,6 @@ function ComponentRouter() {
         <MainRoute exact path="/terms">
           <TermsAndConditionsPage routeVariants={routeVariants} />
         </MainRoute>
-
 
         {/* artists pages */}
         <MainRoute exact path="/join-artist">
@@ -236,59 +226,58 @@ function ComponentRouter() {
         </MainRoute>
 
 
-
         {/* ~~~~~~~~~~ JUNIOR ROUTES ~~~~~~~~~~~ */}
 
-        <JrRoute exact path="/benefits">
-          <DiveIntoBenefits routeVariants={routeVariants} />
-        </JrRoute>
-
+        {/* home */}
         <JrRoute exact path="/songbeejr">
           <JrLandingPage routeVariants={routeVariants} />
         </JrRoute>
 
+        {/* checkout */}
         <JrRoute exact path="/jrcheckout">
           <JrCheckoutPage routeVariants={routeVariants} />
         </JrRoute>
 
+        {/* LPs */}
+        <JrRoute exact path="/learning-packs">
+          <LearningPacksPage routeVariants={routeVariants} />
+        </JrRoute>
+        <JrRoute exact path="/learning-packs/:id">
+          <LearningPackView routeVariants={routeVariants} />
+        </JrRoute>
+
+        {/* schools */}
         <JrRoute exact path="/schools">
           <SchoolsInspiration routeVariants={routeVariants} />
+        </JrRoute>
+
+        {/* info */}
+        <JrRoute exact path="/benefits">
+          <DiveIntoBenefits routeVariants={routeVariants} />
         </JrRoute>
 
         <JrRoute exact path="/why-songbee">
           <WhySongbee routeVariants={routeVariants} />
         </JrRoute>
 
-        <ProtectedRoute exact path="/jr-request/edit/:id" allowedUserClasses={[1, 2, 3]}>
-          <JrRoute>
-            <JrEditRequestPage routeVariants={routeVariants} />
-          </JrRoute>
-        </ProtectedRoute>
+        <JrRoute exact path="/whats-included">
+          <WhatsIncluded routeVariants={routeVariants} />
+        </JrRoute>
 
         <JrRoute exact path="/jr-faq">
           <FaqPageSbJR routeVariants={routeVariants} />
-        </JrRoute>
-
-        <JrRoute exact path="/learning-packs">
-          <LearningPacksPage routeVariants={routeVariants} />
-        </JrRoute>
-
-        <JrRoute exact path="/learning-packs/:id">
-          <LearningPackView routeVariants={routeVariants} />
-        </JrRoute>
-
-        <JrRoute exact path="/whats-included">
-          <WhatsIncluded routeVariants={routeVariants} />
         </JrRoute>
 
         <JrRoute exact path="/subscription/:id">
           <SubscriptionDetails routeVariants={routeVariants} />
         </JrRoute>
 
-        {/* If none of the other routes matched, we will show a 404. */}
+
+        {/* ~~~~~~~~~~ 404 ~~~~~~~~~~ */}
         <MainRoute>
           <NotFound />
         </MainRoute>
+
       </Switch>
     </>
   );
