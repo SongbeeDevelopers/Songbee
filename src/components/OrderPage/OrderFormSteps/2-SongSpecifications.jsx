@@ -65,7 +65,7 @@ export default function SongSpecifications() {
               value={requestData.vibe}
               onChange={() => handleInput("vibe", event.target.value)}
             >
-              <option selected disabled>
+              <option value="" disabled>
                 Select Vibe
               </option>
               <option value="happy">Happy</option>
@@ -88,7 +88,7 @@ export default function SongSpecifications() {
               value={requestData.vocal_type}
               onChange={() => handleInput("vocal_type", event.target.value)}
             >
-              <option selected disabled>
+              <option value="" disabled>
                 Select Style
               </option>
               <option value="female">Female</option>
@@ -107,7 +107,7 @@ export default function SongSpecifications() {
               value={requestData.tempo}
               onChange={() => handleInput("tempo", event.target.value)}
             >
-              <option selected disabled>
+              <option value="" disabled>
                 Select Tempo
               </option>
               <option value="slow">Slow</option>

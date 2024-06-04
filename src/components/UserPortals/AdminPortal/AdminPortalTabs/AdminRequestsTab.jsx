@@ -163,8 +163,8 @@ export default function AdminRequestsTab({ num, data }) {
                     </TableCell>
 
                     <TableCell align='center'>
-                    <MessageUserButton userId={row.user_id} />
-                  </TableCell>
+                      <MessageUserButton userId={row.user_id} />
+                    </TableCell>
 
 
                   </TableRow>
@@ -175,7 +175,10 @@ export default function AdminRequestsTab({ num, data }) {
 
         </>
         :
-        <p className='admin-empty-msg'>There are currently no requests.</p>
+        <>
+          <FilterBar type={num === 0 ? 'pending' : 'completed'} />
+          <p className='admin-empty-msg'>There are currently no requests.</p>
+        </>
       }
     </div>
   );

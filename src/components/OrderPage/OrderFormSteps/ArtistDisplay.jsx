@@ -30,9 +30,10 @@ function ArtistDisplay() {
             <Typography variant="h5" component="div">
               <p className="artistTitle">{artist.bio}</p>
             </Typography>
-            <Typography variant="h5">
-              <a href={artist.website}>{artist.artist_name}'s website</a>
-            </Typography>
+            {artist.website &&
+              <Typography variant="h5">
+              <a href={artist.website} target="_blank">{artist.artist_name}'s website</a>
+            </Typography>}
           </div>
         </CardContent>
       </Card>

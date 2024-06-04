@@ -31,10 +31,10 @@ export default function AdminArtistListTab() {
     for (let genre of artist.genres) {
       genresSimple.push(genre.id)
     }
-    dispatch({ type: 'SET_EDIT_DATA', payload: {...artist, genres: genresSimple} })
+    dispatch({ type: 'SET_EDIT_DATA', payload: { ...artist, genres: genresSimple } })
     setDetailsOpen(true)
   }
-  
+
   const closeDetails = () => {
     dispatch({ type: 'CLEAR_EDIT_DATA' })
     setDetailsOpen(false)
@@ -44,7 +44,7 @@ export default function AdminArtistListTab() {
     <div>
       {data.length > 0 ?
         <>
-          <FilterBar type='user' />
+          <FilterBar type='artist' />
           <div className="admin-tabs-contents">
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
 
@@ -72,14 +72,14 @@ export default function AdminArtistListTab() {
                     <TableCell align="center">
                       {artist.is_active ?
                         <Button className='admin-portal-inputs' variant="contained"
-                          onClick={() => dispatch({type: 'DEACTIVATE_ARTIST', payload: {id: artist.id}})}
+                          onClick={() => dispatch({ type: 'DEACTIVATE_ARTIST', payload: { id: artist.id } })}
                           sx={{ m: 'auto', height: 35, width: 120, backgroundColor: "#feaf17", color: "black" }}
                         >
                           DEACTIVATE
                         </Button>
                         :
                         <Button className='admin-portal-inputs' variant="contained"
-                          onClick={() => dispatch({type: 'ACTIVATE_ARTIST', payload: {id: artist.id}})}
+                          onClick={() => dispatch({ type: 'ACTIVATE_ARTIST', payload: { id: artist.id } })}
 
                           sx={{ height: 35, width: 90, backgroundColor: "#feaf17", color: "black" }}
                         >
@@ -115,7 +115,10 @@ export default function AdminArtistListTab() {
 
         </>
         :
-        <p className='admin-empty-msg'>There are currently no Artists.</p>
+        <>
+          <FilterBar type='artist' />
+          <p className='admin-empty-msg'>There are currently no Artists.</p>
+        </>
       }
     </div>
 

@@ -80,11 +80,6 @@ function JrHeader() {
           {!isMobile && user.id && user.class === 3 &&
             <> <Link to="/admin" className="nav-links">Admin</Link> | </>
           }
-
-          {!isMobile && user.id && user.class > 1 &&
-            <> <Link to="/artist" className="nav-links">Artist</Link> | </>
-          }
-
           {!isMobile && user.id &&
             <> <Link to="/user" className="nav-links">Account</Link> | </>
           }
