@@ -19,7 +19,6 @@ function CustomerMessagesTab() {
   const chats = useSelector(store => store.userChats)
   const user = useSelector(store => store.user)
 
-  console.log("chats", chats)
   const startChat = () => {
     dispatch({
         type: "CREATE_CHAT",

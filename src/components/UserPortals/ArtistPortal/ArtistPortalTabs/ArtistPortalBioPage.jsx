@@ -79,7 +79,6 @@ return artist ?(
                     <div className="artistCommunityBtns">
                     <AudioButton url={sampleSong} />
                       <p className="songTitles" key={index}>{songTitle}</p>
-                      {console.log('sampleSong', sampleSong)}
                     </div>
               </div>
                

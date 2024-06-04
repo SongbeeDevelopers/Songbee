@@ -13,20 +13,12 @@ const { id } = useParams();
 const dispatch = useDispatch();
 const history = useHistory();
 
-// useEffect(() => {
-//         dispatch({
-//             type: 'FETCH_CURRENT_ARTIST',
-//             payload: id})
-//       }, [id])
 
 const artist = useSelector(store => store.currentArtist);
 const requestData = useSelector((store) => store.requestData);
 
 const artistGenre = useSelector(store => store.fetchGenres);
-console.log("id", id)
 // console.log('artistGenre', artistGenre);
-
-console.log("artist", artist)
 
 const handleArtist =(e) => {
   e.preventDefault();

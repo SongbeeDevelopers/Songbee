@@ -22,7 +22,6 @@ export default function JuniorRequests() {
   const history = useHistory();
 
   const userSubscriptions = useSelector((store) => store.userSubscriptions);
-  console.log(userSubscriptions)
   const viewDetails = (reqId) => {
     history.push(`/subscription/${reqId}`);
   };

@@ -31,33 +31,11 @@ function RequestDetails({ routeVariants, requestId }) {
   const dispatch = useDispatch();
   const ID = useParams();
 
-  // fetches request on mount
-  useEffect(() => {
-    {
-      ID.id ?
-        dispatch({
-          type: 'FETCH_CURRENT_REQUEST',
-          payload: ID.id
-        })
-        :
-        dispatch({
-          type: 'FETCH_CURRENT_REQUEST',
-          payload: requestId
-        })
-    }
-  }, [ID.id])
-
-
+  
   // call to the store to the currentRequest reducer
   const request = useSelector((store) => store.currentRequest);
   const addons = useSelector((store => store.addons))
 
-  useEffect(() => {
-    dispatch({
-      type: 'FETCH_CURRENT_ARTIST',
-      payload: request.artist_id
-    })
-  }, [])
 
   // checkbox logic
   const handleCheckbox = (key) => {

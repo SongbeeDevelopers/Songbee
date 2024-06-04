@@ -1,6 +1,7 @@
 const express = require("express");
 const pool = require("../modules/pool");
 const router = express.Router();
+const cloudinaryUpload = require("../modules/cloudinary.config");
 
 const {
   rejectUnauthenticated,
@@ -34,7 +35,6 @@ router.get("/get", async (req, res) => {
 
     connection.query("BEGIN;");
     const artistId = await getArtistIdByUserId(req.user.id)
-    // console.log("artist id", artistId);
     const query = `
   SELECT * FROM "artist"
   WHERE "id"=$1;
@@ -54,8 +54,6 @@ router.get("/get", async (req, res) => {
     connection.query("COMMIT;");
     connection.release();
     artistResponse.rows[0].genres = genreResponse.rows
-    // console.log("artistResponse", artistResponse.rows[0]);
-    // console.log("genreResponse", genreResponse.rows);
     res.send(artistResponse.rows[0]);
   } catch (error) {
     console.log('get artist profile failed:', error)
@@ -247,7 +245,6 @@ router.get('/pending', (req, res) => {
     SELECT * FROM "artist"
     WHERE "approved"=FALSE;
     `
-  // console.log("Inside pending artist GET route");
   pool.query(query)
     .then((response) => {
       res.send(response.rows)
@@ -272,9 +269,11 @@ router.delete('/:id', (req, res) => {
     })
 })
 
-router.put('/adminedit', rejectUnauthenticated, (req, res) => {
-  console.log(req.body)
-    const editQuery = `
+router.put('/adminedit', rejectUnauthenticated, async (req, res) => {
+  let connection
+  try {
+    connection = await pool.connect();
+    const artistQuery = `
     UPDATE "artist"
       SET "artist_name" = $1,
       "name" = $2,
@@ -294,7 +293,7 @@ router.put('/adminedit', rejectUnauthenticated, (req, res) => {
       "paypal" = $16
     WHERE "artist"."id" = $17;
     `
-    const editValues = [
+    const artistValues = [
       req.body.artist_name,    // $1
       req.body.name,           // $2
       req.body.vocal_type,     // $3
@@ -313,14 +312,28 @@ router.put('/adminedit', rejectUnauthenticated, (req, res) => {
       req.body.paypal,         // $16
       req.body.id              // $17
     ]
-    pool.query(editQuery, editValues)
-      .then(() => {
-        res.sendStatus(200)
-      })
-      .catch((error) => {
-        console.error('route adminedit failed:', error)
-        res.sendStatus(500)
-      })
+    await connection.query(artistQuery, artistValues)
+    await connection.query(
+      `DELETE FROM "artist_genres" WHERE "artist_id" = $1`,
+      [req.body.id]
+    )
+    for (let genre of req.body.genres) {
+      const genreQuery = `
+        INSERT INTO "artist_genres" ("artist_id", "genre_id")
+        VALUES ($1, $2);
+      `
+      const genreValues = [req.body.id, genre]
+      await connection.query(genreQuery, genreValues)
+    }
+    connection.query("COMMIT;");
+    connection.release();
+    res.sendStatus(200);
+  } catch (error) {
+    console.error("adminedit router failed:", error)
+    connection.query("ROLLBACK;");
+    connection.release();
+    res.sendStatus(500)
+  }
 })
 
 router.put('/artist/:id', async (req, res) => {
@@ -334,7 +347,6 @@ router.put('/artist/:id', async (req, res) => {
     SET "approved"=TRUE
     WHERE id=$1;
     `
-    // console.log('req.params.id:', req.params.id)
     await connection.query(approvalQuery, [req.params.id])
     const classQuery = `
     UPDATE "user"
@@ -452,6 +464,53 @@ router.put('/active/:id', async (req, res) => {
     connection.release();
     res.sendStatus(500)
   }
+})
+
+router.put('/uploads/:id', rejectUnauthenticated, cloudinaryUpload.single("file"), (req, res) => {
+  let editQuery
+  if (req.params.id === '1'){
+    editQuery = `
+    UPDATE "artist"
+      SET "sample_song_1" = $1
+    WHERE "artist"."id" = $2;
+    `
+  }
+  else if (req.params.id === '2'){
+    editQuery = `
+    UPDATE "artist"
+      SET "sample_song_2" = $1
+    WHERE "artist"."id" = $2;
+    `
+  }
+  else if (req.params.id === '3'){
+    editQuery = `
+    UPDATE "artist"
+      SET "sample_song_3" = $1
+    WHERE "artist"."id" = $2;
+    `
+  }
+  else if (req.params.id === '4'){
+    editQuery = `
+    UPDATE "artist"
+      SET "photo" = $1
+    WHERE "artist"."id" = $2;
+    `
+  }
+  else if (req.params.id === '5'){
+    editQuery = `
+    UPDATE "artist"
+      SET "w9" = $1
+    WHERE "artist"."id" = $2;
+    `
+  }
+    pool.query(editQuery, [req.file.path, req.body.artist])
+      .then(() => {
+        res.sendStatus(200)
+      })
+      .catch((error) => {
+        console.error('route adminedit failed:', error)
+        res.sendStatus(500)
+      })
 })
 
 module.exports = router;

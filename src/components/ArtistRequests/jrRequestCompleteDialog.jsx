@@ -58,7 +58,6 @@ function JrRequestCompleteDialog ({handleClose,id}) {
     detailsForm.append("artist", artist)
     detailsForm.append("lyrics", lyrics)
     detailsForm.append("streaming_link", streamingLink)
-    console.log("artist:", artist)
     dispatch({
       type: "COMPLETE_SONG_REQUEST",
       payload: {

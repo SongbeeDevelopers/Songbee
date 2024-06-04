@@ -1,47 +1,64 @@
 import React from "react";
-import { useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { Button, TextField, Dialog } from "@mui/material"
+import Swal from 'sweetalert2';
+
+import UploadArtistDetailsDialog from "../../AdminPortal/AdminPortalTabs/AdminPortalDialogs/UploadArtistDetailsDialog";
 
 import Box from "@mui/material/Box";
+
+import '../../AdminPortal/AdminPortal.css'
 
 function EditArtistProfileDialog({ artistProfile, openArtist, setOpenArtist}) {
 
   const dispatch = useDispatch()
+  const edit = useSelector(store => store.edit)
+  const genres = useSelector(store => store.genres)
 
-  const firstNameRef = useRef("");
-  const lastNameRef = useRef("");
-  const artistNameRef = useRef("");
-  const vocalTypeRef = useRef("");
-  const musicLinksRef = useRef("");
-  const genreIdRef = useRef("");
-  const aboutYourselfRef = useRef("");
+  const [songFile, setSongFile] = useState('')
 
-  const submit = (e) => {
-    e.preventDefault();
-    const artistObject = {
-      edited_artistName: artistNameRef.current.value,
-      edited_name: `${firstNameRef.current.value} ${lastNameRef.current.value}`,
-      edited_genre_id: genreIdRef.current.value,
-      edited_bio: aboutYourselfRef.current.value,
-      edited_website: musicLinksRef.current.value,
-      edited_vocal_type: vocalTypeRef.current.value,
-    };
+  const [details1Open, setDetails1Open] = useState(false);
+  const [details2Open, setDetails2Open] = useState(false);
+  const [details3Open, setDetails3Open] = useState(false);
+  const [details4Open, setDetails4Open] = useState(false);
+  const [details5Open, setDetails5Open] = useState(false);
 
-    // some of the artist fields are not on the form and also some of the database fields are not on this form
-    dispatch({
-      type: "REQUEST_ARTIST_EDIT",
-      payload: artistObject,
-    });
+  // stores changes in edit reducer
+  const handleInput = (key, value) => {
+    if (key === 'genres') {
+      dispatch ({ type: 'EDIT_ARTIST_GENRES', payload: value })
+    } else {
+      dispatch({ type: 'EDIT_INPUT', payload: { key, value } })
+    }
+  }
+  const clearGenres = () => {
+    event.preventDefault()
+    dispatch({ type: 'CLEAR_ARTIST_GENRES' })
+  }
 
-    // clear the form fields
-    firstNameRef.current.value = "";
-    lastNameRef.current.value = "";
-    artistNameRef.current.value = "";
-    vocalTypeRef.current.value = "";
-    musicLinksRef.current.value = "";
-    genreIdRef.current.value = "";
-    aboutYourselfRef.current.value = "";
-  };
+  const submitEdit = (event) => {
+    event.preventDefault()
+    // confirmation message
+    Swal.fire({
+      icon: "question",
+      title: "Save changes?",
+      showCancelButton: true,
+      confirmButtonText: "Save",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Saved!", "", "success");
+        // if confirmed, updates db with edit reducer data
+        dispatch({
+          type: 'SUBMIT_ARTIST_EDIT',
+          payload: edit
+        })
+        // closes dialog
+        setDetailsOpen(false)
+      }
+    })
+  }
 
   const handleActive = () => {
     dispatch({
@@ -65,104 +82,286 @@ function EditArtistProfileDialog({ artistProfile, openArtist, setOpenArtist}) {
         }}
       >
         {artistProfile && artistProfile.is_active ? 
-          <>
+          <div className='admin-req-details-edit'>
           <h3>Would you like to set yourself as inactive?</h3>
           <button className="join-button" onClick={handleActive}>Inactive</button>
-          </>
+          </div>
           :
-          <>
+          <div className='admin-req-details-edit'>
           <h3>Would you like to set yourself as active?</h3>
           <button className="join-button" onClick={handleActive}>Active</button>
-          </>
+          </div>
         }
 
-        <h3>Would you like to make an edit ?</h3>
+<div className='admin-req-details-edit'>
+      <h3>Edit Artist Details</h3>
 
-        <form className="artist-form">
-          <div className="group">
-            <div className="group-input">
-              <label htmlFor="firstName">First Name</label>
+      <form>
 
-              <input
-                type="text"
-                ref={firstNameRef}
-                defaultValue={artistProfile?.name?.split()[0]}
-              />
-            </div>
+        <div className='admin-details-edit-row'>
+          <label> Name
+            <input
+              value={edit.name}
+              className='admin-portal-inputs'
+              onChange={() => handleInput('name', event.target.value)}
+            ></input>
+          </label>
 
-            <div className="group-input">
-              <label htmlFor="lastName">Last Name</label>
-              <input
-                type="text"
-                ref={lastNameRef}
-                defaultValue={artistProfile?.name?.split()[1]}
-              />
-            </div>
-          </div>
-          <div className="group">
-            <div className="group-input">
-              <label htmlFor="artistName">Artist Name</label>
-              <input type="text" ref={artistNameRef} defaultValue={artistProfile?.artist_name} />
-            </div>
+          <label> Artist Name
+            <input
+              value={edit.artist_name}
+              className='admin-portal-inputs'
+              onChange={() => handleInput('artist_name', event.target.value)}
+            ></input>
+          </label>
+        </div>
 
-            <div className="group group-input">
-              <label htmlFor="aboutUs">Select a Vocal Type</label>
-              <select
-                name="Vocal Type"
-                id="vocalType"
-                ref={vocalTypeRef}
-                defaultValue={artistProfile?.vocal_type}
-              >
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-              </select>
-            </div>
-          </div>
-          <div className="group">
-            <div className="group-input">
-              <label htmlFor="musicLinks">Music Links</label>
-              <input type="text" ref={musicLinksRef} defaultValue={artistProfile?.music_links} />
-            </div>
+        <div className='admin-details-edit-row'>
+          <label> Vocal Type
+            <select className='admin-portal-inputs'
+              value={edit.vocal_type}
+              onChange={() => handleInput('vocal_type', event.target.value)}
+            >
+              <option selected disabled>Select Style</option>
+              <option value="female">Female</option>
+              <option value="male">Male</option>
+            </select>
+          </label>
 
-            <div className="group-input">
-              <label htmlFor="genre">Genre</label>
-              <select name="genre" id="genre" ref={genreIdRef} defaultValue={artistProfile?.genre_id}>
-                <option value="1">Rap/Hip-Hop</option>
-                <option value="2">Folk</option>
-                <option value="3">Rock</option>
-                <option value="4">Christian</option>
-                <option value="5">R&B</option>
-                <option value="6">Country</option>
-                <option value="7">Singer Songwriter</option>
-                <option value="8">Acoustic Pop</option>
-                <option value="9">Spanish</option>
-              </select>
-            </div>
-          </div>
-          <div className="group group-input width-full">
-            <label htmlFor="aboutYourself">
-              Please Supply Your Bio
-            </label>
+          <label> Location
+            <input
+              value={edit.location}
+              className='admin-portal-inputs'
+              onChange={() => handleInput('location', event.target.value)}
+            ></input>
+          </label>
+        </div>
+
+        <div className='admin-details-edit-row'>
+          <label> Photo
+            <TextField
+              type="file"
+              className="form-control-file"
+              name="uploaded_file"
+              onChange={(evt) => setSongFile(evt.target.files[0])}
+              // fullWidth={true}
+              sx={{ width: 300, mt: 3, ml: -6 }}
+            />
+          </label>
+
+          <label> Instagram Link
+            <input
+              value={edit.instagram_link}
+              className='admin-portal-inputs'
+              onChange={() => handleInput('instagram_link', event.target.value)}
+            ></input>
+          </label>
+        </div>
+        <Button variant="contained"
+            onClick={() => setDetails1Open(true)}
+            sx={{ height: 35, width: 250, backgroundColor: "#feaf17", color: "black" }}
+          >
+            CLICK TO UPLOAD PHOTO
+          </Button>
+
+            {/* upload dialog */}
+          <Dialog keepMounted fullWidth maxWidth="md"
+            open={details1Open}
+            onClose={() => setDetails1Open(false)}
+          >
+            <UploadArtistDetailsDialog 
+              setDetailsOpen={setDetails1Open}
+              num={4}
+              artist={edit.id} />
+          </Dialog>
+
+        <div className='admin-details-edit-row'>
+          <label> Bio
             <textarea
-              ref={aboutYourselfRef}
-              defaultValue={artistProfile?.bio}
-              name="aboutYourself"
-              id="aboutYourself"
-              cols="30"
-              rows="10"
+              value={edit.bio}
+              className='admin-portal-textarea admin-bio-input'
+              placeholder='What?'
+              onChange={() => handleInput('bio', event.target.value)}
             ></textarea>
-          </div>
-          <div className="artist-disclaimer">
-            <p>Please review your submission.</p>
-            <p>
-              If any links are invalid, your application will not be
-              accepted.
-            </p>
-          </div>
-          <button onClick={submit} className="join-button">
-            Apply Changes
-          </button>
-        </form>
+          </label>
+
+          <label> Genres:
+            <select className='admin-portal-inputs admin-select-multiple'
+              multiple
+              value={edit.genres}
+              onChange={() => handleInput('genres', event.target.value)}
+            >
+              {genres && genres.map((genre) => (
+                <option value={genre.id}>{genre.name}</option>
+              ))}
+            </select>
+            <button className='admin-btn-center' onClick={() => clearGenres()}>Clear selections</button>
+          </label>
+        </div>
+
+        <div className='admin-details-edit-row'>
+          <label> Song 1 Title
+            <input
+              value={edit.song_title_1}
+              className='admin-portal-inputs'
+              onChange={() => handleInput('song_title_1', event.target.value)}
+            ></input>
+          </label>
+          <label> Song 1
+            <input
+              value={edit.sample_song_1}
+              className='admin-portal-inputs'
+              onChange={() => handleInput('sample_song_1', event.target.value)}
+            ></input>
+          </label>
+        </div>
+        <Button variant="contained"
+            onClick={() => setDetails2Open(true)}
+            sx={{ height: 35, width: 250, backgroundColor: "#feaf17", color: "black" }}
+          >
+            CLICK TO UPLOAD SONG 1
+          </Button>
+
+            {/* upload dialog */}
+          <Dialog keepMounted fullWidth maxWidth="md"
+            open={details2Open}
+            onClose={() => setDetails2Open(false)}
+          >
+            <UploadArtistDetailsDialog 
+              setDetailsOpen={setDetails2Open}
+              num={1}
+              artist={edit.id} />
+          </Dialog>
+
+        <div className='admin-details-edit-row'>
+          <label> Song 2 Title
+            <input
+              value={edit.song_title_2}
+              className='admin-portal-inputs'
+              onChange={() => handleInput('song_title_2', event.target.value)}
+            ></input>
+          </label>
+          <label> Song 2
+            <input
+              value={edit.sample_song_2}
+              className='admin-portal-inputs'
+              onChange={() => handleInput('sample_song_2', event.target.value)}
+            ></input>
+          </label>
+        </div>
+        <Button variant="contained"
+            onClick={() => setDetails3Open(true)}
+            sx={{ height: 35, width: 250, backgroundColor: "#feaf17", color: "black" }}
+          >
+            CLICK TO UPLOAD SONG 2
+          </Button>
+
+            {/* upload dialog */}
+          <Dialog keepMounted fullWidth maxWidth="md"
+            open={details3Open}
+            onClose={() => setDetails3Open(false)}
+          >
+            <UploadArtistDetailsDialog 
+              setDetailsOpen={setDetails3Open}
+              num={2}
+              artist={edit.id} />
+          </Dialog>
+
+        <div className='admin-details-edit-row'>
+          <label> Song 3 Title
+            <input
+              value={edit.song_title_3}
+              className='admin-portal-inputs'
+              onChange={() => handleInput('song_title_3', event.target.value)}
+            ></input>
+          </label>
+          <label> Song 3
+            <input
+              value={edit.sample_song_3}
+              className='admin-portal-inputs'
+              onChange={() => handleInput('sample_song_3', event.target.value)}
+            ></input>
+          </label>
+        </div>
+        <Button variant="contained"
+            onClick={() => setDetails2Open(true)}
+            sx={{ height: 35, width: 250, backgroundColor: "#feaf17", color: "black" }}
+          >
+            CLICK TO UPLOAD SONG 3
+          </Button>
+
+            {/* upload dialog */}
+          <Dialog keepMounted fullWidth maxWidth="md"
+            open={details4Open}
+            onClose={() => setDetails4Open(false)}
+          >
+            <UploadArtistDetailsDialog 
+              setDetailsOpen={setDetails4Open}
+              num={3}
+              artist={edit.id} />
+          </Dialog>
+
+        <div className='admin-details-edit-row'>
+          <label> Website
+            <input
+              value={edit.website}
+              className='admin-portal-inputs'
+              onChange={() => handleInput('website', event.target.value)}
+            ></input>
+          </label>
+          <label> Streaming Link
+            <input
+              value={edit.streaming_link}
+              className='admin-portal-inputs'
+              onChange={() => handleInput('streaming_link', event.target.value)}
+            ></input>
+          </label>
+        </div>
+
+        <div className='admin-details-edit-row'>
+          <label> Paypal
+            <input
+              value={edit.paypal}
+              className='admin-portal-inputs'
+              onChange={() => handleInput('paypal', event.target.value)}
+            ></input>
+          </label>
+          <label> W9
+            <input
+              value={edit.w9}
+              className='admin-portal-inputs'
+              onChange={() => handleInput('w9', event.target.value)}
+            ></input>
+          </label>
+        </div>
+        <Button variant="contained"
+            onClick={() => setDetails5Open(true)}
+            sx={{ height: 35, width: 250, backgroundColor: "#feaf17", color: "black" }}
+          >
+            CLICK TO UPLOAD W9
+          </Button>
+
+            {/* upload dialog */}
+          <Dialog keepMounted fullWidth maxWidth="md"
+            open={details5Open}
+            onClose={() => setDetails5Open(false)}
+          >
+            <UploadArtistDetailsDialog 
+              setDetailsOpen={setDetails5Open}
+              num={5}
+              artist={edit.id} />
+          </Dialog>
+
+        <div id='admin-details-button-row' className='admin-details-edit-row'>
+          <Button variant="contained"
+            onClick={submitEdit}
+            sx={{ mt: 2, height: 35, width: 75, backgroundColor: "#feaf17", color: "black" }}
+          > SAVE
+          </Button>
+        </div>
+
+      </form>
+    </div>
       </Box>
   )
 }

@@ -16,8 +16,6 @@ import {
 
 export default function AdminSubscriptionsTab({ num, data }) {
 
-  console.log('DATA', data)
-
   const dispatch = useDispatch()
 
   // date/time
@@ -75,7 +73,7 @@ export default function AdminSubscriptionsTab({ num, data }) {
                         payload: {id: row.id, pack: row.pack_id}
                     })
                 }
-                if (!row.is_paid){
+                if (row.is_paid === false){
                     dispatch({
                         type: "DELETE_JR_REQUEST",
                         payload: row.id
