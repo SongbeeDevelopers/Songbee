@@ -239,7 +239,7 @@ export default function JrCheckoutPage({ routeVariants }) {
                       <img className='pack-img' src={pack.image} />
                       <p>{pack.description}</p>
                       <Button
-                        sx={{m: auto, height: 40, width: 200, backgroundColor: "#feaf17", color: "black" }}
+                        sx={{m: 'auto', height: 40, width: 200, backgroundColor: "#feaf17", color: "black" }}
                         onClick={() => handleInput("pack_id", pack.id)}
                       >Select this pack?</Button>
                     </>

@@ -136,7 +136,10 @@ export default function AdminSubscriptionsTab({ num }) {
 
         </>
         :
-        <p className='admin-empty-msg'>There are currently no active subscriptions.</p>
+        num === 0 ?
+          <p className='admin-empty-msg'>There are currently no active subscriptions.</p>
+          :
+          <p className='admin-empty-msg'>There are currently no paused subscriptions.</p>
       }
     </div>
   );
