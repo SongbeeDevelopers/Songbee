@@ -20,6 +20,7 @@ function JoinArtistPage({ routeVariants }) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch({ type: 'FETCH_GENRES' });
+    dispatch({ type: 'EDIT_INPUT', payload: { key: 'genres', value: [] } })
   }, [])
 
 const edit = useSelector(store => store.edit)
@@ -244,7 +245,7 @@ const submitEdit = (event) => {
           </label>
           <label> Song 3
           <Button variant="contained"
-            onClick={() => setDetails2Open(true)}
+            onClick={() => setDetails4Open(true)}
             sx={{ height: 35, width: 250, backgroundColor: "#feaf17", color: "black" }}
           >
             CLICK TO UPLOAD SONG 3
