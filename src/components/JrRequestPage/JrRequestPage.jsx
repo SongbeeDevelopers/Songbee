@@ -1,11 +1,7 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  useParams,
-  useHistory,
-  Link,
-} from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory, Link } from "react-router-dom/cjs/react-router-dom.min";
 import { useMediaQuery } from "react-responsive";
 
 import {
@@ -31,20 +27,33 @@ const steps = [
   "Confirm Subscription",
 ];
 
+
 export default function JrCheckoutPage({ routeVariants }) {
+
+  // hooks
   const dispatch = useDispatch();
   const history = useHistory();
-  const now = new Date();
-  const isMobile = useMediaQuery({ query: `(max-width: 825px)`} )
+  const isMobile = useMediaQuery({ query: `(max-width: 825px)` })
 
+  // data reducers
   const user = useSelector(store => store.user)
   const requestData = useSelector((store) => store.jrCheckoutData);
   const learningPacks = useSelector(store => store.learningPacks);
   const currentPack = useSelector(store => store.currentPack);
 
+  // checkbox state
   const [agreeTerms, setAgreeTerms] = useState(false)
   const [agreeEUA, setAgreeEUA] = useState(false)
+  // form state
+  const [activeStep, setActiveStep] = React.useState(0);
+  const [completed, setCompleted] = React.useState({});
 
+  // gets learning packs on mount
+  useEffect(() => {
+    dispatch({ type: "FETCH_LEARNING_PACKS" });
+  }, []);
+
+  // date logic
   const monthDiff = (d1, d2) => {
     let months;
     months = (d2.getFullYear() - d1.getFullYear()) * 12;
@@ -55,10 +64,7 @@ export default function JrCheckoutPage({ routeVariants }) {
   const start = new Date(requestData.age)
   const end = new Date()
 
-  useEffect(() => {
-    dispatch({ type: "FETCH_LEARNING_PACKS" });
-  }, []);
-
+  // inputs directly affect reducers
   const handleInput = (key, value) => {
     if (key === "pack_id") {
       dispatch({
@@ -72,6 +78,7 @@ export default function JrCheckoutPage({ routeVariants }) {
     });
   };
 
+  // creates new entry on submit
   function dispatchDetails() {
     dispatch({
       type: "CREATE_JR_REQUEST",
@@ -81,126 +88,8 @@ export default function JrCheckoutPage({ routeVariants }) {
       },
     });
   }
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [completed, setCompleted] = React.useState({});
 
-  const formDetails = () => {
-    if (activeStep === 0) {
-      return (
-        <>
-          <div className="jrFormGroup">
-            <div className="reqFormInput">
-              <label>Enter Your Child's Birthday</label>
-              <div className="jrFormGroup">
-                <DatePicker
-                  value={requestData.age}
-                  onChange={(newValue) =>
-                    handleInput("age", newValue)
-                  }
-                  label="Your Child's Birthday"
-                  sx={{ width: 300 }} />
-              </div>
-            </div>
-          </div>
-        </>
-      );
-    } else if (activeStep === 1) {
-      return (
-        <>
-          <div className="jrFormGroup">
-            <div className="jrFormInput">
-              <label>Enter Your Child's Name and Pronunciation</label>
-              <div className="jrFormGroup">
-                <input
-                  value={requestData.recipient}
-                  className="jrFormInput"
-                  id="reqFormNameInput"
-                  placeholder="Name of Child"
-                  onChange={(event) =>
-                    handleInput("name", event.target.value)
-                  }
-                ></input>
-
-                <input
-                  value={requestData.pronunciation}
-                  className="jrFormInput"
-                  id="reqFormNameInput"
-                  placeholder="Pronunciation"
-                  onChange={(event) =>
-                    handleInput("pronunciation", event.target.value)
-                  }
-                ></input>
-              </div>
-            </div>
-          </div>
-        </>
-      );
-    } else if (activeStep === 2) {
-      return (
-        <>
-          <div className="jrFormGroup2">
-            <div className="jrFormInput">
-              <label>
-                Confirm your Subscription
-              </label>
-              {requestData.pack_id === '' ?
-                learningPacks.map((pack) => {
-                  if (monthDiff(start, end) >= pack.min_age && monthDiff(start, end) <= pack.max_age) {
-                    return (
-                      <>
-                        <h3>Your child is in the recommended age range for {pack.title} Learning Pack!</h3>
-                        <img className='pack-img' src={pack.image} />
-                        <p>{pack.description}</p>
-                        <Button
-                          sx={{ height: 50, width: 250, backgroundColor: "#feaf17", color: "black" }}
-                          onClick={() => handleInput("pack_id", pack.id)}
-                        >Would you like to select this pack?</Button>
-                      </>
-                    )
-                  }
-                })
-                :
-                <>
-                  <h3>You have selected {currentPack.title} Learning Pack!</h3>
-                  <img className='pack-img' src={currentPack.image} />
-                  <p className="jr-order-descr">{currentPack.description}</p>
-                </>
-              }
-            </div>
-            <div className="reqFormGroup">
-              <div className="reqFormSelect">
-                <label className="wide-display">Choose a Learning Pack</label>
-                <select
-                  value={requestData.pack_id}
-                  onChange={() => handleInput("pack_id", event.target.value)}
-                >
-                  <option selected disabled>
-                    Select Genre
-                  </option>
-                  {learningPacks.map((lpack) => (
-                    <option key={lpack.id} value={lpack.id}>
-                      {lpack.title} {lpack.min_age}-{lpack.max_age} Months
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-            <div className="reqFormGroup jrcheckoutagree">
-                <FormControlLabel
-                  control={<Checkbox required value={agreeTerms} onClick={() => setAgreeTerms(!agreeTerms)}/>}
-                  label={<span>I have read and agree to the <Link to="/terms" target="_blank">terms and conditions</Link></span>}
-                />
-                <FormControlLabel
-                  control={<Checkbox required value={agreeEUA} onClick={() => setAgreeEUA(!setAgreeEUA)}/>}
-                  label={<span>I have read and agree to the <a  href="https://drive.google.com/file/d/1BCASC9xwt8lwTnW5OcJYAGAS5NsPnfX6/view?usp=sharing" target="_blank">end user agreement</a></span>}
-                />
-            </div>
-          </div>
-        </>
-      );
-    }
-  };
-
+  // ~~~~~ form logic ~~~~~
   const totalSteps = () => {
     return steps.length;
   };
@@ -235,16 +124,27 @@ export default function JrCheckoutPage({ routeVariants }) {
     setActiveStep(step);
   };
 
+  const handleButton = () => {
+    handleNext()
+    handleComplete()
+  }
+
+  const handleReset = () => {
+    setActiveStep(0);
+    setCompleted({});
+  };
+
   const handleComplete = () => {
     const newCompleted = completed;
     newCompleted[activeStep] = true;
     setCompleted(newCompleted);
     handleNext();
     if (
+      user.id &&
+      requestData.name &&
+      requestData.pronunciation &&
       requestData.pack_id &&
       requestData.age &&
-      requestData.name &&
-      user.id &&
       agreeTerms &&
       agreeEUA &&
       allStepsCompleted()
@@ -270,17 +170,125 @@ export default function JrCheckoutPage({ routeVariants }) {
       })
     }
   };
+  // ~~~~~ end form logic ~~~~~
 
-  const handleButton = () => {
-    handleNext()
-    handleComplete()
-  }
 
-  const handleReset = () => {
-    setActiveStep(0);
-    setCompleted({});
+  // form instructions
+  const formDetails = () => {
+    if (activeStep === 0) {
+      return (
+        // step 1: child DOB
+        <div className="jrFormGroup">
+          <div className="reqFormInput">
+            <label>Enter Your Child's Birthday</label>
+            <div className="jrFormGroup">
+              <DatePicker
+                value={requestData.age}
+                onChange={(newValue) =>
+                  handleInput("age", newValue)
+                }
+                label="Your Child's Birthday"
+                sx={{ width: 300 }} />
+            </div>
+          </div>
+        </div>
+      );
+    } else if (activeStep === 1) {
+      return (
+        // step 2: name
+        <div className="jrFormGroup">
+          <div className="jrFormInput">
+            <label>Enter Your Child's Name and Pronunciation</label>
+            <div className="jrFormGroup">
+              <input
+                value={requestData.recipient}
+                className="jrFormInput"
+                id="reqFormNameInput"
+                placeholder="Name of Child"
+                onChange={(event) =>
+                  handleInput("name", event.target.value)
+                }
+              ></input>
+              <input
+                value={requestData.pronunciation}
+                className="jrFormInput"
+                id="reqFormNameInput"
+                placeholder="Pronunciation"
+                onChange={(event) =>
+                  handleInput("pronunciation", event.target.value)
+                }
+              ></input>
+            </div>
+          </div>
+        </div>
+      );
+    } else if (activeStep === 2) {
+      return (
+        // step 3: pick learning pack & agree to terms
+        <div className="jrFormGroup2">
+          <div className="jrFormInput">
+            <label>
+              Confirm your Subscription
+            </label>
+            {requestData.pack_id === '' ?
+              learningPacks.map((pack) => {
+                if (monthDiff(start, end) >= pack.min_age && monthDiff(start, end) <= pack.max_age) {
+                  return (
+                    <>
+                      <h3>Your child is in the recommended age range for {pack.title} Learning Pack!</h3>
+                      <img className='pack-img' src={pack.image} />
+                      <p>{pack.description}</p>
+                      <Button
+                        sx={{m: auto, height: 40, width: 200, backgroundColor: "#feaf17", color: "black" }}
+                        onClick={() => handleInput("pack_id", pack.id)}
+                      >Select this pack?</Button>
+                    </>
+                  )
+                }
+              })
+              :
+              <>
+                <h3>You have selected {currentPack.title} Learning Pack!</h3>
+                <img className='pack-img' src={currentPack.image} />
+                <p className="jr-order-descr">{currentPack.description}</p>
+              </>
+            }
+          </div>
+          <div className="reqFormGroup">
+            <div className="reqFormSelect">
+              <label className="wide-display">Choose a Learning Pack</label>
+              <select
+                value={requestData.pack_id}
+                onChange={() => handleInput("pack_id", event.target.value)}
+              >
+                <option selected disabled>
+                  Select Genre
+                </option>
+                {learningPacks.map((lpack) => (
+                  <option key={lpack.id} value={lpack.id}>
+                    {lpack.title} {lpack.min_age}-{lpack.max_age} Months
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+          <div className="reqFormGroup jrcheckoutagree">
+            <FormControlLabel
+              control={<Checkbox required value={agreeTerms} onClick={() => setAgreeTerms(!agreeTerms)} />}
+              label={<span>I have read and agree to the <Link to="/terms" target="_blank">terms and conditions</Link></span>}
+            />
+            <FormControlLabel
+              control={<Checkbox required value={agreeEUA} onClick={() => setAgreeEUA(!agreeEUA)} />}
+              label={<span>I have read and agree to the <a href="https://drive.google.com/file/d/1BCASC9xwt8lwTnW5OcJYAGAS5NsPnfX6/view?usp=sharing" target="_blank">end user agreement</a></span>}
+            />
+          </div>
+        </div>
+      );
+    }
   };
 
+  
+  // checkout component including form
   return (
     <motion.div
       className="reqFormPage jrReqForm"
@@ -295,7 +303,7 @@ export default function JrCheckoutPage({ routeVariants }) {
 
       <p>Once you provide details we can begin your child's journey!</p>
       <Box sx={{ width: "100%" }}>
-        <Stepper nonLinear activeStep={activeStep} orientation={isMobile ? 'vertical' : 'horizontal'} sx={{alignItems: 'center'}} >
+        <Stepper nonLinear activeStep={activeStep} orientation={isMobile ? 'vertical' : 'horizontal'} sx={{ alignItems: 'center' }} >
           {steps.map((label, index) => (
             <Step key={label} completed={completed[index]}>
               <StepButton color="inherit" onClick={handleStep(index)}>

@@ -14,9 +14,16 @@ import {
 } from '@mui/material';
 
 
-export default function AdminSubscriptionsTab({ num, data }) {
+export default function AdminSubscriptionsTab({ num }) {
 
   const dispatch = useDispatch()
+
+  let data
+  if (num === 0) {
+    data = useSelector(store => store.activeSubscriptions);
+  } else if (num === 1) {
+    data = useSelector(store => store.pausedSubscriptions);
+  }
 
   // date/time
   const monthDiff = (d1, d2) => {
@@ -55,11 +62,12 @@ export default function AdminSubscriptionsTab({ num, data }) {
               <TableHead>
                 <TableRow>
                   <TableCell>Creation Date</TableCell>
-                  <TableCell align="center">Last Delivery</TableCell>
                   <TableCell align="center">Requester E-Mail</TableCell>
+                  <TableCell align="center">Child Name</TableCell>
                   <TableCell align="center">Child's Age</TableCell>
                   <TableCell align="center">Current Pack</TableCell>
-                  <TableCell align="center">Next Pack Delivered</TableCell>
+                  <TableCell align="center">Last Delivery</TableCell>
+                  <TableCell align="center">Next Delivery</TableCell>
                   <TableCell align="center">Message</TableCell>
                 </TableRow>
               </TableHead>
@@ -87,14 +95,14 @@ export default function AdminSubscriptionsTab({ num, data }) {
                       {(new Date(row.created_at).toLocaleString('en-us').split(','))[0]}
                     </TableCell>
 
-                    {/* last delivery */}
-                    <TableCell>
-                      {(new Date(row.last_delivery).toLocaleString('en-us').split(','))[0]}
-                    </TableCell>
-
                     {/* email */}
                     <TableCell align="center">
                       {row.email}
+                    </TableCell>
+
+                    {/* name */}
+                    <TableCell align="center">
+                      {row.name}
                     </TableCell>
 
                     {/* age */}
@@ -105,6 +113,11 @@ export default function AdminSubscriptionsTab({ num, data }) {
                     {/* current pack */}
                     <TableCell align="center">
                       {row.title}
+                    </TableCell>
+
+                    {/* last delivery */}
+                    <TableCell>
+                      {(new Date(row.last_delivery).toLocaleString('en-us').split(','))[0]}
                     </TableCell>
 
                     {/* due */}
