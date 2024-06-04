@@ -45,7 +45,6 @@ export default function JrCheckoutPage({ routeVariants }) {
   const [agreeTerms, setAgreeTerms] = useState(false)
   const [agreeEUA, setAgreeEUA] = useState(false)
 
-
   const monthDiff = (d1, d2) => {
     let months;
     months = (d2.getFullYear() - d1.getFullYear()) * 12;
@@ -55,8 +54,6 @@ export default function JrCheckoutPage({ routeVariants }) {
   }
   const start = new Date(requestData.age)
   const end = new Date()
-  console.log(monthDiff(start, end))
-
 
   useEffect(() => {
     dispatch({ type: "FETCH_LEARNING_PACKS" });
