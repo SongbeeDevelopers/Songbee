@@ -5,6 +5,11 @@ const {
 const pool = require("../modules/pool");
 const router = express.Router();
 const cloudinaryUpload = require("../modules/cloudinary.config");
+const emailjs = require('../modules/emailjs.config')
+
+emailjs.init({
+  publicKey: process.env.EMAILJS_API_PUBLIC_KEY
+})
 
 router.post("/:id", rejectUnauthenticated, cloudinaryUpload.single("file"), async (req, res) => {
   console.log(req.body)
@@ -162,6 +167,19 @@ router.put("/accept/:id", rejectUnauthenticated, (req, res) => {
     `;
   pool.query(queryText, [req.params.id])
     .then((result) => {
+      const templateParams = {
+        to_email: "walkerneudorff@gmail.com",
+        to_name: "Walker Neudorff",
+        message: "An artist has accepted your song request! We are now working hard on completing your song!"
+      }
+      emailjs.send('default_service', 'template_mhzl217', templateParams).then(
+        (response) => {
+          console.log('SUCCESS!', response.status, response.text);
+        },
+        (error) => {
+          console.log('FAILED...', error);
+        },
+      );
       res.sendStatus(201);
     })
     .catch((error) => {
