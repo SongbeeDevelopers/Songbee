@@ -8,13 +8,18 @@ import FilterBar from '../../../FilterBar/FilterBar';
 import MessageUserButton from '../../../AdminPortal/AdminPortalTabs/MessageUserButton';
 
 import {
+  Box,
   Button,
   Dialog,
+  FormControl,
+  InputLabel,
+  MenuItem,
   Table,
   TableBody,
   TableCell,
   TableHead,
   TableRow,
+  Select,
 } from '@mui/material';
 
 
@@ -28,6 +33,13 @@ export default function AdminRequestsTab({ num, data }) {
   // modal state
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [completeOpen, setCompleteOpen] = useState(false)
+
+  const assignArtist = (reqId, artistId) => {
+    dispatch({
+      type: 'ASSIGN_ARTIST',
+      payload: {reqId, artistId}
+    })
+  }
 
   // date/time
   function getDueDate(requestDay, deliveryDays) {
@@ -89,86 +101,104 @@ export default function AdminRequestsTab({ num, data }) {
               {/* table body */}
               <TableBody>
                 {data.map((row) => {
-                if (row.is_paid === false){
-                  dispatch({
+                  if (row.is_paid === false) {
+                    dispatch({
                       type: "DELETE_SONG_REQUEST",
                       payload: row.id
-                  })
-              }
+                    })
+                  }
                   return (
-                  <TableRow hover key={row.id}>
+                    <TableRow hover key={row.id}>
+                      {/* creation date */}
+                      <TableCell>
+                        {new Date(row.created_at).toLocaleString('en-us')}
+                      </TableCell>
 
-                    {/* creation date */}
-                    <TableCell>
-                      {new Date(row.created_at).toLocaleString('en-us')}
-                    </TableCell>
+                      {/* email */}
+                      <TableCell align="center">
+                        {row.email}
+                      </TableCell>
 
-                    {/* email */}
-                    <TableCell align="center">
-                      {row.email}
-                    </TableCell>
+                      {/* artist */}
+                      <TableCell align="center">
+                        {/* if accepted by artist, cannot be changed */}
+                        {row.accepted ?
+                          artists.map((artist) => {
+                            if (artist.id === row.artist_id) {
+                              return artist.artist_name
+                            }
+                          })
+                          :
+                          // if not accepted, can be changed at any time
+                          <>
+                            <Box minWidth={90}>
+                              <FormControl fullWidth>
+                                <InputLabel>Assign</InputLabel>
+                                <Select
+                                  value={row.artist_id}
+                                  label="Assign artist"
+                                  onChange={(event) => assignArtist(row.id, event.target.value)}
+                                >
+                                  {artists.map((artist) => (
+                                    <MenuItem key={artist.id} value={artist.id}>{artist.name}</MenuItem>
+                                  ))
+                                  }
+                                </Select>
+                              </FormControl>
+                            </Box>
+                          </>
+                        }
+                      </TableCell>
 
-                    {/* artist */}
-                    <TableCell align="center">
-                      {row.artist_id ?
-                        artists.map((artist) => {
-                          if (artist.id === row.artist_id) {
-                            return artist.artist_name
-                          }
-                        })
-                        :
-                        'Unassigned'
-                      }
-                    </TableCell>
+                      {/* due */}
+                      <TableCell align="center">
+                        {getDueDate(row.created_at, row.delivery_days)}
+                      </TableCell>
 
-                    {/* due */}
-                    <TableCell align="center">
-                      {getDueDate(row.created_at, row.delivery_days)}
-                    </TableCell>
+                      {/* details btn */}
+                      <TableCell align="center">
+                        <Button variant="contained"
+                          onClick={() => openDetails(row)}
+                          sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
+                        >
+                          DETAILS
+                        </Button>
 
-                    {/* details btn */}
-                    <TableCell align="center">
-                      <Button variant="contained"
-                        onClick={() => openDetails(row)}
-                        sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
-                      >
-                        DETAILS
-                      </Button>
+                        {/* details dialog */}
+                        <Dialog keepMounted fullWidth maxWidth="md"
+                          open={detailsOpen}
+                          onClose={closeDetails}
+                        >
+                          <AdminDetailsDialog setDetailsOpen={setDetailsOpen} />
+                        </Dialog>
+                      </TableCell>
 
-                      {/* details dialog */}
-                      <Dialog keepMounted fullWidth maxWidth="md"
-                        open={detailsOpen}
-                        onClose={closeDetails}
-                      >
-                        <AdminDetailsDialog setDetailsOpen={setDetailsOpen} />
-                      </Dialog>
-                    </TableCell>
+                      {/* complete button */}
+                      <TableCell align="center">
+                        <Button variant="contained"
+                          onClick={() => openComplete(row)}
+                          sx={{ height: 35, width: 95, backgroundColor: "#feaf17", color: "black" }}
+                        >
+                          COMPLETE
+                        </Button>
 
-                    {/* complete button */}
-                    <TableCell align="center">
-                      <Button variant="contained"
-                        onClick={() => openComplete(row)}
-                        sx={{ height: 35, width: 95, backgroundColor: "#feaf17", color: "black" }}
-                      >
-                        COMPLETE
-                      </Button>
+                        {/* complete dialog */}
+                        <Dialog keepMounted fullWidth maxWidth="md"
+                          open={completeOpen}
+                          onClose={closeComplete}
+                        >
+                          <AdminCompleteDialog setCompleteOpen={setCompleteOpen} />
+                        </Dialog>
+                      </TableCell>
 
-                      {/* complete dialog */}
-                      <Dialog keepMounted fullWidth maxWidth="md"
-                        open={completeOpen}
-                        onClose={closeComplete}
-                      >
-                        <AdminCompleteDialog setCompleteOpen={setCompleteOpen} />
-                      </Dialog>
-                    </TableCell>
-
-                    <TableCell align='center'>
-                      <MessageUserButton userId={row.user_id} />
-                    </TableCell>
+                      <TableCell align='center'>
+                        <MessageUserButton userId={row.user_id} />
+                      </TableCell>
 
 
-                  </TableRow>
-                )})}
+                    </TableRow>
+                  )
+                })}
               </TableBody>
             </Table>
           </div>

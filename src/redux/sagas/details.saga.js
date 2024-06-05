@@ -63,11 +63,26 @@ function* denyRequest (action){
     }
 }
 
+function* assignArtist (action) {
+    console.log('saga')
+    try {
+        yield axios({
+            method: 'PUT',
+            url: `/api/details/assign/${action.payload.reqId}`,
+            data: {artistId: action.payload.artistId}
+        })
+        yield put ({ type: "FETCH_ALL_REQUESTS" })
+    } catch (error) {
+        console.error('SAGA assignArtist() failed:', error)
+    }
+}
+
 function* detailsSaga() {
     yield takeLatest("CREATE_SONG_DETAILS", createSongDetails);
     yield takeLatest("UPDATE_SONG_DETAILS", updateSongDetails);
     yield takeLatest("ACCEPT_REQUEST", acceptRequest);
     yield takeLatest("DENY_REQUEST", denyRequest);
+    yield takeLatest("ASSIGN_ARTIST", assignArtist);
 }
 
 export default detailsSaga
