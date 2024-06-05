@@ -1,6 +1,13 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+
+import { Button, TextField, Dialog, Box } from "@mui/material"
+import Swal from 'sweetalert2';
+
+import ApplicationUploadDialog from "./ApplicationUploadDialog";
+
+import '../UserPortals/AdminPortal/AdminPortal.css'
 
 import { motion } from "framer-motion";
 
@@ -9,45 +16,56 @@ import "./JoinArtistPage.css";
 
 function JoinArtistPage({ routeVariants }) {
 
-    // create useStates to hold the artists info
-
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [artistName, setArtistName] = useState("");
-  const [vocalType, setVocalType] = useState("");
-  const [musicLinks, setMusicLinks] = useState("");
-  const [genreId, setGenreId] = useState("");
-  const [aboutYourself, setAboutYourself] = useState("");
-
   const history = useHistory();
   const dispatch = useDispatch();
-// submit function for dispatching to the generator 
+  useEffect(() => {
+    dispatch({ type: 'FETCH_GENRES' });
+    dispatch({ type: 'EDIT_INPUT', payload: { key: 'genres', value: [] } })
+  }, [])
 
-  const submit = (e) => {
-    e.preventDefault();
-    const artistObject = {
-      artist_name: artistName,
-      name: `${firstName} ${lastName}`,
-      genre_id: genreId,
-      bio: aboutYourself,
-      website: musicLinks,
-      vocal_type: vocalType
-    };
-    // some of the artist fields are not on the form and also some of the database fields are not on this form
-    dispatch({
-      type: "CREATE_ARTIST",
-      payload: artistObject,
-    });
-    // clear the form fields
-    setFirstName("");
-    setLastName("");
-    setArtistName("");
-    setVocalType("");
-    setMusicLinks("");
-    setGenreId("");
-    setAboutYourself("");
-    history.push('/user');
-  };
+const edit = useSelector(store => store.edit)
+const genres = useSelector(store => store.genres)
+
+const [songFile, setSongFile] = useState('')
+
+const [details1Open, setDetails1Open] = useState(false);
+const [details2Open, setDetails2Open] = useState(false);
+const [details3Open, setDetails3Open] = useState(false);
+const [details4Open, setDetails4Open] = useState(false);
+
+// stores changes in edit reducer
+const handleInput = (key, value) => {
+  if (key === 'genres') {
+    dispatch ({ type: 'EDIT_ARTIST_GENRES', payload: value })
+  } else {
+    dispatch({ type: 'EDIT_INPUT', payload: { key, value } })
+  }
+}
+const clearGenres = () => {
+  event.preventDefault()
+  dispatch({ type: 'CLEAR_ARTIST_GENRES' })
+}
+
+const submitEdit = (event) => {
+  event.preventDefault()
+  // confirmation message
+  Swal.fire({
+    icon: "question",
+    title: "Save changes?",
+    showCancelButton: true,
+    confirmButtonText: "Save",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire("Saved!", "", "success");
+      // if confirmed, updates db with edit reducer data
+      dispatch({
+        type: "CREATE_ARTIST",
+        payload: edit
+      })
+    }
+  })
+  history.push('/user');
+}
 
   
   return (
@@ -65,96 +83,224 @@ function JoinArtistPage({ routeVariants }) {
       </p>
 
       <form className="artist-form">
-        <div className="group">
-          <div className="group-input">
-            <label htmlFor="firstName">First Name</label>
+      <div className='admin-details-edit-row'>
+          <label> Name
             <input
-              type="text"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-            />
-          </div>
+              value={edit.name}
+              className='admin-portal-inputs'
+              onChange={() => handleInput('name', event.target.value)}
+            ></input>
+          </label>
 
-          <div className="group-input">
-            <label htmlFor="lastName">Last Name</label>
+          <label> Artist Name
             <input
-              type="text"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-            />
-          </div>
+              value={edit.artist_name}
+              className='admin-portal-inputs'
+              onChange={() => handleInput('artist_name', event.target.value)}
+            ></input>
+          </label>
         </div>
-        <div className="group">
-          <div className="group-input">
-            <label htmlFor="artistName">Artist Name</label>
-            <input
-              type="text"
-              value={artistName}
-              onChange={(e) => setArtistName(e.target.value)}
-            />
-          </div>
 
-          <div className="group group-input">
-          <label htmlFor="aboutUs">Select a Vocal Type</label>
-          <select
-            name="Vocal Type"
-            id="vocalType"
-            value={vocalType}
-            onChange={(e) => setVocalType(e.target.value)}
-          >
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-          </select>
-        </div>
-        </div>
-        <div className="group">
-          <div className="group-input">
-            <label htmlFor="musicLinks">Music Links</label>
-            <input
-              type="text"
-              value={musicLinks}
-              onChange={(e) => setMusicLinks(e.target.value)}
-            />
-          </div>
-
-          <div className="group-input">
-            <label htmlFor="genre">Genre</label>
-            <select
-              name="genre"
-              id="genre"
-              value={genreId}
-              onChange={(e) => setGenreId(e.target.value)}
+        <div className='admin-details-edit-row'>
+          <label> Vocal Type
+            <select className='admin-portal-inputs'
+              value={edit.vocal_type}
+              onChange={() => handleInput('vocal_type', event.target.value)}
             >
-              <option value="1">Rap/Hip-Hop</option>
-              <option value="2">Folk</option>
-              <option value="3">Rock</option>
-              <option value="4">R&B</option>
-              <option value="5">Country</option>
-              <option value="6">Singer Songwriter</option>
-              <option value="7">Acoustic Pop</option>
+              <option selected disabled>Select Style</option>
+              <option value="female">Female</option>
+              <option value="male">Male</option>
             </select>
-          </div>
+          </label>
+
+          <label> Location
+            <input
+              value={edit.location}
+              className='admin-portal-inputs'
+              onChange={() => handleInput('location', event.target.value)}
+            ></input>
+          </label>
         </div>
-        <div className="group group-input width-full">
-          <label htmlFor="aboutYourself">Please Supply Your Bio</label>
-          <textarea
-            value={aboutYourself}
-            onChange={(e) => setAboutYourself(e.target.value)}
-            name="aboutYourself"
-            id="aboutYourself"
-            cols="30"
-            rows="10"
-          ></textarea>
+
+        <div className='admin-details-edit-row'>
+          <label> Photo
+          <Button variant="contained"
+            onClick={() => setDetails1Open(true)}
+            sx={{ height: 35, width: 250, backgroundColor: "#feaf17", color: "black" }}
+          >
+            CLICK TO UPLOAD PHOTO
+          </Button>
+
+            {/* upload dialog */}
+          <Dialog keepMounted fullWidth maxWidth="md"
+            open={details1Open}
+            onClose={() => setDetails1Open(false)}
+          >
+            <ApplicationUploadDialog 
+              setDetailsOpen={setDetails1Open}
+              num={4}
+              artist={edit.id} />
+          </Dialog>
+          </label>
+
+          <label> Instagram Link
+            <input
+              value={edit.instagram_link}
+              className='admin-portal-inputs'
+              onChange={() => handleInput('instagram_link', event.target.value)}
+            ></input>
+          </label>
         </div>
-        <div className="artist-disclaimer">
-          <p>Please review your submission.</p>
-          <p>
-            If any links are invalid, your application will not be accepted.
-          </p>
+
+        <div className='admin-details-edit-row'>
+          <label> Bio
+            <textarea
+              value={edit.bio}
+              className='admin-portal-textarea admin-bio-input'
+              placeholder='What?'
+              onChange={() => handleInput('bio', event.target.value)}
+            ></textarea>
+          </label>
+
+          <label> Genres:
+            <select className='admin-portal-inputs admin-select-multiple'
+              multiple
+              value={edit.genres}
+              onChange={() => handleInput('genres', event.target.value)}
+            >
+              {genres && genres.map((genre) => (
+                <option value={genre.id}>{genre.name}</option>
+              ))}
+            </select>
+            <button className='admin-btn-center' onClick={() => clearGenres()}>Clear selections</button>
+          </label>
         </div>
-        <button onClick={submit} className="join-button">
-          Apply Now
-        </button>
+        <p>
+          When uploading songs, make sure you have a sample song that represents each genre you specialize in
+        </p>
+
+        <div className='admin-details-edit-row'>
+          <label> Song 1 Title
+            <input
+              value={edit.song_title_1}
+              className='admin-portal-inputs'
+              onChange={() => handleInput('song_title_1', event.target.value)}
+            ></input>
+          </label>
+          <label> Song 1
+          <Button variant="contained"
+            onClick={() => setDetails2Open(true)}
+            sx={{ height: 35, width: 250, backgroundColor: "#feaf17", color: "black" }}
+          >
+            CLICK TO UPLOAD SONG 1
+          </Button>
+
+            {/* upload dialog */}
+          <Dialog keepMounted fullWidth maxWidth="md"
+            open={details2Open}
+            onClose={() => setDetails2Open(false)}
+          >
+            <ApplicationUploadDialog 
+              setDetailsOpen={setDetails2Open}
+              num={1}
+              artist={edit.id} />
+          </Dialog>
+          </label>
+        </div>
+
+        <div className='admin-details-edit-row'>
+          <label> Song 2 Title
+            <input
+              value={edit.song_title_2}
+              className='admin-portal-inputs'
+              onChange={() => handleInput('song_title_2', event.target.value)}
+            ></input>
+          </label>
+          <label> Song 2
+          <Button variant="contained"
+            onClick={() => setDetails3Open(true)}
+            sx={{ height: 35, width: 250, backgroundColor: "#feaf17", color: "black" }}
+          >
+            CLICK TO UPLOAD SONG 2
+          </Button>
+
+            {/* upload dialog */}
+          <Dialog keepMounted fullWidth maxWidth="md"
+            open={details3Open}
+            onClose={() => setDetails3Open(false)}
+          >
+            <ApplicationUploadDialog 
+              setDetailsOpen={setDetails3Open}
+              num={2}
+              artist={edit.id} />
+          </Dialog>
+          </label>
+        </div>
+
+
+        <div className='admin-details-edit-row'>
+          <label> Song 3 Title
+            <input
+              value={edit.song_title_3}
+              className='admin-portal-inputs'
+              onChange={() => handleInput('song_title_3', event.target.value)}
+            ></input>
+          </label>
+          <label> Song 3
+          <Button variant="contained"
+            onClick={() => setDetails4Open(true)}
+            sx={{ height: 35, width: 250, backgroundColor: "#feaf17", color: "black" }}
+          >
+            CLICK TO UPLOAD SONG 3
+          </Button>
+
+            {/* upload dialog */}
+          <Dialog keepMounted fullWidth maxWidth="md"
+            open={details4Open}
+            onClose={() => setDetails4Open(false)}
+          >
+            <ApplicationUploadDialog  
+              setDetailsOpen={setDetails4Open}
+              num={3}
+              artist={edit.id} />
+          </Dialog>
+          </label>
+        </div>
+
+        <div className='admin-details-edit-row'>
+          <label> Website
+            <input
+              value={edit.website}
+              className='admin-portal-inputs'
+              onChange={() => handleInput('website', event.target.value)}
+            ></input>
+          </label>
+          <label> Streaming Link
+            <input
+              value={edit.streaming_link}
+              className='admin-portal-inputs'
+              onChange={() => handleInput('streaming_link', event.target.value)}
+            ></input>
+          </label>
+        </div>
+
+        <div className='admin-details-edit-row'>
+          <label> Paypal
+            <input
+              value={edit.paypal}
+              className='admin-portal-inputs'
+              onChange={() => handleInput('paypal', event.target.value)}
+            ></input>
+          </label>
+         
+        </div>
+        <div id='admin-details-button-row' className='admin-details-edit-row'>
+          <Button variant="contained"
+            onClick={submitEdit}
+            sx={{ mt: 2, height: 35, width: 75, backgroundColor: "#feaf17", color: "black" }}
+          > SAVE
+          </Button>
+        </div>
       </form>
     </motion.div>
   );
