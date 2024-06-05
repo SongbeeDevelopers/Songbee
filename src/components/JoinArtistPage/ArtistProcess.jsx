@@ -19,8 +19,7 @@ function ArtistProcess() {
             </div>{" "}
             <h3>1. Claim an Order</h3>
             <p>
-              Orders will be emailed to you, you have 24 hours to accept or deny
-              an order request.
+              You will be notified of any requests in your genre. Claim open requests through the artist portal.
             </p>
           </div>
           <div className="process-card">
@@ -30,8 +29,7 @@ function ArtistProcess() {
             <h3>2. Create the Song</h3>
             <p>
               Write, record, and produce the song after carefully reviewing
-              customer provided details. Once completed, submit via the provided
-              dropbox link.
+              customer provided details. Once completed, submit via the artist portal for review.
             </p>{" "}
           </div>
           <div className="process-card">

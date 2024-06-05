@@ -48,7 +48,7 @@ export default function SubDetails({ routeVariants }) {
                 <p>For {sub.name}</p>
                 <p>{sub.age}</p>
 
-                <Link to={`${sub.play_guide}`} >
+                <Link to={`${sub.play_guide}`} target="_blank" >
                     Play Guide
                 </Link>
 

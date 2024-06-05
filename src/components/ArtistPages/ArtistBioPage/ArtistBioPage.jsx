@@ -42,17 +42,17 @@ const handleArtist =(e) => {
                      <h4 className="location">{artist.location}</h4>
                      <div className="socialLinks">
                         <div className="instagram">
-                           <a href={artist.instagram_link} >
+                           <a href={artist.instagram_link} target="_blank">
                            <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714071882/Songbee/instagram-link_f6urma.png" alt="Artist Instagram" />
                            </a>
                         </div>
                         <div className="spotify">
-                           <a href={artist.streaming_link}>
+                           <a href={artist.streaming_link} target="_blank">
                               <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714071890/Songbee/spotify-img_nlukbm.png" alt="Artist Spotify" />
                            </a>
                         </div>
                         <div className="website">
-                           <a href={artist.website}>
+                           <a href={artist.website} target="_blank">
                               <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714071878/Songbee/artist-website_s1wuuu.png" alt="Artist Website" />
                            </a>
                         </div>
