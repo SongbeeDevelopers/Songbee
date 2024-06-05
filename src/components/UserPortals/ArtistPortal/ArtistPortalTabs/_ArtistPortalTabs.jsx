@@ -6,6 +6,7 @@ import ArtistProfileTab from "./ArtistProfileTab";
 import ArtistSBRequestsTab from "./ArtistSBRequestsTab";
 import ArtistDocuments from "./ArtistDocuments";
 import ArtistCompletedRequestsTab from "./ArtistCompletedRequestsTab";
+import ArtistMessagesTab from "./ArtistMessagesTab";
 
 
 import PropTypes from "prop-types";
@@ -77,6 +78,7 @@ export default function ArtistPortalTabs({artistProfile}) {
           <Tab label="Incoming Orders" {...a11yProps(1)} />
           <Tab label="Documents" {...a11yProps(2)} />
           <Tab label="Completed Orders" {...a11yProps(3)} />
+          <Tab label="Messages" {...a11yProps(4)} />
         </Tabs>
       </Box>
 
@@ -95,6 +97,10 @@ export default function ArtistPortalTabs({artistProfile}) {
 
       <CustomTabPanel value={value} index={3}>
         <ArtistCompletedRequestsTab artistId={artistProfile && artistProfile.id}/>
+      </CustomTabPanel>
+
+      <CustomTabPanel value={value} index={4}>
+        <ArtistMessagesTab />
       </CustomTabPanel>
  
     </>

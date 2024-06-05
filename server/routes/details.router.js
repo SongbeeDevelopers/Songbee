@@ -171,7 +171,7 @@ router.put("/accept/:id", rejectUnauthenticated, (req, res) => {
         to_name: "Walker Neudorff",
         message: "An artist has accepted your song request! We are now working hard on completing your song!"
       }
-      emailjs.send('default_service', 'template_mhzl217', templateParams).then(
+      emailjs.send('service_ttmod9n', 'template_mhzl217', templateParams).then(
         (response) => {
           console.log('SUCCESS!', response.status, response.text);
         },
