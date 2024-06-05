@@ -25,7 +25,7 @@ import {
 import Swal from 'sweetalert2';
 
 
-export default function AdminRequestsTab({ num, data }) {
+export default function AdminRequestsTab({ num, approved, data }) {
 
   const dispatch = useDispatch()
 
@@ -47,7 +47,7 @@ export default function AdminRequestsTab({ num, data }) {
       if (result.isConfirmed) {
         dispatch({
           type: 'ASSIGN_ARTIST',
-          payload: {reqId, artistId}
+          payload: { reqId, artistId }
         })
         Swal.fire("Saved!", "", "success");
       }
@@ -89,6 +89,11 @@ export default function AdminRequestsTab({ num, data }) {
     setCompleteOpen(false)
   }
 
+  // request approval logic
+  const approveRequest = (reqId, approved) => {
+    dispatch({type: 'UPDATE_APPROVAL', payload: {reqId, approved}})
+  }
+
   return (
     <div>
       {data.length > 0 ?
@@ -105,6 +110,7 @@ export default function AdminRequestsTab({ num, data }) {
                   <TableCell align="center">Requester E-Mail</TableCell>
                   <TableCell align="center">Artist</TableCell>
                   <TableCell align="center">Due</TableCell>
+                  {num === 1 && <TableCell align="center">Approved?</TableCell>}
                   <TableCell align="center">View Details</TableCell>
                   <TableCell align="center">Completion Form</TableCell>
                   <TableCell align="center">Message</TableCell>
@@ -114,6 +120,7 @@ export default function AdminRequestsTab({ num, data }) {
               {/* table body */}
               <TableBody>
                 {data.map((row) => {
+
                   if (row.is_paid === false) {
                     dispatch({
                       type: "DELETE_SONG_REQUEST",
@@ -167,6 +174,23 @@ export default function AdminRequestsTab({ num, data }) {
                       <TableCell align="center">
                         {getDueDate(row.created_at, row.delivery_days)}
                       </TableCell>
+
+                      {/* approve button */}
+                      {num === 1 && <TableCell>
+                        <Box minWidth={90}>
+                          <FormControl fullWidth>
+                            <InputLabel>Approve</InputLabel>
+                            <Select
+                              value={row.artist_id}
+                              label="Approve"
+                              onChange={(event) => approveRequest(row.id, event.target.value)}
+                            >
+                              <MenuItem value={true}>Approve</MenuItem>
+                              <MenuItem value={false}>Deny</MenuItem>
+                            </Select>
+                          </FormControl>
+                        </Box>
+                      </TableCell>}
 
                       {/* details btn */}
                       <TableCell align="center">

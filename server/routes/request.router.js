@@ -155,13 +155,61 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     ON "song_request"."id"="song_details"."song_request_id"
     LEFT JOIN "user"
     ON "song_request"."user_id"="user"."id"
-    WHERE "song_request"."is_complete"=TRUE;
+    WHERE "song_request"."is_complete"=TRUE
+    AND "song_request"."is_approved" = TRUE;
     `
     const completedResult = await connection.query(completedRequestQuery);
 
+    const needsApprovalQuery = `
+    SELECT 
+    "song_request"."id" AS "id",
+    "song_request"."user_id",
+    "song_request"."requester",
+    "song_request"."recipient",
+    "song_request"."pronunciation",
+    "song_request"."recipient_relationship",
+    "song_request"."occasion",
+    "song_request"."vocal_type",
+    "song_request"."vibe",
+    "song_request"."tempo",
+    "song_request"."inspiration",
+    "song_request"."story1",
+    "song_request"."story2",
+    "song_request"."important_what",
+    "song_request"."important_why",
+    "song_request"."additional_info",
+    "song_request"."created_at",
+    "song_request"."delivery_days",
+    "song_request"."is_complete",
+    "song_request"."is_approved",
+    "song_request"."streaming",
+    "song_request"."backing_track",
+    "song_request"."license",
+    "song_request"."extra_verse",
+    "song_details"."url",
+    "song_details"."lyrics",
+    "song_details"."title",
+    "song_details"."artist_id",
+    "song_details"."streaming_link",
+    "song_details"."accepted",
+    "song_details"."artist_id",
+    "genres"."name" AS "genre",
+    "user"."email"
+    FROM "song_request"
+    LEFT JOIN "genres"
+    ON "song_request"."genre_id"="genres"."id"
+    LEFT JOIN "song_details"
+    ON "song_request"."id"="song_details"."song_request_id"
+    LEFT JOIN "user"
+    ON "song_request"."user_id"="user"."id"
+    WHERE "song_request"."is_complete"=TRUE
+    AND "song_request"."is_approved" = FALSE;
+    `
+    const needsApproval = await connection.query(needsApprovalQuery);
+
     connection.query("COMMIT;");
     connection.release();
-    res.send([pendingResult.rows, completedResult.rows])
+    res.send([pendingResult.rows, completedResult.rows, needsApproval.rows])
 
   } catch (error) {
     console.log("Error in request router GET all:", error);
@@ -560,6 +608,22 @@ router.put('/confirm/:id', async (req, res) => {
     connection.release();
     res.sendStatus(500)
   }
+})
+
+router.put('/approve/:id', rejectUnauthenticated, (req, res) => {
+  console.log(req.body, req.params.id)
+    const approveQuery = `
+    UPDATE "song_request"
+    SET "is_approved" = $1
+    WHERE "id" = $2
+    `
+    pool.query(approveQuery, [req.body.approved, req.params.id])
+    .then((result) => {
+      res.sendStatus(200)
+    })
+    .catch((error) => {
+      console.error('request router /approve failed:', error)
+    })
 })
 
 module.exports = router;

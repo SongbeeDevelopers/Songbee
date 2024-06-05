@@ -6,6 +6,7 @@ function* fetchAllRequests () {
         const response = yield axios.get('/api/request/all')
         yield put({ type: 'SET_PENDING_REQUESTS', payload: response.data[0]})
         yield put({ type: 'SET_COMPLETED_REQUESTS', payload: response.data[1]})
+        yield put({ type: 'SET_UNAPPROVED_REQUESTS', payload: response.data[2]})
     }
     catch (error) {
         console.error('SAGA fetchAllRequests() failed:', error)
@@ -215,6 +216,19 @@ function* confirmRequestPayment (action) {
     }
   }
 
+function* updateApproval (action) {
+    try {
+        yield axios({
+            method: 'PUT',
+            url: `/api/request/approve/${action.payload.reqId}`,
+            data: {approved: action.payload.approved}
+        })
+        yield put({ type: 'FETCH_ALL_REQUESTS' })
+    } catch (error) {
+        console.error('Saga updateApproval() failed:', error)
+    }
+}
+
 function* requestSaga() {
     yield takeLatest('FETCH_ALL_REQUESTS', fetchAllRequests);
     yield takeLatest('FETCH_USER_REQUESTS', fetchUserRequests);
@@ -233,6 +247,7 @@ function* requestSaga() {
     yield takeLatest('FETCH_ARTIST_REQUESTS', fetchArtistRequests);
     yield takeLatest('FETCH_COMPLETED_ARTIST_REQUESTS', fetchCompletedArtistRequests);
     yield takeLatest('CONFIRM_REQUEST_PAYMENT', confirmRequestPayment);
+    yield takeLatest('UPDATE_APPROVAL', updateApproval);
 }
 
 export default requestSaga;
