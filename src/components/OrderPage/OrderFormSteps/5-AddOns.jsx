@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 
 import LoginRegisterForm from "../../LoginRegisterForm/LoginRegisterForm";
 
@@ -15,42 +16,55 @@ import {
 import '../../SongRequestPage/SongRequestPage.css'
 
 
-export default function AddOns({ handleInput, handleOpen, handleClose, open }) {
+export default function AddOns({ handleInput, handleOpen, handleClose, open, setTotalPrice, totalPrice }) {
 
   const requestData = useSelector((store) => store.requestData);
   const user = useSelector((store) => store.user);
-
+  const prices = {
+    extra_verse: 74.99,
+    streaming: 49.99,
+    backing_track: 29.99,
+    license: 199.99
+  }
   const handleClick = (value) => {
     if (value === 'streaming') {
       if (requestData.streaming === false) {
         handleInput("streaming", true)
+        setTotalPrice(totalPrice + prices.streaming)
       }
       else if (requestData.streaming === true) {
         handleInput("streaming", false)
+        setTotalPrice(totalPrice - prices.streaming)
       }
     }
     if (value === 'verse') {
       if (requestData.extra_verse === false) {
         handleInput("extra_verse", true)
+        setTotalPrice(totalPrice + prices.extra_verse)
       }
       else if (requestData.extra_verse === true) {
         handleInput("extra_verse", false)
+        setTotalPrice(totalPrice - prices.extra_verse)
       }
     }
     if (value === 'license') {
       if (requestData.license === false) {
         handleInput("license", true)
+        setTotalPrice(totalPrice + prices.license)
       }
       else if (requestData.license === true) {
         handleInput("license", false)
+        setTotalPrice(totalPrice - prices.license)
       }
     }
     if (value === 'backing') {
       if (requestData.backing_track === false) {
         handleInput("backing_track", true)
+        setTotalPrice(totalPrice + prices.backing_track)
       }
       else if (requestData.backing_track === true) {
         handleInput("backing_track", false)
+        setTotalPrice(totalPrice - prices.backing_track)
       }
     }
   }

@@ -271,7 +271,7 @@ function RequestDetails({ routeVariants, requestId }) {
                 onClick={() => handleClick('license')}
                 sx={{ position: 'absolute', mt: -2, ml: -2, backgroundColor: '#fff4df' }} />
               <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/commerciallicense_qkxiug.jpg"></img>
-              <p>Add Licensing!</p>
+              <p>Add Commercial Licensing!</p>
             </div>
           }
         </div>

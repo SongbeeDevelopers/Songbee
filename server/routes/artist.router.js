@@ -71,50 +71,73 @@ router.get("/get", async (req, res) => {
 
 // This endpoint is used when an artist is applying to join 
 // We receive the artist information and the genre.
-router.post("/", rejectUnauthenticated, (req, res) => {
-  const newArtist = req.body;
-  // this query is creating the artist 
-  const queryText = `INSERT INTO "artist"
- ("artist_name", "user_id", "name", "bio", "website", "vocal_type")
-  VALUES
-  ($1, $2, $3, $4, $5, $6) returning "id"; `;
-  // this query is creating the artist genre 
-  const queryGenre = `INSERT INTO "artist_genres"
-  ("artist_id", "genre_id")
-  VALUES
-  ($1, $2);`;
-  // we first create the artist 
-  pool
-    .query(queryText, [
-      newArtist.artist_name,
-      // newArtist.name,
-      req.user.id, // access the id of the current logged in user
-      newArtist.name,
-      newArtist.bio,
-      newArtist.website,
-      newArtist.vocal_type
-    ])
-    .then((result) => {
+router.post("/", rejectUnauthenticated, async (req, res) => {
+ 
+  let connection
+  try {
+    connection = await pool.connect();
+    const artistQuery = 
+    `INSERT INTO "artist"
+    (
+    "artist_name",
+    "name", 
+    "user_id", 
+    "vocal_type",
+    "website",
+    "instagram_link",
+    "sample_song_1",
+    "song_title_1",
+    "sample_song_2",
+    "song_title_2",
+    "sample_song_3",
+    "song_title_3",
+    "bio",
+    "location",
+    "photo",
+    "streaming_link",
+    "paypal"
+    )
+     VALUES
+     ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) returning "id"; `;
+    
+    const artistValues = [
+      req.body.artist_name,    // $1
+      req.body.name,           // $2
+      req.user.id,             // $3
+      req.body.vocal_type,     // $4
+      req.body.website,        // $5
+      req.body.instagram_link, // $6
+      req.body.sample_song_1,  // $7
+      req.body.song_title_1,   // $8
+      req.body.sample_song_2,  // $9
+      req.body.song_title_2,   // $10
+      req.body.sample_song_3,  // $11
+      req.body.song_title_3,   // $12
+      req.body.bio,            // $13
+      req.body.location,       // $14
+      req.body.photo,          // $15
+      req.body.streaming_link, // $16
+      req.body.paypal          // $17
+    ]
+    const artistResponse = await connection.query(artistQuery, artistValues)
 
-      // after creating artist we take artist id and create genre
-      pool
-        .query(queryGenre, [
-          result.rows[0].id, // access the id of the created artist
-          newArtist.genre_id,
-        ])
-        .then((result) => {
-
-          res.sendStatus(201);
-        })
-        .catch((err) => {
-          console.log("Genre creation failed: ", err);
-          res.sendStatus(500);
-        });
-    })
-    .catch((err) => {
-      console.log("Artist registration failed: ", err);
-      res.sendStatus(500);
-    });
+    for (let genre of req.body.genres) {
+      const genreQuery = `
+        INSERT INTO "artist_genres" ("artist_id", "genre_id")
+        VALUES ($1, $2);
+      `
+      const genreValues = [artistResponse.rows[0].id, genre]
+      await connection.query(genreQuery, genreValues)
+    }
+    connection.query("COMMIT;");
+    connection.release();
+    res.sendStatus(200);
+  } catch (error) {
+    console.error("create artist route failed:", error)
+    connection.query("ROLLBACK;");
+    connection.release();
+    res.sendStatus(500)
+  }
 });
 
 router.post("/edit", rejectUnauthenticated, async (req, res) => {
@@ -511,6 +534,21 @@ router.put('/uploads/:id', rejectUnauthenticated, cloudinaryUpload.single("file"
         console.error('route adminedit failed:', error)
         res.sendStatus(500)
       })
+})
+
+router.put('/application-uploads/:id', rejectUnauthenticated, cloudinaryUpload.single("file"), (req, res) => {
+  if (req.params.id === '1'){
+    res.send({key: 'sample_song_1', value: req.file.path})
+  }
+  else if (req.params.id === '2'){
+    res.send({key: 'sample_song_2', value: req.file.path})
+  }
+  else if (req.params.id === '3'){
+    res.send({key: 'sample_song_3', value: req.file.path})
+  }
+  else if (req.params.id === '4'){
+    res.send({key: 'photo', value: req.file.path})
+  }
 })
 
 module.exports = router;
