@@ -5,9 +5,9 @@ import { useHistory } from "react-router-dom";
 
 import { Button } from "@mui/material"
 
-import '../CustomerPortal.css'
+import '../../CustomerPortal/CustomerPortal.css'
 
-function CustomerMessagesTab() {
+export default function ArtistMessagesTab() {
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -91,5 +91,3 @@ function CustomerMessagesTab() {
     </div>
   )
 }
-
-export default CustomerMessagesTab;

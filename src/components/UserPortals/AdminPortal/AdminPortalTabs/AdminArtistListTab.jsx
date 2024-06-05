@@ -51,6 +51,7 @@ export default function AdminArtistListTab() {
               <TableHead>
                 <TableRow>
                   <TableCell>Name</TableCell>
+                  <TableCell align="center">Email</TableCell>
                   <TableCell align="center">Vocal Type</TableCell>
                   <TableCell align="center">Active?</TableCell>
                   <TableCell align="center">Details</TableCell>
@@ -63,6 +64,10 @@ export default function AdminArtistListTab() {
                   <TableRow hover key={artist.id}>
                     <TableCell component="th" scope="row">
                       {artist.name}
+                    </TableCell>
+
+                    <TableCell align="center">
+                      {artist.email}
                     </TableCell>
 
                     <TableCell align="center">

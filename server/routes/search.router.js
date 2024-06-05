@@ -32,10 +32,16 @@ router.get('/', async (req, res) => {
         "song_request"."created_at",
         "song_request"."delivery_days",
         "song_request"."is_complete",
+        "song_request"."streaming",
+        "song_request"."backing_track",
+        "song_request"."license",
+        "song_request"."extra_verse",
         "song_details"."url",
         "song_details"."lyrics",
         "song_details"."title",
+        "song_details"."artist_id",
         "song_details"."streaming_link",
+        "song_details"."accepted",
         "genres"."name" AS "genre",
         "user"."email" AS "email"
         FROM "song_request"
@@ -49,7 +55,9 @@ router.get('/', async (req, res) => {
         AND
         ("requester" ILIKE $1
         OR
-        "recipient" ILIKE $1);
+        "recipient" ILIKE $1
+        OR
+        "user"."email" ILIKE $1)
         `
       const pendingResponse = await pool.query(pendingQuery, [`%${req.query.q}%`])
       res.send(pendingResponse.rows)
@@ -101,6 +109,72 @@ router.get('/', async (req, res) => {
         `
       const completedResponse = await pool.query(completedQuery, [`%${req.query.q}%`])
       res.send(completedResponse.rows)
+    }
+
+    // ***** search for active subscriptions *****
+    else if (req.query.type === 'active') {
+      const activeQuery = `
+      SELECT DISTINCT
+      "subscription"."id" AS "id",
+      "subscription"."user_id",
+      "subscription"."age",
+      "subscription"."created_at",
+      "subscription"."is_active",
+      "subscription"."last_delivery",
+      "subscription"."name",
+      "subscription"."pack_id",
+      "user"."email",
+      "learning_packs"."max_age",
+      "learning_packs"."min_age",
+      "learning_packs"."title"
+      FROM "subscription"
+      LEFT JOIN "user"
+      ON "user"."id" = "subscription"."user_id"
+      LEFT JOIN "learning_packs"
+      ON "learning_packs"."id" = "subscription"."pack_id"
+      WHERE "subscription"."is_active" = TRUE
+      AND
+      ("user"."email" ILIKE $1
+      OR
+      "subscription"."name" ILIKE $1
+      OR
+      "learning_packs"."title" ILIKE $1);
+      `
+      const activeResponse = await pool.query(activeQuery, [`%${req.query.q}%`])
+      res.send(activeResponse.rows)
+    }
+
+    // ***** search for paused subscriptions *****
+    else if (req.query.type === 'paused') {
+      const pausedQuery = `
+      SELECT DISTINCT
+      "subscription"."id" AS "id",
+      "subscription"."user_id",
+      "subscription"."age",
+      "subscription"."created_at",
+      "subscription"."is_active",
+      "subscription"."last_delivery",
+      "subscription"."name",
+      "subscription"."pack_id",
+      "user"."email",
+      "learning_packs"."max_age",
+      "learning_packs"."min_age",
+      "learning_packs"."title"
+      FROM "subscription"
+      LEFT JOIN "user"
+      ON "user"."id" = "subscription"."user_id"
+      LEFT JOIN "learning_packs"
+      ON "learning_packs"."id" = "subscription"."pack_id"
+      WHERE "subscription"."is_active" = FALSE
+      AND
+      ("user"."email" ILIKE $1
+      OR
+      "subscription"."name" ILIKE $1
+      OR
+      "learning_packs"."title" ILIKE $1);
+      `
+      const pausedResponse = await pool.query(pausedQuery, [`%${req.query.q}%`])
+      res.send(pausedResponse.rows)
     }
 
     /***** search for users *****/
@@ -167,7 +241,7 @@ router.get('/', async (req, res) => {
         const artistResponse = await pool.query(artistQuery, artistValues)
         res.send(artistResponse.rows)
       }
-      
+
       // finds users matching genre if no query made
       else if (!req.query.q && req.query.genre) {
         artistQuery = `
@@ -193,7 +267,7 @@ router.get('/', async (req, res) => {
         const artistResponse = await pool.query(artistQuery, artistValues)
         res.send(artistResponse.rows)
       }
-      
+
       else {
         const artistResponse = await pool.query(`SELECT * FROM "artist";`)
         res.send(artistResponse.rows)

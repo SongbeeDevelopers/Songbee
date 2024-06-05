@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import FilterBar from '../../../FilterBar/FilterBar';
@@ -14,9 +13,16 @@ import {
 } from '@mui/material';
 
 
-export default function AdminSubscriptionsTab({ num, data }) {
+export default function AdminSubscriptionsTab({ num }) {
 
   const dispatch = useDispatch()
+
+  let data
+  if (num === 0) {
+    data = useSelector(store => store.activeSubscriptions);
+  } else if (num === 1) {
+    data = useSelector(store => store.pausedSubscriptions);
+  }
 
   // date/time
   const monthDiff = (d1, d2) => {
@@ -26,12 +32,12 @@ export default function AdminSubscriptionsTab({ num, data }) {
     months += d2.getMonth();
     return months <= 0 ? 0 : months;
   }
-  
+
   const end = new Date()
 
   const calculateDelivery = (last_delivery, packId) => {
     let subLength
-    if(packId <= 6){
+    if (packId <= 6) {
       subLength = 2
     }
     else {
@@ -46,7 +52,7 @@ export default function AdminSubscriptionsTab({ num, data }) {
     <div>
       {data.length > 0 ?
         <>
-          <FilterBar type={num === 0 ? 'pending' : 'completed'} />
+          <FilterBar type={num === 0 ? 'active' : 'paused'} />
 
           <div className="admin-tabs-contents">
             <Table sx={{ minWidth: 700 }}>
@@ -55,11 +61,12 @@ export default function AdminSubscriptionsTab({ num, data }) {
               <TableHead>
                 <TableRow>
                   <TableCell>Creation Date</TableCell>
-                  <TableCell align="center">Last Delivery</TableCell>
                   <TableCell align="center">Requester E-Mail</TableCell>
+                  <TableCell align="center">Child Name</TableCell>
                   <TableCell align="center">Child's Age</TableCell>
                   <TableCell align="center">Current Pack</TableCell>
-                  <TableCell align="center">Next Pack Delivered</TableCell>
+                  <TableCell align="center">Last Delivery</TableCell>
+                  <TableCell align="center">Next Delivery</TableCell>
                   <TableCell align="center">Message</TableCell>
                 </TableRow>
               </TableHead>
@@ -67,64 +74,79 @@ export default function AdminSubscriptionsTab({ num, data }) {
               {/* table body */}
               <TableBody>
                 {data.map((row) => {
-                if (end >= calculateDelivery(row.last_delivery, row.pack_id)){
+                  if (end >= calculateDelivery(row.last_delivery, row.pack_id)) {
                     dispatch({
-                        type: "UPDATE_SUBSCRIPTION_PACK",
-                        payload: {id: row.id, pack: row.pack_id}
+                      type: "UPDATE_SUBSCRIPTION_PACK",
+                      payload: { id: row.id, pack: row.pack_id }
                     })
-                }
-                if (row.is_paid === false){
+                  }
+                  if (row.is_paid === false) {
                     dispatch({
-                        type: "DELETE_JR_REQUEST",
-                        payload: row.id
+                      type: "DELETE_JR_REQUEST",
+                      payload: row.id
                     })
-                }
-                 return (
-                  <TableRow hover key={row.id}>
+                  }
+                  return (
+                    <TableRow hover key={row.id}>
 
-                    {/* creation date */}
-                    <TableCell>
-                      {(new Date(row.created_at).toLocaleString('en-us').split(','))[0]}
-                    </TableCell>
+                      {/* creation date */}
+                      <TableCell>
+                        {(new Date(row.created_at).toLocaleString('en-us').split(','))[0]}
+                      </TableCell>
 
-                    {/* last delivery */}
-                    <TableCell>
-                      {(new Date(row.last_delivery).toLocaleString('en-us').split(','))[0]}
-                    </TableCell>
+                      {/* email */}
+                      <TableCell align="center">
+                        {row.email}
+                      </TableCell>
 
-                    {/* email */}
-                    <TableCell align="center">
-                      {row.email}
-                    </TableCell>
+                      {/* name */}
+                      <TableCell align="center">
+                        {row.name}
+                      </TableCell>
 
-                    {/* age */}
-                    <TableCell align="center">
-                      {monthDiff(new Date(row.age), end)} Months
-                    </TableCell>
+                      {/* age */}
+                      <TableCell align="center">
+                        {monthDiff(new Date(row.age), end)} Months
+                      </TableCell>
 
-                    {/* current pack */}
-                    <TableCell align="center">
-                      {row.title}
-                    </TableCell>
+                      {/* current pack */}
+                      <TableCell align="center">
+                        {row.title}
+                      </TableCell>
 
-                    {/* due */}
-                    <TableCell align="center">
-                    {(calculateDelivery(row.last_delivery, row.pack_id).toLocaleString('en-us').split(','))[0]}
-                    </TableCell>
+                      {/* last delivery */}
+                      <TableCell>
+                        {(new Date(row.last_delivery).toLocaleString('en-us').split(','))[0]}
+                      </TableCell>
 
-                    <TableCell align='center'>
-                    <MessageUserButton userId={row.user_id} />
-                  </TableCell>
+                      {/* due */}
+                      <TableCell align="center">
+                        {(calculateDelivery(row.last_delivery, row.pack_id).toLocaleString('en-us').split(','))[0]}
+                      </TableCell>
 
-                  </TableRow>
-                )})}
+                      <TableCell align='center'>
+                        <MessageUserButton userId={row.user_id} />
+                      </TableCell>
+
+                    </TableRow>
+                  )
+                })}
               </TableBody>
             </Table>
           </div>
 
         </>
         :
-        <p className='admin-empty-msg'>There are currently no active subscriptions.</p>
+        num === 0 ?
+          <>
+            <FilterBar type={num === 0 ? 'active' : 'paused'} />
+            <p className='admin-empty-msg'>There are currently no active subscriptions.</p>
+          </>
+          :
+          <>
+            <FilterBar type={num === 0 ? 'active' : 'paused'} />
+            <p className='admin-empty-msg'>There are currently no paused subscriptions.</p>
+          </>
       }
     </div>
   );

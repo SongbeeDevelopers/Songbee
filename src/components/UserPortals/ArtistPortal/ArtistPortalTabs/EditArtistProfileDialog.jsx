@@ -55,7 +55,7 @@ function EditArtistProfileDialog({ artistProfile, openArtist, setOpenArtist}) {
           payload: edit
         })
         // closes dialog
-        setDetailsOpen(false)
+        setOpenArtist(false)
       }
     })
   }
@@ -138,28 +138,9 @@ function EditArtistProfileDialog({ artistProfile, openArtist, setOpenArtist}) {
         </div>
 
         <div className='admin-details-edit-row'>
-          <label> Photo
-            <TextField
-              type="file"
-              className="form-control-file"
-              name="uploaded_file"
-              onChange={(evt) => setSongFile(evt.target.files[0])}
-              // fullWidth={true}
-              sx={{ width: 300, mt: 3, ml: -6 }}
-            />
-          </label>
-
-          <label> Instagram Link
-            <input
-              value={edit.instagram_link}
-              className='admin-portal-inputs'
-              onChange={() => handleInput('instagram_link', event.target.value)}
-            ></input>
-          </label>
-        </div>
         <Button variant="contained"
             onClick={() => setDetails1Open(true)}
-            sx={{ height: 35, width: 250, backgroundColor: "#feaf17", color: "black" }}
+            sx={{mt: 3, height: 35, width: 300, backgroundColor: "#feaf17", color: "black" }}
           >
             CLICK TO UPLOAD PHOTO
           </Button>
@@ -174,6 +155,15 @@ function EditArtistProfileDialog({ artistProfile, openArtist, setOpenArtist}) {
               num={4}
               artist={edit.id} />
           </Dialog>
+
+          <label> Instagram Link
+            <input
+              value={edit.instagram_link}
+              className='admin-portal-inputs'
+              onChange={() => handleInput('instagram_link', event.target.value)}
+            ></input>
+          </label>
+        </div>
 
         <div className='admin-details-edit-row'>
           <label> Bio

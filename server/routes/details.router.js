@@ -5,9 +5,13 @@ const {
 const pool = require("../modules/pool");
 const router = express.Router();
 const cloudinaryUpload = require("../modules/cloudinary.config");
+const emailjs = require('../modules/emailjs.config')
+
+emailjs.init({
+  publicKey: process.env.EMAILJS_API_PUBLIC_KEY
+})
 
 router.post("/:id", rejectUnauthenticated, cloudinaryUpload.single("file"), async (req, res) => {
-  console.log(req.body)
   let connection
   try {
     connection = await pool.connect();
@@ -158,10 +162,23 @@ router.put("/accept/:id", rejectUnauthenticated, (req, res) => {
   const queryText = `
       UPDATE "song_details"
       SET "accepted"=TRUE
-      WHERE "id"=$1
+      WHERE "id"=$1;
     `;
   pool.query(queryText, [req.params.id])
     .then((result) => {
+      const templateParams = {
+        to_email: "walkerneudorff@gmail.com",
+        to_name: "Walker Neudorff",
+        message: "An artist has accepted your song request! We are now working hard on completing your song!"
+      }
+      emailjs.send('service_ttmod9n', 'template_mhzl217', templateParams).then(
+        (response) => {
+          console.log('SUCCESS!', response.status, response.text);
+        },
+        (error) => {
+          console.log('FAILED...', error);
+        },
+      );
       res.sendStatus(201);
     })
     .catch((error) => {
@@ -174,7 +191,7 @@ router.put("/deny/:id", rejectUnauthenticated, (req, res) => {
   const queryText = `
       UPDATE "song_details"
       SET "artist_id"=NULL
-      WHERE "id"=$1
+      WHERE "id"=$1;
     `;
   pool.query(queryText, [req.params.id])
     .then((result) => {
@@ -186,7 +203,23 @@ router.put("/deny/:id", rejectUnauthenticated, (req, res) => {
     });
 });
 
-
-
+router.put("/assign/:id", rejectUnauthenticated, (req, res) => {
+  console.log('req.body', req.body)
+  console.log('req.params.id', req.params.id)
+  const assignQuery = `
+    UPDATE "song_details"
+    SET "artist_id" = $1,
+      "accepted" = TRUE
+    WHERE "song_request_id" = $2;
+  `
+  pool.query(assignQuery, [req.body.artistId, req.params.id])  
+    .then((result) => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.error("Error in details assign router:", error)
+      res.sendStatus(500)
+    })
+})
 
 module.exports = router;

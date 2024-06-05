@@ -1,5 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { useState } from "react";
 
 import LoginRegisterForm from "../../LoginRegisterForm/LoginRegisterForm";
 
@@ -8,49 +10,74 @@ import {
   Button,
   Checkbox,
   FormControlLabel,
-  FormGroup,
   Modal
 } from "@mui/material";
 
 import '../../SongRequestPage/SongRequestPage.css'
 
 
-export default function AddOns({ handleInput, handleOpen, handleClose, open }) {
+export default function AddOns({
+  handleInput,
+  handleOpen,
+  handleClose,
+  open,
+  agreeTerms,
+  setAgreeTerms,
+  agreeEUA,
+  setAgreeEUA,
+  agreePrivacy,
+  setAgreePrivacy,
+  setTotalPrice,
+  totalPrice
+}) {
 
   const requestData = useSelector((store) => store.requestData);
   const user = useSelector((store) => store.user);
-
+  const prices = {
+    extra_verse: 74.99,
+    streaming: 49.99,
+    backing_track: 29.99,
+    license: 199.99
+  }
   const handleClick = (value) => {
     if (value === 'streaming') {
       if (requestData.streaming === false) {
         handleInput("streaming", true)
+        setTotalPrice(totalPrice + prices.streaming)
       }
       else if (requestData.streaming === true) {
         handleInput("streaming", false)
+        setTotalPrice(totalPrice - prices.streaming)
       }
     }
     if (value === 'verse') {
       if (requestData.extra_verse === false) {
         handleInput("extra_verse", true)
+        setTotalPrice(totalPrice + prices.extra_verse)
       }
       else if (requestData.extra_verse === true) {
         handleInput("extra_verse", false)
+        setTotalPrice(totalPrice - prices.extra_verse)
       }
     }
     if (value === 'license') {
       if (requestData.license === false) {
         handleInput("license", true)
+        setTotalPrice(totalPrice + prices.license)
       }
       else if (requestData.license === true) {
         handleInput("license", false)
+        setTotalPrice(totalPrice - prices.license)
       }
     }
     if (value === 'backing') {
       if (requestData.backing_track === false) {
         handleInput("backing_track", true)
+        setTotalPrice(totalPrice + prices.backing_track)
       }
       else if (requestData.backing_track === true) {
         handleInput("backing_track", false)
+        setTotalPrice(totalPrice - prices.backing_track)
       }
     }
   }
@@ -70,14 +97,14 @@ export default function AddOns({ handleInput, handleOpen, handleClose, open }) {
 
   return (
     <div className="add-ons-checkout">
-      <label>Would you like any add-ons?</label>
+      <label className="wouldulike">Would you like any add-ons?</label>
       <div className="addOnDisplay">
         <div className="reqFormGroup">
           <div className="reqFormInput">
             <div
               className='requestDetailsaddon2'
               onClick={() => handleClick("streaming")}>
-              <Checkbox checked={requestData.streaming} sx={{ mb: -10, ml: 2, backgroundColor: '#fff4df' }} />
+              <Checkbox disableRipple checked={requestData.streaming} sx={{ mb: -10, ml: 2, backgroundColor: '#fff4df' }} />
               <img
                 src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/addstreaming_hng5cz.jpg"
               ></img>
@@ -92,7 +119,7 @@ export default function AddOns({ handleInput, handleOpen, handleClose, open }) {
             <div
               className='requestDetailsaddon2'
               onClick={() => handleClick("verse")}>
-              <Checkbox checked={requestData.extra_verse} sx={{ mb: -10, ml: 2, backgroundColor: '#fff4df' }} />
+              <Checkbox disableRipple checked={requestData.extra_verse} sx={{ mb: -10, ml: 2, backgroundColor: '#fff4df' }} />
               <img
                 src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/extraverse_hmt8jd.jpg"
               ></img>
@@ -111,7 +138,7 @@ export default function AddOns({ handleInput, handleOpen, handleClose, open }) {
             <div
               className='requestDetailsaddon2'
               onClick={() => handleClick("license")}>
-              <Checkbox checked={requestData.license} sx={{ mb: -10, ml: 2, backgroundColor: '#fff4df' }} />
+              <Checkbox disableRipple checked={requestData.license} sx={{ mb: -10, ml: 2, backgroundColor: '#fff4df' }} />
               <img
                 src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/commerciallicense_qkxiug.jpg"
               ></img>
@@ -125,7 +152,7 @@ export default function AddOns({ handleInput, handleOpen, handleClose, open }) {
             <div
               className='requestDetailsaddon2'
               onClick={() => handleClick("backing")}>
-              <Checkbox checked={requestData.backing_track} sx={{ mb: -10, ml: 2, backgroundColor: '#fff4df' }} />
+              <Checkbox disableRipple checked={requestData.backing_track} sx={{ mb: -10, ml: 2, backgroundColor: '#fff4df' }} />
               <img
                 src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714154396/Songbee/backingtrack_m94vwk.jpg"
               ></img>
@@ -138,11 +165,20 @@ export default function AddOns({ handleInput, handleOpen, handleClose, open }) {
           </div>
         </div>
       </div>
-      <FormGroup
-        sx={{ mt: 5, display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center" }}>
-        <h4 className="agree">I Have Read and Agree to the <a href='/#/terms'>Terms and Conditions</a></h4>
-        <FormControlLabel required control={<Checkbox sx={{mb: -7}} />} />
-      </FormGroup>
+      <div className=" maincheckoutagree">
+        <FormControlLabel
+          control={<Checkbox required value={agreeTerms} onClick={() => setAgreeTerms(!agreeTerms)} />}
+          label={<span>I have read and agree to the <Link to="/terms" target="_blank">terms and conditions</Link></span>}
+        />
+        <FormControlLabel
+          control={<Checkbox required value={agreePrivacy} onClick={() => setAgreePrivacy(!agreePrivacy)} />}
+          label={<span>I have read and agree to the <Link to="/privacy" target="_blank">privacy policy</Link></span>}
+        />
+        <FormControlLabel
+          control={<Checkbox required value={agreeEUA} onClick={() => setAgreeEUA(!agreeEUA)} />}
+          label={<span>I have read and agree to the <a href="https://drive.google.com/file/d/1BCASC9xwt8lwTnW5OcJYAGAS5NsPnfX6/view?usp=sharing" target="_blank">end user agreement</a></span>}
+        />
+      </div>
       {!user.id && (
         <button className="checkoutLogRegBtn" onClick={handleOpen}>
           Login / Register

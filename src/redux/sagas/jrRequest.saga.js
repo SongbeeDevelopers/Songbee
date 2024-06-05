@@ -99,7 +99,6 @@ function* createJrRequest (action){
   }
 }
 
-
 function* fetchJrCheckout (action) {
   try {
       const stripeResponse = yield axios({
@@ -198,23 +197,20 @@ function* confirmJrPayment (action) {
   }
 }
 
-function* juniorRequestSaga() {
+export default function* juniorRequestSaga() {
+  yield takeLatest("FETCH_ALL_SUBSCRIPTIONS", fetchAllSubscriptions);
   yield takeLatest("FETCH_USER_SUBSCRIPTIONS", fetchUserSubscriptions);
   yield takeLatest("FETCH_CURRENT_SUBSCRIPTION", fetchCurrentSubscription);
+  yield takeLatest("FETCH_LEARNING_PACKS", fetchLearningPacks);
+  yield takeLatest("FETCH_CURRENT_PACK", fetchCurrentPack);
   yield takeLatest("UPDATE_JR_SONG_REQUEST", updateSongRequest);
   yield takeLatest("ACCEPT_SONG_REQUEST", acceptSongRequest);
   yield takeLatest("COMPLETE_SONG_REQUEST", completeSongRequest);
-  yield takeLatest("FETCH_LEARNING_PACKS", fetchLearningPacks);
-  yield takeLatest("FETCH_CURRENT_PACK", fetchCurrentPack);
   yield takeLatest("CREATE_JR_REQUEST", createJrRequest);
   yield takeLatest("FETCH_JR_CHECKOUT", fetchJrCheckout);
   yield takeLatest("DELETE_JR_REQUEST", deleteJrRequest)
-  yield takeLatest("FETCH_ALL_SUBSCRIPTIONS", fetchAllSubscriptions);
   yield takeLatest("UPDATE_LEARNING_PACK", updateLearningPack);
   yield takeLatest("ACTIVATE_PACK", activateLearningPack);
   yield takeLatest("UPDATE_SUBSCRIPTION_PACK", updateSubscriptionPack);
   yield takeLatest("CONFIRM_JR_PAYMENT", confirmJrPayment);
-
 }
-
-export default juniorRequestSaga;

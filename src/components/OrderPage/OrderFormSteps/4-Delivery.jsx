@@ -5,7 +5,7 @@ import { Button, Checkbox } from "@mui/material";
 
 import "../../SongRequestPage/SongRequestPage.css";
 
-export default function Delivery({ handleInput, handleOpen }) {
+export default function Delivery({ handleInput, handleOpen, setTotalPrice, totalPrice, setDeliveryPrice }) {
   const requestData = useSelector((store) => store.requestData);
 
   // date logic
@@ -14,6 +14,24 @@ export default function Delivery({ handleInput, handleOpen }) {
   const threeDays = now.getTime() + msPerDay * 3;
   const fiveDays = now.getTime() + msPerDay * 5;
   const sixDays = now.getTime() + msPerDay * 6;
+  const prices = {
+    three: 79.99,
+    five: 39.99
+  }
+  const handleClick = (value) => {
+    if (value === 3) {
+        handleInput("delivery_days", 3)
+        setDeliveryPrice(prices.three)
+    }
+    if (value === 5) {
+        handleInput("delivery_days", 5)
+        setDeliveryPrice(prices.five)
+    }
+    if (value === 6) {
+      handleInput("delivery_days", 6)
+        setDeliveryPrice(0)
+    }
+  }
 
   return (
     <form className="orderForm">
@@ -22,9 +40,10 @@ export default function Delivery({ handleInput, handleOpen }) {
         <div className="reqFormDays">
           <div 
             className="calendar-img-div"
-            onClick={() => handleInput("delivery_days", 3)}
+            onClick={() => handleClick(3)}
           >
             <Checkbox
+              disableRipple
               checked={requestData.delivery_days === 3}
               sx={{ mb: -10, ml: -5, mr: 8, backgroundColor: "#fff4df" }}
             />
@@ -34,14 +53,15 @@ export default function Delivery({ handleInput, handleOpen }) {
             ></img>
 
             <div className="calendar-txt">
-              {new Date(threeDays).toDateString()} <p>3 Days + $80</p>
+              {new Date(threeDays).toDateString()} <p>3 Days + $79.99</p>
             </div>
           </div>
 
           <div 
             className="calendar-img-div"
-            onClick={() => handleInput("delivery_days", 5)}>
+            onClick={() => handleClick(5)}>
           <Checkbox
+              disableRipple
               checked={requestData.delivery_days === 5}
               sx={{ mb: -10, ml: -5, mr: 8, backgroundColor: "#fff4df" }}
             />
@@ -51,14 +71,15 @@ export default function Delivery({ handleInput, handleOpen }) {
             ></img>
 
             <div className="calendar-txt">
-              {new Date(fiveDays).toDateString()} <p>5 Days + $40</p>
+              {new Date(fiveDays).toDateString()} <p>5 Days + $39.99</p>
             </div>
           </div>
 
           <div 
             className="calendar-img-div"
-            onClick={() => handleInput("delivery_days", 6)}>
+            onClick={() => handleClick(6)}>
           <Checkbox
+              disableRipple
               checked={requestData.delivery_days === 6}
               sx={{ mb: -10, ml: -5, mr: 8, backgroundColor: "#fff4df" }}
             />

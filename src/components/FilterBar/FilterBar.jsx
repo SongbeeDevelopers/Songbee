@@ -43,15 +43,10 @@ function FilterBar({ type }) {
   };
 
   const clearFilters = () => {
-    dispatch({
-      type: 'FETCH_ALL_ARTISTS'
-    })
-    dispatch({
-      type: 'FETCH_ALL_REQUESTS'
-    })
-    dispatch({
-      type: 'FETCH_ALL_USERS'
-    })
+    dispatch({ type: 'FETCH_ALL_ARTISTS' })
+    dispatch({ type: 'FETCH_ALL_REQUESTS' })
+    dispatch({ type: 'FETCH_ALL_USERS' })
+    dispatch({ type: 'FETCH_ALL_SUBSCRIPTIONS' })
   }
 
 

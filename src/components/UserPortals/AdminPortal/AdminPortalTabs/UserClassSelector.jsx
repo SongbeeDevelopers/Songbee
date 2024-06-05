@@ -40,7 +40,7 @@ export default function UserClassSelector({ user }) {
       label="User Class"
       onChange={(event) => updateUserClass(event.target.value)}
     >
-      <MenuItem value={1}>User</MenuItem>
+      <MenuItem value={1}>Customer</MenuItem>
       <MenuItem value={2}>Artist</MenuItem>
       <MenuItem value={3}>Admin</MenuItem>
     </Select>
