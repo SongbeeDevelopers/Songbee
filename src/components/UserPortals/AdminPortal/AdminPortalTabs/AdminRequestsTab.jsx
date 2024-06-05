@@ -22,6 +22,8 @@ import {
   Select,
 } from '@mui/material';
 
+import Swal from 'sweetalert2';
+
 
 export default function AdminRequestsTab({ num, data }) {
 
@@ -35,10 +37,21 @@ export default function AdminRequestsTab({ num, data }) {
   const [completeOpen, setCompleteOpen] = useState(false)
 
   const assignArtist = (reqId, artistId) => {
-    dispatch({
-      type: 'ASSIGN_ARTIST',
-      payload: {reqId, artistId}
-    })
+    Swal.fire({
+      title: "Assign Artist?",
+      text: "The artist will be required to complete this request. This cannot be undone!",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Assign",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch({
+          type: 'ASSIGN_ARTIST',
+          payload: {reqId, artistId}
+        })
+        Swal.fire("Saved!", "", "success");
+      }
+    });
   }
 
   // date/time

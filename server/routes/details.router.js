@@ -190,7 +190,8 @@ router.put("/assign/:id", rejectUnauthenticated, (req, res) => {
   console.log('req.params.id', req.params.id)
   const assignQuery = `
     UPDATE "song_details"
-    SET "artist_id" = $1
+    SET "artist_id" = $1,
+      "accepted" = TRUE
     WHERE "song_request_id" = $2;
   `
   pool.query(assignQuery, [req.body.artistId, req.params.id])  
