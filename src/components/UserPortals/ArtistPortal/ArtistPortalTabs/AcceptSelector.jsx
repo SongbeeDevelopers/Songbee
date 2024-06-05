@@ -35,7 +35,7 @@ export default function AcceptSelector({ request }) {
                 to_name: "Walker Neudorff",
                 message: "An artist has accepted your song request! We are now working hard on completing your song!"
               }
-              emailjs.send('service_ttmod9n', 'template_mhzl217', templateParams).then(
+              emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams).then(
                 (response) => {
                   console.log('SUCCESS!', response.status, response.text);
                 },
