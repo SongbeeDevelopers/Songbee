@@ -66,7 +66,7 @@ return artist ?(
                 )}
            </div>
        </div>
-       <h3 className="title">Sample Songs</h3>
+       <h3 className="title">Song Portfolio</h3>
       
        <div className="songList">
            <div className="songItems">

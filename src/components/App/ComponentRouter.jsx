@@ -66,6 +66,19 @@ function ComponentRouter() {
 
   const user = useSelector((store) => store.user);
 
+  const redirectPath = (user) => {
+    if (user.id) {
+      if(user.class === 2) {
+        return "/artist"
+      } else if (user.class === 3) {
+        return "/admin"
+      } else {
+        return "/user";
+      }
+    }
+    return null;
+  };
+
   // styling for route fade-ins
   const routeVariants = {
     initial: {
@@ -89,7 +102,8 @@ function ComponentRouter() {
       },
     },
   };
-
+  
+  
 
   return (
     <>
@@ -111,11 +125,11 @@ function ComponentRouter() {
         </MainRoute>
 
 
-        {/* login/reg */}
-        <MainRoute exact path="/login">
+          {/* login/reg */}
+          <MainRoute exact path="/login">
           {user.id ? (
-            // If the user is already logged in, redirect to the /user page
-            <Redirect to="/user" />
+            // If the user is already logged in, redirect to the correct portal
+            <Redirect to={redirectPath(user)} />
           ) : (
             // Otherwise, show the login page
             <LoginPage routeVariants={routeVariants} />
@@ -128,15 +142,16 @@ function ComponentRouter() {
 
         <MainRoute exact path="/register">
           {user.id ? (
+
             // If the user is already logged in, redirect them to the /user page
-            <Redirect to="/user" />
+            <Redirect to={redirectPath(user)} />
           ) : (
             // Otherwise, show the registration page
               <RegisterPage routeVariants={routeVariants} />
           )}
         </MainRoute>
 
-
+       
         {/* account pages */}
         <ProtectedRoute exact path="/user" allowedUserClasses={[1, 2, 3]}>
           <MainRoute>
