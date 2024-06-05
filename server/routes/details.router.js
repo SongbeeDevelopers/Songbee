@@ -166,19 +166,6 @@ router.put("/accept/:id", rejectUnauthenticated, (req, res) => {
     `;
   pool.query(queryText, [req.params.id])
     .then((result) => {
-      const templateParams = {
-        to_email: "walkerneudorff@gmail.com",
-        to_name: "Walker Neudorff",
-        message: "An artist has accepted your song request! We are now working hard on completing your song!"
-      }
-      emailjs.send('service_ttmod9n', 'template_mhzl217', templateParams).then(
-        (response) => {
-          console.log('SUCCESS!', response.status, response.text);
-        },
-        (error) => {
-          console.log('FAILED...', error);
-        },
-      );
       res.sendStatus(201);
     })
     .catch((error) => {
