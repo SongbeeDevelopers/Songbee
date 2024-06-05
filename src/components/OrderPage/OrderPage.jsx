@@ -49,6 +49,10 @@ export default function OrderPage({ routeVariants }) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  // agreement logic
+  const [agreeTerms, setAgreeTerms] = useState(false)
+  const [agreePrivacy, setAgreePrivacy] = useState(false)
+  const [agreeEUA, setAgreeEUA] = useState(false)
 
   // fetch reducers on mount
   useEffect(() => {
@@ -125,6 +129,9 @@ export default function OrderPage({ routeVariants }) {
       requestData.inspiration &&
       requestData.delivery_days &&
       user.id &&
+      agreeTerms &&
+      agreePrivacy &&
+      agreeEUA &&
       allStepsCompleted()
     ) {
       Swal.fire({
@@ -187,7 +194,20 @@ export default function OrderPage({ routeVariants }) {
     }
     // step 5
     else if (activeStep === 4) {
-      return <AddOns handleInput={handleInput} handleOpen={handleOpen} handleClose={handleClose} open={open} />
+      return (
+        <AddOns
+          handleInput={handleInput}
+          handleOpen={handleOpen}
+          handleClose={handleClose}
+          open={open}
+          agreeTerms={agreeTerms}
+          setAgreeTerms={setAgreeTerms}
+          agreeEUA={agreeEUA}
+          setAgreeEUA={setAgreeEUA}
+          agreePrivacy={agreePrivacy}
+          setAgreePrivacy={setAgreePrivacy}
+          />
+      )
     }
   };
   // ----- END FORM LOGIC -----
