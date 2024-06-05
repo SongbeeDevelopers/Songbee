@@ -32,6 +32,7 @@ import message from './message.reducer';
 import activeSubscriptions from './activeSubscriptions.reducer';
 import pausedSubscriptions from './pausedSubscriptions.reducer';
 import currentSubscription from './currentSubscription.reducer';
+import unapprovedRequests from './unapprovedRequests.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -71,7 +72,8 @@ const rootReducer = combineReducers({
   message,
   activeSubscriptions,
   pausedSubscriptions,
-  currentSubscription
+  currentSubscription,
+  unapprovedRequests,
 });
 
 export default rootReducer;
