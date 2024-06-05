@@ -81,7 +81,6 @@ export default function ArtistCompletedRequestsTab({artistId}) {
                 <TableCell align="center">Due</TableCell>
                 <TableCell align="center">View Details</TableCell>
                 <TableCell align="center">Completion Form</TableCell>
-                <TableCell align="center">Message</TableCell>
               </TableRow>
             </TableHead>
 
@@ -144,10 +143,6 @@ export default function ArtistCompletedRequestsTab({artistId}) {
                     >
                       <AdminCompleteDialog request={row} />
                     </Dialog>
-                  </TableCell>
-
-                  <TableCell align="center">
-                    <MessageUserButton userId={row.user_id}/>
                   </TableCell>
 
                 </TableRow>
