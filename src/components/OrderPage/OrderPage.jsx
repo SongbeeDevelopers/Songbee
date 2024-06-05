@@ -86,6 +86,7 @@ export default function OrderPage({ routeVariants }) {
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState({});
   const [totalPrice, setTotalPrice] = useState(224.99)
+  const [deliveryPrice, setDeliveryPrice] = useState(0)
 
   const totalSteps = () => { return steps.length };
   const completedSteps = () => { return Object.keys(completed).length };
@@ -184,7 +185,7 @@ export default function OrderPage({ routeVariants }) {
     }
     // step 4
     else if (activeStep === 3) {
-      return <Delivery handleInput={handleInput} handleOpen={handleOpen} setTotalPrice={setTotalPrice} totalPrice={totalPrice}/>
+      return <Delivery handleInput={handleInput} handleOpen={handleOpen} setDeliveryPrice={setDeliveryPrice} setTotalPrice={setTotalPrice} totalPrice={totalPrice}/>
     }
     // step 5
     else if (activeStep === 4) {
@@ -202,7 +203,7 @@ export default function OrderPage({ routeVariants }) {
     >
       <h1>Song Request Details</h1>
       <p>Let’s start! We will guide you through the process of creating your song so it will be seamless and perfect for you! Just fill out your information and we will begin creating your song.</p>
-      <p>Your Total: ${totalPrice.toFixed(2)}</p>
+      <p>Your Total: ${(totalPrice + deliveryPrice).toFixed(2)}</p>
       <Box sx={{ width: "100%" }}>
 
         {/* progress bar */}

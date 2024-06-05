@@ -5,7 +5,7 @@ import { Button, Checkbox } from "@mui/material";
 
 import "../../SongRequestPage/SongRequestPage.css";
 
-export default function Delivery({ handleInput, handleOpen, setTotalPrice, totalPrice }) {
+export default function Delivery({ handleInput, handleOpen, setTotalPrice, totalPrice, setDeliveryPrice }) {
   const requestData = useSelector((store) => store.requestData);
 
   // date logic
@@ -21,15 +21,15 @@ export default function Delivery({ handleInput, handleOpen, setTotalPrice, total
   const handleClick = (value) => {
     if (value === 3) {
         handleInput("delivery_days", 3)
-        setTotalPrice(224.99 + prices.three)
+        setDeliveryPrice(prices.three)
     }
     if (value === 5) {
         handleInput("delivery_days", 5)
-        setTotalPrice(224.99 + prices.five)
+        setDeliveryPrice(prices.five)
     }
     if (value === 6) {
       handleInput("delivery_days", 6)
-        setTotalPrice(224.99)
+        setDeliveryPrice(0)
     }
   }
 
