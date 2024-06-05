@@ -19,7 +19,7 @@ function ArtistProcess() {
             </div>{" "}
             <h3>1. Claim an Order</h3>
             <p>
-              You will be notified of any requests in your genre. Claim open requests through the artist portal.
+            All orders according to voice type and genre will be  displayed in your artist portal. Claim open orders through your artist portal.
             </p>
           </div>
           <div className="process-card">
