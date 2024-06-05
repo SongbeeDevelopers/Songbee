@@ -22,7 +22,7 @@ function LandingPage({ routeVariants }) {
       initial="initial"
       animate="final"
     >
-      <Banner />
+      {/* <Banner /> */}
       <div className="container" id="hero-container">
         <HeroSection />
         <HowSongBeeWorksSection />

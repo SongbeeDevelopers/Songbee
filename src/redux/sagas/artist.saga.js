@@ -3,16 +3,13 @@ import { takeLatest, put } from "redux-saga/effects";
 
 function* fetchPendingArtist() {
   try {
-    // console.log("THIS IS DATA2222");
-
     const response = yield axios.get("/api/artist/pending");
-    // console.log("THIS IS DATA", response.data);
     yield put({ type: "SET_PENDING_ARTISTS", payload: response.data });
   } catch (error) {
     console.error("SAGA fetchPendingArtist() failed:", error);
   }
 }
-// this generator is used to create a new artist
+
 function* createNewArtist(action) {
   try {
     const response = yield axios({
@@ -32,7 +29,6 @@ function* requestArtistEdit(action) {
       url: "/api/artist/edit",
       data: action.payload,
     });
-    // console.log(response.data);
   } catch (error) {
     console.error("SAGA createNewArtist() failed:", error);
   }
@@ -145,7 +141,6 @@ function* fetchAllArtists() {
     console.error("SAGA fetchAllArtists() failed:", error);
   }
 }
-
 
 function* fetchCurrentArtist(action) {
   try {

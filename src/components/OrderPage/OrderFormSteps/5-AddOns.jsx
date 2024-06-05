@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { useState } from "react";
 
 import LoginRegisterForm from "../../LoginRegisterForm/LoginRegisterForm";
@@ -9,14 +10,26 @@ import {
   Button,
   Checkbox,
   FormControlLabel,
-  FormGroup,
   Modal
 } from "@mui/material";
 
 import '../../SongRequestPage/SongRequestPage.css'
 
 
-export default function AddOns({ handleInput, handleOpen, handleClose, open, setTotalPrice, totalPrice }) {
+export default function AddOns({
+  handleInput,
+  handleOpen,
+  handleClose,
+  open,
+  agreeTerms,
+  setAgreeTerms,
+  agreeEUA,
+  setAgreeEUA,
+  agreePrivacy,
+  setAgreePrivacy,
+  setTotalPrice,
+  totalPrice
+}) {
 
   const requestData = useSelector((store) => store.requestData);
   const user = useSelector((store) => store.user);
@@ -84,7 +97,7 @@ export default function AddOns({ handleInput, handleOpen, handleClose, open, set
 
   return (
     <div className="add-ons-checkout">
-      <label>Would you like any add-ons?</label>
+      <label className="wouldulike">Would you like any add-ons?</label>
       <div className="addOnDisplay">
         <div className="reqFormGroup">
           <div className="reqFormInput">
@@ -152,11 +165,20 @@ export default function AddOns({ handleInput, handleOpen, handleClose, open, set
           </div>
         </div>
       </div>
-      <FormGroup
-        sx={{ mt: 5, display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center" }}>
-        <h4 className="agree">I Have Read and Agree to the <a href='/#/terms'>Terms and Conditions</a></h4>
-        <FormControlLabel required control={<Checkbox sx={{mb: -7}} />} />
-      </FormGroup>
+      <div className=" maincheckoutagree">
+        <FormControlLabel
+          control={<Checkbox required value={agreeTerms} onClick={() => setAgreeTerms(!agreeTerms)} />}
+          label={<span>I have read and agree to the <Link to="/terms" target="_blank">terms and conditions</Link></span>}
+        />
+        <FormControlLabel
+          control={<Checkbox required value={agreePrivacy} onClick={() => setAgreePrivacy(!agreePrivacy)} />}
+          label={<span>I have read and agree to the <Link to="/privacy" target="_blank">privacy policy</Link></span>}
+        />
+        <FormControlLabel
+          control={<Checkbox required value={agreeEUA} onClick={() => setAgreeEUA(!agreeEUA)} />}
+          label={<span>I have read and agree to the <a href="https://drive.google.com/file/d/1BCASC9xwt8lwTnW5OcJYAGAS5NsPnfX6/view?usp=sharing" target="_blank">end user agreement</a></span>}
+        />
+      </div>
       {!user.id && (
         <button className="checkoutLogRegBtn" onClick={handleOpen}>
           Login / Register

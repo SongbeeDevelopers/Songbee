@@ -162,7 +162,7 @@ router.put("/accept/:id", rejectUnauthenticated, (req, res) => {
   const queryText = `
       UPDATE "song_details"
       SET "accepted"=TRUE
-      WHERE "id"=$1
+      WHERE "id"=$1;
     `;
   pool.query(queryText, [req.params.id])
     .then((result) => {
@@ -191,7 +191,7 @@ router.put("/deny/:id", rejectUnauthenticated, (req, res) => {
   const queryText = `
       UPDATE "song_details"
       SET "artist_id"=NULL
-      WHERE "id"=$1
+      WHERE "id"=$1;
     `;
   pool.query(queryText, [req.params.id])
     .then((result) => {
@@ -203,7 +203,23 @@ router.put("/deny/:id", rejectUnauthenticated, (req, res) => {
     });
 });
 
-
-
+router.put("/assign/:id", rejectUnauthenticated, (req, res) => {
+  console.log('req.body', req.body)
+  console.log('req.params.id', req.params.id)
+  const assignQuery = `
+    UPDATE "song_details"
+    SET "artist_id" = $1,
+      "accepted" = TRUE
+    WHERE "song_request_id" = $2;
+  `
+  pool.query(assignQuery, [req.body.artistId, req.params.id])  
+    .then((result) => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.error("Error in details assign router:", error)
+      res.sendStatus(500)
+    })
+})
 
 module.exports = router;

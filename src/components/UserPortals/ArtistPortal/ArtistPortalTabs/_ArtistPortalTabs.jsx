@@ -1,10 +1,9 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import ArtistProfileTab from "./ArtistProfileTab";
 import ArtistSBRequestsTab from "./ArtistSBRequestsTab";
-import ArtistSBjrRequestsTab from "./ArtistSBjrRequestsTab";
 import ArtistDocuments from "./ArtistDocuments";
 import ArtistCompletedRequestsTab from "./ArtistCompletedRequestsTab";
 

@@ -395,13 +395,16 @@ router.get('/all', async (req, res) => {
   let connection
   try {
     connection = await pool.connect();
-
     connection.query("BEGIN;");
+
+    // retrieves all artists
     const query = `
     SELECT * FROM "artist"
     WHERE "approved"=TRUE;
     `;
     const artistResponse = await connection.query(query)
+
+    // loops through artists and finds their genres
     for (let i = 0; i < artistResponse.rows.length; i++) {
       const genreQuery = `
       SELECT
@@ -413,14 +416,24 @@ router.get('/all', async (req, res) => {
       WHERE "artist_genres"."artist_id"=$1
       `
       const genreResponse = await connection.query(genreQuery, [artistResponse.rows[i].id])
-      // console.log('artist response id', artistResponse.rows[i].id)
+      // adds those genres to the result
       artistResponse.rows[i].genres = genreResponse.rows
-      // console.log("genreResponse", genreResponse.rows);
-    }
 
+      // adds email as well
+      const emailResponse = await connection.query(
+        `
+        SELECT "user"."email"
+        FROM "artist"
+        LEFT JOIN "user"
+        ON "user"."id" = "artist"."user_id"
+        WHERE "artist"."id" = $1
+        `,
+        [artistResponse.rows[i].id]
+      )
+      artistResponse.rows[i].email = emailResponse.rows[0].email
+    }
     connection.query("COMMIT;");
     connection.release();
-    // console.log("artistResponse", artistResponse.rows);
     res.send(artistResponse.rows);
   } catch (error) {
     console.log('get current artist failed:', error)
@@ -491,49 +504,49 @@ router.put('/active/:id', async (req, res) => {
 
 router.put('/uploads/:id', rejectUnauthenticated, cloudinaryUpload.single("file"), (req, res) => {
   let editQuery
-  if (req.params.id === '1'){
+  if (req.params.id === '1') {
     editQuery = `
     UPDATE "artist"
       SET "sample_song_1" = $1
     WHERE "artist"."id" = $2;
     `
   }
-  else if (req.params.id === '2'){
+  else if (req.params.id === '2') {
     editQuery = `
     UPDATE "artist"
       SET "sample_song_2" = $1
     WHERE "artist"."id" = $2;
     `
   }
-  else if (req.params.id === '3'){
+  else if (req.params.id === '3') {
     editQuery = `
     UPDATE "artist"
       SET "sample_song_3" = $1
     WHERE "artist"."id" = $2;
     `
   }
-  else if (req.params.id === '4'){
+  else if (req.params.id === '4') {
     editQuery = `
     UPDATE "artist"
       SET "photo" = $1
     WHERE "artist"."id" = $2;
     `
   }
-  else if (req.params.id === '5'){
+  else if (req.params.id === '5') {
     editQuery = `
     UPDATE "artist"
       SET "w9" = $1
     WHERE "artist"."id" = $2;
     `
   }
-    pool.query(editQuery, [req.file.path, req.body.artist])
-      .then(() => {
-        res.sendStatus(200)
-      })
-      .catch((error) => {
-        console.error('route adminedit failed:', error)
-        res.sendStatus(500)
-      })
+  pool.query(editQuery, [req.file.path, req.body.artist])
+    .then(() => {
+      res.sendStatus(200)
+    })
+    .catch((error) => {
+      console.error('route adminedit failed:', error)
+      res.sendStatus(500)
+    })
 })
 
 router.put('/application-uploads/:id', rejectUnauthenticated, cloudinaryUpload.single("file"), (req, res) => {

@@ -4,6 +4,13 @@
     margin: 0 auto;
 }
 
+.maincheckoutagree {
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: 20%;
+    margin-top: 50px;
+}
+
 .reqFormPage h1 {
     text-align: center;
     font-weight: 600;
@@ -284,8 +291,13 @@ and dropdown in Songbee JR */
     text-align: center;
 }
 .add-ons-checkout label {
-    display: block;
+    /* display: block; */
     width: fit-content;
+    margin: auto;
+}
+
+.wouldulike {
+    display: block;
     margin: auto;
 }
 

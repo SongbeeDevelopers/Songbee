@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 // form steps
 import LetsGetStarted from "./OrderFormSteps/1-LetsGetStarted";
@@ -49,6 +49,10 @@ export default function OrderPage({ routeVariants }) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  // agreement logic
+  const [agreeTerms, setAgreeTerms] = useState(false)
+  const [agreePrivacy, setAgreePrivacy] = useState(false)
+  const [agreeEUA, setAgreeEUA] = useState(false)
 
   // fetch reducers on mount
   useEffect(() => {
@@ -127,6 +131,9 @@ export default function OrderPage({ routeVariants }) {
       requestData.inspiration &&
       requestData.delivery_days &&
       user.id &&
+      agreeTerms &&
+      agreePrivacy &&
+      agreeEUA &&
       allStepsCompleted()
     ) {
       Swal.fire({
@@ -189,7 +196,23 @@ export default function OrderPage({ routeVariants }) {
     }
     // step 5
     else if (activeStep === 4) {
-      return <AddOns handleInput={handleInput} handleOpen={handleOpen} handleClose={handleClose} open={open} setTotalPrice={setTotalPrice} totalPrice={totalPrice} />
+      
+      return (
+        <AddOns
+          handleInput={handleInput}
+          handleOpen={handleOpen}
+          handleClose={handleClose}
+          open={open}
+          agreeTerms={agreeTerms}
+          setAgreeTerms={setAgreeTerms}
+          agreeEUA={agreeEUA}
+          setAgreeEUA={setAgreeEUA}
+          agreePrivacy={agreePrivacy}
+          setAgreePrivacy={setAgreePrivacy}
+          setTotalPrice={setTotalPrice} 
+          totalPrice={totalPrice}
+          />
+      )
     }
   };
   // ----- END FORM LOGIC -----
