@@ -32,7 +32,7 @@ function ProtectedRoute({ component, children, allowedUserClasses=[1,2,3], ...pr
 
   return (
     <Route {...props}>
-      {user.id ? (
+      {user.id  ? (
         isUserAllowed ? (
           <ProtectedComponent />
         ) : (
@@ -44,6 +44,7 @@ function ProtectedRoute({ component, children, allowedUserClasses=[1,2,3], ...pr
         </MainRoute>
       )}
     </Route>
+    
   );
   }
 
