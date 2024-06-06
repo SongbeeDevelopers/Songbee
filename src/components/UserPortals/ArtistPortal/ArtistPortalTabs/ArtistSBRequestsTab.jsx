@@ -81,6 +81,7 @@ export default function ArtistSBRequestsTab({artistId}) {
                 <TableCell align="center">Creation Date</TableCell>
                 <TableCell align="center">Due</TableCell>
                 <TableCell align="center">Requester E-Mail</TableCell>
+                <TableCell align="center">Status</TableCell>
                 <TableCell align="center">View Details</TableCell>
                 <TableCell align="center">Completion Form</TableCell>
               </TableRow>
@@ -101,7 +102,7 @@ export default function ArtistSBRequestsTab({artistId}) {
                   </TableCell>
 
                   {/* creation date */}
-                  <TableCell>
+                  <TableCell align="center">
                     {new Date(row.created_at).toLocaleString('en-us')}
                   </TableCell>
 
@@ -113,6 +114,10 @@ export default function ArtistSBRequestsTab({artistId}) {
                   {/* email */}
                   <TableCell align="center">
                     {row.email}
+                  </TableCell>
+
+                  <TableCell align="center">
+                    {row.accepted ? row.is_complete ? row.is_approved ? "Done!" : "Pending Approval" : "Pending Completion" : "Pending Acceptance"}
                   </TableCell>
 
                   {/* details btn */}

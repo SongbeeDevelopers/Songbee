@@ -91,7 +91,30 @@ export default function AdminRequestsTab({ num, data }) {
 
   // request approval logic
   const approveRequest = (reqId, approved) => {
-    dispatch({type: 'UPDATE_APPROVAL', payload: {reqId, approved}})
+    approved === true ?
+    Swal.fire({
+      title: "Approve Song?",
+      text: "The customer will now have access to the song.",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Approve",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch({type: 'UPDATE_APPROVAL', payload: {reqId, approved}})
+        Swal.fire({title: 'Approved!', icon: "success"})
+      }})
+      :
+      Swal.fire({
+        title: "Deny Song?",
+        text: "The artist will be alerted that their song has been denied. Please supply further details using the messaging system.",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: "Deny",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // send notification here
+          Swal.fire({title: 'Sent!', icon: "success"})
+        }})
   }
 
   return (
