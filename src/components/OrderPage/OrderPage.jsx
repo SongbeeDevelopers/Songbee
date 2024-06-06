@@ -53,6 +53,10 @@ export default function OrderPage({ routeVariants }) {
   const [agreeTerms, setAgreeTerms] = useState(false)
   const [agreePrivacy, setAgreePrivacy] = useState(false)
   const [agreeEUA, setAgreeEUA] = useState(false)
+  // payment logic
+  const [totalPrice, setTotalPrice] = useState(224.99)
+  const [deliveryPrice, setDeliveryPrice] = useState(0)
+  const [artistPayout, setArtistPayout] = useState(100)
 
   // fetch reducers on mount
   useEffect(() => {
@@ -77,6 +81,8 @@ export default function OrderPage({ routeVariants }) {
   };
 
   function dispatchDetails() {
+    handleInput("total_price", (totalPrice + deliveryPrice).toFixed(2))
+    handleInput("artist_payout", artistPayout.toFixed(2))
     dispatch({
       type: "CREATE_SONG_REQUEST",
       payload: {
@@ -89,8 +95,6 @@ export default function OrderPage({ routeVariants }) {
   // ----- FORM LOGIC -----
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState({});
-  const [totalPrice, setTotalPrice] = useState(224.99)
-  const [deliveryPrice, setDeliveryPrice] = useState(0)
 
   const totalSteps = () => { return steps.length };
   const completedSteps = () => { return Object.keys(completed).length };
@@ -116,6 +120,7 @@ export default function OrderPage({ routeVariants }) {
   };
 
   const handleComplete = (event) => {
+    console.log("request data", requestData)
     const newCompleted = completed;
     newCompleted[activeStep] = true;
     setCompleted(newCompleted);
@@ -144,6 +149,8 @@ export default function OrderPage({ routeVariants }) {
         confirmButtonText: "Submit",
       }).then((result) => {
         if (result.isConfirmed) {
+          console.log("total price & artistPayout", (totalPrice + deliveryPrice).toFixed(2), artistPayout.toFixed(2))
+          console.log("request data", requestData)
           dispatchDetails();
         }
       });
@@ -211,6 +218,9 @@ export default function OrderPage({ routeVariants }) {
           setAgreePrivacy={setAgreePrivacy}
           setTotalPrice={setTotalPrice} 
           totalPrice={totalPrice}
+          setArtistPayout={setArtistPayout}
+          artistPayout={artistPayout}
+          deliveryPrice={deliveryPrice}
           />
       )
     }

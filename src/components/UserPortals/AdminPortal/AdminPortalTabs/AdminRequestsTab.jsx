@@ -23,6 +23,7 @@ import {
 } from '@mui/material';
 
 import Swal from 'sweetalert2';
+import emailjs from '@emailjs/browser'
 
 
 export default function AdminRequestsTab({ num, data }) {
@@ -36,6 +37,10 @@ export default function AdminRequestsTab({ num, data }) {
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [completeOpen, setCompleteOpen] = useState(false)
 
+  emailjs.init({
+    publicKey: 'kh8qhjYSE2KhcvUoT'
+  })
+
   const assignArtist = (reqId, artistId) => {
     Swal.fire({
       title: "Assign Artist?",
@@ -47,7 +52,7 @@ export default function AdminRequestsTab({ num, data }) {
       if (result.isConfirmed) {
         dispatch({
           type: 'ASSIGN_ARTIST',
-          payload: {reqId, artistId}
+          payload: { reqId, artistId }
         })
         Swal.fire("Saved!", "", "success");
       }
@@ -89,6 +94,47 @@ export default function AdminRequestsTab({ num, data }) {
     setCompleteOpen(false)
   }
 
+  // request approval logic
+  const approveRequest = (reqId, approved, request) => {
+    approved === true ?
+    Swal.fire({
+      title: "Approve Song?",
+      text: "The customer will now have access to the song.",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Approve",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch({type: 'UPDATE_APPROVAL', payload: {reqId, approved}})
+        Swal.fire({title: 'Approved!', icon: "success"})
+        const templateParams = {
+          to_email: request.email,
+          to_name: request.email,
+          message: "Congratulations! Your song has been delivered! Log into your customer portal to view your new custom song!"
+        }
+        emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams).then(
+          (response) => {
+            console.log('SUCCESS!', response.status, response.text);
+            },
+          (error) => {
+            console.log('FAILED...', error);
+            },
+        );
+      }})
+      :
+      Swal.fire({
+        title: "Deny Song?",
+        text: "The artist will be alerted that their song has been denied. Please supply further details using the messaging system.",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: "Deny",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // send notification here
+          Swal.fire({title: 'Sent!', icon: "success"})
+        }})
+  }
+
   return (
     <div>
       {data.length > 0 ?
@@ -105,6 +151,7 @@ export default function AdminRequestsTab({ num, data }) {
                   <TableCell align="center">Requester E-Mail</TableCell>
                   <TableCell align="center">Artist</TableCell>
                   <TableCell align="center">Due</TableCell>
+                  {num === 1 && <TableCell align="center">Approve?</TableCell>}
                   <TableCell align="center">View Details</TableCell>
                   <TableCell align="center">Completion Form</TableCell>
                   <TableCell align="center">Message</TableCell>
@@ -114,6 +161,7 @@ export default function AdminRequestsTab({ num, data }) {
               {/* table body */}
               <TableBody>
                 {data.map((row) => {
+
                   if (row.is_paid === false) {
                     dispatch({
                       type: "DELETE_SONG_REQUEST",
@@ -167,6 +215,23 @@ export default function AdminRequestsTab({ num, data }) {
                       <TableCell align="center">
                         {getDueDate(row.created_at, row.delivery_days)}
                       </TableCell>
+
+                      {/* approve button */}
+                      {num === 1 && <TableCell>
+                        <Box minWidth={90}>
+                          <FormControl fullWidth>
+                            <InputLabel>Approve</InputLabel>
+                            <Select
+                              value={row.artist_id}
+                              label="Approve"
+                              onChange={(event) => approveRequest(row.id, event.target.value, row)}
+                            >
+                              <MenuItem value={true}>Approve</MenuItem>
+                              <MenuItem value={false}>Deny</MenuItem>
+                            </Select>
+                          </FormControl>
+                        </Box>
+                      </TableCell>}
 
                       {/* details btn */}
                       <TableCell align="center">

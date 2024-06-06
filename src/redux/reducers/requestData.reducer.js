@@ -15,7 +15,9 @@ const requestData = (
     streaming: false,
     extra_verse: false,
     license: false,
-    backing_track: false
+    backing_track: false,
+    total_price: 224.99,
+    artist_payout: 100,
   },
   action
 ) => {
@@ -39,7 +41,9 @@ const requestData = (
         streaming: false,
         extra_verse: false,
         license: false,
-        backing_track: false
+        backing_track: false,
+        total_price: 224.99,
+        artist_payout: 100,
       };
     default:
       return state;

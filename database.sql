@@ -1,17 +1,15 @@
-DROP TABLE IF EXISTS "songbeejr_details",
-                     "subscription_song_details",
-                     "subscription",
-                     "jr_request",
-                     "artist_genres",
-                     "song_details",
-                     "artist",
-                     "song_request",
-                     "genres",
-                     "user",
-                     "pendingartistedit",
-                     "learning_packs",
-                     "chat",
-                     "messages";
+DROP TABLE IF EXISTS 
+	"subscription",
+	"artist_genres",
+	"song_details",
+	"artist",
+	"song_request",
+	"genres",
+	"user",
+	"pendingartistedit",
+	"learning_packs",
+	"chat",
+	"messages";
 
 CREATE TABLE "user" (
   "id" SERIAL PRIMARY KEY,
@@ -52,7 +50,10 @@ CREATE TABLE "song_request" (
   "license" BOOLEAN,
   "backing_track" BOOLEAN,
   "is_complete" BOOLEAN DEFAULT FALSE,
-  "is_paid" BOOLEAN DEFAULT FALSE
+  "is_approved" BOOLEAN DEFAULT FALSE,
+  "is_paid" BOOLEAN DEFAULT FALSE,
+  "total_price" decimal,
+  "artist_payout" decimal
 );
 
 CREATE TABLE "artist" (
@@ -76,7 +77,8 @@ CREATE TABLE "artist" (
   "streaming_link" VARCHAR,
   "approved" BOOLEAN DEFAULT FALSE,
   "w9" VARCHAR,
-  "paypal" VARCHAR
+  "paypal" VARCHAR,
+  "agreement" VARCHAR
 );
 
 CREATE TABLE "song_details" (
@@ -208,13 +210,13 @@ VALUES
 
 
 INSERT INTO "song_request"
-("user_id", "genre_id", "requester", "recipient", "pronunciation", "recipient_relationship", "occasion", "vocal_type", "vibe", "tempo", "inspiration", "story1", "story2", "important_what", "important_why", "additional_info", "created_at", "delivery_days", "streaming", "extra_verse", "is_complete", "is_paid")
+("user_id", "genre_id", "requester", "recipient", "pronunciation", "recipient_relationship", "occasion", "vocal_type", "vibe", "tempo", "inspiration", "story1", "story2", "important_what", "important_why", "additional_info", "created_at", "delivery_days", "streaming", "extra_verse", "is_complete", "is_approved", "is_paid")
 VALUES
-(1, 3, 'Charles', 'Charlito', 'Shar-Lee-Toe', 'Best Friend', null, 'Female', 'Light-hearted', 'Fast', 'God', 'We used to beat eachother up', 'We were married as a joke once', 'They smell bad', 'It''s how we met', 'Her favorite color is invisible', '2024-01-29T15:58:20.453Z', 7, false, false, true, true), 
-(1, 4, 'Charles', 'Jenny', 'Jeh-Knee', 'Daughter', null, 'Female', 'Mean-spirited', 'Slow', 'I need to prank my daughter', 'My daughter thinks Johnny Rotten is attractive', 'My daughter and I used to do the shaving cream and feather sleeping prank on eachother', 'My daughter lives in Tempe, AZ', 'Theres a lot of material to work with there', 'The final lyric should be Surprise!', '2024-01-28T15:58:20.453Z', 7, false, true, false, true),
-(3, 1, 'The Springfield Office', 'Our Boss Jeffery', 'Jeff-Rey', 'Boss', null, 'Male', 'Spooktacular', 'Fast', 'Boss cant stop talking about Frank Sinatra', 'Our boss is very old and grew up listening to vocal crooners', 'Our boss always forgets his coffee mug in the conference room', 'He hates Gene Pitney', 'If it sounds too much like Gene Pitney it will go over poorly', 'Gene Pitney was his ex-wife''s favorite artist', '2024-01-22T15:58:20.453Z', 7, false, false, true, true),
-(4, 3, 'Brimly', 'Gregor', 'Greh-ger', 'Crush', 'Valentines Day', 'Female', 'Light-hearted', 'Fast', 'Want to tell her how I feel', 'We had math class together', 'We love sin/cos/tan', 'She only wears orange', 'Its my favorite color', 'We eat Blimpie sandwiches at lunch together', '2024-02-12T15:58:20.453Z', 7, false, false, false, true), 
-(7, 6, 'Sandy', 'Shimnar', 'Shim-Nahr', 'Husband', 'Anniversary', 'Female', 'Light-hearted', 'up-tempo', 'Want to tell her how I feel', 'We had math class together', 'We love sin/cos/tan', 'She only wears orange', 'Its my favorite color', 'We eat Blimpie sandwiches at lunch together', '2024-02-10T15:58:20.453Z', 7, false, false, false, true);
+(1, 3, 'Charles', 'Charlito', 'Shar-Lee-Toe', 'Best Friend', null, 'Female', 'Light-hearted', 'Fast', 'God', 'We used to beat eachother up', 'We were married as a joke once', 'They smell bad', 'It''s how we met', 'Her favorite color is invisible', '2024-01-29T15:58:20.453Z', 7, false, false, true, false, true), 
+(1, 4, 'Charles', 'Jenny', 'Jeh-Knee', 'Daughter', null, 'Female', 'Mean-spirited', 'Slow', 'I need to prank my daughter', 'My daughter thinks Johnny Rotten is attractive', 'My daughter and I used to do the shaving cream and feather sleeping prank on eachother', 'My daughter lives in Tempe, AZ', 'Theres a lot of material to work with there', 'The final lyric should be Surprise!', '2024-01-28T15:58:20.453Z', 7, false, true, false, false, true),
+(3, 1, 'The Springfield Office', 'Our Boss Jeffery', 'Jeff-Rey', 'Boss', null, 'Male', 'Spooktacular', 'Fast', 'Boss cant stop talking about Frank Sinatra', 'Our boss is very old and grew up listening to vocal crooners', 'Our boss always forgets his coffee mug in the conference room', 'He hates Gene Pitney', 'If it sounds too much like Gene Pitney it will go over poorly', 'Gene Pitney was his ex-wife''s favorite artist', '2024-01-22T15:58:20.453Z', 7, false, false, true, true, true),
+(4, 3, 'Brimly', 'Gregor', 'Greh-ger', 'Crush', 'Valentines Day', 'Female', 'Light-hearted', 'Fast', 'Want to tell her how I feel', 'We had math class together', 'We love sin/cos/tan', 'She only wears orange', 'Its my favorite color', 'We eat Blimpie sandwiches at lunch together', '2024-02-12T15:58:20.453Z', 7, false, false, false, false, true), 
+(7, 6, 'Sandy', 'Shimnar', 'Shim-Nahr', 'Husband', 'Anniversary', 'Female', 'Light-hearted', 'up-tempo', 'Want to tell her how I feel', 'We had math class together', 'We love sin/cos/tan', 'She only wears orange', 'Its my favorite color', 'We eat Blimpie sandwiches at lunch together', '2024-02-10T15:58:20.453Z', 7, false, false, false, false, true);
 
 INSERT INTO "song_details"
 ("song_request_id", "url", "lyrics", "title", "artist_id", "streaming_link")
@@ -294,3 +296,5 @@ VALUES
   (2, 4, '2022-11-10 00:00:00-06', 'Dogma', TRUE, true),
   (2, 6, '2023-03-10 00:00:00-06', 'Greenbear', TRUE, true),
   (10, 9, '2022-02-10 00:00:00-06', 'Johnnycake', FALSE, true);
+  
+ 

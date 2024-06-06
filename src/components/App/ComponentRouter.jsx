@@ -118,8 +118,6 @@ function ComponentRouter() {
           <LandingPage routeVariants={landingVariants} />
         </MainRoute>
 
-
-
         {/* login/reg */}
         <MainRoute exact path="/login">
  

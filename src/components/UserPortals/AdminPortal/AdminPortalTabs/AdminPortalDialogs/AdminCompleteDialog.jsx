@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
-  Box,
   Button,
   DialogActions,
   DialogContent,
@@ -110,6 +109,20 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
         <DialogContentText>
           <div className='completeDialogueContent'>
               <div>
+              <Typography gutterBottom variant="overline" display="block" align='left'>
+                  Song URL
+                </Typography>
+
+                <TextField
+                  required
+                  placeholder="Song Title"
+                  multiline
+                  maxRows={4}
+                  value={edit.url}
+                  onChange={(event) => handleInput("url", event.target.value)}
+                  fullWidth={true}
+                />
+
                 <Typography gutterBottom variant="overline" display="block" align='left'>
                   Upload Song File:
                 </Typography>

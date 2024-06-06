@@ -105,12 +105,16 @@ function CustomerRequests() {
 
                 {/* details */}
                 <TableCell align="center">
+                  {request.is_complete && request.is_approved ?
                   <Button variant="contained"
                     onClick={() => viewDetails(request)}
                     sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
                   >
                     DETAILS
                   </Button>
+                  :
+                  "Pending Completion"
+                  }
                 </TableCell>
               </TableRow>
             ))}

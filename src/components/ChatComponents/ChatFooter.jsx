@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '@mui/material';
+import emailjs from '@emailjs/browser'
 import './Socket.css'
 
-const ChatFooter = ({ socket, id }) => {
+const ChatFooter = ({ id, user2, user1 }) => {
   const dispatch = useDispatch()
   const message = useSelector(store => store.message)
+
+  emailjs.init({
+    publicKey: 'kh8qhjYSE2KhcvUoT'
+  })
 
   const handleInput = (value) => {
     dispatch({ 
@@ -18,20 +23,31 @@ const ChatFooter = ({ socket, id }) => {
 
   const handleSendMessage = (e) => {
     e.preventDefault();
-    // if (message.trim() && localStorage.getItem('userName')) {
-    //   socket.emit('message', {
-    //     text: message,
-    //     name: localStorage.getItem('userName'),
-    //     id: `${socket.id}${Math.random()}`,
-    //     socketID: socket.id,
-    //   });
-    // }
+
     dispatch({
       type: "SEND_MESSAGE",
       payload: message
     })
-    dispatch({type: "CLEAR_MESSAGE"})
-    ;
+    dispatch({type: "CLEAR_MESSAGE"});
+    console.log("message", message)
+
+    const templateParams = {
+      to_email: user2,
+      to_name: user2,
+      message: `You received a new message from ${user1}: 
+      \n
+      ${message.text}
+      \n
+      Log into your Songbee portal to view the message and respond!`
+    }
+    emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams).then(
+      (response) => {
+        console.log('SUCCESS!', response.status, response.text);
+      },
+      (error) => {
+        console.log('FAILED...', error);
+      },
+    );
   };
   return (
     <div className="chat__footer">

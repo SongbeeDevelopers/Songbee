@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useState } from 'react';
+import emailjs from '@emailjs/browser'
 
 import {
   MenuItem,
@@ -10,6 +11,9 @@ import Swal from "sweetalert2";
 export default function AcceptSelector({ request }) {
 
   const dispatch = useDispatch()
+  emailjs.init({
+    publicKey: 'kh8qhjYSE2KhcvUoT'
+  })
 
   const handleAccept = (value) => {
     if (value === 1){
@@ -26,6 +30,19 @@ export default function AcceptSelector({ request }) {
                 payload: {id: request.details_id,
                         artist: request.artist_id}
               })
+              const templateParams = {
+                to_email: request.email,
+                to_name: request.email,
+                message: "An artist has accepted your song request! We are now working hard on completing your song!"
+              }
+              emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams).then(
+                (response) => {
+                  console.log('SUCCESS!', response.status, response.text);
+                },
+                (error) => {
+                  console.log('FAILED...', error);
+                },
+              );
               Swal.fire("Done!", "", "success");
             }
           });
