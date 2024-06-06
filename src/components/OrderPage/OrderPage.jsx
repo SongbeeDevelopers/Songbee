@@ -68,6 +68,8 @@ export default function OrderPage({ routeVariants }) {
 
   // inputs directly affect reducer
   const handleInput = (key, value) => {
+    console.log('ayo lol')
+    console.log(key, value)
     if (key === "artist" && value > 0) {
       dispatch({
         type: "FETCH_CURRENT_ARTIST",
@@ -81,15 +83,14 @@ export default function OrderPage({ routeVariants }) {
   };
 
   function dispatchDetails() {
-    handleInput("total_price", (totalPrice + deliveryPrice).toFixed(2))
-    handleInput("artist_payout", artistPayout.toFixed(2))
-    dispatch({
-      type: "CREATE_SONG_REQUEST",
-      payload: {
-        history: history,
-        data: requestData,
-      },
-    });
+    handleInput("artist_payout", Number(artistPayout.toFixed(2)))
+    // dispatch({
+    //   type: "CREATE_SONG_REQUEST",
+    //   payload: {
+    //     history: history,
+    //     data: requestData,
+    //   },
+    // });
   }
 
   // ----- FORM LOGIC -----
@@ -120,7 +121,7 @@ export default function OrderPage({ routeVariants }) {
   };
 
   const handleComplete = (event) => {
-    console.log("request data", requestData)
+    handleInput("total_price", Number((totalPrice + deliveryPrice).toFixed(2)))
     const newCompleted = completed;
     newCompleted[activeStep] = true;
     setCompleted(newCompleted);
