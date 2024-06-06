@@ -64,20 +64,15 @@ router.get("/get", async (req, res) => {
 });
 
 
-
-/**
- * POST route template
- */
-
 // This endpoint is used when an artist is applying to join 
 // We receive the artist information and the genre.
 router.post("/", rejectUnauthenticated, async (req, res) => {
- 
+
   let connection
   try {
     connection = await pool.connect();
-    const artistQuery = 
-    `INSERT INTO "artist"
+    const artistQuery =
+      `INSERT INTO "artist"
     (
     "artist_name",
     "name", 
@@ -99,7 +94,7 @@ router.post("/", rejectUnauthenticated, async (req, res) => {
     )
      VALUES
      ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) returning "id"; `;
-    
+
     const artistValues = [
       req.body.artist_name,    // $1
       req.body.name,           // $2
@@ -202,8 +197,6 @@ router.post("/edit", rejectUnauthenticated, async (req, res) => {
 //     });
 // });
 
-
-
 router.put('/deactivate', rejectUnauthenticated, (req, res) => {
   const queryText = `
   UPDATE "artist"
@@ -262,8 +255,6 @@ router.delete("/deny/:artistId", rejectUnauthenticated, (req, res) => {
       res.status(500).json({ error: "Internal server error" });
     });
 });
-
-
 
 router.get('/pending', (req, res) => {
   const query = `
@@ -362,7 +353,6 @@ router.put('/adminedit', rejectUnauthenticated, async (req, res) => {
 })
 
 router.put('/:id', async (req, res) => {
-  console.log(req.body)
   let connection
   try {
     connection = await pool.connect();
@@ -390,8 +380,6 @@ router.put('/:id', async (req, res) => {
     res.sendStatus(500)
   }
 })
-
-
 
 router.get('/all', async (req, res) => {
   let connection
@@ -456,7 +444,6 @@ router.get('/current/:id', async (req, res) => {
   WHERE "id"=$1
   `
     const artistResponse = await connection.query(query, [req.params.id])
-    // console.log("artistResponse", artistResponse.rows[0]);
     const genreQuery = `
   SELECT
   "genres"."id" AS "id",
@@ -470,7 +457,6 @@ router.get('/current/:id', async (req, res) => {
     connection.query("COMMIT;");
     connection.release();
     artistResponse.rows[0].genres = genreResponse.rows
-    // console.log("genreResponse", genreResponse.rows);
     res.send(artistResponse.rows[0]);
   } catch (error) {
     console.log('get current artist failed:', error)
@@ -491,7 +477,6 @@ router.put('/active/:id', async (req, res) => {
   SET "is_active"=NOT "is_active"
   WHERE id=$1;
   `
-    // console.log('req.params.id:', req.params.id)
     await connection.query(approvalQuery, [req.params.id])
     connection.query("COMMIT;");
     connection.release();
@@ -552,17 +537,17 @@ router.put('/uploads/:id', rejectUnauthenticated, cloudinaryUpload.single("file"
 })
 
 router.put('/application-uploads/:id', rejectUnauthenticated, cloudinaryUpload.single("file"), (req, res) => {
-  if (req.params.id === '1'){
-    res.send({key: 'sample_song_1', value: req.file.path})
+  if (req.params.id === '1') {
+    res.send({ key: 'sample_song_1', value: req.file.path })
   }
-  else if (req.params.id === '2'){
-    res.send({key: 'sample_song_2', value: req.file.path})
+  else if (req.params.id === '2') {
+    res.send({ key: 'sample_song_2', value: req.file.path })
   }
-  else if (req.params.id === '3'){
-    res.send({key: 'sample_song_3', value: req.file.path})
+  else if (req.params.id === '3') {
+    res.send({ key: 'sample_song_3', value: req.file.path })
   }
-  else if (req.params.id === '4'){
-    res.send({key: 'photo', value: req.file.path})
+  else if (req.params.id === '4') {
+    res.send({ key: 'photo', value: req.file.path })
   }
 })
 

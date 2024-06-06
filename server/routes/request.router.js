@@ -4,12 +4,9 @@ const router = express.Router();
 const {
   rejectUnauthenticated,
 } = require("../modules/authentication-middleware");
-/**
- * GET route template
- */
+
 router.get('/user', rejectUnauthenticated, (req, res) => {
   const userId = req.user.id;
-  // console.log("req.user.id", req.user.id)
   const requestQuery = `
   SELECT 
   "song_request"."id" AS "id",
@@ -56,7 +53,6 @@ router.get('/user', rejectUnauthenticated, (req, res) => {
   pool.query(requestQuery, [userId])
     .then((result) => {
       res.send(result.rows);
-      // console.log("Request router GET all user requests", result.rows)
     })
     .catch((error) => {
       console.error("Error in request router GET all user requests", error);
@@ -319,25 +315,25 @@ router.post('/create', async (req, res) => {
     `
     const response = await connection.query(
       requestQuery, [
-        userId, 
-        genreId, 
-        requester, 
-        recipient, 
-        pronunciation, 
-        recipientRelationship, 
-        occasion, 
-        vocalType, 
-        vibe, 
-        tempo, 
-        inspiration, 
-        deliveryDays, 
-        streaming, 
-        extraVerse, 
-        license, 
-        backingTrack,
-        totalPrice,
-        artistPayout
-      ]
+      userId,
+      genreId,
+      requester,
+      recipient,
+      pronunciation,
+      recipientRelationship,
+      occasion,
+      vocalType,
+      vibe,
+      tempo,
+      inspiration,
+      deliveryDays,
+      streaming,
+      extraVerse,
+      license,
+      backingTrack,
+      totalPrice,
+      artistPayout
+    ]
     )
     if (artist === '') {
       const detailsQuery = `
@@ -391,13 +387,13 @@ router.put('/finish/:id', async (req, res) => {
     `
     const response = await connection.query(
       requestQuery, [
-        story1, 
-        story2, 
-        important_what, 
-        important_why, 
-        additional_info, 
-        req.params.id
-      ]
+      story1,
+      story2,
+      important_what,
+      important_why,
+      additional_info,
+      req.params.id
+    ]
     )
     connection.query("COMMIT;");
     connection.release();
@@ -450,21 +446,21 @@ router.put('/update/:id', rejectUnauthenticated, async (req, res) => {
     WHERE "id"=$16;
     `
     const requestValues = [
-      requester, 
-      recipient, 
-      pronunciation, 
-      recipientRelationship, 
-      occasion, 
-      genreId, 
-      vocalType, 
-      vibe, 
-      tempo, 
-      inspiration, 
-      story1, 
-      story2, 
-      importantWhat, 
-      importantWhy, 
-      additionalInfo, 
+      requester,
+      recipient,
+      pronunciation,
+      recipientRelationship,
+      occasion,
+      genreId,
+      vocalType,
+      vibe,
+      tempo,
+      inspiration,
+      story1,
+      story2,
+      importantWhat,
+      importantWhy,
+      additionalInfo,
       requestId
     ]
     const requestResult = await pool.query(requestQuery, requestValues);
@@ -539,7 +535,6 @@ router.get('/artist/:id', rejectUnauthenticated, (req, res) => {
   pool.query(requestQuery, [req.params.id])
     .then((result) => {
       res.send(result.rows);
-      // console.log("Request router GET all user requests", result.rows)
     })
     .catch((error) => {
       console.error("Error in request router GET all artist requests", error);
@@ -596,7 +591,6 @@ router.get('/artist/complete/:id', rejectUnauthenticated, (req, res) => {
   pool.query(requestQuery, [req.params.id])
     .then((result) => {
       res.send(result.rows);
-      // console.log("Request router GET all user requests", result.rows)
     })
     .catch((error) => {
       console.error("Error in request router GET all artist requests", error);
@@ -629,13 +623,12 @@ router.put('/confirm/:id', async (req, res) => {
 })
 
 router.put('/approve/:id', rejectUnauthenticated, (req, res) => {
-  console.log(req.body, req.params.id)
-    const approveQuery = `
+  const approveQuery = `
     UPDATE "song_request"
     SET "is_approved" = $1
     WHERE "id" = $2
     `
-    pool.query(approveQuery, [req.body.approved, req.params.id])
+  pool.query(approveQuery, [req.body.approved, req.params.id])
     .then((result) => {
       res.sendStatus(200)
     })
