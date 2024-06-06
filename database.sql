@@ -52,8 +52,8 @@ CREATE TABLE "song_request" (
   "is_complete" BOOLEAN DEFAULT FALSE,
   "is_approved" BOOLEAN DEFAULT FALSE,
   "is_paid" BOOLEAN DEFAULT FALSE,
-  "total_price" integer,
-  "artist_payout" integer
+  "total_price" decimal,
+  "artist_payout" decimal
 );
 
 CREATE TABLE "artist" (

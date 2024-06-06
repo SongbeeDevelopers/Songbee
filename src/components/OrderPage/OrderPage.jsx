@@ -81,6 +81,7 @@ export default function OrderPage({ routeVariants }) {
   };
 
   function dispatchDetails() {
+
     dispatch({
       type: "CREATE_SONG_REQUEST",
       payload: {
@@ -118,7 +119,7 @@ export default function OrderPage({ routeVariants }) {
   };
 
   const handleComplete = (event) => {
-    handleInput("total_price", totalPrice)
+    console.log("request data", requestData)
     const newCompleted = completed;
     newCompleted[activeStep] = true;
     setCompleted(newCompleted);
@@ -147,6 +148,10 @@ export default function OrderPage({ routeVariants }) {
         confirmButtonText: "Submit",
       }).then((result) => {
         if (result.isConfirmed) {
+          console.log("total price & artistPayout", (totalPrice + deliveryPrice).toFixed(2), artistPayout.toFixed(2))
+          handleInput("total_price", (totalPrice + deliveryPrice).toFixed(2))
+          handleInput("artist_payout", artistPayout.toFixed(2))
+          console.log("request data", requestData)
           dispatchDetails();
         }
       });
@@ -216,6 +221,7 @@ export default function OrderPage({ routeVariants }) {
           totalPrice={totalPrice}
           setArtistPayout={setArtistPayout}
           artistPayout={artistPayout}
+          deliveryPrice={deliveryPrice}
           />
       )
     }
