@@ -78,6 +78,7 @@ export default function ArtistCompletedRequestsTab({artistId}) {
                 <TableCell>Creation Date</TableCell>
                 <TableCell align="center">Requester E-Mail</TableCell>
                 <TableCell align="center">Due</TableCell>
+                <TableCell align="center">Status</TableCell>
                 <TableCell align="center">View Details</TableCell>
                 <TableCell align="center">Completion Form</TableCell>
               </TableRow>
@@ -101,6 +102,10 @@ export default function ArtistCompletedRequestsTab({artistId}) {
                   {/* due */}
                   <TableCell align="center">
                     {getDueDate(row.created_at, row.delivery_days)}
+                  </TableCell>
+
+                  <TableCell align="center">
+                    Done!
                   </TableCell>
 
                   {/* details btn */}

@@ -77,7 +77,7 @@ export default function AdminMainTab() {
       </CustomTabPanel>
 
       <CustomTabPanel value={value} index={2}>
-        <AdminRequestsTab num={1} approved={true} data={completedRequests} />
+        <AdminRequestsTab num={2} approved={true} data={completedRequests} />
       </CustomTabPanel>
     </div>
   )
