@@ -36,6 +36,8 @@ router.get('/user', rejectUnauthenticated, (req, res) => {
   "song_request"."backing_track",
   "song_request"."license",
   "song_request"."extra_verse",
+  "song_request"."total_price",
+  "song_request"."artist_payout",
   "song_details"."url",
   "song_details"."lyrics",
   "song_details"."title",
@@ -93,6 +95,8 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     "song_request"."backing_track",
     "song_request"."license",
     "song_request"."extra_verse",
+    "song_request"."total_price",
+    "song_request"."artist_payout",
     "song_details"."url",
     "song_details"."lyrics",
     "song_details"."title",
@@ -139,6 +143,8 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     "song_request"."backing_track",
     "song_request"."license",
     "song_request"."extra_verse",
+    "song_request"."total_price",
+    "song_request"."artist_payout",
     "song_details"."url",
     "song_details"."lyrics",
     "song_details"."title",
@@ -186,6 +192,8 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     "song_request"."backing_track",
     "song_request"."license",
     "song_request"."extra_verse",
+    "song_request"."total_price",
+    "song_request"."artist_payout",
     "song_details"."url",
     "song_details"."lyrics",
     "song_details"."title",
@@ -246,6 +254,8 @@ router.get('/current/:id', (req, res) => {
     "song_request"."backing_track",
     "song_request"."license",
     "song_request"."extra_verse",
+    "song_request"."total_price",
+    "song_request"."artist_payout",
     "song_details"."url",
     "song_details"."artist_id",
     "song_details"."lyrics",
@@ -296,13 +306,15 @@ router.post('/create', async (req, res) => {
     const deliveryDays = req.body.delivery_days;
     const streaming = req.body.streaming;
     const extraVerse = req.body.extra_verse;
-    const license = req.body.license
-    const backingTrack = req.body.backing_track
+    const license = req.body.license;
+    const backingTrack = req.body.backing_track;
+    const totalPrice = req.body.total_price;
+    const artistPayout = req.body.artist_payout;
     const requestQuery = `
     INSERT INTO "song_request"
-      ("user_id", "genre_id", "requester", "recipient", "pronunciation", "recipient_relationship", "occasion", "vocal_type", "vibe", "tempo", "inspiration", "delivery_days", "streaming", "extra_verse", "license", "backing_track")
+      ("user_id", "genre_id", "requester", "recipient", "pronunciation", "recipient_relationship", "occasion", "vocal_type", "vibe", "tempo", "inspiration", "delivery_days", "streaming", "extra_verse", "license", "backing_track", "total_price", "artist_payout")
       VALUES
-      ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)
+      ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18)
       RETURNING "id";
     `
     const response = await connection.query(
@@ -322,7 +334,9 @@ router.post('/create', async (req, res) => {
         streaming, 
         extraVerse, 
         license, 
-        backingTrack
+        backingTrack,
+        totalPrice,
+        artistPayout
       ]
     )
     if (artist === '') {
@@ -500,6 +514,8 @@ router.get('/artist/:id', rejectUnauthenticated, (req, res) => {
     "song_request"."delivery_days",
     "song_request"."is_complete",
     "song_request"."is_approved",
+    "song_request"."total_price",
+    "song_request"."artist_payout",
     "song_details"."url",
     "song_details"."lyrics",
     "song_details"."title",
@@ -554,6 +570,8 @@ router.get('/artist/complete/:id', rejectUnauthenticated, (req, res) => {
     "song_request"."delivery_days",
     "song_request"."is_complete",
     "song_request"."is_approved",
+    "song_request"."total_price",
+    "song_request"."artist_payout",
     "song_details"."url",
     "song_details"."lyrics",
     "song_details"."title",

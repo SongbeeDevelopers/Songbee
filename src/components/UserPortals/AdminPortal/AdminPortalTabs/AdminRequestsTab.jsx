@@ -23,6 +23,7 @@ import {
 } from '@mui/material';
 
 import Swal from 'sweetalert2';
+import emailjs from '@emailjs/browser'
 
 
 export default function AdminRequestsTab({ num, data }) {
@@ -35,6 +36,10 @@ export default function AdminRequestsTab({ num, data }) {
   // modal state
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [completeOpen, setCompleteOpen] = useState(false)
+
+  emailjs.init({
+    publicKey: 'kh8qhjYSE2KhcvUoT'
+  })
 
   const assignArtist = (reqId, artistId) => {
     Swal.fire({
@@ -90,7 +95,7 @@ export default function AdminRequestsTab({ num, data }) {
   }
 
   // request approval logic
-  const approveRequest = (reqId, approved) => {
+  const approveRequest = (reqId, approved, request) => {
     approved === true ?
     Swal.fire({
       title: "Approve Song?",
@@ -102,6 +107,19 @@ export default function AdminRequestsTab({ num, data }) {
       if (result.isConfirmed) {
         dispatch({type: 'UPDATE_APPROVAL', payload: {reqId, approved}})
         Swal.fire({title: 'Approved!', icon: "success"})
+        const templateParams = {
+          to_email: request.email,
+          to_name: request.email,
+          message: "Congratulations! Your song has been delivered! Log into your customer portal to view your new custom song!"
+        }
+        emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams).then(
+          (response) => {
+            console.log('SUCCESS!', response.status, response.text);
+            },
+          (error) => {
+            console.log('FAILED...', error);
+            },
+        );
       }})
       :
       Swal.fire({
@@ -206,7 +224,7 @@ export default function AdminRequestsTab({ num, data }) {
                             <Select
                               value={row.artist_id}
                               label="Approve"
-                              onChange={(event) => approveRequest(row.id, event.target.value)}
+                              onChange={(event) => approveRequest(row.id, event.target.value, row)}
                             >
                               <MenuItem value={true}>Approve</MenuItem>
                               <MenuItem value={false}>Deny</MenuItem>
