@@ -157,7 +157,6 @@ const submitEdit = (event) => {
             <textarea
               value={edit.bio}
               className='admin-portal-textarea admin-bio-input'
-              placeholder='What?'
               onChange={() => handleInput('bio', event.target.value)}
             ></textarea>
           </label>

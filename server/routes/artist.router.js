@@ -169,38 +169,40 @@ router.post("/edit", rejectUnauthenticated, async (req, res) => {
 });
 
 
-router.put("/approve", rejectUnauthenticated, (req, res) => {
-  const artistId = req.params.artistId;
-  const queryText = `
-    UPDATE "artist"
-    SET
-      "artist_name" = (SELECT "edited_artistName" FROM "pendingartistedit" WHERE "artist_id" = $1),
-      "name" = (SELECT "edited_name" FROM "pendingartistedit" WHERE "artist_id" = $1),
-      "bio" = (SELECT "edited_bio" FROM "pendingartistedit" WHERE "artist_id" = $1),
-      "website" = (SELECT "edited_website" FROM "pendingartistedit" WHERE "artist_id" = $1),
-      "vocal_type" = (SELECT "edited_vocal_type" FROM "pendingartistedit" WHERE "artist_id" = $1)
-    WHERE "id" = $1;
-  `;
-  pool
-    .query(queryText, [artistId])
-    .then(() => {
-      // After updating artist information, delete the pending edit
-      const deleteQuery = `DELETE FROM "pendingartistedit" WHERE "artist_id" = $1;`;
-      pool
-        .query(deleteQuery, [artistId])
-        .then(() => {
-          res.sendStatus(200); // Successfully approved and applied edit
-        })
-        .catch((deleteErr) => {
-          console.error("Error deleting pending edit: ", deleteErr);
-          res.sendStatus(500);
-        });
-    })
-    .catch((err) => {
-      console.error("Error approving edit: ", err);
-      res.sendStatus(500);
-    });
-});
+// router.put("/approve", rejectUnauthenticated, (req, res) => {
+//   const artistId = req.params.artistId;
+//   const queryText = `
+//     UPDATE "artist"
+//     SET
+//       "artist_name" = (SELECT "edited_artistName" FROM "pendingartistedit" WHERE "artist_id" = $1),
+//       "name" = (SELECT "edited_name" FROM "pendingartistedit" WHERE "artist_id" = $1),
+//       "bio" = (SELECT "edited_bio" FROM "pendingartistedit" WHERE "artist_id" = $1),
+//       "website" = (SELECT "edited_website" FROM "pendingartistedit" WHERE "artist_id" = $1),
+//       "vocal_type" = (SELECT "edited_vocal_type" FROM "pendingartistedit" WHERE "artist_id" = $1)
+//     WHERE "id" = $1;
+//   `;
+//   pool
+//     .query(queryText, [artistId])
+//     .then(() => {
+//       // After updating artist information, delete the pending edit
+//       const deleteQuery = `DELETE FROM "pendingartistedit" WHERE "artist_id" = $1;`;
+//       pool
+//         .query(deleteQuery, [artistId])
+//         .then(() => {
+//           res.sendStatus(200); // Successfully approved and applied edit
+//         })
+//         .catch((deleteErr) => {
+//           console.error("Error deleting pending edit: ", deleteErr);
+//           res.sendStatus(500);
+//         });
+//     })
+//     .catch((err) => {
+//       console.error("Error approving edit: ", err);
+//       res.sendStatus(500);
+//     });
+// });
+
+
 
 router.put('/deactivate', rejectUnauthenticated, (req, res) => {
   const queryText = `
@@ -359,7 +361,8 @@ router.put('/adminedit', rejectUnauthenticated, async (req, res) => {
   }
 })
 
-router.put('/artist/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
+  console.log(req.body)
   let connection
   try {
     connection = await pool.connect();
@@ -376,7 +379,6 @@ router.put('/artist/:id', async (req, res) => {
     SET "class"=$1
     WHERE "id"=$2;
     `
-    // console.log('req.body.user_id', req.body.user_id);
     await connection.query(classQuery, [2, req.body.user_id])
     connection.query("COMMIT;");
     connection.release();
