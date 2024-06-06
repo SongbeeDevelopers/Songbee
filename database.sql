@@ -75,7 +75,8 @@ CREATE TABLE "artist" (
   "streaming_link" VARCHAR,
   "approved" BOOLEAN DEFAULT FALSE,
   "w9" VARCHAR,
-  "paypal" VARCHAR
+  "paypal" VARCHAR,
+  "agreement" VARCHAR
 );
 
 CREATE TABLE "song_details" (
