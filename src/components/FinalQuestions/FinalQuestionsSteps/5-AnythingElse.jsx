@@ -25,8 +25,11 @@ export default function AnythingElse({ handleInput, value }) {
               handleInput("additional_info", event.target.value)
             }
             multiline
-            rows={4}
-            sx={{ backgroundColor: 'white' }}
+            rows={6}
+            inputProps={{
+              cols: 60
+            }}
+            sx={{ backgroundColor: 'white', mt: 2}}
           />
         </div>
       </div>

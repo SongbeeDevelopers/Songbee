@@ -2,7 +2,7 @@
     width: 100%;
     padding: 0 20%;
     margin: 0 auto;
-}
+} 
 
 .maincheckoutagree {
     flex-direction: column;
@@ -45,13 +45,15 @@
 }
 
 .reqFormPage p {
-    text-align: center;
+    text-align: left;
     font-weight: 500;
     font-size: 14px;
     color: gray;
     margin-bottom: 40px;
-    margin-top: 0px
+    margin-top: 10px
 }
+
+
 
 .reqForm {
     display: flex;
@@ -79,8 +81,11 @@ and dropdown in Songbee JR */
 .reqFormGroup3 {
     display: flex;
     gap: 30px;
-    justify-content: center;   
+    justify-content: center; 
+    margin-top: 10px; 
 }
+
+
 
 .reqFormSelect2 {
     margin-left: 20px;
@@ -96,7 +101,8 @@ and dropdown in Songbee JR */
 }
 .reqFormGroup3 label {
     font-weight: 500;
-
+    text-align: center;
+    margin-top: 10px;
 }
 
 .reqFormGroup input {
@@ -115,6 +121,12 @@ and dropdown in Songbee JR */
     padding-left: 15px;
     box-shadow: 0 2px 3px rgba(0, 0, 0, .2);
 }
+
+.reqFormTextField {
+   margin-top: 10px;
+
+}
+
 .reqFormGroup3input {
     justify-self: center;
     border-radius: 8px;
@@ -131,6 +143,8 @@ and dropdown in Songbee JR */
     padding-left: 15px;
     box-shadow: 0 2px 3px rgba(0, 0, 0, .2);
 }
+
+
 
 .reqFormInput {
     display: flex;

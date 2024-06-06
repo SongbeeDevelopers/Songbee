@@ -43,7 +43,8 @@ export default function MemoriesCont({ handleInput, value }) {
           placeholder="Prompt 2"
           onChange={() => handleInput("story2", event.target.value)}
           multiline
-          rows={4}
+          rows={6}
+          fullWidth
           sx={{ backgroundColor: 'white' }}
         />
       </div>

@@ -19,7 +19,7 @@ export default function WhyIsItImportant({ handleInput, value }) {
             handleInput("important_why", event.target.value)
           }
           multiline
-          rows={4}
+          rows={6}
           sx={{ backgroundColor: 'white' }}
         />
       </div>

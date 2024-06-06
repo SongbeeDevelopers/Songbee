@@ -22,7 +22,7 @@ export default function TellUsMore({ handleInput, value }) {
             handleInput("important_what", event.target.value)
           }
           multiline
-          rows={4}
+          rows={6}
           sx={{ backgroundColor: 'white' }}
         />
         <p className="reqFormPrompts">

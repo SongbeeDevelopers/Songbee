@@ -120,9 +120,6 @@ function ComponentRouter() {
 
 
 
-          {/* login/reg */}
-          <MainRoute exact path="/login">
-
         {/* login/reg */}
         <MainRoute exact path="/login">
  

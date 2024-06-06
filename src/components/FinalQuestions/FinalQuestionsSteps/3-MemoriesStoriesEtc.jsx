@@ -36,14 +36,15 @@ export default function MemoriesStoriesEtc({ handleInput, value }) {
         someone outside of your relationship reads it.{" "}
       </label>
 
-      <div className="reqFormGroup3">
+      <div className="reqFormTextField">
         <TextField
           value={value}
           className="reqFormGroup3input"
           placeholder="Prompt 1"
           onChange={() => handleInput("story1", event.target.value)}
           multiline
-          rows={4}
+          rows={6}
+          fullWidth
           sx={{ backgroundColor: 'white' }}
         />
       </div>
