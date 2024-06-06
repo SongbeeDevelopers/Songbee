@@ -81,7 +81,8 @@ export default function OrderPage({ routeVariants }) {
   };
 
   function dispatchDetails() {
-
+    handleInput("total_price", (totalPrice + deliveryPrice).toFixed(2))
+    handleInput("artist_payout", artistPayout.toFixed(2))
     dispatch({
       type: "CREATE_SONG_REQUEST",
       payload: {
@@ -149,8 +150,6 @@ export default function OrderPage({ routeVariants }) {
       }).then((result) => {
         if (result.isConfirmed) {
           console.log("total price & artistPayout", (totalPrice + deliveryPrice).toFixed(2), artistPayout.toFixed(2))
-          handleInput("total_price", (totalPrice + deliveryPrice).toFixed(2))
-          handleInput("artist_payout", artistPayout.toFixed(2))
           console.log("request data", requestData)
           dispatchDetails();
         }

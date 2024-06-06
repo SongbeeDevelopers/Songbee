@@ -2,19 +2,13 @@ import React from 'react';
 import { useState, useEffect, useRef  } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { io } from "socket.io-client";
 import ChatBar from './ChatBar';
 import ChatBody from './ChatBody';
 import ChatFooter from './ChatFooter';
 import './Socket.css'
 
 const ChatPage = () => {
-    // const socket = io('http://localhost:5001', {
-    //     withCredentials: true,
-    //     extraHeaders: {
-    //         "songbee-message": "abcd"
-    //     }
-    // });
+
     const dispatch = useDispatch()
     
     const lastMessageRef = useRef(null);
@@ -28,9 +22,6 @@ const ChatPage = () => {
     })
     }
   
-    // useEffect(() => {
-    //   socket.on('messageResponse', (data) => setMessages([...messages, data]));
-    // }, [socket, messages]);
     useEffect(() => {
             dispatch({
                 type: "FETCH_CURRENT_CHAT",
@@ -51,15 +42,17 @@ const ChatPage = () => {
     const messages = useSelector(store => store.currentChat);
     const user = useSelector(store => store.user)
 
-    
+    let user1
     let user2
     chats.map((chat) => {
       if (chat.id === Number(id)){
         if(user.id === chat.user1_id){
           user2 = chat.user2_email
+          user1 = chat.user1_email
         }
         else if (user.id === chat.user2_id){
           user2 = chat.user1_email
+          user1 = chat.user2_email
         }
       }
     })
@@ -73,7 +66,7 @@ const ChatPage = () => {
       <div className="chat">
         <div className="chat__main">
           <ChatBody messages={messages} lastMessageRef={lastMessageRef} user2={user2}/>
-          <ChatFooter id={id} />
+          <ChatFooter id={id} user2={user2} user1={user1}/>
         </div>
       </div>
     );
