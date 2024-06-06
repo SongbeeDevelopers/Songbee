@@ -25,7 +25,7 @@ import {
 import Swal from 'sweetalert2';
 
 
-export default function AdminRequestsTab({ num, approved, data }) {
+export default function AdminRequestsTab({ num, data }) {
 
   const dispatch = useDispatch()
 
@@ -110,7 +110,7 @@ export default function AdminRequestsTab({ num, approved, data }) {
                   <TableCell align="center">Requester E-Mail</TableCell>
                   <TableCell align="center">Artist</TableCell>
                   <TableCell align="center">Due</TableCell>
-                  {num === 1 && <TableCell align="center">Approved?</TableCell>}
+                  {num === 1 && <TableCell align="center">Approve?</TableCell>}
                   <TableCell align="center">View Details</TableCell>
                   <TableCell align="center">Completion Form</TableCell>
                   <TableCell align="center">Message</TableCell>
