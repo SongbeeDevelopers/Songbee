@@ -26,7 +26,7 @@ import Swal from 'sweetalert2';
 import emailjs from '@emailjs/browser'
 
 
-export default function AdminRequestsTab({ num, approved, data }) {
+export default function AdminRequestsTab({ num, data }) {
 
   const dispatch = useDispatch()
 
@@ -96,20 +96,43 @@ export default function AdminRequestsTab({ num, approved, data }) {
 
   // request approval logic
   const approveRequest = (reqId, approved, request) => {
-    dispatch({type: 'UPDATE_APPROVAL', payload: {reqId, approved}})
-    const templateParams = {
-      to_email: request.email,
-      to_name: request.email,
-      message: "Congratulations! Your song has been delivered! Log into your customer portal to view your new custom song!"
-    }
-    emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams).then(
-      (response) => {
-        console.log('SUCCESS!', response.status, response.text);
-      },
-      (error) => {
-        console.log('FAILED...', error);
-      },
-    );
+    approved === true ?
+    Swal.fire({
+      title: "Approve Song?",
+      text: "The customer will now have access to the song.",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Approve",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch({type: 'UPDATE_APPROVAL', payload: {reqId, approved}})
+        Swal.fire({title: 'Approved!', icon: "success"})
+        const templateParams = {
+          to_email: request.email,
+          to_name: request.email,
+          message: "Congratulations! Your song has been delivered! Log into your customer portal to view your new custom song!"
+        }
+        emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams).then(
+          (response) => {
+            console.log('SUCCESS!', response.status, response.text);
+            },
+          (error) => {
+            console.log('FAILED...', error);
+            },
+        );
+      }})
+      :
+      Swal.fire({
+        title: "Deny Song?",
+        text: "The artist will be alerted that their song has been denied. Please supply further details using the messaging system.",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: "Deny",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // send notification here
+          Swal.fire({title: 'Sent!', icon: "success"})
+        }})
   }
 
   return (
@@ -128,7 +151,7 @@ export default function AdminRequestsTab({ num, approved, data }) {
                   <TableCell align="center">Requester E-Mail</TableCell>
                   <TableCell align="center">Artist</TableCell>
                   <TableCell align="center">Due</TableCell>
-                  {num === 1 && <TableCell align="center">Approved?</TableCell>}
+                  {num === 1 && <TableCell align="center">Approve?</TableCell>}
                   <TableCell align="center">View Details</TableCell>
                   <TableCell align="center">Completion Form</TableCell>
                   <TableCell align="center">Message</TableCell>
