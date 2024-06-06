@@ -28,7 +28,9 @@ export default function AddOns({
   agreePrivacy,
   setAgreePrivacy,
   setTotalPrice,
-  totalPrice
+  totalPrice,
+  artistPayout,
+  setArtistPayout
 }) {
 
   const requestData = useSelector((store) => store.requestData);
@@ -54,20 +56,24 @@ export default function AddOns({
       if (requestData.extra_verse === false) {
         handleInput("extra_verse", true)
         setTotalPrice(totalPrice + prices.extra_verse)
+        setArtistPayout(artistPayout + 25)
       }
       else if (requestData.extra_verse === true) {
         handleInput("extra_verse", false)
         setTotalPrice(totalPrice - prices.extra_verse)
+        setArtistPayout(artistPayout - 25)
       }
     }
     if (value === 'license') {
       if (requestData.license === false) {
         handleInput("license", true)
         setTotalPrice(totalPrice + prices.license)
+        setArtistPayout(artistPayout + 50)
       }
       else if (requestData.license === true) {
         handleInput("license", false)
         setTotalPrice(totalPrice - prices.license)
+        setArtistPayout(artistPayout - 50)
       }
     }
     if (value === 'backing') {

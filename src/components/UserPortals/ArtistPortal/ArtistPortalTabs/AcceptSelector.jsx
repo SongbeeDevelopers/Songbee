@@ -31,8 +31,8 @@ export default function AcceptSelector({ request }) {
                         artist: request.artist_id}
               })
               const templateParams = {
-                to_email: "walkerneudorff@gmail.com",
-                to_name: "Walker Neudorff",
+                to_email: request.email,
+                to_name: request.email,
                 message: "An artist has accepted your song request! We are now working hard on completing your song!"
               }
               emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams).then(

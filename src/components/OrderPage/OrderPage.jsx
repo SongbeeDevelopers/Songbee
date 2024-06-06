@@ -53,6 +53,10 @@ export default function OrderPage({ routeVariants }) {
   const [agreeTerms, setAgreeTerms] = useState(false)
   const [agreePrivacy, setAgreePrivacy] = useState(false)
   const [agreeEUA, setAgreeEUA] = useState(false)
+  // payment logic
+  const [totalPrice, setTotalPrice] = useState(224.99)
+  const [deliveryPrice, setDeliveryPrice] = useState(0)
+  const [artistPayout, setArtistPayout] = useState(100)
 
   // fetch reducers on mount
   useEffect(() => {
@@ -89,8 +93,6 @@ export default function OrderPage({ routeVariants }) {
   // ----- FORM LOGIC -----
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState({});
-  const [totalPrice, setTotalPrice] = useState(224.99)
-  const [deliveryPrice, setDeliveryPrice] = useState(0)
 
   const totalSteps = () => { return steps.length };
   const completedSteps = () => { return Object.keys(completed).length };
@@ -116,6 +118,7 @@ export default function OrderPage({ routeVariants }) {
   };
 
   const handleComplete = (event) => {
+    handleInput("total_price", totalPrice)
     const newCompleted = completed;
     newCompleted[activeStep] = true;
     setCompleted(newCompleted);
@@ -211,6 +214,8 @@ export default function OrderPage({ routeVariants }) {
           setAgreePrivacy={setAgreePrivacy}
           setTotalPrice={setTotalPrice} 
           totalPrice={totalPrice}
+          setArtistPayout={setArtistPayout}
+          artistPayout={artistPayout}
           />
       )
     }
