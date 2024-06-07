@@ -56,8 +56,8 @@ router.put("/:id", rejectUnauthenticated, cloudinaryUpload.single("file"), async
   let connection
   try {
     connection = await pool.connect();
-
     connection.query("BEGIN;");
+
     let audioUrl
     if (req.file) {
       audioUrl = req.file.path;
@@ -84,13 +84,23 @@ router.put("/:id", rejectUnauthenticated, cloudinaryUpload.single("file"), async
       audioUrl, lyrics, title, artist, streaming_link, songRequestId,
     ];
     const detailsResult = await connection.query(detailsQuery, detailsValues);
-    const completeQuery = `
-      UPDATE "song_request"
-      SET
-        "is_complete"=TRUE
-      WHERE "id"=$1;
+
+    let completeQuery
+    if (req.user.class === 3) {
+      completeQuery = `
+        UPDATE "song_request"
+        SET "is_complete" = TRUE, "is_approved" = TRUE
+        WHERE "id" = $1;
       `
+    } else {
+      completeQuery = `
+        UPDATE "song_request"
+        SET "is_complete"=TRUE
+        WHERE "id" = $1;
+        `
+    }
     const completeResult = await connection.query(completeQuery, [songRequestId])
+
     connection.query("COMMIT;");
     connection.release();
     res.sendStatus(201);

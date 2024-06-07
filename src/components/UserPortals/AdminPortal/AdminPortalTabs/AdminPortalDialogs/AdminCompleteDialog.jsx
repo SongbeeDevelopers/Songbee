@@ -187,7 +187,7 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
                     fullWidth={true}
                   >
                     {artists.map((artist) => (
-                      <MenuItem value={artist.id} key={artist.id}>{artist.artist_name}</MenuItem>
+                      artist.is_active && <MenuItem value={artist.id} key={artist.id}>{artist.artist_name}</MenuItem>
                     ))}
                   </Select>
                 </>
