@@ -136,7 +136,6 @@ function ComponentRouter() {
 
         <MainRoute exact path="/register">
           {user.id ? (
-
             // If the user is already logged in, redirect them to the /user page
             <Redirect to={redirectPath(user)} />
           ) : (

@@ -29,7 +29,6 @@ const ChatFooter = ({ id, user2, user1 }) => {
       payload: message
     })
     dispatch({type: "CLEAR_MESSAGE"});
-    console.log("message", message)
 
     const templateParams = {
       to_email: user2,
