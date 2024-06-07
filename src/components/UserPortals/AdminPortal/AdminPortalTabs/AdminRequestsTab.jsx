@@ -97,23 +97,24 @@ export default function AdminRequestsTab({ num, data }) {
   // request approval logic
   const approveRequest = (reqId, approved, request) => {
     approved === true ?
-    Swal.fire({
-      title: "Approve Song?",
-      text: "The customer will now have access to the song.",
-      icon: "question",
-      showCancelButton: true,
-      confirmButtonText: "Approve",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        dispatch({type: 'UPDATE_APPROVAL', payload: {reqId, approved}})
-        Swal.fire({title: 'Approved!', icon: "success"})
-        const templateParams = {
-          to_email: request.email,
-          to_name: request.email,
-          message: "Congratulations! Your song has been delivered! Log into your customer portal to view your new custom song!"
+      Swal.fire({
+        title: "Approve Song?",
+        text: "The customer will now have access to the song.",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: "Approve",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          dispatch({ type: 'UPDATE_APPROVAL', payload: { reqId, approved } })
+          Swal.fire({ title: 'Approved!', icon: "success" })
+          const templateParams = {
+            to_email: request.email,
+            to_name: request.email,
+            message: "Congratulations! Your song has been delivered! Log into your customer portal to view your new custom song!"
+          }
+          emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams)
         }
-        emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams)
-      }})
+      })
       :
       Swal.fire({
         title: "Deny Song?",
@@ -124,8 +125,9 @@ export default function AdminRequestsTab({ num, data }) {
       }).then((result) => {
         if (result.isConfirmed) {
           // send notification here
-          Swal.fire({title: 'Sent!', icon: "success"})
-        }})
+          Swal.fire({ title: 'Sent!', icon: "success" })
+        }
+      })
   }
 
   return (
