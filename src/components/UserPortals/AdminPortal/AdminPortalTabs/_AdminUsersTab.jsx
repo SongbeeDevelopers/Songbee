@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useSelector } from 'react-redux';
 
-import UserClassSelector from './UserClassSelector';
 import FilterBar from '../../../FilterBar/FilterBar';
 import MessageUserButton from '../../../AdminPortal/AdminPortalTabs/MessageUserButton';
 
@@ -26,13 +25,11 @@ export default function AdminUsersTab() {
           <div className="admin-tabs-contents">
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
 
-
               <TableHead>
                 <TableRow>
                   <TableCell>Email</TableCell>
                   <TableCell align="center">Credit</TableCell>
                   <TableCell align="center">Created At</TableCell>
-                  <TableCell align="center">User Class</TableCell>
                   <TableCell align="center">Message</TableCell>
                 </TableRow>
               </TableHead>
@@ -53,11 +50,6 @@ export default function AdminUsersTab() {
                     {/* creation date */}
                     <TableCell align="center">
                       {new Date(user.created_at).toLocaleString('en-us')}
-                    </TableCell>
-
-                    {/* class */}
-                    <TableCell align="center">
-                      <UserClassSelector user={user} />
                     </TableCell>
 
                     {/* messaging */}

@@ -53,15 +53,12 @@ export default function ArtistSBRequestsTab({ artistProfile }) {
     dispatch({ type: 'SET_EDIT_DATA', payload: row })
     setDetailsOpen(true)
   }
+
   const closeDetails = () => {
     dispatch({ type: 'CLEAR_EDIT_DATA' })
     setDetailsOpen(false)
   }
 
-  // complete modal logic
-  const openComplete = () => {
-
-  }
   const closeComplete = () => {
     dispatch({ type: 'CLEAR_EDIT_DATA' })
     setCompleteOpen(false)
@@ -96,8 +93,8 @@ export default function ArtistSBRequestsTab({ artistProfile }) {
                 // converts artist genres to more easily check if request matches artists genres
                 const artistGenresSimple = artistProfile.genres.map(genre => genre.genre)
 
-                // only show table if request is within artist genres
-                if (artistGenresSimple.includes(row.genre)) return (
+                // only show table if request is within artist genres and is not assigned an artist
+                if (artistGenresSimple.includes(row.genre) && !artistRequests.artist_id) return (
                   <TableRow hover key={row.id}>
                     {/* accepted */}
                     <TableCell align="center">

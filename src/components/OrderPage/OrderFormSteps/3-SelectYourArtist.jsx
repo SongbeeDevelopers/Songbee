@@ -40,6 +40,7 @@ export default function SelectYourArtist({ handleInput }) {
               (artist.genres[1] &&
                 artist.genres[1].id === Number(requestData.genre)) ||
               requestData.genre === ""
+              && artist.is_active
             ) {
               return (
                 <div className="select-artist-artist">
