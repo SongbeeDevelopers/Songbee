@@ -13,8 +13,9 @@ import {
   Select
 } from '@mui/material'
 import Swal from 'sweetalert2';
-
 import emailjs from '@emailjs/browser'
+
+import AudioButton from '../../../../ArtistPages/AudioButton';
 
 
 export default function AdminCompleteDialog({ setCompleteOpen }) {
@@ -35,7 +36,7 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
   })
   const templateParams = {
     to_email: 'hello@songbee.com',
-    to_name: 'hello@songbee.com',
+    to_name: 'Songbee Admins',
     message: `${artistProfile && artistProfile.artist_name} has submitted a song for review!`
   }
 
@@ -68,15 +69,6 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
         }
         detailsForm.append("lyrics", edit.lyrics)
         detailsForm.append("streaming_link", edit.streaming_link)
-        if (edit.is_complete === false) {
-          dispatch({
-            type: 'CREATE_SONG_DETAILS',
-            payload: {
-              id: edit.id,
-              data: detailsForm
-            }
-          })
-        } else {
           dispatch({
             type: "UPDATE_SONG_DETAILS",
             payload: {
@@ -84,7 +76,6 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
               data: detailsForm
             }
           });
-        }
         dispatch({ type: 'CLEAR_EDIT_DATA' })
         setCompleteOpen(false)
       }
@@ -131,20 +122,38 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
         <DialogContentText>
           <div className='completeDialogueContent'>
             <div>
+              {edit.url ?
+              <>
               <Typography gutterBottom variant="overline" display="block" align='left'>
                 Song URL
               </Typography>
 
               <TextField
                 required
-                placeholder="Song Title"
+                placeholder="Song URL"
                 multiline
                 maxRows={4}
                 value={edit.url}
                 onChange={(event) => handleInput("url", event.target.value)}
                 fullWidth={true}
               />
+              <AudioButton url={edit.url} />
 
+              <Typography gutterBottom variant="overline" display="block" align='left'>
+                Upload New Song File:
+              </Typography>
+
+              <TextField
+                required
+                type="file"
+                className="form-control-file"
+                name="uploaded_file"
+                onChange={(evt) => setSongFile(evt.target.files[0])}
+                fullWidth={true}
+              />
+              </>
+                :
+                <>
               <Typography gutterBottom variant="overline" display="block" align='left'>
                 Upload Song File:
               </Typography>
@@ -157,6 +166,8 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
                 onChange={(evt) => setSongFile(evt.target.files[0])}
                 fullWidth={true}
               />
+              </>
+                }
             </div>
 
             <div>

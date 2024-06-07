@@ -14,6 +14,7 @@ export default function AdminDetaisDialog({ setDetailsOpen }) {
   const edit = useSelector(store => store.edit)
   const genres = useSelector(store => store.genres)
 
+  console.log('edit', edit)
   // stores changes in edit reducer
   const handleInput = (key, value) => {
     dispatch({type: 'EDIT_INPUT', payload: {key, value}})
