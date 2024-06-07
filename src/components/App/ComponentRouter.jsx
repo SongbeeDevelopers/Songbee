@@ -145,6 +145,12 @@ function ComponentRouter() {
           )}
         </MainRoute>
 
+       
+
+        <MainRoute exact path="/logout">
+          <LandingPage routeVariants={routeVariants} />
+        </MainRoute>
+
 
        
 
