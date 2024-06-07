@@ -502,7 +502,12 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
     });
 });
 
-router.get('/artist/:id/:type', rejectUnauthenticated, (req, res) => {
+router.get('/artist/:id/:type', rejectUnauthenticated, async (req, res) => {
+  let connection
+  let response = []
+  try {
+    connection = await pool.connect();
+    connection.query("BEGIN;");
   const requestQuery = `
     SELECT 
     "song_request"."id" AS "id",
@@ -527,6 +532,7 @@ router.get('/artist/:id/:type', rejectUnauthenticated, (req, res) => {
     "song_request"."is_approved",
     "song_request"."total_price",
     "song_request"."artist_payout",
+    "song_request"."genre_id",
     "song_details"."url",
     "song_details"."lyrics",
     "song_details"."title",
@@ -545,16 +551,84 @@ router.get('/artist/:id/:type', rejectUnauthenticated, (req, res) => {
     ON "song_request"."user_id"="user"."id"
     WHERE "song_request"."vocal_type" ilike $1
     AND
+    "song_request"."is_complete"=FALSE
+    AND
+    "song_details"."artist_id"=NULL;
+    `
+  const requestResult = await connection.query(requestQuery, [req.params.type])
+  const genreQuery = `
+  SELECT
+  "genres"."id" AS "id",
+  "genres"."name" AS "genre"
+  FROM "genres"
+  LEFT JOIN "artist_genres"
+  ON "genres"."id"="artist_genres"."genre_id"
+  WHERE "artist_genres"."artist_id"=$1
+  `
+  const genreResponse = await connection.query(genreQuery, [req.params.id])
+  for(let genre of genreResponse.rows){
+    for(let request of requestResult.rows){
+      if(genre.id === request.genre_id){
+        response.push(request);
+      }
+    }
+  }
+  const artistQuery = `
+    SELECT 
+    "song_request"."id" AS "id",
+    "song_request"."user_id",
+    "song_request"."requester",
+    "song_request"."recipient",
+    "song_request"."pronunciation",
+    "song_request"."recipient_relationship",
+    "song_request"."occasion",
+    "song_request"."vocal_type",
+    "song_request"."vibe",
+    "song_request"."tempo",
+    "song_request"."inspiration",
+    "song_request"."story1",
+    "song_request"."story2",
+    "song_request"."important_what",
+    "song_request"."important_why",
+    "song_request"."additional_info",
+    "song_request"."created_at",
+    "song_request"."delivery_days",
+    "song_request"."is_complete",
+    "song_request"."is_approved",
+    "song_request"."total_price",
+    "song_request"."artist_payout",
+    "song_request"."genre_id",
+    "song_details"."url",
+    "song_details"."lyrics",
+    "song_details"."title",
+    "song_details"."streaming_link",
+    "song_details"."accepted",
+    "song_details"."id" AS "details_id",
+    "song_details"."artist_id",
+    "genres"."name" AS "genre",
+    "user"."email"
+    FROM "song_request"
+    LEFT JOIN "genres"
+    ON "song_request"."genre_id"="genres"."id"
+    LEFT JOIN "song_details"
+    ON "song_request"."id"="song_details"."song_request_id"
+    LEFT JOIN "user"
+    ON "song_request"."user_id"="user"."id"
+    WHERE "song_details"."artist_id" = $1
+    AND
     "song_request"."is_complete"=FALSE;
     `
-  pool.query(requestQuery, [req.params.type])
-    .then((result) => {
-      res.send(result.rows);
-    })
-    .catch((error) => {
-      console.error("Error in request router GET all artist requests", error);
-      res.sendStatus(500);
-    })
+  const artistResult = await connection.query(artistQuery, [req.params.id])
+  response = [...response, ...artistResult.rows]
+    connection.query("COMMIT;");
+    connection.release();
+    res.send(response);
+  } catch (error) {
+    console.log("Error in request router GET all artist requests", error);
+    connection.query("ROLLBACK;");
+    connection.release();
+    res.sendStatus(500);
+  }
 });
 
 router.get('/artist/complete/:id', rejectUnauthenticated, (req, res) => {
@@ -608,7 +682,7 @@ router.get('/artist/complete/:id', rejectUnauthenticated, (req, res) => {
       res.send(result.rows);
     })
     .catch((error) => {
-      console.error("Error in request router GET all artist requests", error);
+      console.error("Error in request router GET all complete artist requests", error);
       res.sendStatus(500);
     })
 });
