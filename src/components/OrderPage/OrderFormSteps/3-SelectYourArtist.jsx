@@ -27,7 +27,7 @@ export default function SelectYourArtist({ handleInput }) {
       <h2>Select Your Artist!</h2>
       <h5>
         {requestData.genre ?
-          `Showing All Artists who Specialize In ${currentGenre}`
+          `Showing All Artists who Specialize in ${currentGenre}`
           :
           ''
         }
@@ -36,11 +36,12 @@ export default function SelectYourArtist({ handleInput }) {
         <div className="select-artist-card">
           {artists.map((artist, i) => {
             if (
-              artist.genres[0].id === Number(requestData.genre) ||
-              (artist.genres[1] &&
-                artist.genres[1].id === Number(requestData.genre)) ||
+              artist.is_active
+              && artist.vocal_type === requestData.vocal_type
+              && artist.genres[0].id === Number(requestData.genre) ||
+              artist.genres[1] && artist.genres[1].id === Number(requestData.genre) ||
+              artist.genres[2] && artist.genres[2].id === Number(requestData.genre) ||
               requestData.genre === ""
-              && artist.is_active
             ) {
               return (
                 <div className="select-artist-artist">
