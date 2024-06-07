@@ -49,10 +49,12 @@ export default function OrderPage({ routeVariants }) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
   // agreement logic
   const [agreeTerms, setAgreeTerms] = useState(false)
   const [agreePrivacy, setAgreePrivacy] = useState(false)
   const [agreeEUA, setAgreeEUA] = useState(false)
+
   // payment logic
   const [totalPrice, setTotalPrice] = useState(224.99)
   const [deliveryPrice, setDeliveryPrice] = useState(0)
@@ -81,12 +83,15 @@ export default function OrderPage({ routeVariants }) {
   };
 
   function dispatchDetails() {
-    handleInput("artist_payout", Number(artistPayout.toFixed(2)))
     dispatch({
       type: "CREATE_SONG_REQUEST",
       payload: {
         history: history,
-        data: requestData,
+        data: {
+          ...requestData,
+          total_price: Number(totalPrice + deliveryPrice).toFixed(2),
+          artist_payout: Number(artistPayout.toFixed(2))
+        },
       },
     });
   }
@@ -119,7 +124,6 @@ export default function OrderPage({ routeVariants }) {
   };
 
   const handleComplete = (event) => {
-    handleInput("total_price", Number((totalPrice + deliveryPrice).toFixed(2)))
     const newCompleted = completed;
     newCompleted[activeStep] = true;
     setCompleted(newCompleted);
@@ -196,11 +200,10 @@ export default function OrderPage({ routeVariants }) {
     }
     // step 4
     else if (activeStep === 3) {
-      return <Delivery handleInput={handleInput} handleOpen={handleOpen} setDeliveryPrice={setDeliveryPrice} setTotalPrice={setTotalPrice} totalPrice={totalPrice}/>
+      return <Delivery handleInput={handleInput} handleOpen={handleOpen} setDeliveryPrice={setDeliveryPrice} setTotalPrice={setTotalPrice} totalPrice={totalPrice} />
     }
     // step 5
     else if (activeStep === 4) {
-      
       return (
         <AddOns
           handleInput={handleInput}
@@ -213,12 +216,12 @@ export default function OrderPage({ routeVariants }) {
           setAgreeEUA={setAgreeEUA}
           agreePrivacy={agreePrivacy}
           setAgreePrivacy={setAgreePrivacy}
-          setTotalPrice={setTotalPrice} 
+          setTotalPrice={setTotalPrice}
           totalPrice={totalPrice}
           setArtistPayout={setArtistPayout}
           artistPayout={artistPayout}
           deliveryPrice={deliveryPrice}
-          />
+        />
       )
     }
   };
