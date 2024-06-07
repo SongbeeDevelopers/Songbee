@@ -38,6 +38,7 @@ function* updateSongDetails (action) {
 }
 
 function* acceptRequest (action){
+    console.log(action.payload.artist, action.payload.vocal_type)
     try {
         const response = yield axios({
             method: "PUT",
@@ -45,10 +46,7 @@ function* acceptRequest (action){
         })
         yield put ({
             type: "FETCH_ARTIST_REQUESTS",
-            payload: {
-                id: action.payload.artist,
-                vocal_type: action.payload.vocal_type
-            }
+            payload: action.payload.artist
         })
     } catch (error) {
         console.error('SAGA accept request failed', error)

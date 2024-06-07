@@ -28,12 +28,14 @@ export default function AcceptSelector({ request }) {
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
+          console.log('id:', request.details_id)
+          console.log('artist:', request.artist_id)
+          console.log('vocal_type:', artistProfile.vocal_type)
           dispatch({
             type: "ACCEPT_REQUEST",
             payload: {
               id: request.details_id,
-              artist: request.artist_id,
-              vocal_type: artistProfile.vocal_type
+              artist: artistProfile
             }
           })
           const templateParams1 = {
