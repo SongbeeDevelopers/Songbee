@@ -53,6 +53,11 @@ export default function ArtistSBRequestsTab({ artistProfile }) {
     setDetailsOpen(false)
   }
 
+  const openComplete = (row) => {
+    dispatch ({ type: 'SET_EDIT_DATA', payload: row})
+    setCompleteOpen(true)
+  }
+
   const closeComplete = () => {
     dispatch({ type: 'CLEAR_EDIT_DATA' })
     setCompleteOpen(false)
@@ -133,7 +138,7 @@ export default function ArtistSBRequestsTab({ artistProfile }) {
                     {/* complete button */}
                     <TableCell align="center">
                       <Button variant="contained"
-                        onClick={() => setCompleteOpen(true)}
+                        onClick={() => openComplete(row)}
                         sx={{ height: 35, width: 95, backgroundColor: "#feaf17", color: "black" }}
                       >
                         COMPLETE
