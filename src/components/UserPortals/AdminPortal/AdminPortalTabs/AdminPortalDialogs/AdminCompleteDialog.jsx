@@ -13,8 +13,9 @@ import {
   Select
 } from '@mui/material'
 import Swal from 'sweetalert2';
-
 import emailjs from '@emailjs/browser'
+
+import AudioButton from '../../../../ArtistPages/AudioButton';
 
 
 export default function AdminCompleteDialog({ setCompleteOpen }) {
@@ -134,6 +135,20 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
                 maxRows={4}
                 value={edit.url}
                 onChange={(event) => handleInput("url", event.target.value)}
+                fullWidth={true}
+              />
+              <AudioButton url={edit.url} />
+
+              <Typography gutterBottom variant="overline" display="block" align='left'>
+                Upload New Song File:
+              </Typography>
+
+              <TextField
+                required
+                type="file"
+                className="form-control-file"
+                name="uploaded_file"
+                onChange={(evt) => setSongFile(evt.target.files[0])}
                 fullWidth={true}
               />
               </>
