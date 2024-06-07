@@ -36,9 +36,35 @@ router.get("/get", async (req, res) => {
     connection.query("BEGIN;");
     const artistId = await getArtistIdByUserId(req.user.id)
     const query = `
-  SELECT * FROM "artist"
-  WHERE "id"=$1;
-  `;
+    SELECT
+    "artist"."id",
+    "artist"."artist_name",
+    "artist"."name",
+    "artist"."user_id",
+    "artist"."vocal_type",
+    "artist"."is_active",
+    "artist"."website",
+    "artist"."instagram_link",
+    "artist"."sample_song_1",
+    "artist"."song_title_1",
+    "artist"."sample_song_2",
+    "artist"."song_title_2",
+    "artist"."sample_song_3",
+    "artist"."song_title_3",
+    "artist"."bio",
+    "artist"."location",
+    "artist"."photo",
+    "artist"."streaming_link",
+    "artist"."approved",
+    "artist"."w9",
+    "artist"."paypal",
+    "artist"."agreement",
+    "user"."email"
+    FROM "artist"
+    JOIN "user"
+    ON "artist"."user_id"="user"."id"
+    WHERE "artist"."id"=$1
+    `;
     const artistResponse = await connection.query(query, [artistId])
 
     const genreQuery = `
@@ -256,18 +282,57 @@ router.delete("/deny/:artistId", rejectUnauthenticated, (req, res) => {
     });
 });
 
-router.get('/pending', (req, res) => {
-  const query = `
+
+router.get('/pending', async (req, res) => {
+  let connection
+  try {
+    connection = await pool.connect();
+    connection.query("BEGIN;");
+
+    // retrieves all artists
+    const query = `
     SELECT * FROM "artist"
     WHERE "approved"=FALSE;
-    `
-  pool.query(query)
-    .then((response) => {
-      res.send(response.rows)
-    })
-    .catch((error) => {
-      console.error('Error in artist router GET all pending:', error)
-    })
+    `;
+    const artistResponse = await connection.query(query)
+
+    // loops through artists and finds their genres
+    for (let i = 0; i < artistResponse.rows.length; i++) {
+      const genreQuery = `
+      SELECT
+      "genres"."id" AS "id",
+      "genres"."name" AS "genre"
+      FROM "genres"
+      LEFT JOIN "artist_genres"
+      ON "genres"."id"="artist_genres"."genre_id"
+      WHERE "artist_genres"."artist_id"=$1
+      `
+      const genreResponse = await connection.query(genreQuery, [artistResponse.rows[i].id])
+      // adds those genres to the result
+      artistResponse.rows[i].genres = genreResponse.rows
+
+      // adds email as well
+      const emailResponse = await connection.query(
+        `
+        SELECT "user"."email"
+        FROM "artist"
+        LEFT JOIN "user"
+        ON "user"."id" = "artist"."user_id"
+        WHERE "artist"."id" = $1
+        `,
+        [artistResponse.rows[i].id]
+      )
+      artistResponse.rows[i].email = emailResponse.rows[0].email
+    }
+    connection.query("COMMIT;");
+    connection.release();
+    res.send(artistResponse.rows);
+  } catch (error) {
+    console.log('get current artist failed:', error)
+    connection.query("ROLLBACK;");
+    connection.release();
+    res.sendStatus(500)
+  }
 });
 
 router.delete('/:id', (req, res) => {
@@ -440,8 +505,34 @@ router.get('/current/:id', async (req, res) => {
 
     connection.query("BEGIN;");
     const query = `
-  SELECT * FROM "artist"
-  WHERE "id"=$1
+  SELECT
+  "artist"."id",
+  "artist"."artist_name",
+  "artist"."name",
+  "artist"."user_id",
+  "artist"."vocal_type",
+  "artist"."is_active",
+  "artist"."website",
+  "artist"."instagram_link",
+  "artist"."sample_song_1",
+  "artist"."song_title_1",
+  "artist"."sample_song_2",
+  "artist"."song_title_2",
+  "artist"."sample_song_3",
+  "artist"."song_title_3",
+  "artist"."bio",
+  "artist"."location",
+  "artist"."photo",
+  "artist"."streaming_link",
+  "artist"."approved",
+  "artist"."w9",
+  "artist"."paypal",
+  "artist"."agreement",
+  "user"."email"
+  FROM "artist"
+  JOIN "user"
+  ON "artist"."user_id"="user"."id"
+  WHERE "artist"."id"=$1
   `
     const artistResponse = await connection.query(query, [req.params.id])
     const genreQuery = `
@@ -523,6 +614,13 @@ router.put('/uploads/:id', rejectUnauthenticated, cloudinaryUpload.single("file"
     editQuery = `
     UPDATE "artist"
       SET "w9" = $1
+    WHERE "artist"."id" = $2;
+    `
+  }
+  else if (req.params.id === '6') {
+    editQuery = `
+    UPDATE "artist"
+      SET "agreement" = $1
     WHERE "artist"."id" = $2;
     `
   }

@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 
 import { Button, TextField, Dialog, Box } from "@mui/material"
 import Swal from 'sweetalert2';
+import emailjs from '@emailjs/browser'
 
 import ApplicationUploadDialog from "./ApplicationUploadDialog";
 
@@ -16,6 +17,9 @@ import "./JoinArtistPage.css";
 
 function JoinArtistPage({ routeVariants }) {
 
+  emailjs.init({
+    publicKey: 'kh8qhjYSE2KhcvUoT'
+  })
   const history = useHistory();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -62,6 +66,12 @@ const submitEdit = (event) => {
         type: "CREATE_ARTIST",
         payload: edit
       })
+      const templateParams = {
+        to_email: "hello@songbee.com",
+        to_name: "Songbee Admins",
+        message: "A new artist has applied to Songbee! Log into the Admin Portal to view the Artist's application!"
+      }
+      emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams)
     }
   })
   history.push('/user');
