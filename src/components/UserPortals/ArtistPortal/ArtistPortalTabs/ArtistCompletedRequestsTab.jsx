@@ -105,7 +105,7 @@ export default function ArtistCompletedRequestsTab({artistId}) {
                   </TableCell>
 
                   <TableCell align="center">
-                    Done!
+                    {row.is_approved ? 'Done!' : 'Pending Approval'}
                   </TableCell>
 
                   {/* details btn */}
