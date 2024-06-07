@@ -541,6 +541,13 @@ router.put('/uploads/:id', rejectUnauthenticated, cloudinaryUpload.single("file"
     WHERE "artist"."id" = $2;
     `
   }
+  else if (req.params.id === '6') {
+    editQuery = `
+    UPDATE "artist"
+      SET "agreement" = $1
+    WHERE "artist"."id" = $2;
+    `
+  }
   pool.query(editQuery, [req.file.path, req.body.artist])
     .then(() => {
       res.sendStatus(200)

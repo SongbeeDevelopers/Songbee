@@ -12,12 +12,12 @@ function ArtistDocuments() {
     const artistProfile = useSelector((store) => store.artistProfile);
     const detailsForm = new FormData()
 
-    const handleUpload = () => {
+    const handleUpload = (num) => {
         detailsForm.append("file", file);
         detailsForm.append("artist", artistProfile.id);
         dispatch({
             type: "UPDATE_ARTIST_FILE",
-            payload: {id: 5,
+            payload: {id: num,
                     data: detailsForm
             }
         })
@@ -54,10 +54,30 @@ function ArtistDocuments() {
             />
          </label>
          <Button
-          onClick={handleUpload}
+          onClick={() => handleUpload(5)}
           sx={{m: 'auto', mt: 2, height: 35, width: 200, backgroundColor: "#feaf17", color: "black" }}
         >
           UPDATE W9
+        </Button>
+        </div>
+        <div className="w9-input">
+         <label> 
+                Upload Your Signed Artist Agreement
+                <br></br>
+            <TextField
+              type="file"
+              className="form-control-file"
+              name="uploaded_file"
+              onChange={(evt) => setFile(evt.target.files[0])}
+              // fullWidth={true}
+              sx={{ width: 300, mt: 3, ml: -6 }}
+            />
+         </label>
+         <Button
+          onClick={() => handleUpload(6)}
+          sx={{m: 'auto', mt: 2, height: 35, width: 200, backgroundColor: "#feaf17", color: "black" }}
+        >
+          UPLOAD AGREEMENT
         </Button>
         </div>
         </>
