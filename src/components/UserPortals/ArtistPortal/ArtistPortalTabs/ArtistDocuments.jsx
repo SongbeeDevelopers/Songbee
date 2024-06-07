@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TextField, Button } from "@mui/material";
 
+import Swal from "sweetalert2";
+
 import '../ArtistPortal.css'
 
 function ArtistDocuments() {
@@ -21,6 +23,12 @@ function ArtistDocuments() {
                     data: detailsForm
             }
         })
+        Swal.fire({
+            icon: "success",
+            title: "Your file was succesfully uploaded!",
+            showCancelButton: false,
+            confirmButtonText: "Continue",
+          })
         setFile('')
     }
     return (
