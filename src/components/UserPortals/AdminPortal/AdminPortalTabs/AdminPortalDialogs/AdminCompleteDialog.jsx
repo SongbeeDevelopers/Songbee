@@ -121,20 +121,24 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
         <DialogContentText>
           <div className='completeDialogueContent'>
             <div>
+              {edit.url ?
+              <>
               <Typography gutterBottom variant="overline" display="block" align='left'>
                 Song URL
               </Typography>
 
               <TextField
                 required
-                placeholder="Song Title"
+                placeholder="Song URL"
                 multiline
                 maxRows={4}
                 value={edit.url}
                 onChange={(event) => handleInput("url", event.target.value)}
                 fullWidth={true}
               />
-
+              </>
+                :
+                <>
               <Typography gutterBottom variant="overline" display="block" align='left'>
                 Upload Song File:
               </Typography>
@@ -147,6 +151,8 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
                 onChange={(evt) => setSongFile(evt.target.files[0])}
                 fullWidth={true}
               />
+              </>
+                }
             </div>
 
             <div>
