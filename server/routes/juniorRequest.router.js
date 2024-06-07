@@ -5,9 +5,7 @@ const cloudinaryUpload = require("../modules/cloudinary.config");
 const {
   rejectUnauthenticated,
 } = require("../modules/authentication-middleware");
-/**
- * GET route template
- */
+
 router.get("/user", rejectUnauthenticated, (req, res) => {
   const userId = req.user.id;
   const requestQuery = `
@@ -533,7 +531,6 @@ router.put('/active/:id', async (req, res) => {
   SET "is_active"=NOT "is_active"
   WHERE id=$1;
   `
-    // console.log('req.params.id:', req.params.id)
     await connection.query(approvalQuery, [req.params.id])
     connection.query("COMMIT;");
     connection.release();

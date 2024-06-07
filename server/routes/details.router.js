@@ -5,11 +5,6 @@ const {
 const pool = require("../modules/pool");
 const router = express.Router();
 const cloudinaryUpload = require("../modules/cloudinary.config");
-const emailjs = require('../modules/emailjs.config')
-
-emailjs.init({
-  publicKey: process.env.EMAILJS_API_PUBLIC_KEY
-})
 
 router.post("/:id", rejectUnauthenticated, cloudinaryUpload.single("file"), async (req, res) => {
   let connection
@@ -107,7 +102,6 @@ router.put("/:id", rejectUnauthenticated, cloudinaryUpload.single("file"), async
   }
 });
 
-
 router.put("/jr_request/:id", rejectUnauthenticated, cloudinaryUpload.single("file"), async (req, res) => {
   let connection
   try {
@@ -191,15 +185,13 @@ router.put("/deny/:id", rejectUnauthenticated, (req, res) => {
 });
 
 router.put("/assign/:id", rejectUnauthenticated, (req, res) => {
-  console.log('req.body', req.body)
-  console.log('req.params.id', req.params.id)
   const assignQuery = `
     UPDATE "song_details"
     SET "artist_id" = $1,
       "accepted" = TRUE
     WHERE "song_request_id" = $2;
   `
-  pool.query(assignQuery, [req.body.artistId, req.params.id])  
+  pool.query(assignQuery, [req.body.artistId, req.params.id])
     .then((result) => {
       res.sendStatus(200);
     })
