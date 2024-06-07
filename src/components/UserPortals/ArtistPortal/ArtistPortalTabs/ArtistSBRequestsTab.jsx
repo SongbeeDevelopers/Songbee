@@ -5,9 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import FilterBar from '../../../FilterBar/FilterBar';
 import AdminDetailsDialog from "../../../ArtistRequests/AdminDetailsDialog";
 import AdminCompleteDialog from "../../AdminPortal/AdminPortalTabs/AdminPortalDialogs/AdminCompleteDialog";
-import RequestDetails from "../../../RequestDetails/RequestDetails";
 import AcceptSelector from "./AcceptSelector";
-import MessageUserButton from "../../../AdminPortal/AdminPortalTabs/MessageUserButton";
 
 import {
   Button,
@@ -21,54 +19,58 @@ import {
 
 import '../ArtistPortal.css'
 
-export default function ArtistSBRequestsTab({artistId}) {
-    const dispatch = useDispatch()
+export default function ArtistSBRequestsTab({ artistProfile }) {
 
-    useEffect(() => {
-        dispatch({ type: "FETCH_ARTIST_REQUESTS",
-                    payload: artistId});
-      }, [])
-    const artistRequests = useSelector(store => store.artistRequests)
-    const genres = useSelector(store => store.genres)
+  const dispatch = useDispatch()
 
-    // modal state
-    const [detailsOpen, setDetailsOpen] = useState(false);
-    const [completeOpen, setCompleteOpen] = useState(false)
+  useEffect(() => {
+    dispatch({
+      type: "FETCH_ARTIST_REQUESTS",
+      payload: artistProfile
+    });
+  }, [])
 
-    function getDueDate(requestDay, deliveryDays) {
-        const msPerDay = 24 * 60 * 60 * 1000;
-        const due = new Date(requestDay).getTime() + msPerDay * deliveryDays
-        return new Date(due).toLocaleString('en-us')
+  const artistRequests = useSelector(store => store.artistRequests)
+  const genres = useSelector(store => store.genres)
+
+  // modal state
+  const [detailsOpen, setDetailsOpen] = useState(false);
+  const [completeOpen, setCompleteOpen] = useState(false)
+
+  function getDueDate(requestDay, deliveryDays) {
+    const msPerDay = 24 * 60 * 60 * 1000;
+    const due = new Date(requestDay).getTime() + msPerDay * deliveryDays
+    return new Date(due).toLocaleString('en-us')
+  }
+
+  const openDetails = (row) => {
+    // grabs genre id from genre in reducer
+    for (let genre of genres) {
+      if (row.genre === genre.name) {
+        row.genre = genre.id
       }
+    }
+    dispatch({ type: 'SET_EDIT_DATA', payload: row })
+    setDetailsOpen(true)
+  }
+  const closeDetails = () => {
+    dispatch({ type: 'CLEAR_EDIT_DATA' })
+    setDetailsOpen(false)
+  }
 
-      const openDetails = (row) => {
-        // grabs genre id from genre in reducer
-        for (let genre of genres) {
-          if (row.genre === genre.name) {
-            row.genre = genre.id
-          }
-        }
-        dispatch({ type: 'SET_EDIT_DATA', payload: row })
-        setDetailsOpen(true)
-      }
-      const closeDetails = () => {
-        dispatch({ type: 'CLEAR_EDIT_DATA'})
-        setDetailsOpen(false)
-      }
-    
-      // complete modal logic
-      const openComplete = () => {
-    
-      }
-      const closeComplete = () => {
-        dispatch({ type: 'CLEAR_EDIT_DATA'})
-        setCompleteOpen(false)
-      }
+  // complete modal logic
+  const openComplete = () => {
+
+  }
+  const closeComplete = () => {
+    dispatch({ type: 'CLEAR_EDIT_DATA' })
+    setCompleteOpen(false)
+  }
 
 
-    return (
-        <div className="tab-body">
-             {artistRequests.length > 0 ?
+  return (
+    <div className="tab-body">
+      {artistRequests.length > 0 ?
         <>
           <FilterBar />
 
@@ -92,13 +94,13 @@ export default function ArtistSBRequestsTab({artistId}) {
               {artistRequests.map((row) => (
                 <TableRow hover key={row.id}>
 
-                    {/* accepted */}
-                    <TableCell align="center">
-                    {row.accepted ? 
-                    "Accepted"
-                :
-                    <AcceptSelector request={row}/>
-                }
+                  {/* accepted */}
+                  <TableCell align="center">
+                    {row.accepted ?
+                      "Accepted"
+                      :
+                      <AcceptSelector request={row} />
+                    }
                   </TableCell>
 
                   {/* creation date */}
@@ -106,7 +108,7 @@ export default function ArtistSBRequestsTab({artistId}) {
                     {new Date(row.created_at).toLocaleString('en-us')}
                   </TableCell>
 
-                {/* due */}
+                  {/* due */}
                   <TableCell align="center">
                     {getDueDate(row.created_at, row.delivery_days)}
                   </TableCell>
@@ -164,6 +166,6 @@ export default function ArtistSBRequestsTab({artistId}) {
         :
         <p className='admin-empty-msg'>There are currently no requests.</p>
       }
-        </div>
-    )
+    </div>
+  )
 }

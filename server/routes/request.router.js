@@ -487,7 +487,7 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
     });
 });
 
-router.get('/artist/:id', rejectUnauthenticated, (req, res) => {
+router.get('/artist/:id/:type', rejectUnauthenticated, (req, res) => {
   const requestQuery = `
     SELECT 
     "song_request"."id" AS "id",
@@ -528,11 +528,11 @@ router.get('/artist/:id', rejectUnauthenticated, (req, res) => {
     ON "song_request"."id"="song_details"."song_request_id"
     LEFT JOIN "user"
     ON "song_request"."user_id"="user"."id"
-    WHERE "song_details"."artist_id"=$1
+    WHERE "song_request"."vocal_type" ilike $1
     AND
     "song_request"."is_complete"=FALSE;
     `
-  pool.query(requestQuery, [req.params.id])
+  pool.query(requestQuery, [req.params.type])
     .then((result) => {
       res.send(result.rows);
     })

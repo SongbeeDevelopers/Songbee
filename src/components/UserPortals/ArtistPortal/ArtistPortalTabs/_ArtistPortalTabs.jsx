@@ -88,7 +88,7 @@ export default function ArtistPortalTabs({artistProfile}) {
       </CustomTabPanel>
 
       <CustomTabPanel value={value} index={1}>
-        <ArtistSBRequestsTab artistId={artistProfile && artistProfile.id}/>
+        <ArtistSBRequestsTab artistProfile={artistProfile && artistProfile}/>
       </CustomTabPanel>
 
       <CustomTabPanel value={value} index={2}>
