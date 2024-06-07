@@ -19,7 +19,6 @@ const artistRouter = require('./routes/artist.router');
 const stripeRouter = require('./routes/stripe.router');
 const mailchimpRouter = require('./routes/mailchimp.router');
 const jrRequestRouter = require('./routes/juniorRequest.router');
-const socket = require('./routes/socket.router');
 const chat = require('./routes/chat.router');
 
 // Express Middleware
@@ -28,41 +27,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static('build'));
 app.use(cors());
 
-const socketIO = require('socket.io')(http, {
-  cors: {
-      origin: ['https://www.songbee.com', 'http://localhost:5173'],
-      allowedHeaders: ["songbee-message"],
-      credentials: true,
-  }
-});
-
 let users = [];
-
-socketIO.on('connection', (socket) => {
-  console.log(`⚡: ${socket.id} user just connected!`);
-  socket.on('message', (data) => {
-    socketIO.emit('messageResponse', data);
-  });
-
-  //Listens when a new user joins the server
-  socket.on('newUser', (data) => {
-    //Adds the new user to the list of users
-    users.push(data);
-    // console.log(users);
-    //Sends the list of users to the client
-    socketIO.emit('newUserResponse', users);
-  });
-
-  socket.on('disconnect', () => {
-    console.log('🔥: A user disconnected');
-    //Updates the list of users when a user disconnects from the server
-    users = users.filter((user) => user.socketID !== socket.id);
-    // console.log(users);
-    //Sends the list of users to the client
-    socketIO.emit('newUserResponse', users);
-    socket.disconnect();
-  });
-});
 
 // Passport Session Configuration
 app.use(sessionMiddleware);
@@ -81,7 +46,6 @@ app.use('/api/search', searchRouter);
 app.use('/api/artist', artistRouter);
 app.use('/api/stripe', stripeRouter);
 app.use('/api/mailchimp', mailchimpRouter);
-app.use('/api/socket', socket);
 app.use('/api/chat', chat);
 
 // Listen Server & Port

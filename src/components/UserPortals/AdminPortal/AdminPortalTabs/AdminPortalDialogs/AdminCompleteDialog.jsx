@@ -14,6 +14,8 @@ import {
 } from '@mui/material'
 import Swal from 'sweetalert2';
 
+import emailjs from '@emailjs/browser'
+
 
 export default function AdminCompleteDialog({ setCompleteOpen }) {
 
@@ -27,6 +29,15 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
   const [songFile, setSongFile] = useState('')
 
   const detailsForm = new FormData();
+
+  emailjs.init({
+    publicKey: 'kh8qhjYSE2KhcvUoT'
+  })
+  const templateParams = {
+    to_email: 'hello@songbee.com',
+    to_name: 'hello@songbee.com',
+    message: `${artistProfile && artistProfile.artist_name} has submitted a song for review!`
+  }
 
   // stores changes
   const handleInput = (key, value) => {
@@ -80,6 +91,17 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
     })
   }
 
+  const completeButton = () => {
+    if (user.class === 2) {
+      emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams)
+    }
+    // if already complete, no file required
+    edit.is_complete ? submitDetails() :
+      // if not already complete, file required
+      songFile ? submitDetails() : Swal.fire({ icon: 'error', title: 'Please upload a file.' })
+
+  }
+
   // deletion logic
   const deleteRequest = () => {
     Swal.fire({
@@ -108,115 +130,108 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
       <DialogContent>
         <DialogContentText>
           <div className='completeDialogueContent'>
-              <div>
+            <div>
               <Typography gutterBottom variant="overline" display="block" align='left'>
-                  Song URL
-                </Typography>
+                Song URL
+              </Typography>
 
-                <TextField
-                  required
-                  placeholder="Song Title"
-                  multiline
-                  maxRows={4}
-                  value={edit.url}
-                  onChange={(event) => handleInput("url", event.target.value)}
-                  fullWidth={true}
-                />
+              <TextField
+                required
+                placeholder="Song Title"
+                multiline
+                maxRows={4}
+                value={edit.url}
+                onChange={(event) => handleInput("url", event.target.value)}
+                fullWidth={true}
+              />
 
-                <Typography gutterBottom variant="overline" display="block" align='left'>
-                  Upload Song File:
-                </Typography>
+              <Typography gutterBottom variant="overline" display="block" align='left'>
+                Upload Song File:
+              </Typography>
 
-                <TextField
-                  required
-                  type="file"
-                  className="form-control-file"
-                  name="uploaded_file"
-                  onChange={(evt) => setSongFile(evt.target.files[0])}
-                  fullWidth={true}
-                />
-              </div>
+              <TextField
+                required
+                type="file"
+                className="form-control-file"
+                name="uploaded_file"
+                onChange={(evt) => setSongFile(evt.target.files[0])}
+                fullWidth={true}
+              />
+            </div>
 
-              <div>
-                <Typography gutterBottom variant="overline" display="block" align='left'>
-                  Song Title:
-                </Typography>
+            <div>
+              <Typography gutterBottom variant="overline" display="block" align='left'>
+                Song Title:
+              </Typography>
 
-                <TextField
-                  required
-                  placeholder="Song Title"
-                  multiline
-                  maxRows={4}
-                  value={edit.title}
-                  onChange={(event) => handleInput("title", event.target.value)}
-                  fullWidth={true}
-                />
-              </div>
+              <TextField
+                required
+                placeholder="Song Title"
+                multiline
+                maxRows={4}
+                value={edit.title}
+                onChange={(event) => handleInput("title", event.target.value)}
+                fullWidth={true}
+              />
+            </div>
 
-              <div>
-                {user.class === 3 ?
-                  <>
-                    <Typography gutterBottom variant="overline" display="block" align='left'>
-                      Select Artist:
-                    </Typography>
-                    <Select
-                      value={edit.artist_id}
-                      onChange={(event) => handleInput('artist_id', event.target.value)}
-                      fullWidth={true}
-                    >
-                      {artists.map((artist) => (
-                        <MenuItem value={artist.id} key={artist.id}>{artist.artist_name}</MenuItem>
-                      ))}
-                    </Select>
-                  </>
-                  :
-                  <p>
-                    {artistProfile.artist_name}
-                  </p>
-                }
-              </div>
+            <div>
+              {user.class === 3 ?
+                <>
+                  <Typography gutterBottom variant="overline" display="block" align='left'>
+                    Select Artist:
+                  </Typography>
+                  <Select
+                    value={edit.artist_id}
+                    onChange={(event) => handleInput('artist_id', event.target.value)}
+                    fullWidth={true}
+                  >
+                    {artists.map((artist) => (
+                      <MenuItem value={artist.id} key={artist.id}>{artist.artist_name}</MenuItem>
+                    ))}
+                  </Select>
+                </>
+                :
+                <p>
+                  {artistProfile.artist_name}
+                </p>
+              }
+            </div>
 
-              <div>
-                <Typography gutterBottom variant="overline" display="block" align='left'>
-                  Lyrics:
-                </Typography>
+            <div>
+              <Typography gutterBottom variant="overline" display="block" align='left'>
+                Lyrics:
+              </Typography>
 
-                <TextField
-                  placeholder="Lyrics"
-                  multiline
-                  rows={6}
-                  value={edit.lyrics}
-                  onChange={(event) => handleInput("lyrics", event.target.value)}
-                  fullWidth={true}
-                />
-              </div>
+              <TextField
+                placeholder="Lyrics"
+                multiline
+                rows={6}
+                value={edit.lyrics}
+                onChange={(event) => handleInput("lyrics", event.target.value)}
+                fullWidth={true}
+              />
+            </div>
 
-              <div>
-                <Typography gutterBottom variant="overline" display="block" align='left'>
-                  Streaming Link:
-                </Typography>
-                <TextField
-                  placeholder="Streaming Link"
-                  multiline
-                  rows={2}
-                  value={edit.streaming_link}
-                  onChange={(event) => handleInput("streaming_link", event.target.value)}
-                  fullWidth={true}
-                />
-              </div>
+            <div>
+              <Typography gutterBottom variant="overline" display="block" align='left'>
+                Streaming Link:
+              </Typography>
+              <TextField
+                placeholder="Streaming Link"
+                multiline
+                rows={2}
+                value={edit.streaming_link}
+                onChange={(event) => handleInput("streaming_link", event.target.value)}
+                fullWidth={true}
+              />
+            </div>
           </div>
         </DialogContentText>
       </DialogContent>
 
       <DialogActions sx={{ justifyContent: 'center' }}>
-        <Button variant="contained" onClick={
-          // if already complete, no file required
-          edit.is_complete ?
-          submitDetails
-          :
-          // if not already complete, file required
-          songFile ? submitDetails : () => Swal.fire({icon: 'error', title: 'Please upload a file.'})
-          }
+        <Button variant="contained" onClick={completeButton}
         > Submit
         </Button>
         {user.class === 3 ?
