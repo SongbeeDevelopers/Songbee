@@ -42,6 +42,7 @@ function* approveArtist(action) {
       data: {user_id: action.payload.user_id}
     })
     yield put({ type: "FETCH_PENDING_ARTISTS" });
+    yield put({ type: 'FETCH_ALL_ARTISTS'})
   } catch (error) {
     console.error("SAGA approveArtist() failed:", error);
   }
