@@ -46,7 +46,7 @@ function* acceptRequest (action){
         yield put ({
             type: "FETCH_ARTIST_REQUESTS",
             payload: {
-                id: action.payload.id,
+                id: action.payload.artist,
                 vocal_type: action.payload.vocal_type
             }
         })
@@ -56,6 +56,7 @@ function* acceptRequest (action){
 }
 
 function* denyRequest (action){
+    console.log(action.payload.vocal_type)
     try {
         const response = yield axios({
             method: "PUT",
@@ -64,7 +65,7 @@ function* denyRequest (action){
         yield put ({
             type: "FETCH_ARTIST_REQUESTS",
             payload: {
-                id: action.payload.id,
+                id: action.payload.artist,
                 vocal_type: action.payload.vocal_type
             }
         })

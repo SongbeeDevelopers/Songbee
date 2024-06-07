@@ -52,25 +52,26 @@ export default function AcceptSelector({ request }) {
         }
       });
     } else if (value === 2) {
-      Swal.fire({
-        icon: "warning",
-        title: "Are you sure you want to deny this request?",
-        showCancelButton: true,
-        confirmButtonText: "Deny",
-      }).then((result) => {
+      Swal.fire("Denied!", "The request will disappear when another artist claims it.", "success");
+      // Swal.fire({
+      //   icon: "warning",
+      //   title: "Are you sure you want to deny this request?",
+      //   showCancelButton: true,
+      //   confirmButtonText: "Deny",
+      // }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
-        if (result.isConfirmed) {
-          dispatch({
-            type: "DENY_REQUEST",
-            payload: {
-              id: request.details_id,
-              artist: request.artist_id,
-              vocal_type: artistProfile.vocal_type
-            }
-          })
-          Swal.fire("Done!", "", "success");
-        }
-      });
+        // if (result.isConfirmed) {
+        //   dispatch({
+        //     type: "DENY_REQUEST",
+        //     payload: {
+        //       id: request.details_id,
+        //       artist: request.artist_id,
+        //       vocal_type: artistProfile.vocal_type
+        //     }
+        //   })
+          // Swal.fire("Done!", "", "success");
+        // }
+      // });
     }
   };
 
