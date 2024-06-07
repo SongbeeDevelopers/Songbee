@@ -105,14 +105,19 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     "song_details"."accepted",
     "song_details"."artist_id",
     "genres"."name" AS "genre",
-    "user"."email"
+    t1."email",
+    t2."email" AS "artist_email"
     FROM "song_request"
     LEFT JOIN "genres"
     ON "song_request"."genre_id"="genres"."id"
     LEFT JOIN "song_details"
     ON "song_request"."id"="song_details"."song_request_id"
-    LEFT JOIN "user"
-    ON "song_request"."user_id"="user"."id"
+    LEFT JOIN "user" t1
+    ON "song_request"."user_id"=t1."id"
+    LEFT JOIN "artist"
+    ON "song_details"."artist_id" = "artist"."id"
+    LEFT JOIN "user" t2
+    ON "artist"."user_id" = t2."id"
     WHERE "song_request"."is_complete"=FALSE;
     `
     const pendingResult = await connection.query(pendingRequestQuery);
@@ -153,14 +158,19 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     "song_details"."accepted",
     "song_details"."artist_id",
     "genres"."name" AS "genre",
-    "user"."email"
+    t1."email",
+    t2."email" AS "artist_email"
     FROM "song_request"
     LEFT JOIN "genres"
     ON "song_request"."genre_id"="genres"."id"
     LEFT JOIN "song_details"
     ON "song_request"."id"="song_details"."song_request_id"
-    LEFT JOIN "user"
-    ON "song_request"."user_id"="user"."id"
+    LEFT JOIN "user" t1
+    ON "song_request"."user_id"=t1."id"
+    LEFT JOIN "artist"
+    ON "song_details"."artist_id" = "artist"."id"
+    LEFT JOIN "user" t2
+    ON "artist"."user_id" = t2."id"
     WHERE "song_request"."is_complete"=TRUE
     AND "song_request"."is_approved" = TRUE;
     `
@@ -202,14 +212,19 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     "song_details"."accepted",
     "song_details"."artist_id",
     "genres"."name" AS "genre",
-    "user"."email"
+    t1."email",
+    t2."email" AS "artist_email"
     FROM "song_request"
     LEFT JOIN "genres"
     ON "song_request"."genre_id"="genres"."id"
     LEFT JOIN "song_details"
     ON "song_request"."id"="song_details"."song_request_id"
-    LEFT JOIN "user"
-    ON "song_request"."user_id"="user"."id"
+    LEFT JOIN "user" t1
+    ON "song_request"."user_id"=t1."id"
+    LEFT JOIN "artist"
+    ON "song_details"."artist_id" = "artist"."id"
+    LEFT JOIN "user" t2
+    ON "artist"."user_id" = t2."id"
     WHERE "song_request"."is_complete"=TRUE
     AND "song_request"."is_approved" = FALSE;
     `

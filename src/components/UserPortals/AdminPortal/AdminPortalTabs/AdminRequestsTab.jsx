@@ -42,6 +42,7 @@ export default function AdminRequestsTab({ num, data }) {
   })
 
   const assignArtist = (reqId, artistId) => {
+
     Swal.fire({
       title: "Assign Artist?",
       text: "The artist will be required to complete this request. This cannot be undone!",
@@ -54,6 +55,16 @@ export default function AdminRequestsTab({ num, data }) {
           type: 'ASSIGN_ARTIST',
           payload: { reqId, artistId }
         })
+        artists.map((artist) => {
+        if(artist.id === artistId){
+        const templateParams = {
+          to_email: "walkerneudorff@gmail.com",
+          to_name: artist.name,
+          message: "You have been assigned a new song request! Log into your Artist Portal to view the details, and get started on the request!"
+        }
+        emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams)
+      }
+      })
         Swal.fire("Saved!", "", "success");
       }
     });
@@ -105,21 +116,23 @@ export default function AdminRequestsTab({ num, data }) {
       confirmButtonText: "Approve",
     }).then((result) => {
       if (result.isConfirmed) {
+        console.log("request", request)
         dispatch({type: 'UPDATE_APPROVAL', payload: {reqId, approved}})
         Swal.fire({title: 'Approved!', icon: "success"})
-        const templateParams = {
+        const templateParams1 = {
           to_email: request.email,
           to_name: request.email,
           message: "Congratulations! Your song has been delivered! Log into your customer portal to view your new custom song!"
         }
-        emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams).then(
-          (response) => {
-            console.log('SUCCESS!', response.status, response.text);
-            },
-          (error) => {
-            console.log('FAILED...', error);
-            },
-        );
+        emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams1)
+        const templateParams2 = {
+          to_email: request.artist_email,
+          to_name: request.artist_email,
+          message: "Your song has been approved by the Songbee Admins and has been delivered to the customer!"
+        }
+        emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams2)
+    
+  
       }})
       :
       Swal.fire({
@@ -131,6 +144,12 @@ export default function AdminRequestsTab({ num, data }) {
       }).then((result) => {
         if (result.isConfirmed) {
           // send notification here
+          const templateParams = {
+            to_email: request.artist_email,
+            to_name: request.artist_email,
+            message: "Your song has been denied for approval by the Songbee Admins, please check your messages for further details!"
+          }
+          emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams)
           Swal.fire({title: 'Sent!', icon: "success"})
         }})
   }

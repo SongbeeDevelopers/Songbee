@@ -452,8 +452,34 @@ router.get('/current/:id', async (req, res) => {
 
     connection.query("BEGIN;");
     const query = `
-  SELECT * FROM "artist"
-  WHERE "id"=$1
+  SELECT
+  "artist"."id",
+  "artist"."artist_name",
+  "artist"."name",
+  "artist"."user_id",
+  "artist"."vocal_type",
+  "artist"."is_active",
+  "artist"."website",
+  "artist"."instagram_link",
+  "artist"."sample_song_1",
+  "artist"."song_title_1",
+  "artist"."sample_song_2",
+  "artist"."song_title_2",
+  "artist"."sample_song_3",
+  "artist"."song_title_3",
+  "artist"."bio",
+  "artist"."location",
+  "artist"."photo",
+  "artist"."streaming_link",
+  "artist"."approved",
+  "artist"."w9",
+  "artist"."paypal",
+  "artist"."agreement",
+  "user"."email"
+  FROM "artist"
+  JOIN "user"
+  ON "artist"."user_id"="user"."id"
+  WHERE "artist"."id"=$1
   `
     const artistResponse = await connection.query(query, [req.params.id])
     // console.log("artistResponse", artistResponse.rows[0]);
