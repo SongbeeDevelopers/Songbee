@@ -57,10 +57,10 @@ function ArtistCommunity() {
       audioRef.current.pause();
       setIsPlaying(false)
     }
-    
+
   }
 
-  
+
   // song player popup
   const SongDisplay = () => {
     if (showPopUp === true) {
@@ -69,12 +69,12 @@ function ArtistCommunity() {
           <div className="pop-up-content">
             <h3>{selectedSong.artist_name}</h3>
             <div className="song-title">
-               <p>{selectedSong.song_title_1}</p>
+              <p>{selectedSong.song_title_1}</p>
             </div>
             <p className="genre">Genre: {selectedSong.genres[0].genre}</p>
             <audio className="audio-btn" controls ref={audioRef} src={selectedSong.sample_song_1} />
             <div className="close-btn">
-               <button onClick={closePopUp}>X</button>
+              <button onClick={closePopUp}>X</button>
             </div>
           </div>
         </div>
@@ -108,28 +108,32 @@ function ArtistCommunity() {
 
         {/* display of all artists */}
         <div className="artist-container">
-          {artistCommunity.map((artist, i) => (
-            <div className="artist-card" key={i}>
-              <h3>{artist.artist_name}</h3>
-              <img
-                className="artistSlide-img"
-                onClick={() => seeArtist(artist.id)}
-                src={artist.photo}
-                alt="Artist photos"
-              />
-              <div className="artistCommunityBtn">
-                <AudioButton
-                  url={artist.sample_song_1}
-                  popup={true}
-                  setShowPopUp={setShowPopUp}
-                  setSelectedSong={setSelectedSong}
-                  artist={artist}
-                  isPlaying={isPlaying}
-                  setIsPlaying={setIsPlaying}
-                />
-              </div>
-            </div>
-          ))}
+          {artistCommunity.map((artist, i) => {
+            if (artist.is_active) {
+              return (
+                <div className="artist-card" key={i}>
+                  <h3>{artist.artist_name}</h3>
+                  <img
+                    className="artistSlide-img"
+                    onClick={() => seeArtist(artist.id)}
+                    src={artist.photo}
+                    alt="Artist photos"
+                  />
+                  <div className="artistCommunityBtn">
+                    <AudioButton
+                      url={artist.sample_song_1}
+                      popup={true}
+                      setShowPopUp={setShowPopUp}
+                      setSelectedSong={setSelectedSong}
+                      artist={artist}
+                      isPlaying={isPlaying}
+                      setIsPlaying={setIsPlaying}
+                    />
+                  </div>
+                </div>
+              )
+            }
+          })}
 
           <SongDisplay />
         </div>
