@@ -117,7 +117,7 @@ function* submitArtistEdit(action) {
       url: '/api/artist/adminedit',
       data: action.payload
     })
-    yield put({type: 'FETCH_ALL_ARTISTS'})
+    yield put({type: 'GET_ARTIST_PROFILE'})
   } catch (error) {
     console.error('SAGA submitArtistEdit() failed:', error)
   }
