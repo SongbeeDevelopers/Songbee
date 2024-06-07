@@ -20,7 +20,7 @@ const artistGenre = useSelector(store => store.fetchGenres);
        <div className="content">
         <img src={artist.photo} alt="Artists images" /> 
        <div className="nameHeader">
-           <h2>{artist && artist.name}</h2>
+           <h2>{artist && artist.artist_name}</h2>
            <h4 className="location">{artist.location}</h4>
            <div className="socialLinks">
             <div className="instagram">
