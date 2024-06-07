@@ -40,14 +40,7 @@ const ChatFooter = ({ id, user2, user1 }) => {
       \n
       Log into your Songbee portal to view the message and respond!`
     }
-    emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams).then(
-      (response) => {
-        console.log('SUCCESS!', response.status, response.text);
-      },
-      (error) => {
-        console.log('FAILED...', error);
-      },
-    );
+    emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams)
   };
   return (
     <div className="chat__footer">

@@ -112,14 +112,7 @@ export default function AdminRequestsTab({ num, data }) {
           to_name: request.email,
           message: "Congratulations! Your song has been delivered! Log into your customer portal to view your new custom song!"
         }
-        emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams).then(
-          (response) => {
-            console.log('SUCCESS!', response.status, response.text);
-            },
-          (error) => {
-            console.log('FAILED...', error);
-            },
-        );
+        emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams)
       }})
       :
       Swal.fire({
