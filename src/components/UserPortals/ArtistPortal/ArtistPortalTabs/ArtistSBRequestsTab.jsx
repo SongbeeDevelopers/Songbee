@@ -48,15 +48,12 @@ export default function ArtistSBRequestsTab({ artistProfile }) {
     dispatch({ type: 'SET_EDIT_DATA', payload: row })
     setDetailsOpen(true)
   }
+
   const closeDetails = () => {
     dispatch({ type: 'CLEAR_EDIT_DATA' })
     setDetailsOpen(false)
   }
 
-  // complete modal logic
-  const openComplete = () => {
-
-  }
   const closeComplete = () => {
     dispatch({ type: 'CLEAR_EDIT_DATA' })
     setCompleteOpen(false)
@@ -87,7 +84,6 @@ export default function ArtistSBRequestsTab({ artistProfile }) {
             {/* table body */}
             <TableBody>
               {artistRequests.map((row) => (
-
                   <TableRow hover key={row.id}>
                     {/* accepted */}
                     <TableCell align="center">

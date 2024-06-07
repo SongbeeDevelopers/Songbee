@@ -11,7 +11,6 @@ import "../ArtistPortal.css";
 
 function ArtistProfileTab({artistProfile}) {
   const dispatch = useDispatch();
-  console.log("artistprofile", artistProfile)
 
   // dialog logic
   const [openArtist, setOpenArtist] = useState(false);
@@ -36,7 +35,7 @@ function ArtistProfileTab({artistProfile}) {
           <ArtistPortalBioPage />
         </>
       ) : (
-        <p>You have no artist profile.</p>
+        <p className="empty-msg">You have no artist profile.</p>
       )}
       <Dialog
         open={openArtist}

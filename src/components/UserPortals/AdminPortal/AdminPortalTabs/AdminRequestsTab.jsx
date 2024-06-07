@@ -220,7 +220,7 @@ export default function AdminRequestsTab({ num, data }) {
                                   onChange={(event) => assignArtist(row.id, event.target.value)}
                                 >
                                   {artists.map((artist) => (
-                                    <MenuItem key={artist.id} value={artist.id}>{artist.name}</MenuItem>
+                                    artist.is_active && <MenuItem key={artist.id} value={artist.id}>{artist.name}</MenuItem>
                                   ))
                                   }
                                 </Select>

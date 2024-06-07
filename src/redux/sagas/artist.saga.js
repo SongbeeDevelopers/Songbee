@@ -42,6 +42,7 @@ function* approveArtist(action) {
       data: {user_id: action.payload.user_id}
     })
     yield put({ type: "FETCH_PENDING_ARTISTS" });
+    yield put({ type: 'FETCH_ALL_ARTISTS'})
   } catch (error) {
     console.error("SAGA approveArtist() failed:", error);
   }
@@ -116,7 +117,7 @@ function* submitArtistEdit(action) {
       url: '/api/artist/adminedit',
       data: action.payload
     })
-    yield put({type: 'FETCH_ALL_ARTISTS'})
+    yield put({type: 'GET_ARTIST_PROFILE'})
   } catch (error) {
     console.error('SAGA submitArtistEdit() failed:', error)
   }

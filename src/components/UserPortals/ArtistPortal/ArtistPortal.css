@@ -22,6 +22,10 @@ General
 Artist Profile Tab
 -------------------------------------------------------------------------------- */
 
+.empty-msg {
+    text-align: center;
+}
+
 .artist-profile-body p {
     display: inline-block;
     width: 50%
