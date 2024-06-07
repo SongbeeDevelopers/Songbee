@@ -16,55 +16,59 @@ export default function AcceptSelector({ request }) {
   })
 
   const artistProfile = useSelector((store) => store.artistProfile);
-  
+
 
   const handleAccept = (value) => {
-    if (value === 1){
-        Swal.fire({
-            icon: "warning" ,
-            title: "Are you sure you want to accept this request?",
-            showCancelButton: true,
-            confirmButtonText: "Accept",
-          }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
-            if (result.isConfirmed) {
-              dispatch({
-                type: "ACCEPT_REQUEST",
-                payload: {id: request.details_id,
-                        artist: request.artist_id}
-              })
-              const templateParams1 = {
-                to_email: request.email,
-                to_name: request.email,
-                message: "An artist has accepted your song request! We are now working hard on completing your song!"
-              }
-              emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams1)
-              const templateParams2 = {
-                to_email: "hello@songbee.com",
-                to_name: "Songbee Admins",
-                message: `${artistProfile.name} has accepted a request from ${request.email}! Log into the Admin Portal to view more details`
-              }
-              emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams2)
-              Swal.fire("Done!", "", "success");
+    if (value === 1) {
+      Swal.fire({
+        icon: "warning",
+        title: "Are you sure you want to accept this request?",
+        showCancelButton: true,
+        confirmButtonText: "Accept",
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          dispatch({
+            type: "ACCEPT_REQUEST",
+            payload: {
+              id: request.details_id,
+              artist: request.artist_id
             }
-          });
-    } else if (value === 2){
-        Swal.fire({
-            icon: "warning" ,
-            title: "Are you sure you want to deny this request?",
-            showCancelButton: true,
-            confirmButtonText: "Deny",
-          }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
-            if (result.isConfirmed) {
-              dispatch({
-                type: "DENY_REQUEST",
-                payload: {id: request.details_id,
-                    artist: request.artist_id}
-              })
-              Swal.fire("Done!", "", "success");
+          })
+          const templateParams1 = {
+            to_email: request.email,
+            to_name: request.email,
+            message: "An artist has accepted your song request! We are now working hard on completing your song!"
+          }
+          emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams1)
+          const templateParams2 = {
+            to_email: "hello@songbee.com",
+            to_name: "Songbee Admins",
+            message: `${artistProfile.name} has accepted a request from ${request.email}! Log into the Admin Portal to view more details`
+          }
+          emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams2)
+          Swal.fire("Done!", "", "success");
+        }
+      });
+    } else if (value === 2) {
+      Swal.fire({
+        icon: "warning",
+        title: "Are you sure you want to deny this request?",
+        showCancelButton: true,
+        confirmButtonText: "Deny",
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          dispatch({
+            type: "DENY_REQUEST",
+            payload: {
+              id: request.details_id,
+              artist: request.artist_id
             }
-          });
+          })
+          Swal.fire("Done!", "", "success");
+        }
+      });
     }
   };
 
