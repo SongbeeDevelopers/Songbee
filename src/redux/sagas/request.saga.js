@@ -27,7 +27,7 @@ function* fetchArtistRequests (action) {
     try {
         const response = yield axios({
             method: 'GET',
-            url: `/api/request/artist/${action.payload.id}/${action.payload.vocal_type}`
+            url: `/api/request/artist/pending/${action.payload.id}/${action.payload.vocal_type}`
         })
         yield put({ type: 'SET_ARTIST_REQUESTS', payload: response.data})
     }
