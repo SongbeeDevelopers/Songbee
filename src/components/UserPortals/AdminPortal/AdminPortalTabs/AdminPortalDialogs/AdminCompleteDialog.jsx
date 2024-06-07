@@ -35,7 +35,7 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
   })
   const templateParams = {
     to_email: 'hello@songbee.com',
-    to_name: 'hello@songbee.com',
+    to_name: 'Songbee Admins',
     message: `${artistProfile && artistProfile.artist_name} has submitted a song for review!`
   }
 
@@ -68,15 +68,6 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
         }
         detailsForm.append("lyrics", edit.lyrics)
         detailsForm.append("streaming_link", edit.streaming_link)
-        if (edit.is_complete === false) {
-          dispatch({
-            type: 'CREATE_SONG_DETAILS',
-            payload: {
-              id: edit.id,
-              data: detailsForm
-            }
-          })
-        } else {
           dispatch({
             type: "UPDATE_SONG_DETAILS",
             payload: {
@@ -84,7 +75,6 @@ export default function AdminCompleteDialog({ setCompleteOpen }) {
               data: detailsForm
             }
           });
-        }
         dispatch({ type: 'CLEAR_EDIT_DATA' })
         setCompleteOpen(false)
       }
