@@ -67,7 +67,7 @@ function ComponentRouter() {
 
   const redirectPath = (user) => {
     if (user.id) {
-      if(user.class === 2) {
+      if (user.class === 2) {
         return "/artist"
       } else if (user.class === 3) {
         return "/admin"
@@ -101,8 +101,8 @@ function ComponentRouter() {
       },
     },
   };
-  
-  
+
+
 
   return (
     <>
@@ -120,7 +120,7 @@ function ComponentRouter() {
 
         {/* login/reg */}
         <MainRoute exact path="/login">
- 
+
           {user.id ? (
             // If the user is already logged in, redirect to the correct portal
             <Redirect to={redirectPath(user)} />
@@ -141,19 +141,13 @@ function ComponentRouter() {
             <Redirect to={redirectPath(user)} />
           ) : (
             // Otherwise, show the registration page
-              <RegisterPage routeVariants={routeVariants} />
+            <RegisterPage routeVariants={routeVariants} />
           )}
         </MainRoute>
-
-       
 
         <MainRoute exact path="/logout">
           <LandingPage routeVariants={routeVariants} />
         </MainRoute>
-
-
-       
-
 
         {/* account pages */}
         <ProtectedRoute exact path="/user" allowedUserClasses={[1, 2, 3]}>
@@ -162,7 +156,7 @@ function ComponentRouter() {
           </MainRoute>
         </ProtectedRoute>
 
-        <ProtectedRoute exact path="/artist" allowedUserClasses={[2, 3]}>
+        <ProtectedRoute exact path="/artist" allowedUserClasses={[2]}>
           <MainRoute>
             <ArtistPortal routeVariants={routeVariants} />
           </MainRoute>
