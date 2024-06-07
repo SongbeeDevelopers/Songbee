@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from 'react';
 import emailjs from '@emailjs/browser'
 
@@ -15,6 +15,9 @@ export default function AcceptSelector({ request }) {
     publicKey: 'kh8qhjYSE2KhcvUoT'
   })
 
+  const artistProfile = useSelector((store) => store.artistProfile);
+  
+
   const handleAccept = (value) => {
     if (value === 1){
         Swal.fire({
@@ -30,19 +33,18 @@ export default function AcceptSelector({ request }) {
                 payload: {id: request.details_id,
                         artist: request.artist_id}
               })
-              const templateParams = {
+              const templateParams1 = {
                 to_email: request.email,
                 to_name: request.email,
                 message: "An artist has accepted your song request! We are now working hard on completing your song!"
               }
-              emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams).then(
-                (response) => {
-                  console.log('SUCCESS!', response.status, response.text);
-                },
-                (error) => {
-                  console.log('FAILED...', error);
-                },
-              );
+              emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams1)
+              const templateParams2 = {
+                to_email: "hello@songbee.com",
+                to_name: "Songbee Admins",
+                message: `${artistProfile.name} has accepted a request from ${request.email}! Log into the Admin Portal to view more details`
+              }
+              emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams2)
               Swal.fire("Done!", "", "success");
             }
           });

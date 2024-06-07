@@ -58,7 +58,7 @@ export default function AdminRequestsTab({ num, data }) {
         artists.map((artist) => {
         if(artist.id === artistId){
         const templateParams = {
-          to_email: "walkerneudorff@gmail.com",
+          to_email: artist.email,
           to_name: artist.name,
           message: "You have been assigned a new song request! Log into your Artist Portal to view the details, and get started on the request!"
         }
