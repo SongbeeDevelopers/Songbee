@@ -42,7 +42,6 @@ export default function ArtistSBRequestsTab({ artistProfile }) {
     const due = new Date(requestDay).getTime() + msPerDay * deliveryDays
     return new Date(due).toLocaleString('en-us')
   }
-  console.log("artistRequests", artistRequests)
 
   const openDetails = (row) => {
     dispatch({ type: 'SET_EDIT_DATA', payload: row })

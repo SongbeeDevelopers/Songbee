@@ -43,8 +43,13 @@ function* acceptRequest (action){
             method: "PUT",
             url: `/api/details/accept/${action.payload.id}`
         })
-        yield put ({ type: "FETCH_ARTIST_REQUESTS",
-                    payload: action.payload.artist})
+        yield put ({
+            type: "FETCH_ARTIST_REQUESTS",
+            payload: {
+                id: action.payload.id,
+                vocal_type: action.payload.vocal_type
+            }
+        })
     } catch (error) {
         console.error('SAGA accept request failed', error)
     }
@@ -56,8 +61,13 @@ function* denyRequest (action){
             method: "PUT",
             url: `/api/details/deny/${action.payload.id}`
         })
-        yield put ({ type: "FETCH_ARTIST_REQUESTS",
-                    payload: action.payload.artist})
+        yield put ({
+            type: "FETCH_ARTIST_REQUESTS",
+            payload: {
+                id: action.payload.id,
+                vocal_type: action.payload.vocal_type
+            }
+        })
     } catch (error) {
         console.error('SAGA deny request failed', error)
     }

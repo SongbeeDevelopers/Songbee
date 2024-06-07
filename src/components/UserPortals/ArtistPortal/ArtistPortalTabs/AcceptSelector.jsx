@@ -32,7 +32,8 @@ export default function AcceptSelector({ request }) {
             type: "ACCEPT_REQUEST",
             payload: {
               id: request.details_id,
-              artist: request.artist_id
+              artist: request.artist_id,
+              vocal_type: artistProfile.vocal_type
             }
           })
           const templateParams1 = {
@@ -63,7 +64,8 @@ export default function AcceptSelector({ request }) {
             type: "DENY_REQUEST",
             payload: {
               id: request.details_id,
-              artist: request.artist_id
+              artist: request.artist_id,
+              vocal_type: artistProfile.vocal_type
             }
           })
           Swal.fire("Done!", "", "success");
