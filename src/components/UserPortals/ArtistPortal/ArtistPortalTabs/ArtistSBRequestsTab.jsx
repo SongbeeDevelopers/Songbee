@@ -42,14 +42,9 @@ export default function ArtistSBRequestsTab({ artistProfile }) {
     const due = new Date(requestDay).getTime() + msPerDay * deliveryDays
     return new Date(due).toLocaleString('en-us')
   }
+  console.log("artistRequests", artistRequests)
 
   const openDetails = (row) => {
-    // grabs genre id from genre in reducer
-    for (let genre of genres) {
-      if (row.genre === genre.name) {
-        row.genre = genre.id
-      }
-    }
     dispatch({ type: 'SET_EDIT_DATA', payload: row })
     setDetailsOpen(true)
   }
@@ -91,13 +86,8 @@ export default function ArtistSBRequestsTab({ artistProfile }) {
 
             {/* table body */}
             <TableBody>
-              {artistRequests.map((row) => {
+              {artistRequests.map((row) => (
 
-                // converts artist genres to more easily check if request matches artists genres
-                const artistGenresSimple = artistProfile.genres.map(genre => genre.genre)
-
-                // only show table if request is within artist genres
-                if (artistGenresSimple.includes(row.genre)) return (
                   <TableRow hover key={row.id}>
                     {/* accepted */}
                     <TableCell align="center">
@@ -164,8 +154,7 @@ export default function ArtistSBRequestsTab({ artistProfile }) {
                     </TableCell>
 
                   </TableRow>
-                )
-              })}
+                ))}
             </TableBody>
           </Table>
         </>
