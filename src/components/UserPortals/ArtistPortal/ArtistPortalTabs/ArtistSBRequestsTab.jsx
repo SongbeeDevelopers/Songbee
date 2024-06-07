@@ -91,75 +91,81 @@ export default function ArtistSBRequestsTab({ artistProfile }) {
 
             {/* table body */}
             <TableBody>
-              {artistRequests.map((row) => (
-                <TableRow hover key={row.id}>
+              {artistRequests.map((row) => {
 
-                  {/* accepted */}
-                  <TableCell align="center">
-                    {row.accepted ?
-                      "Accepted"
-                      :
-                      <AcceptSelector request={row} />
-                    }
-                  </TableCell>
+                // converts artist genres to more easily check if request matches artists genres
+                const artistGenresSimple = artistProfile.genres.map(genre => genre.genre)
 
-                  {/* creation date */}
-                  <TableCell align="center">
-                    {new Date(row.created_at).toLocaleString('en-us')}
-                  </TableCell>
+                // only show table if request is within artist genres
+                if (artistGenresSimple.includes(row.genre)) return (
+                  <TableRow hover key={row.id}>
+                    {/* accepted */}
+                    <TableCell align="center">
+                      {row.accepted ?
+                        "Accepted"
+                        :
+                        <AcceptSelector request={row} />
+                      }
+                    </TableCell>
 
-                  {/* due */}
-                  <TableCell align="center">
-                    {getDueDate(row.created_at, row.delivery_days)}
-                  </TableCell>
+                    {/* creation date */}
+                    <TableCell align="center">
+                      {new Date(row.created_at).toLocaleString('en-us')}
+                    </TableCell>
 
-                  {/* email */}
-                  <TableCell align="center">
-                    {row.email}
-                  </TableCell>
+                    {/* due */}
+                    <TableCell align="center">
+                      {getDueDate(row.created_at, row.delivery_days)}
+                    </TableCell>
 
-                  <TableCell align="center">
-                    {row.accepted ? row.is_complete ? row.is_approved ? "Done!" : "Pending Approval" : "Pending Completion" : "Pending Acceptance"}
-                  </TableCell>
+                    {/* email */}
+                    <TableCell align="center">
+                      {row.email}
+                    </TableCell>
 
-                  {/* details btn */}
-                  <TableCell align="center">
-                    <Button variant="contained"
-                      onClick={() => openDetails(row)}
-                      sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
-                    >
-                      DETAILS
-                    </Button>
+                    <TableCell align="center">
+                      {row.accepted ? row.is_complete ? row.is_approved ? "Done!" : "Pending Approval" : "Pending Completion" : "Pending Acceptance"}
+                    </TableCell>
 
-                    {/* details dialog */}
-                    <Dialog keepMounted fullWidth maxWidth="md"
-                      open={detailsOpen}
-                      onClose={closeDetails}
-                    >
-                      <AdminDetailsDialog setDetailsOpen={setDetailsOpen} />
-                    </Dialog>
-                  </TableCell>
+                    {/* details btn */}
+                    <TableCell align="center">
+                      <Button variant="contained"
+                        onClick={() => openDetails(row)}
+                        sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
+                      >
+                        DETAILS
+                      </Button>
 
-                  {/* complete button */}
-                  <TableCell align="center">
-                    <Button variant="contained"
-                      onClick={() => setCompleteOpen(true)}
-                      sx={{ height: 35, width: 95, backgroundColor: "#feaf17", color: "black" }}
-                    >
-                      COMPLETE
-                    </Button>
+                      {/* details dialog */}
+                      <Dialog keepMounted fullWidth maxWidth="md"
+                        open={detailsOpen}
+                        onClose={closeDetails}
+                      >
+                        <AdminDetailsDialog setDetailsOpen={setDetailsOpen} />
+                      </Dialog>
+                    </TableCell>
 
-                    {/* complete dialog */}
-                    <Dialog keepMounted fullWidth maxWidth="md"
-                      open={completeOpen}
-                      onClose={closeComplete}
-                    >
-                      <AdminCompleteDialog request={row} />
-                    </Dialog>
-                  </TableCell>
+                    {/* complete button */}
+                    <TableCell align="center">
+                      <Button variant="contained"
+                        onClick={() => setCompleteOpen(true)}
+                        sx={{ height: 35, width: 95, backgroundColor: "#feaf17", color: "black" }}
+                      >
+                        COMPLETE
+                      </Button>
 
-                </TableRow>
-              ))}
+                      {/* complete dialog */}
+                      <Dialog keepMounted fullWidth maxWidth="md"
+                        open={completeOpen}
+                        onClose={closeComplete}
+                      >
+                        <AdminCompleteDialog request={row} />
+                      </Dialog>
+                    </TableCell>
+
+                  </TableRow>
+                )
+              })}
             </TableBody>
           </Table>
         </>
