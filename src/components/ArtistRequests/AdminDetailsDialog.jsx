@@ -83,7 +83,23 @@ function AdminDetailsDialog({ setDetailsOpen }) {
           </Typography>
 
           <Typography variant="h6">
-            {song.delivery_days ? `Delivery Days: ${song.delivery_days}` : ""}
+            {song.delivery_days ? `This song needs to be delivered within ${song.delivery_days} days` : ""}
+          </Typography>
+
+          <Typography variant="h6">
+            {song.extra_verse ? `This song requires an extra verse` : ""}
+          </Typography>
+
+          <Typography variant="h6">
+            {song.backing_track ? `This song requires an instrumental backing track` : ""}
+          </Typography>
+
+          <Typography variant="h6">
+            {song.license ? `This song will be commercially licensed` : ""}
+          </Typography>
+
+          <Typography variant="h6">
+            {song.artist_payout ? `The payout for this song will be $${song.artist_payout}` : ""}
           </Typography>
         </DialogContentText>
       </DialogContent>
