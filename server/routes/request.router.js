@@ -502,7 +502,7 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
     });
 });
 
-router.get('/artist/:id/:type', rejectUnauthenticated, async (req, res) => {
+router.get('/artist/pending/:id/:type', rejectUnauthenticated, async (req, res) => {
   let connection
   let response = []
   try {
@@ -543,19 +543,20 @@ router.get('/artist/:id/:type', rejectUnauthenticated, async (req, res) => {
     "genres"."name" AS "genre",
     "user"."email"
     FROM "song_request"
-    LEFT JOIN "genres"
+    JOIN "genres"
     ON "song_request"."genre_id"="genres"."id"
-    LEFT JOIN "song_details"
+    JOIN "song_details"
     ON "song_request"."id"="song_details"."song_request_id"
-    LEFT JOIN "user"
+    JOIN "user"
     ON "song_request"."user_id"="user"."id"
-    WHERE "song_request"."vocal_type" ilike $1
+    WHERE 
+    "song_request"."vocal_type" ILIKE $1
     AND
     "song_request"."is_complete"=FALSE
     AND
-    "song_details"."artist_id"=NULL;
+    "song_details"."artist_id" IS NULL;
     `
-  const requestResult = await connection.query(requestQuery, [req.params.type])
+  const requestResult = await connection.query(requestQuery, [`%${req.params.type}%`])
   const genreQuery = `
   SELECT
   "genres"."id" AS "id",
@@ -614,7 +615,8 @@ router.get('/artist/:id/:type', rejectUnauthenticated, async (req, res) => {
     ON "song_request"."id"="song_details"."song_request_id"
     LEFT JOIN "user"
     ON "song_request"."user_id"="user"."id"
-    WHERE "song_details"."artist_id" = $1
+    WHERE 
+    "song_details"."artist_id" = $1
     AND
     "song_request"."is_complete"=FALSE;
     `
@@ -682,7 +684,7 @@ router.get('/artist/complete/:id', rejectUnauthenticated, (req, res) => {
       res.send(result.rows);
     })
     .catch((error) => {
-      console.error("Error in request router GET all complete artist requests", error);
+      console.error("Error in request router GET complete artist requests", error);
       res.sendStatus(500);
     })
 });
