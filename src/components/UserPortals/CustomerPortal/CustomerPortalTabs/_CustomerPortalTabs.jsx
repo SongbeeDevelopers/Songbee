@@ -78,7 +78,7 @@ export default function CustomerPortalTabs() {
           <Tab label="Profile" {...a11yProps(1)} />
           <Tab label="Refer a Friend" {...a11yProps(2)} />
           <Tab label="Messages" {...a11yProps(3)} />
-          {/* {userSubscriptions.length > 0 && <Tab label="Jr Subscriptions" {...a11yProps(4)} />} */}
+          {userSubscriptions.length > 0 && <Tab label="Jr Subscriptions" {...a11yProps(4)} />}
         </Tabs>
       </Box>
 
@@ -100,11 +100,11 @@ export default function CustomerPortalTabs() {
         <CustomerMessagesTab />
       </CustomTabPanel>
 
-      {/* {userSubscriptions.length > 0 &&
+      {userSubscriptions.length > 0 &&
       <CustomTabPanel value={value} index={4}>
         <CustomerJrTab />
       </CustomTabPanel>
-      }  */}
+      } 
     </>
   );
 }
