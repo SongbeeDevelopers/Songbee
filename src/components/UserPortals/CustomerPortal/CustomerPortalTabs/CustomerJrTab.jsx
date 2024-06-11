@@ -11,6 +11,7 @@ import {
   TableBody,
   TableCell
 } from '@mui/material'
+import emailjs from '@emailjs/browser'
 
 import '../CustomerPortal.css'
 
@@ -20,11 +21,16 @@ export default function JuniorRequests() {
 
   const dispatch = useDispatch();
   const history = useHistory();
+  emailjs.init({
+    publicKey: 'kh8qhjYSE2KhcvUoT'
+  })
 
+  const user = useSelector(store => store.user)
   const userSubscriptions = useSelector((store) => store.userSubscriptions);
   const viewDetails = (reqId) => {
     history.push(`/subscription/${reqId}`);
   };
+  console.log("userSubs", userSubscriptions)
 
   const calculateDelivery = (last_delivery, packId) => {
     let subLength
@@ -59,8 +65,14 @@ export default function JuniorRequests() {
                   type: "UPDATE_SUBSCRIPTION_PACK",
                   payload: {id: sub.id, pack: sub.pack_id}
                 })
+                const templateParams = {
+                  to_email: user.email,
+                  to_name: user.email,
+                  message: "Your new Learning Pack has been delivered! Log into your customer portal to view the details and get started on your child's next journey!"
+                }
+                emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams)
               }
-              if (!sub.is_paid){
+              if (sub.is_paid === false){
                 dispatch({
                     type: "DELETE_JR_REQUEST",
                     payload: row.id

@@ -12,6 +12,8 @@ import {
   TableRow,
 } from '@mui/material';
 
+import emailjs from '@emailjs/browser'
+
 
 export default function AdminSubscriptionsTab({ num }) {
 
@@ -23,6 +25,12 @@ export default function AdminSubscriptionsTab({ num }) {
   } else if (num === 1) {
     data = useSelector(store => store.pausedSubscriptions);
   }
+
+  emailjs.init({
+    publicKey: 'kh8qhjYSE2KhcvUoT'
+  })
+
+
 
   // date/time
   const monthDiff = (d1, d2) => {
@@ -46,6 +54,10 @@ export default function AdminSubscriptionsTab({ num }) {
     const lastDelivery = new Date(last_delivery);
     lastDelivery.setMonth(lastDelivery.getMonth() + subLength)
     return lastDelivery
+  }
+  const calculateDays = (nextDelivery) => {
+    new Date(nextDelivery).setDate(nextDelivery.getDate() - 3)
+    return nextDelivery
   }
 
   return (
@@ -74,12 +86,19 @@ export default function AdminSubscriptionsTab({ num }) {
               {/* table body */}
               <TableBody>
                 {data.map((row) => {
+                    console.log("day calc", calculateDays(calculateDelivery(row.last_delivery, row.pack_id)))
                   if (end >= calculateDelivery(row.last_delivery, row.pack_id)) {
                     dispatch({
                       type: "UPDATE_SUBSCRIPTION_PACK",
                       payload: { id: row.id, pack: row.pack_id }
                     })
-                  }
+                    const templateParams = {
+                        to_email: row.email,
+                        to_name: row.email,
+                        message: "Your new Learning Pack has been delivered! Log into your customer portal to view the details and get started on your child's next journey!"
+                      }
+                      emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams)
+                    }
                   if (row.is_paid === false) {
                     dispatch({
                       type: "DELETE_JR_REQUEST",

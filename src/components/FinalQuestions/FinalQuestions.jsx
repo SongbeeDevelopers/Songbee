@@ -72,14 +72,7 @@ function FinalQuestions({ routeVariants }) {
       to_name: 'hello@songbee.com',
       message: "A customer has submitted a new song request!"
     }
-    emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams).then(
-      (response) => {
-        console.log('SUCCESS!', response.status, response.text);
-      },
-      (error) => {
-        console.log('FAILED...', error);
-      },
-    );
+    emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams)
   }
 
   // local state for steps
