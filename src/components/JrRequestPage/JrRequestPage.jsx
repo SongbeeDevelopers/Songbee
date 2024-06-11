@@ -261,8 +261,8 @@ export default function JrCheckoutPage({ routeVariants }) {
                 value={requestData.pack_id}
                 onChange={() => handleInput("pack_id", event.target.value)}
               >
-                <option selected disabled>
-                  Select Genre
+                <option selected disabled value={''}>
+                  Select Pack
                 </option>
                 {learningPacks.map((lpack) => (
                   <option key={lpack.id} value={lpack.id}>
