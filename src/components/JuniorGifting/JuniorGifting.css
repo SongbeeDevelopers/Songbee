@@ -1,0 +1,13 @@
+.jrgifting {
+    background-color: white;
+    height: 100vh;
+    padding-top: 75px;
+}
+
+.giftingbuttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 50px;
+}

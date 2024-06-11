@@ -57,6 +57,7 @@ import ChatPage from "../ChatComponents/ChatPage";
 import CancelPage from "../CancelPage/CancelPage";
 import JrCancelPage from "../CancelPage/JrCancelPage";
 import SubscriptionDetails from "../SubscriptionDetails/SubscriptionDetails"
+import JuniorGifting from "../JuniorGifting/JuniorGifting";
 
 
 function ComponentRouter() {
@@ -289,6 +290,10 @@ function ComponentRouter() {
 
         <JrRoute exact path="/subscription/:id">
           <SubscriptionDetails routeVariants={routeVariants} />
+        </JrRoute>
+
+        <JrRoute exact path="/gifting">
+          <JuniorGifting routeVariants={routeVariants} />
         </JrRoute>
 
 
