@@ -6,7 +6,7 @@ function WsMusic() {
     <div className="ws-music">
       <div className="ws-left">
         <h2>How do I use <span className="highlight">music</span> as a teaching tool?</h2>
-        <button className="jr-landing-btn">Contact Us</button>
+        <a href="mailto:someone@example.com"><button className="jr-landing-btn">Contact Us</button></a>
       </div>
       <div className="ws-right">
         <p>

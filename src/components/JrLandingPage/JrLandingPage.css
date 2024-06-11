@@ -708,6 +708,15 @@ Guesswork
   background-color: #fed07b;
 }
 
+#why-btn {
+  background-color: white;
+
+}
+#why-btn:hover {
+  background-color: #fed07b;
+
+}
+
 @media (max-width: 1100px) {
   .guesswork-honeycomb {
     display: none;

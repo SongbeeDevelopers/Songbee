@@ -42,7 +42,7 @@ export default function SchoolsHero() {
 						Motivate our next generation of trail blazers with songs <br /> and
 						guides carefully crafted to teach and inspire.
 					</p>
-					<button className="jr-landing-btn">Contact Us</button>
+					<a href="mailto:someone@example.com"><button className="jr-landing-btn">Contact Us</button></a>
 				</div>
 			</div>
 

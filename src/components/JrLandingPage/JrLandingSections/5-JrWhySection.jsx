@@ -15,7 +15,7 @@ function WhyJunior() {
           <br /><br />
           Our learning packs help develop your child's cognitive, language, motor, and social skills with play.
         </p>
-        <button id="try-it" className="jr-landing-btn" onClick={() => history.push('/learning-packs')}>
+        <button id="try-it" className="jr-landing-btn" onClick={() => history.push('/jrcheckout')}>
           Try It!
         </button>
       </div>

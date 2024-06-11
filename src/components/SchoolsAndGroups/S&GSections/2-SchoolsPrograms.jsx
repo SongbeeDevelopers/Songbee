@@ -22,7 +22,7 @@ function WhatsTheBuzz() {
           Designed to work hand in hand and enhance learning & development using
           auditory learning as expressed through music.
         </p>
-        <Link>
+        <Link to="/whats-included">
           Learn more about programs{" "}
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -106,8 +106,6 @@ function WhatsTheBuzz() {
                 Encourages community
               </p>
               <div className="theBook-learn">
-
-                <Link to="/why-songbee">Learn More</Link>
               </div>
             </div>
           </div>

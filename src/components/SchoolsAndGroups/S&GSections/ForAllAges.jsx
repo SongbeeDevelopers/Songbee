@@ -1,8 +1,11 @@
 import React from "react";
 import "../SchoolsAndGroups.css";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-import { Link } from "react-router-dom";
 function ForAllAges() {
+
+  const history = useHistory()
+  
   return (
     <div className="faa">
       <h2>For All Ages</h2>
@@ -32,7 +35,7 @@ function ForAllAges() {
           <p>9th & up!</p>
         </div>
       </div>
-      <button className="jr-landing-btn">Get Started</button>
+      <button onClick={() => history.push('/jrcheckout')} className="jr-landing-btn">Get Started</button>
     </div>
   );
 }
