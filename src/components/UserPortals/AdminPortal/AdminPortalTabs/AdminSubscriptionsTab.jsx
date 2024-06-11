@@ -55,6 +55,10 @@ export default function AdminSubscriptionsTab({ num }) {
     lastDelivery.setMonth(lastDelivery.getMonth() + subLength)
     return lastDelivery
   }
+  const calculateDays = (nextDelivery) => {
+    new Date(nextDelivery).setDate(nextDelivery.getDate() - 3)
+    return nextDelivery
+  }
 
   return (
     <div>
@@ -82,6 +86,7 @@ export default function AdminSubscriptionsTab({ num }) {
               {/* table body */}
               <TableBody>
                 {data.map((row) => {
+                    console.log("day calc", calculateDays(calculateDelivery(row.last_delivery, row.pack_id)))
                   if (end >= calculateDelivery(row.last_delivery, row.pack_id)) {
                     dispatch({
                       type: "UPDATE_SUBSCRIPTION_PACK",
@@ -93,7 +98,7 @@ export default function AdminSubscriptionsTab({ num }) {
                         message: "Your new Learning Pack has been delivered! Log into your customer portal to view the details and get started on your child's next journey!"
                       }
                       emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams)
-                  }
+                    }
                   if (row.is_paid === false) {
                     dispatch({
                       type: "DELETE_JR_REQUEST",
