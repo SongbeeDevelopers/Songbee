@@ -201,7 +201,7 @@ export default function JrCheckoutPage({ routeVariants }) {
             <label>Enter Your Child's Name and Pronunciation</label>
             <div className="jrFormGroup">
               <input
-                value={requestData.recipient}
+                value={requestData.name}
                 className="jrFormInput"
                 id="reqFormNameInput"
                 placeholder="Name of Child"
