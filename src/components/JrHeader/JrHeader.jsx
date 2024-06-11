@@ -36,7 +36,7 @@ function JrHeader() {
     if (num === 1) {
       history.push("/songbeejr");
     } else if (num === 2) {
-      history.push("/gifting");
+      window.location.href = 'https://app.cardivo.com/giftcards/songbee';
     } else if (num === 3) {
       history.push("/jr-faq");
     } else if (num === 4) {
@@ -66,7 +66,7 @@ function JrHeader() {
           }
           {!isMobile &&
             <>
-              <Link to="/gifting" className="jr-nav-links">Gifting</Link>
+              <div onClick={() => window.location.href = 'https://app.cardivo.com/giftcards/songbee'} className="jr-nav-links">Gifting</div>
               |
             </>
           }

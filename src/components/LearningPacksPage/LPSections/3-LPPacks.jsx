@@ -64,7 +64,7 @@ function Packs() {
           {/* age group header */}
           <h2>1 Year</h2>
           <p>Build new skills and play to learn.</p>
-          <span>Delivers | every 2 months</span>
+          <span>Delivers | every 3 months</span>
           {/* pricing */}
           <div className="lp-pricing">
             <p>$120/Pack</p>
@@ -96,7 +96,7 @@ function Packs() {
           {/* age group header */}
           <h2>2 Years</h2>
           <p>Stimulate the brain and start making connections.</p>
-          <span>Delivers | every 2 months</span>
+          <span>Delivers | every 3 months</span>
           {/* pricing */}
           <div className="lp-pricing">
             <p>$120/Pack</p>
@@ -128,7 +128,7 @@ function Packs() {
           {/* age group header */}
           <h2>3 Years</h2>
           <p>Dive into real world understanding and build cognitive functioning skills.</p>
-          <span>Delivers | every 2 months</span>
+          <span>Delivers | every 3 months</span>
           {/* pricing */}
           <div className="lp-pricing">
             <p>$120/Pack</p>
@@ -160,7 +160,7 @@ function Packs() {
           {/* age group header */}
           <h2>4 Years</h2>
           <p>Link all learned skills together and make new, creative choices.</p>
-          <span>Delivers | every 2 months</span>
+          <span>Delivers | every 3 months</span>
           {/* pricing */}
           <div className="lp-pricing">
             <p>$120/Pack</p>
