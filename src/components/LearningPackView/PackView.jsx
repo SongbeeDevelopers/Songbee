@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { useParams, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 import LearningPackVideo from "./PacksVideo";
 import LearningMadeEasy from "./MadeEasy";
@@ -16,13 +16,24 @@ function LearningPackView({ routeVariants }) {
 
   const dispatch = useDispatch()
   const { id } = useParams()
+  const history = useHistory()
 
   const learningPack = useSelector(store => store.currentPack)
-
+  const requestData = useSelector((store) => store.jrCheckoutData)
   useEffect(() => {
     dispatch({ type: 'FETCH_CURRENT_PACK', payload: Number(id) })
   }, [id]);
 
+
+
+  const handleGetStarted = () => {
+    dispatch({
+      type: "SET_JR_CHECKOUT_DATA",
+      payload: { ...requestData, pack_id: learningPack.id },
+    });
+
+      history.push('/jrcheckout')
+  }
 
   return (
     <motion.div
@@ -40,7 +51,7 @@ function LearningPackView({ routeVariants }) {
           <p className="pv-age">{learningPack?.min_age} - {learningPack?.max_age} Months old</p>
           <p className="pv-pricing">{learningPack?.max_age >= 12 ? "$120/month" : "$80/month"}</p>
           <p className="pv-delivery"> {learningPack?.max_age >= 12 ? "Every 2 months" : "Every ?"}</p>
-          <button className="jr-landing-btn pv-button">Get Started</button>
+          <button className="jr-landing-btn pv-button" onClick={handleGetStarted}> Get Started</button>
           <p className="pv-skip">Skip a month | Cancel any time</p>
           <div className="lp-dots pack-view-dots"></div>
           <div className="pv-about">
