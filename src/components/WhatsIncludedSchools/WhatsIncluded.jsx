@@ -18,7 +18,7 @@ function WhatsIncluded() {
         <p>
           Design your program with the help of our experts to fit your needs.{" "}
         </p>
-        <button className="jr-landing-btn">Contact Us</button>
+        <a href="mailto:someone@example.com"><button className="jr-landing-btn">Contact Us</button></a>
       </section>
       <WhatsIncludedWhySongbee />
       <div className="bottom-howitworks wsbP">

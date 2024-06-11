@@ -29,7 +29,7 @@ export default function BenefitsCognitive() {
           </p>
         </div>
 
-        <button className="jr-landing-btn">Contact Us</button>
+        <a href="mailto:someone@example.com"><button className="jr-landing-btn">Contact Us</button></a>
       </div>
 
     </div>

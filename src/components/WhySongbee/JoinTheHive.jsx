@@ -62,7 +62,7 @@ function JoinTheHive() {
 
 
         </div>
-       <Link to="/si-benefits" className="jr-landing-btn hive-button">Learn More</Link> 
+       <Link to="/benefits" className="jr-landing-btn hive-button">Learn More</Link> 
       </div>
     </div>
   );

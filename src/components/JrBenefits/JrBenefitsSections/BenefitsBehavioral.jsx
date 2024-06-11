@@ -1,9 +1,11 @@
 import React from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 import "../JrBenefits.css";
 
 
 export default function BenefitsBehavioral() {
+  const history = useHistory()
   return (
     <div className="beEmotional bcCognitive">
 
@@ -28,7 +30,7 @@ export default function BenefitsBehavioral() {
           </p>
         </div>
 
-        <button className="jr-landing-btn">Get Started</button>
+        <button onClick={() => history.push('/jrcheckout')} className="jr-landing-btn">Get Started</button>
       </div>
 
       <div className="ws-yellowLine benefits-yellowLine">

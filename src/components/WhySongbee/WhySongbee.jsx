@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./WhySongbee.css";
 import WsFeatures from "./WS-Features";
 import WsMusic from "./WS-Music";
@@ -8,13 +9,14 @@ import JrFooter from "../JrFooter/JrFooter";
 import JoinTheHive from "./JoinTheHive";
 
 function WhySongbee() {
+  const history = useHistory()
   return (
     <div className="whySongbee">
       <div className="ws-hero">
         <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714075147/Songbee/whySongbeeHero_qaklw8.jpg" alt="" />
         <div className="ws-heroContents">
           <h1>Why Songbee?</h1>
-          <button className="jr-landing-btn">Get Started</button>
+          <button onClick={() => history.push('/jrcheckout')} className="jr-landing-btn">Get Started</button>
         </div>
       </div>
       <img
