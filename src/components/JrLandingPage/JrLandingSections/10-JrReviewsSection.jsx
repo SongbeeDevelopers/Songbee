@@ -50,7 +50,7 @@ function JrReviewsSection() {
             ))}
         </div>
 
-        <button id="guesswork-btn" className="jr-landing-btn" onClick={() => history.push('/why-songbee')}>
+        <button id="why-btn" className="jr-landing-btn" onClick={() => history.push('/why-songbee')}>
           Why Songbee?
         </button>
       </div>
