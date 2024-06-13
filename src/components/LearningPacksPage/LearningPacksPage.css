@@ -663,12 +663,17 @@ FAQ
 }
 
 .packs-faqQuestions {
-  width: 100%;
+  width: 100% !important;
+  max-width: 1500px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  cursor: pointer;
+ 
 }
+
+
 
 .packs-faq-yellowLine {
   bottom: 0 !important;

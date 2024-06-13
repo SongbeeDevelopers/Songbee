@@ -45,7 +45,7 @@ function JrFaq() {
       </h2>
       <div className="faq-questions">
         {questions.map((item) => (
-          <Question question={item} />
+          <Question question={item} key={item.id}/>
         ))}
       </div>
     </div>
@@ -55,16 +55,25 @@ function JrFaq() {
 export default JrFaq;
 
 export function Question({ question }) {
-  const [showAnswer, setShowAnswer] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
+
+
+  const handleToggle = () => {
+    setIsExpanded(!isExpanded)
+  };
   return (
-    <div style={{height:showAnswer?"200px":"50px"}} className="faq-question" onClick={() => setShowAnswer(!showAnswer)}>
-      <p className="faq-question-title">{question.question}</p>
-      <p
-        className="faq-question-answer"
-        style={{ opacity: showAnswer ? "1" : "0" }}
-      >
-        {question.answer}
-      </p>
+    
+    <div className="faq-question" onClick={handleToggle}>
+      <div className="faq-question-header">
+        <span>{question.question}</span>
+        <span className={`arrow ${isExpanded ? 'expanded' : ''}`}>&#9662;</span>
+      </div>
+      {isExpanded && (
+        <div className="faq-answer">
+          <p>{question.answer}</p>
+        </div>
+      )}
     </div>
+    
   );
 }
