@@ -75,10 +75,10 @@ function PacksFaq() {
         ))}
       </div>
       <div className="faq-line">
-
       </div>
     </div>
   );
 }
 
 export default PacksFaq;
+

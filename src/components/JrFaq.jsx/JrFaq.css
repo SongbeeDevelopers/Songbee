@@ -20,20 +20,31 @@
   width: 100% !important;
   display: flex;
   flex-wrap: wrap;
-  max-width: 1000px;
+  max-width: 1500px;
   margin: 0 auto;
   gap: 15px;
-  justify-content: space-between;
+  justify-content: center;
+
+  cursor: pointer;
 }
 
 .faq-question {
-  width: 49%;
+  width: 60%; 
   background-color: #ffdeb0;
   padding: 10px 30px;
   overflow: hidden;
   border-radius: 30px;
   outline: 1px solid black;
 }
+.arrow {
+  margin-left: 300px;
+}
+.faq-question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 
 .faq-question-title {
   font-weight: 500;
