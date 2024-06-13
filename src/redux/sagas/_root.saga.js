@@ -10,6 +10,7 @@ import artistSaga from './artist.saga';
 import mailchimpSaga from './mailchimp.saga';
 import juniorRequestSaga from './jrRequest.saga';
 import chatSaga from './chat.saga';
+import schoolSaga from './schools.saga';
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
 // This is imported in index.js as rootSaga
@@ -30,6 +31,6 @@ export default function* rootSaga() {
     artistSaga(),
     juniorRequestSaga(),
     chatSaga(),
-    
+    schoolSaga(),
   ]);
 }
