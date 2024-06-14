@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 
 import AdminSubscriptionsTab from "./AdminSubscriptionsTab";
 import AdminLearningPacksTab from "./AdminLearningPacksTab";
+import AdminSchoolsTab from "./AdminSchoolsTab";
 
 import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
@@ -63,6 +64,7 @@ export default function AdminPortalTabs() {
                     <Tab label="Active Subscriptions" {...a11yProps(0)} />
                     <Tab label="Paused Subscriptions" {...a11yProps(1)} />
                     <Tab label="Learning Packs" {...a11yProps(2)} />
+                    <Tab label="Schools" {...a11yProps(3)} />
                 </Tabs>
             </Box>
 
@@ -76,6 +78,10 @@ export default function AdminPortalTabs() {
 
             <CustomTabPanel value={value} index={2}>
                 <AdminLearningPacksTab />
+            </CustomTabPanel>
+
+            <CustomTabPanel value={value} index={3}>
+                <AdminSchoolsTab />
             </CustomTabPanel>
         </div>
     )
