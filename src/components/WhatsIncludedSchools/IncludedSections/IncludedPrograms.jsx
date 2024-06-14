@@ -14,7 +14,7 @@ function TopRatedPrograms() {
 
       <div className="trp-bottom">
         <div className="trp-card">
-          <img src="/junior/0-12/babyOne.jpg" alt="" />
+          <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714072560/Songbee/babyOne_r5yrzu.jpg" alt="" />
 
           <h3>Montessori Milestones</h3>
 
@@ -37,7 +37,7 @@ function TopRatedPrograms() {
         </div>
 
         <div className="trp-card">
-          <img src="/junior/0-12/babyOne.jpg" alt="" />
+          <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074259/Songbee/allAges3_wmmjfx.jpg" alt="" />
 
           <h3>Little Worker Bee </h3>
 
@@ -60,7 +60,7 @@ function TopRatedPrograms() {
         </div>
 
         <div className="trp-card">
-          <img src="/junior/0-12/babyOne.jpg" alt="" />
+          <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074265/Songbee/AllAges9_bn3fm5.jpg" alt="" />
 
           <h3>Emotional Navigator</h3>
 
@@ -80,7 +80,7 @@ function TopRatedPrograms() {
         </div>
 
         <div className="trp-card">
-          <img src="/junior/0-12/babyOne.jpg" alt="" />
+          <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074746/Songbee/si-hero2_gpuyku.jpg" alt="" />
 
           <h3>Counseling</h3>
 
@@ -102,7 +102,7 @@ function TopRatedPrograms() {
         </div>
 
         <div className="trp-card">
-          <img src="/junior/0-12/babyOne.jpg" alt="" />
+          <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714074757/Songbee/si-hero4_gjb99j.jpg" alt="" />
 
           <h3>Hit Songwriter</h3>
 
