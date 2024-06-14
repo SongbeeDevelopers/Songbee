@@ -37,7 +37,7 @@ export default function SchoolsHero() {
 			<div className="si-hero">
 				<img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714076638/Songbee/si-hero_drm2uh.jpg" alt="" />
 				<div className="si-heroContents">
-					<h1> <span className="highlight">Music-based</span>learning programs</h1>
+					<h1> <span className="highlight">Music-based </span>learning programs</h1>
 					<p>
 						Motivate our next generation of trail blazers with songs <br /> and
 						guides carefully crafted to teach and inspire.
