@@ -130,7 +130,9 @@ letter-spacing: 1px;
 .trp-bottom{
 display: flex;
 gap: 20px;
-overflow-x: auto;
+width: 100%;
+flex-wrap: wrap;
+justify-content: center;
 
 }
 
@@ -226,9 +228,7 @@ font-size: 1.8rem;
     margin: 0;
     padding: 0;
 }
-.cup button{
 
-}
 
 
 
