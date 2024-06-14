@@ -50,7 +50,7 @@ function LearningPackView({ routeVariants }) {
           <h1>{learningPack?.title} Learning Pack</h1>
           <p className="pv-age">{learningPack?.min_age} - {learningPack?.max_age} Months old</p>
           <p className="pv-pricing">{learningPack?.max_age >= 12 ? "$120/month" : "$80/month"}</p>
-          <p className="pv-delivery"> {learningPack?.max_age >= 12 ? "Every 2 months" : "Every 3 months"}</p>
+          <p className="pv-delivery"> {learningPack?.max_age <= 12 ? "Every 2 months" : "Every 3 months"}</p>
           <button className="jr-landing-btn pv-button" onClick={handleGetStarted}> Get Started</button>
           <p className="pv-skip">Skip a month | Cancel any time</p>
           <div className="lp-dots pack-view-dots"></div>
