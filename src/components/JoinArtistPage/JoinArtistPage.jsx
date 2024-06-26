@@ -53,14 +53,31 @@ const clearGenres = () => {
 const submitEdit = (event) => {
   event.preventDefault()
   // confirmation message
+  if (
+    edit.name &&
+    edit.artist_name &&
+    edit.location &&
+    edit.vocal_type &&
+    edit.photo &&
+    edit.sample_song_1 &&
+    edit.sample_song_2 &&
+    edit.sample_song_3 &&
+    edit.song_title_1 &&
+    edit.song_title_2 &&
+    edit.song_title_3 &&
+    edit.instagram_link &&
+    edit.streaming_link &&
+    edit.bio &&
+    edit.paypal
+  ){
   Swal.fire({
     icon: "question",
-    title: "Save changes?",
+    title: "Are you sure you want to submit?",
     showCancelButton: true,
-    confirmButtonText: "Save",
+    confirmButtonText: "Submit",
   }).then((result) => {
     if (result.isConfirmed) {
-      Swal.fire("Saved!", "", "success");
+      Swal.fire("Submitted!", "", "success");
       // if confirmed, updates db with edit reducer data
       dispatch({
         type: "CREATE_ARTIST",
@@ -75,6 +92,14 @@ const submitEdit = (event) => {
     }
   })
   history.push('/user');
+} else {
+  Swal.fire({
+    icon: "question",
+    title: "You have left fields blank. All fields are required, enter a placeholder if necessary",
+    showCancelButton: false,
+    confirmButtonText: "Go Back",
+  })
+}
 }
 
   
