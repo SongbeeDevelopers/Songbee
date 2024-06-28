@@ -116,6 +116,10 @@ const submitEdit = (event) => {
         from start to finish themselves. We do not pair producers with
         vocalists, instrumentals or vice versa
       </p>
+      <br></br>
+      <p>
+        ALL FIELDS ARE REQUIRED
+      </p>
 
       <form className="artist-form">
       <div className='admin-details-edit-row'>
@@ -156,7 +160,9 @@ const submitEdit = (event) => {
             ></input>
           </label>
         </div>
-
+      <p>
+        Photo file size cannot excede 10mb
+      </p>
         <div className='admin-details-edit-row'>
           <label> Photo
           <Button variant="contained"
@@ -212,6 +218,10 @@ const submitEdit = (event) => {
         <p>
           When uploading songs, make sure you have a sample song that represents each genre you specialize in
         </p>
+      
+      <p>
+        Song file size cannot excede 100mb
+      </p>
 
         <div className='admin-details-edit-row'>
           <label> Song 1 Title
