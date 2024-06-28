@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { Button, TextField, Dialog, Box } from "@mui/material"
+import { Button, Typography, Modal, Dialog, Box } from "@mui/material"
 import Swal from 'sweetalert2';
 import emailjs from '@emailjs/browser'
 
@@ -29,8 +29,7 @@ function JoinArtistPage({ routeVariants }) {
 
 const edit = useSelector(store => store.edit)
 const genres = useSelector(store => store.genres)
-
-const [songFile, setSongFile] = useState('')
+const user = useSelector(store => store.user)
 
 const [details1Open, setDetails1Open] = useState(false);
 const [details2Open, setDetails2Open] = useState(false);
@@ -45,6 +44,51 @@ const handleInput = (key, value) => {
     dispatch({ type: 'EDIT_INPUT', payload: { key, value } })
   }
 }
+
+const loginCheck = () => {
+  if(!user.id){
+    const style = {
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      width: 400,
+      bgcolor: 'background.paper',
+      border: '2px solid #000',
+      boxShadow: 24,
+      p: 4,
+    };
+    const [open, setOpen] = useState(true);
+    const handleClose = () => setOpen(false);
+  
+    return (
+      <div>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              You must login or create an account to apply
+            </Typography>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              Click here to login
+            </Typography>
+            <Button variant="contained"
+              onClick={() => history.push('/login')}
+              sx={{ height: 35, width: 250, backgroundColor: "#feaf17", color: "black" }}
+            >
+              LOGIN
+            </Button>
+          </Box>
+        </Modal>
+      </div>
+    );
+  }
+}
+
 const clearGenres = () => {
   event.preventDefault()
   dispatch({ type: 'CLEAR_ARTIST_GENRES' })
@@ -110,11 +154,16 @@ const submitEdit = (event) => {
       initial='initial'
       animate='final'
     >
+      {loginCheck()}
       <h1>Apply Now to Join</h1>
       <p>
         Our Songbee artists are required to write, record, and produce a song
         from start to finish themselves. We do not pair producers with
         vocalists, instrumentals or vice versa
+      </p>
+      <br></br>
+      <p>
+        ALL FIELDS ARE REQUIRED
       </p>
 
       <form className="artist-form">
@@ -156,7 +205,9 @@ const submitEdit = (event) => {
             ></input>
           </label>
         </div>
-
+      <p>
+        Photo file size cannot excede 10mb
+      </p>
         <div className='admin-details-edit-row'>
           <label> Photo
           <Button variant="contained"
@@ -212,6 +263,10 @@ const submitEdit = (event) => {
         <p>
           When uploading songs, make sure you have a sample song that represents each genre you specialize in
         </p>
+      
+      <p>
+        Song file size cannot excede 100mb
+      </p>
 
         <div className='admin-details-edit-row'>
           <label> Song 1 Title
