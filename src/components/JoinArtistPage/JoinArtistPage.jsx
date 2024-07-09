@@ -168,7 +168,7 @@ const submitEdit = (event) => {
 
       <form className="artist-form">
       <div className='admin-details-edit-row'>
-          <label> Name
+          <label> First and Last Name
             <input
               value={edit.name}
               className='admin-portal-inputs'
@@ -209,7 +209,15 @@ const submitEdit = (event) => {
         Photo file size cannot excede 10mb
       </p>
         <div className='admin-details-edit-row'>
-          <label> Photo
+          <label> Instagram Link
+            <input
+              value={edit.instagram_link}
+              className='admin-portal-inputs'
+              onChange={() => handleInput('instagram_link', event.target.value)}
+            ></input>
+          </label>
+          <div className="upload-button-container">
+          <label> Photo </label>
           <Button variant="contained"
             onClick={() => setDetails1Open(true)}
             sx={{ height: 35, width: 250, backgroundColor: "#feaf17", color: "black" }}
@@ -227,15 +235,7 @@ const submitEdit = (event) => {
               num={4}
               artist={edit.id} />
           </Dialog>
-          </label>
-
-          <label> Instagram Link
-            <input
-              value={edit.instagram_link}
-              className='admin-portal-inputs'
-              onChange={() => handleInput('instagram_link', event.target.value)}
-            ></input>
-          </label>
+          </div>
         </div>
 
         <div className='admin-details-edit-row'>
@@ -276,7 +276,8 @@ const submitEdit = (event) => {
               onChange={() => handleInput('song_title_1', event.target.value)}
             ></input>
           </label>
-          <label> Song 1
+          <div className="upload-button-container">
+          <label> Song 1 </label>
           <Button variant="contained"
             onClick={() => setDetails2Open(true)}
             sx={{ height: 35, width: 250, backgroundColor: "#feaf17", color: "black" }}
@@ -294,7 +295,7 @@ const submitEdit = (event) => {
               num={1}
               artist={edit.id} />
           </Dialog>
-          </label>
+          </div>
         </div>
 
         <div className='admin-details-edit-row'>
@@ -305,7 +306,8 @@ const submitEdit = (event) => {
               onChange={() => handleInput('song_title_2', event.target.value)}
             ></input>
           </label>
-          <label> Song 2
+          <div className="upload-button-container">
+          <label> Song 2 </label>
           <Button variant="contained"
             onClick={() => setDetails3Open(true)}
             sx={{ height: 35, width: 250, backgroundColor: "#feaf17", color: "black" }}
@@ -323,7 +325,8 @@ const submitEdit = (event) => {
               num={2}
               artist={edit.id} />
           </Dialog>
-          </label>
+          </div>
+          
         </div>
 
 
@@ -335,7 +338,10 @@ const submitEdit = (event) => {
               onChange={() => handleInput('song_title_3', event.target.value)}
             ></input>
           </label>
-          <label> Song 3
+          <div className="upload-button-container">
+          <label> 
+            Song 3 
+          </label>
           <Button variant="contained"
             onClick={() => setDetails4Open(true)}
             sx={{ height: 35, width: 250, backgroundColor: "#feaf17", color: "black" }}
@@ -353,7 +359,7 @@ const submitEdit = (event) => {
               num={3}
               artist={edit.id} />
           </Dialog>
-          </label>
+          </div>
         </div>
 
         <div className='admin-details-edit-row'>
@@ -387,7 +393,7 @@ const submitEdit = (event) => {
           <Button variant="contained"
             onClick={submitEdit}
             sx={{ mt: 2, height: 35, width: 75, backgroundColor: "#feaf17", color: "black" }}
-          > SAVE
+          > SUBMIT
           </Button>
         </div>
       </form>
