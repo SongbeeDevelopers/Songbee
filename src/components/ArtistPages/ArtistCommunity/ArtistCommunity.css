@@ -16,8 +16,11 @@
 .artist-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  margin: 0 50px;
+  flex-wrap: wrap;
+  align-content: space-around;
+  gap: 40px;
+  justify-content: center;
+  margin-left: -100px;
 }
 
 .artist-card {
@@ -28,6 +31,8 @@
 .artistSlide-img {
   display: inline-block;
   border-radius: 50%;
+  width: 350px;
+  height: 350px;
   object-fit: cover;
 }
 
