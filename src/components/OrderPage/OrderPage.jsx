@@ -52,8 +52,6 @@ export default function OrderPage({ routeVariants }) {
 
   // agreement logic
   const [agreeTerms, setAgreeTerms] = useState(false)
-  const [agreePrivacy, setAgreePrivacy] = useState(false)
-  const [agreeEUA, setAgreeEUA] = useState(false)
 
   // payment logic
   const [totalPrice, setTotalPrice] = useState(224.99)
@@ -140,8 +138,6 @@ export default function OrderPage({ routeVariants }) {
       requestData.delivery_days &&
       user.id &&
       agreeTerms &&
-      agreePrivacy &&
-      agreeEUA &&
       allStepsCompleted()
     ) {
       Swal.fire({
@@ -212,10 +208,6 @@ export default function OrderPage({ routeVariants }) {
           open={open}
           agreeTerms={agreeTerms}
           setAgreeTerms={setAgreeTerms}
-          agreeEUA={agreeEUA}
-          setAgreeEUA={setAgreeEUA}
-          agreePrivacy={agreePrivacy}
-          setAgreePrivacy={setAgreePrivacy}
           setTotalPrice={setTotalPrice}
           totalPrice={totalPrice}
           setArtistPayout={setArtistPayout}

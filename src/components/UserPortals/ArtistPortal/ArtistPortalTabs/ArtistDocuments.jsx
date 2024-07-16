@@ -44,13 +44,13 @@ function ArtistDocuments() {
                 </p>
                 </div>
         <div className="reqFormGroup">
-            <p><a href="https://www.irs.gov/pub/irs-pdf/fw9.pdf">
-                Click to View W9 form</a>
+            <p><a href="https://www.uscis.gov/sites/default/files/document/forms/i-9.pdf">
+                Click to View and Download i9 form</a>
                 </p>
         </div>
         <div className="w9-input">
          <label> 
-                Upload Your W9
+                Upload Your i9
                 <br></br>
             <TextField
               type="file"
@@ -65,7 +65,7 @@ function ArtistDocuments() {
           onClick={() => handleUpload(5)}
           sx={{m: 'auto', mt: 2, height: 35, width: 200, backgroundColor: "#feaf17", color: "black" }}
         >
-          UPDATE W9
+          UPDATE i9
         </Button>
         </div>
         <div className="w9-input">

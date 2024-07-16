@@ -23,10 +23,6 @@ export default function AddOns({
   open,
   agreeTerms,
   setAgreeTerms,
-  agreeEUA,
-  setAgreeEUA,
-  agreePrivacy,
-  setAgreePrivacy,
   setTotalPrice,
   totalPrice,
   artistPayout,
@@ -174,15 +170,7 @@ export default function AddOns({
       <div className=" maincheckoutagree">
         <FormControlLabel
           control={<Checkbox required value={agreeTerms} onClick={() => setAgreeTerms(!agreeTerms)} />}
-          label={<span>I have read and agree to the <Link to="/terms" target="_blank">terms and conditions</Link></span>}
-        />
-        <FormControlLabel
-          control={<Checkbox required value={agreePrivacy} onClick={() => setAgreePrivacy(!agreePrivacy)} />}
-          label={<span>I have read and agree to the <Link to="/privacy" target="_blank">privacy policy</Link></span>}
-        />
-        <FormControlLabel
-          control={<Checkbox required value={agreeEUA} onClick={() => setAgreeEUA(!agreeEUA)} />}
-          label={<span>I have read and agree to the <a href="https://drive.google.com/file/d/1BCASC9xwt8lwTnW5OcJYAGAS5NsPnfX6/view?usp=sharing" target="_blank">end user agreement</a></span>}
+          label={<span>I have read and agree to the <Link to="/terms" target="_blank">terms and conditions</Link>, the <Link to="/privacy" target="_blank">privacy policy</Link>, and the <a href="https://drive.google.com/file/d/1BCASC9xwt8lwTnW5OcJYAGAS5NsPnfX6/view?usp=sharing" target="_blank">end user agreement</a></span>}
         />
       </div>
       {!user.id && (

@@ -5,6 +5,7 @@ import {
 } from "react-router-dom/cjs/react-router-dom.min";
 import { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useMediaQuery } from "react-responsive";
 import AudioButton from "../AudioButton";
 import FilterBar from "../../FilterBar/FilterBar";
 
@@ -17,6 +18,7 @@ function ArtistCommunity() {
   const history = useHistory();
   const dispatch = useDispatch();
   const audioRef = useRef(null);
+  const isMobile = useMediaQuery( { query: `(max-width: 815px)`} )
 
   // reducers
   const artistCommunity = useSelector((store) => store.allArtists);
@@ -107,14 +109,14 @@ function ArtistCommunity() {
         <FilterBar type="artist" />
 
         {/* display of all artists */}
-        <div className="artist-container">
+        <div className={!isMobile ? "artist-container" : "artist-container-mobile"}>
           {artistCommunity.map((artist, i) => {
             if (artist.is_active) {
               return (
                 <div className="artist-card" key={i}>
                   <h3>{artist.artist_name}</h3>
                   <img
-                    className="artistSlide-img"
+                    className={!isMobile ? "artistSlide-img" : "artistSlide-mobile"}
                     onClick={() => seeArtist(artist.id)}
                     src={artist.photo}
                     alt="Artist photos"

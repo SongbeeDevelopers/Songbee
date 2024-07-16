@@ -23,6 +23,16 @@
   margin-left: -100px;
 }
 
+.artist-container-mobile {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-around;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-end;
+}
+
 .artist-card {
   width: 25%;
   text-align: center;
@@ -33,6 +43,14 @@
   border-radius: 50%;
   width: 350px;
   height: 350px;
+  object-fit: cover;
+}
+
+.artistSlide-mobile {
+  display: inline-block;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
 }
 
