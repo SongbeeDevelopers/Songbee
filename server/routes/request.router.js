@@ -29,6 +29,7 @@ router.get('/user', rejectUnauthenticated, (req, res) => {
   "song_request"."delivery_days",
   "song_request"."is_complete",
   "song_request"."is_approved",
+  "song_request"."is_paid",
   "song_request"."streaming",
   "song_request"."backing_track",
   "song_request"."license",
@@ -87,6 +88,7 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     "song_request"."delivery_days",
     "song_request"."is_complete",
     "song_request"."is_approved",
+    "song_request"."is_paid",
     "song_request"."streaming",
     "song_request"."backing_track",
     "song_request"."license",
@@ -114,7 +116,10 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     ON "song_details"."artist_id" = "artist"."id"
     LEFT JOIN "user" t2
     ON "artist"."user_id" = t2."id"
-    WHERE "song_request"."is_complete"=FALSE;
+    WHERE 
+    "song_request"."is_complete"=FALSE
+    AND
+    "song_request"."is_paid"=TRUE;
     `
     const pendingResult = await connection.query(pendingRequestQuery);
 
@@ -140,6 +145,7 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     "song_request"."delivery_days",
     "song_request"."is_complete",
     "song_request"."is_approved",
+    "song_request"."is_paid",
     "song_request"."streaming",
     "song_request"."backing_track",
     "song_request"."license",
@@ -194,6 +200,7 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     "song_request"."delivery_days",
     "song_request"."is_complete",
     "song_request"."is_approved",
+    "song_request"."is_paid",
     "song_request"."streaming",
     "song_request"."backing_track",
     "song_request"."license",
@@ -261,6 +268,7 @@ router.get('/current/:id', (req, res) => {
     "song_request"."delivery_days",
     "song_request"."is_complete",
     "song_request"."is_approved",
+    "song_request"."is_paid",
     "song_request"."streaming",
     "song_request"."backing_track",
     "song_request"."license",

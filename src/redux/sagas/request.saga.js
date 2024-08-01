@@ -106,12 +106,7 @@ function* createSongRequest (action){
             url: "/api/request/create",
             data: action.payload.data
         })
-        yield put ({
-            type: "FETCH_CHECKOUT",
-            payload: { data: action.payload.data, 
-                        id: response.data.id }
-        })
-        
+        yield action.payload.history.push(`/finalquestions/${response.data.id}`)
         yield put ({ type: 'ADD_ORDER_ID', payload: response.data.id })
     } catch (error) {
         console.error('SAGA createSongRequest() failed:', error)
@@ -139,7 +134,11 @@ function* finishSongRequest (action) {
             data: action.payload.data
         })
         yield put ({type: 'FETCH_USER_REQUESTS'})
-        yield action.payload.history.push('/user')
+        yield put ({
+            type: "FETCH_CHECKOUT",
+            payload: { data: action.payload.orderInfo, 
+                        id: action.payload.id }
+        })
     } catch (error) {
         console.error('SAGA finishSongRequest() failed:', error)
     }

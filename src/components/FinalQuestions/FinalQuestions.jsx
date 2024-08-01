@@ -23,7 +23,6 @@ import {
 // styling components
 import { motion } from "framer-motion";
 import Swal from "sweetalert2";
-import emailjs from '@emailjs/browser'
 import '../SongRequestPage/SongRequestPage.css'
 
 // steps for stepper
@@ -45,10 +44,7 @@ function FinalQuestions({ routeVariants }) {
 
   // reducer
   const requestData = useSelector((store) => store.finalQuestions);
-
-  emailjs.init({
-    publicKey: 'kh8qhjYSE2KhcvUoT'
-  })
+  const orderInfo = useSelector(store => store.requestData)
 
   // inputs directly affect reducer
   const handleInput = (key, value) => {
@@ -65,14 +61,9 @@ function FinalQuestions({ routeVariants }) {
         id: id,
         history: history,
         data: requestData,
+        orderInfo: orderInfo
       },
     });
-    const templateParams = {
-      to_email: 'hello@songbee.com',
-      to_name: 'hello@songbee.com',
-      message: "A customer has submitted a new song request!"
-    }
-    emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams)
   }
 
   // local state for steps

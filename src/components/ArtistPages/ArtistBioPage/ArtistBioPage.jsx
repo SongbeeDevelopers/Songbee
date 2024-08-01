@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useParams, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Button } from "@mui/material";
 import AudioButton from "../AudioButton";
 
 import "./ArtistBioPage.css";
@@ -57,8 +58,12 @@ const handleArtist =(e) => {
                            </a>
                         </div>
                      </div> 
-                     <div onClick={handleArtist}>
-                        <button className="community-button"> Start a song with me</button>
+                     <div>
+                        <Button variant="contained"
+                           onClick={handleArtist}
+                           sx={{ ml: "60px", height: 35, width: 200, backgroundColor: "#feaf17", color: "black" }}
+                        >Start a song with me
+                        </Button>
                      </div>
                   </div>
                   <div className="bio">
