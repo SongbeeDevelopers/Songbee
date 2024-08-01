@@ -45,6 +45,9 @@ function FinalQuestions({ routeVariants }) {
 
   // reducer
   const requestData = useSelector((store) => store.finalQuestions);
+  const orderInfo = useSelector(store => store.requestData)
+
+  console.log("order info", orderInfo)
 
   emailjs.init({
     publicKey: 'kh8qhjYSE2KhcvUoT'
@@ -65,6 +68,7 @@ function FinalQuestions({ routeVariants }) {
         id: id,
         history: history,
         data: requestData,
+        orderInfo: orderInfo
       },
     });
     const templateParams = {

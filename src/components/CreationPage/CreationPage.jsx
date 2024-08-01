@@ -13,7 +13,7 @@ function CreationPage() {
         payload: id
     })
 }, [id]);
-  history.push(`/finalquestions/${id}`);
+  history.push(`/user`);
   return (
     <h2>Loading...</h2>
   )
