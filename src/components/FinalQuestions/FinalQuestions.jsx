@@ -220,9 +220,9 @@ function FinalQuestions({ routeVariants }) {
                 > NEXT
                 </Button>
                 {completedSteps() === totalSteps() - 1 ?
-                  <button onClick={handleComplete} className="user-portal-details-btn">
+                  <Button onClick={handleComplete} sx={{ ml: 2, height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}>
                     Finish
-                  </button>
+                  </Button>
                   : ""
                 }
               </Box>
