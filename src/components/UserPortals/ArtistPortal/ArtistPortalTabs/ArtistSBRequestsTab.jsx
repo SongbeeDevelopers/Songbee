@@ -100,17 +100,17 @@ export default function ArtistSBRequestsTab({ artistProfile }) {
 
                     {/* creation date */}
                     <TableCell align="center">
-                      {new Date(row.created_at).toLocaleString('en-us')}
+                      {(new Date(row.created_at).toLocaleString('en-us').split(','))[0]}
                     </TableCell>
 
                     {/* first draft due */}
                     <TableCell align="center">
-                      
+                      {(new Date(row.draft_date).toLocaleString('en-us').split(','))[0]}
                     </TableCell>
 
                     {/* final due date */}
                     <TableCell align="center">
-                      {getDueDate(row.created_at, row.delivery_days)}
+                      {(new Date(row.due_date).toLocaleString('en-us').split(','))[0]}
                     </TableCell>
 
                     <TableCell align="center">

@@ -63,7 +63,7 @@ export default function AdminMainTab() {
     <div className="admin-tabs-container">
       <Box display="flex" justifyContent="center" width="100%">
         <Tabs value={value} onChange={handleChange} variant="scrollable" centered>
-          <Tab label="Lead Forms" {...a11yProps(0)} />
+          <Tab label="Order Bulletin" {...a11yProps(0)} />
           <Tab label="Pending Approval" {...a11yProps(1)} />
           <Tab label="Completed Orders" {...a11yProps(2)} />
           

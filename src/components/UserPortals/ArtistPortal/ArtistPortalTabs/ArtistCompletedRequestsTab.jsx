@@ -91,7 +91,7 @@ export default function ArtistCompletedRequestsTab({artistId}) {
 
                   {/* creation date */}
                   <TableCell>
-                    {new Date(row.created_at).toLocaleString('en-us')}
+                    {(new Date(row.created_at).toLocaleString('en-us').split(','))[0]}
                   </TableCell>
 
                   {/* email */}
@@ -101,7 +101,7 @@ export default function ArtistCompletedRequestsTab({artistId}) {
 
                   {/* due */}
                   <TableCell align="center">
-                    {getDueDate(row.created_at, row.delivery_days)}
+                    {(new Date(row.due_date).toLocaleString('en-us').split(','))[0]}
                   </TableCell>
 
                   <TableCell align="center">
