@@ -169,7 +169,8 @@ export default function AdminRequestsTab({ num, data }) {
                   <TableCell>Creation Date</TableCell>
                   <TableCell align="center">Requester E-Mail</TableCell>
                   <TableCell align="center">Artist</TableCell>
-                  <TableCell align="center">Due</TableCell>
+                  <TableCell align='center'>Draft Due Date</TableCell>
+                  <TableCell align="center">Final Due Date</TableCell>
                   {num === 1 && <TableCell align="center">Approve?</TableCell>}
                   <TableCell align="center">View Details</TableCell>
                   <TableCell align="center">Completion Form</TableCell>
@@ -191,7 +192,7 @@ export default function AdminRequestsTab({ num, data }) {
                     <TableRow hover key={row.id}>
                       {/* creation date */}
                       <TableCell>
-                        {new Date(row.created_at).toLocaleString('en-us')}
+                        {(new Date(row.created_at).toLocaleString('en-us').split(','))[0]}
                       </TableCell>
 
                       {/* email */}
@@ -230,9 +231,14 @@ export default function AdminRequestsTab({ num, data }) {
                         }
                       </TableCell>
 
-                      {/* due */}
+                      {/* draft due date */}
                       <TableCell align="center">
-                        {getDueDate(row.created_at, row.delivery_days)}
+                        {(new Date(row.draft_date).toLocaleString('en-us').split(','))[0]}
+                      </TableCell>
+
+                      {/* final due date */}
+                      <TableCell align="center">
+                        {(new Date(row.due_date).toLocaleString('en-us').split(','))[0]}
                       </TableCell>
 
                       {/* approve button */}
