@@ -36,6 +36,8 @@ router.get('/user', rejectUnauthenticated, (req, res) => {
   "song_request"."extra_verse",
   "song_request"."total_price",
   "song_request"."artist_payout",
+  "song_request"."due_date",
+  "song_request"."draft_date",
   "song_details"."url",
   "song_details"."lyrics",
   "song_details"."title",
@@ -95,6 +97,8 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     "song_request"."extra_verse",
     "song_request"."total_price",
     "song_request"."artist_payout",
+    "song_request"."due_date",
+    "song_request"."draft_date",
     "song_details"."url",
     "song_details"."lyrics",
     "song_details"."title",
@@ -152,6 +156,8 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     "song_request"."extra_verse",
     "song_request"."total_price",
     "song_request"."artist_payout",
+    "song_request"."due_date",
+    "song_request"."draft_date",
     "song_details"."url",
     "song_details"."lyrics",
     "song_details"."title",
@@ -207,6 +213,8 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     "song_request"."extra_verse",
     "song_request"."total_price",
     "song_request"."artist_payout",
+    "song_request"."due_date",
+    "song_request"."draft_date",
     "song_details"."url",
     "song_details"."lyrics",
     "song_details"."title",
@@ -275,6 +283,8 @@ router.get('/current/:id', (req, res) => {
     "song_request"."extra_verse",
     "song_request"."total_price",
     "song_request"."artist_payout",
+    "song_request"."due_date",
+    "song_request"."draft_date",
     "song_details"."url",
     "song_details"."artist_id",
     "song_details"."lyrics",
@@ -304,6 +314,12 @@ router.get('/current/:id', (req, res) => {
     })
 });
 
+function getDueDate(deliveryDays) {
+  const msPerDay = 24 * 60 * 60 * 1000;
+  const due = new Date().getTime() + msPerDay * deliveryDays
+  return new Date(due)
+}
+
 router.post('/create', async (req, res) => {
   let connection
   try {
@@ -329,11 +345,13 @@ router.post('/create', async (req, res) => {
     const backingTrack = req.body.backing_track;
     const totalPrice = req.body.total_price;
     const artistPayout = req.body.artist_payout;
+    const dueDate = getDueDate(Number(deliveryDays))
+    const draftDate = getDueDate((Number(deliveryDays)-2))
     const requestQuery = `
     INSERT INTO "song_request"
-      ("user_id", "genre_id", "requester", "recipient", "pronunciation", "recipient_relationship", "occasion", "vocal_type", "vibe", "tempo", "inspiration", "delivery_days", "streaming", "extra_verse", "license", "backing_track", "total_price", "artist_payout")
+      ("user_id", "genre_id", "requester", "recipient", "pronunciation", "recipient_relationship", "occasion", "vocal_type", "vibe", "tempo", "inspiration", "delivery_days", "streaming", "extra_verse", "license", "backing_track", "total_price", "artist_payout", "due_date", "draft_date")
       VALUES
-      ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18)
+      ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20)
       RETURNING "id";
     `
     const response = await connection.query(
@@ -355,7 +373,9 @@ router.post('/create', async (req, res) => {
       license,
       backingTrack,
       totalPrice,
-      artistPayout
+      artistPayout,
+      dueDate,
+      draftDate
     ]
     )
     if (artist === '') {
@@ -538,12 +558,16 @@ router.get('/artist/pending/:id/:type', rejectUnauthenticated, async (req, res) 
     "song_request"."delivery_days",
     "song_request"."is_complete",
     "song_request"."is_approved",
+    "song_request"."is_paid",
     "song_request"."total_price",
     "song_request"."artist_payout",
     "song_request"."genre_id",
     "song_request"."backing_track",
     "song_request"."extra_verse",
     "song_request"."license",
+    "song_request"."due_date",
+    "song_request"."draft_date",
+    "song_request"."notes",
     "song_details"."url",
     "song_details"."lyrics",
     "song_details"."title",
@@ -565,7 +589,9 @@ router.get('/artist/pending/:id/:type', rejectUnauthenticated, async (req, res) 
     AND
     "song_request"."is_complete"=FALSE
     AND
-    "song_details"."artist_id" IS NULL;
+    "song_details"."artist_id" IS NULL
+    AND
+    "song_request"."is_paid" = TRUE;
     `
   const requestResult = await connection.query(requestQuery, [`%${req.params.type}%`])
   const genreQuery = `
@@ -607,12 +633,16 @@ router.get('/artist/pending/:id/:type', rejectUnauthenticated, async (req, res) 
     "song_request"."delivery_days",
     "song_request"."is_complete",
     "song_request"."is_approved",
+    "song_request"."is_paid",
     "song_request"."total_price",
     "song_request"."artist_payout",
     "song_request"."genre_id",
     "song_request"."backing_track",
     "song_request"."extra_verse",
     "song_request"."license",
+    "song_request"."due_date",
+    "song_request"."draft_date",
+    "song_request"."notes",
     "song_details"."url",
     "song_details"."lyrics",
     "song_details"."title",
@@ -632,7 +662,9 @@ router.get('/artist/pending/:id/:type', rejectUnauthenticated, async (req, res) 
     WHERE 
     "song_details"."artist_id" = $1
     AND
-    "song_request"."is_complete"=FALSE;
+    "song_request"."is_complete"=FALSE
+    AND
+    "song_request"."is_paid" = TRUE;
     `
   const artistResult = await connection.query(artistQuery, [req.params.id])
   response = [...response, ...artistResult.rows]
@@ -670,11 +702,16 @@ router.get('/artist/complete/:id', rejectUnauthenticated, (req, res) => {
     "song_request"."delivery_days",
     "song_request"."is_complete",
     "song_request"."is_approved",
+    "song_request"."is_paid",
     "song_request"."total_price",
     "song_request"."artist_payout",
+    "song_request"."genre_id",
     "song_request"."backing_track",
     "song_request"."extra_verse",
     "song_request"."license",
+    "song_request"."due_date",
+    "song_request"."draft_date",
+    "song_request"."notes",
     "song_details"."url",
     "song_details"."lyrics",
     "song_details"."title",
@@ -742,6 +779,30 @@ router.put('/approve/:id', rejectUnauthenticated, (req, res) => {
     })
     .catch((error) => {
       console.error('request router /approve failed:', error)
+    })
+})
+
+router.put('/dates/:id', rejectUnauthenticated, (req, res) => {
+  let dateQuery
+  if (req.body.num === 1){
+  dateQuery = `
+    UPDATE "song_request"
+    SET "draft_date" = $1
+    WHERE "id" = $2
+    `
+  } else {
+    dateQuery = `
+    UPDATE "song_request"
+    SET "due_date" = $1
+    WHERE "id" = $2
+    `
+  }
+  pool.query(dateQuery, [req.body.date, req.params.id])
+    .then((result) => {
+      res.sendStatus(200)
+    })
+    .catch((error) => {
+      console.error('request router update dates failed:', error)
     })
 })
 

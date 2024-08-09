@@ -231,6 +231,19 @@ function* updateApproval (action) {
     }
 }
 
+function* updateDates (action) {
+    try {
+        yield axios({
+            method: 'PUT',
+            url: `/api/request/dates/${action.payload.id}`,
+            data: action.payload.data
+        })
+        yield put ({ type: 'FETCH_ALL_REQUESTS'})
+    } catch (error) {
+        console.error('SAGA updateDates failed', error)
+    }
+}
+
 function* requestSaga() {
     yield takeLatest('FETCH_ALL_REQUESTS', fetchAllRequests);
     yield takeLatest('FETCH_USER_REQUESTS', fetchUserRequests);
@@ -250,6 +263,7 @@ function* requestSaga() {
     yield takeLatest('FETCH_COMPLETED_ARTIST_REQUESTS', fetchCompletedArtistRequests);
     yield takeLatest('CONFIRM_REQUEST_PAYMENT', confirmRequestPayment);
     yield takeLatest('UPDATE_APPROVAL', updateApproval);
+    yield takeLatest('UPDATE_DATES', updateDates);
 }
 
 export default requestSaga;

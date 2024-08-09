@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import AdminCompleteDialog from './AdminPortalDialogs/AdminCompleteDialog';
 import AdminDetailsDialog from './AdminPortalDialogs/AdminDetailsDialog'
-import AdminDateDialog from './AdminPortalDialogs/AdminDateDialog';
 import FilterBar from '../../../FilterBar/FilterBar';
 import MessageUserButton from '../../../AdminPortal/AdminPortalTabs/MessageUserButton';
 
@@ -27,7 +26,7 @@ import Swal from 'sweetalert2';
 import emailjs from '@emailjs/browser'
 
 
-export default function AdminRequestsTab({ num, data }) {
+export default function AdminOrderBulletin({ num, data }) {
 
   const dispatch = useDispatch()
 
@@ -36,9 +35,7 @@ export default function AdminRequestsTab({ num, data }) {
 
   // modal state
   const [detailsOpen, setDetailsOpen] = useState(false);
-  const [completeOpen, setCompleteOpen] = useState(false);
-  const [dateOpen, setDateOpen] = useState(false);
-  const [draftOpen, setDraftOpen] = useState(false);
+  const [completeOpen, setCompleteOpen] = useState(false)
 
   emailjs.init({
     publicKey: 'kh8qhjYSE2KhcvUoT'
@@ -107,24 +104,6 @@ export default function AdminRequestsTab({ num, data }) {
     dispatch({ type: 'CLEAR_EDIT_DATA' })
     setCompleteOpen(false)
   }
-    // same as above, logic for complete dialog
-    const openDraft = (row) => {
-      dispatch({ type: 'SET_EDIT_DATA', payload: row })
-      setDraftOpen(true)
-    }
-    const closeDraft = () => {
-      dispatch({ type: 'CLEAR_EDIT_DATA' })
-      setCompleteOpen(false)
-    }
-      // same as above, logic for complete dialog
-  const openDate = (row) => {
-    dispatch({ type: 'SET_EDIT_DATA', payload: row })
-    setDateOpen(true)
-  }
-  const closeDate = () => {
-    dispatch({ type: 'CLEAR_EDIT_DATA' })
-    setDateOpen(false)
-  }
 
   // request approval logic
   const approveRequest = (reqId, approved, request) => {
@@ -190,11 +169,8 @@ export default function AdminRequestsTab({ num, data }) {
                   <TableCell>Creation Date</TableCell>
                   <TableCell align="center">Requester E-Mail</TableCell>
                   <TableCell align="center">Artist</TableCell>
-                  <TableCell align='center'>Draft Due Date</TableCell>
-                  <TableCell align="center">Final Due Date</TableCell>
-                  {num === 1 && <TableCell align="center">Approve?</TableCell>}
+                  <TableCell align="center">Edit Due Date</TableCell>
                   <TableCell align="center">View Details</TableCell>
-                  <TableCell align="center">Completion Form</TableCell>
                   <TableCell align="center">Message</TableCell>
                 </TableRow>
               </TableHead>
@@ -213,7 +189,7 @@ export default function AdminRequestsTab({ num, data }) {
                     <TableRow hover key={row.id}>
                       {/* creation date */}
                       <TableCell>
-                        {(new Date(row.created_at).toLocaleString('en-us').split(','))[0]}
+                        {new Date(row.created_at).toLocaleString('en-us')}
                       </TableCell>
 
                       {/* email */}
@@ -252,58 +228,10 @@ export default function AdminRequestsTab({ num, data }) {
                         }
                       </TableCell>
 
-                      {/* draft due date */}
+                      {/* due */}
                       <TableCell align="center">
-                        <Button variant="contained"
-                          onClick={() => openDraft(row)}
-                          sx={{ height: 35, width: 100, backgroundColor: "#feaf17", color: "black" }}
-                        >
-                          {(new Date(row.draft_date).toLocaleString('en-us').split(','))[0]}
-                        </Button>
-
-                        {/* date dialog */}
-                        <Dialog keepMounted fullWidth
-                          open={draftOpen}
-                          onClose={closeDraft}
-                        >
-                          <AdminDateDialog setDetailsOpen={setDraftOpen} num={1}/>
-                        </Dialog>
+                        {getDueDate(row.created_at, row.delivery_days)}
                       </TableCell>
-
-                      {/* final due date */}
-                      <TableCell align="center">
-                        <Button variant="contained"
-                          onClick={() => openDate(row)}
-                          sx={{ height: 35, width: 100, backgroundColor: "#feaf17", color: "black" }}
-                        >
-                          {(new Date(row.due_date).toLocaleString('en-us').split(','))[0]}
-                        </Button>
-
-                        {/* date dialog */}
-                        <Dialog keepMounted fullWidth
-                          open={dateOpen}
-                          onClose={closeDate}
-                        >
-                          <AdminDateDialog setDetailsOpen={setDateOpen} num={2}/>
-                        </Dialog>
-                      </TableCell>
-
-                      {/* approve button */}
-                      {num === 1 && <TableCell>
-                        <Box minWidth={90}>
-                          <FormControl fullWidth>
-                            <InputLabel>Approve</InputLabel>
-                            <Select
-                              value={row.artist_id}
-                              label="Approve"
-                              onChange={(event) => approveRequest(row.id, event.target.value, row)}
-                            >
-                              <MenuItem value={true}>Approve</MenuItem>
-                              <MenuItem value={false}>Deny</MenuItem>
-                            </Select>
-                          </FormControl>
-                        </Box>
-                      </TableCell>}
 
                       {/* details btn */}
                       <TableCell align="center">
@@ -323,24 +251,6 @@ export default function AdminRequestsTab({ num, data }) {
                         </Dialog>
                       </TableCell>
 
-                      {/* complete button */}
-                      <TableCell align="center">
-                        <Button variant="contained"
-                          onClick={() => openComplete(row)}
-                          sx={{ height: 35, width: 95, backgroundColor: "#feaf17", color: "black" }}
-                        >
-                          COMPLETE
-                        </Button>
-
-                        {/* complete dialog */}
-                        <Dialog keepMounted fullWidth maxWidth="md"
-                          open={completeOpen}
-                          onClose={closeComplete}
-                        >
-                          <AdminCompleteDialog setCompleteOpen={setCompleteOpen} />
-                        </Dialog>
-                      </TableCell>
-
                       <TableCell align='center'>
                         <MessageUserButton userId={row.user_id} />
                       </TableCell>
@@ -357,7 +267,7 @@ export default function AdminRequestsTab({ num, data }) {
         :
         <>
           <FilterBar type={num === 0 ? 'pending' : 'completed'} />
-          <p className='admin-empty-msg'>There are currently no requests.</p>
+          <p className='admin-empty-msg'>There are currently no orders.</p>
         </>
       }
     </div>

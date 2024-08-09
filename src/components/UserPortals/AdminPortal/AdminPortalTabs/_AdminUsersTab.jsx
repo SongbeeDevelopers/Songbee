@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 import FilterBar from '../../../FilterBar/FilterBar';
 import MessageUserButton from '../../../AdminPortal/AdminPortalTabs/MessageUserButton';
+import UserClassSelector from './UserClassSelector';
 
 import {
   Table,
@@ -30,6 +31,7 @@ export default function AdminUsersTab() {
                   <TableCell>Email</TableCell>
                   <TableCell align="center">Credit</TableCell>
                   <TableCell align="center">Created At</TableCell>
+                  <TableCell align='center'>Account Type</TableCell>
                   <TableCell align="center">Message</TableCell>
                 </TableRow>
               </TableHead>
@@ -50,6 +52,11 @@ export default function AdminUsersTab() {
                     {/* creation date */}
                     <TableCell align="center">
                       {new Date(user.created_at).toLocaleString('en-us')}
+                    </TableCell>
+
+                    {/* user class */}
+                    <TableCell align='center'>
+                      <UserClassSelector user={user} />
                     </TableCell>
 
                     {/* messaging */}

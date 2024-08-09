@@ -16,11 +16,10 @@ export default function UserClassSelector({ user }) {
   const updateUserClass = (value) => {
     Swal.fire({
       icon: "warning" ,
-      title: "Reassign this user's class?",
+      title: "Reassign this user's account type?",
       showCancelButton: true,
       confirmButtonText: "Reassign",
     }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         dispatch({
           type: "UPDATE_USER_CLASS",
@@ -43,6 +42,7 @@ export default function UserClassSelector({ user }) {
       <MenuItem value={1}>Customer</MenuItem>
       <MenuItem value={2}>Artist</MenuItem>
       <MenuItem value={3}>Admin</MenuItem>
+      <MenuItem value={0}>School</MenuItem>
     </Select>
   )
 }
