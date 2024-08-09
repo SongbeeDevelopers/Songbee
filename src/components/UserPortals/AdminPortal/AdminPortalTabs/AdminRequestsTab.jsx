@@ -107,6 +107,24 @@ export default function AdminRequestsTab({ num, data }) {
     dispatch({ type: 'CLEAR_EDIT_DATA' })
     setCompleteOpen(false)
   }
+    // same as above, logic for complete dialog
+    const openDraft = (row) => {
+      dispatch({ type: 'SET_EDIT_DATA', payload: row })
+      setDraftOpen(true)
+    }
+    const closeDraft = () => {
+      dispatch({ type: 'CLEAR_EDIT_DATA' })
+      setCompleteOpen(false)
+    }
+      // same as above, logic for complete dialog
+  const openDate = (row) => {
+    dispatch({ type: 'SET_EDIT_DATA', payload: row })
+    setDateOpen(true)
+  }
+  const closeDate = () => {
+    dispatch({ type: 'CLEAR_EDIT_DATA' })
+    setDateOpen(false)
+  }
 
   // request approval logic
   const approveRequest = (reqId, approved, request) => {
@@ -237,7 +255,7 @@ export default function AdminRequestsTab({ num, data }) {
                       {/* draft due date */}
                       <TableCell align="center">
                         <Button variant="contained"
-                          onClick={() => setDraftOpen(true)}
+                          onClick={() => openDraft(row)}
                           sx={{ height: 35, width: 100, backgroundColor: "#feaf17", color: "black" }}
                         >
                           {(new Date(row.draft_date).toLocaleString('en-us').split(','))[0]}
@@ -246,7 +264,7 @@ export default function AdminRequestsTab({ num, data }) {
                         {/* date dialog */}
                         <Dialog keepMounted fullWidth
                           open={draftOpen}
-                          onClose={() => setDraftOpen(false)}
+                          onClose={closeDraft}
                         >
                           <AdminDateDialog setDetailsOpen={setDraftOpen} num={1}/>
                         </Dialog>
@@ -255,7 +273,7 @@ export default function AdminRequestsTab({ num, data }) {
                       {/* final due date */}
                       <TableCell align="center">
                         <Button variant="contained"
-                          onClick={() => setDateOpen(true)}
+                          onClick={() => openDate(row)}
                           sx={{ height: 35, width: 100, backgroundColor: "#feaf17", color: "black" }}
                         >
                           {(new Date(row.due_date).toLocaleString('en-us').split(','))[0]}
@@ -264,7 +282,7 @@ export default function AdminRequestsTab({ num, data }) {
                         {/* date dialog */}
                         <Dialog keepMounted fullWidth
                           open={dateOpen}
-                          onClose={() => setDateOpen(false)}
+                          onClose={closeDate}
                         >
                           <AdminDateDialog setDetailsOpen={setDateOpen} num={2}/>
                         </Dialog>

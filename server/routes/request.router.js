@@ -782,4 +782,28 @@ router.put('/approve/:id', rejectUnauthenticated, (req, res) => {
     })
 })
 
+router.put('/dates/:id', rejectUnauthenticated, (req, res) => {
+  let dateQuery
+  if (req.body.num === 1){
+  dateQuery = `
+    UPDATE "song_request"
+    SET "draft_date" = $1
+    WHERE "id" = $2
+    `
+  } else {
+    dateQuery = `
+    UPDATE "song_request"
+    SET "due_date" = $1
+    WHERE "id" = $2
+    `
+  }
+  pool.query(dateQuery, [req.body.date, req.params.id])
+    .then((result) => {
+      res.sendStatus(200)
+    })
+    .catch((error) => {
+      console.error('request router update dates failed:', error)
+    })
+})
+
 module.exports = router;
