@@ -77,8 +77,8 @@ export default function ArtistSBRequestsTab({ artistProfile }) {
               <TableRow>
                 <TableCell >Accepted?</TableCell>
                 <TableCell align="center">Creation Date</TableCell>
-                <TableCell align="center">Due</TableCell>
-                <TableCell align="center">Requester E-Mail</TableCell>
+                <TableCell align="center">First Draft Due</TableCell>
+                <TableCell align="center">Final Due Date</TableCell>
                 <TableCell align="center">Status</TableCell>
                 <TableCell align="center">View Details</TableCell>
                 <TableCell align="center">Completion Form</TableCell>
@@ -103,14 +103,14 @@ export default function ArtistSBRequestsTab({ artistProfile }) {
                       {new Date(row.created_at).toLocaleString('en-us')}
                     </TableCell>
 
-                    {/* due */}
+                    {/* first draft due */}
                     <TableCell align="center">
-                      {getDueDate(row.created_at, row.delivery_days)}
+                      
                     </TableCell>
 
-                    {/* email */}
+                    {/* final due date */}
                     <TableCell align="center">
-                      {row.email}
+                      {getDueDate(row.created_at, row.delivery_days)}
                     </TableCell>
 
                     <TableCell align="center">

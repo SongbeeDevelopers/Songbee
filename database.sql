@@ -53,8 +53,12 @@ CREATE TABLE "song_request" (
   "is_approved" BOOLEAN DEFAULT FALSE,
   "is_paid" BOOLEAN DEFAULT FALSE,
   "total_price" decimal,
-  "artist_payout" decimal
+  "artist_payout" decimal,
+  "due_date" TIMESTAMPTZ,
+  "draft_date" TIMESTAMPTZ,
+  "notes" VARCHAR
 );
+
 
 CREATE TABLE "artist" (
   "id" SERIAL PRIMARY KEY,
