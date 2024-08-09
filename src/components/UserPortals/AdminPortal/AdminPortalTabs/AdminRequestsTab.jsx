@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import AdminCompleteDialog from './AdminPortalDialogs/AdminCompleteDialog';
 import AdminDetailsDialog from './AdminPortalDialogs/AdminDetailsDialog'
+import AdminDateDialog from './AdminPortalDialogs/AdminDateDialog';
 import FilterBar from '../../../FilterBar/FilterBar';
 import MessageUserButton from '../../../AdminPortal/AdminPortalTabs/MessageUserButton';
 
@@ -35,7 +36,9 @@ export default function AdminRequestsTab({ num, data }) {
 
   // modal state
   const [detailsOpen, setDetailsOpen] = useState(false);
-  const [completeOpen, setCompleteOpen] = useState(false)
+  const [completeOpen, setCompleteOpen] = useState(false);
+  const [dateOpen, setDateOpen] = useState(false);
+  const [draftOpen, setDraftOpen] = useState(false);
 
   emailjs.init({
     publicKey: 'kh8qhjYSE2KhcvUoT'
@@ -233,12 +236,38 @@ export default function AdminRequestsTab({ num, data }) {
 
                       {/* draft due date */}
                       <TableCell align="center">
-                        {(new Date(row.draft_date).toLocaleString('en-us').split(','))[0]}
+                        <Button variant="contained"
+                          onClick={() => setDraftOpen(true)}
+                          sx={{ height: 35, width: 100, backgroundColor: "#feaf17", color: "black" }}
+                        >
+                          {(new Date(row.draft_date).toLocaleString('en-us').split(','))[0]}
+                        </Button>
+
+                        {/* date dialog */}
+                        <Dialog keepMounted fullWidth
+                          open={draftOpen}
+                          onClose={() => setDraftOpen(false)}
+                        >
+                          <AdminDateDialog setDetailsOpen={setDraftOpen} num={1}/>
+                        </Dialog>
                       </TableCell>
 
                       {/* final due date */}
                       <TableCell align="center">
-                        {(new Date(row.due_date).toLocaleString('en-us').split(','))[0]}
+                        <Button variant="contained"
+                          onClick={() => setDateOpen(true)}
+                          sx={{ height: 35, width: 100, backgroundColor: "#feaf17", color: "black" }}
+                        >
+                          {(new Date(row.due_date).toLocaleString('en-us').split(','))[0]}
+                        </Button>
+
+                        {/* date dialog */}
+                        <Dialog keepMounted fullWidth
+                          open={dateOpen}
+                          onClose={() => setDateOpen(false)}
+                        >
+                          <AdminDateDialog setDetailsOpen={setDateOpen} num={2}/>
+                        </Dialog>
                       </TableCell>
 
                       {/* approve button */}
