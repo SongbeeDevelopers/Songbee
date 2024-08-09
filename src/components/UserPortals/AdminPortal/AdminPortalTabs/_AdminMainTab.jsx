@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 
 import AdminRequestsTab from './AdminRequestsTab';
+import AdminOrderBulletin from "./AdminOrderBulletin";
 
 import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
@@ -62,9 +63,10 @@ export default function AdminMainTab() {
     <div className="admin-tabs-container">
       <Box display="flex" justifyContent="center" width="100%">
         <Tabs value={value} onChange={handleChange} variant="scrollable" centered>
-          <Tab label="Pending Orders" {...a11yProps(0)} />
+          <Tab label="Lead Forms" {...a11yProps(0)} />
           <Tab label="Pending Approval" {...a11yProps(1)} />
           <Tab label="Completed Orders" {...a11yProps(2)} />
+          
         </Tabs>
       </Box>
 
