@@ -21,6 +21,7 @@ export default function AdminMainTab() {
   const pendingRequests = useSelector(store => store.pendingRequests)
   const completedRequests = useSelector(store => store.completedRequests)
   const unapprovedRequests = useSelector(store => store.unapprovedRequests)
+  const unpaidRequests = useSelector(store => store.unpaidRequests)
 
   // MUI tab structure
   const handleChange = (event, newValue) => {
@@ -66,7 +67,7 @@ export default function AdminMainTab() {
           <Tab label="Order Bulletin" {...a11yProps(0)} />
           <Tab label="Pending Approval" {...a11yProps(1)} />
           <Tab label="Completed Orders" {...a11yProps(2)} />
-          
+          <Tab label="Unpaid Orders" {...a11yProps(3)} />
         </Tabs>
       </Box>
 
@@ -80,6 +81,10 @@ export default function AdminMainTab() {
 
       <CustomTabPanel value={value} index={2}>
         <AdminRequestsTab num={2} approved={true} data={completedRequests} />
+      </CustomTabPanel>
+
+      <CustomTabPanel value={value} index={3}>
+        <AdminRequestsTab num={3} data={unpaidRequests} />
       </CustomTabPanel>
     </div>
   )
