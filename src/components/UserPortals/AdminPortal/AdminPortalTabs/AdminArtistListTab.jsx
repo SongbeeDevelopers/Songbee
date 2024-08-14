@@ -15,7 +15,7 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material"
-
+import Swal from 'sweetalert2';
 
 export default function AdminArtistListTab() {
 
@@ -40,6 +40,27 @@ export default function AdminArtistListTab() {
     setDetailsOpen(false)
   }
 
+  const removeArtist = (artistId, userId) => {
+    Swal.fire({
+      title: "Remove Artist?",
+      text: "The artist details will be removed from the system. Are you sure you want to continue?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Remove",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch({ type: 'DELETE_ARTIST', payload: artistId})
+        dispatch({
+          type: "UPDATE_USER_CLASS",
+          payload: {
+            id: userId,
+            data: 1
+          }
+        })
+        Swal.fire({title: 'Removed!', icon: "success"})
+      }})
+  }
+
   return (
     <div>
       {data.length > 0 ?
@@ -56,6 +77,7 @@ export default function AdminArtistListTab() {
                   <TableCell align="center">Active?</TableCell>
                   <TableCell align="center">Details</TableCell>
                   <TableCell align="center">Message</TableCell>
+                  <TableCell align="center">Remove</TableCell>
                 </TableRow>
               </TableHead>
 
@@ -110,6 +132,15 @@ export default function AdminArtistListTab() {
 
                     <TableCell align="center">
                       <MessageUserButton userId={artist.user_id} />
+                    </TableCell>
+
+                    <TableCell align="center">
+                    <Button variant="contained"
+                        onClick={() => removeArtist(artist.id, artist.user_id)}
+                        sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
+                      >
+                        REMOVE
+                      </Button>
                     </TableCell>
                   </TableRow>
                 ))}

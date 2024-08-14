@@ -7,6 +7,7 @@ function* fetchAllRequests () {
         yield put({ type: 'SET_PENDING_REQUESTS', payload: response.data[0]})
         yield put({ type: 'SET_COMPLETED_REQUESTS', payload: response.data[1]})
         yield put({ type: 'SET_UNAPPROVED_REQUESTS', payload: response.data[2]})
+        yield put({ type: 'SET_UNPAID_REQUESTS', payload: response.data[3]})
     }
     catch (error) {
         console.error('SAGA fetchAllRequests() failed:', error)

@@ -125,7 +125,7 @@ function* submitArtistEdit(action) {
 
 function* deleteArtist(action) {
   try {
-    yield axios.delete(`/api/artist/${action.payload}`);
+    yield axios.delete(`/api/artist/delete/${action.payload}`);
     yield put({ type: "FETCH_PENDING_ARTISTS" });
     yield put({type: 'FETCH_ALL_ARTISTS'})
   } catch (error) {

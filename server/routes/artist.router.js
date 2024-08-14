@@ -335,7 +335,7 @@ router.get('/pending', async (req, res) => {
   }
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/delete/:id', (req, res) => {
   const query = `
     DELETE FROM "artist"
     WHERE id=$1;

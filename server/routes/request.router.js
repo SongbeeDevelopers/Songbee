@@ -241,9 +241,66 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     `
     const needsApproval = await connection.query(needsApprovalQuery);
 
+    const unpaidRequestQuery = `
+    SELECT 
+    "song_request"."id" AS "id",
+    "song_request"."user_id",
+    "song_request"."requester",
+    "song_request"."recipient",
+    "song_request"."pronunciation",
+    "song_request"."recipient_relationship",
+    "song_request"."occasion",
+    "song_request"."vocal_type",
+    "song_request"."vibe",
+    "song_request"."tempo",
+    "song_request"."inspiration",
+    "song_request"."story1",
+    "song_request"."story2",
+    "song_request"."important_what",
+    "song_request"."important_why",
+    "song_request"."additional_info",
+    "song_request"."created_at",
+    "song_request"."delivery_days",
+    "song_request"."is_complete",
+    "song_request"."is_approved",
+    "song_request"."is_paid",
+    "song_request"."streaming",
+    "song_request"."backing_track",
+    "song_request"."license",
+    "song_request"."extra_verse",
+    "song_request"."total_price",
+    "song_request"."artist_payout",
+    "song_request"."due_date",
+    "song_request"."draft_date",
+    "song_details"."url",
+    "song_details"."lyrics",
+    "song_details"."title",
+    "song_details"."artist_id",
+    "song_details"."streaming_link",
+    "song_details"."accepted",
+    "song_details"."artist_id",
+    "genres"."name" AS "genre",
+    t1."email",
+    t2."email" AS "artist_email"
+    FROM "song_request"
+    LEFT JOIN "genres"
+    ON "song_request"."genre_id"="genres"."id"
+    LEFT JOIN "song_details"
+    ON "song_request"."id"="song_details"."song_request_id"
+    LEFT JOIN "user" t1
+    ON "song_request"."user_id"=t1."id"
+    LEFT JOIN "artist"
+    ON "song_details"."artist_id" = "artist"."id"
+    LEFT JOIN "user" t2
+    ON "artist"."user_id" = t2."id"
+    WHERE 
+    "song_request"."is_paid"=FALSE;
+    `
+    const unpaidResult = await connection.query(unpaidRequestQuery);
+
     connection.query("COMMIT;");
     connection.release();
-    res.send([pendingResult.rows, completedResult.rows, needsApproval.rows])
+    res.send([pendingResult.rows, completedResult.rows, needsApproval.rows, unpaidResult.rows])
 
   } catch (error) {
     console.log("Error in request router GET all:", error);
