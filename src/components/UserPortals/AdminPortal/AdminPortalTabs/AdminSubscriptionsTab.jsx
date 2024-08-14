@@ -99,12 +99,6 @@ export default function AdminSubscriptionsTab({ num }) {
                       }
                       emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams)
                     }
-                  if (row.is_paid === false) {
-                    dispatch({
-                      type: "DELETE_JR_REQUEST",
-                      payload: row.id
-                    })
-                  }
                   return (
                     <TableRow hover key={row.id}>
 

@@ -179,12 +179,6 @@ export default function AdminOrderBulletin({ num, data }) {
               <TableBody>
                 {data.map((row) => {
 
-                  if (row.is_paid === false) {
-                    dispatch({
-                      type: "DELETE_SONG_REQUEST",
-                      payload: row.id
-                    })
-                  }
                   return (
                     <TableRow hover key={row.id}>
                       {/* creation date */}

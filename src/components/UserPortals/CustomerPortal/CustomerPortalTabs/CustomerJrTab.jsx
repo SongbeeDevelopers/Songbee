@@ -72,12 +72,6 @@ export default function JuniorRequests() {
                 }
                 emailjs.send('service_8nl8jvl', 'template_mhzl217', templateParams)
               }
-              if (sub.is_paid === false){
-                dispatch({
-                    type: "DELETE_JR_REQUEST",
-                    payload: row.id
-                })
-            }
               return (
               <TableRow key={i}>
                 {/* req date */}
