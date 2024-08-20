@@ -38,7 +38,7 @@ const faqsArtist = [
         What are the next steps after my application has been approved?
       `,
       answer: `
-       When your application has been approved you will recieve an email to recieve onboarding information and follow along for next steps.
+        When your application has been approved, you will receive an email to complete all onboarding documents and follow along for next steps.
       `
     },
   
@@ -47,8 +47,7 @@ const faqsArtist = [
        What terms are on your artist agreement?
       `,
       answer: `
-       Our Artist Agreements are all non-exclusive and are not for a set amount of time. If you would like
-       to be inactive you can email us and let us know you are "inactive". You may also stop working with us any time at your discretion.
+        Our artist Agreements are all non-exclusive and are not for a set amount of time. If you would like to be inactive, you can mark yourself as inactive in your artist portal. You may also stop working with us at any time at your discretion.
       `
     },
     {
