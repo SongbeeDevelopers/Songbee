@@ -27,7 +27,7 @@ const faqsArtist = [
        Who owns the rights for the songs artists create with Songbee?
       `,
       answer: `
-       The artist oens 100% of the master publishing for any songs created with Songbee.
+       The artist owns 100% of the master publishing for any songs created with Songbee.
        
        Songbee reserves the right to use the songs for marketing purposes on social media. Additionally, the artist will always be credited
        and have the opportunity to gain followers and a fanbase. All social media and music streaming links will be required to be posted on the online Artist Portal.
