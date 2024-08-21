@@ -49,7 +49,7 @@ export default function Delivery({ handleInput, handleOpen, setTotalPrice, total
             />
             <img
               className="calendar-img"
-              src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1715096840/vecteezy_calendar-icon-clipart-design-illustration_9380244_qcc9sv.png"
+              src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1715096840/Songbee/vecteezy_calendar-icon-clipart-design-illustration_9380244_qcc9sv.png"
             ></img>
 
             <div className="calendar-txt">
@@ -67,7 +67,7 @@ export default function Delivery({ handleInput, handleOpen, setTotalPrice, total
             />
             <img
               className="calendar-img"
-              src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1715096840/vecteezy_calendar-icon-clipart-design-illustration_9380244_qcc9sv.png"
+              src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1715096840/Songbee/vecteezy_calendar-icon-clipart-design-illustration_9380244_qcc9sv.png"
             ></img>
 
             <div className="calendar-txt">
@@ -85,7 +85,7 @@ export default function Delivery({ handleInput, handleOpen, setTotalPrice, total
             />
             <img
               className="calendar-img"
-              src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1715096840/vecteezy_calendar-icon-clipart-design-illustration_9380244_qcc9sv.png"
+              src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1715096840/Songbee/vecteezy_calendar-icon-clipart-design-illustration_9380244_qcc9sv.png"
             ></img>
             <div className="calendar-txt">
               {new Date(sixDays).toDateString()} <p>6 Days + $0</p>
