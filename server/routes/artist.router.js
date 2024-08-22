@@ -498,6 +498,61 @@ router.get('/all', async (req, res) => {
   }
 })
 
+router.get('/all_active', async (req, res) => {
+  let connection
+  try {
+    connection = await pool.connect();
+    connection.query("BEGIN;");
+
+    // retrieves all artists
+    const query = `
+    SELECT * FROM "artist"
+    WHERE 
+    "approved"=TRUE
+    AND
+    "is_active"=TRUE;
+    `;
+    const artistResponse = await connection.query(query)
+
+    // loops through artists and finds their genres
+    for (let i = 0; i < artistResponse.rows.length; i++) {
+      const genreQuery = `
+      SELECT
+      "genres"."id" AS "id",
+      "genres"."name" AS "genre"
+      FROM "genres"
+      LEFT JOIN "artist_genres"
+      ON "genres"."id"="artist_genres"."genre_id"
+      WHERE "artist_genres"."artist_id"=$1
+      `
+      const genreResponse = await connection.query(genreQuery, [artistResponse.rows[i].id])
+      // adds those genres to the result
+      artistResponse.rows[i].genres = genreResponse.rows
+
+      // adds email as well
+      const emailResponse = await connection.query(
+        `
+        SELECT "user"."email"
+        FROM "artist"
+        LEFT JOIN "user"
+        ON "user"."id" = "artist"."user_id"
+        WHERE "artist"."id" = $1
+        `,
+        [artistResponse.rows[i].id]
+      )
+      artistResponse.rows[i].email = emailResponse.rows[0].email
+    }
+    connection.query("COMMIT;");
+    connection.release();
+    res.send(artistResponse.rows);
+  } catch (error) {
+    console.log('get current artist failed:', error)
+    connection.query("ROLLBACK;");
+    connection.release();
+    res.sendStatus(500)
+  }
+})
+
 router.get('/current/:id', async (req, res) => {
   let connection
   try {

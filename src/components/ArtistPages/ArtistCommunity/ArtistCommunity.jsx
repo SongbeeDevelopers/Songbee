@@ -33,12 +33,10 @@ function ArtistCommunity() {
   // on mount
   useEffect(() => {
     dispatch({
-      type: "FETCH_ALL_ARTISTS",
-      payload: id,
+      type: "FETCH_ACTIVE_ARTISTS"
     });
     dispatch({
-      type: 'FETCH_GENRES',
-      // payload: id,
+      type: 'FETCH_GENRES'
     })
   }, [id]);
 
