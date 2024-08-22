@@ -95,3 +95,7 @@
     padding: 25px 30px
   }
 }
+
+.details-artist-photo {
+  max-width: 300px;
+}

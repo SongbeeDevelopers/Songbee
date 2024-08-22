@@ -226,7 +226,7 @@ export default function OrderPage({ routeVariants }) {
       initial="initial"
       animate="final"
     >
-      <h1>Song Request Details</h1>
+      <h1>Song Details</h1>
       <p>Let’s start! We will guide you through the process of creating your song so it will be seamless and perfect for you! Just fill out your information and we will begin creating your song.</p>
       <p>Your Total: ${(totalPrice + deliveryPrice).toFixed(2)}</p>
       <Box sx={{ width: "100%" }}>

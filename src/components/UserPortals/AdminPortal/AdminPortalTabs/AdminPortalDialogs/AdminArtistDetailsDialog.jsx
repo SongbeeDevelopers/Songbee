@@ -6,6 +6,7 @@ import { Button, TextField, Dialog } from "@mui/material"
 import Swal from 'sweetalert2';
 
 import UploadArtistDetailsDialog from './UploadArtistDetailsDialog';
+import AudioButton from '../../../../ArtistPages/AudioButton';
 
 import '../../AdminPortal.css'
 
@@ -129,6 +130,10 @@ export default function AdminArtistDetaisDialog({ setDetailsOpen }) {
         </div>
 
         <div className='admin-details-edit-row'>
+          <img className='details-artist-photo' src={edit.photo} />
+        </div>
+
+        <div className='admin-details-edit-row'>
           <label> Photo
             <TextField
               type="file"
@@ -191,6 +196,10 @@ export default function AdminArtistDetaisDialog({ setDetailsOpen }) {
         </div>
 
         <div className='admin-details-edit-row'>
+          <AudioButton url={edit.sample_song_1}/>
+        </div>
+
+        <div className='admin-details-edit-row'>
           <label> Song 1 Title
             <input
               value={edit.song_title_1}
@@ -225,6 +234,10 @@ export default function AdminArtistDetaisDialog({ setDetailsOpen }) {
           </Dialog>
 
         <div className='admin-details-edit-row'>
+          <AudioButton url={edit.sample_song_2}/>
+        </div>
+
+        <div className='admin-details-edit-row'>
           <label> Song 2 Title
             <input
               value={edit.song_title_2}
@@ -257,6 +270,10 @@ export default function AdminArtistDetaisDialog({ setDetailsOpen }) {
               num={2}
               artist={edit.id} />
           </Dialog>
+
+        <div className='admin-details-edit-row'>
+          <AudioButton url={edit.sample_song_3}/>
+        </div>
 
         <div className='admin-details-edit-row'>
           <label> Song 3 Title
@@ -317,7 +334,7 @@ export default function AdminArtistDetaisDialog({ setDetailsOpen }) {
               onChange={() => handleInput('paypal', event.target.value)}
             ></input>
           </label>
-          <label> W9
+          <label> I9
             <input
               value={edit.w9}
               className='admin-portal-inputs'
@@ -325,11 +342,19 @@ export default function AdminArtistDetaisDialog({ setDetailsOpen }) {
             ></input>
           </label>
         </div>
+        <div className='admin-details-edit-row'>
+
+        <Button variant="contained"
+            onClick={() => {window.open(edit.w9, "_blank")}}
+            sx={{ height: 35, width: 250, backgroundColor: "#feaf17", color: "black" }}>
+          CLICK TO VIEW I9
+        </Button>
+
         <Button variant="contained"
             onClick={() => setDetails5Open(true)}
             sx={{ height: 35, width: 250, backgroundColor: "#feaf17", color: "black" }}
           >
-            CLICK TO UPLOAD W9
+            CLICK TO UPLOAD I9
           </Button>
 
             {/* upload dialog */}
@@ -342,7 +367,7 @@ export default function AdminArtistDetaisDialog({ setDetailsOpen }) {
               num={5}
               artist={edit.id} />
           </Dialog>
-
+        </div>
         <div id='admin-details-button-row' className='admin-details-edit-row'>
           <Button variant="contained"
             onClick={submitEdit}
