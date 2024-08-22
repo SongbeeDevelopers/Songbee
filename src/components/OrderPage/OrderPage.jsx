@@ -63,7 +63,7 @@ export default function OrderPage({ routeVariants }) {
     dispatch({ type: "FETCH_GENRES" })
   }, []);
   useEffect(() => {
-    dispatch({ type: "FETCH_ALL_ARTISTS" })
+    dispatch({ type: "FETCH_ACTIVE_ARTISTS" })
   }, []);
 
   // inputs directly affect reducer
