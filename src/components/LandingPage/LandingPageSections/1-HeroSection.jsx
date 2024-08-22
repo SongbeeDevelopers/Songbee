@@ -19,7 +19,7 @@ function HeroSection() {
             Custom Songs <br/> For <span>Every</span> Moment
           </h1>
           
-          <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714070492/Songbee/song_i4wnln.png"/>
+          <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1724178977/Songbee/Songbee_Hero_Image_hiabk3.png"/>
 
           <p>Studio-Quality Custom Songs For Any Occasion</p>
         </>
