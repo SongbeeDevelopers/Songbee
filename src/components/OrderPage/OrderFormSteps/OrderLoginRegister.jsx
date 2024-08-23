@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import './LoginRegisterForm.css'
+import '../../LoginRegisterForm/LoginRegisterForm.css'
 
-function LoginRegisterForm( {handleClose} ) {
+function OrderLoginRegister() {
   
   const dispatch = useDispatch();
 
@@ -12,8 +12,8 @@ function LoginRegisterForm( {handleClose} ) {
   const [password, setPassword] = useState('');
   const errors = useSelector(store => store.errors);
 
-  const login = (e) => {
-    e.preventDefault()
+  const login = (event) => {
+    event.preventDefault()
 
     // error messages
     if (errors.loginMessage) { dispatch( {type: 'CLEAR_LOGIN_ERROR'} ) }
@@ -24,8 +24,7 @@ function LoginRegisterForm( {handleClose} ) {
         type: 'LOGIN',
         payload: {
           username: username,
-          password: password,
-          handleClose: handleClose
+          password: password
         },
       });
     } else {
@@ -33,8 +32,8 @@ function LoginRegisterForm( {handleClose} ) {
     }
   };
 
-  const registerUser = (e) => {
-    e.preventDefault()
+  const registerUser = (event) => {
+    event.preventDefault()
 
     // error messages
     if (errors.loginMessage) { dispatch( {type: 'CLEAR_LOGIN_ERROR'} ) }
@@ -45,8 +44,7 @@ function LoginRegisterForm( {handleClose} ) {
           type: 'REGISTER',
           payload: {
           username: username,
-          password: password,
-          handleClose: handleClose
+          password: password
           },
       });
     } else {
@@ -101,7 +99,7 @@ function LoginRegisterForm( {handleClose} ) {
       <div>
         <button
           className="loginRegSubmit"
-          onClick={login}
+          onClick={() => login(event)}
         >
           Log In
         </button>
@@ -110,7 +108,7 @@ function LoginRegisterForm( {handleClose} ) {
       <div>
         <button 
           className="loginRegSubmit"
-          onClick={registerUser}
+          onClick={() => registerUser(event)}
         >
           Register
         </button>
@@ -120,4 +118,4 @@ function LoginRegisterForm( {handleClose} ) {
   )
 }
 
-export default LoginRegisterForm
+export default OrderLoginRegister

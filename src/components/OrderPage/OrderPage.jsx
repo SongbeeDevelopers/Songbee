@@ -9,7 +9,7 @@ import SongSpecifications from "./OrderFormSteps/2-SongSpecifications";
 import SelectYourArtist from "./OrderFormSteps/3-SelectYourArtist";
 import Delivery from "./OrderFormSteps/4-Delivery";
 import AddOns from "./OrderFormSteps/5-AddOns";
-import LoginRegisterForm from "../LoginRegisterForm/LoginRegisterForm";
+import OrderLoginRegister from "./OrderFormSteps/OrderLoginRegister";
 
 // mui imports
 import {
@@ -92,14 +92,14 @@ export default function OrderPage({ routeVariants }) {
   // ----- FORM LOGIC -----
 
   const steps = 
-    user.id ?
-      [
-        "Let's Get Started!",
-        "Select Your Artist",
-        "Add-Ons",
-        "Delivery"
-      ]
-    :
+    // user.id ?
+    //   [
+    //     "Let's Get Started!",
+    //     "Select Your Artist",
+    //     "Add-Ons",
+    //     "Delivery"
+    //   ]
+    // :
       [
         "Let's Get Started!",
         "Select Your Artist",
@@ -230,8 +230,11 @@ export default function OrderPage({ routeVariants }) {
     }
     // step 5
     else if (activeStep === 4) {
-      return <LoginRegisterForm />
-    }
+      if(user.id){
+      return <></>
+      } else {
+      return <OrderLoginRegister />
+    }}
   };
   // ----- END FORM LOGIC -----
 
