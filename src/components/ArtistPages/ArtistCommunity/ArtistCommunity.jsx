@@ -1,17 +1,16 @@
 import React from "react";
-import {
-  useParams,
-  useHistory,
-} from "react-router-dom/cjs/react-router-dom.min";
 import { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useParams, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useMediaQuery } from "react-responsive";
+
 import AudioButton from "../AudioButton";
 import FilterBar from "../../FilterBar/FilterBar";
 
 import './ArtistCommunity.css'
 
-function ArtistCommunity() {
+
+export default function ArtistCommunity() {
 
   // hooks
   const { id } = useParams();
@@ -113,7 +112,7 @@ function ArtistCommunity() {
           {artistCommunity.map((artist, i) => {
             if (artist.is_active) {
               return (
-                <div className="artist-card" key={i}>
+                <div className={!isMobile ? "artist-card": "artist-card-mobile"} key={i}>
                   <h3>{artist.artist_name}</h3>
                   <img
                     className={!isMobile ? "artistSlide-img" : "artistSlide-mobile"}
@@ -143,5 +142,3 @@ function ArtistCommunity() {
     )
   );
 }
-
-export default ArtistCommunity;
