@@ -53,6 +53,21 @@ export default function LetsGetStarted() {
       return (
           <div className="reqFormGroup">
             <div className="reqFormInput">
+              <label>Enter your E-Mail Address</label>
+              <input
+                value={requestData.email}
+                className="reqFormInput"
+                placeholder="Type your E-Mail Here"
+                onChange={() => handleInput("email", event.target.value)}
+              ></input>
+            </div>
+          </div>
+      );
+    }
+    if (activeStep === 2) {
+      return (
+          <div className="reqFormGroup">
+            <div className="reqFormInput">
               <label>Is this song for a Special Occasion?</label>
               <input
                 value={requestData.occasion}
@@ -64,7 +79,7 @@ export default function LetsGetStarted() {
           </div>
       );
     }
-    if (activeStep === 2) {
+    if (activeStep === 3) {
       return (
         <div className="reqFormGroup">
           <div className="reqFormSelect">
@@ -86,7 +101,7 @@ export default function LetsGetStarted() {
         </div>
       );
     }
-    if (activeStep === 3) {
+    if (activeStep === 4) {
       return (
         <div className="reqFormGroup">
           <div className="reqFormSelect">
@@ -105,7 +120,7 @@ export default function LetsGetStarted() {
         </div>
       );
     }
-    if (activeStep === 4) {
+    if (activeStep === 5) {
       return (
           <div className="reqFormGroup">
             <h3>Click Next</h3>
@@ -119,7 +134,7 @@ export default function LetsGetStarted() {
         {startedSteps()}
         <MobileStepper
           variant="progress"
-          steps={4}
+          steps={5}
           position="static"
           activeStep={activeStep}
           sx={{ m: "auto", maxWidth: 400, flexGrow: 1, mt: 6, backgroundColor: '#fff4df' }}
@@ -127,8 +142,8 @@ export default function LetsGetStarted() {
             <Button
               size="small"
               onClick={handleNext}
-              disabled={activeStep === 4}
-            >{ activeStep === 4 ?
+              disabled={activeStep === 5}
+            >{ activeStep === 5 ?
               "Finished"
               :
               `Step ${activeStep + 1}`

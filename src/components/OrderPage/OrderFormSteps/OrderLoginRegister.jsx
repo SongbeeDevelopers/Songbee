@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { Button } from "@mui/material";
+
 import '../../LoginRegisterForm/LoginRegisterForm.css'
 
 function OrderLoginRegister() {
@@ -11,6 +13,7 @@ function OrderLoginRegister() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const errors = useSelector(store => store.errors);
+  const data = useSelector(store => store.requestData)
 
   const login = (event) => {
     event.preventDefault()
@@ -75,7 +78,7 @@ function OrderLoginRegister() {
             className='registerInput'
             type="text"
             name="username"
-            value={username}
+            value={data.email}
             required
             onChange={(event) => setUsername(event.target.value)}
           />
@@ -97,21 +100,15 @@ function OrderLoginRegister() {
       </div>
 
       <div>
-        <button
-          className="loginRegSubmit"
-          onClick={() => login(event)}
-        >
-          Log In
-        </button>
+      <Button onClick={login} sx={{ ml: '25%', mt: '20px', height: 35, width: 150, backgroundColor: "#feaf17", color: "black" }}>
+        LOG IN
+      </Button>
       </div>      
 
       <div>
-        <button 
-          className="loginRegSubmit"
-          onClick={() => registerUser(event)}
-        >
-          Register
-        </button>
+      <Button onClick={registerUser} sx={{ ml: '25%', mt: '20px', height: 35, width: 150, backgroundColor: "#feaf17", color: "black" }}>
+        REGISTER
+      </Button>
       </div>
 
     </div>
