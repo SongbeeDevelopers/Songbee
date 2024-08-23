@@ -56,7 +56,7 @@ function LoginRegisterForm( {handleClose} ) {
     
 
   return (
-      <form className="loginRegisterForm" onSubmit={registerUser}>
+      <form className="loginRegisterForm">
 
       {/* error messages */}
       {errors.registrationMessage && (
@@ -101,7 +101,7 @@ function LoginRegisterForm( {handleClose} ) {
       <div>
         <button
           className="loginRegSubmit"
-          onClick={login}
+          onClick={() => login(event)}
         >
           Log In
         </button>
@@ -110,7 +110,7 @@ function LoginRegisterForm( {handleClose} ) {
       <div>
         <button 
           className="loginRegSubmit"
-          onClick={registerUser}
+          onClick={() => registerUser(event)}
         >
           Register
         </button>
