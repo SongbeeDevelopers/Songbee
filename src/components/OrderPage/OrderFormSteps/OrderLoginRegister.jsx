@@ -54,7 +54,7 @@ function OrderLoginRegister() {
     
 
   return (
-      <form className="loginRegisterForm">
+      <div className="loginRegisterForm">
 
       {/* error messages */}
       {errors.registrationMessage && (
@@ -114,7 +114,7 @@ function OrderLoginRegister() {
         </button>
       </div>
 
-    </form>
+    </div>
   )
 }
 

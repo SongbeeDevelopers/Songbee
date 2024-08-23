@@ -92,14 +92,14 @@ export default function OrderPage({ routeVariants }) {
   // ----- FORM LOGIC -----
 
   const steps = 
-    // user.id ?
-    //   [
-    //     "Let's Get Started!",
-    //     "Select Your Artist",
-    //     "Add-Ons",
-    //     "Delivery"
-    //   ]
-    // :
+    user.id ?
+      [
+        "Let's Get Started!",
+        "Select Your Artist",
+        "Add-Ons",
+        "Delivery"
+      ]
+    :
       [
         "Let's Get Started!",
         "Select Your Artist",
@@ -127,11 +127,11 @@ export default function OrderPage({ routeVariants }) {
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    // console.log("completed before", completed)
-    // const newCompleted = completed;
-    // newCompleted[activeStep] = false;
-    // setCompleted(newCompleted);
-    // console.log("completed after", completed)
+    console.log("completed before", completed)
+    const newCompleted = completed;
+    delete newCompleted[activeStep]
+    setCompleted(newCompleted);
+    console.log("completed after", completed)
   };
 
   const handleStep = (step) => () => {
@@ -145,13 +145,8 @@ export default function OrderPage({ routeVariants }) {
     handleNext();
     if (
       requestData.requester &&
-      requestData.recipient &&
-      requestData.recipient_relationship &&
       requestData.occasion &&
       requestData.vocal_type &&
-      requestData.vibe &&
-      requestData.tempo &&
-      requestData.inspiration &&
       requestData.delivery_days &&
       user.id &&
       agreeTerms &&
@@ -176,15 +171,6 @@ export default function OrderPage({ routeVariants }) {
         showCancelButton: false,
         confirmButtonText: "Back",
       })
-      // .then((result) => {
-      //   if (result.isConfirmed) {
-      //     Swal.fire({
-      //       title: "Submitted!",
-      //       icon: "success",
-      //     });
-      //     dispatchDetails();
-      //   }
-      // });
     }
   };
 
