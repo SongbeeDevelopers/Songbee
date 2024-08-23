@@ -1,50 +1,46 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useParams, useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Button } from "@mui/material";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+
 import AudioButton from "../AudioButton";
 
+import { Button } from "@mui/material";
 import "./ArtistBioPage.css";
-
-function ArtistBioPage() {
-
-const { id } = useParams();
-const dispatch = useDispatch();
-const history = useHistory();
+import "../../App/App.css"
 
 
-const artist = useSelector(store => store.currentArtist);
-const requestData = useSelector((store) => store.requestData);
+export default function ArtistBioPage() {
 
-const artistGenre = useSelector(store => store.fetchGenres);
-// console.log('artistGenre', artistGenre);
+   const dispatch = useDispatch();
+   const history = useHistory();
 
-const handleArtist =(e) => {
-  e.preventDefault();
-  history.push('/order');
+   const artist = useSelector(store => store.currentArtist);
+   const requestData = useSelector((store) => store.requestData);
 
-  dispatch({
-    type: "SET_REQUEST_DATA",
-    payload: { ...requestData, artist: artist.id},
-  });
-}
-  
+   const handleArtist = (e) => {
+      e.preventDefault();
+      history.push('/order');
 
-    return artist ?(
-        <>
-        <div className="imgBox">
-           <div className="content">
-               <img src={artist.photo} alt="Artists images" /> 
-               <div className="artist-content">
-                  <div className="nameHeader">
+      dispatch({
+         type: "SET_REQUEST_DATA",
+         payload: { ...requestData, artist: artist.id },
+      });
+   }
+
+
+   return (
+      <>
+         <div className="imgBox flexCol">
+            <div className="content flexRow">
+
+               <img src={artist.photo} alt="Artists images" className="bio-photo" />
+                  <div className="nameHeader flexCol">
                      <h2>{artist && artist.artist_name}</h2>
                      <h4 className="location">{artist.location}</h4>
                      <div className="socialLinks">
                         <div className="instagram">
                            <a href={artist.instagram_link} target="_blank">
-                           <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714071882/Songbee/instagram-link_f6urma.png" alt="Artist Instagram" />
+                              <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714071882/Songbee/instagram-link_f6urma.png" alt="Artist Instagram" />
                            </a>
                         </div>
                         <div className="spotify">
@@ -57,61 +53,55 @@ const handleArtist =(e) => {
                               <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1714071878/Songbee/artist-website_s1wuuu.png" alt="Artist Website" />
                            </a>
                         </div>
-                     </div> 
-                     <div>
-                        <Button variant="contained"
-                           onClick={handleArtist}
-                           sx={{ ml: "60px", height: 35, width: 200, backgroundColor: "#feaf17", color: "black" }}
-                        >Start a song with me
-                        </Button>
                      </div>
+                     <Button variant="contained"
+                        onClick={handleArtist}
+                        sx={{ height: 35, width: 200, backgroundColor: "#feaf17", color: "black" }}
+                     >Start a song with me
+                     </Button>
                   </div>
-                  <div className="bio">
-                     <h2>Bio:</h2>
-                     <h4>{artist.bio}</h4>
-                  </div>
+            </div>
+            <div className="bio">
+               <h4>{artist.bio}</h4>
+            </div>
+         </div>
+
+         <div className="songListWrapper">
+            <div className="tableHeader">
+               <div className="headerItem">
+               </div>
+               <div className="headerItem">
+                  <h3>Genres:</h3>
+                  {artist && artist.genres && (
+                     <div className="genres">
+                        {artist && artist.genres.map((genre) => (
+                           <p>{genre.genre}</p>
+                        ))}
+                     </div>
+                  )}
+               </div>
+            </div>
+            <h3 className="title">Song Portfolio:</h3>
+
+            <div className="songList">
+               <div className="songItems">
+                  {[1, 2, 3].map((index) => {
+                     const sampleSong = artist[`sample_song_${index}`];
+                     const songTitle = artist[`song_title_${index}`];
+
+                     return sampleSong && (
+                        <div className="audioFiles">
+                           <div className="artistCommunityBtns">
+                              <AudioButton url={sampleSong} />
+                              <p className="songTitles" key={index}>{songTitle}</p>
+                              {console.log('sampleSong', sampleSong)}
+                           </div>
+                        </div>
+                     );
+                  })}
                </div>
             </div>
          </div>
-        <div className="songListWrapper">
-           <div className="tableHeader">
-               <div className="headerItem"> 
-               </div>
-               <div className="headerItem"> 
-                   <h3>Genres:</h3>
-                    {artist && artist.genres && (
-                   <div className="genres">
-                       {artist && artist.genres.map((genre) => (
-                          <p>{genre.genre}</p>
-                       ))} 
-                    </div>
-                    )}
-               </div>
-           </div>
-           <h3 className="title">Song Portfolio:</h3>
-          
-           <div className="songList">
-               <div className="songItems">
-                 {[1, 2, 3].map((index) => {
-                    const sampleSong = artist[`sample_song_${index}`];
-                    const songTitle = artist[`song_title_${index}`];
-                
-                  return sampleSong && (
-                    <div className="audioFiles">
-                     <div className="artistCommunityBtns">
-                        <AudioButton url={sampleSong} />
-                        <p className="songTitles" key={index}>{songTitle}</p>
-                          {console.log('sampleSong', sampleSong)}
-                     </div>
-                  </div>  
-                     );
-                    })}     
-               </div>
-           </div>
-     </div>   
-     </>
-     
-    ) : null;
+      </>
+   )
 }
-
-export default ArtistBioPage;
