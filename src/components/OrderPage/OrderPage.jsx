@@ -127,11 +127,9 @@ export default function OrderPage({ routeVariants }) {
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    console.log("completed before", completed)
     const newCompleted = completed;
     delete newCompleted[activeStep]
     setCompleted(newCompleted);
-    console.log("completed after", completed)
   };
 
   const handleStep = (step) => () => {
@@ -191,8 +189,10 @@ export default function OrderPage({ routeVariants }) {
     }
     // step 2
     else if (activeStep === 1) {
-      return <SelectYourArtist handleInput={handleInput} />
-    }
+      return (
+        <SelectYourArtist 
+          handleInput={handleInput} />
+    )}
     // step 3
     else if (activeStep === 2) {
       return (
@@ -201,8 +201,6 @@ export default function OrderPage({ routeVariants }) {
       handleOpen={handleOpen}
       handleClose={handleClose}
       open={open}
-      agreeTerms={agreeTerms}
-      setAgreeTerms={setAgreeTerms}
       setTotalPrice={setTotalPrice}
       totalPrice={totalPrice}
       setArtistPayout={setArtistPayout}
@@ -212,15 +210,20 @@ export default function OrderPage({ routeVariants }) {
     )}
     // step 4
     else if (activeStep === 3) {
-      return <Delivery handleInput={handleInput} handleOpen={handleOpen} setDeliveryPrice={setDeliveryPrice} setTotalPrice={setTotalPrice} totalPrice={totalPrice} />
-    }
+      return (
+        <Delivery 
+          handleInput={handleInput} 
+          handleOpen={handleOpen} 
+          setDeliveryPrice={setDeliveryPrice} 
+          setTotalPrice={setTotalPrice} 
+          totalPrice={totalPrice}
+          agreeTerms={agreeTerms}
+          setAgreeTerms={setAgreeTerms} />
+    )}
     // step 5
     else if (activeStep === 4) {
-      if(user.id){
-      return <></>
-      } else {
       return <OrderLoginRegister />
-    }}
+    }
   };
   // ----- END FORM LOGIC -----
 
