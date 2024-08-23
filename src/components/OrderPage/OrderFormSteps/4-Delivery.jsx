@@ -94,7 +94,7 @@ export default function Delivery({ handleInput, agreeTerms, setAgreeTerms, setDe
             </div>
           </div>
         </div>
-        <div className=" maincheckoutagree">
+        <div className="maincheckoutagree">
           <FormControlLabel
           control={<Checkbox required value={agreeTerms} onClick={() => setAgreeTerms(!agreeTerms)} />}
           label={<span>I have read and agree to the <Link to="/terms" target="_blank">terms and conditions</Link>, the <Link to="/privacy" target="_blank">privacy policy</Link>, and the <a href="https://drive.google.com/file/d/1BCASC9xwt8lwTnW5OcJYAGAS5NsPnfX6/view?usp=sharing" target="_blank">end user agreement</a></span>}
