@@ -181,7 +181,10 @@ VALUES
 ('jenevee@godess.com', '$2a$10$beIgxp.l45eRiz5HYgUxBuTN6anPZwKY3TRE/nE2Ltg/5Fo1Jylw6', 2),
 ('berchmanpaul@gmail.com', '$2a$10$9bWLNdvC42J3xoCKYD.JtuFt0eD9Zxn7FqkuV.Fy6F.efBhs6CoYC', 2),
 ('perrin.xthona@gmail.com', '$2a$10$2dKeNpwM1zuoBqQvWzPRiuhNVELMhP/lzJWe5H9dLzwXqu5qnj9ia', 2),
-('lefevre.michaelj@gmail.com', '$2a$10$S/gUrKEDMRPAQigNo5cBcuyDAQDu1PXkbn6zjQNTqHclshKlpZLqe', 2);
+('lefevre.michaelj@gmail.com', '$2a$10$S/gUrKEDMRPAQigNo5cBcuyDAQDu1PXkbn6zjQNTqHclshKlpZLqe', 2),
+('kaylee.federmann@gmail.com', '$2a$10$2dKeNpwM1zuoBqQvWzPRiuhNVELMhP/lzJWe5H9dLzwXqu5qnj9ia', 2),
+('amaliasings2@gmail.com', '$2a$10$2dKeNpwM1zuoBqQvWzPRiuhNVELMhP/lzJWe5H9dLzwXqu5qnj9ia', 2),
+('nickpratomusic@gmail.com', '$2a$10$2dKeNpwM1zuoBqQvWzPRiuhNVELMhP/lzJWe5H9dLzwXqu5qnj9ia', 2);
 --Password for songbee account is: Prime#0101
 
 INSERT INTO "genres"
@@ -191,27 +194,150 @@ VALUES
 INSERT INTO "artist"
 ("artist_name", "name", "user_id", "vocal_type", "approved", "is_active", "website", "instagram_link", "sample_song_1", "song_title_1", "sample_song_2", "song_title_2", "sample_song_3", "song_title_3", "bio", "location", "photo", "streaming_link")
 VALUES
-
-('Michael LeFerve', 'Michael LeFerve', 11, 'male', TRUE, TRUE, '', 'https://www.instagram.com/thefevaa/', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321165/Michael_Leferve_Summers_With_You_jxknhm.mp3', 'Summers With You', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321147/Blossoming_by_Michael_leferve_v6ylay.mp3', 'Blossoming', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321186/Michael-LeFevre-smile_kt9evo.mp3', 'Smile', 'Michael LeFevre is the lead singer and songwriter of None The Younger and Sleepy Soul. 
-          While he has been writing music for well over a decade, he has been producing and recording out of his studio full time for the last 4 years.
-          This has given him the experiences necessary to really perfect his craft. 
-          Since his time as a full-time musician, he has been featured in Spotify and Youtube Editorial playlists, had many magazine write-ups, and accumulated millions of streams across all platforms.
-          He looks forward to continuing to write and spread joy through music.', 'St. Louis, Missouri', 'https://res.cloudinary.com/dke4ukd0z/image/upload/v1713458694/Songbee/michael-photo_edh5b9.jpg', 'https://open.spotify.com/artist/32SXond7qEk5OOXU9M8Sq7?si=MZ2frkvaR6OUOmIYwGKd5w&nd=1&dlsi=3dca887b59374406/'),
-
-('Berch', 'Berch', 9, 'male', TRUE, TRUE, '', 'https://www.instagram.com/mynameisberch/?igshid=MzMyNGUyNmU2YQ%3D%3D&utm_source=qr', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321136/Berch_m2vbfj.mp3', 'Berch', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321126/Berch_fee_fi_fo_fum_lgnkd3.mp3', 'FEE FI  FO FUM', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321572/Berch_feel_so_good_kwia9r.mp3', 'Feel So Good', 'Mynameisberch, hailing from Richmond, Virginia, is a versatile artist known for his pop,
-             hip-hop, and soulful vocal style. With influences ranging from John Mayer to Lenny Kravitz and Drake, he effortlessly blends catchy melodies and heartfelt lyrics into his captivating compositions. 
-             As a published BMI songwriter, mynameisberch consistently delivers multiple songs and records each year, showcasing his dedication to his craft. Additionally, 
-             he has been recognized as a featured songwriter in Worship Leader magazine,
-             a national publication in the contemporary Christian music scene. Combining his musical talents with his role as a worship leader at his church, mynameisberch''s passion for creating unique and impactful music shines through.
-             With a genuine 
-             desire to connect with individuals going through various situations and seasons, mynameisberch is excited to bring his creativity to Songbee, crafting personalized songs that resonate with each listener. He says, 
-             I love creating for unique people going through unique situations in unique seasons.', 'Richmond, Virginia', 'https://res.cloudinary.com/dke4ukd0z/image/upload/v1714668161/Songbee/berch_bdrlty.jpg', 'https://mynameisberch.bandcamp.com/'),
-
-('Perrin Xthona', 'Perrin Xthona', 10, 'female', TRUE, TRUE, 'https://www.tiktok.com/@perrinxthona?_t=8hjAn9c36du&_r=1/', 'https://www.instagram.com/perrinxthona/', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321199/Perrin_Xthona_faqiwx.mp3', 'As long As I''m With You', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321212/to_the_moon_and_back_PerrinXthona_wfqrgi.mp3', 'To The Moon and Back', 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321226/You_Are_My_Home_PerrinXthona_vdkbkt.mp3', 'You Are My Home', 'Perrin Xthona is a pop songwriter from Portland, Oregon. She recently graduated from the Berklee College of Music, and her influences are Julia Michaels, 
-                        Lennon Stella, Halsey, Jeremy Zucker, Lauv, and Harry Styles. 
-                        She''s always loved writing songs, and the only thing she loves more is getting to hear other peoples stories.', 'Portland, Oregon', 'https://res.cloudinary.com/dke4ukd0z/image/upload/v1713458705/Songbee/perrin_photo_mhtkti.jpg', 'https://open.spotify.com/artist/1bNx6UhsCYSNuoIeL9LcnD?si=MLyNUmi6RJm2qLdyip1vMA&nd=1&dlsi=27bc328009f646c5/');
-
-
+('Michael LeFerve',
+ 'Michael LeFerve', 
+ 11, 
+ 'male', 
+ TRUE, 
+ TRUE, 
+ '', 
+ 'https://www.instagram.com/thefevaa/', 
+ 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321165/Songbee/artists/Michael_Leferve_Summers_With_You_jxknhm.mp3', 
+ 'Summers With You', 
+ 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321147/Songbee/artists/Blossoming_by_Michael_leferve_v6ylay.mp3', 
+ 'Blossoming', 
+ 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321186/Songbee/artists/Michael-LeFevre-smile_kt9evo.mp3', 
+ 'Smile', 
+ 'Michael LeFevre is the lead singer and songwriter of None The Younger and Sleepy Soul. While he has been writing music for well over a decade,
+  he has been producing and recording out of his studio full time for the last 4 years. This has given him the experiences necessary to really perfect 
+  his craft. Since his time as a full-time musician, he has been featured in Spotify and Youtube Editorial playlists, had many magazine write-ups, 
+  and accumulated millions of streams across all platforms. He looks forward to continuing to write and spread joy through music.', 
+  'St. Louis, Missouri', 
+  'https://res.cloudinary.com/dke4ukd0z/image/upload/v1713458694/Songbee/artists/michael-photo_edh5b9.jpg', 
+  'https://open.spotify.com/artist/32SXond7qEk5OOXU9M8Sq7?si=MZ2frkvaR6OUOmIYwGKd5w&nd=1&dlsi=3dca887b59374406/'
+),
+('Berch', 
+ 'Berch', 
+ 9, 
+ 'male', 
+ TRUE, 
+ TRUE, 
+ '', 
+ 'https://www.instagram.com/mynameisberch/?igshid=MzMyNGUyNmU2YQ%3D%3D&utm_source=qr', 
+ 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321136/Songbee/artists/Berch_m2vbfj.mp3', 
+ 'Berch', 
+ 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321126/Songbee/artists/Berch_fee_fi_fo_fum_lgnkd3.mp3', 
+ 'FEE FI  FO FUM', 
+ 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321572/Songbee/artists/Berch_feel_so_good_kwia9r.mp3', 
+ 'Feel So Good', 
+ 'Mynameisberch, hailing from Richmond, Virginia, is a versatile artist known for his pop, hip-hop, and soulful vocal style.
+  With influences ranging from John Mayer to Lenny Kravitz and Drake, he effortlessly blends catchy melodies and heartfelt lyrics 
+  into his captivating compositions. As a published BMI songwriter, mynameisberch consistently delivers multiple songs and records 
+  each year, showcasing his dedication to his craft. Additionally, he has been recognized as a featured songwriter in Worship Leader magazine,
+  a national publication in the contemporary Christian music scene. Combining his musical talents with his role as a worship leader at his church, 
+  mynameisberch''s passion for creating unique and impactful music shines through. With a genuine desire to connect with individuals 
+  going through various situations and seasons, mynameisberch is excited to bring his creativity to Songbee, crafting personalized songs 
+  that resonate with each listener. He says, I love creating for unique people going through unique situations in unique seasons.', 
+ 'Richmond, Virginia', 
+ 'https://res.cloudinary.com/dke4ukd0z/image/upload/v1714668161/Songbee/artists/berch_bdrlty.jpg', 
+ 'https://mynameisberch.bandcamp.com/'
+),
+('Perrin Xthona', 
+ 'Perrin Xthona', 
+ 10, 
+ 'female', 
+ TRUE, 
+ TRUE,
+ 'https://www.tiktok.com/@perrinxthona?_t=8hjAn9c36du&_r=1/', 
+ 'https://www.instagram.com/perrinxthona/', 
+ 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321199/Songbee/artists/Perrin_Xthona_faqiwx.mp3', 
+ 'As long As I''m With You', 
+ 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321212/Songbee/artists/to_the_moon_and_back_PerrinXthona_wfqrgi.mp3', 
+ 'To The Moon and Back', 
+ 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1713321226/Songbee/artists/You_Are_My_Home_PerrinXthona_vdkbkt.mp3', 
+ 'You Are My Home', 
+ 'Perrin Xthona is a pop songwriter from Portland, Oregon. She recently graduated from the Berklee College of Music, 
+  and her influences are Julia Michaels, Lennon Stella, Halsey, Jeremy Zucker, Lauv, and Harry Styles. 
+  She''s always loved writing songs, and the only thing she loves more is getting to hear other peoples stories.', 
+ 'Portland, Oregon', 
+ 'https://res.cloudinary.com/dke4ukd0z/image/upload/v1713458705/Songbee/artists/perrin_photo_mhtkti.jpg', 
+ 'https://open.spotify.com/artist/1bNx6UhsCYSNuoIeL9LcnD?si=MLyNUmi6RJm2qLdyip1vMA&nd=1&dlsi=27bc328009f646c5/'
+),
+('Kaylee Federmann',
+ 'Kaylee Federmann',
+ 12,
+ 'female',
+ TRUE,
+ TRUE,
+ 'https://www.kayleefedermann.com/',
+ 'https://www.instagram.com/kayleefedermann/',
+ 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1719941327/Songbee/artists/togdar5r4ye9s6p9bqsr.mp3',
+ 'Can''t Wait',
+ 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1719941458/Songbee/artists/elx6cv89zg3skr8hz6se.mp3',
+ 'You and Me',
+ 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1719941551/Songbee/artists/srah12xcgp1nmwrclxkc.mp3',
+ 'Forever you and me',
+ 'Kaylee Federmann has secured nominations for New Artist of the year for the New England Music Awards as well as Pop Act of the year
+  and New Artist of the year for the Boston Music Awards. She Opened for Artists like Ally Brooke of Fifth Harmony, Sara Grace of The Voice 
+  and several others. She has worked with producers and writers who have worked with Selena Gomez, Jonas Brothers, Ava Max, etc.. Her top song 
+  ''Her Song'' has accumulated over 2 million streams followed by her song You Rlly Know with over 250k. 
+  Kaylee has sparked up a community of listeners with over 59k followers on TikTok and 12k on Instagram. 
+  She plays a big role in producing her own music and currently does music and social media creation full time.',
+ 'Nashville',
+ 'https://res.cloudinary.com/dke4ukd0z/image/upload/v1719941231/Songbee/artists/eyt65kcuyvqnq0m53qhi.jpg',
+ 'https://open.spotify.com/artist/7jB0NZ1IvNO3vkpVXOZs95'
+),
+('Amalia Fleming',
+ 'Amalia Fleming',
+ 13,
+ 'female',
+ TRUE,
+ TRUE,
+ 'https://www.amaliafleming.com/',
+ 'https://www.instagram.com/amaliafleming/',
+ 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1720319413/Songbee/artists/mookilhhyctuy8gtiv2r.mp3',
+ 'Planting Seeds',
+ 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1720319513/Songbee/artists/az5xptgf6imjuyrvwwhz.mp3',
+ 'Anchored',
+ 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1720319511/Songbee/artists/uxfzbxcobs3nawxy2cdu.mp3',
+ 'The Truth Is',
+ 'Amalia Fleming’s honey-covered vocal tone and sweet melodies lure us in, but then something even more powerful begins to emerge as
+  each well-crafted lyric unfolds. Her style is a harmonious blend of folk’s storytelling tradition and pop’s catchy, 
+  accessible melodies with influence from artists like Noah Kahan, Lizzy McAlpine, and Sabrina Carpenter. 
+  Her strength lies in her ability to write lyrics that tell authentic stories, rich with imagery and emotional depth. 
+  She grew up on the doorstep to California’s Big Sur, and her decision to study songwriting at Belmont University in Nashville 
+  flipped the script on her life’s trajectory by taking her to a very different place both musically and culturally, 
+  deepening her complex songwriting and immersing her in a subculture far different from the one in which she grew up. 
+  This blend of coastal tranquility with Nashville’s rich musical heritage continues to enrich her writing and influence her journey in the music industry.',
+ 'Nashville',
+ 'https://res.cloudinary.com/dke4ukd0z/image/upload/v1720319395/Songbee/artists/zuynxezkltsdh8pufnyb.jpg',
+ 'https://open.spotify.com/artist/4H2E8Zhw8QOAyR9lKcQVYf?si=v_mh9EFlTtOtjDfe6V27sQ'
+),
+('Nick Prato',
+ 'Nick Prato',
+ 14,
+ 'male',
+ TRUE,
+ TRUE,
+ 'https://www.nickprato.com/',
+ '@nick_prato',
+ 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1720372126/Songbee/artists/qxu7ppt0albbfs0kjhqj.wav',
+ '"Yesterdays"',
+ 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1720372140/Songbee/artists/jl0l5cxqq7o7kvygi2yu.wav',
+ '"Runaway"',
+ 'https://res.cloudinary.com/dke4ukd0z/video/upload/v1720372158/Songbee/artists/gwoyxjxqmt1nl3prg29x.wav',
+ '"One in Your Arms"',
+ 'Nick Prato is an artist, songwriter, and producer from the coast of Maine, currently based in Boston, MA.
+  He is a graduate of Berklee College of Music, where he pursued a degree in music production and songwriting with high honors. 
+  While his preferred genres reside in the folk/rock/country/songwriter realm, he has loads of experience working extensively within hip-hop, 
+  electronic, EDM, and R&B writing and production. As an independent artist, Nick is currently looking forward to a Northeast US Summer tour with his band, 
+  as well as the release of his sophomore project - coming this fall. You can find his original music on all streaming services. 
+  Whatever the need may be, Nick has the tools, experience, and musical versatility to help turn your ideas and dreams into reality. 
+  He looks forward to working with you!',
+ 'Boston, MA',
+ 'https://res.cloudinary.com/dke4ukd0z/image/upload/v1720371109/Songbee/artists/imjtfarnifiennxkectd.jpg',
+ ''
+);
 
 INSERT INTO "song_request"
 ("user_id", "genre_id", "requester", "recipient", "pronunciation", "recipient_relationship", "occasion", "vocal_type", "vibe", "tempo", "inspiration", "story1", "story2", "important_what", "important_why", "additional_info", "created_at", "delivery_days", "streaming", "extra_verse", "is_complete", "is_approved", "is_paid")
@@ -301,4 +427,3 @@ VALUES
   (2, 6, '2023-03-10 00:00:00-06', 'Greenbear', TRUE, true),
   (10, 9, '2022-02-10 00:00:00-06', 'Johnnycake', FALSE, true);
   
- 
