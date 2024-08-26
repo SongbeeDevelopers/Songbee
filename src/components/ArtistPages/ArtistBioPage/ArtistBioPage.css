@@ -1,241 +1,169 @@
-
-
 .imgBox {
-  justify-content: center;
+  margin: auto;
+  margin-top: 57px;
   background-color: white;
-  padding: 10px;
-  padding-left: 150px;
-  padding-right: 150px;
-  margin-top: 50px;
+  padding: 50px 100px;
   align-content: space-evenly;
-  width: 80%;
-  min-height: auto;
-  margin-left: 150px;
-  height: auto;
+  width: 900px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-
 .content {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    max-width: 90%;
+  align-items: flex-start;
+  justify-content: left;
+  gap: 75px;
+  margin-bottom: 50px;
 }
 
-
-
-.content img {
-    border-radius: 50%;
-    width: 350px;
+.bio-photo {
+  border-radius: 50%;
+  min-width: 350px;
+  max-height: 350px;
+  float: left;
+  object-fit: cover;
 }
 
-
-.location  {
-  position: relative;
-  left: 50px;
-  top: 10px;
-  
+.location {
+  width: fit-content;
 }
 
+.nameHeader {
+  margin-top: 30px;
+  gap: 10px;
+}
 
+.nameHeader h2 {
+  font-family: Poppins, sans-serif;
+  font-size: 48px;
+  line-height: 50px;
+  font-weight: 800;
+  letter-spacing: 0px;
+  width: fit-content;
+}
 
- .nameHeader h2 {
-    font-family: Poppins, sans-serif;
-    font-size: 48px;
-    line-height: 50px;
-    font-weight: 800;
-    letter-spacing: 0px;
-    margin-top: 10px;
-    margin-left: 50px;
- }
-
-
- .socialLinks {
+.socialLinks {
   display: flex;
   align-items: center;
-  justify-content: center;
   position: relative;
-  left: 0;
   width: 300px;
-  margin-top: 40px;
 }
 
 .instagram {
   max-width: 10%;
-  height: 100px;
   margin-right: 20px;
 }
 
 .spotify {
   max-width: 10%;
-  height: 100px;
 }
 
 .website {
   max-width: 10%;
-  height: 100px;
   margin-left: 20px;
 }
 
-.socialLinks::before {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 125px;
-  top: 12px;
-  width: 1px;
-  height: 20px;
-  transform: translateY(-50%);
-  background-color: #e1ded6;
+.community-button {
+  margin: 0 auto;
+  margin-left: 60px;
+  background-color: #feaf17;
+  border-radius: 20px;
+  text-align: center;
+  font-family: Poppins, sans-serif;
+  font-weight: 700;
+  transition: background-color 0.45s;
+  display: flex;
+  justify-content: center;
+  color: var(--black\<deleted\|variable-f6301105\>);
+  width: 13rem;
+  height: 1.6rem;
+  margin-top: -20px;
+  cursor: pointer;
 }
 
-.website::after {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 175px;
-  top: 12px;
-  width: 1px;
-  height: 20px;
-  transform: translateY(-50%);
-  background-color: #e1ded6;
+.community-button:hover {
+  background-color: #fed07b;
 }
 
- 
- .community-button {
-     margin: 0 auto;
-     margin-left: 60px;
-     background-color: #feaf17;
-     border-radius: 20px;
-     text-align: center;
-     font-family: Poppins, sans-serif;
-     font-weight: 700;
-     transition: background-color 0.45s;
-     display: flex;
-     justify-content: center;
-     color: var(--black\<deleted\|variable-f6301105\>);
-     width: 13rem;
-     height: 1.6rem;
-     margin-top: -20px;
-     cursor: pointer;
-  }
+.bio h4 {
+  font-family: Poppins, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0px;
+}
 
-  .community-button:hover {
-    background-color: #fed07b;
-  }
+.bio h2 {
+  font-weight: 600;
+  font-family: Poppins, sans-serif;
+  margin-left: 50px;
+  padding-top: 20px;
+}
 
-  
-  .bio h4{
-    font-family: Poppins, sans-serif;
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 24px;
-    letter-spacing: 0px; 
-    padding-bottom: 30px;
-    margin-left: 50px;
-    
-  }
+.songListWrapper {
+  margin: auto;
+}
 
-  .bio h2 {
-    font-weight: 600;
-    font-family: Poppins, sans-serif;
-    margin-left: 50px;
-    padding-top: 20px;
-  }
+.tableHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
 
-  .songListWrapper {
-    max-width: 700px;
-    margin: auto;
-    margin-top: 80px !important;
-  }
-
-  
-
-  .tableHeader {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 10px;
-   
-  }
-
-  .title {
-    margin-bottom: -40px;
-    padding-top: 50px;
-    text-decoration: underline;
-  }
+}
 
 
-  .songList {
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-   
-  }
-  
+.songList {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
 
-  .songItems {
-    max-width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding-bottom: 50px;
-    margin-bottom: 50px;
-    margin-top: 4px;
-    margin-left: -40px;
-  }
+.songItems {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
-  .songItems p {
-    margin-top: 10px;
-    margin-left: 40px;
-    margin-right: 40px;
-   
-  }
+.songItems p {
+  margin-top: 10px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
 
-  .audioFiles {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    border-bottom: 2px solid  #e1ded6;
-    margin-bottom: 10px;
-   
-  }
-  
+.audioFiles {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 2px solid #e1ded6;
+  margin-bottom: 10px;
+}
 
-  .audioFiles  div{
-    margin-bottom: 1px;
-    margin-top: 50px;
-    margin-left: auto;
-    max-width: 100%;
-  }
+.audioFiles div {
+  margin-left: auto;
+  max-width: 100%;
+}
 
-  .songTitles  {
-    width: 100%;
-    padding-top: 40px;
-   
-  }
+.songTitles {
+  width: 100%;
+  padding-top: 40px;
+}
 
+.genres {
+  margin-left: -10px;
+  padding-top: -20px;
+}
 
-  .genres {
-    margin-left: -10px;
-    padding-top: -20px;
-  }
+.genres p {
+  margin-left: 50px;
+}
 
-
-  .genres p {
-    margin-left: 50px;
-  }
-  
-  .headerItem {
-    display: flex;
-    flex: 1;
-    margin-left: -150px;
-    border-bottom: 2px solid #e1ded6;
-   
+.headerItem {
+  display: flex;
+  flex: 1;
+  margin-left: -150px;
+  border-bottom: 2px solid #e1ded6;
 }
 
 .artistCommunityBtns {
-
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -245,9 +173,6 @@
   padding: 0px 20px 10px;
 }
 
-  .artistCommunityBtns button {
-    margin-left: -50px; 
-   
-  }
-
-  
+.artistCommunityBtns button {
+  margin-left: -50px;
+}
