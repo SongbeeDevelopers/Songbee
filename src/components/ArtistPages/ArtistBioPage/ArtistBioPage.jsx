@@ -62,7 +62,7 @@ export default function ArtistBioPage() {
                   >Start a song with me
                   </Button>
                   <p>
-                     {artist && artist.genres.map((genre) => (
+                     {artist.genres && artist.genres.map((genre) => (
                         <span>
                            {genre.genre}
                            {artist.genres.indexOf(genre) !== artist.genres.length-1 && `, `}
