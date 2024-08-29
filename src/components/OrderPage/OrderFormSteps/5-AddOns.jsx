@@ -2,13 +2,10 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 
-import LoginRegisterForm from "../../LoginRegisterForm/LoginRegisterForm";
-
 import {
   Box,
   Button,
-  Checkbox,
-  Modal
+  Checkbox
 } from "@mui/material";
 
 import '../../SongRequestPage/SongRequestPage.css'
@@ -163,22 +160,6 @@ export default function AddOns({
           </div>
         </div>
       </div>
-
-      {!user.id && (
-        <button className="checkoutLogRegBtn" onClick={handleOpen}>
-          Login / Register
-        </button>
-      )}
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <LoginRegisterForm handleClose={handleClose} />
-        </Box>
-      </Modal>
     </div>
   )
 }
