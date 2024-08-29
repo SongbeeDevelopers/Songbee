@@ -12,6 +12,7 @@ import ScrollToAnchor from "./ScrollToAnchor"
 // login/reg
 import LoginPage from "../LoginPage/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
+import OrderLoginRegister from "../OrderLoginRegister/OrderLoginRegister";
 
 // home
 import LandingPage from "../LandingPage/LandingPage";
@@ -147,6 +148,10 @@ function ComponentRouter() {
 
         <MainRoute exact path="/logout">
           <LandingPage routeVariants={routeVariants} />
+        </MainRoute>
+
+        <MainRoute exact path="/orderlogin">
+          <OrderLoginRegister routeVariants={routeVariants} />
         </MainRoute>
 
         {/* account pages */}
