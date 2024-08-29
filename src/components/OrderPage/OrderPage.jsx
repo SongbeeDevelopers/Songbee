@@ -9,7 +9,6 @@ import SongSpecifications from "./OrderFormSteps/2-SongSpecifications";
 import SelectYourArtist from "./OrderFormSteps/3-SelectYourArtist";
 import Delivery from "./OrderFormSteps/4-Delivery";
 import AddOns from "./OrderFormSteps/5-AddOns";
-import OrderLoginRegister from "./OrderFormSteps/OrderLoginRegister";
 
 // mui imports
 import {
@@ -76,6 +75,17 @@ export default function OrderPage({ routeVariants }) {
   };
 
   function dispatchDetails() {
+    if(!user.id){
+      dispatch({
+        type: "SET_REQUEST_DATA",
+        payload: {
+          ...requestData,
+          total_price: Number(totalPrice + deliveryPrice).toFixed(2),
+          artist_payout: Number(artistPayout.toFixed(2))
+        }
+      });
+      history.push('/orderlogin')
+    } else {
     dispatch({
       type: "CREATE_SONG_REQUEST",
       payload: {
@@ -87,25 +97,17 @@ export default function OrderPage({ routeVariants }) {
         },
       },
     });
+    }
   }
 
   // ----- FORM LOGIC -----
 
-  const steps = 
-    user.id ?
+  const steps =
       [
         "Let's Get Started!",
         "Select Your Artist",
         "Add-Ons",
         "Delivery"
-      ]
-    :
-      [
-        "Let's Get Started!",
-        "Select Your Artist",
-        "Add-Ons",
-        "Delivery",
-        "Login"
       ];
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState({});
@@ -146,7 +148,6 @@ export default function OrderPage({ routeVariants }) {
       requestData.occasion &&
       requestData.vocal_type &&
       requestData.delivery_days &&
-      user.id &&
       agreeTerms &&
       allStepsCompleted()
     ) {
@@ -221,9 +222,9 @@ export default function OrderPage({ routeVariants }) {
           setAgreeTerms={setAgreeTerms} />
     )}
     // step 5
-    else if (activeStep === 4) {
-      return <OrderLoginRegister />
-    }
+    // else if (activeStep === 4) {
+    //   return <OrderLoginRegister />
+    // }
   };
   // ----- END FORM LOGIC -----
 

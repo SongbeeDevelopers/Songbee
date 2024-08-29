@@ -29,18 +29,14 @@ function* registerUserAtCheckout(action) {
     yield put({ type: 'CLEAR_REGISTRATION_ERROR' });
 
     // passes the username and password from the payload to the server
-    yield axios.post('/api/user/register', action.payload.data);
+    yield axios.post('/api/user/register', action.payload.userData);
 
     // automatically log a user in after registration
-    yield put({ type: 'LOGIN', payload: action.payload.data });
+    yield put({ type: 'LOGIN_AT_CHECKOUT', payload: action.payload });
 
     // set to 'login' mode so they see the login screen
     // after registration or after they log out
     yield put({ type: 'SET_TO_LOGIN_MODE' });
-    yield put({ 
-      type: "CREATE_SONG_REQUEST",
-      payload: action.payload.request
-  })
   } catch (error) {
     console.log('Error with user registration:', error);
     yield put({ type: 'REGISTRATION_FAILED' });
