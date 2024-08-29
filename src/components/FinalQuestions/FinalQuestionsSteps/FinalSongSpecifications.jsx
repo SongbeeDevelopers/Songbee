@@ -12,7 +12,7 @@ import '../../SongRequestPage/SongRequestPage.css'
 export default function FinalSongSpecifications({ handleInput, value }) {
   const dispatch = useDispatch();
 
-  const requestData = useSelector((store) => store.requestData);
+  const requestData = useSelector((store) => store.finalQuestions);
   const genres = useSelector(store => store.genres)
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);

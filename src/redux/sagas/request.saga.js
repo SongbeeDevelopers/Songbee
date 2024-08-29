@@ -139,6 +139,7 @@ function* finishSongRequest (action) {
             data: action.payload.data
         })
         yield put ({type: 'FETCH_USER_REQUESTS'})
+        yield action.payload.history.push('/user')
     } catch (error) {
         console.error('SAGA finishSongRequest() failed:', error)
     }

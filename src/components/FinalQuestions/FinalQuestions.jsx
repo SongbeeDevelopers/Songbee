@@ -68,6 +68,7 @@ function FinalQuestions({ routeVariants }) {
         orderInfo: orderInfo
       },
     });
+    dispatch({ type: "CLEAR_FINAL_QUESTIONS"})
   }
 
   // local state for steps
@@ -77,11 +78,11 @@ function FinalQuestions({ routeVariants }) {
   // steps contained here
   const formDetails = () => {
     if (activeStep === 0) {
-      return <PersonalInfo handleInput={handleInput} value={requestData.important_what} />
+      return <PersonalInfo handleInput={handleInput} />
     } else if (activeStep === 1) {
-      return <FinalSongSpecifications handleInput={handleInput} value={requestData.important_why} />
+      return <FinalSongSpecifications handleInput={handleInput} />
     } else if (activeStep === 2) {
-      return <TellUsMore handleInput={handleInput} value={requestData.important_why} />
+      return <TellUsMore handleInput={handleInput} value={requestData.important_what} />
     } else if (activeStep === 3) {
       return <WhyIsItImportant handleInput={handleInput} value={requestData.important_why} />
     } else if (activeStep === 4) {
@@ -222,14 +223,18 @@ function FinalQuestions({ routeVariants }) {
                 > BACK
                 </Button>
                 <Box sx={{ flex: "1 1 auto" }} />
+                {completedSteps() === totalSteps() - 1 ?
+                ""
+                :
                 <Button variant="contained"
                   onClick={handleButton}
                   sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
                 > NEXT
                 </Button>
+                }
                 {completedSteps() === totalSteps() - 1 ?
-                  <Button onClick={handleComplete} sx={{ ml: 2, height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}>
-                    Finish
+                  <Button onClick={handleComplete} sx={{ ml: 2, height: 35, width: 150, backgroundColor: "#feaf17", color: "black" }}>
+                    FINISH
                   </Button>
                   : ""
                 }
