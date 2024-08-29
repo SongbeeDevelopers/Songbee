@@ -31,13 +31,12 @@ export default function ArtistBioPage() {
    return (
       <>
          <div className="imgBox flexCol">
-            <div className="content flexRow">
 
+            <div className="content">
                <img src={artist.photo} alt="Artists images" className="bio-photo" />
                <div className="nameHeader flexCol">
                   <h2>{artist && artist.artist_name}</h2>
                   <h4 className="location">{artist.location}</h4>
-
                   <div className="socialLinks">
                      <div className="instagram">
                         <a href={artist.instagram_link} target="_blank">
@@ -55,7 +54,6 @@ export default function ArtistBioPage() {
                         </a>
                      </div>
                   </div>
-
                   <Button variant="contained"
                      onClick={handleArtist}
                      sx={{ height: 35, width: 200, backgroundColor: "#feaf17", color: "black" }}
@@ -65,37 +63,39 @@ export default function ArtistBioPage() {
                      {artist.genres && artist.genres.map((genre) => (
                         <span>
                            {genre.genre}
-                           {artist.genres.indexOf(genre) !== artist.genres.length-1 && `, `}
+                           {artist.genres.indexOf(genre) !== artist.genres.length - 1 && `, `}
                         </span>
                      ))}
                   </p>
                </div>
             </div>
+
             <div className="bio">
                <h4>{artist.bio}</h4>
             </div>
-         <div className="songListWrapper">
-            <h3 className="title">Song Portfolio:</h3>
 
-            <div className="songList">
-               <div className="songItems">
-                  {[1, 2, 3].map((index) => {
-                     const sampleSong = artist[`sample_song_${index}`];
-                     const songTitle = artist[`song_title_${index}`];
+            <div className="songListWrapper">
+               <h3 className="title">Song Portfolio:</h3>
 
-                     return sampleSong && (
-                        <div className="audioFiles">
-                           <div className="artistCommunityBtns">
-                              <AudioButton url={sampleSong} />
-                              <p className="songTitles" key={index}>{songTitle}</p>
-                              {console.log('sampleSong', sampleSong)}
+               <div className="songList">
+                  <div className="songItems">
+                     {[1, 2, 3].map((index) => {
+                        const sampleSong = artist[`sample_song_${index}`];
+                        const songTitle = artist[`song_title_${index}`];
+
+                        return sampleSong && (
+                           <div className="audioFiles">
+                              <div className="artistCommunityBtns">
+                                 <AudioButton url={sampleSong} />
+                                 <p className="songTitles" key={index}>{songTitle}</p>
+                                 {console.log('sampleSong', sampleSong)}
+                              </div>
                            </div>
-                        </div>
-                     );
-                  })}
+                        );
+                     })}
+                  </div>
                </div>
             </div>
-         </div>
          </div>
 
       </>
