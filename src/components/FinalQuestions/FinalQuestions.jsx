@@ -77,11 +77,11 @@ function FinalQuestions({ routeVariants }) {
   // steps contained here
   const formDetails = () => {
     if (activeStep === 0) {
-      return <PersonalInfo handleInput={handleInput} value={requestData.important_what} />
+      return <PersonalInfo handleInput={handleInput} />
     } else if (activeStep === 1) {
-      return <FinalSongSpecifications handleInput={handleInput} value={requestData.important_why} />
+      return <FinalSongSpecifications handleInput={handleInput} />
     } else if (activeStep === 2) {
-      return <TellUsMore handleInput={handleInput} value={requestData.important_why} />
+      return <TellUsMore handleInput={handleInput} value={requestData.important_what} />
     } else if (activeStep === 3) {
       return <WhyIsItImportant handleInput={handleInput} value={requestData.important_why} />
     } else if (activeStep === 4) {

@@ -13,7 +13,7 @@ export default function PersonalInfo({ handleInput, value }) {
 
     const dispatch = useDispatch();
 
-    const requestData = useSelector((store) => store.requestData);
+    const requestData = useSelector((store) => store.finalQuestions);
     const theme = useTheme();
     const [activeStep, setActiveStep] = React.useState(0);
   
@@ -52,9 +52,7 @@ export default function PersonalInfo({ handleInput, value }) {
                     className="reqFormInput"
                     id="reqFormNameInput"
                     placeholder="Pronunciation"
-                    onChange={() =>
-                      handleInput("pronunciation", event.target.value)
-                    }
+                    onChange={() => handleInput("pronunciation", event.target.value)}
                   ></input>
                 </div>
               </div>

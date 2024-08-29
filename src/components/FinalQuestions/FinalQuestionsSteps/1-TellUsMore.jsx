@@ -18,9 +18,7 @@ export default function TellUsMore({ handleInput, value }) {
           value={value}
           className="reqFormGroup3input"
           placeholder="What?"
-          onChange={() =>
-            handleInput("important_what", event.target.value)
-          }
+          onChange={() => handleInput("important_what", event.target.value)}
           multiline
           rows={6}
           sx={{ backgroundColor: 'white' }}
