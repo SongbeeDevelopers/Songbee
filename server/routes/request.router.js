@@ -30,6 +30,7 @@ router.get('/user', rejectUnauthenticated, (req, res) => {
   "song_request"."is_complete",
   "song_request"."is_approved",
   "song_request"."is_paid",
+  "song_request"."customer_complete",
   "song_request"."streaming",
   "song_request"."backing_track",
   "song_request"."license",
@@ -91,6 +92,7 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     "song_request"."is_complete",
     "song_request"."is_approved",
     "song_request"."is_paid",
+    "song_request"."customer_complete",
     "song_request"."streaming",
     "song_request"."backing_track",
     "song_request"."license",
@@ -150,6 +152,7 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     "song_request"."is_complete",
     "song_request"."is_approved",
     "song_request"."is_paid",
+    "song_request"."customer_complete",
     "song_request"."streaming",
     "song_request"."backing_track",
     "song_request"."license",
@@ -207,6 +210,7 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     "song_request"."is_complete",
     "song_request"."is_approved",
     "song_request"."is_paid",
+    "song_request"."customer_complete",
     "song_request"."streaming",
     "song_request"."backing_track",
     "song_request"."license",
@@ -264,6 +268,7 @@ router.get('/all', rejectUnauthenticated, async (req, res) => {
     "song_request"."is_complete",
     "song_request"."is_approved",
     "song_request"."is_paid",
+    "song_request"."customer_complete",
     "song_request"."streaming",
     "song_request"."backing_track",
     "song_request"."license",
@@ -334,6 +339,7 @@ router.get('/current/:id', (req, res) => {
     "song_request"."is_complete",
     "song_request"."is_approved",
     "song_request"."is_paid",
+    "song_request"."customer_complete",
     "song_request"."streaming",
     "song_request"."backing_track",
     "song_request"."license",
@@ -386,14 +392,8 @@ router.post('/create', async (req, res) => {
     const userId = req.user.id;
     const genreId = req.body.genre;
     const requester = req.body.requester;
-    const recipient = req.body.recipient;
-    const pronunciation = req.body.pronunciation;
-    const recipientRelationship = req.body.recipient_relationship;
     const occasion = req.body.occasion;
     const vocalType = req.body.vocal_type;
-    const vibe = req.body.vibe;
-    const tempo = req.body.tempo;
-    const inspiration = req.body.inspiration;
     const artist = req.body.artist
     const deliveryDays = req.body.delivery_days;
     const streaming = req.body.streaming;
@@ -406,9 +406,9 @@ router.post('/create', async (req, res) => {
     const draftDate = getDueDate((Number(deliveryDays)-2))
     const requestQuery = `
     INSERT INTO "song_request"
-      ("user_id", "genre_id", "requester", "recipient", "pronunciation", "recipient_relationship", "occasion", "vocal_type", "vibe", "tempo", "inspiration", "delivery_days", "streaming", "extra_verse", "license", "backing_track", "total_price", "artist_payout", "due_date", "draft_date")
+      ("user_id", "genre_id", "requester", "occasion", "vocal_type", "delivery_days", "streaming", "extra_verse", "license", "backing_track", "total_price", "artist_payout", "due_date", "draft_date")
       VALUES
-      ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20)
+      ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
       RETURNING "id";
     `
     const response = await connection.query(
@@ -416,14 +416,8 @@ router.post('/create', async (req, res) => {
       userId,
       genreId,
       requester,
-      recipient,
-      pronunciation,
-      recipientRelationship,
       occasion,
       vocalType,
-      vibe,
-      tempo,
-      inspiration,
       deliveryDays,
       streaming,
       extraVerse,
@@ -469,6 +463,12 @@ router.put('/finish/:id', async (req, res) => {
     connection = await pool.connect();
     connection.query("BEGIN;");
 
+    const recipient = req.body.recipient;
+    const pronunciation = req.body.pronunciation;
+    const recipientRelationship = req.body.recipient_relationship;
+    const vibe = req.body.vibe;
+    const tempo = req.body.tempo;
+    const inspiration = req.body.inspiration;
     const story1 = req.body.story1
     const story2 = req.body.story2
     const important_what = req.body.important_what
@@ -482,8 +482,15 @@ router.put('/finish/:id', async (req, res) => {
     "story2"=$2,
     "important_what"=$3,
     "important_why"=$4,
-    "additional_info"=$5
-    WHERE "id"=$6
+    "additional_info"=$5,
+    "recipient"=$6,
+    "pronunciation"=$7,
+    "recipient_relationship"=$8,
+    "vibe"=$9,
+    "tempo"=$10,
+    "inspiration"=$11,
+    "customer_complete"=TRUE
+    WHERE "id"=$12
     `
     const response = await connection.query(
       requestQuery, [
@@ -492,6 +499,12 @@ router.put('/finish/:id', async (req, res) => {
       important_what,
       important_why,
       additional_info,
+      recipient,
+      pronunciation,
+      recipientRelationship,
+      vibe,
+      tempo,
+      inspiration,
       req.params.id
     ]
     )
@@ -616,6 +629,7 @@ router.get('/artist/pending/:id/:type', rejectUnauthenticated, async (req, res) 
     "song_request"."is_complete",
     "song_request"."is_approved",
     "song_request"."is_paid",
+    "song_request"."customer_complete",
     "song_request"."total_price",
     "song_request"."artist_payout",
     "song_request"."genre_id",
@@ -691,6 +705,7 @@ router.get('/artist/pending/:id/:type', rejectUnauthenticated, async (req, res) 
     "song_request"."is_complete",
     "song_request"."is_approved",
     "song_request"."is_paid",
+    "song_request"."customer_complete",
     "song_request"."total_price",
     "song_request"."artist_payout",
     "song_request"."genre_id",
@@ -760,6 +775,7 @@ router.get('/artist/complete/:id', rejectUnauthenticated, (req, res) => {
     "song_request"."is_complete",
     "song_request"."is_approved",
     "song_request"."is_paid",
+    "song_request"."customer_complete",
     "song_request"."total_price",
     "song_request"."artist_payout",
     "song_request"."genre_id",

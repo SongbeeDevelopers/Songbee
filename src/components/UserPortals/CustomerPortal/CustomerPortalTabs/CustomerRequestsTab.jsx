@@ -50,6 +50,10 @@ function CustomerRequests() {
     history.push('/order')
   }
 
+  const statusDisplay = (req) => {
+    
+  }
+
   function getDueDate(requestDay, deliveryDays) {
     const msPerDay = 24 * 60 * 60 * 1000;
     const due = new Date(requestDay).getTime() + msPerDay * deliveryDays
