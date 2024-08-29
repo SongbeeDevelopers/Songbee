@@ -1,15 +1,10 @@
 const requestData = (
   state = {
     requester: "",
-    recipient: "",
-    pronunciation: "",
-    recipient_relationship: "",
+    email: "",
     occasion: "",
     genre: "",
     vocal_type: "",
-    vibe: "",
-    tempo: "",
-    inspiration: "",
     artist: "",
     delivery_days: false,
     streaming: false,
@@ -27,15 +22,10 @@ const requestData = (
     case "CLEAR_REQUEST_DATA":
       return {
         requester: "",
-        recipient: "",
-        pronunciation: "",
-        recipient_relationship: "",
+        email: "",
         occasion: "",
         genre: "",
         vocal_type: "",
-        vibe: "",
-        tempo: "",
-        inspiration: "",
         artist: "",
         delivery_days: 6,
         streaming: false,

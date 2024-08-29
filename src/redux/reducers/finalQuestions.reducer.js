@@ -1,5 +1,11 @@
 const finalQuestions = (
     state = {
+      recipient: "",
+      pronunciation: "",
+      recipient_relationship: "",
+      inspiration: "",
+      vibe: "",
+      tempo: "",
       story1: "",
       story2: "",
       important_what: "",
@@ -13,6 +19,12 @@ const finalQuestions = (
         return action.payload;
       case "CLEAR_FINAL_QUESTIONS":
         return {
+          recipient: "",
+          pronunciation: "",
+          recipient_relationship: "",
+          inspiration: "",
+          vibe: "",
+          tempo: "",
           story1: "",
           story2: "",
           important_what: "",
