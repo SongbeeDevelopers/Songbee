@@ -14,7 +14,6 @@ export default function LetsGetStarted() {
   const dispatch = useDispatch();
 
   const requestData = useSelector((store) => store.requestData);
-  const genres = useSelector(store => store.genres)
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -53,21 +52,6 @@ export default function LetsGetStarted() {
       return (
           <div className="reqFormGroup">
             <div className="reqFormInput">
-              <label>Enter your E-Mail Address</label>
-              <input
-                value={requestData.email}
-                className="reqFormInput"
-                placeholder="Type your E-Mail Here"
-                onChange={() => handleInput("email", event.target.value)}
-              ></input>
-            </div>
-          </div>
-      );
-    }
-    if (activeStep === 2) {
-      return (
-          <div className="reqFormGroup">
-            <div className="reqFormInput">
               <label>Is this song for a Special Occasion?</label>
               <input
                 value={requestData.occasion}
@@ -79,45 +63,64 @@ export default function LetsGetStarted() {
           </div>
       );
     }
+    if (activeStep === 2) {
+      return (
+          <div className="reqFormGroup">
+            <div className="reqFormInput">
+              <label>Who is this Song For?</label>
+              <div className="reqFormGroup">
+                <input
+                  value={requestData.recipient}
+                  className="reqFormInput"
+                  id="reqFormNameInput"
+                  placeholder="Name or Nickname"
+                  onChange={() => handleInput("recipient", event.target.value)}
+                ></input>
+
+                <input
+                  value={requestData.pronunciation}
+                  className="reqFormInput"
+                  id="reqFormNameInput"
+                  placeholder="Pronunciation"
+                  onChange={() =>
+                    handleInput("pronunciation", event.target.value)
+                  }
+                ></input>
+              </div>
+            </div>
+          </div>
+      );
+    }
     if (activeStep === 3) {
       return (
-        <div className="reqFormGroup">
-          <div className="reqFormSelect">
-            <label>Choose a Genre</label>
-            <select
-              value={requestData.genre}
-              onChange={() => handleInput("genre", event.target.value)}
-            >
-              <option value="" disabled>
-                Select Genre
-              </option>
-              {genres.map((genre) => (
-                <option key={genre.id} value={genre.id}>
-                  {genre.name}
-                </option>
-              ))}
-            </select>
+          <div className="reqFormGroup">
+            <div className="reqFormInput">
+              <label>What is your relationship with this person?</label>
+              <input
+                value={requestData.recipient_relationship}
+                className="reqFormInput"
+                placeholder="Relationship"
+                onChange={() =>
+                  handleInput("recipient_relationship", event.target.value)
+                }
+              ></input>
+            </div>
           </div>
-        </div>
       );
     }
     if (activeStep === 4) {
       return (
-        <div className="reqFormGroup">
-          <div className="reqFormSelect">
-            <label>What Vocal Style Suits Your Song?</label>
-            <select
-              value={requestData.vocal_type}
-              onChange={() => handleInput("vocal_type", event.target.value)}
-            >
-              <option value="" disabled>
-                Select Style
-              </option>
-              <option value="female">Female</option>
-              <option value="male">Male</option>
-            </select>
+          <div className="reqFormGroup">
+            <div className="reqFormInput">
+              <label>What inspired your song?</label>
+              <input
+                value={requestData.inspiration}
+                className="reqFormInput"
+                placeholder="Inspiration"
+                onChange={() => handleInput("inspiration", event.target.value)}
+              ></input>
+            </div>
           </div>
-        </div>
       );
     }
     if (activeStep === 5) {

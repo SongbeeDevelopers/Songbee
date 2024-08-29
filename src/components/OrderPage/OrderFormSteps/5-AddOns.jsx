@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { useState } from "react";
 
 import LoginRegisterForm from "../../LoginRegisterForm/LoginRegisterForm";
@@ -9,7 +8,6 @@ import {
   Box,
   Button,
   Checkbox,
-  FormControlLabel,
   Modal
 } from "@mui/material";
 
@@ -21,8 +19,6 @@ export default function AddOns({
   handleOpen,
   handleClose,
   open,
-  agreeTerms,
-  setAgreeTerms,
   setTotalPrice,
   totalPrice,
   artistPayout,
@@ -167,12 +163,7 @@ export default function AddOns({
           </div>
         </div>
       </div>
-      <div className=" maincheckoutagree">
-        <FormControlLabel
-          control={<Checkbox required value={agreeTerms} onClick={() => setAgreeTerms(!agreeTerms)} />}
-          label={<span>I have read and agree to the <Link to="/terms" target="_blank">terms and conditions</Link>, the <Link to="/privacy" target="_blank">privacy policy</Link>, and the <a href="https://drive.google.com/file/d/1BCASC9xwt8lwTnW5OcJYAGAS5NsPnfX6/view?usp=sharing" target="_blank">end user agreement</a></span>}
-        />
-      </div>
+
       {!user.id && (
         <button className="checkoutLogRegBtn" onClick={handleOpen}>
           Login / Register

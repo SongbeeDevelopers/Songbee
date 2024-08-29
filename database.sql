@@ -49,6 +49,7 @@ CREATE TABLE "song_request" (
   "extra_verse" BOOLEAN,
   "license" BOOLEAN,
   "backing_track" BOOLEAN,
+  "customer_complete" BOOLEAN DEFAULT FALSE,
   "is_complete" BOOLEAN DEFAULT FALSE,
   "is_approved" BOOLEAN DEFAULT FALSE,
   "is_paid" BOOLEAN DEFAULT FALSE,

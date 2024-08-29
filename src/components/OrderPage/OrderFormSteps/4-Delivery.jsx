@@ -1,11 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
-import { Button, Checkbox } from "@mui/material";
+import { Button, Checkbox, FormControlLabel } from "@mui/material";
 
 import "../../SongRequestPage/SongRequestPage.css";
 
-export default function Delivery({ handleInput, handleOpen, setTotalPrice, totalPrice, setDeliveryPrice }) {
+export default function Delivery({ handleInput, agreeTerms, setAgreeTerms, setDeliveryPrice }) {
   const requestData = useSelector((store) => store.requestData);
 
   // date logic
@@ -37,6 +38,7 @@ export default function Delivery({ handleInput, handleOpen, setTotalPrice, total
     <form className="orderForm">
       <div className="reqFormGroup4">
         <label>When would you like your song delivered?</label>
+        <label>Delivery will be from the time of song detail completion. After purchase, please log in to your customer portal and complete your song details. Once you have completed your song details, your artist will get started on your song!</label>
         <div className="reqFormDays">
           <div 
             className="calendar-img-div"
@@ -92,6 +94,12 @@ export default function Delivery({ handleInput, handleOpen, setTotalPrice, total
             </div>
           </div>
         </div>
+        <div className="maincheckoutagree">
+          <FormControlLabel
+          control={<Checkbox required value={agreeTerms} onClick={() => setAgreeTerms(!agreeTerms)} />}
+          label={<span>I have read and agree to the <Link to="/terms" target="_blank">terms and conditions</Link>, the <Link to="/privacy" target="_blank">privacy policy</Link>, and the <a href="https://drive.google.com/file/d/1BCASC9xwt8lwTnW5OcJYAGAS5NsPnfX6/view?usp=sharing" target="_blank">end user agreement</a></span>}
+        />
+      </div>
       </div>
     </form>
   );

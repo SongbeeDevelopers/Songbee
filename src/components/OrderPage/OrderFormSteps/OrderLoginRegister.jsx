@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import './LoginRegisterForm.css'
+import { Button } from "@mui/material";
 
-function LoginRegisterForm( {handleClose} ) {
+import '../../LoginRegisterForm/LoginRegisterForm.css'
+
+function OrderLoginRegister() {
   
   const dispatch = useDispatch();
 
@@ -11,9 +13,10 @@ function LoginRegisterForm( {handleClose} ) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const errors = useSelector(store => store.errors);
+  const data = useSelector(store => store.requestData)
 
-  const login = (e) => {
-    e.preventDefault()
+  const login = (event) => {
+    event.preventDefault()
 
     // error messages
     if (errors.loginMessage) { dispatch( {type: 'CLEAR_LOGIN_ERROR'} ) }
@@ -24,8 +27,7 @@ function LoginRegisterForm( {handleClose} ) {
         type: 'LOGIN',
         payload: {
           username: username,
-          password: password,
-          handleClose: handleClose
+          password: password
         },
       });
     } else {
@@ -33,8 +35,8 @@ function LoginRegisterForm( {handleClose} ) {
     }
   };
 
-  const registerUser = (e) => {
-    e.preventDefault()
+  const registerUser = (event) => {
+    event.preventDefault()
 
     // error messages
     if (errors.loginMessage) { dispatch( {type: 'CLEAR_LOGIN_ERROR'} ) }
@@ -45,8 +47,7 @@ function LoginRegisterForm( {handleClose} ) {
           type: 'REGISTER',
           payload: {
           username: username,
-          password: password,
-          handleClose: handleClose
+          password: password
           },
       });
     } else {
@@ -56,7 +57,7 @@ function LoginRegisterForm( {handleClose} ) {
     
 
   return (
-      <form className="loginRegisterForm">
+      <div className="loginRegisterForm">
 
       {/* error messages */}
       {errors.registrationMessage && (
@@ -77,7 +78,7 @@ function LoginRegisterForm( {handleClose} ) {
             className='registerInput'
             type="text"
             name="username"
-            value={username}
+            value={data.email}
             required
             onChange={(event) => setUsername(event.target.value)}
           />
@@ -99,25 +100,19 @@ function LoginRegisterForm( {handleClose} ) {
       </div>
 
       <div>
-        <button
-          className="loginRegSubmit"
-          onClick={login}
-        >
-          Log In
-        </button>
+      <Button onClick={login} sx={{ ml: '25%', mt: '20px', height: 35, width: 150, backgroundColor: "#feaf17", color: "black" }}>
+        LOG IN
+      </Button>
       </div>      
 
       <div>
-        <button 
-          className="loginRegSubmit"
-          onClick={registerUser}
-        >
-          Register
-        </button>
+      <Button onClick={registerUser} sx={{ ml: '25%', mt: '20px', height: 35, width: 150, backgroundColor: "#feaf17", color: "black" }}>
+        REGISTER
+      </Button>
       </div>
 
-    </form>
+    </div>
   )
 }
 
-export default LoginRegisterForm
+export default OrderLoginRegister

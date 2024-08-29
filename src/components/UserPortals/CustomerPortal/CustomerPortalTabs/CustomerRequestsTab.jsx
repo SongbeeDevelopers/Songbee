@@ -49,6 +49,30 @@ function CustomerRequests() {
   const startSong = () => {
     history.push('/order')
   }
+  const completeRequest = (reqId) => {
+    history.push(`/finalquestions/${reqId}`)
+  }
+
+  const StatusDisplay = ({req}) => {
+    if (!req.customer_complete){
+      return (
+        <>
+          <Button variant="contained"
+            onClick={() => completeRequest(req.id)}
+            sx={{ height: 35, width: 180, backgroundColor: "#feaf17", color: "black" }}
+          >
+            Finish Order
+          </Button>
+        </>
+      )
+    } else if (!req.accepted){
+      return `Pending Artist Acceptance`
+    } else if (req.accepted && !req.is_complete){
+      return `In Progress`
+    } else if (req.is_complete){
+      return `Complete!`
+    }
+  }
 
   function getDueDate(requestDay, deliveryDays) {
     const msPerDay = 24 * 60 * 60 * 1000;
@@ -100,7 +124,7 @@ function CustomerRequests() {
 
                 {/* status */}
                 <TableCell align="center">
-                  {request.accepted ? request.isComplete ? `In Progress` : `Complete!` : `Pending Artist Acceptance`}
+                  <StatusDisplay req={request} />
                 </TableCell>
 
                 {/* details */}

@@ -9,7 +9,6 @@ import SongSpecifications from "./OrderFormSteps/2-SongSpecifications";
 import SelectYourArtist from "./OrderFormSteps/3-SelectYourArtist";
 import Delivery from "./OrderFormSteps/4-Delivery";
 import AddOns from "./OrderFormSteps/5-AddOns";
-import OrderLoginRegister from "./OrderFormSteps/OrderLoginRegister";
 
 // mui imports
 import {
@@ -27,10 +26,16 @@ import Swal from "sweetalert2";
 import '../SongRequestPage/SongRequestPage.css'
 
 // steps
+const steps = [
+  "Let's Get Started!",
+  "Song Specfications",
+  "Select Your Artist",
+  "Delivery",
+  "Add-Ons",
+];
 
 
-
-export default function OrderPage({ routeVariants }) {
+export default function OrderPageCopy({ routeVariants }) {
 
   // hooks
   const dispatch = useDispatch();
@@ -90,23 +95,6 @@ export default function OrderPage({ routeVariants }) {
   }
 
   // ----- FORM LOGIC -----
-
-  const steps = 
-    user.id ?
-      [
-        "Let's Get Started!",
-        "Select Your Artist",
-        "Add-Ons",
-        "Delivery"
-      ]
-    :
-      [
-        "Let's Get Started!",
-        "Select Your Artist",
-        "Add-Ons",
-        "Delivery",
-        "Login"
-      ];
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState({});
 
@@ -127,9 +115,6 @@ export default function OrderPage({ routeVariants }) {
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    const newCompleted = completed;
-    delete newCompleted[activeStep]
-    setCompleted(newCompleted);
   };
 
   const handleStep = (step) => () => {
@@ -143,8 +128,13 @@ export default function OrderPage({ routeVariants }) {
     handleNext();
     if (
       requestData.requester &&
+      requestData.recipient &&
+      requestData.recipient_relationship &&
       requestData.occasion &&
       requestData.vocal_type &&
+      requestData.vibe &&
+      requestData.tempo &&
+      requestData.inspiration &&
       requestData.delivery_days &&
       user.id &&
       agreeTerms &&
@@ -169,6 +159,15 @@ export default function OrderPage({ routeVariants }) {
         showCancelButton: false,
         confirmButtonText: "Back",
       })
+      // .then((result) => {
+      //   if (result.isConfirmed) {
+      //     Swal.fire({
+      //       title: "Submitted!",
+      //       icon: "success",
+      //     });
+      //     dispatchDetails();
+      //   }
+      // });
     }
   };
 
@@ -189,40 +188,33 @@ export default function OrderPage({ routeVariants }) {
     }
     // step 2
     else if (activeStep === 1) {
-      return (
-        <SelectYourArtist 
-          handleInput={handleInput} />
-    )}
+      return <SongSpecifications />
+    }
     // step 3
     else if (activeStep === 2) {
-      return (
-      <AddOns
-      handleInput={handleInput}
-      handleOpen={handleOpen}
-      handleClose={handleClose}
-      open={open}
-      setTotalPrice={setTotalPrice}
-      totalPrice={totalPrice}
-      setArtistPayout={setArtistPayout}
-      artistPayout={artistPayout}
-      deliveryPrice={deliveryPrice}
-    />
-    )}
+      return <SelectYourArtist handleInput={handleInput} />
+    }
     // step 4
     else if (activeStep === 3) {
-      return (
-        <Delivery 
-          handleInput={handleInput} 
-          handleOpen={handleOpen} 
-          setDeliveryPrice={setDeliveryPrice} 
-          setTotalPrice={setTotalPrice} 
-          totalPrice={totalPrice}
-          agreeTerms={agreeTerms}
-          setAgreeTerms={setAgreeTerms} />
-    )}
+      return <Delivery handleInput={handleInput} handleOpen={handleOpen} setDeliveryPrice={setDeliveryPrice} setTotalPrice={setTotalPrice} totalPrice={totalPrice} />
+    }
     // step 5
     else if (activeStep === 4) {
-      return <OrderLoginRegister />
+      return (
+        <AddOns
+          handleInput={handleInput}
+          handleOpen={handleOpen}
+          handleClose={handleClose}
+          open={open}
+          agreeTerms={agreeTerms}
+          setAgreeTerms={setAgreeTerms}
+          setTotalPrice={setTotalPrice}
+          totalPrice={totalPrice}
+          setArtistPayout={setArtistPayout}
+          artistPayout={artistPayout}
+          deliveryPrice={deliveryPrice}
+        />
+      )
     }
   };
   // ----- END FORM LOGIC -----
@@ -275,18 +267,14 @@ export default function OrderPage({ routeVariants }) {
                 > BACK
                 </Button>
                 <Box sx={{ flex: "1 1 auto" }} />
-                {completedSteps() === totalSteps() - 1 ?
-                ""
-                :
                 <Button variant="contained"
                   onClick={handleButton}
                   sx={{ height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}
                 > NEXT
                 </Button>
-                }
                 {completedSteps() === totalSteps() - 1 ?
-                  <Button onClick={handleComplete} sx={{ ml: 2, height: 35, width: 150, backgroundColor: "#feaf17", color: "black" }}>
-                    TO CHECKOUT
+                  <Button onClick={handleComplete} sx={{ ml: 2, height: 35, width: 80, backgroundColor: "#feaf17", color: "black" }}>
+                    Finish
                   </Button>
                   : ""
                 }
