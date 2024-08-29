@@ -8,6 +8,8 @@ import WhyIsItImportant from "./FinalQuestionsSteps/2-WhyIsItImportant";
 import MemoriesStoriesEtc from "./FinalQuestionsSteps/3-MemoriesStoriesEtc";
 import MemoriesCont from "./FinalQuestionsSteps/4-MemoriesCont";
 import AnythingElse from "./FinalQuestionsSteps/5-AnythingElse";
+import FinalSongSpecifications from "./FinalQuestionsSteps/FinalSongSpecifications";
+import PersonalInfo from "./FinalQuestionsSteps/PersonalInfo";
 
 // mui components
 import {
@@ -27,6 +29,8 @@ import '../SongRequestPage/SongRequestPage.css'
 
 // steps for stepper
 const steps = [
+  "Let's get some more info!",
+  "Song Specifications",
   "Tell us more!",
   "Why's it important?",
   "Memories, Stories, Etc.",
@@ -73,14 +77,18 @@ function FinalQuestions({ routeVariants }) {
   // steps contained here
   const formDetails = () => {
     if (activeStep === 0) {
-      return <TellUsMore handleInput={handleInput} value={requestData.important_what} />
+      return <PersonalInfo handleInput={handleInput} value={requestData.important_what} />
     } else if (activeStep === 1) {
-      return <WhyIsItImportant handleInput={handleInput} value={requestData.important_why} />
+      return <FinalSongSpecifications handleInput={handleInput} value={requestData.important_why} />
     } else if (activeStep === 2) {
-      return <MemoriesStoriesEtc handleInput={handleInput} value={requestData.story1} />
+      return <TellUsMore handleInput={handleInput} value={requestData.important_why} />
     } else if (activeStep === 3) {
-      return <MemoriesCont handleInput={handleInput} value={requestData.story2} />
+      return <WhyIsItImportant handleInput={handleInput} value={requestData.important_why} />
     } else if (activeStep === 4) {
+      return <MemoriesStoriesEtc handleInput={handleInput} value={requestData.story1} />
+    } else if (activeStep === 5) {
+      return <MemoriesCont handleInput={handleInput} value={requestData.story2} />
+    } else if (activeStep === 6) {
       return <AnythingElse handleInput={handleInput} value={requestData.additional_info} />
     }
   };
