@@ -10,10 +10,10 @@ function OrderLoginRegister() {
   const dispatch = useDispatch();
 
   // state
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
   const errors = useSelector(store => store.errors);
-  const data = useSelector(store => store.requestData)
+  const data = useSelector(store => store.requestData);
+  const [username, setUsername] = useState(data.email);
+  const [password, setPassword] = useState('');
 
   const login = (event) => {
     event.preventDefault()
@@ -78,7 +78,7 @@ function OrderLoginRegister() {
             className='registerInput'
             type="text"
             name="username"
-            value={data.email}
+            value={username}
             required
             onChange={(event) => setUsername(event.target.value)}
           />
