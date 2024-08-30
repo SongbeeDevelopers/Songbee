@@ -9,6 +9,7 @@ import SongSpecifications from "./OrderFormSteps/2-SongSpecifications";
 import SelectYourArtist from "./OrderFormSteps/3-SelectYourArtist";
 import Delivery from "./OrderFormSteps/4-Delivery";
 import AddOns from "./OrderFormSteps/5-AddOns";
+import LoginStep from "./OrderFormSteps/LoginStep";
 
 // mui imports
 import {
@@ -107,7 +108,8 @@ export default function OrderPage({ routeVariants }) {
         "Let's Get Started!",
         "Select Your Artist",
         "Add-Ons",
-        "Delivery"
+        "Delivery",
+        // "Login"
       ];
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState({});
@@ -223,8 +225,13 @@ export default function OrderPage({ routeVariants }) {
     )}
     // step 5
     // else if (activeStep === 4) {
-    //   return <OrderLoginRegister />
-    // }
+    //   return (
+    //   <LoginStep 
+    //     handleOpen={handleOpen}
+    //     handleClose={handleClose}
+    //     open={open}
+    //   />
+    // )}
   };
   // ----- END FORM LOGIC -----
 
