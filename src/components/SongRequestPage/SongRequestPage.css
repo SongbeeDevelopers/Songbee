@@ -195,15 +195,24 @@ and dropdown in Songbee JR */
 }
 
 .select-artist-container  {
-    width: 100%;
-    box-sizing: border-box;
     display: flex;
     flex-direction: row;
-    margin-bottom: 50px
-
+    flex-wrap: wrap;
+    align-content: space-around;
+    gap: 40px;
+    justify-content: center;  
+  }
+  .select-artist-container-mobile  {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-around;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-end;
   }
 
-  .select-artist-card {
+  /* .select-artist-card {
     display: flex;
     flex-flow: row;
     justify-content: center;
@@ -211,7 +220,8 @@ and dropdown in Songbee JR */
     text-align: center;
     align-items: center;
     width: 100%;
-  }
+    margin-bottom: 30px;
+  } */
   
   .select-artistSlide-img {
     width: 200px;
@@ -318,9 +328,8 @@ and dropdown in Songbee JR */
 
 .select-artist-artist {
     width: 250px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    text-align: center;
+    margin-bottom: 25px;
 }
 
 .main-checkout-select-artist h2 {

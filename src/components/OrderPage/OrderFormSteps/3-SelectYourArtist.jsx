@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useMediaQuery } from "react-responsive";
 
 import ArtistDisplay from "./ArtistDisplay";
 import SelectArtistAudioButton from "./SelectArtistAudioButton";
@@ -13,6 +14,9 @@ export default function SelectYourArtist({ handleInput }) {
   const artists = useSelector((store) => store.allArtists);
   const requestData = useSelector((store) => store.requestData);
   const genres = useSelector(store => store.genres)
+
+  const isMobile = useMediaQuery( { query: `(max-width: 815px)`} )
+
   let currentGenre
   if (requestData.genre) {
     genres.map((genre) => {
@@ -33,7 +37,7 @@ export default function SelectYourArtist({ handleInput }) {
         }
       </h5>
       <div className="select-artist-container">
-        <div className="select-artist-card">
+      
           {artists.map((artist, i) => {
             if (
               artist.is_active
@@ -64,7 +68,7 @@ export default function SelectYourArtist({ handleInput }) {
               );
             }
           })}
-        </div>
+   
       </div>
       <div className="selectforme">
       <Checkbox
