@@ -38,7 +38,8 @@ export default function Delivery({ handleInput, agreeTerms, setAgreeTerms, setDe
     <form className="orderForm">
       <div className="reqFormGroup4">
         <label>When would you like your song delivered?</label>
-        <label>Delivery will be from the time of song detail completion. After purchase, please log in to your customer portal and complete your song details. Once you have completed your song details, your artist will get started on your song!</label>
+        <label>After purchase, please log in to your customer portal and complete your song details. Once your details are complete</label>
+        <label>*Delivery will be from the time of song detail completion*</label>
         <div className="reqFormDays">
           <div 
             className="calendar-img-div"

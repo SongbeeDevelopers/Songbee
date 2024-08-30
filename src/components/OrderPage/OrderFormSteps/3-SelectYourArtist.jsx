@@ -29,6 +29,7 @@ export default function SelectYourArtist({ handleInput }) {
   return (
     <div className="main-checkout-select-artist">
       <h2>Select Your Artist!</h2>
+      <label>If the artist you selected is not available to take your order, we will let you know and you can select another artist or opt to have us select an artist for you.</label>
       <h5>
         {requestData.genre ?
           `Showing All Artists who Specialize in ${currentGenre}`

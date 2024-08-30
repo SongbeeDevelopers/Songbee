@@ -53,7 +53,7 @@ export default function LetsGetStarted() {
       return (
           <div className="reqFormGroup">
             <div className="reqFormInput">
-              <label>Enter your E-Mail Address</label>
+              <label>What is your Email Address?</label>
               <input
                 value={requestData.email}
                 className="reqFormInput"
