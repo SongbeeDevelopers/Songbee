@@ -22,6 +22,7 @@ function HeroSection() {
           <img src="https://res.cloudinary.com/dke4ukd0z/image/upload/v1724178977/Songbee/Songbee_Hero_Image_hiabk3.png"/>
 
           <p>Studio-Quality Custom Songs For Any Occasion</p>
+          <p>Starting at just $195</p>
         </>
       :
         <>

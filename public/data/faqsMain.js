@@ -6,7 +6,7 @@ const faqsMain = [
       Song Cost & Length
     `,
     answer: `
-      Our custom songs are $225 for a standard 6 day delivery. 
+      Our custom songs are $195 for a standard 6 day delivery. 
       Expedited delivery is available for an additional fee. Each song is custom 
       written by one of our professional musicians. Songs are between 2.5-3.5 minutes.
   

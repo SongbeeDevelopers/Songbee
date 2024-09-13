@@ -49,7 +49,7 @@ export default function OrderPage({ routeVariants }) {
   const [agreeTerms, setAgreeTerms] = useState(false)
 
   // payment logic
-  const [totalPrice, setTotalPrice] = useState(224.99)
+  const [totalPrice, setTotalPrice] = useState(195)
   const [deliveryPrice, setDeliveryPrice] = useState(0)
   const [artistPayout, setArtistPayout] = useState(100)
 
@@ -111,8 +111,8 @@ export default function OrderPage({ routeVariants }) {
         "Delivery",
         // "Login"
       ];
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [completed, setCompleted] = React.useState({});
+  const [activeStep, setActiveStep] = useState(0);
+  const [completed, setCompleted] = useState({});
 
   const totalSteps = () => { return steps.length };
   const completedSteps = () => { return Object.keys(completed).length };

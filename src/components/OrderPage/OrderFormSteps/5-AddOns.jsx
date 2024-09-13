@@ -108,7 +108,7 @@ export default function AddOns({
             <Button variant="contained"
               onClick={() => handleClick("streaming")}
               sx={{ height: 50, width: 300, backgroundColor: "#feaf17", color: "black" }}
-            > Add My Song to Streaming Services!
+            > Add My Song to Streaming Services! + $49.99
             </Button>
 
             <div
@@ -122,7 +122,7 @@ export default function AddOns({
             <Button variant="contained"
               onClick={() => handleClick("verse")}
               sx={{ height: 50, width: 300, backgroundColor: "#feaf17", color: "black" }}
-            > Add an Additional Verse!
+            > Add an Additional Verse! + $74.99
             </Button>
           </div>
         </div>
@@ -141,7 +141,7 @@ export default function AddOns({
             <Button variant="contained"
               onClick={() => handleClick("license")}
               sx={{ height: 50, width: 300, backgroundColor: "#feaf17", color: "black" }}
-            > I Need a Commercial License for My Song!
+            > I Need a Commercial License for My Song! + $199.99
             </Button>
 
             <div
@@ -155,7 +155,7 @@ export default function AddOns({
             <Button variant="contained"
               onClick={() => handleClick("backing")}
               sx={{ height: 50, width: 300, backgroundColor: "#feaf17", color: "black" }}
-            > Add an instrumental backing track!
+            > Add an instrumental backing track! + $29.99
             </Button>
           </div>
         </div>
