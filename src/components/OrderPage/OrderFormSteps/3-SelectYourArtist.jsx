@@ -15,6 +15,8 @@ export default function SelectYourArtist({ handleInput }) {
   const requestData = useSelector((store) => store.requestData);
   const genres = useSelector(store => store.genres)
 
+  console.log("artists", artists)
+
   const isMobile = useMediaQuery( { query: `(max-width: 815px)`} )
 
   let currentGenre
@@ -30,6 +32,7 @@ export default function SelectYourArtist({ handleInput }) {
     <div className="main-checkout-select-artist">
       <h2>Select Your Artist!</h2>
       <label>If the artist you selected is not available to take your order, we will let you know and you can select another artist or opt to have us select an artist for you.</label>
+      <p></p>
       <h5>
         {requestData.genre ?
           `Showing All Artists who Specialize in ${currentGenre}`
@@ -40,10 +43,10 @@ export default function SelectYourArtist({ handleInput }) {
       <div className="select-artist-container">
       
           {artists.map((artist, i) => {
+            console.log("artist", artist)
             if (
-              artist.is_active
-              && artist.vocal_type === requestData.vocal_type
-              && artist.genres[0].id === Number(requestData.genre) ||
+              artist.vocal_type === requestData.vocal_type
+              && artist.genres[0] && artist.genres[0].id === Number(requestData.genre) ||
               artist.genres[1] && artist.genres[1].id === Number(requestData.genre) ||
               artist.genres[2] && artist.genres[2].id === Number(requestData.genre) ||
               requestData.genre === ""

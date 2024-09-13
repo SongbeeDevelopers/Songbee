@@ -49,7 +49,7 @@ export default function OrderPage({ routeVariants }) {
   const [agreeTerms, setAgreeTerms] = useState(false)
 
   // payment logic
-  const [totalPrice, setTotalPrice] = useState(224.99)
+  const [totalPrice, setTotalPrice] = useState(195)
   const [deliveryPrice, setDeliveryPrice] = useState(0)
   const [artistPayout, setArtistPayout] = useState(100)
 

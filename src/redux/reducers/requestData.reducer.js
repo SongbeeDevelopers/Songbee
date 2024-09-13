@@ -11,7 +11,7 @@ const requestData = (
     extra_verse: false,
     license: false,
     backing_track: false,
-    total_price: 224.99,
+    total_price: 195,
     artist_payout: 100,
   },
   action
@@ -32,7 +32,7 @@ const requestData = (
         extra_verse: false,
         license: false,
         backing_track: false,
-        total_price: 224.99,
+        total_price: 195,
         artist_payout: 100,
       };
     default:
